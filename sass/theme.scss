@@ -328,27 +328,15 @@ body {
 	color: #555;
 	display: block;
 	@include font-size(14);
-	font-family: Arial;
 	font-weight: bold;
 	height: 100%;
 	@include prem(padding, 10 0 10 30);
 	position: relative;
 	text-decoration: none;
-}
-
-.kalei-styleguide-menu-link {
 	&:hover,
 	&.active {
 		background: #444;
 		color: #ebebeb;
-	}
-}
-
-.kalei-sheet-submenu {
-	li {
-		&.active {
-			background: #ebebeb;
-		}
 	}
 }
 
@@ -361,5 +349,12 @@ body {
 		cursor: pointer;
 		@include font-size(14);
 		@include prem(padding, 10 10 10 40);
+		&.active {
+			cursor: default;
+		}
+		&.active,
+		&:hover {
+			background: #ebebeb;
+		}
 	}
 }
