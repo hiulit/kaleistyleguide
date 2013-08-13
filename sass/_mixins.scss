@@ -1,0 +1,155 @@
+/*******************************************************
+ CONVERT PIXELS TO REMS (FONT-SIZE)
+*******************************************************/
+
+/*
+
+You can enter the desired font-size and it will automatically add the line-height.
+
+Example:
+-------------
+
+@include font-size(14);
+
+Or you can specify a line-height.
+
+Example:
+-------------
+
+@include font-size(14, 30);
+
+*/
+
+@mixin font-size($sizeValue: $baseFontSize, $lineValue: $sizeValue * 1.5) {
+	font-size: $sizeValue + px;
+	line-height: $lineValue + px;
+	font-size: ($sizeValue / $baseFontSize) + rem;
+	line-height: ($lineValue / $baseFontSize) + rem;
+}
+
+
+/**************************************
+ CONVERT PIXELS TO REMS
+**************************************/
+
+/*
+
+No need to add "px"
+
+Example:
+-------------
+
+@include prem(margin, 0 20 4 4);
+@include prem(width, 50);
+
+*/
+
+@mixin prem($property, $values, $base-font-size: $baseFontSize) {
+
+	$px-values: ();
+	$rem-values: ();
+
+	@each $value in $values {
+		@if type-of($value) == number {
+			$px-values: join($px-values, #{$value}px);
+			$rem-values: join($rem-values, #{$value / $base-font-size}rem);
+		}
+	}
+
+	#{$property}: $px-values;
+	#{$property}: $rem-values;
+}
+
+/*****************
+ TRIANGLES
+*****************/
+/*
+
+To create a triangle, the container must have "position: relative;"
+
+Example:
+-------------
+
+.container {
+	position: relative;
+	&:before {
+		@include triangle (left, $ddd, 8);
+		@include prem(left, -8);
+		@include prem(top, 12);
+	}
+}
+
+You can also create a triangle with border using both ":before" and ":after".
+
+Example:
+-------------
+
+.container {
+	position: relative;
+	&:before {
+		@include triangle (left, #ccc, 8);
+		@include prem(left, -9);
+		@include prem(top, 12);
+	}
+	&:after {
+		@include triangle (left, $ddd, 8);
+		@include prem(left, -8);
+		@include prem(top, 12);
+	}
+}
+
+*/
+
+@mixin triangle($direction, $color, $height, $width: $height) {
+
+	@if $direction == "left" {
+					border-bottom: $height + px solid transparent;
+					border-right: $width + px solid $color;
+					border-top: $height + px solid transparent;
+	}
+	@else if $direction == "right" {
+					border-bottom: $height + px solid transparent;
+					border-left : $width + px solid $color;
+					border-top: $height + px solid transparent;
+	}
+	@else if $direction == "up" {
+					border-bottom: $height + px solid $color;
+					border-left: $width + px solid transparent;
+					border-right: $width + px solid transparent;
+	}
+	@else if $direction == "down" {
+					border-right: $width + px solid transparent;
+					border-left: $width + px solid transparent;
+					border-top: $height + px solid $color;
+	}
+
+	content: " ";
+	height: 0;
+	position: absolute;
+	width: 0;
+}
+
+/*************
+ ELLIPSIS
+*************/
+
+@mixin max-ellipsis($maxWidth) {
+	@include prem(max-width, $maxWidth);
+	@include ellipsis;
+	word-wrap: normal;
+}
+
+/***************
+ CLEARFIX
+***************/
+
+@mixin cf() {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
