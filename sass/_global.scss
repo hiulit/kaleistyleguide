@@ -3,3 +3,27 @@
 
 $fontFamily: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $baseFontSize: 16;
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+.one-quarter {
+	width: 25%;
+}
+
+.one-half {
+	width: 50%;
+}
+
+.three-quarters {
+	width: 75%;
+}
+
+.full-width {
+	width: 100%;
+}
