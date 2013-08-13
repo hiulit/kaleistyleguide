@@ -9,26 +9,18 @@ The menu is **fixed** and the page contained simply aligns itself 200px from the
 
 */
 
+* {
+	@include box-sizing(border-box);
+}
+
 html {
 	font-family: $fontFamily;
 	@include font-size($baseFontSize);
 }
 
-html,
-body,
-.kalei {
-	height: 100% !important;
-	background: #f6f4f4;
-}
-
 body {
-	background: #fff !important;
-	margin: 0 !important;
-	padding: 0 !important;
-}
-
-.menu-items {
-
+	@include prem(margin, 0);
+	@include prem(padding, 0);
 }
 
 .kalei-style-menu-container {
@@ -36,10 +28,9 @@ body {
 	border-right: 1px solid #ccc;
 	height: 100%;
 	position: fixed;
-	width: 300px;
 }
 
-.kalei-styleguide-menu {
+.menu-items {
 	height: 100%;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -47,7 +38,6 @@ body {
 
 .kalei-style-page {
 	background: #f6f4f4;
-	@include prem(margin-left, 300);
 	@include prem(padding, 20);
 }
 
@@ -119,7 +109,7 @@ body {
 	> ul,
 	> ol,
 	> p {
-		@include font-size(12);
+		@include font-size(14);
 	}
 }
 
