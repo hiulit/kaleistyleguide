@@ -165,74 +165,10 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 .kalei-css-container {
 	> pre {
 		> code {
-			@include font-size(11);
+			@include border-radius(3px);
+			@include font-size(12);
 			@include prem(padding, 10);
 			white-space: pre-wrap;
-		}
-	}
-}
-
-.kalei-css-container,
-.kalei-comments {
-	> pre {
-		> code {
-			@include opacity(.3);
-		}
-	}
-}
-
-.kalei-comments > pre > code:hover,
-.kalei-css-container:hover  {
-	@include opacity(1);
-}
-
-.kalei-css-container {
-	.kalei-no-css {
-		display: none;
-	}
-}
-
-.kalei-comments {
-	> pre {
-		border-bottom: 1px solid #ebebeb;
-		border-left: 1px solid #ebebeb;
-		border-right: 1px solid #ebebeb;
-		@include border-radius(0 0 3px 3px);
-		@include prem(margin, 0);
-		@include prem(padding, 20);
-		position: relative;
-	}
-}
-
-.kalei-comments {
-	> pre {
-		> code {
-			&:before {
-				background-color: #444;
-				@include border-radius(3px 0 3px 0);
-				color: #ebebeb;
-				content: "Code";
-				font-family: $fontFamily;
-				@include font-size(12);
-				font-weight: bold;
-				@include prem(left, -1);
-				@include opacity(.3);
-				@include prem(padding, 3 7);
-				position: absolute;
-				@include prem(top, -1);
-			}
-		}
-	}
-}
-
-.kalei-comments {
-	> pre {
-		> code {
-			&:hover {
-				&:before {
-					@include opacity(1);
-				}
-			}
 		}
 	}
 }
@@ -241,19 +177,53 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 	background: #fff;
 	border: 1px solid #ccc;
 	@include border-radius(3px);
-	@include box-sizing(border-box);
 	@include prem(margin, 0 0 20 0);
 	@include prem(padding, 20);
+	> pre {
+		border: 1px solid #ebebeb;
+		@include border-radius(0 0 3px 3px);
+		@include prem(margin, 0);
+		@include prem(padding, 30 20 20 20);
+		position: relative;
+		@include prem(top, -1);
+		> code {
+			&:before {
+				background-color: #444;
+				@include border-radius(0 0 3px 0);
+				color: #ebebeb;
+				content: "Code";
+				font-family: $fontFamily;
+				font-size: 12px;
+				font-weight: bold;
+				@include prem(left, -1);
+				@include prem(padding, 3 7);
+				position: absolute;
+				@include prem(top, -1);
+			}
+		}
+	}
 }
 
-body {
-	.codedemo {
-		border: 1px solid #ebebeb	;
-		@include border-radius(3px 3px 0 0);
-		background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAAXNSR0IArs4c6QAAAAZQTFRF+vr6////+o8bnQAAABBJREFUCB1jYPjPgBXhEAYAfr8P8bm+jEoAAAAASUVORK5CYII=);
-		font-size: 100%;
-		@include prem(padding, 40);
-		position: relative;
+.codedemo {
+	border: 1px solid #ebebeb;
+	@include border-radius(3px 3px 0 0);
+	@include prem(padding, 40);
+	position: relative;
+	.kalei-comments {
+		@include prem(margin, 0);
+	}
+	&:after {
+		background-color: #444;
+		@include border-radius(3px 0 3px 0);
+		color: #ebebeb;
+		content: "Example";
+		font-family: $fontFamily;
+		font-size: 12px;
+		font-weight: bold;
+		@include prem(left, -1);
+		@include prem(padding, 3 7);
+		position: absolute;
+		@include prem(top, -1);
 	}
 }
 
@@ -281,26 +251,6 @@ body {
 		padding: 0;
 	}
 }
-
-body {
-	.codedemo {
-		&:after {
-			background-color: #444;
-			@include border-radius(3px 0 3px 0);
-			color: #ebebeb;
-			content: "Example";
-			font-family: $fontFamily;
-			@include font-size(12);
-			font-weight: bold;
-			@include prem(left, -1);
-			@include opacity(.3);
-			@include prem(padding, 3 7);
-			position: absolute;
-			@include prem(top, -1);
-		}
-	}
-}
-
 
 .kalei-styleguide-menu-stylesheets {
 	background: #75eb33;
