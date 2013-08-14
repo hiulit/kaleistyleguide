@@ -23,6 +23,14 @@ body {
 	@include prem(padding, 0);
 }
 
+a {
+	color: $linkColor;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
 .kalei-style-menu-container {
 	background: #fff;
 	border-right: 1px solid #ccc;
@@ -39,6 +47,9 @@ body {
 .kalei-style-page {
 	background: #f6f4f4;
 	@include prem(padding, 20);
+	> .kalei-documentation {
+		position: relative;
+	}
 }
 
 /*
@@ -71,15 +82,11 @@ body {
 .kalei-comments > h6,
 .kalei-comments > ul,
 .kalei-comments > ol,
-.kalei-comments > p a,
-.kalei-comments > p a:visited,
-.kalei-comments >  a:visited,
-.kalei-comments > a,
+.kalei-comments > p,
 .kalei-styleguide-menu-heading > h1,
 .kalei-styleguide-menu > li > h3,
 .kalei-sheet-submenu li,
-.kalei-styleguide-menu-stylesheets,
-.kalei-comments > p {
+.kalei-styleguide-menu-stylesheets {
 	font-family: $fontFamily;
 	color: #444;
 	@include prem(margin, 0);
@@ -130,12 +137,6 @@ These styles make sure the css code block is floated to the right correctly and 
 </div>
 ```
 */
-
-.kalei-style-page {
-	> .kalei-documentation {
-		position: relative;
-	}
-}
 
 .kalei-comments-container {
 	position: relative;
