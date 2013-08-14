@@ -95,7 +95,9 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
                 ////////////NEEDS TO BE EXPORTED TO Menu.js
                 _.each(page.blocks, function (block) {
                     if (block.heading != "") {
-                        submenu.append($('<li>').text(block.heading));
+                        var li = $('<li>');
+                        li.append($('<span>').text(block.heading));
+                        submenu.append(li);
                     }
                 });
                 $('li:first-child', submenu).addClass('active');
