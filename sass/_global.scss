@@ -27,3 +27,7 @@ $baseFontSize: 16;
 .full-width {
 	width: 100%;
 }
+
+.clearfix {
+	@include cf;
+}
