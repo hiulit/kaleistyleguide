@@ -14,6 +14,7 @@ The menu is **fixed** and the page contained simply aligns itself 200px from the
 }
 
 html {
+	color: $fontColor;
 	font-family: $fontFamily;
 	@include font-size($baseFontSize);
 }
@@ -87,8 +88,6 @@ a {
 .kalei-styleguide-menu > li > h3,
 .kalei-sheet-submenu li,
 .kalei-styleguide-menu-stylesheets {
-	font-family: $fontFamily;
-	color: #444;
 	@include prem(margin, 0);
 	@include prem(padding, 10);
 }
@@ -189,7 +188,7 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 		@include prem(top, -1);
 		> code {
 			&:before {
-				background-color: #444;
+				background-color: $fontColor;
 				@include border-radius(0 0 3px 0);
 				color: #ebebeb;
 				content: "Code";
@@ -214,7 +213,7 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 		@include prem(margin, 0);
 	}
 	&:after {
-		background-color: #444;
+		background-color: $fontColor;
 		@include border-radius(3px 0 3px 0);
 		color: #ebebeb;
 		content: "Example";
@@ -231,10 +230,10 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 *:not(.codedemo) {
 	.kalei-styleguide-menu-heading {
 		h1 {
-			color: #444;
+			background-color: $menuColorActive;
+			color: #fff;
 			@include font-size(22);
 			@include prem(margin, 0);
-			@include prem(margin-bottom, 20);
 			@include prem(margin-top, 20);
 			@include prem(padding-left, 20);
 		}
@@ -266,9 +265,10 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 .kalei-styleguide-menu {
 	> li {
 		> h3 {
-			color: #444;
+			background-color: $menuColorActive;
+			color: #fff;
 			font-weight: bold;
-			@include font-size(16);
+			@include font-size(20);
 			@include prem(margin-top, 20);
 			@include prem(padding, 10 20);
 		}
@@ -276,18 +276,43 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 }
 
 .kalei-styleguide-menu-link {
-	color: #555;
+	color: $menuColor;
 	display: block;
-	@include font-size(14);
+	@include font-size(16);
 	font-weight: bold;
 	height: 100%;
-	@include prem(padding, 10 0 10 30);
+	@include prem(padding, 10 10 10 20);
 	position: relative;
-	text-decoration: none;
+	@include max-ellipsis(100%);
 	&:hover,
 	&.active {
-		background: #444;
-		color: #ebebeb;
+		background: $menuColor;
+		color: #fff;
+		text-decoration: none;
+	}
+	&:hover {
+		&:after {
+			@include triangle(right, #fff, 6);
+			@include prem(margin-left, 9);
+			@include prem(margin-top, -6);
+			top: 50%;
+		}
+	}
+	&.active,
+	&:active {
+		cursor: default;
+		&:after {
+			@include triangle(down, #fff, 6);
+			@include prem(margin-left, 6);
+			@include prem(margin-top, -3);
+			top: 50%;
+		}
+	}
+	&:after {
+		@include triangle(right, $menuColor, 6);
+		@include prem(margin-left, 9);
+		@include prem(margin-top, -6);
+		top: 50%;
 	}
 }
 
@@ -297,15 +322,33 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 		@include prem(padding, 0);
 	}
 	li {
+		color: $menuColor;
 		cursor: pointer;
 		@include font-size(14);
-		@include prem(padding, 10 10 10 40);
+		@include prem(padding, 10 10 10 20);
+		span {
+			@include inline-block;
+			@include max-ellipsis(100%);
+		}
+		&:hover{
+			span {
+				text-decoration: underline;
+			}
+		}
 		&.active {
 			cursor: default;
-		}
-		&.active,
-		&:hover {
-			background: #ebebeb;
+			span {
+				background: $menuColor;
+				@include border-radius(12px);
+				color: #fff;
+				@include prem(padding, 0 8);
+				@include prem(margin-left, -8);
+			}
+			&:hover{
+				span {
+					text-decoration: none;
+				}
+			}
 		}
 	}
 }
