@@ -5,7 +5,9 @@ $fontColor: #515151;
 $fontFamily: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $baseFontSize: 16;
 $linkColor: #0090d4;
-$linkColorActive: #0071a6;
+$linkColorActive: darken($linkColor, 9);
+$menuColor: #515151;
+$menuColorActive: darken($menuColor, 9);
 
 .pull-left {
 	float: left;
