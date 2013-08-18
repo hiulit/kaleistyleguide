@@ -1,3 +1,35 @@
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.one-quarter {
+  width: 25%;
+}
+
+.one-half {
+  width: 50%;
+}
+
+.three-quarters {
+  width: 75%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
 /*
 # Kalei Themes
 
@@ -6,34 +38,56 @@ To make sure the code demo's are un-affected by Kaleis own styles we only set a 
 The menu is **fixed** and the page contained simply aligns itself 200px from the left.
 
 */
-html, body, .kalei {
-	height: 100% !important;
-  background: #f6f4f4;
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-body {
-	background: #fff !important;
-	margin: 0 !important;
-  padding: 0 !important;
-}
-.menu-items {
 
+html {
+  color: #515151;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
+
+body {
+  margin: 0px;
+  margin: 0rem;
+  padding: 0px;
+  padding: 0rem;
+}
+
+a {
+  color: #0090d4;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
 .kalei-style-menu-container {
-	position: fixed;
-	background: #fff;
-	height: 100%;
+  background: #fff;
   border-right: 1px solid #ccc;
-	width: 300px;
-}
-.kalei-styleguide-menu {
   height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
+  position: fixed;
 }
+
+.menu-items {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .kalei-style-page {
-	margin-left: 300px;
-	padding: 20px;
-	background: #f6f4f4;
+  background: #f6f4f4;
+  padding: 20px;
+  padding: 1.25rem;
+}
+.kalei-style-page > .kalei-documentation {
+  position: relative;
 }
 
 /*
@@ -56,7 +110,6 @@ body {
 
 ```
 */
-
 .kalei-comments > h1,
 .kalei-comments > h2,
 .kalei-comments > h3,
@@ -65,39 +118,43 @@ body {
 .kalei-comments > h5,
 .kalei-comments > h6,
 .kalei-comments > ul,
-.kalei-comments> ol,
-.kalei-comments> p a,
-.kalei-comments> p a:visited,
-.kalei-comments>  a:visited,
-.kalei-comments> a,
+.kalei-comments > ol,
+.kalei-comments > p,
 .kalei-styleguide-menu-heading > h1,
 .kalei-styleguide-menu > li > h3,
-.kalei-sheet-submenu  li,
-.kalei-styleguide-menu-stylesheets,
-.kalei-comments > p {
-
-  font-family:  'Helvetica Neue', Helvetica, Arial, sans-serif;
-	padding: 10px;
-	margin: 0;
-	color: #444;
-
+.kalei-sheet-submenu li,
+.kalei-styleguide-menu-stylesheets {
+  margin: 0px;
+  margin: 0rem;
+  padding: 10px;
+  padding: 0.625rem;
 }
-.kalei-comments> p a,
-.kalei-comments> p a:visited {
-	padding: 0;
+
+.kalei-comments > p a,
+.kalei-comments > p a:visited {
+  padding: 0;
 }
+
 .kalei-comments > iframe {
-	margin-left: 10px;
-	margin-top: 10px;
+  margin-left: 10px;
+  margin-left: 0.625rem;
+  margin-top: 10px;
+  margin-top: 0.625rem;
 }
+
 .kalei-comments > ul,
-.kalei-comments> ol {
-	margin-left: 20px;
+.kalei-comments > ol {
+  margin-left: 20px;
+  margin-left: 1.25rem;
 }
+
 .kalei-comments > ul,
-.kalei-comments> ol,
+.kalei-comments > ol,
 .kalei-comments > p {
-	font-size: 12px;
+  font-size: 14px;
+  line-height: 21px;
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
 }
 
 /*
@@ -117,16 +174,10 @@ These styles make sure the css code block is floated to the right correctly and 
 </div>
 ```
 */
-
-.kalei-style-page > .kalei-documentation {
-	position: relative;
-}
 .kalei-comments-container {
-	width: 100%;
-	position: relative;
+  position: relative;
+  width: 100%;
 }
-
-
 
 /*
 ## Code demos
@@ -148,217 +199,268 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 */
 .kalei-comments > pre > code,
 .kalei-css-container > pre > code {
-	font-size: 11px;
-
-	white-space: pre-wrap;
-	padding: 10px;
-}
-.kalei-css-container,
-.kalei-comments > pre > code {
-
-		opacity: 0.3;
-}
-.kalei-comments > pre > code:hover,
-.kalei-css-container:hover  {
-	opacity: 1;
-}
-.kalei-css-container.kalei-no-css {
-	display: none;
-}
-.kalei-comments >  pre {
-	margin: 0;
-	border-bottom: 1px solid #ebebeb;
-	border-left: 1px solid #ebebeb;
-	border-right: 1px solid #ebebeb;
-  position: relative;
-  padding: 20px;
-
--webkit-border-radius:  0 0 3px 3px;
--moz-border-radius:  0 0 3px 3px;
-border-radius:  0 0 3px 3px;
-}
-
-.kalei-comments >  pre> code::before {
-  content: "Code";
-  opacity: 0.3;
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  padding: 3px 7px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
   font-size: 12px;
-  font-weight: bold;
-  background-color: #444;
-  color: #ebebeb;
-  -webkit-border-radius: 0px 0 4px 0;
-  -moz-border-radius: 0px 0 4px 0;
-  font-family:  'Helvetica Neue', Helvetica, Arial, sans-serif;
-  border-radius: 0px 0 4px 0;
+  line-height: 18px;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  padding: 10px;
+  padding: 0.625rem;
+  white-space: pre-wrap;
 }
-
-
-.kalei-comments >  pre> code:hover::before {
-  opacity: 1;
-}
-
 
 .kalei-comments {
-	background: #f7f7f7;
-padding: 20px;
-margin: 0 0 20px 0;
-background:
-white;
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
-border-radius: 3px;
--webkit-box-sizing: border-box;
--moz-box-sizing: border-box;
--o-box-sizing: border-box;
-box-sizing: border-box;
-border: 1px solid #ccc;
+  background: #fff;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin: 0px 0px 20px 0px;
+  margin: 0rem 0rem 1.25rem 0rem;
+  padding: 20px;
+  padding: 1.25rem;
 }
-body .codedemo {
-	position: relative;
-	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAAXNSR0IArs4c6QAAAAZQTFRF+vr6////+o8bnQAAABBJREFUCB1jYPjPgBXhEAYAfr8P8bm+jEoAAAAASUVORK5CYII=);
-	padding: 40px;
-	border: 1px solid #ebebeb	;
-	font-size: 100%;
--webkit-border-radius: 3px 3px 0 0;
--moz-border-radius: 3px 3px 0 0;
-border-radius: 3px 3px 0 0;
+.kalei-comments > pre {
+  border: 1px solid #ebebeb;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
+  margin: 0px;
+  margin: 0rem;
+  padding: 30px 20px 20px 20px;
+  padding: 1.875rem 1.25rem 1.25rem 1.25rem;
+  position: relative;
+  top: -1px;
+  top: -0.0625rem;
+}
+.kalei-comments > pre > code:before {
+  background-color: #515151;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0 0 3px 0;
+  border-radius: 0 0 3px 0;
+  color: #ebebeb;
+  content: "Code";
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  left: -1px;
+  left: -0.0625rem;
+  padding: 3px 7px;
+  padding: 0.1875rem 0.4375rem;
+  position: absolute;
+  top: -1px;
+  top: -0.0625rem;
+}
+
+.codedemo {
+  border: 1px solid #ebebeb;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+  padding: 40px;
+  padding: 2.5rem;
+  position: relative;
+}
+.codedemo .kalei-comments {
+  margin: 0px;
+  margin: 0rem;
+}
+.codedemo:after {
+  background-color: #515151;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px 0 3px 0;
+  border-radius: 3px 0 3px 0;
+  color: #ebebeb;
+  content: "Example";
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  left: -1px;
+  left: -0.0625rem;
+  padding: 3px 7px;
+  padding: 0.1875rem 0.4375rem;
+  position: absolute;
+  top: -1px;
+  top: -0.0625rem;
 }
 
 *:not(.codedemo) .kalei-styleguide-menu-heading h1 {
-	font-size: 22px;
-	margin: 0;
+  background-color: #3a3a3a;
+  color: #fff;
+  font-size: 22px;
+  line-height: 33px;
+  font-size: 1.375rem;
+  line-height: 2.0625rem;
+  margin: 0px;
+  margin: 0rem;
   margin-top: 20px;
-  margin-bottom: 20px;
-	color: #444;
+  margin-top: 1.25rem;
   padding-left: 20px;
+  padding-left: 1.25rem;
 }
-*:not(.codedemo) .kalei-styleguide-menu-heading, .styleguide-menu-heading:visited {
-	text-decoration: none;
-}
-
 *:not(.codedemo) .kalei-styleguide-menu-heading:hover {
-	color: #222;
+  color: #222;
 }
-
+*:not(.codedemo) .kalei-styleguide-menu-heading,
+*:not(.codedemo) .styleguide-menu-heading:visited {
+  text-decoration: none;
+}
 *:not(.codedemo) .kalei-styleguide-menu {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-body .codedemo::after {
-	content: "Example";
-	position: absolute;
-	top: -1px;
-	left: -1px;
-	padding: 3px 7px;
-	font-size: 12px;
-	font-weight: bold;
-	background-color: #444;
-	color: #ebebeb;
-	-webkit-border-radius: 0px 0 4px 0;
-	-moz-border-radius: 0px 0 4px 0;
-  font-family:  'Helvetica Neue', Helvetica, Arial, sans-serif;
-	border-radius: 3px 0 3px 0;
-}
-
-
-.kalei-styleguide-menu-stylesheets {
-      color: #fff;
-  font-weight: bold;
-  margin-top: 20px;
-  font-size: 16px;
-  padding: 10px 20px;
-  background: #75eb33;
-  text-shadow: 0px 0px 1px #777;
-}
-
-.kalei-styleguide-menu > li > h3 {
-		color: #444;
-	font-weight: bold;
-	margin-top: 20px;
-	font-size: 16px;
-  padding-left: 20px;
-
-}
-.kalei-styleguide-menu-link {
-	padding: 10px 0px 10px 30px;
-	display: block;
-	height: 100%;
-	text-decoration: none;
-	color: #555;
-  font-weight: bold;
-	font-family: Arial;
-	font-size: 14px;
-	position: relative;
-}
-
-
-.kalei-styleguide-menu-link:hover,
-.kalei-styleguide-menu-link.active {
-	background: #444;
-	color: #ebebeb;
-}
-
-.kalei-styleguide-menu-link:hover:after,
-.kalei-styleguide-menu-link.active:after {
-  content:"";
-  position:absolute;
-  bottom:-13px; /* value = - border-top-width - border-bottom-width */
-  right:0; /* value = (:before left) + (:before border-left) - (:after border-left) */
-  border-width:13px 13px 0;
-  border-style:solid;
-  border-color:#fff transparent;
-    /* reduce the damage in FF3.0 */
-    display:block;
-    width:0;
-}
-.kalei-styleguide-menu-link:hover:before,
-.kalei-styleguide-menu-link.active:before {
-  content:"";
-  position:absolute;
-  bottom:-13px; /* value = - border-top-width - border-bottom-width */
-  right:0; /* value = (:before left) + (:before border-left) - (:after border-left) */
-  border-width:13px 13px 0;
-  border-style:solid;
-  border-color:#fff transparent;
-    /* reduce the damage in FF3.0 */
-    display:block;
-    width:0;
-}
-
-
-
-.kalei-styleguide-menu-link:hover:before,
-.kalei-styleguide-menu-link.active:before {
-  top:14px; /* value = (:before top) + (:before border-top) - (:after border-top) */
-  bottom:auto;
-  right:-1px; /* value = - border-left-width - border-right-width */
-   border-width:6px 5px 6px 0px;
-  border-color:transparent #ccc;
-}
-.kalei-styleguide-menu-link:hover:after,
-.kalei-styleguide-menu-link.active:after {
-  top:15px; /* value = (:before top) + (:before border-top) - (:after border-top) */
-  bottom:auto;
-  right:-2px; /* value = - border-left-width - border-right-width */
-   border-width:5px 5px 5px 0px;
-  border-color:transparent #f7f7f7;
-}
-
-.kalei-sheet-submenu li.active {
-  background: #ebebeb;
-}
-
-.kalei-sheet-submenu ul {
+  list-style: none;
   margin: 0;
   padding: 0;
 }
-.kalei-sheet-submenu li {
-  padding: 10px 10px 10px 40px;
-  cursor: pointer;
-  font-size: 14px;
+
+.kalei-styleguide-menu-stylesheets {
+  background: #75eb33;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-top: 20px;
+  margin-top: 1.25rem;
+  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
+  text-shadow: 0 0 1px #777777;
 }
 
+.kalei-styleguide-menu > li > h3 {
+  background-color: #3a3a3a;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+  margin-top: 20px;
+  margin-top: 1.25rem;
+  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
+}
+
+.kalei-styleguide-menu-link {
+  color: #515151;
+  display: block;
+  font-size: 16px;
+  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: bold;
+  height: 100%;
+  padding: 10px 10px 10px 20px;
+  padding: 0.625rem 0.625rem 0.625rem 1.25rem;
+  position: relative;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  word-wrap: normal;
+}
+.kalei-styleguide-menu-link:hover, .kalei-styleguide-menu-link.active {
+  background: #515151;
+  color: #fff;
+  text-decoration: none;
+}
+.kalei-styleguide-menu-link:hover:after {
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid white;
+  border-top: 6px solid transparent;
+  content: " ";
+  height: 0;
+  position: absolute;
+  width: 0;
+  margin-left: 9px;
+  margin-left: 0.5625rem;
+  margin-top: -6px;
+  margin-top: -0.375rem;
+  top: 50%;
+}
+.kalei-styleguide-menu-link.active, .kalei-styleguide-menu-link:active {
+  cursor: default;
+}
+.kalei-styleguide-menu-link.active:after, .kalei-styleguide-menu-link:active:after {
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  border-top: 6px solid white;
+  content: " ";
+  height: 0;
+  position: absolute;
+  width: 0;
+  margin-left: 6px;
+  margin-left: 0.375rem;
+  margin-top: -3px;
+  margin-top: -0.1875rem;
+  top: 50%;
+}
+.kalei-styleguide-menu-link:after {
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid #515151;
+  border-top: 6px solid transparent;
+  content: " ";
+  height: 0;
+  position: absolute;
+  width: 0;
+  margin-left: 9px;
+  margin-left: 0.5625rem;
+  margin-top: -6px;
+  margin-top: -0.375rem;
+  top: 50%;
+}
+
+.kalei-sheet-submenu ul {
+  margin: 0px;
+  margin: 0rem;
+  padding: 0px;
+  padding: 0rem;
+}
+.kalei-sheet-submenu li {
+  color: #515151;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 21px;
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
+  padding: 10px 10px 10px 20px;
+  padding: 0.625rem 0.625rem 0.625rem 1.25rem;
+}
+.kalei-sheet-submenu li span {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  word-wrap: normal;
+}
+.kalei-sheet-submenu li:hover span {
+  text-decoration: underline;
+}
+.kalei-sheet-submenu li.active {
+  cursor: default;
+}
+.kalei-sheet-submenu li.active span {
+  background: #515151;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  color: #fff;
+  padding: 0px 8px;
+  padding: 0rem 0.5rem;
+  margin-left: -8px;
+  margin-left: -0.5rem;
+}
+.kalei-sheet-submenu li.active:hover span {
+  text-decoration: none;
+}
