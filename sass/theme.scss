@@ -234,7 +234,6 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 			color: #fff;
 			@include font-size(22);
 			@include prem(margin, 0);
-			@include prem(margin-top, 20);
 			@include prem(padding-left, 20);
 		}
 		&:hover {
