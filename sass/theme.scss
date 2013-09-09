@@ -40,13 +40,17 @@ a {
 }
 
 .menu-items {
-	height: 100%;
+	@include prem(bottom, 0); 
+	@include prem(left, 0); 
 	overflow-x: hidden;
 	overflow-y: auto;
+	position: absolute;
+	@include prem(right, 0); 
+	@include prem(top, 53); 
 }
 
 .kalei-style-page {
-	background: #f6f4f4;
+	background: #f4f4f4;
 	@include prem(padding, 20);
 	> .kalei-documentation {
 		position: relative;
@@ -229,15 +233,18 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 
 *:not(.codedemo) {
 	.kalei-styleguide-menu-heading {
+		position: absolute;
+		@include prem(bottom, 0);
+		@include prem(left, 0);
+		@include prem(right, 0);
+		@include prem(top, 0);
 		h1 {
 			background-color: $menuColorActive;
 			color: #fff;
 			@include font-size(22);
 			@include prem(margin, 0);
 			@include prem(padding-left, 20);
-		}
-		&:hover {
-			color: #222;
+			@include max-ellipsis(100%);
 		}
 	}
 	.kalei-styleguide-menu-heading,
