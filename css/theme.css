@@ -76,13 +76,21 @@ a:hover {
 }
 
 .menu-items {
-  height: 100%;
+  bottom: 0px;
+  bottom: 0rem;
+  left: 0px;
+  left: 0rem;
   overflow-x: hidden;
   overflow-y: auto;
+  position: absolute;
+  right: 0px;
+  right: 0rem;
+  top: 53px;
+  top: 3.3125rem;
 }
 
 .kalei-style-page {
-  background: #f6f4f4;
+  background: #f4f4f4;
   padding: 20px;
   padding: 1.25rem;
 }
@@ -286,7 +294,18 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
   top: -0.0625rem;
 }
 
-*:not(.codedemo) .kalei-styleguide-menu-heading h1 {
+.kalei-styleguide-menu-heading {
+  position: absolute;
+  bottom: 0px;
+  bottom: 0rem;
+  left: 0px;
+  left: 0rem;
+  right: 0px;
+  right: 0rem;
+  top: 0px;
+  top: 0rem;
+}
+.kalei-styleguide-menu-heading h1 {
   background-color: #3a3a3a;
   color: #fff;
   font-size: 22px;
@@ -295,19 +314,23 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
   line-height: 2.0625rem;
   margin: 0px;
   margin: 0rem;
-  margin-top: 20px;
-  margin-top: 1.25rem;
   padding-left: 20px;
   padding-left: 1.25rem;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  word-wrap: normal;
 }
-*:not(.codedemo) .kalei-styleguide-menu-heading:hover {
-  color: #222;
-}
-*:not(.codedemo) .kalei-styleguide-menu-heading,
-*:not(.codedemo) .styleguide-menu-heading:visited {
+
+.kalei-styleguide-menu-heading,
+.styleguide-menu-heading:visited {
   text-decoration: none;
 }
-*:not(.codedemo) .kalei-styleguide-menu {
+
+.kalei-styleguide-menu {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -350,7 +373,6 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: bold;
-  height: 100%;
   padding: 10px 10px 10px 20px;
   padding: 0.625rem 0.625rem 0.625rem 1.25rem;
   position: relative;
