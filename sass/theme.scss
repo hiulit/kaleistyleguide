@@ -96,11 +96,6 @@ a {
 	@include prem(padding, 10);
 }
 
-.kalei-comments > p a,
-.kalei-comments > p a:visited {
-	padding: 0;
-}
-
 .kalei-comments {
 	> iframe {
 		@include prem(margin-left, 10);
@@ -247,10 +242,7 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 		@include max-ellipsis(100%);
 	}
 }
-.kalei-styleguide-menu-heading,
-.styleguide-menu-heading:visited {
-	text-decoration: none;
-}
+
 .kalei-styleguide-menu {
 	list-style: none;
 	margin: 0;
