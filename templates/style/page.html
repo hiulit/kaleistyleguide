@@ -1,19 +1,17 @@
 <% _.each(page.blocks, function(block) {
-    if (block.content != ""){
+	if (block.content != ""){
 %>
-            <div class="kalei-documentation">
-            	<div class="kalei-comments-container">
-            		<div class="kalei-comments ">
-                        <%= block.content %>
-            		</div>
-            	</div>
-            	<div style="clear: both;"></div>
-            </div>
+	<div class="kalei-documentation">
+		<div class="kalei-comments-container">
+			<div class="kalei-comments">
+				<%= block.content %>
+			</div>
+		</div>
+	</div>
 <%
-        }
-    });
+		}
+	});
 %>
-<style type="text/css" media="screen">
-    <%= page.css %>
+<style type="text/css">
+	<%= page.css %>
 </style>
-<div style="clear: both;"></div>
