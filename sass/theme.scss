@@ -51,7 +51,7 @@ a {
 
 .kalei-style-page {
 	background: #f4f4f4;
-	@include prem(padding, 20);
+	@include prem(padding, 20 20 675 20);
 	> .kalei-documentation {
 		position: relative;
 	}
