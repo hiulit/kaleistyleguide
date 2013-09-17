@@ -187,7 +187,7 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 		border: 1px solid #ebebeb;
 		@include border-radius(0 0 3px 3px);
 		@include prem(margin, 0);
-		@include prem(padding, 30 20 20 20);
+		@include prem(padding, 40 20 20 20);
 		position: relative;
 		@include prem(top, -1);
 		> code {
