@@ -138,11 +138,6 @@ a:hover {
   padding: 0.625rem;
 }
 
-.kalei-comments > p a,
-.kalei-comments > p a:visited {
-  padding: 0;
-}
-
 .kalei-comments > iframe {
   margin-left: 10px;
   margin-left: 0.625rem;
@@ -325,11 +320,6 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   word-wrap: normal;
-}
-
-.kalei-styleguide-menu-heading,
-.styleguide-menu-heading:visited {
-  text-decoration: none;
 }
 
 .kalei-styleguide-menu {
