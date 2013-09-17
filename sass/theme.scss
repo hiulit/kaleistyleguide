@@ -40,13 +40,13 @@ a {
 }
 
 .menu-items {
-	@include prem(bottom, 0); 
-	@include prem(left, 0); 
+	@include prem(bottom, 0);
+	@include prem(left, 0);
 	overflow-x: hidden;
 	overflow-y: auto;
 	position: absolute;
-	@include prem(right, 0); 
-	@include prem(top, 53); 
+	@include prem(right, 0);
+	@include prem(top, 53);
 }
 
 .kalei-style-page {
