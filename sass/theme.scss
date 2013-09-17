@@ -211,6 +211,7 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 .codedemo {
 	border: 1px solid #ebebeb;
 	@include border-radius(3px 3px 0 0);
+	@include prem(margin, 10 0 0 0);
 	@include prem(padding, 40);
 	position: relative;
 	.kalei-comments {
