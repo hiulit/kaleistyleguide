@@ -237,8 +237,8 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
   border-radius: 0 0 3px 3px;
   margin: 0px;
   margin: 0rem;
-  padding: 30px 20px 20px 20px;
-  padding: 1.875rem 1.25rem 1.25rem 1.25rem;
+  padding: 40px 20px 20px 20px;
+  padding: 2.5rem 1.25rem 1.25rem 1.25rem;
   position: relative;
   top: -1px;
   top: -0.0625rem;
@@ -267,6 +267,8 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px 3px 0 0;
   border-radius: 3px 3px 0 0;
+  margin: 10px 0px 0px 0px;
+  margin: 0.625rem 0rem 0rem 0rem;
   padding: 40px;
   padding: 2.5rem;
   position: relative;
