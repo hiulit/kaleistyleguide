@@ -164,7 +164,7 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 .kalei-css-container {
 	> pre {
 		> code {
-			@include border-radius(3px);
+			border-radius: 3px;
 			@include font-size(12);
 			@include prem(padding, 10);
 			white-space: pre-wrap;
@@ -175,12 +175,12 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 .kalei-comments {
 	background: #fff;
 	border: 1px solid #ccc;
-	@include border-radius(3px);
+	border-radius: 3px;
 	@include prem(margin, 0 0 20 0);
 	@include prem(padding, 20);
 	> pre {
 		border: 1px solid #ebebeb;
-		@include border-radius(0 0 3px 3px);
+		border-radius: 0 0 3px 3px;
 		@include prem(margin, 0);
 		@include prem(padding, 40 20 20 20);
 		position: relative;
@@ -188,7 +188,7 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 		> code {
 			&:before {
 				background-color: $fontColor;
-				@include border-radius(0 0 3px 0);
+				border-radius: 0 0 3px 0;
 				color: #ebebeb;
 				content: "Code";
 				font-family: $fontFamily;
@@ -205,7 +205,7 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 
 .codedemo {
 	border: 1px solid #ebebeb;
-	@include border-radius(3px 3px 0 0);
+	border-radius: 3px 3px 0 0;
 	@include prem(margin, 10 0 0 0);
 	@include prem(padding, 40);
 	position: relative;
@@ -214,7 +214,7 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 	}
 	&:after {
 		background-color: $fontColor;
-		@include border-radius(3px 0 3px 0);
+		border-radius: 3px 0 3px 0;
 		color: #ebebeb;
 		content: "Example";
 		font-family: $fontFamily;
@@ -256,7 +256,7 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 	@include font-size(16);
 	@include prem(margin-top, 20);
 	@include prem(padding, 10 20);
-	@include text-shadow(0 0 1px #777);
+	text-shadow: 0 0 1px #777;
 }
 
 .kalei-styleguide-menu {
@@ -336,7 +336,7 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 			cursor: default;
 			span {
 				background: $menuColor;
-				@include border-radius(12px);
+				border-radius: 12px;
 				color: #fff;
 				@include prem(padding, 0 8);
 				@include prem(margin-left, -8);
