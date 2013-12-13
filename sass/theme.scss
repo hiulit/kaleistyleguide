@@ -52,31 +52,16 @@ a {
 .kalei-style-page {
 	background: #f4f4f4;
 	@include prem(padding, 20 20 675 20);
-	> .kalei-documentation {
-		position: relative;
-	}
 }
 
-/*
-## Headings and paragraphs
-```
-<div class="kalei-comments">
-	<h1>Heading 1</h1>
-	<h2>Heading 2</h2>
-	<h3>Heading 3</h3>
-	<h4>Heading 4</h4>
-	<h5>Heading 5</h5>
-	<h6>Heading 6</h6>
-	<p class="fixie"></p>
-	<ul>
-	  <li>List Item 1</li>
-	  <li>List Item 2</li>
-	  <li>List Item 3</li>
-	</ul>
-</div>
+.kalei-documentation {
+	position: relative;
+}
 
-```
-*/
+.kalei-comments-container {
+	position: relative;
+	width: 100%;
+}
 
 .kalei-comments > h1,
 .kalei-comments > h2,
@@ -96,70 +81,6 @@ a {
 	@include prem(padding, 10);
 }
 
-.kalei-comments {
-	> iframe {
-		@include prem(margin-left, 10);
-		@include prem(margin-top, 10);
-	}
-}
-
-.kalei-comments {
-	> ul,
-	> ol {
-		@include prem(margin-left, 20);
-	}
-}
-
-.kalei-comments {
-	> ul,
-	> ol,
-	> p {
-		@include font-size(14);
-	}
-}
-
-/*
-## CSS and Comments Layout
-
-These styles make sure the css code block is floated to the right correctly and the comments on the left
-
-```
-<div class="kalei-documentation">
-
-	<div class="kalei-comments-container ">
-		<div class="kalei-comments ">
-			<p>This is a test Kalei comment.</p>
-		</div>
-	</div>
-
-</div>
-```
-*/
-
-.kalei-comments-container {
-	position: relative;
-	width: 100%;
-}
-
-/*
-## Code demos
-
-When you use Markdown code blocks ```, Kalei automatically renders the code as HTML and beneath it shows the code block with syntax highlighting.
-```
-<pre>
-	<code>
-		.kalei-comments > pre > code,
-		.kalei-css-container > pre > code {
-			font-size: 11px;
-			opacity: 0.7;
-			white-space: pre-wrap;
-			padding: 10px;
-		}
-	</code>
-</pre>
-```
-*/
-
 .kalei-comments,
 .kalei-css-container {
 	> pre {
@@ -172,12 +93,25 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 	}
 }
 
+
 .kalei-comments {
 	background: #fff;
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	@include prem(margin, 0 0 20 0);
 	@include prem(padding, 20);
+	> ul,
+	> ol {
+		@include font-size(14);
+		@include prem(margin-left, 20);
+	}
+	> p {
+		@include font-size(14);
+	}
+	> iframe {
+		@include prem(margin-left, 10);
+		@include prem(margin-top, 10);
+	}
 	> pre {
 		border: 1px solid #ebebeb;
 		border-radius: 0 0 3px 3px;
@@ -193,7 +127,6 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 				content: "Code";
 				font-family: $fontFamily;
 				font-size: 12px;
-				font-weight: bold;
 				@include prem(left, -1);
 				@include prem(padding, 3 7);
 				position: absolute;
@@ -219,11 +152,26 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 		content: "Example";
 		font-family: $fontFamily;
 		font-size: 12px;
-		font-weight: bold;
 		@include prem(left, -1);
 		@include prem(padding, 3 7);
 		position: absolute;
 		@include prem(top, -1);
+	}
+}
+
+.kalei-styleguide-menu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	> li {
+		> h3 {
+			background-color: $menuColorActive;
+			color: #fff;
+			font-weight: bold;
+			@include font-size(20);
+			@include prem(margin-top, 20);
+			@include prem(padding, 10 20);
+		}
 	}
 }
 
@@ -243,12 +191,6 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 	}
 }
 
-.kalei-styleguide-menu {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
 .kalei-styleguide-menu-stylesheets {
 	background: #75eb33;
 	color: #fff;
@@ -259,25 +201,11 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 	text-shadow: 0 0 1px #777;
 }
 
-.kalei-styleguide-menu {
-	> li {
-		> h3 {
-			background-color: $menuColorActive;
-			color: #fff;
-			font-weight: bold;
-			@include font-size(20);
-			@include prem(margin-top, 20);
-			@include prem(padding, 10 20);
-		}
-	}
-}
-
 .kalei-styleguide-menu-link {
 	color: $menuColor;
 	display: block;
 	@include font-size(16);
 	font-weight: bold;
-	//height: 100%;
 	@include prem(padding, 10 10 10 20);
 	position: relative;
 	@include max-ellipsis(100%);
@@ -349,3 +277,61 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 		}
 	}
 }
+
+/*
+## Headings and paragraphs
+```
+<div class="kalei-comments">
+	<h1>Heading 1</h1>
+	<h2>Heading 2</h2>
+	<h3>Heading 3</h3>
+	<h4>Heading 4</h4>
+	<h5>Heading 5</h5>
+	<h6>Heading 6</h6>
+	<p class="fixie"></p>
+	<ul>
+	  <li>List Item 1</li>
+	  <li>List Item 2</li>
+	  <li>List Item 3</li>
+	</ul>
+</div>
+
+```
+*/
+
+/*
+## CSS and Comments Layout
+
+These styles make sure the css code block is floated to the right correctly and the comments on the left
+
+```
+<div class="kalei-documentation">
+
+	<div class="kalei-comments-container ">
+		<div class="kalei-comments ">
+			<p>This is a test Kalei comment.</p>
+		</div>
+	</div>
+
+</div>
+```
+*/
+
+/*
+## Code demos
+
+When you use Markdown code blocks ```, Kalei automatically renders the code as HTML and beneath it shows the code block with syntax highlighting.
+```
+<pre>
+	<code>
+		.kalei-comments > pre > code,
+		.kalei-css-container > pre > code {
+			font-size: 11px;
+			opacity: 0.7;
+			white-space: pre-wrap;
+			padding: 10px;
+		}
+	</code>
+</pre>
+```
+*/
