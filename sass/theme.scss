@@ -32,7 +32,7 @@ a {
 	}
 }
 
-.kalei-style-menu-container {
+.kalei-menu {
 	background: #fff;
 	border-right: 1px solid #ccc;
 	height: 100%;
@@ -49,57 +49,18 @@ a {
 	@include prem(top, 53);
 }
 
-.kalei-style-page {
+.kalei-page {
 	background: #f4f4f4;
 	@include prem(padding, 20 20 675 20);
 }
 
-.kalei-documentation {
-	position: relative;
-}
-
-.kalei-comments-container {
-	position: relative;
-	width: 100%;
-}
-
-.kalei-comments > h1,
-.kalei-comments > h2,
-.kalei-comments > h3,
-.kalei-comments > h4,
-.kalei-comments > h5,
-.kalei-comments > h5,
-.kalei-comments > h6,
-.kalei-comments > ul,
-.kalei-comments > ol,
-.kalei-comments > p,
-.kalei-styleguide-menu-heading > h1,
-.kalei-styleguide-menu > li > h3,
-.kalei-sheet-submenu li,
-.kalei-styleguide-menu-stylesheets {
-	@include prem(margin, 0);
-	@include prem(padding, 10);
-}
-
-.kalei-comments,
-.kalei-css-container {
-	> pre {
-		> code {
-			border-radius: 3px;
-			@include font-size(12);
-			@include prem(padding, 10);
-			white-space: pre-wrap;
-		}
-	}
-}
-
-
-.kalei-comments {
+.kalei-page__item {
 	background: #fff;
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	@include prem(margin, 0 0 20 0);
 	@include prem(padding, 20);
+	position: relative;
 	> ul,
 	> ol {
 		@include font-size(14);
@@ -134,6 +95,39 @@ a {
 			}
 		}
 	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h5,
+	h6,
+	ul,
+	ol,
+	p {
+		@include prem(margin, 0);
+		@include prem(padding, 10);
+	}
+}
+
+
+.kalei-styleguide-menu-heading > h1,
+.kalei-styleguide-menu > li > h3,
+.kalei-sheet-submenu li,
+.kalei-styleguide-menu-stylesheets {
+	@include prem(margin, 0);
+	@include prem(padding, 10);
+}
+
+.kalei-css-container {
+	> pre {
+		> code {
+			border-radius: 3px;
+			@include font-size(12);
+			@include prem(padding, 10);
+			white-space: pre-wrap;
+		}
+	}
 }
 
 .codedemo {
@@ -142,9 +136,9 @@ a {
 	@include prem(margin, 10 0 0 0);
 	@include prem(padding, 40);
 	position: relative;
-	.kalei-comments {
-		@include prem(margin, 0);
-	}
+	// .kalei-comments {
+	// 	@include prem(margin, 0);
+	// }
 	&:after {
 		background-color: $fontColor;
 		border-radius: 3px 0 3px 0;
@@ -281,20 +275,18 @@ a {
 /*
 ## Headings and paragraphs
 ```
-<div class="kalei-comments">
-	<h1>Heading 1</h1>
-	<h2>Heading 2</h2>
-	<h3>Heading 3</h3>
-	<h4>Heading 4</h4>
-	<h5>Heading 5</h5>
-	<h6>Heading 6</h6>
-	<p class="fixie"></p>
-	<ul>
-	  <li>List Item 1</li>
-	  <li>List Item 2</li>
-	  <li>List Item 3</li>
-	</ul>
-</div>
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<h6>Heading 6</h6>
+<p class="fixie"></p>
+<ul>
+  <li>List Item 1</li>
+  <li>List Item 2</li>
+  <li>List Item 3</li>
+</ul>
 
 ```
 */
@@ -305,14 +297,8 @@ a {
 These styles make sure the css code block is floated to the right correctly and the comments on the left
 
 ```
-<div class="kalei-documentation">
-
-	<div class="kalei-comments-container ">
-		<div class="kalei-comments ">
-			<p>This is a test Kalei comment.</p>
-		</div>
-	</div>
-
+<div class="kalei-page__item">
+		<p>This is a test Kalei comment.</p>
 </div>
 ```
 */
@@ -324,7 +310,6 @@ When you use Markdown code blocks ```, Kalei automatically renders the code as H
 ```
 <pre>
 	<code>
-		.kalei-comments > pre > code,
 		.kalei-css-container > pre > code {
 			font-size: 11px;
 			opacity: 0.7;

@@ -15,7 +15,7 @@ define([
 function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hljs, parseuri, waypoints){
     var that = null;
     var StylePage = Backbone.View.extend({
-        el: '.kalei-style-page',
+        el: '.kalei-page',
         render: function () {
             that = this;
 
@@ -110,7 +110,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
                 $(' code').each(function(i, e) {hljs.highlightBlock(e); });
 
 
-                $('.kalei-comments-container > .kalei-comments > h2, .kalei-comments-container > .kalei-comments  > h1').waypoint(function(ev) {
+                $('.kalei-page__item h2, .kalei-page__item h1').waypoint(function(ev) {
                     $('.kalei-sheet-submenu li').removeClass('active');
                     $('.kalei-sheet-submenu li:contains('+$(ev.currentTarget).text()+')').addClass('active');
                 }, {
@@ -119,7 +119,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
                 $(".kalei-sheet-submenu li").on('click', function(ev) {
                     $('html, body').animate({
-                        scrollTop: $(".kalei-comments h2:contains('"+$(ev.currentTarget).text()+"'),.kalei-comments h1:contains('"+$(ev.currentTarget).text()+"')").offset().top - 20
+                        scrollTop: $(".kalei-page__item h2:contains('"+$(ev.currentTarget).text()+"'),.kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"')").offset().top - 20
                     }, 200);
                 });
 
@@ -153,7 +153,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
             var parser = new(less.Parser);
             var stylesheet
-            page.css = ".kalei-style-page{" + page.css + "}"
+            page.css = ".kalei-page{" + page.css + "}"
             parser.parse(page.css, function (err, tree) {
                 stylesheet = tree;
             });
@@ -188,7 +188,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 
             page.css = stylesheet.toCSS({ compress: true });
-            page.css = ".kalei-style-page{" + page.css + "}";
+            page.css = ".kalei-page{" + page.css + "}";
             page.css = stylesheet.toCSS({ compress: true });
             return page;
         },
