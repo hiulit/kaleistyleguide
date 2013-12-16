@@ -61,19 +61,15 @@ a {
 	@include prem(margin, 0 0 20 0);
 	@include prem(padding, 20);
 	position: relative;
-	> ul,
-	> ol {
-		@include font-size(14);
-		@include prem(margin-left, 20);
+	ul,
+	ol {
+		// @include prem(margin-left, 20);
 	}
-	> p {
-		@include font-size(14);
-	}
-	> iframe {
+	iframe {
 		@include prem(margin-left, 10);
 		@include prem(margin-top, 10);
 	}
-	> pre {
+	pre {
 		border: 1px solid #ebebeb;
 		border-radius: 0 0 3px 3px;
 		@include prem(margin, 0);
@@ -102,8 +98,6 @@ a {
 	h5,
 	h5,
 	h6,
-	ul,
-	ol,
 	p {
 		@include prem(margin, 0);
 		@include prem(padding, 10);
@@ -136,9 +130,6 @@ a {
 	@include prem(margin, 10 0 0 0);
 	@include prem(padding, 40);
 	position: relative;
-	// .kalei-comments {
-	// 	@include prem(margin, 0);
-	// }
 	&:after {
 		background-color: $fontColor;
 		border-radius: 3px 0 3px 0;
