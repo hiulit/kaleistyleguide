@@ -33,29 +33,35 @@ a {
 }
 
 .kalei-menu {
-	background: #fff;
-	border-right: 1px solid #ccc;
+	background-color: #f4f4f4;
 	height: 100%;
 	position: fixed;
 }
 
 .menu-items {
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-top: 0;
+	border-radius: 0 0 4px 4px;
 	@include prem(bottom, 0);
 	@include prem(left, 0);
+	@include prem(margin-bottom, 20);
+	@include prem(margin-left, 20);
+	@include prem(margin-right, 20);
 	overflow-x: hidden;
 	overflow-y: auto;
 	position: absolute;
 	@include prem(right, 0);
-	@include prem(top, 53);
+	@include prem(top, 73);
 }
 
 .kalei-page {
-	background: #f4f4f4;
+	background-color: #f4f4f4;
 	@include prem(padding, 20 20 675 20);
 }
 
 .kalei-page__item {
-	background: #fff;
+	background-color: #fff;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	@include prem(margin, 0 0 20 0);
@@ -146,8 +152,6 @@ a {
 	padding: 0;
 	> li {
 		> h3 {
-			background-color: $menuColorActive;
-			color: #fff;
 			font-weight: bold;
 			@include font-size(20);
 			@include prem(margin-top, 20);
@@ -157,11 +161,18 @@ a {
 }
 
 .kalei-styleguide-menu-heading {
-	position: absolute;
+	border: 1px solid #ccc;
+	border-bottom: 0;
+	border-radius: 4px 4px 0 0;
+	@include prem(height, 53);
+	@include prem(margin-left, 20);
+	@include prem(margin-right, 20);
 	@include prem(bottom, 0);
 	@include prem(left, 0);
+	overflow: hidden;
+	position: absolute;
 	@include prem(right, 0);
-	@include prem(top, 0);
+	@include prem(top, 20);
 	h1 {
 		background-color: $menuColorActive;
 		color: #fff;
@@ -185,7 +196,6 @@ a {
 .kalei-styleguide-menu-link {
 	color: $menuColor;
 	display: block;
-	@include font-size(16);
 	font-weight: bold;
 	@include prem(padding, 10 10 10 20);
 	position: relative;
