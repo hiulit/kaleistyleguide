@@ -65,27 +65,46 @@ a {
 		@include prem(margin-left, 10);
 		@include prem(margin-top, 10);
 	}
-	pre {
+	> .codedemo,
+	> pre {
 		border: 1px solid #ebebeb;
-		border-radius: 0 0 4px 4px;
-		@include prem(margin, 0);
-		@include prem(padding, 40 20 20 20);
+		@include prem(padding, 40);
 		position: relative;
+		&:before {
+			background-color: $fontColor;
+			color: #ebebeb;
+			font-family: $fontFamily;
+			font-size: 12px;
+			@include prem(right, -1);
+			@include prem(padding, 3 7);
+			position: absolute;
+			@include prem(top, -1);
+		}
+	}
+	.codedemo {
+		border-radius: 4px 4px 0 0;
+		@include prem(margin, 10 0 0 0);
+		&:before {
+			border-radius: 0px 4px 0px 4px;
+			content: "Example";
+		}
+		> pre {
+			margin: 0;
+			padding: 0;
+		}
+	}
+	> pre {
+		border-radius: 0 0 4px 4px;
+		font-size: 14px;
+		@include prem(margin, 0);
 		@include prem(top, -1);
+		&:before {
+			border-radius: 0px 4px 0px 4px;
+			content: "Code";
+		}
 		> code {
 			border-radius: 4px;
-			&:before {
-				background-color: $fontColor;
-				border-radius: 0 0 4px 0;
-				color: #ebebeb;
-				content: "Code";
-				font-family: $fontFamily;
-				font-size: 12px;
-				@include prem(left, -1);
-				@include prem(padding, 3 7);
-				position: absolute;
-				@include prem(top, -1);
-			}
+			@include prem(padding, 40);
 		}
 	}
 	h1,
@@ -118,26 +137,6 @@ a {
 			@include prem(padding, 10);
 			white-space: pre-wrap;
 		}
-	}
-}
-
-.codedemo {
-	border: 1px solid #ebebeb;
-	border-radius: 4px 4px 0 0;
-	@include prem(margin, 10 0 0 0);
-	@include prem(padding, 40);
-	position: relative;
-	&:after {
-		background-color: $fontColor;
-		border-radius: 4px 0 4px 0;
-		color: #ebebeb;
-		content: "Example";
-		font-family: $fontFamily;
-		font-size: 12px;
-		@include prem(left, -1);
-		@include prem(padding, 3 7);
-		position: absolute;
-		@include prem(top, -1);
 	}
 }
 
