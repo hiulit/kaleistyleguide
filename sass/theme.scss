@@ -57,29 +57,26 @@ a {
 .kalei-page__item {
 	background: #fff;
 	border: 1px solid #ccc;
-	border-radius: 3px;
+	border-radius: 4px;
 	@include prem(margin, 0 0 20 0);
 	@include prem(padding, 20);
 	position: relative;
-	ul,
-	ol {
-		// @include prem(margin-left, 20);
-	}
 	iframe {
 		@include prem(margin-left, 10);
 		@include prem(margin-top, 10);
 	}
 	pre {
 		border: 1px solid #ebebeb;
-		border-radius: 0 0 3px 3px;
+		border-radius: 0 0 4px 4px;
 		@include prem(margin, 0);
 		@include prem(padding, 40 20 20 20);
 		position: relative;
 		@include prem(top, -1);
 		> code {
+			border-radius: 4px;
 			&:before {
 				background-color: $fontColor;
-				border-radius: 0 0 3px 0;
+				border-radius: 0 0 4px 0;
 				color: #ebebeb;
 				content: "Code";
 				font-family: $fontFamily;
@@ -116,7 +113,7 @@ a {
 .kalei-css-container {
 	> pre {
 		> code {
-			border-radius: 3px;
+			border-radius: 4px;
 			@include font-size(12);
 			@include prem(padding, 10);
 			white-space: pre-wrap;
@@ -126,13 +123,13 @@ a {
 
 .codedemo {
 	border: 1px solid #ebebeb;
-	border-radius: 3px 3px 0 0;
+	border-radius: 4px 4px 0 0;
 	@include prem(margin, 10 0 0 0);
 	@include prem(padding, 40);
 	position: relative;
 	&:after {
 		background-color: $fontColor;
-		border-radius: 3px 0 3px 0;
+		border-radius: 4px 0 4px 0;
 		color: #ebebeb;
 		content: "Example";
 		font-family: $fontFamily;
