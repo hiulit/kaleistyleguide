@@ -151,7 +151,10 @@ a {
 	margin: 0;
 	padding: 0;
 	> li {
+		@include prem(margin-top, 20);
 		> h3 {
+			background-color: #3a3a3a;
+			color: #fff;
 			font-weight: bold;
 			@include font-size(20);
 			@include prem(margin-top, 20);
