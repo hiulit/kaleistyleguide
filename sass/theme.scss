@@ -43,7 +43,7 @@ a {
 	border: 1px solid #ccc;
 	border-top: 0;
 	border-radius: 0 0 4px 4px;
-	box-shadow: 0 0 10px -2px #000;
+	box-shadow: $boxShadow;
 	@include prem(bottom, 0);
 	@include prem(left, 0);
 	@include prem(margin-bottom, 20);
@@ -65,6 +65,7 @@ a {
 	background-color: #fff;
 	border: 1px solid #ccc;
 	border-radius: 4px;
+	box-shadow: $boxShadow;
 	@include prem(margin, 0 0 20 0);
 	@include prem(padding, 20);
 	position: relative;
@@ -168,7 +169,7 @@ a {
 	border: 1px solid #3a3a3a;
 	border-bottom: 0;
 	border-radius: 4px 4px 0 0;
-	box-shadow: 0 0 10px 0 #000;
+	box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.33);
 	@include prem(height, 53);
 	@include prem(margin-left, 20);
 	@include prem(margin-right, 20);
