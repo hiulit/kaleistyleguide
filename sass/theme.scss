@@ -36,6 +36,22 @@ a {
 	}
 }
 
+.video-container {
+	height: 0;
+	padding-bottom: 56.25%;
+	padding-top: 25px;
+	position: relative;
+	iframe,
+	object {
+		// Responsive video
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+}
+
 .kalei-menu {
 	background-color: #f4f4f4;
 	height: 100%;
