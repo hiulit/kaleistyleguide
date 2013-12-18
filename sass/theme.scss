@@ -95,7 +95,6 @@ a {
 	}
 	.codedemo {
 		border-radius: 4px 4px 0 0;
-		@include prem(margin, 10 0 0 0);
 		&:before {
 			border-radius: 0 4px;
 			content: "Example";
