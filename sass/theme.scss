@@ -11,6 +11,10 @@ The menu is **fixed** and the page contained simply aligns itself 200px from the
 
 * {
 	@include box-sizing(border-box);
+	&:before,
+	&:after {
+		@include box-sizing(border-box);
+	}
 }
 
 html {
