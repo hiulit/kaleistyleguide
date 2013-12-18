@@ -119,17 +119,17 @@ a {
 			@include prem(padding, 40);
 		}
 	}
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h5,
-	h6,
-	p {
-		@include prem(margin, 0);
-		@include prem(padding, 10);
-	}
+	// h1,
+	// h2,
+	// h3,
+	// h4,
+	// h5,
+	// h5,
+	// h6,
+	// p {
+	// 	@include prem(margin, 0);
+	// 	@include prem(padding, 10);
+	// }
 }
 
 
