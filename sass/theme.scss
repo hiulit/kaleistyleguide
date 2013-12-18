@@ -79,11 +79,13 @@ a {
 	}
 	> .codedemo,
 	> pre {
+		background: #fcfcfc;
 		border: 1px solid #ebebeb;
 		@include prem(padding, 40);
 		position: relative;
 		&:before {
 			background-color: $fontColor;
+			box-shadow: $boxShadow;
 			color: #ebebeb;
 			font-family: $fontFamily;
 			font-size: 12px;
