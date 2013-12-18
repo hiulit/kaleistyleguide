@@ -95,6 +95,7 @@ a {
 	}
 	.codedemo {
 		border-radius: 4px 4px 0 0;
+		box-shadow: $boxShadowInsetTop;
 		&:before {
 			border-radius: 0 4px;
 			content: "Example";
@@ -106,6 +107,7 @@ a {
 	}
 	> pre {
 		border-radius: 0 0 4px 4px;
+		box-shadow: $boxShadowInsetBottom;
 		font-size: 14px;
 		@include prem(margin, 0);
 		@include prem(top, -1);
