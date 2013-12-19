@@ -71,18 +71,6 @@ a {
   a:hover {
     text-decoration: underline; }
 
-code {
-  background-color: #515151;
-  color: #fff;
-  padding-bottom: 4px;
-  padding-bottom: 0.25rem;
-  padding-left: 4px;
-  padding-left: 0.25rem;
-  padding-right: 4px;
-  padding-right: 0.25rem;
-  padding-top: 4px;
-  padding-top: 0.25rem; }
-
 .video-container {
   height: 0;
   padding-bottom: 56.25%;
