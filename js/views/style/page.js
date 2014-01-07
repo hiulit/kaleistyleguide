@@ -7,7 +7,7 @@ define([
 'config',
 'jscssp',
 'pagedown',
-'libs/highlight/highlight',
+'libs/prism/prism',
 'libs/parseuri/parseuri',
 'libs/waypoints/waypoints',
 'libs/less/less-1.3.3.min'
@@ -107,7 +107,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
                 $(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config}));
 
                 //Colour Coding in code Block
-                $(' code').each(function(i, e) {hljs.highlightBlock(e); });
+               Prism.highlightAll();
 
 
                 $('.kalei-page__item h2, .kalei-page__item h1').waypoint(function(ev) {

@@ -8,7 +8,8 @@ define({
 	
 	// You can optionally set configuration for marked.js
 	marked_options: {
-		tables: true
+		tables: true,
+		langPrefix: 'language-'
 	}
 
 	//disqus_shortname: 'kaleistyleguide'
