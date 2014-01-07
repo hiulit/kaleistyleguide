@@ -27,7 +27,7 @@ This website is a live example generated from Kalei's style.css
 
 Easily show off examples of your components and the HTML to generate them
 
-```
+```markup
 <div class="actions button-container">
     <a href="#" class="button primary">Compose new</a>
 
@@ -85,6 +85,7 @@ Kalei is heavily influenced by the following projects and blog posts.
 * [backbone](http://backbonejs.org/)
 * [underscore](http://underscorejs.org/)
 * [jquery](http://jquery.com)
+* [prism](http://prismjs.com/)
 
 ## License
 
@@ -95,12 +96,6 @@ Public domain: http://unlicense.org/
 /* ### Kalei theme ### */
 @import url("theme.css");
 
-
-
-
 /* ### Examples ### */
 @import url("buttons.css");
 @import url("fixie-demo.css");
-
-/* ### Third Party ### */
-@import url("highlight/styles/monokai.css");
