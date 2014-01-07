@@ -3,9 +3,7 @@
 /*
 # Kalei Themes
 
-To make sure the code demo's are un-affected by Kaleis own styles we only set a few global styles
-
-The menu is **fixed** and the page contained simply aligns itself 200px from the left.
+To make sure the code demos are unaffected by Kalei's own styles we only set a few global styles.
 
 */
 
@@ -28,16 +26,9 @@ body {
 	@include prem(padding, 0);
 }
 
-a {
-	color: $linkColor;
-	text-decoration: none;
-	&:hover {
-		text-decoration: underline;
-	}
-}
-
 .video-container {
 	height: 0;
+	@include prem(margin, 10 0);
 	padding-bottom: 56.25%;
 	padding-top: 25px;
 	position: relative;
@@ -51,6 +42,8 @@ a {
 		width: 100%;
 	}
 }
+
+// MENU - start
 
 .kalei-menu {
 	background-color: #f4f4f4;
@@ -76,9 +69,30 @@ a {
 	@include prem(top, 73);
 }
 
+// MENU - end
+
+// KALEI PAGE - start
+
 .kalei-page {
 	background-color: #f4f4f4;
 	@include prem(padding, 20 20 675 20);
+	p,
+	ol,
+	ul { // So it doesn't mess with PrismJs styles on <pre> and <code> blocks
+		a {
+			color: $linkColor;
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		code {
+			background: $fontColor;
+			border-radius: 10px;
+			color: #fff;
+			@include prem(padding, 2 6);
+		}
+	}
 }
 
 .kalei-page__item {
@@ -89,10 +103,6 @@ a {
 	@include prem(margin, 0 0 20 0);
 	@include prem(padding, 20);
 	position: relative;
-	iframe {
-		@include prem(margin-left, 10);
-		@include prem(margin-top, 10);
-	}
 	> .codedemo,
 	> pre {
 		@include prem(padding, 40);
@@ -263,6 +273,8 @@ a {
 		}
 	}
 }
+
+// KALEI PAGE - end
 
 /*
 ## Headings and paragraphs
