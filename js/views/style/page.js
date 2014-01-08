@@ -244,7 +244,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 						//Push the code for an example
 						block.content.push({
 							type: 'html',
-							text: '<div class="codedemo">' + comment.text + '</div>'
+							text: '<div class="codedemo clearfix">' + comment.text + '</div>'
 						});
 						//Push the code section so marked can parse it as a <pre><code> block
 						//comment.text = comment.text.replace(/class=([""'])fixie\1|(?![""' ])fixie(?=[""' ])/g, "") // Removes .fixie class
