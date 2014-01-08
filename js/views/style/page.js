@@ -247,7 +247,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							text: '<div class="codedemo">' + comment.text + '</div>'
 						});
 						//Push the code section so marked can parse it as a <pre><code> block
-						comment.text = comment.text.replace(/class=([""'])fixie\1|(?![""' ])fixie(?=[""' ])/g, "")
+						//comment.text = comment.text.replace(/class=([""'])fixie\1|(?![""' ])fixie(?=[""' ])/g, "") // Removes .fixie class
 						block.content.push(comment);
 						break;
 					case "heading":
