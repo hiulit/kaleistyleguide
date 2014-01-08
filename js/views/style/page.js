@@ -122,7 +122,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				$(".kalei-sheet-submenu li").on('click', function(ev) {
 					$('html, body').animate({
 						scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"')," +
-									   ".kalei-page__item h2:contains('"+$(ev.currentTarget).text()+"')").offset().top - 60
+										 ".kalei-page__item h2:contains('"+$(ev.currentTarget).text()+"')").offset().top - 60
 					}, 'slow');
 					console.log($(ev.currentTarget).text());
 				});
@@ -132,7 +132,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 						if ( that.is_on_screen($(this), 60) ) {
 							$(".kalei-sheet-submenu li").removeClass('active');
 							$(".kalei-sheet-submenu li:contains('" + $(this).find('h1').text() +"')," +
-							   ".kalei-sheet-submenu li:contains('" + $(this).find('h2').text() +"')").addClass('active');
+								 ".kalei-sheet-submenu li:contains('" + $(this).find('h2').text() +"')").addClass('active');
 						}
 					});
 				});
@@ -243,8 +243,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					case "code":
 						//Push the code for an example
 						block.content.push({
-						  type: 'html',
-						  text: '<div class="codedemo">' + comment.text + '<div style="clear: both;"></div></div>'
+							type: 'html',
+							text: '<div class="codedemo">' + comment.text + '</div>'
 						});
 						//Push the code section so marked can parse it as a <pre><code> block
 						comment.text = comment.text.replace(/class=([""'])fixie\1|(?![""' ])fixie(?=[""' ])/g, "")
