@@ -19,8 +19,10 @@ body {
   margin: 0;
   padding: 0; }
 
-pre {
+.oldie pre {
   background-color: #515151; }
+.oldie .codedemo {
+  border: 1px solid #ccc; }
 
 .video-container {
   height: 0;
