@@ -7,42 +7,6 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
 
 */
 
-* {
-	@include box-sizing(border-box);
-	&:before,
-	&:after {
-		@include box-sizing(border-box);
-	}
-}
-
-html {
-	color: $fontColor;
-	font-family: $fontFamily;
-	@include font-size($baseFontSize);
-}
-
-body {
-	@include prem(margin, 0);
-	@include prem(padding, 0);
-}
-
-.video-container {
-	height: 0;
-	@include prem(margin, 10 0);
-	padding-bottom: 56.25%;
-	padding-top: 25px;
-	position: relative;
-	iframe,
-	object {
-		// Responsive video
-		height: 100%;
-		left: 0;
-		position: absolute;
-		top: 0;
-		width: 100%;
-	}
-}
-
 // MENU - start
 
 .kalei-menu {
@@ -277,7 +241,8 @@ body {
 // KALEI PAGE - end
 
 /*
-## Headings and paragraphs
+## Headings and paragraphs, lists, etc.
+
 ```markup
 <h1>Heading 1</h1>
 <h2>Heading 2</h2>
@@ -286,12 +251,16 @@ body {
 <h5>Heading 5</h5>
 <h6>Heading 6</h6>
 <p class="fixie"></p>
+<ol>
+	<li>List Item 1</li>
+	<li>List Item 2</li>
+	<li>List Item 3</li>
+</ol>
 <ul>
-  <li>List Item 1</li>
-  <li>List Item 2</li>
-  <li>List Item 3</li>
+	<li>List Item 1</li>
+	<li>List Item 2</li>
+	<li>List Item 3</li>
 </ul>
-
 ```
 */
 

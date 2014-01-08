@@ -12,6 +12,45 @@ $boxShadow: 0 2px 6px -2px rgba(0, 0, 0, 0.33);
 $boxShadowInsetTop: inset 0px 2px 6px -3px rgba(0,0,0,0.3);
 $boxShadowInsetBottom: inset 0px -2px 6px -3px rgba(0,0,0,0.3);
 
+* {
+	@include box-sizing(border-box);
+	&:before,
+	&:after {
+		@include box-sizing(border-box);
+	}
+}
+
+html {
+	color: $fontColor;
+	font-family: $fontFamily;
+	@include font-size($baseFontSize);
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+pre { // fallback for IE8 <pre> blocks
+	background-color: $fontColor;
+}
+
+.video-container { // Responsive video
+	height: 0;
+	@include prem(margin, 10 0);
+	padding-bottom: 56.25%;
+	padding-top: 25px;
+	position: relative;
+	iframe,
+	object {
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+}
+
 .pull-left {
 	float: left !important;
 }
@@ -50,6 +89,30 @@ $boxShadowInsetBottom: inset 0px -2px 6px -3px rgba(0,0,0,0.3);
 
 .full-width {
 	width: 100%;
+}
+
+.inline-list {
+	margin: 0;
+	padding: 0;
+	li {
+		float: left;
+	}
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+img {
+	max-width: 100%;
 }
 
 .clearfix {
