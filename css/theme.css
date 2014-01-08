@@ -163,6 +163,7 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
     padding: 40px;
     padding: 2.5rem; }
   .kalei-page__item .codedemo {
+    background-color: rgba(244, 244, 244, 0.25);
     border-radius: 4px 4px 0 0;
     box-shadow: inset 0px 2px 6px -3px rgba(0, 0, 0, 0.3); }
     .kalei-page__item .codedemo > pre {
