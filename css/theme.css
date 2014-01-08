@@ -1,3 +1,42 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+  *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+
+html {
+  color: #515151;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem; }
+
+body {
+  margin: 0;
+  padding: 0; }
+
+pre {
+  background-color: #515151; }
+
+.video-container {
+  height: 0;
+  margin: 10px 0px;
+  margin: 0.625rem 0rem;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  position: relative; }
+  .video-container iframe,
+  .video-container object {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%; }
+
 .pull-left {
   float: left !important; }
 
@@ -28,6 +67,24 @@
 .full-width {
   width: 100%; }
 
+.inline-list {
+  margin: 0;
+  padding: 0; }
+  .inline-list li {
+    float: left; }
+
+.text-left {
+  text-align: left; }
+
+.text-center {
+  text-align: center; }
+
+.text-right {
+  text-align: right; }
+
+img {
+  max-width: 100%; }
+
 .clearfix:before, .clearfix:after {
   content: " ";
   display: table; }
@@ -40,44 +97,6 @@
 To make sure the code demos are unaffected by Kalei's own styles we only set a few global styles.
 
 */
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-  *:before, *:after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box; }
-
-html {
-  color: #515151;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-size: 1rem;
-  line-height: 1.5rem; }
-
-body {
-  margin: 0px;
-  margin: 0rem;
-  padding: 0px;
-  padding: 0rem; }
-
-.video-container {
-  height: 0;
-  margin: 10px 0px;
-  margin: 0.625rem 0rem;
-  padding-bottom: 56.25%;
-  padding-top: 25px;
-  position: relative; }
-  .video-container iframe,
-  .video-container object {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%; }
-
 .kalei-menu {
   background-color: #f4f4f4;
   height: 100%;
@@ -362,7 +381,8 @@ body {
       text-decoration: none; }
 
 /*
-## Headings and paragraphs
+## Headings and paragraphs, lists, etc.
+
 ```markup
 <h1>Heading 1</h1>
 <h2>Heading 2</h2>
@@ -371,12 +391,16 @@ body {
 <h5>Heading 5</h5>
 <h6>Heading 6</h6>
 <p class="fixie"></p>
+<ol>
+	<li>List Item 1</li>
+	<li>List Item 2</li>
+	<li>List Item 3</li>
+</ol>
 <ul>
-  <li>List Item 1</li>
-  <li>List Item 2</li>
-  <li>List Item 3</li>
+	<li>List Item 1</li>
+	<li>List Item 2</li>
+	<li>List Item 3</li>
 </ul>
-
 ```
 */
 /*
