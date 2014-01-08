@@ -1,0 +1,52 @@
+@import "global";
+
+/*
+# Fixie.js
+
+"Automatically adds filler content to HTML documents".
+
+[Fixie.js](https://github.com/ryhan/fixie) is bundled with Kalei.
+
+
+## Example Usage
+
+Just add the `.fixie` class to any element where you need dummy content.
+
+It works for headers, paragraphs, lists, images, and just about anything else.
+
+```markup
+<h1 class="fixie"></h1>
+<h2 class="fixie"></h2>
+<p class="fixie"></p>
+<ul class="fixie">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+<p class="fixie"></p>
+```
+*/
+
+.fixie-demo {
+	img {
+		float: left;
+		height: 100%;
+		@include prem(padding-left, 5);
+		@include prem(padding-right, 5);
+		width: 25%;
+	}
+}
+
+/*
+## Example Fixie Images
+
+```markup
+<div class="fixie-demo">
+	<img class="fixie" />
+	<img class="fixie" />
+	<img class="fixie" />
+	<img class="fixie" />
+</div>
+```
+*/
