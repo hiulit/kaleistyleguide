@@ -122,7 +122,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				$(".kalei-sheet-submenu li").on('click', function(ev) {
 					$('html, body').animate({
 						scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"')," +
-										 ".kalei-page__item h2:contains('"+$(ev.currentTarget).text()+"')").offset().top - 60
+									   ".kalei-page__item h2:contains('"+$(ev.currentTarget).text()+"')").offset().top - 60
 					}, 'slow');
 					console.log($(ev.currentTarget).text());
 				});
@@ -131,8 +131,9 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					$(".kalei-page__item").each(function(){
 						if ( that.is_on_screen($(this), 60) ) {
 							$(".kalei-sheet-submenu li").removeClass('active');
-							$(".kalei-sheet-submenu li:contains('" + $(this).find('h1').text() +"')," +
-								 ".kalei-sheet-submenu li:contains('" + $(this).find('h2').text() +"')").addClass('active');
+							$(".kalei-sheet-submenu li:contains('" + $(this).find('> h1').text() +"')," +
+							   ".kalei-sheet-submenu li:contains('" + $(this).find('> h2').text() +"')").addClass('active');
+							console.log($(this).find('> h2').text());
 						}
 					});
 				});
