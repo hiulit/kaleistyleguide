@@ -31,8 +31,13 @@ body {
 	padding: 0;
 }
 
-pre { // fallback for IE8 <pre> blocks
-	background-color: $fontColor;
+.oldie { // fallback for IE8
+	pre {
+		background-color: $fontColor;
+	}
+	.codedemo {
+		border: 1px solid #ccc;
+	}
 }
 
 .video-container { // Responsive video
