@@ -10,15 +10,17 @@ This is an example bundled with Kalei(not used in Kalei)
 
 /* 
 ## Base Button
-```
+
+```markup
 <a href="#" class="button primary">Publish post</a> 
 <a href="#" class="button">Save as draft</a>
 ```
+
 ## Grouped buttons
 
 Groups of buttons can be created by wrapping them in an element given a class of button-group. A less important group of buttons can be marked out by adding a further class, minor-group.
- 
-```
+
+```markup
 <ul class="button-group">
     <li><a href="#" class="button primary pill">Dashboard</a></li>
     <li><a href="#" class="button pill">Inbox</a></li>
@@ -26,18 +28,21 @@ Groups of buttons can be created by wrapping them in an element given a class of
     <li><a href="#" class="button pill">Logout</a></li>
 </ul>
 ```
+
 ## Mixed group
+
 Displaying a mixture of grouped and standalone buttons, as might be seen in a toolbar, can be done by adding another wrapping element with the class button-container.
-```
+
+```markup
 <div class="actions button-container">
     <a href="#" class="button primary">Compose new</a>
-    
+
     <div class="button-group">
         <a href="#" class="button primary">Archive</a>
         <a href="#" class="button">Report spam</a>
         <a href="#" class="button danger">Delete</a>
     </div>
-                        
+
     <div class="button-group minor-group">
         <a href="#" class="button">Move to</a>
         <a href="#" class="button">Labels</a>
