@@ -908,6 +908,7 @@ Prism.hooks.add('wrap', function(env) {
 		}
 		
 		env.attributes.href = href;
+		env.attributes.target = '_blank';
 	}
 });
 
