@@ -242,14 +242,20 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			_.each(lexedCommentblock, function (comment) {
 				switch (comment.type) {
 					case "code":
-						//Push the code for an example
-						block.content.push({
-							type: 'html',
-							text: '<div class="codedemo clearfix">' + comment.text + '</div>'
-						});
-						//Push the code section so marked can parse it as a <pre><code> block
-						//comment.text = comment.text.replace(/class=([""'])fixie\1|(?![""' ])fixie(?=[""' ])/g, "") // Removes .fixie class
-						block.content.push(comment);
+						if (comment.lang != 'markup') { // If the code is not 'markup' (html)
+							//Push the code without example
+							block.content.push(comment);
+						} else {
+							//Push the code for an example
+							block.content.push({
+								type: 'html',
+								text: '<div class="codedemo clearfix">' + comment.text + '</div>'
+							});
+							//Push the code section so marked can parse it as a <pre><code> block
+							//comment.text = comment.text.replace(/class=([""'])fixie\1|(?![""' ])fixie(?=[""' ])/g, "") // Removes .fixie class
+							block.content.push(comment);
+						}
+						console.log('code: ' + comment.lang);
 						break;
 					case "heading":
 						if (block.heading != "") {  //Multiple headings in one comment block
@@ -259,16 +265,19 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							block.content = marked.parser(block.content)
 							return_val.push(block);
 							block = _.clone(block_def);
+							console.log('block heading: ' + block);
 						}
 						if (comment.depth <= 2) {
 							block.heading = comment.text;
 							block.content.push(comment);
+							console.log('comment depth -2: ' + comment.text);
 						} else if (comment.depth == 3) { //Import statement title
 							block.stylesheet = comment.text;
 							//block.heading = "Stylesheets"
 							//this is an import statement
 							//if ($.inArray("Stylesheets", ))
 							//console.log("else", comment)
+							console.log('comment depth -3: ' + comment.text);
 						}
 						break;
 					default:
