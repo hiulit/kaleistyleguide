@@ -63,9 +63,9 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				});
 
 				if(config.css_paths) {
-				  for(var i = 1; i < config.css_paths.length; i++) {
-					currentMenu.sheets.push(config.css_paths[i])
-				  }
+					for(var i = 1; i < config.css_paths.length; i++) {
+						currentMenu.sheets.push(config.css_paths[i])
+					}
 				}
 				menus.push(currentMenu);
 
