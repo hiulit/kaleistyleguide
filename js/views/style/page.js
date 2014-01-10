@@ -124,7 +124,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 						scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"')," +
 									   ".kalei-page__item h2:contains('"+$(ev.currentTarget).text()+"')").offset().top - 60
 					}, 'slow');
-					console.log($(ev.currentTarget).text());
 				});
 
 				$(window).scroll(function () {
@@ -133,7 +132,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							$(".kalei-sheet-submenu li").removeClass('active');
 							$(".kalei-sheet-submenu li:contains('" + $(this).find('> h1').text() +"')," +
 							   ".kalei-sheet-submenu li:contains('" + $(this).find('> h2').text() +"')").addClass('active');
-							console.log($(this).find('> h2').text());
 						}
 					});
 				});
@@ -255,7 +253,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							//comment.text = comment.text.replace(/class=([""'])fixie\1|(?![""' ])fixie(?=[""' ])/g, "") // Removes .fixie class
 							block.content.push(comment);
 						}
-						console.log('code: ' + comment.lang);
 						break;
 					case "heading":
 						if (block.heading != "") {  //Multiple headings in one comment block
@@ -265,19 +262,16 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							block.content = marked.parser(block.content)
 							return_val.push(block);
 							block = _.clone(block_def);
-							console.log('block heading: ' + block);
 						}
 						if (comment.depth <= 2) {
 							block.heading = comment.text;
 							block.content.push(comment);
-							console.log('comment depth -2: ' + comment.text);
 						} else if (comment.depth == 3) { //Import statement title
 							block.stylesheet = comment.text;
 							//block.heading = "Stylesheets"
 							//this is an import statement
 							//if ($.inArray("Stylesheets", ))
 							//console.log("else", comment)
-							console.log('comment depth -3: ' + comment.text);
 						}
 						break;
 					default:
