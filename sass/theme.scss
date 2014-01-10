@@ -52,7 +52,7 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
 		}
 		code {
 			background: $fontColor;
-			border-radius: 10px;
+			border-radius: 4px;
 			color: #fff;
 			@include prem(padding, 2 6);
 		}
