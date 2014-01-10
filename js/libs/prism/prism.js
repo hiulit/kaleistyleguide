@@ -972,7 +972,7 @@ Prism.hooks.add('wrap', function(env) {
 		
 		var href = 'http://docs.webplatform.org/';
 		
-		if (env.language == 'css') {
+		if (env.language == 'css' || env.language == 'scss') {
 			href += 'wiki/css/'
 			
 			if (env.type == 'property') {
