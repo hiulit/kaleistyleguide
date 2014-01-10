@@ -116,6 +116,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 				//Colour Coding in code Block
 				Prism.highlightAll();
+				fileHighlight(); // Prism's File Highlight plugin function
 
 				//Fixed by pivanov
 				//that.compute_css
@@ -253,10 +254,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							//comment.text = comment.text.replace(/class=([""'])fixie\1|(?![""' ])fixie(?=[""' ])/g, "") // Removes .fixie class
 							block.content.push(comment);
 						}
-						break;
-					case "html": // When using Prism's File Highlight plugin
-						block.content.push(comment);
-						console.log(comment.text);
 						break;
 					case "heading":
 						if (block.heading != "") {  //Multiple headings in one comment block
