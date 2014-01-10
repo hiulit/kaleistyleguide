@@ -145,7 +145,7 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
   .kalei-page ol code,
   .kalei-page ul code {
     background: #515151;
-    border-radius: 10px;
+    border-radius: 4px;
     color: #fff;
     padding: 2px 6px;
     padding: 0.125rem 0.375rem; }
@@ -225,21 +225,22 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
   border: 1px solid #3a3a3a;
   border-bottom: 0;
   border-radius: 4px 4px 0 0;
+  bottom: 0px;
+  bottom: 0rem;
   box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.33);
   height: 53px;
   height: 3.3125rem;
+  left: 0px;
+  left: 0rem;
   margin-left: 20px;
   margin-left: 1.25rem;
   margin-right: 20px;
   margin-right: 1.25rem;
-  bottom: 0px;
-  bottom: 0rem;
-  left: 0px;
-  left: 0rem;
   overflow: hidden;
   position: absolute;
   right: 0px;
   right: 0rem;
+  text-decoration: none;
   top: 20px;
   top: 1.25rem; }
   .kalei-styleguide-menu-heading h1 {
@@ -251,8 +252,6 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
     line-height: 2.0625rem;
     margin: 0px;
     margin: 0rem;
-    padding-left: 20px;
-    padding-left: 1.25rem;
     max-width: 100%;
     overflow: hidden;
     -webkit-text-overflow: ellipsis;
@@ -261,7 +260,9 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     white-space: nowrap;
-    word-wrap: normal; }
+    word-wrap: normal;
+    padding-left: 20px;
+    padding-left: 1.25rem; }
 
 .kalei-styleguide-menu-stylesheets {
   background: #75eb33;
@@ -421,16 +422,33 @@ These styles make sure the css code block is floated to the right correctly and 
 ## Code demos
 
 When you use Markdown code blocks ```, Kalei automatically renders the code as HTML and beneath it shows the code block with syntax highlighting.
-```markup
-<pre>
-	<code>
-		.kalei-css-container > pre > code {
-			font-size: 11px;
-			opacity: 0.7;
-			white-space: pre-wrap;
-			padding: 10px;
-		}
-	</code>
-</pre>
+
+```scss
+.kalei-css-container > pre > code {
+	font-size: 11px;
+	opacity: 0.7;
+	white-space: pre-wrap;
+	padding: 10px;
+}
 ```
+
+Now some JavaScript
+
+```javascript
+$( "p" ).add( "div" ).addClass( "widget" );
+var pdiv = $( "p" ).add( "div" ); // Wrong
+```
+
+Now PHP
+
+```php
+<?php
+	if (function_exists('imap_open')) {
+		echo "IMAP functions are available.<br />\n";
+	} else {
+		echo "IMAP functions are not available.<br />\n";
+	}
+?>
+```
+
 */

@@ -5,7 +5,10 @@
 
 <iframe src="http://ghbtns.com//github-btn.html?user=thomasdavis&repo=kaleistyleguide&type=fork&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="146px" height="30px"></iframe>
 
+*/
 
+
+/*
 ## Generate bootstrap-like documentation for your own CSS!
 
 This project aims at making sure your style sheets are fully documented whilst being synchronized with your webpages styles.
@@ -20,6 +23,10 @@ This website is a live example generated from Kalei's `style.css`.
 	</div>
 </div>
 
+*/
+
+
+/*
 ## Getting started
 
 1. Download the repository `git clone git://github.com/thomasdavis/kaleistyleguide.git`
@@ -30,6 +37,10 @@ This website is a live example generated from Kalei's `style.css`.
 
 1. Install quickly and easily with the [rails gem](https://github.com/andrewhavens/kalei-ruby-gem)
 
+*/
+
+
+/*
 ## Example
 
 Easily show off examples of your components and the HTML to generate them.
@@ -51,7 +62,10 @@ Easily show off examples of your components and the HTML to generate them.
 </div>
 ```
 
+*/
 
+
+/*
 ## Main goals and benefits
 
 * Fully documented CSS - No need to explain the benefits.
@@ -61,7 +75,10 @@ Easily show off examples of your components and the HTML to generate them.
 * Rapid development of projects by allowing developers to find the correct CSS and HTML for any given UI component.
 * Open sourced so that all great ideas can be included.
 
+*/
 
+
+/*
 ## Author
 
 * [Thomas Davis](http://thomasdavis.github.com)
@@ -69,7 +86,10 @@ Easily show off examples of your components and the HTML to generate them.
 <a style="" href="https://twitter.com/neutralthoughts" class="twitter-follow-button">Follow @neutralthoughts</a>
 <script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
 
+*/
 
+
+/*
 ## Contributors
 
 Many thanks to:
@@ -77,6 +97,10 @@ Many thanks to:
 * [Luke Brooker](http://lukebrooker.com/)
 * [Xavier Gómez](https://github.com/hiulit)
 
+*/
+
+
+/*
 ## Inspiration and alternatives
 
 Kalei is heavily influenced by the following projects and blog posts:
@@ -87,7 +111,10 @@ Kalei is heavily influenced by the following projects and blog posts:
 * [Anchoring Your Design Language in a Live Style Guide](http://uxmag.com/articles/anchoring-your-design-language-in-a-live-style-guide)
 * [Nadarei KSS](http://nadarei.co/nkss-rails/) - rails
 
+*/
 
+
+/*
 ## Technologies
 
 * [marked](https://github.com/chjj/marked) - Full-featured markdown parser and compiler in Javascript.
@@ -97,17 +124,28 @@ Kalei is heavily influenced by the following projects and blog posts:
 * [Backbone.js](http://backbonejs.org/)
 * [Underscore.js](http://underscorejs.org/)
 * [jQuery](http://jquery.com)
+*/
 
 
+/*
 ## License
 
 Public domain: http://unlicense.org/
 
 */
 
-/* ### Kalei theme ### */
+
+/*
+### Kalei theme
+
+*/
 @import url("theme.css");
 
-/* ### Examples ### */
+
+/*
+### Examples
+
+*/
 @import url("buttons.css");
 @import url("fixie-demo.css");
+@import url("prism-demo.css");
