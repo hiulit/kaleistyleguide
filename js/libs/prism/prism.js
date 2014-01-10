@@ -851,6 +851,9 @@ Prism.languages.go = Prism.languages.extend('clike', {
 });
 delete Prism.languages.go['class-name'];
 ;
+
+// Autolinker Plugin - start
+
 (function(){
 
 if (!self.Prism) {
@@ -908,12 +911,18 @@ Prism.hooks.add('wrap', function(env) {
 		}
 		
 		env.attributes.href = href;
-		env.attributes.target = '_blank';
+		env.attributes.target = '_blank';	// This is a "feature" that doesn't
+											// come with the default plugin
 	}
 });
 
 })();
 ;
+
+// Autolinker Plugin - start
+
+// WebPlatform Docs Plugin - start
+
 (function(){
 
 if (!self.Prism) {
@@ -1069,7 +1078,13 @@ function getLanguage(tag) {
 
 })();;
 
-var fileHighlight = (function fileHighlight(){ // Reference to fileHighlight function.
+// WebPlatorm Docs Plugin - end
+
+// File Highlight Plugin - start
+
+var fileHighlight = (function fileHighlight(){	// Reference to fileHighlight function.
+												// This is a "feature" that doesn't
+												// come with the default plugin	
 
 	if (!self.Prism || !self.document || !document.querySelector) {
 		return;
@@ -1119,6 +1134,10 @@ var fileHighlight = (function fileHighlight(){ // Reference to fileHighlight fun
 		xhr.send(null);
 	});
 
-	return fileHighlight; // Reference to fileHighlight function.
-
+	return fileHighlight;	// Reference to fileHighlight function.
+							// This is a "feature" that doesn't
+							// come with the default plugin
 })();;
+
+// File Highlight Plugin - end
+
