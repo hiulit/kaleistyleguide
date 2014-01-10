@@ -112,9 +112,8 @@ color: #66d9ef;
 	cursor: help;
 }
 
-.token a {
-	color: inherit;
-}
+/* Styles for WebPlatform Docs plugin - start */
+
 code[class*="language-"] a[href],
 pre[class*="language-"] a[href] {
 	cursor: help;
@@ -126,3 +125,32 @@ pre[class*="language-"] a[href]:hover {
 	cursor: help;
 	text-decoration: underline;
 }
+
+/* Styles for WebPlatform Docs plugin - end */
+
+/* Styles for Autolinker plugin - start */
+
+.token a {
+	color: inherit;
+}
+
+code[class*="language-"] a[href].url-link,
+pre[class*="language-"] a[href].url-link,
+code[class*="language-"] a[href].email-link,
+pre[class*="language-"] a[href].email-link,
+code[class*="language-"] a[href].md-link,
+pre[class*="language-"] a[href].md-link {
+	cursor: pointer;
+}
+
+code[class*="language-"] a[href].url-link:hover,
+pre[class*="language-"] a[href].url-link:hover,
+code[class*="language-"] a[href].email-link:hover,
+pre[class*="language-"] a[href].email-link:hover,
+code[class*="language-"] a[href].md-link:hover,
+pre[class*="language-"] a[href].md-link:hover {
+	cursor: pointer;
+}
+
+/* Styles for Autolinker plugin - end */
+
