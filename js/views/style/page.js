@@ -254,6 +254,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							block.content.push(comment);
 						}
 						break;
+					case "html": // When using Prism's File Highlight plugin
+						block.content.push(comment);
+						console.log(comment.text);
+						break;
 					case "heading":
 						if (block.heading != "") {  //Multiple headings in one comment block
 													//We want to break them up
