@@ -4,6 +4,10 @@
  * @author ocodia
  */
 
+code,	/* So <code> and <pre> get highlighted*/
+		/* without any class. */
+pre,	/* This is a "feature that doesn't */
+		/* come the default plugin. */
 code[class*="language-"],
 pre[class*="language-"] {
 	color: #f8f8f2;
@@ -26,6 +30,11 @@ pre[class*="language-"] {
 }
 
 /* Code blocks */
+
+pre,	/* So <pre> gets highlighted*/
+		/* without any class. */
+		/* This is a "feature that doesn't */
+		/* come the default plugin. */
 pre[class*="language-"] {
 	padding: 1em;
 	margin: .5em 0;
@@ -33,6 +42,10 @@ pre[class*="language-"] {
 	border-radius: 0.3em;
 }
 
+:not(pre) > code,	/* So <code> and <pre> get highlighted*/
+					/* without any class. */
+pre,				/* This is a "feature that doesn't */
+					/* come the default plugin. */
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
 	background: #272822;
@@ -134,20 +147,20 @@ pre[class*="language-"] a[href]:hover {
 	color: inherit;
 }
 
-code[class*="language-"] a[href].url-link,
-pre[class*="language-"] a[href].url-link,
+code[class*="language-"] a[href].url-link,	/* This is a "feature" that doesn't */
+pre[class*="language-"] a[href].url-link,	/* come with the default plugin. */
 code[class*="language-"] a[href].email-link,
-pre[class*="language-"] a[href].email-link,
-code[class*="language-"] a[href].md-link,
+pre[class*="language-"] a[href].email-link,	/* It fixes some styles for */
+code[class*="language-"] a[href].md-link,	/* the File Highlight plugin. */
 pre[class*="language-"] a[href].md-link {
 	cursor: pointer;
 }
 
-code[class*="language-"] a[href].url-link:hover,
-pre[class*="language-"] a[href].url-link:hover,
+code[class*="language-"] a[href].url-link:hover,	/* This is a "feature" that doesn't */
+pre[class*="language-"] a[href].url-link:hover,		/* come with the default plugin. */
 code[class*="language-"] a[href].email-link:hover,
-pre[class*="language-"] a[href].email-link:hover,
-code[class*="language-"] a[href].md-link:hover,
+pre[class*="language-"] a[href].email-link:hover,	/* It fixes some styles for */
+code[class*="language-"] a[href].md-link:hover,		/* the File Highlight plugin. */
 pre[class*="language-"] a[href].md-link:hover {
 	cursor: pointer;
 }
