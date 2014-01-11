@@ -912,7 +912,10 @@ Prism.hooks.add('wrap', function(env) {
 		
 		env.attributes.href = href;
 		env.attributes.target = '_blank';	// This is a "feature" that doesn't
-											// come with the default plugin
+											// come with the default plugin.
+											
+											// It makes the Autolinker links
+											// open in a new tab.
 	}
 });
 
@@ -1083,8 +1086,9 @@ function getLanguage(tag) {
 // File Highlight Plugin - start
 
 var fileHighlight = (function fileHighlight(){	// Reference to fileHighlight function.
+												
 												// This is a "feature" that doesn't
-												// come with the default plugin	
+												// come with the default plugin	.
 
 	if (!self.Prism || !self.document || !document.querySelector) {
 		return;
@@ -1135,8 +1139,9 @@ var fileHighlight = (function fileHighlight(){	// Reference to fileHighlight fun
 	});
 
 	return fileHighlight;	// Reference to fileHighlight function.
+							
 							// This is a "feature" that doesn't
-							// come with the default plugin
+							// come with the default plugin.
 })();;
 
 // File Highlight Plugin - end
