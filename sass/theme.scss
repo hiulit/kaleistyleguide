@@ -50,7 +50,7 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
 				text-decoration: underline;
 			}
 		}
-		code {
+		code { // Inline <code> blocks
 			background: $fontColor;
 			border-radius: 4px;
 			color: #fff;
@@ -71,33 +71,27 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
 	@include prem(margin, 0 0 20 0);
 	@include prem(padding, 20);
 	position: relative;
-	> .codedemo,
-	> pre {
+	.codedemo, // Overrides Prism's padding
+	pre {
 		@include prem(padding, 40);
-	}
-	.codedemo {
-		background-color: rgba(244, 244, 244, 0.25);
-		border-radius: 4px 4px 0 0;
-		box-shadow: $boxShadowInsetTop;
-		> pre {
-			margin: 0;
-			padding: 0;
-		}
-		+ pre {
-			border-radius: 0 0 4px 4px;
-		}
-	}
-	> pre {
-		border-radius: 4px;
-		box-shadow: $boxShadowInsetBottom;
-		font-size: 14px;
-		@include prem(margin, 0);
-		> code {
-			border-radius: 4px;
-		}
 	}
 }
 
+.codedemo {
+	background-color: rgba(244, 244, 244, 0.25);
+	border-radius: 4px 4px 0 0;
+	box-shadow: $boxShadowInsetTop;
+	+ pre {
+		border-radius: 0 0 4px 4px;
+	}
+}
+
+pre {
+	border-radius: 4px;
+	box-shadow: $boxShadowInsetBottom;
+	font-size: 14px;
+	@include prem(margin, 0);
+}
 
 .kalei-styleguide-menu-heading > h1,
 .kalei-styleguide-menu > li > h3,
