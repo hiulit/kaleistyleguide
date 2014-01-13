@@ -58,6 +58,10 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 					}
 					if(rule.type === 3) {
 						var sheet = rule.href.substr(rule.href.indexOf('(')+2, rule.href.indexOf(')')-rule.href.indexOf('(')-3);
+						console.log(sheet);
+						var newSheet = sheet;
+						newSheet = newSheet.replace(/-/g, ' ');
+						console.log(newSheet);
 						currentMenu.sheets.push(sheet);
 					}
 				});
