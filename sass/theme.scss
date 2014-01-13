@@ -107,17 +107,6 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
 	@include prem(padding, 10);
 }
 
-.kalei-css-container {
-	> pre {
-		> code {
-			border-radius: 4px;
-			@include font-size(12);
-			@include prem(padding, 10);
-			white-space: pre-wrap;
-		}
-	}
-}
-
 .kalei-styleguide-menu {
 	list-style: none;
 	margin: 0;
