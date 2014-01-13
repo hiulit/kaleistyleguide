@@ -33,66 +33,6 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
 	@include prem(top, 73);
 }
 
-// MENU - end
-
-// KALEI PAGE - start
-
-.kalei-page {
-	background-color: #f4f4f4;
-	@include prem(padding, 20 20 675 20);
-	p,
-	ol,
-	ul { // So it doesn't mess with PrismJs styles on <pre> and <code> blocks
-		a {
-			color: $linkColor;
-			text-decoration: none;
-			&:hover {
-				text-decoration: underline;
-			}
-		}
-		code { // Inline <code> blocks
-			background: $fontColor;
-			border-radius: 4px;
-			color: #fff;
-			display: inline-block;
-			@include prem(margin-left, 2);
-			@include prem(margin-right, 2);
-			@include prem(padding-left, 4);
-			@include prem(padding-right, 4);
-		}
-	}
-}
-
-.kalei-page__item {
-	background-color: #fff;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-shadow: $boxShadow;
-	@include prem(margin, 0 0 20 0);
-	@include prem(padding, 20);
-	position: relative;
-	.codedemo, // Overrides Prism's padding
-	pre {
-		@include prem(padding, 40);
-	}
-}
-
-.codedemo {
-	background-color: rgba(244, 244, 244, 0.25);
-	border-radius: 4px 4px 0 0;
-	box-shadow: $boxShadowInsetTop;
-	+ pre {
-		border-radius: 0 0 4px 4px;
-	}
-}
-
-pre {
-	border-radius: 4px;
-	box-shadow: $boxShadowInsetBottom;
-	font-size: 14px;
-	@include prem(margin, 0);
-}
-
 .kalei-styleguide-menu-heading > h1,
 .kalei-styleguide-menu > li > h3,
 .kalei-sheet-submenu li,
@@ -143,6 +83,7 @@ pre {
 	}
 }
 
+// Don't know what that is
 .kalei-styleguide-menu-stylesheets {
 	background: #75eb33;
 	color: #fff;
@@ -229,6 +170,66 @@ pre {
 	}
 }
 
+// MENU - end
+
+// KALEI PAGE - start
+
+.kalei-page {
+	background-color: #f4f4f4;
+	@include prem(padding, 20 20 675 20);
+	p,
+	ol,
+	ul { // So it doesn't mess with PrismJs styles on <pre> and <code> blocks
+		a {
+			color: $linkColor;
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		code { // Inline <code> blocks
+			background: $fontColor;
+			border-radius: 4px;
+			color: #fff;
+			display: inline-block;
+			@include prem(margin-left, 2);
+			@include prem(margin-right, 2);
+			@include prem(padding-left, 4);
+			@include prem(padding-right, 4);
+		}
+	}
+}
+
+.kalei-page__item {
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-shadow: $boxShadow;
+	@include prem(margin, 0 0 20 0);
+	@include prem(padding, 20);
+	position: relative;
+	.codedemo, // Overrides Prism's padding
+	pre {
+		@include prem(padding, 40);
+	}
+}
+
+.codedemo {
+	background-color: rgba(244, 244, 244, 0.25);
+	border-radius: 4px 4px 0 0;
+	box-shadow: $boxShadowInsetTop;
+	+ pre {
+		border-radius: 0 0 4px 4px;
+	}
+}
+
+pre {
+	border-radius: 4px;
+	box-shadow: $boxShadowInsetBottom;
+	font-size: 14px;
+	@include prem(margin, 0);
+}
+
 // KALEI PAGE - end
 
 
@@ -254,6 +255,7 @@ pre {
 	<li>List Item 3</li>
 </ul>
 ```
+
 */
 
 
@@ -267,6 +269,7 @@ These styles make sure the css code block is floated to the right correctly and 
 		<p>This is a test Kalei comment.</p>
 </div>
 ```
+
 */
 
 
