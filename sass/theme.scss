@@ -176,7 +176,7 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
 
 .kalei-page {
 	background-color: #f4f4f4;
-	@include prem(padding, 20 20 675 20);
+	@include prem(padding, 20);
 	p,
 	ol,
 	ul { // So it doesn't mess with PrismJs styles on <pre> and <code> blocks

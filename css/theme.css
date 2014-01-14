@@ -227,8 +227,8 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
 
 .kalei-page {
   background-color: #f4f4f4;
-  padding: 20px 20px 675px 20px;
-  padding: 1.25rem 1.25rem 42.1875rem 1.25rem; }
+  padding: 20px;
+  padding: 1.25rem; }
   .kalei-page p a,
   .kalei-page ol a,
   .kalei-page ul a {
