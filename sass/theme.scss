@@ -46,13 +46,13 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
 	margin: 0;
 	padding: 0;
 	> li {
-		@include prem(margin-top, 20);
+		// @include prem(margin-top, 20);
 		> h3 {
 			background-color: #3a3a3a;
 			color: #fff;
 			font-weight: bold;
 			@include font-size(20);
-			@include prem(margin-top, 20);
+			// @include prem(margin-top, 20);
 			@include prem(padding, 10 20);
 		}
 	}
@@ -100,14 +100,15 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
 	font-weight: bold;
 	@include prem(padding, 10 10 10 20);
 	position: relative;
+	text-decoration: none;
 	@include max-ellipsis(100%);
-	&:hover,
 	&.active {
 		background: $menuColor;
 		color: #fff;
 		text-decoration: none;
 	}
 	&:hover {
+		text-decoration: underline;
 		&:after {
 			@include triangle(right, #fff, 6);
 			@include prem(margin-left, 9);
