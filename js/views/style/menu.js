@@ -58,10 +58,15 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 					}
 					if(rule.type === 3) {
 						var sheet = rule.href.substr(rule.href.indexOf('(')+2, rule.href.indexOf(')')-rule.href.indexOf('(')-3);
-						console.log(sheet);
-						var newSheet = sheet;
-						newSheet = newSheet.replace(/-/g, ' ');
-						console.log(newSheet);
+
+						// var newSheet = sheet;
+						// newSheet = newSheet.replace(/-/g, ' '); // Removes dash
+						// newSheet = newSheet.substr(0, newSheet.length - 4); // Remove '.css'
+						// String.prototype.capitalize = function() { // Function to capitalize string
+						// 	return this.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+						// };
+						// newSheet = newSheet.capitalize(); // Capitalizes string
+
 						currentMenu.sheets.push(sheet);
 					}
 				});
@@ -79,12 +84,21 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				$('.js-kalei-home').addClass('active');
 				}
 			});
+			// _.each($('.kalei-styleguide-menu-link'), function() {
+			// 	console.log($('.kalei-styleguide-menu-link').text());
+			// });
 
 		},
 		events: {
 			'click a.kalei-styleguide-menu-link': function (ev) {
 				this.$el.find('a.active').removeClass('active');
 				$(ev.currentTarget).addClass('active');
+
+				$('body').animate({ // Scroll to top
+					scrollTop: 0
+				}, 'slow', function() { 
+					// console.log("Finished animating");
+				});
 			}
 		}
 	});
