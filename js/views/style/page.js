@@ -18,13 +18,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 		render: function () {
 			that = this;
 
-			//add more space at the bottom of the page to avoid scrolling to last node from menu
-			//but we can think for something more smarter
-			var pageHeight = document.body.offsetHeight;
-			var lastEl = $('.kalei-page__item:last').height();
-			console.log(lastEl);
-			// $(that.el).css({ 'padding-bottom' : pageHeight });
-
 			$('head').append('<link rel="stylesheet" href="' + config.css_path + '"" type="text/css" />');
 			$('a.kalei-styleguide-menu-link').removeClass('active');
 			if(window.location.hash === '') {
@@ -138,6 +131,30 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				});
 
 				fixie.init();
+
+				// Add more space at the bottom of the page to avoid scrolling to last node from menu.
+				// But we can think for something more smarter.
+
+				// Now it works like a charm! Fixed by: @hiulit
+				//If the last element of the page is higher than window.height(),
+				// some additional padding-bottom is added so it stops at the top of the page.
+				// If the last element is lower, it doesn't add any padding-bottom;
+
+				var pageHeight = $(window).height(); // Returns height of browser viewport.
+				var lastElHeight = $('.kalei-page__item:last').outerHeight(); // Returns height of last item (.outerHeight() returns height + padding).
+				var lastElPaddingTop = $('.kalei-page__item:last').css( 'padding-top'); // Returns padding-top of last item.
+				var lastElPaddingBottom = $('.kalei-page__item:last').css( 'padding-bottom'); // Returns padding-bottom of last item.
+
+				lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2)); // Removes px from string and converts string to number.
+				lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2)); // Removes px from string and converts string to number.
+				lastElPaddingTotal = lastElPaddingTop+lastElPaddingBottom; // Returns the sum of paddings (top and bottom).
+
+				if(lastElHeight >= pageHeight ) {
+					$(that.el).css({ 'padding-bottom' : 0 });
+				} else {
+					$(that.el).css({ 'padding-bottom' : ((pageHeight-lastElHeight)-lastElPaddingTotal) });
+				}
+
 			});
 		},
 
