@@ -117,7 +117,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					$('html, body').animate({
 						scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"')," +
 									   ".kalei-page__item h2:contains('"+$(ev.currentTarget).text()+"')").offset().top - 60
-					}, 'slow');
+					}, '200');
 				});
 
 				$(window).scroll(function () {

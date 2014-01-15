@@ -35,7 +35,6 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
 
 .kalei-styleguide-menu-heading > h1,
 .kalei-styleguide-menu > li > h3,
-.kalei-sheet-submenu li,
 .kalei-styleguide-menu-stylesheets {
   margin: 0px;
   margin: 0rem;
@@ -43,7 +42,7 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
   padding: 0.625rem; }
 
 .kalei-styleguide-menu {
-  list-style: none;
+  list-style-type: none;
   margin: 0;
   padding: 0; }
   .kalei-styleguide-menu > li > h3 {
@@ -131,40 +130,8 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal; }
-  .kalei-styleguide-menu-link.active {
-    background: #515151;
-    color: #fff;
-    text-decoration: none; }
   .kalei-styleguide-menu-link:hover {
     text-decoration: underline; }
-    .kalei-styleguide-menu-link:hover:after {
-      border-bottom: 6px solid transparent;
-      border-left: 6px solid white;
-      border-top: 6px solid transparent;
-      content: " ";
-      height: 0;
-      position: absolute;
-      width: 0;
-      margin-left: 9px;
-      margin-left: 0.5625rem;
-      margin-top: -6px;
-      margin-top: -0.375rem;
-      top: 50%; }
-  .kalei-styleguide-menu-link.active, .kalei-styleguide-menu-link:active {
-    cursor: default; }
-    .kalei-styleguide-menu-link.active:after, .kalei-styleguide-menu-link:active:after {
-      border-right: 6px solid transparent;
-      border-left: 6px solid transparent;
-      border-top: 6px solid white;
-      content: " ";
-      height: 0;
-      position: absolute;
-      width: 0;
-      margin-left: 6px;
-      margin-left: 0.375rem;
-      margin-top: -3px;
-      margin-top: -0.1875rem;
-      top: 50%; }
   .kalei-styleguide-menu-link:after {
     border-bottom: 6px solid transparent;
     border-left: 6px solid #515151;
@@ -178,27 +145,75 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
     margin-top: -6px;
     margin-top: -0.375rem;
     top: 50%; }
+  .kalei-styleguide-menu-link.active {
+    background: #515151;
+    color: #fff;
+    text-decoration: none; }
+    .kalei-styleguide-menu-link.active:hover {
+      cursor: pointer; }
+    .kalei-styleguide-menu-link.active:after {
+      border-right: 6px solid transparent;
+      border-left: 6px solid transparent;
+      border-top: 6px solid white;
+      content: " ";
+      height: 0;
+      position: absolute;
+      width: 0;
+      margin-left: 6px;
+      margin-left: 0.375rem;
+      margin-top: -3px;
+      margin-top: -0.1875rem;
+      top: 50%; }
+    .kalei-styleguide-menu-link.active:active:after {
+      border-right: 6px solid transparent;
+      border-left: 6px solid transparent;
+      border-top: 6px solid white;
+      content: " ";
+      height: 0;
+      position: absolute;
+      width: 0;
+      margin-left: 6px;
+      margin-left: 0.375rem;
+      margin-top: -3px;
+      margin-top: -0.1875rem;
+      top: 50%; }
+  .kalei-styleguide-menu-link:active {
+    cursor: default; }
+    .kalei-styleguide-menu-link:active:after {
+      border-right: 6px solid transparent;
+      border-left: 6px solid transparent;
+      border-top: 6px solid #515151;
+      content: " ";
+      height: 0;
+      position: absolute;
+      width: 0;
+      margin-left: 6px;
+      margin-left: 0.375rem;
+      margin-top: -3px;
+      margin-top: -0.1875rem;
+      top: 50%; }
 
 .kalei-sheet-submenu ul {
-  margin: 0px;
-  margin: 0rem;
-  padding: 0px;
-  padding: 0rem; }
+  list-style-type: disc;
+  padding-top: 10px;
+  padding-top: 0.625rem;
+  padding-bottom: 10px;
+  padding-bottom: 0.625rem; }
 .kalei-sheet-submenu li {
   color: #515151;
   cursor: pointer;
-  font-size: 14px;
-  line-height: 21px;
-  font-size: 0.875rem;
-  line-height: 1.3125rem;
-  padding: 10px 10px 10px 20px;
-  padding: 0.625rem 0.625rem 0.625rem 1.25rem; }
+  padding-right: 20px;
+  padding-right: 1.25rem; }
   .kalei-sheet-submenu li span {
     display: inline-block;
     vertical-align: baseline;
     zoom: 1;
     *display: inline;
     *vertical-align: auto;
+    font-size: 14px;
+    line-height: 21px;
+    font-size: 0.875rem;
+    line-height: 1.3125rem;
     max-width: 100%;
     overflow: hidden;
     -webkit-text-overflow: ellipsis;
@@ -207,19 +222,18 @@ To make sure the code demos are unaffected by Kalei's own styles we only set a f
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     white-space: nowrap;
-    word-wrap: normal; }
+    word-wrap: normal;
+    vertical-align: middle; }
   .kalei-sheet-submenu li:hover span {
     text-decoration: underline; }
   .kalei-sheet-submenu li.active {
     cursor: default; }
     .kalei-sheet-submenu li.active span {
       background: #515151;
-      border-radius: 12px;
+      border-radius: 4px;
       color: #fff;
-      padding: 0px 8px;
-      padding: 0rem 0.5rem;
-      margin-left: -8px;
-      margin-left: -0.5rem; }
+      padding: 0px 4px;
+      padding: 0rem 0.25rem; }
     .kalei-sheet-submenu li.active:hover span {
       text-decoration: none; }
 
@@ -302,52 +316,6 @@ pre {
 	<li>List Item 2</li>
 	<li>List Item 3</li>
 </ul>
-```
-
-*/
-/*
-## CSS and Comments Layout
-
-These styles make sure the css code block is floated to the right correctly and the comments on the left
-
-```markup
-<div class="kalei-page__item">
-		<p>This is a test Kalei comment.</p>
-</div>
-```
-
-*/
-/*
-## Code demos
-
-When you use Markdown code blocks ```, Kalei automatically renders the code as HTML and beneath it shows the code block with syntax highlighting.
-
-```scss
-.kalei-css-container > pre > code {
-	font-size: 11px;
-	opacity: 0.7;
-	white-space: pre-wrap;
-	padding: 10px;
-}
-```
-
-Now some JavaScript
-
-```javascript
-$( "p" ).add( "div" ).addClass( "widget" );
-var pdiv = $( "p" ).add( "div" ); // Wrong
-```
-
-Now PHP
-
-```php
-<?php
-	if (function_exists('imap_open')) {
-		echo "IMAP functions are available.<br />\n";
-	} else {
-		echo "IMAP functions are not available.<br />\n";
-	}
-?>
 ```
 
 */

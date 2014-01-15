@@ -96,7 +96,7 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 
 				$('body').animate({ // Scroll to top
 					scrollTop: 0
-				}, 'slow', function() { 
+				}, '200', function() {
 					// console.log("Finished animating");
 				});
 			}
