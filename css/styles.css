@@ -17,11 +17,18 @@ To do this, it actually uses your live style sheets in so that, at anytime, you 
 
 This website is a live example generated from Kalei's `style.css`.
 
-<div class="grid-3-4">
-	<div class="video-container">
-		<iframe width="560" height="315" src="//www.youtube.com/embed/1hOaGs6YyQI" frameborder="0" allowfullscreen></iframe>
-	</div>
-</div>
+*/
+
+
+/*
+## Main goals and benefits
+
+* Fully documented CSS - No need to explain the benefits.
+* No dependencies, simply download the repository and run in your browser.
+* Automatic generation of demo UI components.
+* Easy access for anyone: designers, developers, managers, users, etc.
+* Rapid development of projects by allowing developers to find the correct CSS and HTML for any given UI component.
+* Open sourced so that all great ideas can be included.
 
 */
 
@@ -29,13 +36,13 @@ This website is a live example generated from Kalei's `style.css`.
 /*
 ## Getting started
 
-1. Download the repository `git clone git://github.com/thomasdavis/kaleistyleguide.git`
+1. Download the repository `git clone git://github.com/thomasdavis/kaleistyleguide.git`.
 2. Serve it on a HTTP server and it should work!
-3. Edit `js/config.js` to point at your own `styles.css`
+3. Edit `js/config.js` to point at your own `styles.css`.
 
 **Rails gem**
 
-1. Install quickly and easily with the [rails gem](https://github.com/andrewhavens/kalei-ruby-gem)
+1. Install quickly and easily with the [rails gem](https://github.com/andrewhavens/kalei-ruby-gem).
 
 */
 
@@ -61,19 +68,6 @@ Easily show off examples of your components and the HTML to generate them.
 	</div>
 </div>
 ```
-
-*/
-
-
-/*
-## Main goals and benefits
-
-* Fully documented CSS - No need to explain the benefits.
-* No dependencies, simply download the repository and run in your browser.
-* Automatic generation of demo UI components.
-* Easy access for anyone: designers, developers, managers, users, etc.
-* Rapid development of projects by allowing developers to find the correct CSS and HTML for any given UI component.
-* Open sourced so that all great ideas can be included.
 
 */
 
@@ -124,6 +118,7 @@ Kalei is heavily influenced by the following projects and blog posts:
 * [Backbone.js](http://backbonejs.org/)
 * [Underscore.js](http://underscorejs.org/)
 * [jQuery](http://jquery.com)
+
 */
 
 
