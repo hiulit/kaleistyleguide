@@ -18,6 +18,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 		render: function () {
 			that = this;
 
+			$('.hide-show-btn').on('click', function() { // Toggle show/hide all submenus
+				$('.kalei-sheet-submenu').slideUp(200);
+			});
+
 			// $('head').append('<link rel="stylesheet" href="' + config.css_path + '"" type="text/css" />');
 			$('a.kalei-styleguide-menu-link').removeClass('active');
 			if(window.location.hash === '') {
