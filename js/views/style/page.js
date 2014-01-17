@@ -18,7 +18,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 		render: function () {
 			that = this;
 
-			$('head').append('<link rel="stylesheet" href="' + config.css_path + '"" type="text/css" />');
+			// $('head').append('<link rel="stylesheet" href="' + config.css_path + '"" type="text/css" />');
 			$('a.kalei-styleguide-menu-link').removeClass('active');
 			if(window.location.hash === '') {
 				$('.js-kalei-home').addClass('active');
@@ -27,11 +27,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			}
 
 			// $("head").find("link").attr("href", function (i, value) {
-			//     if (value != config.css_path){
-			//         $('head').append('<link rel="stylesheet" href="' + config.css_path + '"" type="text/css" />');
-			//     }
+			// 	if (value != config.css_path){
+			// 		$('head').append('<link rel="stylesheet" href="' + config.css_path + '"" type="text/css" />');
+			// 	}
 			// });
-
 
 			var styleUrl;
 			var configDir;
@@ -50,8 +49,17 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				styleUrl = configDir + '/' + this.options.style;
 			}
 
-			console.log('try', configDir);
-			console.log('try', styleUrl);
+			// console.log('this.options.style === null : ' + config.css_path.substr(config.css_path.lastIndexOf('/')+1));
+			// console.log('options.style.substr(0,1) === "/": ' + this.options.style.substr(0,1));
+			// console.log('options.style.substr(0,1) === "/": configDir = ' + config.css_path.substr(0, config.css_path.lastIndexOf('/')));
+			// console.log('this.options.style: ' + this.options.style);
+			// console.log('try', configDir);
+			// console.log('try', styleUrl);
+
+			if(!$('link[href="' + styleUrl + '"]').length) { // If styleshet is already loaded, don't load it again
+				$('head').append('<link rel="stylesheet" href="' + styleUrl + '"" type="text/css" />');
+			}
+
 			require(['text!'+ styleUrl], function (stylesheet) {
 				var parser = null;
 				var regex = /(?:.*\/)(.*)\.(css|less|sass)$/gi;
@@ -116,7 +124,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				$(".kalei-sheet-submenu li").on('click', function(ev) {
 					$('html, body').animate({
 						scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"')," +
-									   ".kalei-page__item h2:contains('"+$(ev.currentTarget).text()+"')").offset().top - 60
+										 ".kalei-page__item h2:contains('"+$(ev.currentTarget).text()+"')").offset().top - 60
 					}, '200');
 				});
 
@@ -125,7 +133,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 						if ( that.is_on_screen($(this), 60) ) {
 							$(".kalei-sheet-submenu li").removeClass('active');
 							$(".kalei-sheet-submenu li:contains('" + $(this).find('> h1').text() +"')," +
-							   ".kalei-sheet-submenu li:contains('" + $(this).find('> h2').text() +"')").addClass('active');
+								 ".kalei-sheet-submenu li:contains('" + $(this).find('> h2').text() +"')").addClass('active');
 						}
 					});
 				});
