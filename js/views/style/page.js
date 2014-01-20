@@ -18,19 +18,12 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 		render: function () {
 			that = this;
 
-			// $('head').append('<link rel="stylesheet" href="' + config.css_path + '"" type="text/css" />');
 			$('a.kalei-styleguide-menu-link').removeClass('active');
 			if(window.location.hash === '') {
 				$('.js-kalei-home').addClass('active');
 			} else {
 				$('[href="' + window.location.hash + '"]').addClass('active');
 			}
-
-			// $("head").find("link").attr("href", function (i, value) {
-			// 	if (value != config.css_path){
-			// 		$('head').append('<link rel="stylesheet" href="' + config.css_path + '"" type="text/css" />');
-			// 	}
-			// });
 
 			var styleUrl;
 			var configDir;
@@ -49,16 +42,15 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				styleUrl = configDir + '/' + this.options.style;
 			}
 
-			// console.log('this.options.style === null : ' + config.css_path.substr(config.css_path.lastIndexOf('/')+1));
-			// console.log('options.style.substr(0,1) === "/": ' + this.options.style.substr(0,1));
-			// console.log('options.style.substr(0,1) === "/": configDir = ' + config.css_path.substr(0, config.css_path.lastIndexOf('/')));
-			// console.log('this.options.style: ' + this.options.style);
-			// console.log('try', configDir);
-			// console.log('try', styleUrl);
-
-			if(!$('link[href="' + styleUrl + '"]').length) { // If styleshet is already loaded, don't load it again
+			// If config.css_path styleshhet (default = 'style.css') is already loaded, don't load it again.
+			if(!$('link[href="' + config.css_path + '"]').length) {
+				$('head').append('<link rel="stylesheet" href="' + config.css_path + '"" type="text/css" />');
+			}
+			// If any styleshet gmother is already loaded, don't load it again.
+			if(!$('link[href="' + styleUrl + '"]').length) {
 				$('head').append('<link rel="stylesheet" href="' + styleUrl + '"" type="text/css" />');
 			}
+
 
 			require(['text!'+ styleUrl], function (stylesheet) {
 				var parser = null;
@@ -67,7 +59,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				//result[0] Original Input
 				//result[1] Filename
 				//result[2] Extension
-
 
 				var page = {blocks:[]};
 
