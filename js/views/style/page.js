@@ -54,7 +54,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 			require(['text!'+ styleUrl], function (stylesheet) {
 				var parser = null;
-				var regex = /(?:.*\/)(.*)\.(css|less|sass)$/gi;
+				var regex = /(?:.*\/)(.*)\.(css|less|sass|scss)$/gi;
 				var result = regex.exec(styleUrl);
 				//result[0] Original Input
 				//result[1] Filename
@@ -77,8 +77,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							});
 							page = that.compute_less(stylesheet);
 						break;
-					case 'sass':
-						console.log("Error", "Unsupported style type.");
+					case 'scss':
+						console.log('This is SCSS');
 						/*require(['sass'], function (sass){
 							//parse
 						});*/
