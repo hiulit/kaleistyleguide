@@ -1,15 +1,15 @@
 define([
-'jquery',
-'underscore',
-'backbone',
-'libs/marked/marked',
-'text!templates/style/page.html',
-'config',
-'jscssp',
-'pagedown',
-'libs/prism/prism',
-'libs/parseuri/parseuri',
-'libs/less/less-1.3.3.min'
+	'jquery',
+	'underscore',
+	'backbone',
+	'libs/marked/marked',
+	'text!templates/style/page.html',
+	'config',
+	'jscssp',
+	'pagedown',
+	'libs/prism/prism',
+	'libs/parseuri/parseuri',
+	'libs/less/less-1.3.3.min'
 ],
 function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hljs, parseuri){
 	var that = null;
@@ -18,7 +18,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 		render: function () {
 			that = this;
 
-			$('a.kalei-styleguide-menu-link').removeClass('active');
+			$('.kalei-styleguide-menu-link').removeClass('active');
 			if(window.location.hash === '') {
 				$('.js-kalei-home').addClass('active');
 			} else {
