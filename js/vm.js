@@ -1,9 +1,9 @@
 // Use this as a quick template for future modules
 define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'events'
+	'jquery',
+	'underscore',
+	'backbone',
+	'events'
 ], function($, _, Backbone, Events){
 	var views = {};
 	var create = function (context, name, View, options) {
@@ -17,17 +17,15 @@ define([
 		var view = new View(options);
 		views[name] = view;
 		if(typeof context.children === 'undefined'){
-		  context.children = {};
-		  context.children[name] = view;
+			context.children = {};
+			context.children[name] = view;
 		} else {
-		  context.children[name] = view;
+			context.children[name] = view;
 		}
 		Events.trigger('viewCreated');
 		return view;
 	}
-	
-	
-  return {
-  	create: create
-  };
+	return {
+		create: create
+	};
 });
