@@ -42,13 +42,15 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				styleUrl = configDir + '/' + this.options.style;
 			}
 
-			// If config.css_path styleshhet (default = 'style.css') is already loaded, don't load it again.
+			var styleExt = styleUrl.replace(/^.*\./,''); // Returns file extension.
+
+			// If config.css_path stylesheet (default = 'style.css') is already loaded, don't load it again.
 			if(!$('link[href="' + config.css_path + '"]').length) {
-				$('head').append('<link rel="stylesheet" href="' + config.css_path + '"" type="text/css" />');
+				$('head').append('<link rel="stylesheet" href="' + config.css_path + '"" type="text/' + styleExt +'" />');
 			}
-			// If any styleshet gmother is already loaded, don't load it again.
+			// If any other stylesheet is already loaded, don't load it again.
 			if(!$('link[href="' + styleUrl + '"]').length) {
-				$('head').append('<link rel="stylesheet" href="' + styleUrl + '"" type="text/css" />');
+				$('head').append('<link rel="stylesheet" href="' + styleUrl + '"" type="text/' + styleExt +'" />');
 			}
 
 
@@ -78,10 +80,16 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							page = that.compute_less(stylesheet);
 						break;
 					case 'scss':
-						console.log('This is SCSS');
-						/*require(['sass'], function (sass){
-							//parse
-						});*/
+							var scss = Sass.compile(stylesheet);
+							console.log(scss);
+
+							var style = document.createElement('style');
+							style.textContent = scss;
+							document.head.appendChild(style);
+
+							parser = new jscssp();
+							stylesheet = parser.parse(scss, false, true);
+							page = that.compute_css(stylesheet);
 						break;
 				}
 
@@ -180,7 +188,9 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				css:"",
 				stylesheets: []
 			};
+
 			console.log(stylesheet)
+
 			_.each(stylesheet.cssRules, function(rule) {
 				switch (rule.type) {
 					case 1: //Standard rule?
@@ -209,12 +219,14 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 		},
 
 		compute_less: function(stylesheet) {
-			console.log("compute_less()", stylesheet)
+			console.log("compute_less()")
 			var page = {
 				blocks:[],
 				css:"",
 				stylesheets: []
 			};
+
+			console.log(stylesheet)
 
 			_.each(stylesheet.rules, function(rule) {
 				if (rule.silent != null){ //Comment block
