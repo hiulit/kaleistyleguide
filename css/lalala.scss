@@ -2,14 +2,15 @@
 # lalala
 
 ```markup
-<html></html>
+<div class="hola">hola!</div>
 ```
 
 */
 
 $bgColor: red;
+$color: blue;
 
-code {
-	background: red;
-	color: red;
+.hola {
+	background: $bgColor;
+	color: $color;
 }
