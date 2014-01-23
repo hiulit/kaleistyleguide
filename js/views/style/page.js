@@ -72,7 +72,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 						break;
 					case 'less':
 							parser = new(less.Parser)({
-								paths: [configDir + '/'], // Specify search paths for @import directives
+								paths: [configDir + '/'], // Specify search paths for @import directives.
 							});
 							parser.parse(stylesheet, function (err, tree) {
 								stylesheet = tree;
@@ -80,13 +80,14 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							page = that.compute_less(stylesheet);
 						break;
 					case 'scss':
+							// Compiles SCSS stylesheet into CSS.
 							var scss = Sass.compile(stylesheet);
 							console.log(scss);
-
+							// Embeds CSS styles in <head>.
 							var style = document.createElement('style');
 							style.textContent = scss;
 							document.head.appendChild(style);
-
+							// Parses the CSS.
 							parser = new jscssp();
 							stylesheet = parser.parse(scss, false, true);
 							page = that.compute_css(stylesheet);
@@ -116,7 +117,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 				//Colour Coding in code Block
 				Prism.highlightAll();
-				fileHighlight(); // Prism's File Highlight plugin function
+				fileHighlight(); // Prism's File Highlight plugin function.
 
 				//Fixed by pivanov
 				//that.compute_css
@@ -145,7 +146,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				// Now it works like a charm! Fixed by: @hiulit
 				//If the last element of the page is higher than window.height(),
 				// some additional padding-bottom is added so it stops at the top of the page.
-				// If the last element is lower, it doesn't add any padding-bottom;
+				// If the last element is lower, it doesn't add any padding-bottom.
 
 				var pageHeight = $(window).height(); // Returns height of browser viewport.
 				var lastElHeight = $('.kalei-page__item:last').outerHeight(); // Returns height of last item (.outerHeight() returns height + padding).
@@ -193,13 +194,13 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 			_.each(stylesheet.cssRules, function(rule) {
 				switch (rule.type) {
-					case 1: //Standard rule?
+					case 1: // Standard rule?
 						break;
-					case 3: //Import Rule (@import)
-						//we need to import jsscp doesnt compile imports
+					case 3: // Import Rule (@import)
+						// We need to import jsscp doesn't compile imports.
 						stylesheet.deleteRule(rule);
 						break;
-					case 101: //Comment Block
+					case 101: // Comment Block.
 						page.blocks = page.blocks.concat(that.parse_commentblock(rule.parsedCssText))
 						break;
 				}
@@ -229,10 +230,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			console.log(stylesheet)
 
 			_.each(stylesheet.rules, function(rule) {
-				if (rule.silent != null){ //Comment block
+				if (rule.silent != null){ // Comment block.
 					page.blocks = page.blocks.concat(that.parse_commentblock(rule.value))
-					//page.blocks.push();
-				} else if (rule.rules != null) { //Standard Rule
+					// page.blocks.push();
+				} else if (rule.rules != null) { // Standard Rule.
 
 				} else if (rule.path != null) { //Import Rule
 					// var previous_heading = page.blocks.length - 1;
@@ -257,7 +258,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 			marked.setOptions(_.extend({ sanitize: false, gfm: true }, config.marked_options || {}));
 			var lexedCommentblock = marked.lexer(comment_block_text);
-			var lexerLinks = lexedCommentblock.links || {}; // lexer appends definition links to returned token object
+			var lexerLinks = lexedCommentblock.links || {}; // Lexer appends definition links to returned token object.
 
 			var return_val = [];
 			var block_def = {
@@ -269,24 +270,24 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			_.each(lexedCommentblock, function (comment) {
 				switch (comment.type) {
 					case "code":
-						if (comment.lang != 'markup') { // If the code is not 'markup' (html)
-							//Push the code without example
+						if (comment.lang != 'markup') { // If the code is not 'markup' (html):
+							// Push the code without example.
 							block.content.push(comment);
 						} else {
-							//Push the code for an example
+							// Push the code for an example.
 							block.content.push({
 								type: 'html',
 								text: '<div class="codedemo clearfix">' + comment.text + '</div>'
 							});
-							//Push the code section so marked can parse it as a <pre><code> block
-							//comment.text = comment.text.replace(/class=([""'])fixie\1|(?![""' ])fixie(?=[""' ])/g, "") // Removes .fixie class
+							// Push the code section so marked can parse it as a <pre><code> block.
+							// comment.text = comment.text.replace(/class=([""'])fixie\1|(?![""' ])fixie(?=[""' ])/g, "") // Removes .fixie class
 							block.content.push(comment);
 						}
 						break;
 					case "heading":
-						if (block.heading != "") {  //Multiple headings in one comment block
-													//We want to break them up
-							//Parse the content blocks and return the HTML to display
+						if (block.heading != "") {  // Multiple headings in one comment block.
+													// We want to break them up.
+							// Parse the content blocks and return the HTML to display
 							block.content.links = lexerLinks
 							block.content = marked.parser(block.content)
 							return_val.push(block);
@@ -295,7 +296,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 						if (comment.depth <= 2) {
 							block.heading = comment.text;
 							block.content.push(comment);
-						} else if (comment.depth == 3) { //Import statement title
+						} else if (comment.depth == 3) { // Import statement title.
 							block.stylesheet = comment.text;
 							//block.heading = "Stylesheets"
 							//this is an import statement
@@ -304,13 +305,13 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 						}
 						break;
 					default:
-						//Push everything else
+						// Push everything else.
 						block.content.push(comment);
 						break;
-				} //Switch
+				} // Switch.
 			});
 
-			//Parse the content blocks and return the HTML to display
+			// Parse the content blocks and return the HTML to display.
 			block.content.links = lexerLinks
 			block.content = marked.parser(block.content)
 
