@@ -1,3 +1,5 @@
+// @import "mixins";
+
 /*
 # lalala
 
@@ -7,10 +9,19 @@
 
 */
 
+$baseFontSize: 16;
 $bgColor: red;
 $color: blue;
+
+@mixin font-size($sizeValue: $baseFontSize, $lineValue: $sizeValue * 1.5) {
+	font-size: $sizeValue + px;
+	line-height: $lineValue + px;
+	font-size: ($sizeValue / $baseFontSize) + rem;
+	line-height: ($lineValue / $baseFontSize) + rem;
+}
 
 .hola {
 	background: $bgColor;
 	color: $color;
+	@include font-size(40);
 }

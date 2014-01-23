@@ -80,16 +80,39 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							page = that.compute_less(stylesheet);
 						break;
 					case 'scss':
+							var url = 'http://localhost/kaleistyleguide/sass/_mixins.scss';
+							var documentPath = location.pathname.split('/');
+							console.log('location.pathname.split("/") ----> ', documentPath);
+							documentPath.pop();
+							console.log('documentPath.pop() ----> ', documentPath.pop());
+							documentPath = documentPath.join('/') + '/';
+							console.log('documentPath.join("/") + "/" ----> ', documentPath);
+							var path = url.replace(window.location.origin, '')
+											.replace(documentPath, '')
+											.replace(/[?#].*$/g, '');
+							console.log('path ----> ', path);
+							var parts = path.split('/');
+							console.log('parts ----> ', path.split('/'));
+							var filename = parts.pop();
+							console.log('filename ----> ', parts.pop());
+							var directory = parts.join('/');
+							console.log('directory ----> ', parts.join('/'));
+							var text = Sass.readFile(path) || Module.read(url);
+							Sass.writeFile(path, text);
+							console.log('path ----> ', path);
+							console.log('text ----> ', text);
+
 							// Compiles SCSS stylesheet into CSS.
-							var scss = Sass.compile(stylesheet);
-							console.log(scss);
+							var stylesheetCompiled = Sass.compile(stylesheet);
+							console.log('stylesheet ---> ', stylesheet);
+							console.log('stylesheetCompiled ----> ', stylesheetCompiled);
 							// Embeds CSS styles in <head>.
 							var style = document.createElement('style');
-							style.textContent = scss;
+							style.textContent = stylesheetCompiled;
 							document.head.appendChild(style);
 							// Parses the CSS.
 							parser = new jscssp();
-							stylesheet = parser.parse(scss, false, true);
+							stylesheet = parser.parse(stylesheetCompiled, false, true);
 							page = that.compute_css(stylesheet);
 						break;
 				}
