@@ -33,7 +33,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			}
 
 			if(this.options.style.substr(0,1) === '/') {
-				// non relative
+				// Non relative.
 				configDir = config.css_path.substr(0, config.css_path.lastIndexOf('/'));
 				var pUrl = parseuri(configDir);
 				styleUrl = pUrl.protocol + '://' + pUrl.host + (pUrl.port === '' ? '' : ':'+ pUrl) + this.options.style;
@@ -58,9 +58,9 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				var parser = null;
 				var regex = /(?:.*\/)(.*)\.(css|less|sass|scss)$/gi;
 				var result = regex.exec(styleUrl);
-				//result[0] Original Input
-				//result[1] Filename
-				//result[2] Extension
+				// result[0] Original Input.
+				// result[1] Filename.
+				// result[2] Extension.
 
 				var page = {blocks:[]};
 
@@ -115,7 +115,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 				$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config}));
 
-				//Colour Coding in code Block
+				// Colour Coding in code Block.
 				Prism.highlightAll();
 				fileHighlight(); // Prism's File Highlight plugin function.
 
