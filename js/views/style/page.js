@@ -80,7 +80,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							page = that.compute_less(stylesheet);
 						break;
 					case 'scss':
-							var url = 'http://localhost/kaleistyleguide/sass/_mixins.scss';
+							var url = 'http://localhost/kaleistyleguide/scss/_mixins.scss';
 							var documentPath = location.pathname.split('/');
 							console.log('location.pathname.split("/") ----> ', documentPath);
 							documentPath.pop();
@@ -101,6 +101,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							Sass.writeFile(path, text);
 							console.log('path ----> ', path);
 							console.log('text ----> ', text);
+
+							Sass.writeFile(styleUrl, stylesheet);
+							console.log('styleUrl ---> ', styleUrl);
+							console.log('stylesheet ---> ', stylesheet);
 
 							// Compiles SCSS stylesheet into CSS.
 							var stylesheetCompiled = Sass.compile(stylesheet);
