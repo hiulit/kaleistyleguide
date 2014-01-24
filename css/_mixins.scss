@@ -1,0 +1,105 @@
+@mixin font-size($sizeValue: $baseFontSize, $lineValue: $sizeValue * 1.5) {
+	font-size: $sizeValue + px;
+	line-height: $lineValue + px;
+	font-size: ($sizeValue / $baseFontSize) + rem;
+	line-height: ($lineValue / $baseFontSize) + rem;
+}
+
+@function pem($pxval, $base: $baseFontSize) {
+	@return #{$pxval / $base}em;
+}
+
+@function prem($pxval, $base: $baseFontSize) {
+	@return #{$pxval / $base}rem;
+}
+
+@mixin prem($property, $values, $base-font-size: $baseFontSize) {
+	$px-values: ();
+	$rem-values: ();
+
+	@each $value in $values {
+		@if type-of($value) == number {
+			$px-values: join($px-values, #{$value}px);
+			$rem-values: join($rem-values, #{$value / $base-font-size}rem);
+		}
+	}
+
+	#{$property}: $px-values;
+	#{$property}: $rem-values;
+}
+
+@mixin triangle($direction, $color, $height, $width: $height) {
+
+	@if $direction == "left" {
+		border-bottom: $height + px solid transparent;
+		border-right: $width + px solid $color;
+		border-top: $height + px solid transparent;
+	}
+	@else if $direction == "right" {
+		border-bottom: $height + px solid transparent;
+		border-left : $width + px solid $color;
+		border-top: $height + px solid transparent;
+	}
+	@else if $direction == "up" {
+		border-bottom: $height + px solid $color;
+		border-left: $width + px solid transparent;
+		border-right: $width + px solid transparent;
+	}
+	@else if $direction == "down" {
+		border-right: $width + px solid transparent;
+		border-left: $width + px solid transparent;
+		border-top: $height + px solid $color;
+	}
+
+	content: " ";
+	height: 0;
+	position: absolute;
+	width: 0;
+
+}
+
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	filter: unquote("alpha(opacity=#{$opacity * 100})");
+}
+
+@mixin ellipsis() {
+	overflow: hidden;
+	@include prefixer(text-overflow, ellipsis, webkit moz ms o spec);
+	white-space: nowrap;
+}
+
+@mixin max-ellipsis($maxWidth) {
+	@if unitless($maxWidth) == true {
+		@include prem(max-width, $maxWidth);
+	}
+	@else {
+		max-width: $maxWidth;
+	}
+	@include ellipsis;
+	word-wrap: normal;
+}
+
+@mixin hyphenation() {
+	-ms-word-break: break-all;
+		 word-break: break-all;
+
+	/* Non standard for webkit */
+	word-break: break-word;
+
+	-webkit-hyphens: auto;
+	    -moz-hyphens: auto;
+		-ms-hyphens: auto;
+			  hyphens: auto;
+}
+
+@mixin cf() {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}

@@ -80,27 +80,31 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							page = that.compute_less(stylesheet);
 						break;
 					case 'scss':
-							var url = 'http://localhost/kaleistyleguide/scss/_mixins.scss';
-							var documentPath = location.pathname.split('/');
-							console.log('location.pathname.split("/") ----> ', documentPath);
-							documentPath.pop();
-							console.log('documentPath.pop() ----> ', documentPath.pop());
-							documentPath = documentPath.join('/') + '/';
-							console.log('documentPath.join("/") + "/" ----> ', documentPath);
-							var path = url.replace(window.location.origin, '')
-											.replace(documentPath, '')
-											.replace(/[?#].*$/g, '');
-							console.log('path ----> ', path);
-							var parts = path.split('/');
-							console.log('parts ----> ', path.split('/'));
-							var filename = parts.pop();
-							console.log('filename ----> ', parts.pop());
-							var directory = parts.join('/');
-							console.log('directory ----> ', parts.join('/'));
-							var text = Sass.readFile(path) || Module.read(url);
-							Sass.writeFile(path, text);
-							console.log('path ----> ', path);
-							console.log('text ----> ', text);
+							importReg = /@import[ \("']*([^;]+)[;\)"']*/g;
+							while ((result = importReg.exec(stylesheet)) !== null ) {
+								var subash = result[1];
+								console.log(subash);
+								subash = subash.replace(/"|'/gi, "");
+								console.log(subash);
+								subash = subash.split(",");
+								console.log(subash);
+								for(i=0; i<subash.length; i++) {
+
+									var path = subash[i].trim();
+									console.log('@import ----> ' + path);
+									url = styleUrl.replace(/(.*)\/.*(\.scss$)/i, '$1/_'+path+'$2'); // Needs improvement
+									console.log('url ----> ' + url);
+
+									var text = Sass.readFile(path) || Module.read(url);
+									Sass.writeFile(path, text);
+									console.log('path ----> ', path);
+									console.log('text ----> ', text);
+
+									if(text.match(/@import[ \("']*([^;]+)[;\)"']*/g)) {
+										console.log('d fdsfdsf sfsd fa sidshfuisdh f78hf87ehf78dsfhds87fh ds87f');
+									}
+								}
+							}
 
 							Sass.writeFile(styleUrl, stylesheet);
 							console.log('styleUrl ---> ', styleUrl);
@@ -108,8 +112,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 							// Compiles SCSS stylesheet into CSS.
 							var stylesheetCompiled = Sass.compile(stylesheet);
-							console.log('stylesheet ---> ', stylesheet);
-							console.log('stylesheetCompiled ----> ', stylesheetCompiled);
+							// console.log('stylesheet ---> ', stylesheet);
+							// console.log('stylesheetCompiled ----> ', stylesheetCompiled);
 							// Embeds CSS styles in <head>.
 							var style = document.createElement('style');
 							style.textContent = stylesheetCompiled;
