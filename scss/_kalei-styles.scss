@@ -197,7 +197,7 @@
 			@include prem(padding-left, 4);
 			@include prem(padding-right, 4);
 			white-space: normal;
-			word-break: break-all;
+			@include hyphenation;
 		}
 	}
 }
