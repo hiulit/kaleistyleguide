@@ -80,31 +80,59 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							page = that.compute_less(stylesheet);
 						break;
 					case 'scss':
-							importReg = /@import[ \("']*([^;]+)[;\)"']*/g;
+
+							var importReg = /@import[ \("']*([^;]+)[;\)"']*/g;
+							var result;
+
 							while ((result = importReg.exec(stylesheet)) !== null ) {
 								var subash = result[1];
-								console.log(subash);
+								// console.log(subash);
 								subash = subash.replace(/"|'/gi, "");
-								console.log(subash);
+								// console.log(subash);
 								subash = subash.split(",");
-								console.log(subash);
+								// console.log(subash);
 								for(i=0; i<subash.length; i++) {
 
 									var path = subash[i].trim();
-									console.log('@import ----> ' + path);
+									console.log('@import ----> ' + path, importReg.lastIndex);
 									url = styleUrl.replace(/(.*)\/.*(\.scss$)/i, '$1/_'+path+'$2'); // Needs improvement
 									console.log('url ----> ' + url);
 
 									var text = Sass.readFile(path) || Module.read(url);
 									Sass.writeFile(path, text);
 									console.log('path ----> ', path);
-									console.log('text ----> ', text);
+									// console.log('text ----> ', text);
 
-									if(text.match(/@import[ \("']*([^;]+)[;\)"']*/g)) {
-										console.log('d fdsfdsf sfsd fa sidshfuisdh f78hf87ehf78dsfhds87fh ds87f');
+									// importReg.lastIndex++;
+
+
+									var importReg2 = /@import[ \("']*([^;]+)[;\)"']*/g;
+
+									while ((result = importReg2.exec(text)) !== null ) {
+										var subash = result[1];
+										// console.log(subash);
+										subash = subash.replace(/"|'/gi, "");
+										// console.log(subash);
+										subash = subash.split(",");
+										// console.log(subash);
+										for(i=0; i<subash.length; i++) {
+
+											var path = subash[i].trim();
+											console.log('@import ----> ' + path, importReg.lastIndex);
+											url = styleUrl.replace(/(.*)\/.*(\.scss$)/i, '$1/_'+path+'$2'); // Needs improvement
+											console.log('url ----> ' + url);
+
+											var text2 = Sass.readFile(path) || Module.read(url);
+											Sass.writeFile(path, text2);
+											console.log('path ----> ', path);
+											// console.log('text ----> ', text);
+
+											// importReg2.lastIndex++;
+										}
 									}
 								}
 							}
+
 
 							Sass.writeFile(styleUrl, stylesheet);
 							console.log('styleUrl ---> ', styleUrl);
@@ -112,16 +140,17 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 							// Compiles SCSS stylesheet into CSS.
 							var stylesheetCompiled = Sass.compile(stylesheet);
-							// console.log('stylesheet ---> ', stylesheet);
-							// console.log('stylesheetCompiled ----> ', stylesheetCompiled);
+							
 							// Embeds CSS styles in <head>.
 							var style = document.createElement('style');
 							style.textContent = stylesheetCompiled;
 							document.head.appendChild(style);
+							
 							// Parses the CSS.
 							parser = new jscssp();
 							stylesheet = parser.parse(stylesheetCompiled, false, true);
 							page = that.compute_css(stylesheet);
+						
 						break;
 				}
 
