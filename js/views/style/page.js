@@ -81,6 +81,25 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 						break;
 					case 'scss':
 
+							var result = [];
+							var outerRegex = /@import[ \("']*([^;]+)[;\)"']*/g;
+							var innerRegex = /@import[ \("']*([^;]+)[;\)"']*/g;
+							var outerMatch = null;
+							while (outerMatch = outerRegex.exec(stylesheet)) {
+								if (outerMatch.index == outerRegex.lastIndex) {
+									outerRegex.lastIndex++;
+								}
+								var innerSubject = stylesheet.substr(outerMatch.index, outerMatch[0].length);
+								var innerMatch = null;
+								while (innerMatch = innerRegex.exec(innerSubject)) {
+									if (innerMatch.index == innerRegex.lastIndex) {
+										innerRegex.lastIndex++;
+									}
+									result.push(innerMatch[0]);
+									console.log(result);
+								}
+							}
+
 							var importReg = /@import[ \("']*([^;]+)[;\)"']*/g;
 							var result;
 
