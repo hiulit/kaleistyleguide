@@ -337,6 +337,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 			marked.setOptions(_.extend({ sanitize: false, gfm: true }, config.marked_options || {}));
 			var lexedCommentblock = marked.lexer(comment_block_text);
+			console.log(lexedCommentblock);
 			var lexerLinks = lexedCommentblock.links || {}; // Lexer appends definition links to returned token object.
 
 			var return_val = [];
@@ -351,7 +352,27 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					case "code":
 						if (comment.lang != 'markup') { // If the code is not 'markup' (html):
 							// Push the code without example.
-							block.content.push(comment);
+
+							// block.content.push(comment);
+
+							var myRenderer = new marked.Renderer();
+
+							myRenderer.code = function (code, lang) {
+
+								return '<pre><code class="'
+									+ this.options.langPrefix
+									+ escape(lang, true)
+									+ '">'
+									+ (escaped ? code : escape(code, true))
+									+ '\n</code></pre>\n';
+							};
+
+							console.log(marked('alert("hola");', { renderer: myRenderer }));
+
+
+							console.log(comment);
+							console.log(comment.lang);
+							console.log(comment.text);
 						} else {
 							// Push the code for an example.
 							block.content.push({
