@@ -210,24 +210,36 @@
 	@include prem(margin, 0 0 20 0);
 	@include prem(padding, 20);
 	position: relative;
-	.codedemo, // Overrides Prism's padding
-	pre {
-		@include prem(padding, 40);
-	}
 }
 
 .codedemo {
 	background-color: rgba(244, 244, 244, 0.25);
 	border-radius: 4px 4px 0 0;
 	box-shadow: $boxShadowInsetTop;
-	+ pre {
+	@include prem(padding, 40);
+	+ .code-lang {
+		border-radius: 0;
+	}
+}
+
+.code-lang {
+	background: $linkColor;
+	border-radius: 4px 4px 0 0;
+	color: #fff;
+	@include prem(padding, 8);
+	@include prem(text-indent, 12);
+	text-transform: uppercase;
+	+ pre,
+	+ pre[class*="language-"] {
 		border-radius: 0 0 4px 4px;
 	}
 }
 
-pre {
+pre,
+pre[class*="language-"] {
 	border-radius: 4px;
 	box-shadow: $boxShadowInsetBottom;
 	font-size: 14px;
-	@include prem(margin, 0);
+	margin: 0;
+	@include prem(padding, 40);
 }

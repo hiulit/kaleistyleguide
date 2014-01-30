@@ -53,7 +53,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				$('head').append('<link rel="stylesheet" href="' + styleUrl + '"" type="text/' + styleExt +'" />');
 			}
 
-
 			require(['text!'+ styleUrl], function (stylesheet) {
 				var parser = null;
 				var regex = /(?:.*\/)(.*)\.(css|less|sass|scss)$/gi;
@@ -124,7 +123,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 									// importReg.lastIndex++;
 
-
 									var importReg2 = /@import[ \("']*([^;]+)[;\)"']*/g;
 
 									while ((result = importReg2.exec(text)) !== null ) {
@@ -152,24 +150,23 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 								}
 							}
 
-
 							Sass.writeFile(styleUrl, stylesheet);
 							console.log('styleUrl ---> ', styleUrl);
 							console.log('stylesheet ---> ', stylesheet);
 
 							// Compiles SCSS stylesheet into CSS.
 							var stylesheetCompiled = Sass.compile(stylesheet);
-							
+
 							// Embeds CSS styles in <head>.
 							var style = document.createElement('style');
 							style.textContent = stylesheetCompiled;
 							document.head.appendChild(style);
-							
+
 							// Parses the CSS.
 							parser = new jscssp();
 							stylesheet = parser.parse(stylesheetCompiled, false, true);
 							page = that.compute_css(stylesheet);
-						
+
 						break;
 				}
 
@@ -320,10 +317,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					//     page.blocks[previous_heading].import_rule = []
 					// }
 					// page.blocks[previous_heading].import_rule.push(rule.path)
-
 				}
 			});
-
 
 			page.css = stylesheet.toCSS({ compress: true });
 			page.css = ".kalei-page{" + page.css + "}";
@@ -335,7 +330,13 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			//Remove /* & */
 			comment_block_text = comment_block_text.replace(/(?:\/\*)|(?:\*\/)/gi, '');
 
-			marked.setOptions(_.extend({ sanitize: false, gfm: true }, config.marked_options || {}));
+			marked.setOptions(_.extend({
+					sanitize: false,
+					gfm: true
+				},
+				config.marked_options || {}
+			));
+
 			var lexedCommentblock = marked.lexer(comment_block_text);
 			console.log(lexedCommentblock);
 			var lexerLinks = lexedCommentblock.links || {}; // Lexer appends definition links to returned token object.
@@ -345,43 +346,35 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				content: [],
 				heading: "",
 			};
+
 			var block = _.clone(block_def);
 
 			_.each(lexedCommentblock, function (comment) {
 				switch (comment.type) {
 					case "code":
-						if (comment.lang != 'markup') { // If the code is not 'markup' (html):
-							// Push the code without example.
+						if (!comment.lang) { // If there's no language:
+							// Push the code without example nor language header.
+							block.content.push(comment);
 
-							// block.content.push(comment);
-
-							var myRenderer = new marked.Renderer();
-
-							myRenderer.code = function (code, lang) {
-
-								return '<pre><code class="'
-									+ this.options.langPrefix
-									+ escape(lang, true)
-									+ '">'
-									+ (escaped ? code : escape(code, true))
-									+ '\n</code></pre>\n';
-							};
-
-							console.log(marked('alert("hola");', { renderer: myRenderer }));
-
-
-							console.log(comment);
-							console.log(comment.lang);
-							console.log(comment.text);
-						} else {
-							// Push the code for an example.
+						} else if (comment.lang !== 'markup') { // If the code is not "markup" (html):
+							// Push the code without example but with language header.
 							block.content.push({
 								type: 'html',
-								text: '<div class="codedemo clearfix">' + comment.text + '</div>'
+								text: '<div class="code-lang">' + comment.lang + '</div>'
 							});
-							// Push the code section so marked can parse it as a <pre><code> block.
-							// comment.text = comment.text.replace(/class=([""'])fixie\1|(?![""' ])fixie(?=[""' ])/g, "") // Removes .fixie class
+
 							block.content.push(comment);
+
+						} else { // If it's "markup" (html):
+							// Push the code for an example with language header.
+							block.content.push({
+								type: 'html',
+								text: '<div class="codedemo clearfix">' + comment.text + '</div>' +
+									  '<div class="code-lang">html</div>'
+							});
+
+							block.content.push(comment);
+
 						}
 						break;
 					case "heading":

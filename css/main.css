@@ -279,24 +279,37 @@
   padding: 20px;
   padding: 1.25rem;
   position: relative; }
-  .kalei-page__item .codedemo,
-  .kalei-page__item pre {
-    padding: 40px;
-    padding: 2.5rem; }
 
 .codedemo {
   background-color: rgba(244, 244, 244, 0.25);
   border-radius: 4px 4px 0 0;
-  box-shadow: inset 0px 2px 6px -3px rgba(0, 0, 0, 0.3); }
-  .codedemo + pre {
+  box-shadow: inset 0px 2px 6px -3px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  padding: 2.5rem; }
+  .codedemo + .code-lang {
+    border-radius: 0; }
+
+.code-lang {
+  background: #0090d4;
+  border-radius: 4px 4px 0 0;
+  color: #fff;
+  padding: 8px;
+  padding: 0.5rem;
+  text-indent: 12px;
+  text-indent: 0.75rem;
+  text-transform: uppercase; }
+  .code-lang + pre,
+  .code-lang + pre[class*="language-"] {
     border-radius: 0 0 4px 4px; }
 
-pre {
+pre,
+pre[class*="language-"] {
   border-radius: 4px;
   box-shadow: inset 0px -2px 6px -3px rgba(0, 0, 0, 0.3);
   font-size: 14px;
-  margin: 0px;
-  margin: 0rem; }
+  margin: 0;
+  padding: 40px;
+  padding: 2.5rem; }
 
 * {
   -webkit-box-sizing: border-box;
