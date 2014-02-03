@@ -1,21 +1,28 @@
-<a class="kalei-styleguide-menu-heading" href="#"><%= menuTitle %></a>
-<div class="menu-items">
-	<ul class="kalei-styleguide-menu">
-		<li data-sheet="<%= entry %>">
-			<a class="kalei-styleguide-menu-link js-kalei-home" href="#" ><%= entry %></a>
-			<div class="kalei-sheet-submenu"></div>
-		</li>
-		<% _.each(menus, function (menu) { %>
-		<li>
+<ul class="kalei-menu__list">
+	<li class="kalei-menu-list__item">
+		<a class="kalei-menu__heading" href="#">
+			<%= menuTitle %>
+		</a>
+	</div>
+	<li class="kalei-menu__list__item" data-sheet="<%= entry %>">
+		<a class="kalei-menu__list__item__link js-kalei-home" href="#" >
+			<%= entry %>
+		</a>
+		<div class="kalei-sheet-submenu"></div>
+	</li>
+	<% _.each(menus, function (menu) { %>
+		<li class="kalei-menu__list__item">
 			<%= menu.category %>
-			<ul class="kalei-styleguide-menu">
+			<ul class="kalei-styleguide-menu2">
 				<% _.each(menu.sheets, function (sheet) { %>
-				<li data-sheet="<%= sheet %>">
-					<a class="kalei-styleguide-menu-link" href="#/style/<%= sheet %>"><%= sheet %></a>
-					<div class="kalei-sheet-submenu"></div>
-				</li>
+					<li class="kalei-menu__list__item" data-sheet="<%= sheet %>">
+						<a class="kalei-menu__list__item__link" href="#/style/<%= sheet %>">
+							<%= sheet %>
+						</a>
+						<div class="kalei-sheet-submenu"></div>
+					</li>
 				<% }); %>
 			</ul>
 		</li>
 	<% }); %>
-</div>
+</ul>

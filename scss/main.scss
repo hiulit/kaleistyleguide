@@ -16,6 +16,7 @@ html {
 }
 
 body {
+	background-color: #f4f4f4;
 	margin: 0;
 	padding: 0;
 }
@@ -24,7 +25,7 @@ body {
 	pre {
 		background-color: $fontColor;
 	}
-	.codedemo {
+	.code-render {
 		border: 1px solid #ccc;
 	}
 }
@@ -79,6 +80,10 @@ body {
 
 .grid-3-4 {
 	width: percentage(3/4);
+}
+
+.grid-full {
+	width: 100%;
 }
 
 .full-width {

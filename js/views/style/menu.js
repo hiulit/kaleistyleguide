@@ -9,7 +9,7 @@ define([
 ],
 function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 	var DashboardPage = Backbone.View.extend({
-		el: '.kalei-style-menu',
+		el: '.js-kalei-menu',
 		render: function () {
 			var that = this;
 			that.$el.html('Loading styles');
@@ -84,13 +84,13 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				$('.js-kalei-home').addClass('active');
 				}
 			});
-			// _.each($('.kalei-styleguide-menu-link'), function() {
-			// 	console.log($('.kalei-styleguide-menu-link').text());
+			// _.each($('.kalei-menu__list__item__link'), function() {
+			// 	console.log($('.kalei-menu__list__item__link').text());
 			// });
 
 		},
 		events: {
-			'click a.kalei-styleguide-menu-link': function (ev) {
+			'click .kalei-menu__list__item__link': function (ev) {
 				this.$el.find('a.active').removeClass('active');
 				$(ev.currentTarget).addClass('active');
 

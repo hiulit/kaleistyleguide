@@ -18,7 +18,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 		render: function () {
 			that = this;
 
-			$('.kalei-styleguide-menu-link').removeClass('active');
+			$('.kalei-menu__list__item__link').removeClass('active');
 			if(window.location.hash === '') {
 				$('.js-kalei-home').addClass('active');
 			} else {
@@ -369,7 +369,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							// Push the code for an example with language header.
 							block.content.push({
 								type: 'html',
-								text: '<div class="codedemo clearfix">' + comment.text + '</div>' +
+								text: '<div class="code-render clearfix">' + comment.text + '</div>' +
 									  '<div class="code-lang">html</div>'
 							});
 
