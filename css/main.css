@@ -282,25 +282,28 @@
 
 .codedemo {
   background-color: rgba(244, 244, 244, 0.25);
-  border-radius: 4px 4px 0 0;
-  box-shadow: inset 0px 2px 6px -3px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  box-shadow: inset 0px 2px 6px -3px rgba(0, 0, 0, 0.3), inset 0px -2px 6px -3px rgba(0, 0, 0, 0.3);
   padding: 40px;
-  padding: 2.5rem; }
-  .codedemo + .code-lang {
-    border-radius: 0; }
+  padding: 2.5rem;
+  margin-bottom: 16px;
+  margin-bottom: 1rem; }
 
 .code-lang {
   background: #0090d4;
   border-radius: 4px 4px 0 0;
   color: #fff;
-  padding: 8px;
-  padding: 0.5rem;
-  text-indent: 12px;
-  text-indent: 0.75rem;
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+  padding: 8px 20px;
+  padding: 0.5rem 1.25rem;
   text-transform: uppercase; }
   .code-lang + pre,
   .code-lang + pre[class*="language-"] {
-    border-radius: 0 0 4px 4px; }
+    border-radius: 0 4px 4px 4px; }
 
 pre,
 pre[class*="language-"] {
