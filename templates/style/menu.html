@@ -13,7 +13,7 @@
 	<% _.each(menus, function (menu) { %>
 		<li class="kalei-menu__list__item">
 			<%= menu.category %>
-			<ul class="kalei-styleguide-menu2">
+			<ul class="kalei-menu__list__item__list">
 				<% _.each(menu.sheets, function (sheet) { %>
 					<li class="kalei-menu__list__item" data-sheet="<%= sheet %>">
 						<a class="kalei-menu__list__item__link" href="#/style/<%= sheet %>">
