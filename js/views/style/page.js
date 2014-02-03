@@ -18,6 +18,27 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 		render: function () {
 			that = this;
 
+			var body = $('body'),
+				page = body.find('.wrapper'),
+				navToggle = body.find('#nav-toggle'),
+				viewportHt = $(window).innerHeight();
+
+			navToggle.on('click', function(){
+				body
+					.removeClass('loading')
+					.toggleClass('nav-open');
+				if (body.hasClass('nav-open')) {
+					page.css('height', viewportHt);
+				} else {
+					page.css('height', 'auto');
+				}
+			});
+
+			$('.kalei-page').on('click', function(e){
+				body.removeClass('nav-open');
+				e.preventDefault();
+			});
+
 			$('.kalei-menu__list__item__link').removeClass('active');
 			if(window.location.hash === '') {
 				$('.js-kalei-home').addClass('active');
@@ -370,7 +391,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							block.content.push({
 								type: 'html',
 								text: '<div class="code-render clearfix">' + comment.text + '</div>' +
-									  '<div class="code-lang">html</div>'
+										'<div class="code-lang">html</div>'
 							});
 
 							block.content.push(comment);
