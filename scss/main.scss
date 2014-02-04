@@ -117,3 +117,8 @@ img {
 .clearfix {
 	@include cf;
 }
+
+.is-disabled {
+	cursor: default;
+	@include opacity(.5);
+}

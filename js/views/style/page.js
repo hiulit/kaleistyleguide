@@ -18,25 +18,14 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 		render: function () {
 			that = this;
 
-			var body = $('body'),
-				page = body.find('.wrapper'),
-				navToggle = body.find('#nav-toggle'),
-				viewportHt = $(window).innerHeight();
+			var navToggle = $('#nav-toggle');
 
 			navToggle.on('click', function(){
-				body
-					.removeClass('loading')
-					.toggleClass('nav-open');
-				if (body.hasClass('nav-open')) {
-					page.css('height', viewportHt);
-				} else {
-					page.css('height', 'auto');
-				}
+				$('body').removeClass('loading').toggleClass('nav-open');
 			});
 
-			$('.kalei-page').on('click', function(e){
-				body.removeClass('nav-open');
-				e.preventDefault();
+			$('.kalei-page').on('click', function(){
+				$('body').removeClass('nav-open');
 			});
 
 			$('.kalei-menu__list__item__link').removeClass('active');
@@ -222,10 +211,24 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					$('html, body').animate({
 						scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"')," +
 										 ".kalei-page__item h2:contains('"+$(ev.currentTarget).text()+"')").offset().top - 60
-					}, '200');
+					}, '200', function() {
+						$('body').removeClass('nav-open');
+					});
 				});
 
+				var timer;
+				flag = false;
+
 				$(window).scroll(function () {
+					if(!flag) {
+						flag = true;
+						$('.kalei-nav').addClass('is-disabled');
+					}
+					clearTimeout(timer);
+					timer = setTimeout(function() {
+						$('.kalei-nav').removeClass('is-disabled');
+						flag = false;
+					}, 200);
 					$(".kalei-page__item").each(function(){
 						if ( that.is_on_screen($(this), 60) ) {
 							$(".kalei-sheet-submenu li").removeClass('active');
@@ -241,7 +244,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				// But we can think for something more smarter.
 
 				// Now it works like a charm! Fixed by: @hiulit
-				//If the last element of the page is higher than window.height(),
+				// If the last element of the page is higher than window.height(),
 				// some additional padding-bottom is added so it stops at the top of the page.
 				// If the last element is lower, it doesn't add any padding-bottom.
 

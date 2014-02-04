@@ -1,8 +1,102 @@
 // MENU - start
 
+@include keyframes(slideOpen) {
+	from {
+		@include transform(translateX(0));
+	}
+	to {
+		@include transform(translateX(300px));
+	}
+}
+
+@include keyframes(slideClosed) {
+	from {
+		@include transform(translateX(300px));
+	}
+	to {
+		@include transform(translateX(0));
+	}
+}
+
+.nav-open {
+	.kalei-menu,
+	.kalei-page,
+	.kalei-nav {
+		@include animation-name(slideOpen);
+		@include animation-duration(.3s);
+		@include animation-timing-function(ease-out);
+		@include animation-fill-mode(forwards);
+		@include prefixer(backface-visibility, hidden, webkit moz spec);
+	}
+}
+
+.kalei-menu,
+.kalei-page,
+.kalei-nav {
+	@include animation-name(slideClosed);
+	@include animation-duration(.2s);
+	@include animation-timing-function(ease-in);
+	@include animation-fill-mode(forwards);
+	@include prefixer(backface-visibility, hidden, webkit moz o spec);
+}
+
+.loading {
+	.kalei-menu {
+		@include animation(none);
+	}
+}
+
+.kalei-nav {
+	display: none;
+	background-color: $fontColor;
+	color: #fff;
+	left: 0;
+	@include prem(padding, 10);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 2;
+}
+
+.loading .kalei-nav {
+	@include animation(none);
+}
+
+@media only screen and (max-width : 1023px) {
+	.kalei-wrapper {
+		overflow: hidden;
+	}
+	.kalei-nav {
+		display: block;
+	}
+	.kalei-menu {
+		left: -300px;
+		width: 300px !important;
+		z-index: 3;
+	}
+	.kalei-page {
+		width: 100% !important;
+		overflow-x: hidden;
+	}
+	.nav-open {
+		.kalei-page {
+			overflow: hidden;
+		}
+		.kalei-menu {
+			box-shadow: 0px 0px 30px 0px #000;
+		}
+		.kalei-menu__list {
+			border: none;
+			border-radius: 0;
+			bottom: 0;
+			left: 0;
+			top: 0;
+		}
+	}
+}
+
 .kalei-menu {
 	height: 100%;
-	@include prem(padding, 20);
 	position: fixed;
 }
 
