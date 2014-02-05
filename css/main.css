@@ -1,146 +1,3 @@
-@-webkit-keyframes slideOpen {
-  from {
-    -webkit-transform: translateX(0); }
-
-  to {
-    -webkit-transform: translateX(300px); } }
-
-@-moz-keyframes slideOpen {
-  from {
-    -moz-transform: translateX(0); }
-
-  to {
-    -moz-transform: translateX(300px); } }
-
-@-o-keyframes slideOpen {
-  from {
-    -o-transform: translateX(0); }
-
-  to {
-    -o-transform: translateX(300px); } }
-
-@keyframes slideOpen {
-  from {
-    transform: translateX(0); }
-
-  to {
-    transform: translateX(300px); } }
-
-@-webkit-keyframes slideClosed {
-  from {
-    -webkit-transform: translateX(300px); }
-
-  to {
-    -webkit-transform: translateX(0); } }
-
-@-moz-keyframes slideClosed {
-  from {
-    -moz-transform: translateX(300px); }
-
-  to {
-    -moz-transform: translateX(0); } }
-
-@-o-keyframes slideClosed {
-  from {
-    -o-transform: translateX(300px); }
-
-  to {
-    -o-transform: translateX(0); } }
-
-@keyframes slideClosed {
-  from {
-    transform: translateX(300px); }
-
-  to {
-    transform: translateX(0); } }
-
-.nav-open .kalei-menu,
-.nav-open .kalei-page,
-.nav-open .kalei-nav {
-  -webkit-animation-name: slideOpen;
-  -moz-animation-name: slideOpen;
-  animation-name: slideOpen;
-  -webkit-animation-duration: 0.3s;
-  -moz-animation-duration: 0.3s;
-  animation-duration: 0.3s;
-  -webkit-animation-timing-function: ease-out;
-  -moz-animation-timing-function: ease-out;
-  animation-timing-function: ease-out;
-  -webkit-animation-fill-mode: forwards;
-  -moz-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  backface-visibility: hidden; }
-
-.kalei-menu,
-.kalei-page,
-.kalei-nav {
-  -webkit-animation-name: slideClosed;
-  -moz-animation-name: slideClosed;
-  animation-name: slideClosed;
-  -webkit-animation-duration: 0.2s;
-  -moz-animation-duration: 0.2s;
-  animation-duration: 0.2s;
-  -webkit-animation-timing-function: ease-in;
-  -moz-animation-timing-function: ease-in;
-  animation-timing-function: ease-in;
-  -webkit-animation-fill-mode: forwards;
-  -moz-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
-  backface-visibility: hidden; }
-
-.loading .kalei-menu {
-  -webkit-animation: none;
-  -moz-animation: none;
-  animation: none; }
-
-.kalei-nav {
-  display: none;
-  background-color: #515151;
-  color: #fff;
-  left: 0;
-  padding: 10px;
-  padding: 0.625rem;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 2; }
-
-.loading .kalei-nav {
-  -webkit-animation: none;
-  -moz-animation: none;
-  animation: none; }
-
-@media only screen and (max-width: 1023px) {
-  .kalei-wrapper {
-    overflow: hidden; }
-
-  .kalei-nav {
-    display: block; }
-
-  .kalei-menu {
-    left: -300px;
-    width: 300px !important;
-    z-index: 3; }
-
-  .kalei-page {
-    width: 100% !important;
-    overflow-x: hidden; }
-
-  .nav-open .kalei-page {
-    overflow: hidden; }
-  .nav-open .kalei-menu {
-    box-shadow: 0px 0px 30px 0px #000; }
-  .nav-open .kalei-menu__list {
-    border: none;
-    border-radius: 0;
-    bottom: 0;
-    left: 0;
-    top: 0; } }
 .kalei-menu {
   height: 100%;
   position: fixed; }
@@ -414,6 +271,56 @@ pre[class*="language-"] {
   padding: 40px;
   padding: 2.5rem; }
 
+.kalei-nav {
+  display: none;
+  background-color: #515151;
+  color: #fff;
+  cursor: pointer;
+  left: 0;
+  padding: 10px;
+  padding: 0.625rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2; }
+
+#nav-toggle {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3C%21--%20Generated%20by%20IcoMoon.io%20--%3E%0A%3C%21DOCTYPE%20svg%20PUBLIC%20%22-//W3C//DTD%20SVG%201.1//EN%22%20%22http%3A//www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd%22%3E%0A%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20width%3D%2221%22%20height%3D%2224%22%20viewBox%3D%220%200%2021%2024%22%3E%0A%09%3Cpath%20d%3D%22M20.571%2018v1.714q0%200.348-0.254%200.603t-0.603%200.254h-18.857q-0.348%200-0.603-0.254t-0.254-0.603v-1.714q0-0.348%200.254-0.603t0.603-0.254h18.857q0.348%200%200.603%200.254t0.254%200.603zM20.571%2011.143v1.714q0%200.348-0.254%200.603t-0.603%200.254h-18.857q-0.348%200-0.603-0.254t-0.254-0.603v-1.714q0-0.348%200.254-0.603t0.603-0.254h18.857q0.348%200%200.603%200.254t0.254%200.603zM20.571%204.286v1.714q0%200.348-0.254%200.603t-0.603%200.254h-18.857q-0.348%200-0.603-0.254t-0.254-0.603v-1.714q0-0.348%200.254-0.603t0.603-0.254h18.857q0.348%200%200.603%200.254t0.254%200.603z%22%20fill%3D%22%23ffffff%22%20/%3E%0A%3C/svg%3E%0A");
+  height: 24px;
+  height: 1.5rem;
+  width: 24px;
+  width: 1.5rem; }
+
+@media only screen and (max-width: 1023px) {
+  .kalei-wrapper {
+    overflow: hidden; }
+
+  .kalei-nav {
+    display: block; }
+
+  .kalei-menu {
+    left: -75%;
+    width: 75% !important;
+    z-index: 3; }
+
+  .kalei-page {
+    width: 100% !important; }
+
+  .kalei-menu__list {
+    border: none;
+    border-radius: 0;
+    bottom: 0;
+    left: 0;
+    top: 0; }
+
+  .nav-open .kalei-nav {
+    left: 75%; }
+  .nav-open .kalei-menu {
+    box-shadow: 0px 0px 30px 0px #000;
+    left: 0; }
+  .nav-open .kalei-page {
+    position: relative;
+    left: 75%; } }
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

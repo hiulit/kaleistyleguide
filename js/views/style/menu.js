@@ -94,11 +94,20 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				this.$el.find('a.active').removeClass('active');
 				$(ev.currentTarget).addClass('active');
 
-				$('body').animate({ // Scroll to top
-					scrollTop: 0
-				}, '200', function() {
-					// console.log("Finished animating");
-				});
+				var scroll = $(window).scrollTop();
+				if(scroll !== 0) {
+					$('body').animate({ // Scroll to top
+						scrollTop: 0
+					}, '200');
+				}
+			},
+			'click .kalei-sheet-submenu li': function(ev) {
+				$('body').removeClass('nav-open');
+
+				$('html, body').animate({
+					scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"')," +
+									 ".kalei-page__item h2:contains('"+$(ev.currentTarget).text()+"')").offset().top - 60
+				}, '200');
 			}
 		}
 	});

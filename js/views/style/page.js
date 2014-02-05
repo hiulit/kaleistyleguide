@@ -18,17 +18,19 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 		render: function () {
 			that = this;
 
-			var navToggle = $('#nav-toggle');
+			var navToggle = $('.nav');
 
-			navToggle.on('click', function(){
+			navToggle.click(function(){
 				$('body').removeClass('loading').toggleClass('nav-open');
 			});
 
-			$('.kalei-page').on('click', function(){
+			$('.kalei-page').click(function(){
+				console.log('kalei pageeeeeeeeeeeeeeeeeeeee');
 				$('body').removeClass('nav-open');
 			});
 
 			$('.kalei-menu__list__item__link').removeClass('active');
+
 			if(window.location.hash === '') {
 				$('.js-kalei-home').addClass('active');
 			} else {
@@ -114,11 +116,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 							while ((result = importReg.exec(stylesheet)) !== null ) {
 								var subash = result[1];
-								// console.log(subash);
 								subash = subash.replace(/"|'/gi, "");
-								// console.log(subash);
 								subash = subash.split(",");
-								// console.log(subash);
 								for(i=0; i<subash.length; i++) {
 
 									var path = subash[i].trim();
@@ -129,7 +128,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 									var text = Sass.readFile(path) || Module.read(url);
 									Sass.writeFile(path, text);
 									console.log('path ----> ', path);
-									// console.log('text ----> ', text);
 
 									// importReg.lastIndex++;
 
@@ -137,11 +135,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 									while ((result = importReg2.exec(text)) !== null ) {
 										var subash = result[1];
-										// console.log(subash);
 										subash = subash.replace(/"|'/gi, "");
-										// console.log(subash);
 										subash = subash.split(",");
-										// console.log(subash);
 										for(i=0; i<subash.length; i++) {
 
 											var path = subash[i].trim();
@@ -152,7 +147,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 											var text2 = Sass.readFile(path) || Module.read(url);
 											Sass.writeFile(path, text2);
 											console.log('path ----> ', path);
-											// console.log('text ----> ', text);
 
 											// importReg2.lastIndex++;
 										}
@@ -182,7 +176,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 				console.log((new Date()).getTime() + " bottom", page)
 
-
 				$('.kalei-sheet-submenu').slideUp(200);
 				var submenu = $('<ul>');
 
@@ -195,6 +188,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					}
 
 				});
+
 				$('li:first-child', submenu).addClass('active');
 				$('.kalei-sheet-submenu', $('[data-sheet="' + that.options.style + '"]')).html(submenu).slideDown(200);
 				////////////NEEDS TO BE EXPORTED TO Menu.js
@@ -205,30 +199,13 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				Prism.highlightAll();
 				fileHighlight(); // Prism's File Highlight plugin function.
 
-				//Fixed by pivanov
-				//that.compute_css
-				$(".kalei-sheet-submenu li").on('click', function(ev) {
-					$('html, body').animate({
-						scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"')," +
-										 ".kalei-page__item h2:contains('"+$(ev.currentTarget).text()+"')").offset().top - 60
-					}, '200', function() {
-						$('body').removeClass('nav-open');
-					});
-				});
-
-				var timer;
-				flag = false;
-
 				$(window).scroll(function () {
-					if(!flag) {
-						flag = true;
+					var scroll = $(window).scrollTop();
+					if(scroll === 0) {
+						$('.kalei-nav').removeClass('is-disabled');
+					} else {
 						$('.kalei-nav').addClass('is-disabled');
 					}
-					clearTimeout(timer);
-					timer = setTimeout(function() {
-						$('.kalei-nav').removeClass('is-disabled');
-						flag = false;
-					}, 200);
 					$(".kalei-page__item").each(function(){
 						if ( that.is_on_screen($(this), 60) ) {
 							$(".kalei-sheet-submenu li").removeClass('active');
