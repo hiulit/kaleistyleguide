@@ -181,6 +181,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 				////////////NEEDS TO BE EXPORTED TO Menu.js
 				_.each(page.blocks, function (block) {
+					console.log('page.blocks', page.blocks);
 					if (block.heading != "") {
 						var li = $('<li>');
 						li.append($('<span>').text(block.heading));
@@ -328,7 +329,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 		},
 
 		parse_commentblock: function (comment_block_text) {
-			//Remove /* & */
+			// Remove /* & */
 			comment_block_text = comment_block_text.replace(/(?:\/\*)|(?:\*\/)/gi, '');
 
 			marked.setOptions(_.extend({
@@ -339,7 +340,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			));
 
 			var lexedCommentblock = marked.lexer(comment_block_text);
-			console.log(lexedCommentblock);
+			// console.log(lexedCommentblock);
 			var lexerLinks = lexedCommentblock.links || {}; // Lexer appends definition links to returned token object.
 
 			var return_val = [];

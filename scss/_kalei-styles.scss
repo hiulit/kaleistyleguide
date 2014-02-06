@@ -5,28 +5,7 @@
 	position: fixed;
 }
 
-.kalei-menu__heading > h1,
-.kalei-menu__list__item > h3 {
-	background-color: $menuColorActive;
-	color: #fff;
-	@include prem(margin, 0);
-	@include prem(padding-bottom, 10);
-	@include prem(padding-left, 20);
-	@include prem(padding-top, 10);
-	@include prem(padding-right, 10);
-
-}
-
-.kalei-menu__heading {
-	display: block;
-	text-decoration: none;
-	h1 {
-		@include font-size(22);
-		@include max-ellipsis(100%);
-	}
-}
-
-.kalei-menu__list {
+.kalei-menu__list { // ul
 	background-color: #fff;
 	border: 1px solid #ccc;
 	border-radius: 4px;
@@ -43,13 +22,28 @@
 	@include prem(top, 20);
 }
 
-.kalei-menu__list__item {
+.kalei-menu__list__item { // ul > li
+	> h1 {
+		@include font-size(22);
+		@include max-ellipsis(100%);
+	}
 	> h3 {
 		@include font-size(20);
 	}
+	> h1,
+	> h3 {
+		background-color: $menuColorActive;
+		color: #fff;
+		@include prem(margin, 0);
+		@include prem(padding-bottom, 10);
+		@include prem(padding-left, 20);
+		@include prem(padding-top, 10);
+		@include prem(padding-right, 10);
+	}
 }
 
-.kalei-menu__list__item__list {
+
+.kalei-menu__list__item__list { // ul > li > ul
 	margin: 0;
 	padding: 0;
 }
@@ -236,7 +230,7 @@ pre[class*="language-"] {
 // }
 
 // .nav-open {
-// 	.kalei-wrapper {
+// 	.kalei {
 // 		@include animation-name(slideOpen);
 // 		@include animation-duration(.3s);
 // 		@include animation-timing-function(ease-out);
@@ -245,7 +239,7 @@ pre[class*="language-"] {
 // 	}
 // }
 
-// .kalei-wrapper {
+// .kalei {
 // 	@include animation-name(slideClosed);
 // 	@include animation-duration(.2s);
 // 	@include animation-timing-function(ease-in);
@@ -284,7 +278,7 @@ pre[class*="language-"] {
 }
 
 @media only screen and (max-width : 1023px) {
-	.kalei-wrapper {
+	.kalei {
 		overflow: hidden;
 	}
 	.kalei-nav {

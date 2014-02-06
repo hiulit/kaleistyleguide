@@ -11,19 +11,25 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 	var DashboardPage = Backbone.View.extend({
 		el: '.js-kalei-menu',
 		render: function () {
+
 			var that = this;
+
 			that.$el.html('Loading styles');
 
+			// If style sheet is defined in config.js
 			if(config.css_paths) {
-				config.css_path = config.css_paths[0]
+				config.css_path = config.css_paths[0];
 			}
+
+			var page = {blocks:[]};
 
 			require(['text!' + config.css_path], function (styles) {
 				var masterStyle = config.css_path.substr(config.css_path.lastIndexOf('/')+1);
+
 				var markedOpts = _.extend({ sanitize: false, gfm: true }, config.marked_options || {});
+				marked.setOptions(markedOpts);
 
 				var parser = new jscssp();
-				marked.setOptions(markedOpts);
 				var stylesheet = parser.parse(styles, false, true);
 				var menus = [];
 				var menuTitle = '';
@@ -33,6 +39,8 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				};
 
 				_.each(stylesheet.cssRules, function(rule) {
+					// If /* Comment */
+					// console.log('rule', rule);
 					if(rule.type === 101) {
 						var comment = rule.parsedCssText;
 						comment = comment.replace('/*', '');
@@ -43,30 +51,24 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 						_.each(comments, function (comment) {
 							var tokens = [comment];
 							tokens.links = defLinks;
-
+							// Returns <h1>
 							if(comment.type === 'heading' && comment.depth === 1) {
 								menuTitle = marked.parser(tokens);
 							}
+							if(comment.type === 'heading' && comment.depth === 2) {
+								// console.log('heading 2 -----> ', comment);
+							}
+							// Returns <h3>
 							if(comment.type === 'heading' && comment.depth === 3) {
 								menus.push(_.extend({}, currentMenu));
 								currentMenu.sheets = [];
 								currentMenu.category = marked.parser(tokens);
 							}
-
 						});
-
 					}
+					// If @import
 					if(rule.type === 3) {
 						var sheet = rule.href.substr(rule.href.indexOf('(')+2, rule.href.indexOf(')')-rule.href.indexOf('(')-3);
-
-						// var newSheet = sheet;
-						// newSheet = newSheet.replace(/-/g, ' '); // Removes dash
-						// newSheet = newSheet.substr(0, newSheet.length - 4); // Remove '.css'
-						// String.prototype.capitalize = function() { // Function to capitalize string
-						// 	return this.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
-						// };
-						// newSheet = newSheet.capitalize(); // Capitalizes string
-
 						currentMenu.sheets.push(sheet);
 					}
 				});
@@ -76,18 +78,19 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 						currentMenu.sheets.push(config.css_paths[i])
 					}
 				}
+
 				menus.push(currentMenu);
+				// console.log('currentMenu ---> ', currentMenu);
 
 				$(that.el).html(_.template(dashboardPageTemplate, {_:_, menuTitle: menuTitle, menus: menus, entry: masterStyle}));
 				$('[href="' + window.location.hash + '"]').addClass('active');
 				if(window.location.hash === '') {
-				$('.js-kalei-home').addClass('active');
+					$('.js-kalei-home').addClass('active');
 				}
-			});
-			// _.each($('.kalei-menu__list__item__link'), function() {
-			// 	console.log($('.kalei-menu__list__item__link').text());
-			// });
 
+
+				
+			});
 		},
 		events: {
 			'click .kalei-menu__list__item__link': function (ev) {
