@@ -40,7 +40,6 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 
 				_.each(stylesheet.cssRules, function(rule) {
 					// If /* Comment */
-					// console.log('rule', rule);
 					if(rule.type === 101) {
 						var comment = rule.parsedCssText;
 						comment = comment.replace('/*', '');
@@ -53,16 +52,19 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 							tokens.links = defLinks;
 							// Returns <h1>
 							if(comment.type === 'heading' && comment.depth === 1) {
-								menuTitle = marked.parser(tokens);
-							}
+								// menuTitle = marked.parser(tokens);
+								menus.push(_.extend({}, currentMenu));
+								currentMenu.sheets = [];
+								currentMenu.category = marked.parser(tokens);
+							} // Returns <h2>
 							if(comment.type === 'heading' && comment.depth === 2) {
 								// console.log('heading 2 -----> ', comment);
 							}
 							// Returns <h3>
 							if(comment.type === 'heading' && comment.depth === 3) {
-								menus.push(_.extend({}, currentMenu));
-								currentMenu.sheets = [];
-								currentMenu.category = marked.parser(tokens);
+								// menus.push(_.extend({}, currentMenu));
+								// currentMenu.sheets = [];
+								// currentMenu.category = marked.parser(tokens);
 							}
 						});
 					}
@@ -88,8 +90,6 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 					$('.js-kalei-home').addClass('active');
 				}
 
-
-				
 			});
 		},
 		events: {

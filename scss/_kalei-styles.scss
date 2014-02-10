@@ -24,21 +24,21 @@
 
 .kalei-menu__list__item { // ul > li
 	> h1 {
+		background-color: $menuColorActive;
 		@include font-size(22);
 		@include max-ellipsis(100%);
-	}
-	> h3 {
-		@include font-size(20);
-	}
-	> h1,
-	> h3 {
-		background-color: $menuColorActive;
-		color: #fff;
-		@include prem(margin, 0);
 		@include prem(padding-bottom, 10);
 		@include prem(padding-left, 20);
 		@include prem(padding-top, 10);
 		@include prem(padding-right, 10);
+	}
+	> h2 {
+		@include font-size(16);
+	}
+	> h1,
+	> h2 {
+		color: #fff;
+		@include prem(margin, 0);
 	}
 }
 
@@ -108,27 +108,29 @@
 		color: $menuColor;
 		cursor: pointer;
 		@include prem(padding-right, 20);
-		span {
+		h3 {
 			@include inline-block;
 			@include font-size(14);
+			font-weight: normal;
+			margin: 0;
 			@include max-ellipsis(100%);
 			vertical-align: middle;
 		}
 		&:hover{
-			span {
+			h3 {
 				text-decoration: underline;
 			}
 		}
 		&.active {
 			cursor: default;
-			span {
+			h3 {
 				background: $menuColor;
 				border-radius: 4px;
 				color: #fff;
 				@include prem(padding, 0 4);
 			}
 			&:hover{
-				span {
+				h3 {
 					text-decoration: none;
 				}
 			}

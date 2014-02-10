@@ -1,22 +1,15 @@
 <ul class="kalei-menu__list">
-	<li class="kalei-menu__list__item">
-		<%= menuTitle %>
-	</li>
-	<li class="kalei-menu__list__item" data-sheet="<%= entry %>">
-		<a class="kalei-menu__list__item__link js-kalei-home" href="#" >
-			<%= entry %>
-		</a>
-		<div class="kalei-sheet-submenu"></div>
-	</li>
 	<% _.each(menus, function (menu) { %>
 		<li class="kalei-menu__list__item">
 			<%= menu.category %>
 			<ul class="kalei-menu__list__item__list">
 				<% _.each(menu.sheets, function (sheet) { %>
 					<li class="kalei-menu__list__item" data-sheet="<%= sheet %>">
-						<a class="kalei-menu__list__item__link" href="#/style/<%= sheet %>">
-							<%= sheet %>
-						</a>
+						<h2>
+							<a class="kalei-menu__list__item__link" href="#/style/<%= sheet %>">
+								<%= sheet %>
+							</a>
+						</h2>
 						<div class="kalei-sheet-submenu"></div>
 					</li>
 				<% }); %>

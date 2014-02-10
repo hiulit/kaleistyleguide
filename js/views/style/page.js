@@ -18,25 +18,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 		render: function () {
 			that = this;
 
-			var navToggle = $('.nav');
-
-			navToggle.click(function(){
-				$('body').removeClass('loading').toggleClass('nav-open');
-			});
-
-			$('.kalei-page').click(function(){
-				console.log('kalei pageeeeeeeeeeeeeeeeeeeee');
-				$('body').removeClass('nav-open');
-			});
-
-			$('.kalei-menu__list__item__link').removeClass('active');
-
-			if(window.location.hash === '') {
-				$('.js-kalei-home').addClass('active');
-			} else {
-				$('[href="' + window.location.hash + '"]').addClass('active');
-			}
-
 			var styleUrl;
 			var configDir;
 
@@ -63,6 +44,27 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			// If any other stylesheet is already loaded, don't load it again.
 			if(!$('link[href="' + styleUrl + '"]').length) {
 				$('head').append('<link rel="stylesheet" href="' + styleUrl + '"" type="text/' + styleExt +'" />');
+			}
+
+			var navToggle = $('.nav');
+
+			navToggle.click(function(){
+				$('body').removeClass('loading').toggleClass('nav-open');
+			});
+
+			$('.kalei-page').click(function(){
+				$('body').removeClass('nav-open');
+			});
+
+			$('.kalei-menu__list__item__link').removeClass('active');
+
+			if(window.location.hash === '') {
+				window.location.href =	window.location.protocol +
+											'//' + window.location.hostname +
+											(window.location.port === '' ? '' : ':'+ window.location.port) +
+											window.location.pathname + '#/style/kalei-styles.css';
+			} else {
+				$('[href="' + window.location.hash + '"]').addClass('active');
 			}
 
 			require(['text!'+ styleUrl], function (stylesheet) {
@@ -181,10 +183,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 				////////////NEEDS TO BE EXPORTED TO Menu.js
 				_.each(page.blocks, function (block) {
-					console.log('page.blocks', page.blocks);
+					// console.log('page.blocks', page.blocks);
 					if (block.heading != "") {
 						var li = $('<li>');
-						li.append($('<span>').text(block.heading));
+						li.append($('<h3>').text(block.heading));
 						submenu.append(li);
 					}
 
@@ -196,8 +198,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 				$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config}));
 
-				// Colour Coding in code Block.
-				Prism.highlightAll();
+				Prism.highlightAll(); // Prism's colour coding in <code> blocks.
 				fileHighlight(); // Prism's File Highlight plugin function.
 
 				$(window).scroll(function () {
@@ -380,30 +381,29 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 						}
 						break;
 					case "heading":
-						if (block.heading != "") {  // Multiple headings in one comment block.
-													// We want to break them up.
+						if (block.heading != "" && comment.depth === 1) {
+							// Multiple headings in one comment block.
+							// We want to break them up.
 							// Parse the content blocks and return the HTML to display
 							block.content.links = lexerLinks
 							block.content = marked.parser(block.content)
 							return_val.push(block);
 							block = _.clone(block_def);
 						}
-						if (comment.depth <= 2) {
+						if (comment.depth === 1) {
 							block.heading = comment.text;
 							block.content.push(comment);
-						} else if (comment.depth == 3) { // Import statement title.
+						} else if (comment.depth >= 2) {
 							block.stylesheet = comment.text;
-							//block.heading = "Stylesheets"
-							//this is an import statement
-							//if ($.inArray("Stylesheets", ))
-							//console.log("else", comment)
+							block.content.push(comment);
+
 						}
 						break;
 					default:
 						// Push everything else.
 						block.content.push(comment);
 						break;
-				} // Switch.
+				}
 			});
 
 			// Parse the content blocks and return the HTML to display.

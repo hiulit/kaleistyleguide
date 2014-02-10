@@ -1,22 +1,22 @@
-/* 
-## Github buttons
-### Licensed under Unlicense
+/*
+# Github buttons
+## Licensed under Unlicense
  http://github.com/necolas/css3-github-buttons
- 
+
 This is an example bundled with Kalei(not used in Kalei)
 
  */
 
 
-/* 
-## Base Button
+/*
+# Base Button
 
 ```markup
-<a href="#" class="button primary">Publish post</a> 
+<a href="#" class="button primary">Publish post</a>
 <a href="#" class="button">Save as draft</a>
 ```
 
-## Grouped buttons
+# Grouped buttons
 
 Groups of buttons can be created by wrapping them in an element given a class of button-group. A less important group of buttons can be marked out by adding a further class, minor-group.
 
@@ -29,7 +29,7 @@ Groups of buttons can be created by wrapping them in an element given a class of
 </ul>
 ```
 
-## Mixed group
+# Mixed group
 
 Displaying a mixture of grouped and standalone buttons, as might be seen in a toolbar, can be done by adding another wrapping element with the class button-container.
 

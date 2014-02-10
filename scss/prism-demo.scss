@@ -28,7 +28,7 @@ to suit yourself.
 */
 
 /*
-## Caution!
+# Caution!
 
 Kalei is bundled with a modified version of Prism
 due to **plugins** added to it.
@@ -45,7 +45,7 @@ If you want to add or remove some of Prism's plugins, search for:
 
 
 /*
-## Example Usage
+# Example Usage
 
 It's pretty simple.
 
@@ -73,7 +73,7 @@ the code block with syntax highlighting.
 
 
 /*
-## More languages
+# More languages
 
 Prism comes with a bunch of languages, such as:
 
@@ -89,7 +89,7 @@ and many more.
 
 Just add the language after the ``` and you're good to go.
 
-* **Markup (HTML)**
+## Markup (HTML)
 
 ```markup
 <section>
@@ -98,7 +98,7 @@ Just add the language after the ``` and you're good to go.
 </section>
 ```
 
-* **CSS (or SCSS)**
+## CSS (or SCSS)
 
 ```scss
 @mixin silly-links {
@@ -111,7 +111,7 @@ Just add the language after the ``` and you're good to go.
 @include silly-links;
 ```
 
-* **JavaScript (or jQuery)**
+## JavaScript (or jQuery)
 
 ```javascript
 function showValues() {
@@ -132,7 +132,7 @@ As mentioned before, Prism comes with all the languages in the list.
 
 
 /*
-##Plugins
+# Plugins
 
 Prism comes with:
 
@@ -141,7 +141,7 @@ Prism comes with:
 * File Highlight
 
 
-* **Autolinker**
+## Autolinker
 
 URLs and emails will be linked automatically.
 
@@ -150,7 +150,7 @@ underscore: 'libs/underscore/underscore-min', // https://github.com/amdjs
 backbone: 'libs/backbone/backbone-min', // https://github.com/amdjs
 ```
 
-* **WebPlatform Docs**
+## WebPlatform Docs
 
 Makes tokens link to [WebPlatform.org documentation](http://docs.webplatform.org/).
 
@@ -162,7 +162,7 @@ Makes tokens link to [WebPlatform.org documentation](http://docs.webplatform.org
 }
 ```
 
-* **File Highlight**
+## File Highlight
 
 Use the `data-src` attribute on an empty `<pre>` element, like so:
 

@@ -1,5 +1,6 @@
 @import "global";
-@import "kalei-styles";
+@import "vendor/normalize";
+@import "prism/prism";
 
 * {
 	@include box-sizing(border-box);
@@ -122,3 +123,5 @@ img {
 	cursor: default;
 	@include opacity(.5);
 }
+
+@import "kalei-styles";
