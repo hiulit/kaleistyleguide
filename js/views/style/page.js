@@ -179,7 +179,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 				console.log((new Date()).getTime() + " bottom", page)
 
-				$('.kalei-sheet-submenu').slideUp(200);
+				$('.kalei-sheet-submenu').hide();
 				var submenu = $('<ul>');
 
 				////////////NEEDS TO BE EXPORTED TO Menu.js
