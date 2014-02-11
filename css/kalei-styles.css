@@ -1,9 +1,11 @@
 /*
 # Kalei - Style guide
 
-<iframe src="http://ghbtns.com//github-btn.html?user=thomasdavis&repo=kaleistyleguide&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
+<iframe src="http://ghbtns.com//github-btn.html?user=hiulit&repo=kaleistyleguide&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
 
-<iframe src="http://ghbtns.com//github-btn.html?user=thomasdavis&repo=kaleistyleguide&type=fork&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="146px" height="30px"></iframe>
+<iframe src="http://ghbtns.com//github-btn.html?user=hiulit&repo=kaleistyleguide&type=fork&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="146px" height="30px"></iframe>
+
+This is a **fork** from [Thomas Davis' Kalei - Style guide](https://github.com/thomasdavis/kaleistyleguide).
 
 */
 
@@ -15,7 +17,7 @@ This project aims at making sure your style sheets are fully documented whilst b
 
 To do this, it actually uses your live style sheets in so that, at anytime, you can review how your style guide looks.
 
-This website is a live example generated from Kalei's `style.css`.
+This website is a live example generated from Kalei's `imports.css`.
 
 */
 
@@ -36,13 +38,13 @@ This website is a live example generated from Kalei's `style.css`.
 /*
 # Getting started
 
-1. Download the repository `git clone git://github.com/thomasdavis/kaleistyleguide.git`.
+1. Download the repository `git clone https://github.com/hiulit/kaleistyleguide.git`.
 2. Serve it on a HTTP server and it should work!
-3. Edit `js/config.js` to point at your own `styles.css`.
+3. Edit `js/config.js` to point at your own `imports.css`.
 
-**Rails gem**
+This is how this very `imports.css` looks like:
 
-1. Install quickly and easily with the [rails gem](https://github.com/andrewhavens/kalei-ruby-gem).
+<pre data-src="css/imports.css"></pre>
 
 */
 
