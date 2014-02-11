@@ -23,6 +23,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 			if(this.options.style === null) {
 				this.options.style = config.css_path.substr(config.css_path.lastIndexOf('/')+1);
+				console.log(this.options.style);
 			}
 
 			if(this.options.style.substr(0,1) === '/') {
