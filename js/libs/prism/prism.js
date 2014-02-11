@@ -1088,7 +1088,7 @@ function getLanguage(tag) {
 var fileHighlight = (function fileHighlight(){	// Reference to fileHighlight function.
 												
 												// This is a "feature" that doesn't
-												// come with the default plugin	.
+												// come with the default plugin.
 
 	if (!self.Prism || !self.document || !document.querySelector) {
 		return;
@@ -1097,6 +1097,8 @@ var fileHighlight = (function fileHighlight(){	// Reference to fileHighlight fun
 	var Extensions = {
 		'js': 'javascript',
 		'html': 'markup',
+		'css': 'scss',		// This is a "feature" that doesn't
+		'scss': 'scss',		// come with the default plugin.
 		'svg': 'markup'
 	};
 
