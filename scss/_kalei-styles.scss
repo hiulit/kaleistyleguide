@@ -150,6 +150,8 @@
 		a {
 			color: $linkColor;
 			text-decoration: none;
+			white-space: normal;
+			@include hyphenation;
 			&:hover {
 				text-decoration: underline;
 			}
