@@ -13,7 +13,7 @@ This is a **fork** from [Thomas Davis' Kalei - Style guide](https://github.com/t
 /*
 # Generate bootstrap-like documentation for your own CSS!
 
-This project aims at making sure your style sheets are fully documented whilst being synchronized with your webpages styles.
+This project aims at making sure your style sheets are fully documented whilst being synchronized with your project styles.
 
 To do this, it actually uses your live style sheets in so that, at anytime, you can review how your style guide looks.
 
@@ -26,7 +26,7 @@ This website is a live example generated from Kalei's `imports.css`.
 # Main goals and benefits
 
 * Fully documented CSS - No need to explain the benefits.
-* No dependencies, simply download the repository and run in your browser.
+* No dependencies, simply download the repository and run it in your browser.
 * Automatic generation of demo UI components.
 * Easy access for anyone: designers, developers, managers, users, etc.
 * Rapid development of projects by allowing developers to find the correct CSS and HTML for any given UI component.
@@ -39,12 +39,31 @@ This website is a live example generated from Kalei's `imports.css`.
 # Getting started
 
 1. Download the repository `git clone https://github.com/hiulit/kaleistyleguide.git`.
-2. Serve it on a HTTP server (or a local environment using [MAMP](http://www.mamp.info/) or [XAMPP](http://www.apachefriends.org/), etc.) and it should work!
-3. Edit `js/config.js` to point at your own `imports.css`.
+2. Serve it on a HTTP server (or a local environment using [MAMP](http://www.mamp.info/) or
+[XAMPP](http://www.apachefriends.org/), etc.) and it should work!
+3. Edit `js/config.js` to point at your own styles sheets.
+
+By default, Kalei uses `imports.css` as a base style sheet to import all the style sheets that you want to document.
 
 This is how this particular `imports.css` looks like:
 
 <pre data-src="css/imports.css"></pre>
+
+*/
+
+
+/*
+# How to document your style sheets
+
+It's all about the **comments** :)
+
+One of the great things about Kalei is that you can use the same style sheets you're using right now in your project.
+You just need to enter some comments and then the magic happens!  
+So, you end up with a fully documented style sheet and a beautifully auto-generated living style guide for the same price.
+
+## Example
+
+Say that you have this
 
 */
 
