@@ -39,10 +39,10 @@ This website is a live example generated from Kalei's `imports.css`.
 # Getting started
 
 1. Download the repository `git clone https://github.com/hiulit/kaleistyleguide.git`.
-2. Serve it on a HTTP server and it should work!
+2. Serve it on a HTTP server (or a local environment using [MAMP](http://www.mamp.info/) or [XAMPP](http://www.apachefriends.org/), etc.) and it should work!
 3. Edit `js/config.js` to point at your own `imports.css`.
 
-This is how this very `imports.css` looks like:
+This is how this particular `imports.css` looks like:
 
 <pre data-src="css/imports.css"></pre>
 
@@ -57,13 +57,11 @@ Easily show off examples of your components and the HTML to generate them.
 ```markup
 <div class="actions button-container">
 	<a href="#" class="button primary">Compose new</a>
-
 	<div class="button-group">
 		<a href="#" class="button primary">Archive</a>
 		<a href="#" class="button">Report spam</a>
 		<a href="#" class="button danger">Delete</a>
 	</div>
-
 	<div class="button-group minor-group">
 		<a href="#" class="button">Move to</a>
 		<a href="#" class="button">Labels</a>
