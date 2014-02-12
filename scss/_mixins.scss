@@ -1,8 +1,9 @@
-@mixin font-size($sizeValue: $baseFontSize, $lineValue: $sizeValue * 1.5) {
+@mixin font-size($sizeValue: $baseFontSize, $lineValue: /*$sizeValue * */1.5) {
 	font-size: $sizeValue + px;
-	line-height: $lineValue + px;
+	// line-height: $lineValue + px;
 	font-size: ($sizeValue / $baseFontSize) + rem;
-	line-height: ($lineValue / $baseFontSize) + rem;
+	// line-height: ($lineValue / $baseFontSize) + rem;
+	line-height: $lineValue;
 }
 
 @function pem($pxval, $base: $baseFontSize) {

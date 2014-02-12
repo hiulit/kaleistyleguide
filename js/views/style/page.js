@@ -23,7 +23,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 			if(this.options.style === null) {
 				this.options.style = config.css_path.substr(config.css_path.lastIndexOf('/')+1);
-				console.log(this.options.style);
+				// console.log(this.options.style);
 			}
 
 			if(this.options.style.substr(0,1) === '/') {
@@ -38,7 +38,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 			var styleExt = styleUrl.replace(/^.*\./,''); // Returns file extension.
 
-			// If config.css_path stylesheet (default = 'style.css') is already loaded, don't load it again.
+			// If config.css_path stylesheet (default = 'imports.css') is already loaded, don't load it again.
 			if(!$('link[href="' + config.css_path + '"]').length) {
 				$('head').append('<link rel="stylesheet" href="' + config.css_path + '"" type="text/' + styleExt +'" />');
 			}
@@ -59,16 +59,12 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 			$('.kalei-menu__list__item__link').removeClass('active');
 
-			if(window.location.hash === '') {
-				window.location.href =	window.location.protocol +
-											'//' + window.location.hostname +
-											(window.location.port === '' ? '' : ':'+ window.location.port) +
-											window.location.pathname + '#/style/kalei-styles.css';
-			} else {
+			if(window.location.hash !== '') {
 				$('[href="' + window.location.hash + '"]').addClass('active');
 			}
 
 			require(['text!'+ styleUrl], function (stylesheet) {
+				// console.log(styleUrl);
 				var parser = null;
 				var regex = /(?:.*\/)(.*)\.(css|less|sass|scss)$/gi;
 				var result = regex.exec(styleUrl);
@@ -270,18 +266,27 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				stylesheets: []
 			};
 
-			console.log(stylesheet)
-
 			_.each(stylesheet.cssRules, function(rule) {
 				switch (rule.type) {
 					case 1: // Standard rule?
 						break;
 					case 3: // Import Rule (@import)
 						// We need to import jsscp doesn't compile imports.
+						if(window.location.hash === '') {
+							var regex = /@import url\(([^)]*)\);?/gi;
+							var result = regex.exec(rule.parsedCssText);
+							result = result[1].replace(/"|'/gi, "");
+							window.location.href =	window.location.protocol +
+														'//' + window.location.hostname +
+														(window.location.port === '' ? '' : ':'+ window.location.port) +
+														window.location.pathname + '#/style/' + result + '';
+						}
 						stylesheet.deleteRule(rule);
 						break;
 					case 101: // Comment Block.
-						page.blocks = page.blocks.concat(that.parse_commentblock(rule.parsedCssText))
+						if(window.location.hash !== '') {
+							page.blocks = page.blocks.concat(that.parse_commentblock(rule.parsedCssText))
+						}
 						break;
 				}
 			});
@@ -289,8 +294,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			page.css = stylesheet.cssText()
 
 			var parser = new(less.Parser);
-			var stylesheet
-			page.css = ".kalei-page{" + page.css + "}"
+			var stylesheet;
+			page.css = ".kalei-page{" + page.css + "}";
 			parser.parse(page.css, function (err, tree) {
 				stylesheet = tree;
 			});
