@@ -759,6 +759,8 @@ img {
 .kalei-page {
   padding: 20px;
   padding: 1.25rem; }
+  .kalei-page h1 {
+    margin-top: 0; }
   .kalei-page p a,
   .kalei-page ol a,
   .kalei-page ul a {

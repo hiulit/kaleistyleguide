@@ -144,6 +144,9 @@
 
 .kalei-page {
 	@include prem(padding, 20);
+	h1 {
+		margin-top: 0;
+	}
 	p,
 	ol,
 	ul { // So it doesn't mess with PrismJs styles on <pre> and <code> blocks
