@@ -1,6 +1,6 @@
-@import "global";
-@import "vendor/normalize";
-@import "prism/prism";
+@import "partials/global";
+@import "vendor/normalize/normalize";
+@import "vendor/prism/prism";
 
 * {
 	@include box-sizing(border-box);
@@ -124,4 +124,4 @@ img {
 	@include opacity(.5);
 }
 
-@import "kalei-styles";
+@import "partials/kalei-styles";

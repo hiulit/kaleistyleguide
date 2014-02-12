@@ -160,10 +160,9 @@ code[class*="language-"] a[href].url-link:hover,	/* This is a "feature" that doe
 pre[class*="language-"] a[href].url-link:hover,		/* come with the default plugin. */
 code[class*="language-"] a[href].email-link:hover,
 pre[class*="language-"] a[href].email-link:hover,	/* It fixes some styles for */
-code[class*="language-"] a[href].md-link:hover,		/* the File Highlight plugin. */
+code[class*="language-"] a[href].md-link:hover,	/* the File Highlight plugin. */
 pre[class*="language-"] a[href].md-link:hover {
 	cursor: pointer;
 }
 
 /* Styles for Autolinker plugin - end */
-

@@ -46,3 +46,10 @@ It works for **headers**, **paragraphs**, **lists**, **images**, and just about 
     padding-right: 5px;
     padding-right: 0.3125rem;
     width: 25%; }
+
+/*
+# Caution!
+
+This is a nice feature to have when you're creating the style guide, but you should look for and remove `.fixie`
+when using it in production, in order not to create a caos and get fired! ;)
+*/

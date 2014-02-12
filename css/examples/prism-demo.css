@@ -25,21 +25,6 @@ to suit yourself.
 
 */
 /*
-# Caution!
-
-Kalei is bundled with a modified version of Prism
-due to **plugins** added to it.
-
-The modifications are mostly just comments to clarify stuff but some
-are **features** added on it.
-
-If you want to add or remove some of Prism's plugins, search for:
-
-	// This is a "feature" that doesn't
-	// come with the default plugin
-
-*/
-/*
 # Example Usage
 
 It's pretty simple.
@@ -172,5 +157,18 @@ This is Kalei's `index.html`.
 And if something goes wrong...
 
 <pre data-src="wtf.html"></pre>
+
+*/
+/*
+# Caution!
+
+Kalei is bundled with a modified version of Prism due to **plugins** added to it.
+
+The modifications are mostly just comments to clarify stuff but some are **features** added on it.
+
+If you want to add or remove some of Prism's plugins, search for:
+
+	// This is a "feature" that doesn't
+	// come with the default plugin.
 
 */

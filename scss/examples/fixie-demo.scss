@@ -1,4 +1,4 @@
-@import "global";
+@import "../partials/global";
 
 /*
 # Fixie.js
@@ -46,3 +46,10 @@ It works for **headers**, **paragraphs**, **lists**, **images**, and just about 
 		width: 25%;
 	}
 }
+
+/*
+# Caution!
+
+This is a nice feature to have when you're creating the style guide, but you should look for and remove `.fixie`
+when using it in production, in order not to create a caos and get fired! ;)
+*/
