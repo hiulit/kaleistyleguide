@@ -58,12 +58,24 @@ This is how this particular `imports.css` looks like:
 It's all about the **comments** :)
 
 One of the great things about Kalei is that you can use the same style sheets you're using right now in your project.
-You just need to enter some comments and then the magic happens!  
-So, you end up with a fully documented style sheet and a beautifully auto-generated living style guide for the same price.
+How cool is that, right?
+
+You just need to enter some comments and then the magic happens!
+
+You end up with a fully documented style sheet and a beautifully auto-generated living style guide for the same price.
+What a deal!
 
 ## Example
 
-Say that you have this
+Say that you have this css:
+
+```css
+.btn {
+	border: 0;
+	font-size: 14px;
+	padding: 10px;
+}
+```
 
 */
 

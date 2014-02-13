@@ -1,7 +1,7 @@
 /*
 # Prism.js
 
-"Lightweight, robust, elegant syntax highlighting".
+##"Lightweight, robust, elegant syntax highlighting".
 
 [Prism](http://prismjs.com/) is bundled with Kalei.
 
@@ -15,13 +15,14 @@ It comes with:
 	* All
 * Plugins
 	* Autolinker
-	* WebPlatform Docs
 	* File Highlight
 
 But you can use any theme or add any plugin you want.
 
-Just go to http://prismjs.com/download.html and customize it
+Just go to [Prism's download page](http://prismjs.com/download.html) and customize it
 to suit yourself.
+
+*See more info about adding or removing plugins on the **Caution!** section at the bottom.*
 
 */
 /*
@@ -29,23 +30,24 @@ to suit yourself.
 
 It's pretty simple.
 
-Just wrap your code with Markdown code blocks ``` like this:
+Just wrap your code with **Markdown** code blocks `` ``` ``  + `language code` like this:
 
 	```markup
 	<section>
-	  <h1>Heading</h1>
-	  <p>Bunch of awesome content</p>
+		<h1>Heading</h1>
+		<p>Bunch of awesome content</p>
 	</section>
 	```
 
-and Boom! Kalei will automatically render the code as both HTML and
-the code block with syntax highlighting.
+...and **Booooom!**
+
+Kalei will automatically render the code as both HTML and the code block with syntax highlighting.
 
 
 ```markup
 <section>
-  <h1>Heading</h1>
-  <p>Bunch of awesome content</p>
+	<h1>Heading</h1>
+	<p>Bunch of awesome content</p>
 </section>
 ```
 
@@ -63,16 +65,16 @@ Prism comes with a bunch of languages, such as:
 * Python
 * Ruby
 
-and many more.
+...and many more.
 
-Just add the language after the ``` and you're good to go.
+Just add the language after the `` ``` `` and you're good to go.
 
 ## Markup (HTML)
 
 ```markup
 <section>
-  <h1>Heading</h1>
-  <p>Bunch of awesome content</p>
+	<h1>Heading</h1>
+	<p>Bunch of awesome content</p>
 </section>
 ```
 
@@ -80,10 +82,10 @@ Just add the language after the ``` and you're good to go.
 
 ```scss
 @mixin silly-links {
-  a {
-    color: blue;
-    background-color: red;
-  }
+	a {
+		color: blue;
+		background-color: red;
+	}
 }
 
 @include silly-links;
@@ -101,10 +103,10 @@ $( "select" ).on( "change", showValues );
 showValues();
 ```
 
-Take a look at http://prismjs.com/download.html for the full list
-of languages.
+Take a look at [Prism's download page](http://prismjs.com/download.html)
+for the full list of languages.
 
-As mentioned before, Prism comes with all the languages in the list.
+*As mentioned before, Prism comes with all the languages in the list.*
 
 */
 /*
@@ -113,9 +115,7 @@ As mentioned before, Prism comes with all the languages in the list.
 Prism comes with:
 
 * Autolinker
-* WebPlatform Docs
 * File Highlight
-
 
 ## Autolinker
 
@@ -124,18 +124,6 @@ URLs and emails will be linked automatically.
 ```javascript
 underscore: 'libs/underscore/underscore-min', // https://github.com/amdjs
 backbone: 'libs/backbone/backbone-min', // https://github.com/amdjs
-```
-
-## WebPlatform Docs
-
-Makes tokens link to [WebPlatform.org documentation](http://docs.webplatform.org/).
-
-```scss
-.kalei-menu {
-	background-color: #f4f4f4;
-	height: 100%;
-	position: fixed;
-}
 ```
 
 ## File Highlight
@@ -166,9 +154,19 @@ Kalei is bundled with a modified version of Prism due to **plugins** added to it
 
 The modifications are mostly just comments to clarify stuff but some are **features** added on it.
 
-If you want to add or remove some of Prism's plugins, search for:
+If you want to add or remove some of Prism's plugins, search for...
 
 	// This is a "feature" that doesn't
 	// come with the default plugin.
+
+... before touching something.
+
+## Extra caution!
+
+There's a [known issue](https://github.com/LeaVerou/prism/issues/144) with
+**WebPlatform Docs plugin**, so right now I wouldn't encourage you to use it.
+But, if you are so eager to have it because of its awesomeness
+(I won't argue with that, it's awesome), then you should use `.language-scss` instead
+of `.language-css` on code blocks.
 
 */
