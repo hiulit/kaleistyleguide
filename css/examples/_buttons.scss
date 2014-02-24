@@ -1,0 +1,123 @@
+@mixin btnColor ($bgColor, $textColor) {
+
+	$hoverColor: saturate(darken($bgColor, 7), 12);
+	$activeColor: darken(saturate(adjust-hue($bgColor, 1), 24), 16);
+
+	background: $bgColor;
+	border: 1px solid $bgColor;
+	color: $textColor;
+	&:hover {
+		background: $hoverColor;
+		border: 1px solid $hoverColor;
+	}
+	&:active,
+	&:focus {
+		background: $activeColor;
+		border: 1px solid $activeColor;
+	}
+	&.is-disabled,
+	&[disabled] {
+		&:hover,
+		&:active,
+		&:focus {
+			background: $bgColor;
+			border: 1px solid $bgColor;
+		}
+	}
+}
+
+.btn {
+	background: #f3f3f3;
+	border: 1px solid #d9d9d9;
+	box-sizing: border-box;
+	@include inline-block;
+	color: #515151;
+	cursor: pointer;
+	font-family: 'Arial';
+	@include font-size(14, 20);
+	@include prem(min-width, 90); //min-width, 64
+	min-width: 80px\9; // for IE8
+	outline: none;
+	@include prem(padding, 4 14); // 10px 24px;
+	padding: 4px\9; // for IE8
+	text-align: center;
+	vertical-align: middle;
+	+ .btn {
+		@include prem(margin, 0 0 0 4);
+	}
+	&:hover {
+		background: #f2f2f2;
+		border: 1px solid #c7c7c7;
+	}
+	&:active,
+	&:focus {
+		background: #eaeaea;
+		border: 1px solid #c7c7c7;
+	}
+	&.is-disabled,
+	&[disabled] {
+		cursor: default;
+		@include opacity(0.5);
+		&:hover,
+		&:active,
+		&:focus {
+			background: #f3f3f3;
+			border: 1px solid #d9d9d9;
+		}
+	}
+}
+
+a { // Overrides default link styles
+	&.btn {
+		color: #515151;
+		text-decoration: none;
+	}
+}
+
+.btn--primary {
+	@include btnColor(#41b676, #fff);
+}
+
+.btn--secondary {
+	@include btnColor(#5693f4, #fff);
+}
+
+.btn--danger {
+	@include btnColor(#fd6969, #fff);
+}
+
+.btn--mini {
+	@include font-size(11);
+	@include prem(padding, 2 6);
+	min-height: 0;
+	min-width: 0;
+}
+
+.btn-group {
+	@include inline-block;
+	li {
+		float: left;
+	}
+	.btn {
+		@include prem(margin, 0 0 0 -1);
+	}
+	li:first-child {
+		.btn {
+		}
+	}
+	li:last-child {
+		.btn {
+		}
+	}
+	li:not(:first-child):not(:last-child) {
+		.btn {
+		}
+	}
+}
+
+.close { // Special class for "X" as buttons on the corner
+	cursor: pointer;
+	position: absolute;
+	@include prem(top, 10);
+	@include prem(right, 10);
+}
