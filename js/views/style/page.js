@@ -191,7 +191,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 				$('li:first-child', submenu).addClass('active');
 				$('.kalei-sheet-submenu', $('[data-sheet="' + that.options.style + '"]')).html(submenu).slideDown(200);
-				console.log(that.options.style);
+				console.log('that.options.style ----------->', that.options.style);
 				////////////NEEDS TO BE EXPORTED TO Menu.js
 
 				$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config}));
@@ -281,7 +281,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							window.location.href =	window.location.protocol +
 														'//' + window.location.hostname +
 														(window.location.port === '' ? '' : ':'+ window.location.port) +
-														window.location.pathname + '#/style/' + result + '';
+														window.location.pathname + '#/' + result + '';
 						}
 						// stylesheet.deleteRule(rule);
 						break;
