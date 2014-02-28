@@ -90,35 +90,53 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							page = that.compute_less(stylesheet);
 						break;
 					case 'scss':
-
 							var results = [];
+							var myRegexpArray = [];
+							var matchFinal = [];
 							var myString = stylesheet;
 							var myRegexp = /@import[ \("']*([^;]+)[;\)"']*/g;
-							i=0
-							while (match = myRegexp.exec(myString)) {
+							myRegexpArray.push(myRegexp);
+							i=0;
+
+							var re = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
+							var str = stylesheet;
+							var m;
+
+							function findImports(stylesheet) {
+								if((m = re.exec(str)) !== null) {
+									console.log(m[1]);
+									findImports(stylesheet);
+								} else {
+									console.log('noooo');
+								}
+							}
+
+							findImports(stylesheet);
+
+							while(match = myRegexpArray[i].exec(myString)) {
+								// match.lastIndex++;
+								console.log(match.index);
 								// match[0] = @import "global";
 								// match[1] = global"
-								matchFinal = match[1];
+								matchFinal[i] = match[1];
 								// Removes ending " from string.
-								matchFinal = matchFinal.replace(/"|'/gi, "");
-								// Converts into array.
-								// matchFinal =  matchFinal.split(",");	
-								// for(i=0; i<matchFinal.length; i++) {
-									
-									console.log('\nMATCH FINAL ---->', matchFinal);
-									// Creates URL to @import
-									urlPath = styleUrl.replace(/(.*)\/.*(\.scss$)/i, '$1/_'+matchFinal+'$2'); // Needs improvement
-									console.log('URL PATH ---->', urlPath);
-									// Reads file name (i.e. global) & Reads URL path (i.e. localhost/scss/_global).
-									var importStylesheet = Sass.readFile(matchFinal) || Module.read(urlPath);
-									// Writes the style sheet taking the file name (i.e. global) & the style sheet read above.
-									Sass.writeFile(matchFinal, importStylesheet);
-									// console.log('@IMPORT STYLE SHEET \n______\n\n', importStylesheet);
+								matchFinal[i] = matchFinal[i].replace(/"|'/gi, "");
+								console.log('MATCH FINAL ---->', matchFinal[i]);
+								// Creates URL to @import
+								urlPath = styleUrl.replace(/(.*)\/.*(\.scss$)/i, '$1/_'+matchFinal[i]+'$2'); // Needs improvement
+								console.log('URL PATH ---->', urlPath);
+								// Reads file name (i.e. global) & Reads URL path (i.e. localhost/scss/_global).
+								var importStylesheet = Sass.readFile(matchFinal[i]) || Module.read(urlPath);
+								// Writes the style sheet taking the file name (i.e. global) & the style sheet read above.
+								Sass.writeFile(matchFinal[i], importStylesheet);
+								// console.log('@IMPORT STYLE SHEET \n______\n\n', importStylesheet);
 								// }
-									console.log(i);
-									i++;
-									results.push(matchFinal);
-									console.log(results);
+								results.push(matchFinal[i]);
+								console.log(results[i]);
+								myRegexpArray.push(myRegexp);
+								console.log(myRegexpArray[i], i);
+								i++;
+
 							}
 
 							// console.log('match ----> ', match[1]);
