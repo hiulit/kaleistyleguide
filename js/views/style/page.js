@@ -90,129 +90,26 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							page = that.compute_less(stylesheet);
 						break;
 					case 'scss':
-							var results = [];
-							var myRegexpArray = [];
-							var matchFinal = [];
-							var myString = stylesheet;
-							var myRegexp = /@import[ \("']*([^;]+)[;\)"']*/g;
-							myRegexpArray.push(myRegexp);
-							i=0;
 
-							var re = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
-							var str = stylesheet;
-							var m;
-
-							function findImports(stylesheet) {
-								if((m = re.exec(str)) !== null) {
-									console.log(m[1]);
-									findImports(stylesheet);
+							function findImports(str) {
+								var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
+								var match;
+								if((match = regex.exec(str)) !== null) {
+									console.log(match[1]);
+									url = styleUrl.replace(/(.*)\/.*(\.scss$)/i, '$1/_'+match[1]+'$2'); // Needs improvement
+									console.log(url);
+									var imports = Sass.readFile(match[1]) || Module.read(url);
+									Sass.writeFile(match[1], imports);
+									// console.log(imports);
+									findImports(imports);
 								} else {
-									console.log('noooo');
+									console.log('S\'ha acabat!!!');
 								}
 							}
 
 							findImports(stylesheet);
 
-							while(match = myRegexpArray[i].exec(myString)) {
-								// match.lastIndex++;
-								console.log(match.index);
-								// match[0] = @import "global";
-								// match[1] = global"
-								matchFinal[i] = match[1];
-								// Removes ending " from string.
-								matchFinal[i] = matchFinal[i].replace(/"|'/gi, "");
-								console.log('MATCH FINAL ---->', matchFinal[i]);
-								// Creates URL to @import
-								urlPath = styleUrl.replace(/(.*)\/.*(\.scss$)/i, '$1/_'+matchFinal[i]+'$2'); // Needs improvement
-								console.log('URL PATH ---->', urlPath);
-								// Reads file name (i.e. global) & Reads URL path (i.e. localhost/scss/_global).
-								var importStylesheet = Sass.readFile(matchFinal[i]) || Module.read(urlPath);
-								// Writes the style sheet taking the file name (i.e. global) & the style sheet read above.
-								Sass.writeFile(matchFinal[i], importStylesheet);
-								// console.log('@IMPORT STYLE SHEET \n______\n\n', importStylesheet);
-								// }
-								results.push(matchFinal[i]);
-								console.log(results[i]);
-								myRegexpArray.push(myRegexp);
-								console.log(myRegexpArray[i], i);
-								i++;
-
-							}
-
-							// console.log('match ----> ', match[1]);
-							// console.log('results MATCH ---->', results);
-
-							// var result = [];
-							// var outerRegex = /@import[ \("']*([^;]+)[;\)"']*/g;
-							// var innerRegex = /@import[ \("']*([^;]+)[;\)"']*/g;
-							// var outerMatch = null;
-							// while (outerMatch = outerRegex.exec(stylesheet)) {
-							// 	if (outerMatch.index == outerRegex.lastIndex) {
-							// 		outerRegex.lastIndex++;
-							// 	}
-							// 	var innerSubject = stylesheet.substr(outerMatch.index, outerMatch[0].length);
-							// 	var innerMatch = null;
-							// 	while (innerMatch = innerRegex.exec(innerSubject)) {
-							// 		if (innerMatch.index == innerRegex.lastIndex) {
-							// 			innerRegex.lastIndex++;
-							// 		}
-							// 		result.push(innerMatch[0]);
-							// 		console.log('result FIRST WHILE ----->', result);
-							// 	}
-							// }
-
-							console.log('----------------');
-							console.log('----------------');
-							console.log('----------------');
-							console.log('----------------');
-							console.log('----------------');
-
-							// var importReg = /@import[ \("']*([^;]+)[;\)"']*/g;
-							// // var result;
-
-							// while ((result = importReg.exec(stylesheet)) !== null ) {
-							// 	var subash = result[1];
-							// 	subash = subash.replace(/"|'/gi, "");
-							// 	subash = subash.split(",");
-							// 	for(i=0; i<subash.length; i++) {
-
-							// 		var path = subash[i].trim();
-							// 		console.log('@import ----> ' + path, importReg.lastIndex);
-							// 		url = styleUrl.replace(/(.*)\/.*(\.scss$)/i, '$1/_'+path+'$2'); // Needs improvement
-							// 		console.log('url ----> ' + url);
-
-							// 		var text = Sass.readFile(path) || Module.read(url);
-							// 		Sass.writeFile(path, text);
-							// 		console.log('path ----> ', path);
-
-							// 		// importReg.lastIndex++;
-
-							// 		var importReg2 = /@import[ \("']*([^;]+)[;\)"']*/g;
-
-							// 		while ((result = importReg2.exec(text)) !== null ) {
-							// 			var subash = result[1];
-							// 			subash = subash.replace(/"|'/gi, "");
-							// 			subash = subash.split(",");
-							// 			for(i=0; i<subash.length; i++) {
-
-							// 				var path = subash[i].trim();
-							// 				console.log('@import ----> ' + path, importReg.lastIndex);
-							// 				url = styleUrl.replace(/(.*)\/.*(\.scss$)/i, '$1/_'+path+'$2'); // Needs improvement
-							// 				console.log('url ----> ' + url);
-
-							// 				var text2 = Sass.readFile(path) || Module.read(url);
-							// 				Sass.writeFile(path, text2);
-							// 				console.log('path ----> ', path);
-
-							// 				// importReg2.lastIndex++;
-							// 			}
-							// 		}
-							// 	}
-							// }
-
 							Sass.writeFile(styleUrl, stylesheet);
-							// console.log('styleUrl ---> ', styleUrl);
-							// console.log('stylesheet ---> ', stylesheet);
 
 							// Compiles SCSS stylesheet into CSS.
 							var stylesheetCompiled = Sass.compile(stylesheet);
