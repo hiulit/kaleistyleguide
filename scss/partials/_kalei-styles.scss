@@ -284,39 +284,39 @@ pre[class*="language-"] {
 	@include prem(width, 24);
 }
 
-@media only screen and (max-width : 1023px) {
-	.kalei {
-		overflow: hidden;
-	}
-	.kalei-nav {
-		display: block;
-	}
-	.kalei-menu {
-		left: -75%;
-		width: 75% !important;
-		z-index: 3;
-	}
-	.kalei-page {
-		width: 100% !important;
-	}
-	.kalei-menu__list {
-		border: none;
-		border-radius: 0;
-		bottom: 0;
-		left: 0;
-		top: 0;
-	}
-	.nav-open {
-		.kalei-nav {
-			left: 75%;
-		}
-		.kalei-menu {
-			box-shadow: 0px 0px 30px 0px #000;
-			left: 0;
-		}
-		.kalei-page {
-			position: relative;
-			left: 75%;
-		}
-	}
-}
+// @media only screen and (max-width : 1023px) {
+// 	.kalei {
+// 		overflow: hidden;
+// 	}
+// 	.kalei-nav {
+// 		display: block;
+// 	}
+// 	.kalei-menu {
+// 		left: -75%;
+// 		width: 75% !important;
+// 		z-index: 3;
+// 	}
+// 	.kalei-page {
+// 		width: 100% !important;
+// 	}
+// 	.kalei-menu__list {
+// 		border: none;
+// 		border-radius: 0;
+// 		bottom: 0;
+// 		left: 0;
+// 		top: 0;
+// 	}
+// 	.nav-open {
+// 		.kalei-nav {
+// 			left: 75%;
+// 		}
+// 		.kalei-menu {
+// 			box-shadow: 0px 0px 30px 0px #000;
+// 			left: 0;
+// 		}
+// 		.kalei-page {
+// 			position: relative;
+// 			left: 75%;
+// 		}
+// 	}
+// }
