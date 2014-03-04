@@ -94,14 +94,24 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							function findImports(str) {
 								var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
 								var match;
-								if((match = regex.exec(str)) !== null) {
-									console.log(match[1]);
-									url = styleUrl.replace(/(.*)\/.*(\.scss$)/i, '$1/_'+match[1]+'$2'); // Needs improvement
-									console.log(url);
-									var imports = Sass.readFile(match[1]) || Module.read(url);
-									Sass.writeFile(match[1], imports);
-									// console.log(imports);
-									findImports(imports);
+								// if((match = regex.exec(str)) !== null) {
+								if((match = str.match(regex)) !== null) {
+									for(var j in match) {
+										console.log(j);
+										match[j] = match[j].replace(/@import |"|;|[\n\r]/gi, ""); // Removes @import ""; and \n or \r (carriage returns)
+										console.log(match[j]);
+										url = styleUrl.replace(/(.*)\/.*(\.scss$)/i, '$1/_'+match[j]+'$2'); // Needs improvement
+										console.log(url);
+										var imports = Sass.readFile(match[j]) || Module.read(url);
+										Sass.writeFile(match[j], imports);
+										// console.log(imports);
+										findImports(imports);
+									}
+									// // console.log(match[1]);
+									// var imports = Sass.readFile(match[1]) || Module.read(url);
+									// Sass.writeFile(match[1], imports);
+									// // console.log(imports);
+									// findImports(imports);
 								} else {
 									console.log('S\'ha acabat!!!');
 								}
