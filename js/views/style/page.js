@@ -16,29 +16,38 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 	var StylePage = Backbone.View.extend({
 		el: '.kalei-page',
 		render: function () {
+
 			that = this;
 
-			var styleUrl;
 			var configDir;
+			var styleUrl;
+			var styleExt;
+			var styleDir = this.options.style;
 
-			if(this.options.style === null) {
-				this.options.style = config.css_path.substr(config.css_path.lastIndexOf('/')+1);
-				// console.log(this.options.style);
+			if(styleDir === null) {
+				styleDir = config.css_path.substr(config.css_path.lastIndexOf('/')+1);
 			}
 
-			if(this.options.style.substr(0,1) === '/') {
+			if(styleDir.substr(0,1) === '/') {
 				// Non relative.
 				configDir = config.css_path.substr(0, config.css_path.lastIndexOf('/'));
 				var pUrl = parseuri(configDir);
-				styleUrl = pUrl.protocol + '://' + pUrl.host + (pUrl.port === '' ? '' : ':'+ pUrl) + this.options.style;
+				styleUrl = pUrl.protocol + '://' + pUrl.host + (pUrl.port === '' ? '' : ':'+ pUrl) + styleDir;
 			} else {
+				// Returns style sheet extension e.g. 'css'
+				styleExt = styleDir.substr(styleDir.lastIndexOf('.')+1);
+				// Returns e.g. 'http://localhost/path/path'
 				configDir = config.css_path.substr(0, config.css_path.lastIndexOf('/'));
-				styleUrl = configDir + '/' + this.options.style;
+				// Returns e.g. 'http://localhost/path/'
+				configDir = configDir.substr(0, configDir.lastIndexOf('/'));
+				// Returns e.g 'http://localhost/css/path/to/stylesheet.css'
+				styleUrl = configDir + '/' + styleExt + '/' + styleDir;
 			}
 
-			var styleExt = styleUrl.replace(/^.*\./,''); // Returns file extension.
+			// Returns file extension from URL.
+			var styleExt = styleUrl.replace(/^.*\./,'');
 
-			// If config.css_path stylesheet (default = 'imports.css') is already loaded, don't load it again.
+			// If config.css_path stylesheet (default === 'imports.css') is already loaded, don't load it again.
 			if(!$('link[href="' + config.css_path + '"]').length) {
 				$('head').append('<link rel="stylesheet" href="' + config.css_path + '"" type="text/' + styleExt +'" />');
 			}
@@ -47,15 +56,15 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				$('head').append('<link rel="stylesheet" href="' + styleUrl + '"" type="text/' + styleExt +'" />');
 			}
 
-			var navToggle = $('.nav');
+			// var navToggle = $('.nav');
 
-			navToggle.click(function(){
-				$('body').removeClass('loading').toggleClass('nav-open');
-			});
+			// navToggle.click(function(){
+			// 	$('body').removeClass('loading').toggleClass('nav-open');
+			// });
 
-			$('.kalei-page').click(function(){
-				$('body').removeClass('nav-open');
-			});
+			// $('.kalei-page').click(function(){
+			// 	$('body').removeClass('nav-open');
+			// });
 
 			$('.kalei-menu__list__item__link').removeClass('active');
 
@@ -64,7 +73,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			}
 
 			require(['text!'+ styleUrl], function (stylesheet) {
-				// console.log(styleUrl);
 				var parser = null;
 				var regex = /(?:.*\/)(.*)\.(css|less|sass|scss)$/gi;
 				var result = regex.exec(styleUrl);
@@ -113,7 +121,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 									// // console.log(imports);
 									// findImports(imports);
 								} else {
-									console.log('S\'ha acabat!!!');
+									console.log('NO @IMPORT');
 								}
 							}
 
@@ -160,8 +168,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 				$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config}));
 
-				Prism.highlightAll(); // Prism's colour coding in <code> blocks.
-				fileHighlight(); // Prism's File Highlight plugin function.
+				// Prism's colour coding in <code> blocks.
+				Prism.highlightAll();
+				// Prism's File Highlight plugin function.
+				fileHighlight();
 
 				$(window).scroll(function () {
 					var scroll = $(window).scrollTop();

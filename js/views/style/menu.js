@@ -68,9 +68,11 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 							}
 						});
 					}
-					// If @import
+					// If @import url('');
 					if(rule.type === 3) {
+						// Removes @import url(''); leaving just the style sheet name.
 						var sheet = rule.href.substr(rule.href.indexOf('(')+2, rule.href.indexOf(')')-rule.href.indexOf('(')-3);
+						// Pushes style sheet to currentMenu.
 						currentMenu.sheets.push(sheet);
 					}
 				});
@@ -82,7 +84,6 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				}
 
 				menus.push(currentMenu);
-				// console.log('currentMenu ---> ', currentMenu);
 
 				$(that.el).html(_.template(dashboardPageTemplate, {_:_, menuTitle: menuTitle, menus: menus, entry: masterStyle}));
 				$('[href="' + window.location.hash + '"]').addClass('active');
