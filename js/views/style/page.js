@@ -106,9 +106,24 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 								if((match = str.match(regex)) !== null) {
 									for(var j in match) {
 										console.log(j);
-										match[j] = match[j].replace(/@import |"|;|[\n\r]/gi, ""); // Removes @import ""; and \n or \r (carriage returns)
-										console.log(match[j]);
-										url = styleUrl.replace(/(.*)\/.*(\.scss$)/i, '$1/_'+match[j]+'$2'); // Needs improvement
+
+
+										newMatch = [];
+										newMatch = match[j].split('/');
+										for(var k = 0; k<newMatch.length; k++) {
+											newMatch[k] = newMatch[k].replace(/@import |"|\.\.|;|[\n\r]/gi, ""); // Removes @import "../../"; and \n or \r (carriage returns)
+											if(k === newMatch.length-1) {
+												newMatch[newMatch.length-1] = '_' + newMatch[newMatch.length-1];
+												// console.log(newMatch[newMatch.length-1]);
+											}
+											console.log('k', k, 'newMatch', newMatch[k]);
+										}
+
+
+										match[j] = match[j].replace(/@import |"|\.\.\/|;|[\n\r]/gi, ""); // Removes @import "../../"; and \n or \r (carriage returns)
+										console.log('match[j]', match[j]);
+										// url = styleUrl.replace(/(.*)\/.*(\.scss$)/i, '$1/_'+match[j]+'$2'); // Needs improvement
+										url = configDir + '/' + styleExt + '/_' + match[j] + '.' + styleExt;
 										console.log(url);
 										var imports = Sass.readFile(match[j]) || Module.read(url);
 										Sass.writeFile(match[j], imports);
