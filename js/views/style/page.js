@@ -99,42 +99,55 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 						break;
 					case 'scss':
 
+									var m = 0;
 							function findImports(str) {
 								var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
-								var match;
-								// if((match = regex.exec(str)) !== null) {
+								var match = [];
 								if((match = str.match(regex)) !== null) {
 									for(var j in match) {
-										console.log(j);
 
+										var newMatch = [];
+										var matchJoin = [];
+										var matchJoinArray = [];
 
-										newMatch = [];
 										newMatch = match[j].split('/');
 										for(var k = 0; k<newMatch.length; k++) {
+
 											newMatch[k] = newMatch[k].replace(/@import |"|\.\.|;|[\n\r]/gi, ""); // Removes @import "../../"; and \n or \r (carriage returns)
+
 											if(k === newMatch.length-1) {
+												// Adds '_' to the scss partial e.g. (_mixins)
 												newMatch[newMatch.length-1] = '_' + newMatch[newMatch.length-1];
-												// console.log(newMatch[newMatch.length-1]);
 											}
-											console.log('k', k, 'newMatch', newMatch[k]);
 										}
 
+										// Joins all the directories into one path.
+										matchJoin = newMatch.join('/');
+										// matchJoinArray.push(matchJoin);
+										matchJoinArray.push(matchJoin.substr(1, matchJoin.lastIndexOf('/')));
+										console.log('matchJoinArray ---->', matchJoinArray, m);
+										// If path has more than one directory:
+										if(newMatch.length > 1) {
+											// Removes first '/' from path.
+											matchJoin = matchJoin.substr(1);
+										} else {
+											// Take the previous directory
+											// matchJoin = examples += matchJoin;
+										}
 
-										match[j] = match[j].replace(/@import |"|\.\.\/|;|[\n\r]/gi, ""); // Removes @import "../../"; and \n or \r (carriage returns)
-										console.log('match[j]', match[j]);
-										// url = styleUrl.replace(/(.*)\/.*(\.scss$)/i, '$1/_'+match[j]+'$2'); // Needs improvement
-										url = configDir + '/' + styleExt + '/_' + match[j] + '.' + styleExt;
-										console.log(url);
+										console.log('matchJoin ----> ', matchJoin);
+
+										url = configDir + '/' + styleExt + '/' + matchJoin + '.' + styleExt;
+										// console.log('url ----> ', url);
+										match[j] = match[j].replace(/@import |"|;|[\n\r]/gi, ""); // Removes @import and \n or \r (carriage returns)
+										// console.log('match[j] ----> ', match[j]);
+
 										var imports = Sass.readFile(match[j]) || Module.read(url);
 										Sass.writeFile(match[j], imports);
-										// console.log(imports);
+
+										m++;
 										findImports(imports);
 									}
-									// // console.log(match[1]);
-									// var imports = Sass.readFile(match[1]) || Module.read(url);
-									// Sass.writeFile(match[1], imports);
-									// // console.log(imports);
-									// findImports(imports);
 								} else {
 									console.log('NO @IMPORT');
 								}
@@ -146,6 +159,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 							// Compiles SCSS stylesheet into CSS.
 							var stylesheetCompiled = Sass.compile(stylesheet);
+							// console.log('stylesheetCompiled', stylesheetCompiled);
 
 							// Embeds CSS styles in <head>.
 							var style = document.createElement('style');
@@ -167,13 +181,11 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 				////////////NEEDS TO BE EXPORTED TO Menu.js
 				_.each(page.blocks, function (block) {
-					// console.log('page.blocks', page.blocks);
 					if (block.heading != "") {
 						var li = $('<li>');
 						li.append($('<h3>').text(block.heading));
 						submenu.append(li);
 					}
-
 				});
 
 				$('li:first-child', submenu).addClass('active');
