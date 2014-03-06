@@ -77,9 +77,9 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				var parser = null;
 				var regex = /(?:.*\/)(.*)\.(css|less|sass|scss)$/gi;
 				var result = regex.exec(styleUrl);
-				// result[0] Original Input.
-				// result[1] Filename.
-				// result[2] Extension.
+					// result[0] Original Input.
+					// result[1] Filename.
+					// result[2] Extension.
 
 				var page = {blocks:[]};
 
@@ -99,7 +99,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							page = that.compute_less(stylesheet);
 						break;
 					case 'scss':
-							// Thanks, so many thanks to Oriol Torras @uriusfurius
+							// Thanks, so many thanks to Oriol Torras @uriusfurius.
 							function findImports(str, basepath) {
 								var url = configDir + '/' + styleExt + '/';
 								var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
@@ -153,13 +153,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 							// Compiles SCSS stylesheet into CSS.
 							var stylesheetCompiled = Sass.compile(stylesheet);
-							// console.log('stylesheetCompiled', stylesheetCompiled);
-
 							// Embeds CSS styles in <head>.
 							var style = document.createElement('style');
 							style.textContent = stylesheetCompiled;
 							document.head.appendChild(style);
-
 							// Parses the CSS.
 							parser = new jscssp();
 							stylesheet = parser.parse(stylesheetCompiled, false, true);
@@ -184,7 +181,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 				$('li:first-child', submenu).addClass('active');
 				$('.kalei-sheet-submenu', $('[data-sheet="' + that.options.style + '"]')).html(submenu).slideDown(200);
-				console.log('that.options.style ----------->', that.options.style);
 				////////////NEEDS TO BE EXPORTED TO Menu.js
 
 				$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config}));
@@ -210,24 +206,31 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					});
 				});
 
+				// Call for fixie.
 				fixie.init();
 
 				// Add more space at the bottom of the page to avoid scrolling to last node from menu.
 				// But we can think for something more smarter.
 
-				// Now it works like a charm! Fixed by: @hiulit
+				// Now it works like a charm!
 				// If the last element of the page is higher than window.height(),
 				// some additional padding-bottom is added so it stops at the top of the page.
 				// If the last element is lower, it doesn't add any padding-bottom.
 
-				var pageHeight = $(window).height(); // Returns height of browser viewport.
-				var lastElHeight = $('.kalei-page__item:last').outerHeight(); // Returns height of last item (.outerHeight() returns height + padding).
-				var lastElPaddingTop = $('.kalei-page__item:last').css( 'padding-top'); // Returns padding-top of last item.
-				var lastElPaddingBottom = $('.kalei-page__item:last').css( 'padding-bottom'); // Returns padding-bottom of last item.
-
-				lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2)); // Removes px from string and converts string to number.
-				lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2)); // Removes px from string and converts string to number.
-				lastElPaddingTotal = lastElPaddingTop+lastElPaddingBottom; // Returns the sum of paddings (top and bottom).
+				// Returns height of browser viewport.
+				var pageHeight = $(window).height();
+				// Returns height of last item (.outerHeight() returns height + padding).
+				var lastElHeight = $('.kalei-page__item:last').outerHeight();
+				// Returns padding-top of last item.
+				var lastElPaddingTop = $('.kalei-page__item:last').css( 'padding-top');
+				// Returns padding-bottom of last item.
+				var lastElPaddingBottom = $('.kalei-page__item:last').css( 'padding-bottom');
+				// Removes px from string and converts string to number.
+				lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2));
+				// Removes px from string and converts string to number.
+				lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2));
+				// Returns the sum of paddings (top and bottom).
+				lastElPaddingTotal = lastElPaddingTop+lastElPaddingBottom;
 
 				if(lastElHeight >= pageHeight ) {
 					$(that.el).css({ 'padding-bottom' : 0 });
@@ -263,11 +266,12 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			};
 
 			_.each(stylesheet.cssRules, function(rule) {
-				// console.log(rule);
 				switch (rule.type) {
-					case 1: // Standard rule?
+					// Standard rule?
+					case 1:
 						break;
-					case 3: // Import Rule (@import)
+					// Import Rule (@import)
+					case 3:
 						// We need to import jsscp doesn't compile imports.
 						if(window.location.hash === '') {
 							var regex = /@import url\(([^)]*)\);?/gi;
@@ -278,10 +282,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 														(window.location.port === '' ? '' : ':'+ window.location.port) +
 														window.location.pathname + '#/' + result + '';
 						}
-						console.log('result CASE 3 ----->', result);
 						// stylesheet.deleteRule(rule);
 						break;
-					case 101: // Comment Block.
+					// Comment Block.
+					case 101:
 						if(window.location.hash !== '') {
 							page.blocks = page.blocks.concat(that.parse_commentblock(rule.parsedCssText))
 						}
@@ -313,12 +317,14 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			console.log(stylesheet)
 
 			_.each(stylesheet.rules, function(rule) {
-				if (rule.silent != null){ // Comment block.
+				// Comment block.
+				if (rule.silent !== null) {
 					page.blocks = page.blocks.concat(that.parse_commentblock(rule.value))
-					// page.blocks.push();
-				} else if (rule.rules != null) { // Standard Rule.
+				// Standard Rule.
+				} else if (rule.rules !== null) {
 
-				} else if (rule.path != null) { //Import Rule
+				//Import Rule
+				} else if (rule.path !== null) {
 					// var previous_heading = page.blocks.length - 1;
 					// if (typeof page.blocks[previous_heading].import_rule == "undefined") {
 					//     page.blocks[previous_heading].import_rule = []
@@ -334,7 +340,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 		},
 
 		parse_commentblock: function (comment_block_text) {
-			// Remove /* & */
+			// Removes /* & */.
 			comment_block_text = comment_block_text.replace(/(?:\/\*)|(?:\*\/)/gi, '');
 
 			marked.setOptions(_.extend({
@@ -345,8 +351,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			));
 
 			var lexedCommentblock = marked.lexer(comment_block_text);
-			// console.log(lexedCommentblock);
-			var lexerLinks = lexedCommentblock.links || {}; // Lexer appends definition links to returned token object.
+			// Lexer appends definition links to returned token object.
+			var lexerLinks = lexedCommentblock.links || {};
 
 			var return_val = [];
 			var block_def = {
@@ -359,36 +365,34 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			_.each(lexedCommentblock, function (comment) {
 				switch (comment.type) {
 					case "code":
-						if (!comment.lang) { // If there's no language:
+						// If there's no language:
+						if (!comment.lang) {
 							// Push the code without example nor language header.
 							block.content.push(comment);
-
-						} else if (comment.lang !== 'markup') { // If the code is not "markup" (html):
+						// If the code is not "markup" (html):
+						} else if (comment.lang !== 'markup') {
 							// Push the code without example but with language header.
 							block.content.push({
 								type: 'html',
 								text: '<div class="code-lang">' + comment.lang + '</div>'
 							});
-
 							block.content.push(comment);
-
-						} else { // If it's "markup" (html):
+						// If it's "markup" (html):
+						} else {
 							// Push the code for an example with language header.
 							block.content.push({
 								type: 'html',
 								text: '<div class="code-render clearfix">' + comment.text + '</div>' +
 										'<div class="code-lang">html</div>'
 							});
-
 							block.content.push(comment);
-
 						}
 						break;
 					case "heading":
 						if (block.heading != "" && comment.depth === 1) {
 							// Multiple headings in one comment block.
 							// We want to break them up.
-							// Parse the content blocks and return the HTML to display
+							// Parse the content blocks and return the HTML to display.
 							block.content.links = lexerLinks
 							block.content = marked.parser(block.content)
 							return_val.push(block);
