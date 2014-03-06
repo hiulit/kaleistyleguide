@@ -34,18 +34,19 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				var pUrl = parseuri(configDir);
 				styleUrl = pUrl.protocol + '://' + pUrl.host + (pUrl.port === '' ? '' : ':'+ pUrl) + styleDir;
 			} else {
-				// Returns style sheet extension e.g. 'css'
+				// Returns style sheet extension e.g. 'css'.
 				styleExt = styleDir.substr(styleDir.lastIndexOf('.')+1);
-				// Returns e.g. 'http://localhost/path/path'
+				// Returns e.g. 'http://localhost/path/path' (no filename nor extension).
 				configDir = config.css_path.substr(0, config.css_path.lastIndexOf('/'));
-				// Returns e.g. 'http://localhost/path/'
+				// Returns e.g. 'http://localhost/path/' (root directory).
 				configDir = configDir.substr(0, configDir.lastIndexOf('/'));
-				// Returns e.g 'http://localhost/css/path/to/stylesheet.css'
+				// Returns e.g 'http://localhost/css/path/to/stylesheet.css'.
 				styleUrl = configDir + '/' + styleExt + '/' + styleDir;
 			}
 
 			// Returns file extension from URL.
 			var styleExt = styleUrl.replace(/^.*\./,'');
+			var stylePath = styleDir.substr(0, styleDir.lastIndexOf('/'));
 
 			// If config.css_path stylesheet (default === 'imports.css') is already loaded, don't load it again.
 			if(!$('link[href="' + config.css_path + '"]').length) {
@@ -146,7 +147,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 								});
 							}
 
-							findImports(stylesheet, 'examples');
+							findImports(stylesheet, stylePath);
 
 							Sass.writeFile(styleUrl, stylesheet);
 
