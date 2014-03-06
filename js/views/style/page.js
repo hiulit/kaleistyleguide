@@ -98,62 +98,55 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							page = that.compute_less(stylesheet);
 						break;
 					case 'scss':
-
-									var m = 0;
-							function findImports(str) {
+							// Thanks, so many thanks to Oriol Torras @uriusfurius
+							function findImports(str, basepath) {
+								var url = configDir + '/' + styleExt + '/';
 								var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
-								var match = [];
-								if((match = str.match(regex)) !== null) {
-									for(var j in match) {
-
-										var newMatch = [];
-										var matchJoin = [];
-										var matchJoinArray = [];
-
-										newMatch = match[j].split('/');
-										for(var k = 0; k<newMatch.length; k++) {
-
-											newMatch[k] = newMatch[k].replace(/@import |"|\.\.|;|[\n\r]/gi, ""); // Removes @import "../../"; and \n or \r (carriage returns)
-
-											if(k === newMatch.length-1) {
-												// Adds '_' to the scss partial e.g. (_mixins)
-												newMatch[newMatch.length-1] = '_' + newMatch[newMatch.length-1];
-											}
-										}
-
-										// Joins all the directories into one path.
-										matchJoin = newMatch.join('/');
-										// matchJoinArray.push(matchJoin);
-										matchJoinArray.push(matchJoin.substr(1, matchJoin.lastIndexOf('/')));
-										console.log('matchJoinArray ---->', matchJoinArray, m);
-										// If path has more than one directory:
-										if(newMatch.length > 1) {
-											// Removes first '/' from path.
-											matchJoin = matchJoin.substr(1);
-										} else {
-											// Take the previous directory
-											// matchJoin = examples += matchJoin;
-										}
-
-										console.log('matchJoin ----> ', matchJoin);
-
-										url = configDir + '/' + styleExt + '/' + matchJoin + '.' + styleExt;
-										// console.log('url ----> ', url);
-										match[j] = match[j].replace(/@import |"|;|[\n\r]/gi, ""); // Removes @import and \n or \r (carriage returns)
-										// console.log('match[j] ----> ', match[j]);
-
-										var imports = Sass.readFile(match[j]) || Module.read(url);
-										Sass.writeFile(match[j], imports);
-
-										m++;
-										findImports(imports);
-									}
-								} else {
-									console.log('NO @IMPORT');
+								var match, matches = [];
+								while ((match = regex.exec(str)) !== null) {
+									matches.push(match[1]);
 								}
+								console.log('Import Matches ---->', matches);
+
+								_.each(matches, function(match) {
+									// Check if is a filename
+									var path = match.split('/');
+									var filename, fullpath, _basepath = basepath;
+
+									if (path.length > 1) {
+										filename = path.pop();
+										var something, basepathParts;
+
+										if (_basepath) {
+											basepathParts = _basepath.split('/');
+										}
+
+										while ((something = path.shift()) === '..') {
+											basepathParts.pop();
+										}
+
+										if (something) {
+											path.unshift(something);
+										}
+
+										_basepath = (basepathParts ? basepathParts.join('/') + '/' : '') + path.join('/');
+									} else {
+										filename = path.join('');
+									}
+									filename = '_' + filename + '.' + styleExt;
+									fullpath = _basepath + '/' + filename;
+									console.log('filename:', filename);
+									console.log('basepath:', _basepath);
+									console.log('fullpath:', fullpath);
+
+									var importContent = Module.read(url + fullpath);
+									Sass.writeFile(match, importContent);
+
+									findImports(importContent, _basepath);
+								});
 							}
 
-							findImports(stylesheet);
+							findImports(stylesheet, 'examples');
 
 							Sass.writeFile(styleUrl, stylesheet);
 
