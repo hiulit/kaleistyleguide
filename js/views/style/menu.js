@@ -24,9 +24,15 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 			var page = {blocks:[]};
 
 			require(['text!' + config.css_path], function (styles) {
+				// Default "imports.css"
 				var masterStyle = config.css_path.substr(config.css_path.lastIndexOf('/')+1);
 
-				var markedOpts = _.extend({ sanitize: false, gfm: true }, config.marked_options || {});
+				var markedOpts = _.extend({
+										sanitize: false,
+										gfm: true
+									},
+									config.marked_options || {}
+								);
 				marked.setOptions(markedOpts);
 
 				var parser = new jscssp();
@@ -72,6 +78,17 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 					if(rule.type === 3) {
 						// Removes @import url(''); leaving just the style sheet name.
 						var sheet = rule.href.substr(rule.href.indexOf('(')+2, rule.href.indexOf(')')-rule.href.indexOf('(')-3);
+						// console.log(config.css_path, rule, sheet);
+
+						var regex = /(?:.*\/)(.*)\.(sass|scss)$/gi;
+						var result = [];
+						if((result = regex.exec(sheet)) !== null) {
+							// result[0] Original Input.
+							// result[1] Filename.
+							// result[2] Extension.
+							result[0] = result[0].substr(0, result[0].lastIndexOf('/scss'));
+							console.log('RESULT', result[0]);
+						}
 						// Pushes style sheet to currentMenu.
 						currentMenu.sheets.push(sheet);
 					}

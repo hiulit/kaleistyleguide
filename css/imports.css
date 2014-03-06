@@ -14,4 +14,4 @@
 @import url("examples/prism-demo.css");
 @import url("examples/lalala.scss");
 @import url("examples/buttons.scss");
-@import url("main.scss");
+@import url("../scss/main.scss");
