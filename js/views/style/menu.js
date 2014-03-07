@@ -82,12 +82,15 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 
 						var regex = /(?:.*\/)(.*)\.(sass|scss)$/gi;
 						var result = [];
+						// If the style sheet is a .sass or .scss file:
 						if((result = regex.exec(sheet)) !== null) {
 							// result[0] Original Input.
 							// result[1] Filename.
 							// result[2] Extension.
-							result[0] = result[0].substr(0, result[0].lastIndexOf('/scss'));
-							console.log('RESULT', result[0]);
+							// Returns the path before 'scss/'.
+							sheetPath = result[0].substr(0, result[0].lastIndexOf('scss/')+5);
+							// Removes 'sheetPath' from 'sheet' leaving the path after 'scss/'.
+							sheet = result[0].replace(sheetPath, '');
 						}
 						// Pushes style sheet to currentMenu.
 						currentMenu.sheets.push(sheet);
