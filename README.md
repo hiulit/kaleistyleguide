@@ -41,23 +41,6 @@ You end up with a fully documented style sheet and a beautifully auto-generated 
 What a deal!
 
 
-## Author
-
-* [Thomas Davis](http://thomasdavis.github.com)
-
-
-## This fork's author
-
-* [Xavier Gómez (a.k.a hiulit)](https://github.com/hiulit)
-
-
-## Contributors
-
-Many thanks to:
-
-* [Luke Brooker](http://lukebrooker.com/)
-* [Oriol Torras](https://github.com/otorras)
-
 ## Inspiration
 
 Kalei is heavily influenced by the following projects and blog posts:
@@ -89,11 +72,32 @@ Many thanks to all the great people behind the software listed below.
 * Firefox
 * IE 8+
 
-
-## Notes
+### Notes
 
 Support for [sass.js](https://github.com/medialize/sass.js) and [Prism](http://prismjs.com/) is **IE 9+**.
 You can still use Kalei for plain CSS.
+
+
+## Changelog
+
+Not officially released.
+
+
+## Author
+
+* [Thomas Davis](http://thomasdavis.github.com)
+
+### This fork's author
+
+* [Xavier Gómez (a.k.a hiulit)](https://github.com/hiulit)
+
+
+## Contributors
+
+Many thanks to:
+
+* [Luke Brooker](http://lukebrooker.com/)
+* [Oriol Torras](https://github.com/otorras)
 
 
 ## License
