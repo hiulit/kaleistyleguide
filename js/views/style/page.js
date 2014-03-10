@@ -209,27 +209,15 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				// Call for fixie.
 				fixie.init();
 
-				// Add more space at the bottom of the page to avoid scrolling to last node from menu.
-				// But we can think for something more smarter.
-
-				// Now it works like a charm!
 				// If the last element of the page is higher than window.height(),
 				// some additional padding-bottom is added so it stops at the top of the page.
 				// If the last element is lower, it doesn't add any padding-bottom.
-
-				// Returns height of browser viewport.
 				var pageHeight = $(window).height();
-				// Returns height of last item (.outerHeight() returns height + padding).
-				var lastElHeight = $('.kalei-page__item:last').outerHeight();
-				// Returns padding-top of last item.
+				var lastElHeight = $('.kalei-page__item:last').outerHeight(); // Returns height of last item (.outerHeight() returns height + padding).
 				var lastElPaddingTop = $('.kalei-page__item:last').css( 'padding-top');
-				// Returns padding-bottom of last item.
 				var lastElPaddingBottom = $('.kalei-page__item:last').css( 'padding-bottom');
-				// Removes px from string and converts string to number.
-				lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2));
-				// Removes px from string and converts string to number.
-				lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2));
-				// Returns the sum of paddings (top and bottom).
+				lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2)); // Removes px from string and converts string to number.
+				lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2)); // Removes px from string and converts string to number.
 				lastElPaddingTotal = lastElPaddingTop+lastElPaddingBottom;
 
 				if(lastElHeight >= pageHeight ) {
