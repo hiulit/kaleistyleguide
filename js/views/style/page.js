@@ -274,13 +274,11 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					case 3:
 						// We need to import jsscp doesn't compile imports.
 						if(window.location.hash === '') {
-							var regex = /@import url\(([^)]*)\);?/gi;
-							var result = regex.exec(rule.parsedCssText);
-							result = result[1].replace(/"|'/gi, "");
+							result = $('.kalei-menu__list__item__link').attr('href');
 							window.location.href =	window.location.protocol +
 														'//' + window.location.hostname +
 														(window.location.port === '' ? '' : ':'+ window.location.port) +
-														window.location.pathname + '#/' + result + '';
+														window.location.pathname + result;
 						}
 						// stylesheet.deleteRule(rule);
 						break;

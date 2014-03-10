@@ -1,5 +1,3 @@
-@import "../partials/global";
-
 /*
 # Prism.js
 
@@ -170,13 +168,5 @@ If you want to add or remove some of Prism's plugins, search for...
 	// come with the default plugin.
 
 ... before touching something.
-
-## Extra caution!
-
-There's a [known issue](https://github.com/LeaVerou/prism/issues/144) with
-**WebPlatform Docs plugin**, so right now I wouldn't encourage you to use it.
-But, if you are so eager to have it because of its awesomeness
-(I won't argue with that, it's awesome), then you should use `.language-scss` instead
-of `.language-css` on code blocks.
 
 */
