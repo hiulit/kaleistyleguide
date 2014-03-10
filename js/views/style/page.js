@@ -107,7 +107,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 								while ((match = regex.exec(str)) !== null) {
 									matches.push(match[1]);
 								}
-								console.log('Import Matches ---->', matches);
+								// console.log('Import Matches ---->', matches);
 
 								_.each(matches, function(match) {
 									// Check if is a filename
@@ -136,9 +136,9 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 									}
 									filename = '_' + filename + '.' + styleExt;
 									fullpath = _basepath + '/' + filename;
-									console.log('filename:', filename);
-									console.log('basepath:', _basepath);
-									console.log('fullpath:', fullpath);
+									// console.log('filename:', filename);
+									// console.log('basepath:', _basepath);
+									// console.log('fullpath:', fullpath);
 
 									var importContent = Module.read(url + fullpath);
 									Sass.writeFile(match, importContent);
