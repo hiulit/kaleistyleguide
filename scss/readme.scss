@@ -17,7 +17,7 @@ This project aims at making sure your style sheets are fully documented whilst b
 
 To do this, it actually uses your live style sheets in so that, at anytime, you can review how your style guide looks.
 
-This website is a live example generated from Kalei's `imports.css`.
+This website is a live example generated from Kalei's styles.
 
 */
 
@@ -36,12 +36,17 @@ This website is a live example generated from Kalei's `imports.css`.
 
 
 /*
-# Getting started
+# Installation
 
 1. Download the repository `git clone https://github.com/hiulit/kaleistyleguide.git`.
-2. Serve it on a HTTP server (or a local environment using [MAMP](http://www.mamp.info/) or
-[XAMPP](http://www.apachefriends.org/), etc.) and it should work!
-3. Edit `js/config.js` to point at your own style sheets.
+2. Serve it on a HTTP server (or a local environment using [MAMP](http://www.mamp.info/),
+ [XAMPP](http://www.apachefriends.org/), etc.) and it should work!
+
+*/
+
+
+/*
+# Getting Started
 
 By default, Kalei uses `imports.css` as a base style sheet to import all the style sheets that you want to document.
 
@@ -55,27 +60,15 @@ This is how this particular `imports.css` looks like:
 /*
 # How to document your style sheets
 
-It's all about the **comments** :)
+Comments ♥ Markdown
 
 One of the great things about Kalei is that you can use the same style sheets you're using right now in your project.
 How cool is that, right?
 
-You just need to comment your style sheets and then, boom...!! The magic happens!
+You just need to comment your style sheets using Markdown and then, boom...!! The magic happens!
 
 You end up with a fully documented style sheet and a beautifully auto-generated living style guide for the same price.
 What a deal!
-
-## Example
-
-Say that you have this css:
-
-```css
-.btn {
-	border: 0;
-	font-size: 14px;
-	padding: 10px;
-}
-```
 
 */
 
@@ -151,7 +144,7 @@ You can still use Kalei for plain CSS.
 /*
 # Changelog
 
-Not officially released.
+* `0.1.1` Not officially released.
 
 */
 
