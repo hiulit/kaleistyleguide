@@ -108,28 +108,22 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 									matches.push(match[1]);
 								}
 								// console.log('Import Matches ---->', matches);
-
 								_.each(matches, function(match) {
 									// Check if is a filename
 									var path = match.split('/');
 									var filename, fullpath, _basepath = basepath;
-
 									if (path.length > 1) {
 										filename = path.pop();
 										var something, basepathParts;
-
 										if (_basepath) {
 											basepathParts = _basepath.split('/');
 										}
-
 										while ((something = path.shift()) === '..') {
 											basepathParts.pop();
 										}
-
 										if (something) {
 											path.unshift(something);
 										}
-
 										_basepath = (basepathParts ? basepathParts.join('/') + '/' : '') + path.join('/');
 									} else {
 										filename = path.join('');
@@ -147,10 +141,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 								});
 							}
 
+							// Recursive function to find all @imports.
 							findImports(stylesheet, stylePath);
-
+							// Writes style sheet so sass.js it can compile it.
 							Sass.writeFile(styleUrl, stylesheet);
-
 							// Compiles SCSS stylesheet into CSS.
 							var stylesheetCompiled = Sass.compile(stylesheet);
 							// Embeds CSS styles in <head>.
@@ -219,7 +213,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2)); // Removes px from string and converts string to number.
 				lastElPaddingTotal = lastElPaddingTop+lastElPaddingBottom;
 
-				if(lastElHeight >= pageHeight ) {
+				if(lastElHeight >= pageHeight) {
 					$(that.el).css({ 'padding-bottom' : 0 });
 				} else {
 					$(that.el).css({ 'padding-bottom' : ((pageHeight-lastElHeight)-lastElPaddingTotal) });
@@ -351,20 +345,20 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				switch (comment.type) {
 					case "code":
 						// If there's no language:
+						// Push the code without example nor language header.
 						if (!comment.lang) {
-							// Push the code without example nor language header.
 							block.content.push(comment);
 						// If the code is not "markup" (html):
+						// Push the code without example but with language header.
 						} else if (comment.lang !== 'markup') {
-							// Push the code without example but with language header.
 							block.content.push({
 								type: 'html',
 								text: '<div class="code-lang">' + comment.lang + '</div>'
 							});
 							block.content.push(comment);
 						// If it's "markup" (html):
+						// Push the code for an example with language header.
 						} else {
-							// Push the code for an example with language header.
 							block.content.push({
 								type: 'html',
 								text: '<div class="code-render clearfix">' + comment.text + '</div>' +
