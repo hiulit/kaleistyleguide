@@ -197,11 +197,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					} else {
 						$('.kalei-nav').addClass('is-disabled');
 					}
-					$(".kalei-page__item").each(function(){
-						if ( that.is_on_screen($(this), 60) ) {
+					$(".kalei-page__item").each(function() {
+						if(that.is_on_screen($(this), 40)) {
 							$(".kalei-sheet-submenu li").removeClass('active');
-							$(".kalei-sheet-submenu li:contains('" + $(this).find('> h1').text() +"')," +
-								 ".kalei-sheet-submenu li:contains('" + $(this).find('> h2').text() +"')").addClass('active');
+							$(".kalei-sheet-submenu li:contains('" + $(this).find('> h1').text() +"')").addClass('active');
 						}
 					});
 				});

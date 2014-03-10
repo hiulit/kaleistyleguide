@@ -129,8 +129,7 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				$('body').removeClass('nav-open');
 
 				$('html, body').animate({
-					scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"')," +
-									 ".kalei-page__item h2:contains('"+$(ev.currentTarget).text()+"')").offset().top - 60
+					scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"')").offset().top - 40
 				}, '200');
 			}
 		}
