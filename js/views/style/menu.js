@@ -78,7 +78,6 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 					if(rule.type === 3) {
 						// Removes @import url(''); leaving just the style sheet name.
 						var sheet = rule.href.substr(rule.href.indexOf('(')+2, rule.href.indexOf(')')-rule.href.indexOf('(')-3);
-						// console.log(config.css_path, rule, sheet);
 
 						var regex = /(?:.*\/)(.*)\.(sass|scss)$/gi;
 						var result = [];
@@ -87,6 +86,7 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 							// result[0] Original Input.
 							// result[1] Filename.
 							// result[2] Extension.
+							
 							// Returns the path before 'scss/'.
 							sheetPath = result[0].substr(0, result[0].lastIndexOf('scss/')+5);
 							// Removes 'sheetPath' from 'sheet' leaving the path after 'scss/'.
