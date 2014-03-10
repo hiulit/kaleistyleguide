@@ -192,11 +192,11 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 				$(window).scroll(function () {
 					var scroll = $(window).scrollTop();
-					if(scroll === 0) {
-						$('.kalei-nav').removeClass('is-disabled');
-					} else {
-						$('.kalei-nav').addClass('is-disabled');
-					}
+					// if(scroll === 0) {
+					// 	$('.kalei-nav').removeClass('is-disabled');
+					// } else {
+					// 	$('.kalei-nav').addClass('is-disabled');
+					// }
 					$(".kalei-page__item").each(function() {
 						if(that.is_on_screen($(this), 40)) {
 							$(".kalei-sheet-submenu li").removeClass('active');

@@ -126,7 +126,7 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				}
 			},
 			'click .kalei-sheet-submenu li': function(ev) {
-				$('body').removeClass('nav-open');
+				// $('body').removeClass('nav-open');
 
 				$('html, body').animate({
 					scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"')").offset().top - 40
