@@ -16,17 +16,18 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 
 			that.$el.html('Loading styles');
 
-			// If style sheet is defined in config.js
-			if(config.css_paths) {
-				config.css_path = config.css_paths[0];
-			}
+			// If style sheets are defined in config.js
+			// if(config.css_paths) {
+			// 	config.css_path = config.css_paths[0];
+			// 	console.log(config.css_paths);
+			// }
 
 			var page = {blocks:[]};
 
 			require(['text!' + config.css_path], function (styles) {
 				// Default "imports.css"
-				var masterStyle = config.css_path.substr(config.css_path.lastIndexOf('/')+1);
-
+				// var masterStyle = config.css_path.substr(config.css_path.lastIndexOf('/')+1);
+				// console.log(masterStyle);
 				var markedOpts = _.extend({
 										sanitize: false,
 										gfm: true
@@ -86,7 +87,7 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 							// result[0] Original Input.
 							// result[1] Filename.
 							// result[2] Extension.
-							
+
 							// Returns the path before 'scss/'.
 							sheetPath = result[0].substr(0, result[0].lastIndexOf('scss/')+5);
 							// Removes 'sheetPath' from 'sheet' leaving the path after 'scss/'.
@@ -98,14 +99,15 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				});
 
 				if(config.css_paths) {
-					for(var i = 1; i < config.css_paths.length; i++) {
-						currentMenu.sheets.push(config.css_paths[i])
+					for(var i = 0; i < config.css_paths.length; i++) {
+						currentMenu.sheets.push(config.css_paths[i]);
+						// console.log(config.css_paths[i]);
 					}
 				}
 
 				menus.push(currentMenu);
 
-				$(that.el).html(_.template(dashboardPageTemplate, {_:_, menuTitle: menuTitle, menus: menus, entry: masterStyle}));
+				$(that.el).html(_.template(dashboardPageTemplate, {_:_, menuTitle: menuTitle, menus: menus, /*entry: masterStyle*/}));
 				$('[href="' + window.location.hash + '"]').addClass('active');
 				if(window.location.hash === '') {
 					$('.js-kalei-home').addClass('active');

@@ -20,37 +20,49 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			that = this;
 
 			var configDir;
+			var configPath;
 			var styleUrl;
 			var styleExt;
 			var styleDir = this.options.style;
 
 			if(styleDir === null) {
-				styleDir = config.css_path.substr(config.css_path.lastIndexOf('/')+1);
+				if(config.css_path) {
+					configPath = config.css_path;
+					styleDir = configPath.substr(configPath.lastIndexOf('/')+1);
+					console.log('path');
+				} else if(config.css_paths) {
+					configPath = config.css_paths[0];
+					styleDir = configPath.substr(configPath.lastIndexOf('/')+1);
+					console.log('pathSSS');
+				} else {
+					console.log('PUT SOMETHING IN THE CONFIG.JS');
+				}
 			}
-
+			console.log(styleDir);
 			if(styleDir.substr(0,1) === '/') {
 				// Non relative.
-				configDir = config.css_path.substr(0, config.css_path.lastIndexOf('/'));
+				configDir = configPath.substr(0, configPath.lastIndexOf('/'));
 				var pUrl = parseuri(configDir);
 				styleUrl = pUrl.protocol + '://' + pUrl.host + (pUrl.port === '' ? '' : ':'+ pUrl) + styleDir;
 			} else {
 				// Returns style sheet extension e.g. 'css'.
 				styleExt = styleDir.substr(styleDir.lastIndexOf('.')+1);
 				// Returns e.g. 'http://localhost/path/path' (no filename nor extension).
-				configDir = config.css_path.substr(0, config.css_path.lastIndexOf('/'));
+				configDir = configPath.substr(0, configPath.lastIndexOf('/'));
 				// Returns e.g. 'http://localhost/path/' (root directory).
 				configDir = configDir.substr(0, configDir.lastIndexOf('/'));
 				// Returns e.g 'http://localhost/css/path/to/stylesheet.css'.
 				styleUrl = configDir + '/' + styleExt + '/' + styleDir;
+				console.log(styleUrl+'\n', configPath+'\n', configDir+'\n', styleExt+'\n', styleDir);
 			}
 
 			// Returns file extension from URL.
 			var styleExt = styleUrl.replace(/^.*\./,'');
 			var stylePath = styleDir.substr(0, styleDir.lastIndexOf('/'));
 
-			// If config.css_path stylesheet (default === 'imports.css') is already loaded, don't load it again.
-			if(!$('link[href="' + config.css_path + '"]').length) {
-				$('head').append('<link rel="stylesheet" href="' + config.css_path + '"" type="text/' + styleExt +'" />');
+			// If configPath stylesheet (default === 'imports.css') is already loaded, don't load it again.
+			if(!$('link[href="' + configPath + '"]').length) {
+				$('head').append('<link rel="stylesheet" href="' + configPath + '"" type="text/' + styleExt +'" />');
 			}
 			// If any other stylesheet is already loaded, don't load it again.
 			if(!$('link[href="' + styleUrl + '"]').length) {
