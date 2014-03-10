@@ -2,13 +2,13 @@
 # Kalei - Style guide
 
 */
-@import url("readme.css");
+@import url("../scss/readme.scss");
 
 
 /*
 # Examples
 
 */
-@import url("examples/buttons.css");
-@import url("examples/fixie-demo.css");
-@import url("examples/prism-demo.css");
+@import url("../scss/examples/buttons.scss");
+@import url("../scss/examples/fixie-demo.scss");
+@import url("../scss/examples/prism-demo.scss");
