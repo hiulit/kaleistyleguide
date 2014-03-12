@@ -28,18 +28,17 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			if(styleDir === null) {
 				if(config.css_path) {
 					styleUrl = config.css_path;
-					// window.location.href = styleUrl;
-					console.log('NOT supported yet... Fixing it, for reals!');
 				} else if(config.css_path_url) {
 					console.log('NOT supported yet');
 				} else if(config.css_paths) {
 					configPath = config.css_paths[0].substr(config.css_paths[0].lastIndexOf('/'));
 					configDir =	window.location.protocol + '//' +
-									window.location.hostname +
-									(window.location.port === '' ? '' : ':'+ window.location.port) +
-									window.location.pathname;
-					styleUrl = configDir + '#' + configPath;
-					window.location.href = styleUrl;
+								window.location.hostname +
+								(window.location.port === '' ? '' : ':'+ window.location.port) +
+								window.location.pathname;
+					styleUrl = configDir + 'scss' + configPath;
+					window.location.href = configDir + '#' + configPath;;
+					console.log(styleUrl);
 				} else {
 					console.log('PUT SOMETHING IN THE CONFIG.JS!! C\'MON.....!');
 				}
@@ -52,11 +51,11 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				} else {
 					configPath = styleDir;
 					configDir =	window.location.protocol + '//' +
-									window.location.hostname +
-									(window.location.port === '' ? '' : ':'+ window.location.port) +
-									window.location.pathname;
+								window.location.hostname +
+								(window.location.port === '' ? '' : ':'+ window.location.port) +
+								window.location.pathname;
 					styleExt = configPath.substr(configPath.lastIndexOf('.')+1);
-					styleUrl = configDir + styleExt + '/' +configPath;
+					styleUrl = configDir + styleExt + '/' + configPath;
 				}
 			}
 
@@ -268,15 +267,14 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					// Import Rule (@import)
 					case 3:
 						// We need to import jsscp doesn't compile imports.
-						// if(window.location.hash === '') {
-						// 	result = $('.kalei-menu__list__item__link').attr('href');
-						// 	window.location.href =	window.location.protocol +
-						// 								'//' + window.location.hostname +
-						// 								(window.location.port === '' ? '' : ':'+ window.location.port) +
-						// 								window.location.pathname + result;
-						// 								console.log('RESULT CASE 3 @import', result);
-						// }
-						// stylesheet.deleteRule(rule);
+						if(window.location.hash === '') {
+							result = $('.kalei-menu__list__item__link').attr('href');
+							window.location.href =	window.location.protocol +
+													'//' + window.location.hostname +
+													(window.location.port === '' ? '' : ':'+ window.location.port) +
+													window.location.pathname + result;
+						}
+						stylesheet.deleteRule(rule);
 						break;
 					// Comment Block.
 					case 101:

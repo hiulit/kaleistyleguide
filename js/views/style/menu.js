@@ -44,6 +44,7 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 					sheets: [],
 					category: ''
 				};
+				var sheetPath;
 
 				_.each(stylesheet.cssRules, function(rule) {
 					// If /* Comment */
