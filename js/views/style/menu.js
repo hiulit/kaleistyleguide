@@ -100,8 +100,12 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 
 				if(config.css_paths) {
 					for(var i = 0; i < config.css_paths.length; i++) {
+						// Returns the path before 'scss/'.
+						sheetPath = config.css_paths[i].substr(0, config.css_paths[i].lastIndexOf('scss/')+5);
+						// Removes 'sheetPath' from 'sheet' leaving the path after 'scss/'.
+						config.css_paths[i] = config.css_paths[i].replace(sheetPath, '');
+						// Pushes style sheet to currentMenu.
 						currentMenu.sheets.push(config.css_paths[i]);
-						// console.log(config.css_paths[i]);
 					}
 				}
 

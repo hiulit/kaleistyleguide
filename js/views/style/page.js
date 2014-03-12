@@ -27,42 +27,44 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 			if(styleDir === null) {
 				if(config.css_path) {
-					configPath = config.css_path;
-					styleDir = configPath.substr(configPath.lastIndexOf('/')+1);
-					console.log('path');
+					styleUrl = config.css_path;
+					// window.location.href = styleUrl;
+					console.log('NOT supported yet... Fixing it, for reals!');
+				} else if(config.css_path_url) {
+					console.log('NOT supported yet');
 				} else if(config.css_paths) {
-					configPath = config.css_paths[0];
-					styleDir = configPath.substr(configPath.lastIndexOf('/')+1);
-					console.log('pathSSS');
+					configPath = config.css_paths[0].substr(config.css_paths[0].lastIndexOf('/'));
+					configDir =	window.location.protocol + '//' +
+									window.location.hostname +
+									(window.location.port === '' ? '' : ':'+ window.location.port) +
+									window.location.pathname;
+					styleUrl = configDir + '#' + configPath;
+					window.location.href = styleUrl;
 				} else {
-					console.log('PUT SOMETHING IN THE CONFIG.JS');
+					console.log('PUT SOMETHING IN THE CONFIG.JS!! C\'MON.....!');
+				}
+			} else {
+				if(styleDir.substr(0,1) === '/') {
+					// Non relative.
+					configDir = configPath.substr(0, configPath.lastIndexOf('/'));
+					var pUrl = parseuri(configDir);
+					styleUrl = pUrl.protocol + '://' + pUrl.host + (pUrl.port === '' ? '' : ':'+ pUrl) + styleDir;
+				} else {
+					configPath = styleDir;
+					configDir =	window.location.protocol + '//' +
+									window.location.hostname +
+									(window.location.port === '' ? '' : ':'+ window.location.port) +
+									window.location.pathname;
+					styleExt = configPath.substr(configPath.lastIndexOf('.')+1);
+					styleUrl = configDir + styleExt + '/' +configPath;
 				}
 			}
-			console.log(styleDir);
-			if(styleDir.substr(0,1) === '/') {
-				// Non relative.
-				configDir = configPath.substr(0, configPath.lastIndexOf('/'));
-				var pUrl = parseuri(configDir);
-				styleUrl = pUrl.protocol + '://' + pUrl.host + (pUrl.port === '' ? '' : ':'+ pUrl) + styleDir;
-			} else {
-				// Returns style sheet extension e.g. 'css'.
-				styleExt = styleDir.substr(styleDir.lastIndexOf('.')+1);
-				// Returns e.g. 'http://localhost/path/path' (no filename nor extension).
-				configDir = configPath.substr(0, configPath.lastIndexOf('/'));
-				// Returns e.g. 'http://localhost/path/' (root directory).
-				configDir = configDir.substr(0, configDir.lastIndexOf('/'));
-				// Returns e.g 'http://localhost/css/path/to/stylesheet.css'.
-				styleUrl = configDir + '/' + styleExt + '/' + styleDir;
-				console.log(styleUrl+'\n', configPath+'\n', configDir+'\n', styleExt+'\n', styleDir);
-			}
 
-			// Returns file extension from URL.
-			var styleExt = styleUrl.replace(/^.*\./,'');
-			var stylePath = styleDir.substr(0, styleDir.lastIndexOf('/'));
+			styleExt = styleUrl.substr(styleUrl.lastIndexOf('.')+1);
 
 			// If configPath stylesheet (default === 'imports.css') is already loaded, don't load it again.
 			if(!$('link[href="' + configPath + '"]').length) {
-				$('head').append('<link rel="stylesheet" href="' + configPath + '"" type="text/' + styleExt +'" />');
+				$('head').append('<link rel="stylesheet" href="' + styleUrl + '"" type="text/' + styleExt +'" />');
 			}
 			// If any other stylesheet is already loaded, don't load it again.
 			if(!$('link[href="' + styleUrl + '"]').length) {
@@ -154,7 +156,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							}
 
 							// Recursive function to find all @imports.
-							findImports(stylesheet, stylePath);
+							findImports(stylesheet, configPath);
 							// Writes style sheet so sass.js it can compile it.
 							Sass.writeFile(styleUrl, stylesheet);
 							// Compiles SCSS stylesheet into CSS.
@@ -266,13 +268,14 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					// Import Rule (@import)
 					case 3:
 						// We need to import jsscp doesn't compile imports.
-						if(window.location.hash === '') {
-							result = $('.kalei-menu__list__item__link').attr('href');
-							window.location.href =	window.location.protocol +
-														'//' + window.location.hostname +
-														(window.location.port === '' ? '' : ':'+ window.location.port) +
-														window.location.pathname + result;
-						}
+						// if(window.location.hash === '') {
+						// 	result = $('.kalei-menu__list__item__link').attr('href');
+						// 	window.location.href =	window.location.protocol +
+						// 								'//' + window.location.hostname +
+						// 								(window.location.port === '' ? '' : ':'+ window.location.port) +
+						// 								window.location.pathname + result;
+						// 								console.log('RESULT CASE 3 @import', result);
+						// }
 						// stylesheet.deleteRule(rule);
 						break;
 					// Comment Block.
