@@ -61,11 +61,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 			styleExt = styleUrl.substr(styleUrl.lastIndexOf('.')+1);
 
-			// If configPath stylesheet (default === 'imports.css') is already loaded, don't load it again.
-			if(!$('link[href="' + configPath + '"]').length) {
-				$('head').append('<link rel="stylesheet" href="' + styleUrl + '"" type="text/' + styleExt +'" />');
-			}
-			// If any other stylesheet is already loaded, don't load it again.
+			// If a stylesheet is already loaded, don't load it again.
 			if(!$('link[href="' + styleUrl + '"]').length) {
 				$('head').append('<link rel="stylesheet" href="' + styleUrl + '"" type="text/' + styleExt +'" />');
 			}
@@ -114,7 +110,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					case 'scss':
 							// Thanks, so many thanks to Oriol Torras @uriusfurius.
 							function findImports(str, basepath) {
-								var url = configDir + '/' + styleExt + '/';
+								var url = configDir + styleExt + '/';
+								console.log(url);
 								var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
 								var match, matches = [];
 								while ((match = regex.exec(str)) !== null) {
@@ -143,9 +140,9 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 									}
 									filename = '_' + filename + '.' + styleExt;
 									fullpath = _basepath + '/' + filename;
-									// console.log('filename:', filename);
-									// console.log('basepath:', _basepath);
-									// console.log('fullpath:', fullpath);
+									console.log('filename:', filename);
+									console.log('basepath:', _basepath);
+									console.log('fullpath:', fullpath);
 
 									var importContent = Module.read(url + fullpath);
 									Sass.writeFile(match, importContent);
@@ -154,8 +151,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 								});
 							}
 
+							// FIIIIIXXXXXXX
+							console.log('config path find imports', configPath);
 							// Recursive function to find all @imports.
-							findImports(stylesheet, configPath);
+							findImports(stylesheet, 'examples');
 							// Writes style sheet so sass.js it can compile it.
 							Sass.writeFile(styleUrl, stylesheet);
 							// Compiles SCSS stylesheet into CSS.
