@@ -165,8 +165,15 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							var stylesheetCompiled = Sass.compile(stylesheet);
 							// Embeds CSS styles in <head>.
 							var style = document.createElement('style');
+							var attr = document.createAttribute('id');
+							var fileName = styleUrl.substr(styleUrl.lastIndexOf('/')+1);
+							fileName = fileName.substr(0, fileName.lastIndexOf('.'));
+							attr.value = fileName;
+							style.setAttributeNode(attr);
 							style.textContent = stylesheetCompiled;
-							document.head.appendChild(style);
+							if(!$('style[id="' + fileName + '"]').length) {
+								document.head.appendChild(style);
+							}
 							// Parses the CSS.
 							parser = new jscssp();
 							stylesheet = parser.parse(stylesheetCompiled, false, true);
