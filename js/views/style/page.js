@@ -38,7 +38,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 								window.location.pathname;
 					styleUrl = configDir + 'scss' + configPath;
 					window.location.href = configDir + '#' + configPath;;
-					console.log(styleUrl);
 				} else {
 					console.log('PUT SOMETHING IN THE CONFIG.JS!! C\'MON.....!');
 				}
@@ -111,7 +110,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							// Thanks, so many thanks to Oriol Torras @uriusfurius.
 							function findImports(str, basepath) {
 								var url = configDir + styleExt + '/';
-								console.log(url);
 								var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
 								var match, matches = [];
 								while ((match = regex.exec(str)) !== null) {
@@ -140,9 +138,9 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 									}
 									filename = '_' + filename + '.' + styleExt;
 									fullpath = _basepath + '/' + filename;
-									console.log('filename:', filename);
-									console.log('basepath:', _basepath);
-									console.log('fullpath:', fullpath);
+									// console.log('filename:', filename);
+									// console.log('basepath:', _basepath);
+									// console.log('fullpath:', fullpath);
 
 									var importContent = Module.read(url + fullpath);
 									Sass.writeFile(match, importContent);
@@ -216,19 +214,25 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				// If the last element of the page is higher than window.height(),
 				// some additional padding-bottom is added so it stops at the top of the page.
 				// If the last element is lower, it doesn't add any padding-bottom.
-				var pageHeight = $(window).height();
-				var lastElHeight = $('.kalei-page__item:last').outerHeight(); // Returns height of last item (.outerHeight() returns height + padding).
-				var lastElPaddingTop = $('.kalei-page__item:last').css( 'padding-top');
-				var lastElPaddingBottom = $('.kalei-page__item:last').css( 'padding-bottom');
-				lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2)); // Removes px from string and converts string to number.
-				lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2)); // Removes px from string and converts string to number.
-				lastElPaddingTotal = lastElPaddingTop+lastElPaddingBottom;
-
-				if(lastElHeight >= pageHeight) {
-					$(that.el).css({ 'padding-bottom' : 0 });
-				} else {
-					$(that.el).css({ 'padding-bottom' : ((pageHeight-lastElHeight)-lastElPaddingTotal) });
+				// But we can think of something smarter.
+				function paddingBottom() {
+					if($('.kalei-page__item').length !== 0) {
+						var pageHeight = $(window).height();
+						var lastElHeight = $('.kalei-page__item:last').outerHeight(); // outerHeight() returns height + padding).
+						var lastElPaddingTop = $('.kalei-page__item:last').css( 'padding-top');
+						var lastElPaddingBottom = $('.kalei-page__item:last').css( 'padding-bottom');
+						lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2)); // Removes px from string and converts string to number.
+						lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2)); // Removes px from string and converts string to number.
+						lastElPaddingTotal = lastElPaddingTop+lastElPaddingBottom;
+						if(lastElHeight >= pageHeight-20) {
+							$(that.el).css({ 'padding-bottom' : 0 });
+						} else {
+							$(that.el).css({ 'padding-bottom' : ((pageHeight-lastElHeight)-lastElPaddingTotal) });
+						}
+					}
 				}
+
+				paddingBottom();
 
 			});
 		},
