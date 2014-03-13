@@ -151,13 +151,12 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 								});
 							}
 
-							// FIIIIIXXXXXXX
-							console.log('config path find imports', configPath);
+							configPath = configPath.substr(0, configPath.lastIndexOf('/'));
 							// Recursive function to find all @imports.
-							findImports(stylesheet, 'examples');
-							// Writes style sheet so sass.js it can compile it.
+							findImports(stylesheet, configPath);
+							// Writes style sheet so sass.js can compile it.
 							Sass.writeFile(styleUrl, stylesheet);
-							// Compiles SCSS stylesheet into CSS.
+							// Compiles Sass stylesheet into CSS.
 							var stylesheetCompiled = Sass.compile(stylesheet);
 							// Embeds CSS styles in <head>.
 							var style = document.createElement('style');
