@@ -124,17 +124,9 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 			'click .kalei-menu__list__item__link': function (ev) {
 				this.$el.find('a.active').removeClass('active');
 				$(ev.currentTarget).addClass('active');
-
-				var scroll = $(window).scrollTop();
-				if(scroll !== 0) {
-					$('body').animate({ // Scroll to top
-						scrollTop: 0
-					}, '200');
-				}
 			},
 			'click .kalei-sheet-submenu li': function(ev) {
 				// $('body').removeClass('nav-open');
-
 				$('html, body').animate({
 					scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"')").offset().top - 40
 				}, '200');

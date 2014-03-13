@@ -75,6 +75,13 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			// 	$('body').removeClass('nav-open');
 			// });
 
+			var scroll = $(window).scrollTop();
+			if(scroll !== 0) {
+				$('body').animate({ // Scroll to top
+					scrollTop: 0
+				}, '200');
+			}
+
 			$('.kalei-menu__list__item__link').removeClass('active');
 
 			if(window.location.hash !== '') {
