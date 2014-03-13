@@ -15,7 +15,7 @@ This is a **fork** from [Thomas Davis' Kalei - Style guide](https://github.com/t
 
 This project aims at making sure your style sheets are fully documented whilst being synchronized with your project styles.
 
-To do this, it actually uses your live style sheets in so that, at anytime, you can review how your style guide looks.
+To do this, it actually uses your style sheets so that, at anytime, you can review how your style guide looks.
 
 This website is a live example generated from Kalei's styles.
 
@@ -67,8 +67,10 @@ How cool is that, right?
 
 You just need to comment your style sheets using Markdown and then, boom...!! The magic happens!
 
-You end up with a fully documented style sheet and a beautifully auto-generated living style guide for the same price.
+You end up with a fully documented style sheet and a beautifully auto-generated living style guide. Killing two (tofu) birds with one stone.
 What a deal!
+
+See more at [prism-demo.scss](#/examples/prism-demo.scss).
 
 */
 
@@ -113,7 +115,7 @@ Kalei is heavily influenced by the following projects and blog posts:
 /*
 # Technologies
 
-Many thanks to all the great people behind the software listed below.
+Mad Propz to all the great people behind the software listed below.
 
 * [marked](https://github.com/chjj/marked) - Full-featured markdown parser and compiler in Javascript.
 * [jscssp](http://www.glazman.org/JSCSSP/) - CSS parser in JavaScript.
@@ -135,8 +137,9 @@ Many thanks to all the great people behind the software listed below.
 
 ## Notes
 
-Support for [sass.js](https://github.com/medialize/sass.js) and [Prism](http://prismjs.com/) is **IE 9+**.
-You can still use Kalei for plain CSS.
+If you want to pimp your experience and leverage [sass.js](https://github.com/medialize/sass.js) and [Prism](http://prismjs.com/)
+is **IE 9+**, please ensure you use a real browser **IE9+**.
+If not, you can still use plain, old boring CSS.
 
 */
 
@@ -164,7 +167,7 @@ You can still use Kalei for plain CSS.
 /*
 # Contributors
 
-Many thanks to:
+Mad propz again for these guys:
 
 * [Luke Brooker](http://lukebrooker.com/)
 * [Oriol Torras](https://github.com/otorras)
