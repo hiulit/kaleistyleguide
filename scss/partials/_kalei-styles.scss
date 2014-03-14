@@ -50,11 +50,11 @@
 	color: #fff;
 	display: block;
 	font-weight: bold;
-	@include prem(padding, 10 10 10 20);
+	@include prem(padding, 10 10 10 40);
 	position: relative;
 	text-decoration: none;
 	@include max-ellipsis(100%);
-	@include transition(background-color .25s ease-in-out);
+	@include transition(background-color .25s ease-in);
 	&:hover {
 		background-color: $menuColor;
 		color: #fff;
@@ -64,6 +64,7 @@
 		@include triangle(right, #fff, 6);
 		@include prem(margin-left, 9);
 		@include prem(margin-top, -6);
+		left: 10px;
 		top: 50%;
 	}
 	&.active {
@@ -71,7 +72,7 @@
 		color: #fff;
 		text-decoration: none;
 		&:hover {
-			cursor: pointer;
+			cursor: default;
 		}
 		&:after { // Triangle when .active
 			@include triangle(down, #fff, 6);
@@ -91,7 +92,7 @@
 	&:active {
 		cursor: default;
 		&:after { // Triangle when :active
-			@include triangle(down, $menuColor, 6);
+			@include triangle(down, #fff, 6);
 			@include prem(margin-left, 6);
 			@include prem(margin-top, -3);
 			top: 50%;
@@ -106,8 +107,10 @@
 		padding: 0;
 	}
 	li {
+		background-color: transparent;
 		color: #fff;
 		cursor: pointer;
+		@include transition(background-color .25s ease-in-out);
 		@include prem(padding, 10 10 10 40);
 		h3 {
 			@include font-size(14);
@@ -115,20 +118,17 @@
 			margin: 0;
 			@include max-ellipsis(100%);
 		}
-		&:hover{
-			h3 {
-				text-decoration: underline;
-			}
-		}
 		&.active {
 			cursor: default;
 			background-color: #f4f4f4;
 			color: $fontColor;
-			&:hover{
-				h3 {
-					text-decoration: none;
-				}
+			&:hover {
+				background-color: #f4f4f4;
 			}
+		}
+		&:hover {
+			background-color: #f4f4f4;
+			color: $fontColor;
 		}
 	}
 }
@@ -138,7 +138,7 @@
 // KALEI PAGE - start
 
 .kalei-page {
-	@include prem(padding, 20);
+	@include prem(padding, 20 40);
 	h1 {
 		margin-top: 0;
 	}
@@ -155,7 +155,7 @@
 			}
 		}
 		code { // Inline <code> blocks
-			background: $fontColor;
+			background-color: $fontColor;
 			border-radius: 4px;
 			color: #fff;
 			display: inline-block;
@@ -174,8 +174,8 @@
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	box-shadow: $boxShadow;
-	@include prem(margin, 0 0 20 0);
-	@include prem(padding, 20);
+	@include prem(margin-bottom, 40);
+	@include prem(padding, 20 40);
 	position: relative;
 }
 
@@ -188,7 +188,7 @@
 }
 
 .code-lang {
-	background: $linkColor;
+	background-color: $linkColor;
 	border-radius: 4px 4px 0 0;
 	color: #fff;
 	@include inline-block;

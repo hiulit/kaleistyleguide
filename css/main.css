@@ -643,8 +643,8 @@ img {
   color: #fff;
   display: block;
   font-weight: bold;
-  padding: 10px 10px 10px 20px;
-  padding: 0.625rem 0.625rem 0.625rem 1.25rem;
+  padding: 10px 10px 10px 40px;
+  padding: 0.625rem 0.625rem 0.625rem 2.5rem;
   position: relative;
   text-decoration: none;
   max-width: 100%;
@@ -656,9 +656,9 @@ img {
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
-  -webkit-transition: background-color 0.25s ease-in-out;
-  -moz-transition: background-color 0.25s ease-in-out;
-  transition: background-color 0.25s ease-in-out; }
+  -webkit-transition: background-color 0.25s ease-in;
+  -moz-transition: background-color 0.25s ease-in;
+  transition: background-color 0.25s ease-in; }
   .kalei-menu__list__item__link:hover {
     background-color: #515151;
     color: #fff;
@@ -675,13 +675,14 @@ img {
     margin-left: 0.5625rem;
     margin-top: -6px;
     margin-top: -0.375rem;
+    left: 10px;
     top: 50%; }
   .kalei-menu__list__item__link.active {
     background-color: #515151;
     color: #fff;
     text-decoration: none; }
     .kalei-menu__list__item__link.active:hover {
-      cursor: pointer; }
+      cursor: default; }
     .kalei-menu__list__item__link.active:after {
       border-right: 6px solid transparent;
       border-left: 6px solid transparent;
@@ -713,7 +714,7 @@ img {
     .kalei-menu__list__item__link:active:after {
       border-right: 6px solid transparent;
       border-left: 6px solid transparent;
-      border-top: 6px solid #515151;
+      border-top: 6px solid white;
       content: " ";
       height: 0;
       position: absolute;
@@ -729,8 +730,12 @@ img {
   margin: 0;
   padding: 0; }
 .kalei-sheet-submenu li {
+  background-color: transparent;
   color: #fff;
   cursor: pointer;
+  -webkit-transition: background-color 0.25s ease-in-out;
+  -moz-transition: background-color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out;
   padding: 10px 10px 10px 40px;
   padding: 0.625rem 0.625rem 0.625rem 2.5rem; }
   .kalei-sheet-submenu li h3 {
@@ -748,18 +753,19 @@ img {
     text-overflow: ellipsis;
     white-space: nowrap;
     word-wrap: normal; }
-  .kalei-sheet-submenu li:hover h3 {
-    text-decoration: underline; }
   .kalei-sheet-submenu li.active {
     cursor: default;
     background-color: #f4f4f4;
     color: #515151; }
-    .kalei-sheet-submenu li.active:hover h3 {
-      text-decoration: none; }
+    .kalei-sheet-submenu li.active:hover {
+      background-color: #f4f4f4; }
+  .kalei-sheet-submenu li:hover {
+    background-color: #f4f4f4;
+    color: #515151; }
 
 .kalei-page {
-  padding: 20px;
-  padding: 1.25rem; }
+  padding: 20px 40px;
+  padding: 1.25rem 2.5rem; }
   .kalei-page h1 {
     margin-top: 0; }
   .kalei-page p a,
@@ -783,7 +789,7 @@ img {
   .kalei-page p code,
   .kalei-page ol code,
   .kalei-page ul code {
-    background: #515151;
+    background-color: #515151;
     border-radius: 4px;
     color: #fff;
     display: inline-block;
@@ -810,10 +816,10 @@ img {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.33);
-  margin: 0px 0px 20px 0px;
-  margin: 0rem 0rem 1.25rem 0rem;
-  padding: 20px;
-  padding: 1.25rem;
+  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
+  padding: 20px 40px;
+  padding: 1.25rem 2.5rem;
   position: relative; }
 
 .code-render {
@@ -826,7 +832,7 @@ img {
   margin-bottom: 1rem; }
 
 .code-lang {
-  background: #0090d4;
+  background-color: #0090d4;
   border-radius: 4px 4px 0 0;
   color: #fff;
   display: inline-block;
