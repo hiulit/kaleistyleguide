@@ -639,7 +639,6 @@ img {
   padding: 0; }
 
 .kalei-menu__list__item__link {
-  background-color: transparent;
   color: #fff;
   display: block;
   font-weight: bold;
@@ -655,10 +654,7 @@ img {
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   white-space: nowrap;
-  word-wrap: normal;
-  -webkit-transition: background-color 0.25s ease-in;
-  -moz-transition: background-color 0.25s ease-in;
-  transition: background-color 0.25s ease-in; }
+  word-wrap: normal; }
   .kalei-menu__list__item__link:hover {
     background-color: #515151;
     color: #fff;
@@ -730,12 +726,8 @@ img {
   margin: 0;
   padding: 0; }
 .kalei-sheet-submenu li {
-  background-color: transparent;
   color: #fff;
   cursor: pointer;
-  -webkit-transition: background-color 0.25s ease-in-out;
-  -moz-transition: background-color 0.25s ease-in-out;
-  transition: background-color 0.25s ease-in-out;
   padding: 10px 10px 10px 40px;
   padding: 0.625rem 0.625rem 0.625rem 2.5rem; }
   .kalei-sheet-submenu li h3 {

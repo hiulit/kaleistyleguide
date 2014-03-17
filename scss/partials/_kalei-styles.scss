@@ -46,7 +46,6 @@
 }
 
 .kalei-menu__list__item__link {
-	background-color: transparent;
 	color: #fff;
 	display: block;
 	font-weight: bold;
@@ -54,7 +53,6 @@
 	position: relative;
 	text-decoration: none;
 	@include max-ellipsis(100%);
-	@include transition(background-color .25s ease-in);
 	&:hover {
 		background-color: $menuColor;
 		color: #fff;
@@ -107,10 +105,8 @@
 		padding: 0;
 	}
 	li {
-		background-color: transparent;
 		color: #fff;
 		cursor: pointer;
-		@include transition(background-color .25s ease-in-out);
 		@include prem(padding, 10 10 10 40);
 		h3 {
 			@include font-size(14);
