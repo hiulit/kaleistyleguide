@@ -21,12 +21,14 @@
 
 .kalei-menu__list__item { // ul > li
 	> h1 {
-		background-color: $menuColorActive;
+		background-color: #313131;
+		border-bottom: 1px solid #262626;
+		border-top: 1px solid #262626;
 		@include font-size(22);
 		@include max-ellipsis(100%);
-		@include prem(padding-bottom, 10);
+		@include prem(padding-bottom, 20);
 		@include prem(padding-left, 20);
-		@include prem(padding-top, 10);
+		@include prem(padding-top, 20);
 		@include prem(padding-right, 10);
 	}
 	> h2 {
