@@ -1,4 +1,4 @@
-# Kalei - Living Style Guide
+# Kalei - Living Styleguide
 
 This is a **fork** from [Thomas Davis' Kalei - Style guide](https://github.com/thomasdavis/kaleistyleguide).
 
