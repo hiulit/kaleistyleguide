@@ -80,7 +80,7 @@ You can still use Kalei for plain CSS.
 
 ## Changelog
 
-Not officially released.
+* `0.1.0` Not officially released.
 
 
 ## Author
