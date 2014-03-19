@@ -74,7 +74,7 @@ Many thanks to all the great people behind the software listed below.
 
 ### Notes
 
-Support for [sass.js](https://github.com/medialize/sass.js) and [Prism](http://prismjs.com/) is **IE 9+**.
+Support for [sass.js](https://github.com/medialize/sass.js) and [Prism](http://prismjs.com/) is **IE10+**.
 You can still use Kalei for plain CSS.
 
 
