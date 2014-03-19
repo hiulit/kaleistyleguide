@@ -39,13 +39,20 @@
 .kalei-menu__list__item__link {
 	color: $fontColor;
 	display: block;
-	font-weight: bold;
 	@include prem(padding, 0 10 0 40);
 	position: relative;
 	text-decoration: none;
 	@include max-ellipsis(100%);
 	&:hover {
+		color: $linkColor;
 		text-decoration: none;
+		&:after { // Triangle
+			@include triangle(right, $linkColor, 6);
+			@include prem(margin-left, 9);
+			@include prem(margin-top, -6);
+			left: 10px;
+			top: 50%;
+		}
 	}
 	&:after { // Triangle
 		@include triangle(right, $fontColor, 6);
@@ -55,19 +62,20 @@
 		top: 50%;
 	}
 	&.active {
+		color: $linkColor;
 		text-decoration: none;
 		&:hover {
 			cursor: default;
 		}
 		&:after { // Triangle when .active
-			@include triangle(down, $fontColor, 6);
+			@include triangle(down, $linkColor, 6);
 			@include prem(margin-left, 6);
 			@include prem(margin-top, -3);
 			top: 50%;
 		}
 		&:active {
 			&:after { // Triangle when .active:active
-				@include triangle(down, $fontColor, 6);
+				@include triangle(down, $linkColor, 6);
 				@include prem(margin-left, 6);
 				@include prem(margin-top, -3);
 				top: 50%;
@@ -77,7 +85,7 @@
 	&:active {
 		cursor: default;
 		&:after { // Triangle when :active
-			@include triangle(down, $fontColor, 6);
+			@include triangle(down, $linkColor, 6);
 			@include prem(margin-left, 6);
 			@include prem(margin-top, -3);
 			top: 50%;
