@@ -6,39 +6,27 @@
 }
 
 .kalei-menu__list { // ul
-	background-color: #fff;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-shadow: $boxShadow;
-	@include prem(bottom, 20);
-	@include prem(left, 20);
+	// background-color: $menuColorActive;
+	bottom: 0;
+	left: 0;
 	list-style-type: none;
 	margin: 0;
 	overflow-x: hidden;
 	overflow-y: auto;
 	padding: 0;
 	position: absolute;
-	@include prem(right, 0);
-	@include prem(top, 20);
+	right: 0;
+	top: 0;
 }
 
 .kalei-menu__list__item { // ul > li
 	> h1 {
-		background-color: $menuColorActive;
 		@include font-size(22);
 		@include max-ellipsis(100%);
-		@include prem(padding-bottom, 10);
 		@include prem(padding-left, 20);
-		@include prem(padding-top, 10);
-		@include prem(padding-right, 10);
 	}
 	> h2 {
 		@include font-size(16);
-	}
-	> h1,
-	> h2 {
-		color: #fff;
-		@include prem(margin, 0);
 	}
 }
 
@@ -49,38 +37,37 @@
 }
 
 .kalei-menu__list__item__link {
-	color: $menuColor;
+	color: $fontColor;
 	display: block;
 	font-weight: bold;
-	@include prem(padding, 10 10 10 20);
+	@include prem(padding, 0 10 0 40);
 	position: relative;
 	text-decoration: none;
 	@include max-ellipsis(100%);
 	&:hover {
-		text-decoration: underline;
+		text-decoration: none;
 	}
 	&:after { // Triangle
-		@include triangle(right, $menuColor, 6);
+		@include triangle(right, $fontColor, 6);
 		@include prem(margin-left, 9);
 		@include prem(margin-top, -6);
+		left: 10px;
 		top: 50%;
 	}
 	&.active {
-		background: $menuColor;
-		color: #fff;
 		text-decoration: none;
 		&:hover {
-			cursor: pointer;
+			cursor: default;
 		}
 		&:after { // Triangle when .active
-			@include triangle(down, #fff, 6);
+			@include triangle(down, $fontColor, 6);
 			@include prem(margin-left, 6);
 			@include prem(margin-top, -3);
 			top: 50%;
 		}
 		&:active {
 			&:after { // Triangle when .active:active
-				@include triangle(down, #fff, 6);
+				@include triangle(down, $fontColor, 6);
 				@include prem(margin-left, 6);
 				@include prem(margin-top, -3);
 				top: 50%;
@@ -90,7 +77,7 @@
 	&:active {
 		cursor: default;
 		&:after { // Triangle when :active
-			@include triangle(down, $menuColor, 6);
+			@include triangle(down, $fontColor, 6);
 			@include prem(margin-left, 6);
 			@include prem(margin-top, -3);
 			top: 50%;
@@ -100,40 +87,36 @@
 
 .kalei-sheet-submenu {
 	ul {
-		list-style-type: disc;
-		@include prem(padding-top, 10);
-		@include prem(padding-bottom, 10);
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
 	}
 	li {
-		color: $menuColor;
+		// color: #fff;
 		cursor: pointer;
-		@include prem(padding-right, 20);
+		@include prem(padding-left, 10);
+		@include prem(padding-right, 10);
+		@include prem(margin-left, 40);
 		h3 {
-			@include inline-block;
 			@include font-size(14);
 			font-weight: normal;
 			margin: 0;
 			@include max-ellipsis(100%);
-			vertical-align: middle;
-		}
-		&:hover{
-			h3 {
-				text-decoration: underline;
-			}
 		}
 		&.active {
 			cursor: default;
-			h3 {
-				background: $menuColor;
-				border-radius: 4px;
-				color: #fff;
-				@include prem(padding, 0 4);
+			border-left: 2px solid $linkColor;
+			color: $linkColor;
+			@include prem(padding-left, 8);
+			&:hover {
+				border-left: 2px solid $linkColor;
+				@include prem(padding-left, 8);
 			}
-			&:hover{
-				h3 {
-					text-decoration: none;
-				}
-			}
+		}
+		&:hover {
+			border-left: 1px solid $linkColor;
+			color: $linkColor;
+			@include prem(padding-left, 9);
 		}
 	}
 }
@@ -143,8 +126,9 @@
 // KALEI PAGE - start
 
 .kalei-page {
-	@include prem(padding, 20);
+	@include prem(padding, 0 40);
 	h1 {
+		border-bottom: 1px solid #ddd;
 		margin-top: 0;
 	}
 	p,
@@ -160,7 +144,7 @@
 			}
 		}
 		code { // Inline <code> blocks
-			background: $fontColor;
+			background-color: $fontColor;
 			border-radius: 4px;
 			color: #fff;
 			display: inline-block;
@@ -175,12 +159,7 @@
 }
 
 .kalei-page__item {
-	background-color: #fff;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-shadow: $boxShadow;
-	@include prem(margin, 0 0 20 0);
-	@include prem(padding, 20);
+	@include prem(padding, 20 40);
 	position: relative;
 }
 
@@ -193,7 +172,7 @@
 }
 
 .code-lang {
-	background: $linkColor;
+	background-color: $linkColor;
 	border-radius: 4px 4px 0 0;
 	color: #fff;
 	@include inline-block;

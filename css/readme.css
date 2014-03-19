@@ -1,5 +1,5 @@
 /*
-# Kalei - Style guide
+# Kalei - Living Style Guide
 
 <iframe src="http://ghbtns.com//github-btn.html?user=hiulit&repo=kaleistyleguide&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
 
@@ -8,20 +8,16 @@
 This is a **fork** from [Thomas Davis' Kalei - Style guide](https://github.com/thomasdavis/kaleistyleguide).
 
 */
-
-
 /*
 # Generate bootstrap-like documentation for your own CSS!
 
 This project aims at making sure your style sheets are fully documented whilst being synchronized with your project styles.
 
-To do this, it actually uses your live style sheets in so that, at anytime, you can review how your style guide looks.
+To do this, it actually uses your style sheets so that, at anytime, you can review how your style guide looks.
 
-This website is a live example generated from Kalei's `imports.css`.
+This website is a live example generated from Kalei's styles.
 
 */
-
-
 /*
 # Main goals and benefits
 
@@ -33,15 +29,16 @@ This website is a live example generated from Kalei's `imports.css`.
 * Open sourced so that all great ideas can be included.
 
 */
-
-
 /*
-# Getting started
+# Installation
 
 1. Download the repository `git clone https://github.com/hiulit/kaleistyleguide.git`.
-2. Serve it on a HTTP server (or a local environment using [MAMP](http://www.mamp.info/) or
-[XAMPP](http://www.apachefriends.org/), etc.) and it should work!
-3. Edit `js/config.js` to point at your own style sheets.
+2. Serve it on a HTTP server (or a local environment using [MAMP](http://www.mamp.info/),
+ [XAMPP](http://www.apachefriends.org/), etc.) and it should work!
+
+*/
+/*
+# Getting Started
 
 By default, Kalei uses `imports.css` as a base style sheet to import all the style sheets that you want to document.
 
@@ -50,36 +47,22 @@ This is how this particular `imports.css` looks like:
 <pre data-src="css/imports.css"></pre>
 
 */
-
-
 /*
 # How to document your style sheets
 
-It's all about the **comments** :)
+Comments ♥ Markdown
 
 One of the great things about Kalei is that you can use the same style sheets you're using right now in your project.
 How cool is that, right?
 
-You just need to comment your style sheets and then, boom...!! The magic happens!
+You just need to comment your style sheets using Markdown and then, boom...!! The magic happens!
 
-You end up with a fully documented style sheet and a beautifully auto-generated living style guide for the same price.
+You end up with a fully documented style sheet and a beautifully auto-generated living style guide. Killing two (tofu) birds with one stone.
 What a deal!
 
-## Example
-
-Say that you have this css:
-
-```css
-.btn {
-	border: 0;
-	font-size: 14px;
-	padding: 10px;
-}
-```
+See more at [prism-demo.scss](#/examples/prism-demo.scss).
 
 */
-
-
 /*
 # Example
 
@@ -101,8 +84,6 @@ Easily show off examples of your components and the HTML to generate them.
 ```
 
 */
-
-
 /*
 # Inspiration and alternatives
 
@@ -115,12 +96,10 @@ Kalei is heavily influenced by the following projects and blog posts:
 * [Nadarei KSS](http://nadarei.co/nkss-rails/) - rails
 
 */
-
-
 /*
 # Technologies
 
-Many thanks to all the great people behind the software listed below.
+Mad Propz to all the great people behind the software listed below.
 
 * [marked](https://github.com/chjj/marked) - Full-featured markdown parser and compiler in Javascript.
 * [jscssp](http://www.glazman.org/JSCSSP/) - CSS parser in JavaScript.
@@ -132,7 +111,6 @@ Many thanks to all the great people behind the software listed below.
 * [jQuery](http://jquery.com)
 
 */
-
 /*
 # Browser support
 
@@ -142,20 +120,17 @@ Many thanks to all the great people behind the software listed below.
 
 ## Notes
 
-Support for [sass.js](https://github.com/medialize/sass.js) and [Prism](http://prismjs.com/) is **IE 9+**.
-You can still use Kalei for plain CSS.
+If you want to pimp your experience and leverage [sass.js](https://github.com/medialize/sass.js) and [Prism](http://prismjs.com/)
+is **IE 9+**, please ensure you use a real browser **IE9+**.
+If not, you can still use plain, old boring CSS.
 
 */
-
-
 /*
 # Changelog
 
-Not officially released.
+* `0.1.1` Not officially released.
 
 */
-
-
 /*
 # Author
 
@@ -166,19 +141,15 @@ Not officially released.
 * [Xavier Gómez (a.k.a hiulit)](https://github.com/hiulit)
 
 */
-
-
 /*
 # Contributors
 
-Many thanks to:
+Mad propz again for these guys:
 
 * [Luke Brooker](http://lukebrooker.com/)
 * [Oriol Torras](https://github.com/otorras)
 
 */
-
-
 /*
 # License
 

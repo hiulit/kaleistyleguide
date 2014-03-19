@@ -15,6 +15,7 @@ It comes with:
 	* All
 * Plugins
 	* Autolinker
+	* WebPlatform Docs
 	* File Highlight
 
 But you can use any theme or add any plugin you want.
@@ -115,6 +116,7 @@ for the full list of languages.
 Prism comes with:
 
 * Autolinker
+* WebPlatform Docs
 * File Highlight
 
 ## Autolinker
@@ -124,6 +126,24 @@ URLs and emails will be linked automatically.
 ```javascript
 underscore: 'libs/underscore/underscore-min', // https://github.com/amdjs
 backbone: 'libs/backbone/backbone-min', // https://github.com/amdjs
+```
+
+## WebPlatform Docs
+
+Makes tokens link to [WebPlatform.org documentation](http://docs.webplatform.org/).
+
+
+```css
+div {
+	width: 150px;
+	height: 150px;
+	margin: 1rem;
+	float: left;
+}
+
+p {
+	padding: 2rem;
+}
 ```
 
 ## File Highlight
@@ -154,19 +174,11 @@ Kalei is bundled with a modified version of Prism due to **plugins** added to it
 
 The modifications are mostly just comments to clarify stuff but some are **features** added on it.
 
-If you want to add or remove some of Prism's plugins, search for...
+If you want to add or remove some of Prism's plugins, look for...
 
 	// This is a "feature" that doesn't
 	// come with the default plugin.
 
-... before touching something.
-
-## Extra caution!
-
-There's a [known issue](https://github.com/LeaVerou/prism/issues/144) with
-**WebPlatform Docs plugin**, so right now I wouldn't encourage you to use it.
-But, if you are so eager to have it because of its awesomeness
-(I won't argue with that, it's awesome), then you should use `.language-scss` instead
-of `.language-css` on code blocks.
+... before touching anything.
 
 */
