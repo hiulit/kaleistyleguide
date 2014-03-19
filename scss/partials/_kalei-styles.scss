@@ -6,7 +6,7 @@
 }
 
 .kalei-menu__list { // ul
-	background-color: $menuColorActive;
+	// background-color: $menuColorActive;
 	bottom: 0;
 	left: 0;
 	list-style-type: none;
@@ -21,23 +21,12 @@
 
 .kalei-menu__list__item { // ul > li
 	> h1 {
-		background-color: #313131;
-		border-bottom: 1px solid #262626;
-		border-top: 1px solid #262626;
 		@include font-size(22);
 		@include max-ellipsis(100%);
-		@include prem(padding-bottom, 20);
 		@include prem(padding-left, 20);
-		@include prem(padding-top, 20);
-		@include prem(padding-right, 10);
 	}
 	> h2 {
 		@include font-size(16);
-	}
-	> h1,
-	> h2 {
-		color: #fff;
-		@include prem(margin, 0);
 	}
 }
 
@@ -48,41 +37,37 @@
 }
 
 .kalei-menu__list__item__link {
-	color: #fff;
+	color: $fontColor;
 	display: block;
 	font-weight: bold;
-	@include prem(padding, 10 10 10 40);
+	@include prem(padding, 0 10 0 40);
 	position: relative;
 	text-decoration: none;
 	@include max-ellipsis(100%);
 	&:hover {
-		background-color: $menuColor;
-		color: #fff;
 		text-decoration: none;
 	}
 	&:after { // Triangle
-		@include triangle(right, #fff, 6);
+		@include triangle(right, $fontColor, 6);
 		@include prem(margin-left, 9);
 		@include prem(margin-top, -6);
 		left: 10px;
 		top: 50%;
 	}
 	&.active {
-		background-color: $menuColor;
-		color: #fff;
 		text-decoration: none;
 		&:hover {
 			cursor: default;
 		}
 		&:after { // Triangle when .active
-			@include triangle(down, #fff, 6);
+			@include triangle(down, $fontColor, 6);
 			@include prem(margin-left, 6);
 			@include prem(margin-top, -3);
 			top: 50%;
 		}
 		&:active {
 			&:after { // Triangle when .active:active
-				@include triangle(down, #fff, 6);
+				@include triangle(down, $fontColor, 6);
 				@include prem(margin-left, 6);
 				@include prem(margin-top, -3);
 				top: 50%;
@@ -92,7 +77,7 @@
 	&:active {
 		cursor: default;
 		&:after { // Triangle when :active
-			@include triangle(down, #fff, 6);
+			@include triangle(down, $fontColor, 6);
 			@include prem(margin-left, 6);
 			@include prem(margin-top, -3);
 			top: 50%;
@@ -107,9 +92,11 @@
 		padding: 0;
 	}
 	li {
-		color: #fff;
+		// color: #fff;
 		cursor: pointer;
-		@include prem(padding, 10 10 10 40);
+		@include prem(padding-left, 10);
+		@include prem(padding-right, 10);
+		@include prem(margin-left, 40);
 		h3 {
 			@include font-size(14);
 			font-weight: normal;
@@ -118,15 +105,18 @@
 		}
 		&.active {
 			cursor: default;
-			background-color: #f4f4f4;
-			color: $fontColor;
+			border-left: 2px solid $linkColor;
+			color: $linkColor;
+			@include prem(padding-left, 8);
 			&:hover {
-				background-color: #f4f4f4;
+				border-left: 2px solid $linkColor;
+				@include prem(padding-left, 8);
 			}
 		}
 		&:hover {
-			background-color: #f4f4f4;
-			color: $fontColor;
+			border-left: 1px solid $linkColor;
+			color: $linkColor;
+			@include prem(padding-left, 9);
 		}
 	}
 }
@@ -136,8 +126,9 @@
 // KALEI PAGE - start
 
 .kalei-page {
-	@include prem(padding, 20 40);
+	@include prem(padding, 0 40);
 	h1 {
+		border-bottom: 1px solid #ddd;
 		margin-top: 0;
 	}
 	p,
@@ -168,11 +159,6 @@
 }
 
 .kalei-page__item {
-	background-color: #fff;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-shadow: $boxShadow;
-	@include prem(margin-bottom, 40);
 	@include prem(padding, 20 40);
 	position: relative;
 }
