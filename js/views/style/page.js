@@ -215,7 +215,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					// 	$('.kalei-nav').addClass('is-disabled');
 					// }
 					$(".kalei-page__item").each(function() {
-						if(that.is_on_screen($(this), 40)) {
+						if(that.is_on_screen($(this), 20)) {
 							$(".kalei-sheet-submenu li").removeClass('active');
 							$(".kalei-sheet-submenu li:contains('" + $(this).find('> h1').text() +"')").addClass('active');
 						}
@@ -233,15 +233,15 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					if($('.kalei-page__item').length !== 0) {
 						var pageHeight = $(window).height();
 						var lastElHeight = $('.kalei-page__item:last').outerHeight(); // outerHeight() returns height + padding).
-						var lastElPaddingTop = $('.kalei-page__item:last').css( 'padding-top');
-						var lastElPaddingBottom = $('.kalei-page__item:last').css( 'padding-bottom');
+						var lastElPaddingTop = $('.kalei-page__item:last').css('padding-top');
+						var lastElPaddingBottom = $('.kalei-page__item:last').css('padding-bottom');
 						lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2)); // Removes px from string and converts string to number.
 						lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2)); // Removes px from string and converts string to number.
 						lastElPaddingTotal = lastElPaddingTop+lastElPaddingBottom;
-						if(lastElHeight >= pageHeight-20) {
+						if(lastElHeight >= pageHeight) {
 							$(that.el).css({ 'padding-bottom' : 0 });
 						} else {
-							$(that.el).css({ 'padding-bottom' : ((pageHeight-lastElHeight)-lastElPaddingTotal) });
+							$(that.el).css({ 'padding-bottom' : (pageHeight-lastElHeight) });
 						}
 					}
 				}
