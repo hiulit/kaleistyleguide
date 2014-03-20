@@ -4,11 +4,17 @@
 */
 @import url("../scss/readme.scss");
 
+/*
+
+# Plugins
+
+*/
+
+@import url("../scss/plugins/fixie.scss");
+@import url("../scss/plugins/prism.scss");
 
 /*
 # Examples
 
 */
 @import url("../scss/examples/buttons.scss");
-@import url("../scss/examples/fixie-demo.scss");
-@import url("../scss/examples/prism-demo.scss");
