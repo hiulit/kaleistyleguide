@@ -83,15 +83,14 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 
 						var regex = /(?:.*\/)(.*)\.(css|sass|scss|less)$/gi;
 						var result = [];
-						// If the style sheet is a .sass or .scss file:
 						if((result = regex.exec(sheet)) !== null) {
 							// result[0] Original Input.
 							// result[1] Filename.
 							// result[2] Extension.
 
-							// Returns the path before 'scss/'.
+							// Returns the path before 'extension/'.
 							sheetPath = result[0].substr(0, result[0].lastIndexOf('' + result[2] + '/') + (result[2].length + 1));
-							// Removes 'sheetPath' from 'sheet' leaving the path after 'scss/'.
+							// Removes 'sheetPath' from 'sheet' leaving the path after 'extension/'.
 							sheet = result[0].replace(sheetPath, '');
 						}
 						// Pushes style sheet to currentMenu.
@@ -101,12 +100,22 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 
 				if(config.css_paths) {
 					for(var i = 0; i < config.css_paths.length; i++) {
-						// Returns the path before 'scss/'.
-						sheetPath = config.css_paths[i].substr(0, config.css_paths[i].lastIndexOf('scss/')+5);
-						// Removes 'sheetPath' from 'sheet' leaving the path after 'scss/'.
-						config.css_paths[i] = config.css_paths[i].replace(sheetPath, '');
+						var regex = /(?:.*\/)(.*)\.(css|sass|scss|less)$/gi;
+						var result = [];
+						if((result = regex.exec(config.css_paths[i])) !== null) {
+							// result[0] Original Input.
+							// result[1] Filename.
+							// result[2] Extension.
+
+							// Returns the path before 'extension/'.
+							sheetPath = result[0].substr(0, result[0].lastIndexOf('' + result[2] + '/') + (result[2].length + 1));
+							// Removes 'sheetPath' from 'sheet' leaving the path after 'extension/'.
+							config.css_paths[i] = result[0].replace(sheetPath, '');
+						}
+
 						// Pushes style sheet to currentMenu.
 						currentMenu.sheets.push(config.css_paths[i]);
+						console.log(config.css_paths[i]);
 					}
 				}
 
