@@ -26,6 +26,21 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 500;
 }
 
+blockquote {
+	border-left: 4px solid #ddd;
+	@include prem(margin, 40);
+	@include prem(padding-left, 12);
+	p {
+		display: inline;
+	}
+	&:before {
+		content: open-quote;
+	}
+	&:after {
+		content: close-quote;
+	}
+}
+
 .oldie { // fallback for IE8
 	pre {
 		background-color: $fontColor;

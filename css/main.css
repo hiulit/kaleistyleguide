@@ -506,6 +506,19 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 500; }
 
+blockquote {
+  border-left: 4px solid #ddd;
+  margin: 40px;
+  margin: 2.5rem;
+  padding-left: 12px;
+  padding-left: 0.75rem; }
+  blockquote p {
+    display: inline; }
+  blockquote:before {
+    content: open-quote; }
+  blockquote:after {
+    content: close-quote; }
+
 .oldie pre {
   background-color: #515151; }
 .oldie .code-render {
