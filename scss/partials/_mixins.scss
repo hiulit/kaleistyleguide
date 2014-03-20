@@ -104,3 +104,31 @@
 		clear: both;
 	}
 }
+
+@mixin btnColor ($bgColor, $textColor) {
+
+	$hoverColor: saturate(darken($bgColor, 7), 12);
+	$activeColor: darken(saturate(adjust-hue($bgColor, 1), 24), 16);
+
+	background: $bgColor;
+	border: 1px solid $bgColor;
+	color: $textColor;
+	&:hover {
+		background: $hoverColor;
+		border: 1px solid $hoverColor;
+	}
+	&:active,
+	&:focus {
+		background: $activeColor;
+		border: 1px solid $activeColor;
+	}
+	&.is-disabled,
+	&[disabled] {
+		&:hover,
+		&:active,
+		&:focus {
+			background: $bgColor;
+			border: 1px solid $bgColor;
+		}
+	}
+}

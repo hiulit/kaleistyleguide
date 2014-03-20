@@ -2,16 +2,14 @@
 
 # Buttons
 
-You can use any of the following HTML tags to create buttons:
+Add `.btn` to any of the following HTML tags to create buttons:
 
 * `<input>`
 * `<button>`
 * `<a>`
 
-Add `.btn` to them and there you have it.
-
 ```markup
-<!-- Standard button -->
+<!-- Default button -->
 <input type="button" class="btn" value="Default">
 <button type="button" class="btn">Default</button>
 <a href="" class="btn">Default</a>
@@ -68,20 +66,20 @@ a.btn {
 
 # Modifier classes
 
-Use any of the modifier classes to quickly create a styled button.
+Use the modifier classes to apply different styles to buttons.
 
 * `.btn--primary`
 * `.btn--secondary`
 * `.btn--danger`
 
 ```markup
-<!-- Standard button -->
+<!-- Default button -->
 <button type="button" class="btn">Default</button>
 
-<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+<!-- Used for CTA buttons and identifies the primary action in a set of buttons -->
 <button type="button" class="btn btn--primary">Primary</button>
 
-<!-- Contextual button for informational alert messages -->
+<!-- Highlighted buttons for informational purposes -->
 <button type="button" class="btn btn--secondary">Secondary</button>
 
 <!-- Indicates a dangerous or potentially negative action -->
@@ -221,10 +219,13 @@ You can easily mix grouped buttons with standalone ones, like so.
   margin-left: 20px;
   margin-left: 1.25rem; }
 
-.close {
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  top: 0.625rem;
-  right: 10px;
-  right: 0.625rem; }
+/*
+
+# Reference style sheet
+
+You can take a look at this particular style sheet and take it
+into consideration when documenting your own.
+
+<pre data-src="scss/examples/buttons.scss"></pre>
+
+*/
