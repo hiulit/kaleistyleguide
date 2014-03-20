@@ -246,7 +246,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					}
 				}
 
-				paddingBottom();
+				setTimeout(paddingBottom, 2000);
 
 			});
 		},
