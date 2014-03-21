@@ -38,6 +38,10 @@ It works for **headers**, **paragraphs**, **lists**, **images**, and just about 
 ```
 */
 
+h1 {
+	color: red;
+}
+
 .fixie-images-demo {
 	@include clearfix	;
 	.fixie {

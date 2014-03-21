@@ -33,6 +33,9 @@ It works for **headers**, **paragraphs**, **lists**, **images**, and just about 
 <p class="fixie"></p>
 ```
 */
+h1 {
+  color: red; }
+
 .fixie-images-demo {
   *zoom: 1; }
   .fixie-images-demo:before, .fixie-images-demo:after {

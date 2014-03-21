@@ -163,17 +163,17 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 							Sass.writeFile(styleUrl, stylesheet);
 							// Compiles Sass stylesheet into CSS.
 							var stylesheetCompiled = Sass.compile(stylesheet);
-							// Embeds CSS styles in <head>.
-							var style = document.createElement('style');
-							var attr = document.createAttribute('id');
-							var fileName = styleUrl.substr(styleUrl.lastIndexOf('/')+1);
-							fileName = fileName.substr(0, fileName.lastIndexOf('.'));
-							attr.value = fileName;
-							style.setAttributeNode(attr);
-							style.textContent = stylesheetCompiled;
-							if(!$('style[id="' + fileName + '"]').length) {
-								document.head.appendChild(style);
-							}
+							// // Embeds CSS styles in <head>.
+							// var style = document.createElement('style');
+							// var attr = document.createAttribute('id');
+							// var fileName = styleUrl.substr(styleUrl.lastIndexOf('/')+1);
+							// fileName = fileName.substr(0, fileName.lastIndexOf('.'));
+							// attr.value = fileName;
+							// style.setAttributeNode(attr);
+							// style.textContent = stylesheetCompiled;
+							// if(!$('style[id="' + fileName + '"]').length) {
+							// 	document.head.appendChild(style);
+							// }
 							// Parses the CSS.
 							parser = new jscssp();
 							stylesheet = parser.parse(stylesheetCompiled, false, true);
@@ -305,7 +305,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 			var parser = new(less.Parser);
 			var stylesheet;
-			page.css = ".kalei-page{" + page.css + "}";
+			page.css = ".code-render { " + page.css + " }";
 			parser.parse(page.css, function (err, tree) {
 				stylesheet = tree;
 			});
@@ -342,7 +342,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			});
 
 			page.css = stylesheet.toCSS({ compress: true });
-			page.css = ".kalei-page{" + page.css + "}";
+			page.css = ".code-render { " + page.css + " }";
 			page.css = stylesheet.toCSS({ compress: true });
 			return page;
 		},
