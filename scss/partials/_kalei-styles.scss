@@ -6,7 +6,6 @@
 }
 
 .kalei-menu__list { // ul
-	// background-color: $menuColorActive;
 	bottom: 0;
 	left: 0;
 	list-style-type: none;
@@ -100,7 +99,6 @@
 		padding: 0;
 	}
 	li {
-		// color: #fff;
 		cursor: pointer;
 		@include prem(padding-left, 10);
 		@include prem(padding-right, 10);
@@ -114,8 +112,10 @@
 		&.active {
 			cursor: default;
 			border-left: 2px solid $linkColor;
-			color: $linkColor;
 			@include prem(padding-left, 8);
+			> h3 {
+				color: $linkColor;
+			}
 			&:hover {
 				border-left: 2px solid $linkColor;
 				@include prem(padding-left, 8);

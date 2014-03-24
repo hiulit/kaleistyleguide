@@ -197,7 +197,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				});
 
 				$('li:first-child', submenu).addClass('active');
-				$('.kalei-sheet-submenu', $('[data-sheet="' + that.options.style + '"]')).html(submenu).slideDown(200);
+				$('.kalei-sheet-submenu', $('[data-sheet="' + that.options.style + '"]')).html(submenu).show();
 				////////////NEEDS TO BE EXPORTED TO Menu.js
 
 				$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config}));
@@ -302,7 +302,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			});
 
 			page.css = stylesheet.cssText();
-			console.log(page.css);
 
 			var parser = new(less.Parser);
 			var stylesheet;
@@ -310,7 +309,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			parser.parse(page.css, function (err, tree) {
 				stylesheet = tree;
 			});
-			console.log(stylesheet);
 
 			page.css = stylesheet.toCSS({ compress: true });
 			return page;
