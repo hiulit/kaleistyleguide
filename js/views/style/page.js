@@ -61,9 +61,9 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			styleExt = styleUrl.substr(styleUrl.lastIndexOf('.')+1);
 
 			// If a stylesheet is already loaded, don't load it again.
-			if(!$('link[href="' + styleUrl + '"]').length) {
-				$('head').append('<link rel="stylesheet" href="' + styleUrl + '"" type="text/' + styleExt +'" />');
-			}
+			// if(!$('link[href="' + styleUrl + '"]').length) {
+			// 	$('head').append('<link rel="stylesheet" href="' + styleUrl + '"" type="text/' + styleExt +'" />');
+			// }
 
 			// var navToggle = $('.nav');
 
@@ -301,7 +301,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				}
 			});
 
-			page.css = stylesheet.cssText()
+			page.css = stylesheet.cssText();
+			console.log(page.css);
 
 			var parser = new(less.Parser);
 			var stylesheet;
@@ -309,6 +310,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 			parser.parse(page.css, function (err, tree) {
 				stylesheet = tree;
 			});
+			console.log(stylesheet);
 
 			page.css = stylesheet.toCSS({ compress: true });
 			return page;
