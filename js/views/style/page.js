@@ -189,11 +189,16 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 				////////////NEEDS TO BE EXPORTED TO Menu.js
 				_.each(page.blocks, function (block) {
-					if (block.heading != "") {
+					if (block.heading !== '') {
+						console.log(block.heading);
 						var li = $('<li>');
 						li.append($('<h3>').text(block.heading));
 						submenu.append(li);
 					}
+					// if(block.stylesheet !== 'undefined') {
+					// 	console.log(block.stylesheet);
+					// 	li.append($('<div>').append('<div><h4>' + block.stylesheet + '</h4></div>'));
+					// }
 				});
 
 				$('li:first-child', submenu).addClass('active');
@@ -397,12 +402,12 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 						}
 						break;
 					case "heading":
-						if (block.heading != "" && comment.depth === 1) {
+						if (block.heading !== '' && comment.depth === 1) {
 							// Multiple headings in one comment block.
 							// We want to break them up.
 							// Parse the content blocks and return the HTML to display.
-							block.content.links = lexerLinks
-							block.content = marked.parser(block.content)
+							block.content.links = lexerLinks;
+							block.content = marked.parser(block.content);
 							return_val.push(block);
 							block = _.clone(block_def);
 						}
@@ -412,7 +417,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 						} else if (comment.depth >= 2) {
 							block.stylesheet = comment.text;
 							block.content.push(comment);
-
 						}
 						break;
 					default:
