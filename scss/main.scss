@@ -18,7 +18,8 @@ html {
 
 body {
 	background-color: #fff;
-	margin: 0;
+	margin: 0 auto;
+	@include prem(max-width, 1140);
 	padding: 0;
 }
 
