@@ -6,12 +6,11 @@ define([
 	'text!templates/style/page.html',
 	'config',
 	'jscssp',
-	'pagedown',
 	'libs/prism/prism',
 	'libs/parseuri/parseuri',
 	'libs/less/less-1.3.3.min'
 ],
-function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hljs, parseuri){
+function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 	var that = null;
 	var StylePage = Backbone.View.extend({
 		el: '.kalei-page',
@@ -122,7 +121,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 								while ((match = regex.exec(str)) !== null) {
 									matches.push(match[1]);
 								}
-								// console.log('Import Matches ---->', matches);
 								_.each(matches, function(match) {
 									// Check if is a filename
 									var path = match.split('/');
@@ -145,9 +143,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 									}
 									filename = '_' + filename + '.' + styleExt;
 									fullpath = _basepath + '/' + filename;
-									// console.log('filename:', filename);
-									// console.log('basepath:', _basepath);
-									// console.log('fullpath:', fullpath);
 
 									var importContent = Module.read(url + fullpath);
 									Sass.writeFile(match, importContent);
@@ -190,7 +185,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				////////////NEEDS TO BE EXPORTED TO Menu.js
 				_.each(page.blocks, function (block) {
 					if (block.heading !== '') {
-						console.log(block.heading);
 						var li = $('<li>');
 						li.append($('<h3>').text(block.heading));
 						submenu.append(li);
@@ -214,11 +208,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 
 				$(window).scroll(function () {
 					var scroll = $(window).scrollTop();
-					// if(scroll === 0) {
-					// 	$('.kalei-nav').removeClass('is-disabled');
-					// } else {
-					// 	$('.kalei-nav').addClass('is-disabled');
-					// }
 					$(".kalei-page__item").each(function() {
 						if(that.is_on_screen($(this), 20)) {
 							$(".kalei-sheet-submenu li").removeClass('active');
@@ -227,7 +216,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 					});
 				});
 
-				// Call for fixie.
+				// Call for Fixie.
 				fixie.init();
 
 				// If the last element of the page is higher than window.height(),
@@ -273,7 +262,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 		},
 
 		compute_css: function(stylesheet) {
-			console.log("compute_css()")
 			var page = {
 				blocks:[],
 				css:"",
@@ -315,19 +303,16 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, Pagedown, hl
 				stylesheet = tree;
 			});
 
-			page.css = stylesheet.toCSS({ compress: true });
+			page.css = stylesheet.toCSS();
 			return page;
 		},
 
 		compute_less: function(stylesheet) {
-			console.log("compute_less()")
 			var page = {
 				blocks:[],
 				css:"",
 				stylesheets: []
 			};
-
-			console.log(stylesheet)
 
 			_.each(stylesheet.rules, function(rule) {
 				// Comment block.
