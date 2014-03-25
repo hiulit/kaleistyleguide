@@ -9,7 +9,6 @@
 # Plugins
 
 */
-
 @import url("../scss/plugins/fixie.scss");
 @import url("../scss/plugins/prism.scss");
 
@@ -18,9 +17,3 @@
 
 */
 @import url("../scss/examples/buttons.scss");
-
-/*
-# LESS
-
-*/
-@import url("../less/styles.less");
