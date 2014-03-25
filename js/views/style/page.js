@@ -178,7 +178,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 						break;
 				}
 
-				console.log((new Date()).getTime() + " bottom", page)
+				console.log((new Date()).getTime() + ' bottom', page)
 
 				$('.kalei-sheet-submenu').hide();
 				var submenu = $('<ul>');
@@ -209,9 +209,9 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 
 				$(window).scroll(function () {
 					var scroll = $(window).scrollTop();
-					$(".kalei-page__item").each(function() {
+					$('.kalei-page__item').each(function() {
 						if(that.is_on_screen($(this), 20)) {
-							$(".kalei-sheet-submenu li").removeClass('active');
+							$('.kalei-sheet-submenu li').removeClass('active');
 							$(".kalei-sheet-submenu li:contains('" + $(this).find('> h1').text() +"')").addClass('active');
 						}
 					});
@@ -265,7 +265,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 		compute_css: function(stylesheet, stylesheetCompiled) {
 			var page = {
 				blocks: [],
-				css: "",
+				css: '',
 				stylesheets: []
 			};
 
@@ -299,7 +299,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 
 			var parser = new(less.Parser);
 			var stylesheet;
-			page.css = ".code-render { " + page.css + " }";
+			page.css = '.code-render { ' + page.css + ' }';
 			parser.parse(page.css, function (err, tree) {
 				stylesheet = tree;
 			});
@@ -311,7 +311,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 		compute_less: function(stylesheet) {
 			var page = {
 				blocks: [],
-				css: "",
+				css: '',
 				stylesheets: []
 			};
 
@@ -332,10 +332,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 			});
 
 			page.css = stylesheet.toCSS({ compress: true });
-			
+
 			var parser = new(less.Parser);
 			var stylesheet;
-			page.css = ".code-render { " + page.css + " }";
+			page.css = '.code-render { ' + page.css + ' }';
 			parser.parse(page.css, function (err, tree) {
 				stylesheet = tree;
 			});
@@ -362,14 +362,14 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 			var return_val = [];
 			var block_def = {
 				content: [],
-				heading: "",
+				heading: '',
 			};
 
 			var block = _.clone(block_def);
 
 			_.each(lexedCommentblock, function (comment) {
 				switch (comment.type) {
-					case "code":
+					case 'code':
 						// If there's no language:
 						// Push the code without example nor language header.
 						if (!comment.lang) {
@@ -393,7 +393,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 							block.content.push(comment);
 						}
 						break;
-					case "heading":
+					case 'heading':
 						if (block.heading !== '' && comment.depth === 1) {
 							// Multiple headings in one comment block.
 							// We want to break them up.
