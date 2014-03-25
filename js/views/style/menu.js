@@ -16,18 +16,10 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 
 			that.$el.html('Loading styles');
 
-			// If style sheets are defined in config.js
-			// if(config.css_paths) {
-			// 	config.css_path = config.css_paths[0];
-			// 	console.log(config.css_paths);
-			// }
-
 			var page = {blocks:[]};
 
 			require(['text!' + config.css_path], function (styles) {
 				// Default "imports.css"
-				// var masterStyle = config.css_path.substr(config.css_path.lastIndexOf('/')+1);
-				// console.log(masterStyle);
 				var markedOpts = _.extend({
 										sanitize: false,
 										gfm: true
@@ -121,7 +113,7 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 
 				menus.push(currentMenu);
 
-				$(that.el).html(_.template(dashboardPageTemplate, {_:_, menuTitle: menuTitle, menus: menus, /*entry: masterStyle*/}));
+				$(that.el).html(_.template(dashboardPageTemplate, {_:_, menuTitle: menuTitle, menus: menus}));
 				$('[href="' + window.location.hash + '"]').addClass('active');
 				if(window.location.hash === '') {
 					$('.js-kalei-home').addClass('active');
@@ -135,7 +127,6 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				$(ev.currentTarget).addClass('active');
 			},
 			'click .kalei-sheet-submenu li': function(ev) {
-				// $('body').removeClass('nav-open');
 				$('html, body').animate({
 					scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"')").offset().top - 20
 				}, '200');
