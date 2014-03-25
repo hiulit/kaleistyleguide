@@ -100,8 +100,9 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				switch (result[2]) {
 					case 'css':
 							parser = new jscssp();
+							stylesheetCompiled = stylesheet;
 							stylesheet = parser.parse(stylesheet, false, true);
-							page = that.compute_css(stylesheet);
+							page = that.compute_css(stylesheet, stylesheetCompiled);
 						break;
 					case 'less':
 							parser = new(less.Parser)({
@@ -172,7 +173,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 							// Parses the CSS.
 							parser = new jscssp();
 							stylesheet = parser.parse(stylesheetCompiled, false, true);
-							page = that.compute_css(stylesheet);
+							page = that.compute_css(stylesheet, stylesheetCompiled);
 
 						break;
 				}
@@ -261,7 +262,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 
 		},
 
-		compute_css: function(stylesheet) {
+		compute_css: function(stylesheet, stylesheetCompiled) {
 			var page = {
 				blocks:[],
 				css:"",
@@ -294,7 +295,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				}
 			});
 
-			page.css = stylesheet.cssText();
+			page.css = stylesheetCompiled;
 
 			var parser = new(less.Parser);
 			var stylesheet;
@@ -303,7 +304,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				stylesheet = tree;
 			});
 
-			page.css = stylesheet.toCSS();
+			page.css = stylesheet.toCSS({compress: true});
 			return page;
 		},
 
