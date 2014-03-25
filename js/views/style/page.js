@@ -64,19 +64,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 			// 	$('head').append('<link rel="stylesheet" href="' + styleUrl + '"" type="text/' + styleExt +'" />');
 			// }
 
-			// var navToggle = $('.nav');
-
-			// navToggle.click(function(){
-			// 	$('body').removeClass('loading').toggleClass('nav-open');
-			// });
-
-			// $('.kalei-page').click(function(){
-			// 	$('body').removeClass('nav-open');
-			// });
-
+			// Scroll to top
 			var scroll = $(window).scrollTop();
 			if(scroll !== 0) {
-				$('body').animate({ // Scroll to top
+				$('body').animate({
 					scrollTop: 0
 				}, '200');
 			}
