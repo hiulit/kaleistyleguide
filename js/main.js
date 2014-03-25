@@ -4,11 +4,10 @@ require.config({
 	paths: {
 		// Major libraries
 		jquery: 'libs/jquery/jquery-min',
-		underscore: 'libs/underscore/underscore-min', // https://github.com/amdjs
-		backbone: 'libs/backbone/backbone-min', // https://github.com/amdjs
+		underscore: 'libs/underscore/underscore-min',
+		backbone: 'libs/backbone/backbone-min',
 		jscssp: 'libs/jscssp/jscssp',
 		fixie: 'libs/fixie/fixie',
-	pagedown: 'libs/pagedown/converter',
 		// Require.js plugins
 		text: 'libs/require/text',
 		order: 'libs/require/order',
@@ -29,5 +28,5 @@ require([
 ], function(AppView, Router, Vm){
 	var appView = Vm.create({}, 'AppView', AppView);
 	appView.render();
-	Router.initialize({appView: appView});  // The router now has a copy of all main appview
+	Router.initialize({appView: appView}); // The router now has a copy of all main appview
 });
