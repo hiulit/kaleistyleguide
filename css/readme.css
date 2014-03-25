@@ -2,21 +2,11 @@
 /*
 # Kalei - Living Styleguide
 
-<iframe src="http://ghbtns.com//github-btn.html?user=hiulit&repo=kaleistyleguide&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
-
-<iframe src="http://ghbtns.com//github-btn.html?user=hiulit&repo=kaleistyleguide&type=fork&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="146px" height="30px"></iframe>
-
-This is a **fork** from [Thomas Davis' Kalei - Style guide](https://github.com/thomasdavis/kaleistyleguide).
-
-*/
-/*
-# Generate bootstrap-like documentation for your own CSS!
+## Generate bootstrap-like documentation for your own CSS!
 
 This project aims at making sure your style sheets are fully documented whilst being synchronized with your project styles.
 
 To do this, it actually uses your style sheets so that, at anytime, you can review how your style guide looks.
-
-This website is a live example generated from Kalei's styles.
 
 */
 /*
@@ -36,275 +26,6 @@ This website is a live example generated from Kalei's styles.
 1. Download the repository `git clone https://github.com/hiulit/kaleistyleguide.git`.
 2. Serve it on a HTTP server (or a local environment using [MAMP](http://www.mamp.info/),
  [XAMPP](http://www.apachefriends.org/), etc.) and it should work!
-
-*/
-/*
-# Getting Started
-
-By default, Kalei uses `imports.css` as a base style sheet to import all the style sheets that you want to document.
-
-This is how this particular `imports.css` looks like:
-
-<pre data-src="css/imports.css"></pre>
-
-*/
-/*
-# How to document your style sheets
-
-Comments ♥ Markdown
-
-One of the great things about Kalei is that you can use the same style sheets you're using right now in your project.
-How cool is that, right?
-
-You just need to comment your style sheets using Markdown and then, boom...!! The magic happens!
-
-You end up with a fully documented style sheet and a beautifully auto-generated living style guide.
-Killing two (tofu) birds with one stone.
-What a deal!
-
-See more at [prism-demo.scss](#/examples/prism-demo.scss).
-
-*/
-/*
-
-# File structure
-
-	kaleistyleguide
-	  │   .gitattributes
-	  │   .gitignore
-	  │   CNAME
-	  │   codekit-config.json
-	  │   index.html
-	  │   LICENSE
-	  │   README.md
-	  │
-	  ├───css
-	  │   │   imports.css
-	  │   │   main.css
-	  │   │   readme.css
-	  │   │
-	  │   ├───examples
-	  │   │       buttons.css
-	  │   │
-	  │   └───plugins
-	  │           fixie.css
-	  │           prism.css
-	  │
-	  ├───js
-	  │   │   boilerplate.js
-	  │   │   config.js
-	  │   │   events.js
-	  │   │   main.js
-	  │   │   router.js
-	  │   │   vm.js
-	  │   │
-	  │   ├───libs
-	  │   │   ├───backbone
-	  │   │   │       backbone-min.js
-	  │   │   │       backbone-optamd3-min.js
-	  │   │   │
-	  │   │   ├───fixie
-	  │   │   │       fixie.js
-	  │   │   │
-	  │   │   ├───jquery
-	  │   │   │       jquery-1.11.0.min.js
-	  │   │   │       jquery-min.js
-	  │   │   │
-	  │   │   ├───jscssp
-	  │   │   │       jscssp.js
-	  │   │   │
-	  │   │   ├───less
-	  │   │   │       less-1.3.3.min.js
-	  │   │   │
-	  │   │   ├───marked
-	  │   │   │       marked.js
-	  │   │   │
-	  │   │   ├───parseuri
-	  │   │   │       parseuri.js
-	  │   │   │
-	  │   │   ├───prism
-	  │   │   │       prism.js
-	  │   │   │
-	  │   │   ├───require
-	  │   │   │       order.js
-	  │   │   │       require.js
-	  │   │   │       text.js
-	  │   │   │
-	  │   │   ├───sassjs
-	  │   │   │   │   .editorconfig
-	  │   │   │   │   .gitignore
-	  │   │   │   │   .jshintrc
-	  │   │   │   │   bower.json
-	  │   │   │   │   console.html
-	  │   │   │   │   CONTRIBUTING.md
-	  │   │   │   │   Gruntfile.js
-	  │   │   │   │   linked.html
-	  │   │   │   │   package.json
-	  │   │   │   │   Readme.md
-	  │   │   │   │   test.html
-	  │   │   │   │   worker.html
-	  │   │   │   │
-	  │   │   │   ├───bin
-	  │   │   │   │   │   benchmark.js
-	  │   │   │   │   │
-	  │   │   │   │   └───closure-compiler
-	  │   │   │   │       └───build
-	  │   │   │   │               compiler.jar
-	  │   │   │   │
-	  │   │   │   ├───dist
-	  │   │   │   │       sass.js
-	  │   │   │   │       sass.min.js
-	  │   │   │   │       sass.worker.js
-	  │   │   │   │       worker.js
-	  │   │   │   │       worker.min.js
-	  │   │   │   │
-	  │   │   │   ├───scss
-	  │   │   │   │   │   demo.scss
-	  │   │   │   │   │   example.scss
-	  │   │   │   │   │   _importable.scss
-	  │   │   │   │   │
-	  │   │   │   │   └───deeper
-	  │   │   │   │           _some.scss
-	  │   │   │   │
-	  │   │   │   ├───src
-	  │   │   │   │       libsass.js
-	  │   │   │   │       libsass.worker.js
-	  │   │   │   │       sass.js
-	  │   │   │   │       sass.worker.js
-	  │   │   │   │
-	  │   │   │   └───test
-	  │   │   │           test.comments.js
-	  │   │   │           test.compile.js
-	  │   │   │           test.import.js
-	  │   │   │
-	  │   │   └───underscore
-	  │   │           underscore-min.js
-	  │   │
-	  │   └───views
-	  │       │   app.js
-	  │       │
-	  │       └───style
-	  │               menu.js
-	  │               page.js
-	  │
-	  ├───less
-	  │       styles.less
-	  │       test.less
-	  │
-	  ├───scss
-	  │   │   main.scss
-	  │   │   readme.scss
-	  │   │
-	  │   ├───examples
-	  │   │       buttons.scss
-	  │   │
-	  │   ├───partials
-	  │   │       _global.scss
-	  │   │       _kalei-styles.scss
-	  │   │       _mixins.scss
-	  │   │
-	  │   ├───plugins
-	  │   │       fixie.scss
-	  │   │       prism.scss
-	  │   │
-	  │   └───vendor
-	  │       ├───bourbon
-	  │       │   │   _bourbon-deprecated-upcoming.scss
-	  │       │   │   _bourbon.scss
-	  │       │   │
-	  │       │   ├───addons
-	  │       │   │       _button.scss
-	  │       │   │       _clearfix.scss
-	  │       │   │       _font-family.scss
-	  │       │   │       _hide-text.scss
-	  │       │   │       _html5-input-types.scss
-	  │       │   │       _position.scss
-	  │       │   │       _prefixer.scss
-	  │       │   │       _retina-image.scss
-	  │       │   │       _size.scss
-	  │       │   │       _timing-functions.scss
-	  │       │   │       _triangle.scss
-	  │       │   │
-	  │       │   ├───css3
-	  │       │   │       _animation.scss
-	  │       │   │       _appearance.scss
-	  │       │   │       _backface-visibility.scss
-	  │       │   │       _background-image.scss
-	  │       │   │       _background.scss
-	  │       │   │       _border-image.scss
-	  │       │   │       _border-radius.scss
-	  │       │   │       _box-sizing.scss
-	  │       │   │       _columns.scss
-	  │       │   │       _flex-box.scss
-	  │       │   │       _font-face.scss
-	  │       │   │       _hidpi-media-query.scss
-	  │       │   │       _image-rendering.scss
-	  │       │   │       _inline-block.scss
-	  │       │   │       _keyframes.scss
-	  │       │   │       _linear-gradient.scss
-	  │       │   │       _perspective.scss
-	  │       │   │       _placeholder.scss
-	  │       │   │       _radial-gradient.scss
-	  │       │   │       _transform.scss
-	  │       │   │       _transition.scss
-	  │       │   │       _user-select.scss
-	  │       │   │
-	  │       │   ├───functions
-	  │       │   │       _compact.scss
-	  │       │   │       _flex-grid.scss
-	  │       │   │       _grid-width.scss
-	  │       │   │       _linear-gradient.scss
-	  │       │   │       _modular-scale.scss
-	  │       │   │       _px-to-em.scss
-	  │       │   │       _radial-gradient.scss
-	  │       │   │       _tint-shade.scss
-	  │       │   │       _transition-property-name.scss
-	  │       │   │
-	  │       │   └───helpers
-	  │       │           _deprecated-webkit-gradient.scss
-	  │       │           _gradient-positions-parser.scss
-	  │       │           _linear-positions-parser.scss
-	  │       │           _radial-arg-parser.scss
-	  │       │           _radial-positions-parser.scss
-	  │       │           _render-gradients.scss
-	  │       │           _shape-size-stripper.scss
-	  │       │
-	  │       ├───normalize
-	  │       │       _normalize.scss
-	  │       │
-	  │       └───prism
-	  │               _prism.scss
-	  │
-	  └───templates
-	      │   layout.html
-	      │
-	      └───style
-	              menu.html
-	              page.html
-
-
-*/
-/*
-# Example
-
-REMOVE!!!!!!
-
-Easily show off examples of your components and the HTML to generate them.
-
-```markup
-<div class="actions button-container">
-	<a href="#" class="button primary">Compose new</a>
-	<div class="button-group">
-		<a href="#" class="button primary">Archive</a>
-		<a href="#" class="button">Report spam</a>
-		<a href="#" class="button danger">Delete</a>
-	</div>
-	<div class="button-group minor-group">
-		<a href="#" class="button">Move to</a>
-		<a href="#" class="button">Labels</a>
-	</div>
-</div>
-```
 
 */
 /*
@@ -365,7 +86,7 @@ Not tested on Opera.
 
 ## This fork's author
 
-* [Xavier Gómez (a.k.a hiulit)](https://github.com/hiulit)
+* [Xavier Gómez](https://github.com/hiulit) ([@hiulit](https://twitter.com/hiulit))
 
 */
 /*
@@ -374,7 +95,7 @@ Not tested on Opera.
 Mad propz again for these guys:
 
 * [Luke Brooker](http://lukebrooker.com/)
-* [Oriol Torras](https://github.com/otorras)
+* [Oriol Torras](https://github.com/otorras) ([@uriusfurius](https://twitter.com/uriusfurius))
 
 */
 /*

@@ -1,4 +1,5 @@
 define({
+	// *1*
 	// This path is used as a default by the Kalei project itself.
 	// This is the preferred way to go!
 
@@ -8,11 +9,13 @@ define({
 				window.location.pathname +
 				'css/imports.css',
 
+	// *2*
 	// You can configure any path you want.
 	// Not supported yet!!!
 
 	// css_path_url: 'http://localhost/kaleistyleguide/css/imports.css',
 
+	// *3*
 	// You can manually list the css files to process by giving a css_paths array:
 	// This is option is the least recommended because of its poor UI experience.
 	// You don't get the benefits of having the 'imports.css' #Titles rendered as headings.

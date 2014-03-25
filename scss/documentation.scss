@@ -1,0 +1,48 @@
+/*
+# Getting Started
+
+By default, Kalei uses `imports.css` as a base style sheet to import all the style sheets that you want to document.
+
+This is how this particular `imports.css` looks like:
+
+<pre data-src="css/imports.css"></pre>
+
+See **Config.js** for more options.
+
+*/
+
+
+/*
+# How to document your style sheets
+
+## Kalei ♥ Markdown
+
+One of the great things about Kalei is that you can use the same style sheets you're using right now in your project.
+How cool is that, right?
+
+You just need to comment your style sheets using [Markdown](http://daringfireball.net/projects/markdown/syntax)
+and then, boom...!! The magic happens!
+
+You end up with a fully documented style sheet and a beautifully auto-generated living style guide.
+Killing two (tofu) birds with one stone.
+What a deal!
+
+See more at [prism-demo.scss](#/examples/prism-demo.scss).
+
+*/
+
+
+/*
+# Config.js
+
+As you can see, there are 3 ways (well, actually 2) to point at your style sheets:
+
+1. Define `css_path` - This is the preferred way to go!
+2. Define `css_path_url` - **Not supported yet!!!**
+3. Define `css_paths` - Manually enter an array of files.
+
+Just comment and uncomment the appropiate lines to make it work.
+
+<pre data-src="js/config.js"></pre>
+
+*/

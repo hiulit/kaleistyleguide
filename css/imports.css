@@ -5,7 +5,12 @@
 @import url("../scss/readme.scss");
 
 /*
+# Documentation
 
+*/
+@import url("../scss/documentation.scss");
+
+/*
 # Plugins
 
 */
