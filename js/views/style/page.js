@@ -106,7 +106,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 						break;
 					case 'less':
 							parser = new(less.Parser)({
-								paths: [configDir + '/'], // Specify search paths for @import directives.
+								paths: [configDir + 'less/'], // Specify search paths for @import directives.
 							});
 							parser.parse(stylesheet, function (err, tree) {
 								stylesheet = tree;
@@ -264,8 +264,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 
 		compute_css: function(stylesheet, stylesheetCompiled) {
 			var page = {
-				blocks:[],
-				css:"",
+				blocks: [],
+				css: "",
 				stylesheets: []
 			};
 
@@ -304,24 +304,23 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				stylesheet = tree;
 			});
 
-			page.css = stylesheet.toCSS({compress: true});
+			page.css = stylesheet.toCSS({ compress: true });
 			return page;
 		},
 
 		compute_less: function(stylesheet) {
 			var page = {
-				blocks:[],
-				css:"",
+				blocks: [],
+				css: "",
 				stylesheets: []
 			};
 
 			_.each(stylesheet.rules, function(rule) {
 				// Comment block.
-				if (rule.silent !== null) {
-					page.blocks = page.blocks.concat(that.parse_commentblock(rule.value))
+				if (rule.silent === false) {
+					page.blocks = page.blocks.concat(that.parse_commentblock(rule.value));
 				// Standard Rule.
 				} else if (rule.rules !== null) {
-
 				//Import Rule
 				} else if (rule.path !== null) {
 					// var previous_heading = page.blocks.length - 1;
@@ -333,7 +332,14 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 			});
 
 			page.css = stylesheet.toCSS({ compress: true });
+			
+			var parser = new(less.Parser);
+			var stylesheet;
 			page.css = ".code-render { " + page.css + " }";
+			parser.parse(page.css, function (err, tree) {
+				stylesheet = tree;
+			});
+
 			page.css = stylesheet.toCSS({ compress: true });
 			return page;
 		},
