@@ -38,10 +38,11 @@ Kalei is heavily influenced by the following projects and blog posts:
 
 ## Technologies
 
-Mad Propz to all the great people behind the software listed below.
+Mad propz to all the great people behind the software listed below.
 
 * [marked.js](https://github.com/chjj/marked) - Full-featured markdown parser and compiler in Javascript.
 * [jscssp](http://www.glazman.org/JSCSSP/) - CSS parser in JavaScript.
+* [Less](http://lesscss.org/) - CSS pre-prepocessor
 * [sass.js](https://github.com/medialize/sass.js) - API for emscripted libsass to run in the browser.
 * [Fixie.js](https://github.com/ryhan/fixie) - Automatically add filler content to HTML documents.
 * [Prism](http://prismjs.com/) - Lightweight, robust, elegant syntax highlighting.
@@ -62,7 +63,7 @@ Say whaaaa...?!! Did I just see that you support IE 8+?
 
 Well... If you want to pimp your experience and leverage [sass.js](https://github.com/medialize/sass.js) and [Prism](http://prismjs.com/),
 please ensure you use a real browser **IE 10+**.
-If not, you can still use plain, old boring CSS.
+If not, you can still use plain, old boring CSS. Or try using [Less](http://lesscss.org/).
 
 Not tested on Opera.
 
@@ -78,7 +79,7 @@ Not tested on Opera.
 
 ## This fork's author
 
-* Me [Xavier Gómez](https://github.com/hiulit) ([@hiulit](https://twitter.com/hiulit))
+* Me, [Xavier Gómez](https://github.com/hiulit) ([@hiulit](https://twitter.com/hiulit))
 
 
 ## Contributors
