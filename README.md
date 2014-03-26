@@ -1,4 +1,4 @@
-# Kalei - Living Styleguide
+# Kalei - Living Style Guide
 
 
 ## Generate bootstrap-like documentation for your own CSS!
@@ -50,19 +50,20 @@ Mad propz to all the great people behind the software listed below.
 * [Underscore.js](http://underscorejs.org/)
 * [jQuery](http://jquery.com)
 
+
 ## Pre-pocessors support
 
-* Sass (v3.2.16)
-* Less (v1.7.0)
+* [Sass](http://sass-lang.com/) (v3.2.16) + [Bourbon](http://bourbon.io/)
+* [Less](http://lesscss.org/) (v1.7.0)
 
-### Notes
+## Notes
 
 Why don't you use the latest version of Sass (v3.3.4)?
 
-Kalei uses [sass.js](https://github.com/medialize/sass.js) for having Sass in the browser (not a trivial task, btw)
+Kalei uses [sass.js](https://github.com/medialize/sass.js) for having Sass in the browser
+([not a trivial task](http://blog.rodneyrehm.de/archives/33-libsass.js-An-Emscripten-Experiment.html), btw)
 which in turn uses [libsass](https://github.com/hcatlin/libsass). The guys behind sass.js are [waiting for an
 official libasss release](https://twitter.com/rodneyrehm/status/447009238561595392).
-
 
 ## Browser support
 
