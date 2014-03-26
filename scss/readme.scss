@@ -63,6 +63,23 @@ Mad propz to all the great people behind the software listed below.
 */
 
 /*
+# Pre-pocessors support
+
+* Sass (v3.2.16)
+* Less (v1.7.0)
+
+## Notes
+
+Why don't you use the latest version of Sass (v3.3.4)?
+
+Kalei uses [sass.js](https://github.com/medialize/sass.js) for having Sass in the browser (not a trivial task, btw)
+which in turn uses [libsass](https://github.com/hcatlin/libsass). The guys behind sass.js are [waiting for an
+official libasss release](https://twitter.com/rodneyrehm/status/447009238561595392).
+
+*/
+
+
+/*
 # Browser support
 
 * Chrome
