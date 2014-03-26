@@ -55,7 +55,7 @@ Mad propz to all the great people behind the software listed below.
 * Sass (v3.2.16)
 * Less (v1.7.0)
 
-## Notes
+### Notes
 
 Why don't you use the latest version of Sass (v3.3.4)?
 
@@ -70,7 +70,7 @@ official libasss release](https://twitter.com/rodneyrehm/status/4470092385615953
 * Firefox
 * IE 8+
 
-## Notes
+### Notes
 
 Say whaaaa...?!! Did I just see that you support IE 8+?
 
