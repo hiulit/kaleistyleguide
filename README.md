@@ -90,7 +90,7 @@ Not tested on Opera.
 
 * [Thomas Davis](http://thomasdavis.github.com)
 
-## This fork's author
+### This fork's author
 
 * Me, [Xavier Gómez](https://github.com/hiulit) ([@hiulit](https://twitter.com/hiulit))
 
