@@ -80,7 +80,7 @@ You can write you code indented with 1 tab (or 4 spaces) to show it as a code bl
 
 *Kalei uses [Prism](http://prismjs.com/) as the syntax highlighter. See more at [plugins/prism.scss](#/plugins/prism.scss)*.
 
-Wrap your code with **Markdown**
+Wrap your code with
 [fenced code blocks](https://help.github.com/articles/github-flavored-markdown#fenced-code-blocks) `` ``` `` +
 `language code`, like this:
 
@@ -116,7 +116,7 @@ Unlike code blocks, there's no need for indentation using the syntax highlighter
 /*
 # Rendering HTML
 
-Wrap your code with **Markdown**
+Wrap your code with
 [fenced code blocks](https://help.github.com/articles/github-flavored-markdown#fenced-code-blocks) `` ``` `` +
 `markup`, like this:
 
@@ -134,6 +134,33 @@ Kalei will automatically render the code as both HTML and the code block with sy
 	<h1>Heading</h1>
 	<p>Bunch of awesome content</p>
 </section>
+```
+
+*/
+
+
+/*
+# Kalei styles
+
+To make sure that the rendered code of your style sheets is unaffected by Kalei's styles,
+and vice versa, Kalei wraps all your CSS in `.code-render`.
+
+These styles are appended at the end of `<div class="kalei-page">` so they rank at the top of the
+[specificity wars](http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html).
+
+```
+<div class="kalei-page">
+	<section class="kalei-page__item"></section>
+	<section class="kalei-page__item"></section>
+	<section class="kalei-page__item"></section>
+	<style>
+		.code-render {
+			.whatever {
+				color: red;
+			}
+		}
+	</style>
+</div>
 ```
 
 
