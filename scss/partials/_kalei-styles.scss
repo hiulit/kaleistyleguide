@@ -175,8 +175,9 @@
 	background-color: rgba(244, 244, 244, 0.25);
 	border-radius: 4px;
 	box-shadow: $boxShadowInsetTop, $boxShadowInsetBottom;
-	@include prem(padding, 40);
 	@include prem(margin-bottom, 16);
+	@include prem(padding, 40);
+	position: relative;
 }
 
 .code-lang {
