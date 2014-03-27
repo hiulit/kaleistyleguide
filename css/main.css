@@ -501,9 +501,17 @@ html {
 body {
   background-color: #fff;
   margin: 0 auto;
-  max-width: 1140px;
-  max-width: 71.25rem;
+  max-width: 90%;
   padding: 0; }
+  @media screen and (min-width: 1400px) {
+    body {
+      max-width: 80%; } }
+  @media screen and (min-width: 1500px) {
+    body {
+      max-width: 70%; } }
+  @media screen and (min-width: 1600px) {
+    body {
+      max-width: 60%; } }
 
 h1, h2, h3, h4, h5, h6 {
   color: #515151;
@@ -606,7 +614,17 @@ img {
 
 .kalei-menu {
   height: 100%;
-  position: fixed; }
+  position: fixed;
+  width: 22.5%; }
+  @media screen and (min-width: 1400px) {
+    .kalei-menu {
+      width: 20%; } }
+  @media screen and (min-width: 1500px) {
+    .kalei-menu {
+      width: 17.5%; } }
+  @media screen and (min-width: 1600px) {
+    .kalei-menu {
+      width: 15%; } }
 
 .kalei-menu__list {
   bottom: 0;

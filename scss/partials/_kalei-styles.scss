@@ -3,6 +3,16 @@
 .kalei-menu {
 	height: 100%;
 	position: fixed;
+	width: 22.5%;
+	@media screen and (min-width: 1400px) {
+		width: 20%;
+	}
+	@media screen and (min-width: 1500px) {
+		width: 17.5%;
+	}
+	@media screen and (min-width: 1600px) {
+		width: 15%;
+	}
 }
 
 .kalei-menu__list { // ul
