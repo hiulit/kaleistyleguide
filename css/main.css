@@ -636,7 +636,7 @@ img {
   padding: 0;
   position: absolute;
   right: 0;
-  top: 0; }
+  top: 10px; }
 
 .kalei-menu__list__item > h1 {
   font-size: 22px;
