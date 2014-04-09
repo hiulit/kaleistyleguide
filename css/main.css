@@ -768,7 +768,8 @@ img {
   padding-right: 0.625rem;
   margin-left: 40px;
   margin-left: 2.5rem; }
-  .kalei-sheet-submenu li h3 {
+  .kalei-sheet-submenu li h3,
+  .kalei-sheet-submenu li h4 {
     font-size: 14px;
     font-size: 0.875rem;
     line-height: 1.5;
@@ -783,6 +784,9 @@ img {
     text-overflow: ellipsis;
     white-space: nowrap;
     word-wrap: normal; }
+  .kalei-sheet-submenu li h4 {
+    margin: 0px 0px 0px 10px;
+    margin: 0rem 0rem 0rem 0.625rem; }
   .kalei-sheet-submenu li.active {
     cursor: default;
     border-left: 2px solid #0090d4;

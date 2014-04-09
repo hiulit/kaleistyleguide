@@ -113,11 +113,15 @@
 		@include prem(padding-left, 10);
 		@include prem(padding-right, 10);
 		@include prem(margin-left, 40);
-		h3 {
+		h3,
+		h4 {
 			@include font-size(14);
 			font-weight: normal;
 			margin: 0;
 			@include max-ellipsis(100%);
+		}
+		h4 {
+			@include prem(margin, 0 0 0 10);
 		}
 		&.active {
 			cursor: default;

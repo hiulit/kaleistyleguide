@@ -176,15 +176,16 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 
 				////////////NEEDS TO BE EXPORTED TO Menu.js
 				_.each(page.blocks, function (block) {
-					if (block.heading !== '') {
+					if (block.heading) {
 						var li = $('<li>');
 						li.append($('<h3>').text(block.heading));
 						submenu.append(li);
 					}
-					// if(block.stylesheet !== 'undefined') {
-					// 	console.log(block.stylesheet);
-					// 	li.append($('<div>').append('<div><h4>' + block.stylesheet + '</h4></div>'));
-					// }
+					if (block.subheading) {
+						var li = $('<li>');
+						li.append($('<h4>').text(block.subheading));
+						submenu.append(li);
+					}
 				});
 
 				$('li:first-child', submenu).addClass('active');
@@ -203,7 +204,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 					$('.kalei-page__item').each(function() {
 						if(that.is_on_screen($(this), 20)) {
 							$('.kalei-sheet-submenu li').removeClass('active');
-							$(".kalei-sheet-submenu li:contains('" + $(this).find('> h1').text() +"')").addClass('active');
+							$(".kalei-sheet-submenu li:contains('" + $(this).find('> h1').text() +"'), " +
+							   ".kalei-sheet-submenu li:contains('" + $(this).find('> h2').text() +"')").addClass('active');
 						}
 					});
 				});
@@ -232,6 +234,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 					}
 				}
 
+				// Please help me xD
 				setTimeout(paddingBottom, 2000);
 
 			});
@@ -349,6 +352,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 			var lexedCommentblock = marked.lexer(comment_block_text);
 			// Lexer appends definition links to returned token object.
 			var lexerLinks = lexedCommentblock.links || {};
+			console.log(lexedCommentblock, lexedCommentblock.links);
 
 			var return_val = [];
 			var block_def = {
@@ -398,7 +402,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 							block.heading = comment.text;
 							block.content.push(comment);
 						} else if (comment.depth >= 2) {
-							block.stylesheet = comment.text;
+							block.subheading = comment.text;
 							block.content.push(comment);
 						}
 						break;
@@ -410,8 +414,9 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 			});
 
 			// Parse the content blocks and return the HTML to display.
-			block.content.links = lexerLinks
-			block.content = marked.parser(block.content)
+			block.content.links = lexerLinks;
+			block.content = marked.parser(block.content);
+			// console.log(block.content.links, block.content);
 
 			return_val.push(block);
 			return return_val;

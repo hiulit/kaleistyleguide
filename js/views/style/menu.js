@@ -128,7 +128,8 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 			},
 			'click .kalei-sheet-submenu li': function(ev) {
 				$('html, body').animate({
-					scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"')").offset().top - 20
+					scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"'), " +
+								   ".kalei-page__item h2:contains('"+$(ev.currentTarget).text()+"')").offset().top - 20
 				}, '200');
 			}
 		}
