@@ -178,12 +178,12 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				_.each(page.blocks, function (block) {
 					if (block.heading) {
 						var li = $('<li>');
-						li.append($('<h3>').text(block.heading));
+						li.append($('<h3 id="' + block.headingID + '">').text(block.heading));
 						submenu.append(li);
 					}
 					if (block.subheading) {
 						var li = $('<li>');
-						li.append($('<h4>').text(block.subheading));
+						li.append($('<h4 id="' + block.subheadingID + '">').text(block.subheading));
 						submenu.append(li);
 					}
 				});
@@ -204,8 +204,14 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 					$('.kalei-page__item').each(function() {
 						if(that.is_on_screen($(this), 20)) {
 							$('.kalei-sheet-submenu li').removeClass('active');
-							$(".kalei-sheet-submenu li:contains('" + $(this).find('> h1').text() +"'), " +
-							   ".kalei-sheet-submenu li:contains('" + $(this).find('> h2').text() +"')").addClass('active');
+							if($(this).find('> h1').text() !== '') {
+								$(".kalei-sheet-submenu li:contains('" + $(this).find('> h1').text() +"')").addClass('active');
+								console.log('H1', $(this).find('> h1').text(), '\n ----');
+							}
+							if($(this).find('> h2').text() !== '') {
+								$(".kalei-sheet-submenu li:contains('" + $(this).find('> h2').text() +"')").addClass('active');
+								console.log('H2', $(this).find('> h2').text());
+							}
 						}
 					});
 				});
@@ -352,7 +358,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 			var lexedCommentblock = marked.lexer(comment_block_text);
 			// Lexer appends definition links to returned token object.
 			var lexerLinks = lexedCommentblock.links || {};
-			console.log(lexedCommentblock, lexedCommentblock.links);
 
 			var return_val = [];
 			var block_def = {
@@ -400,9 +405,11 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 						}
 						if (comment.depth === 1) {
 							block.heading = comment.text;
+							block.headingID = block.heading.toLowerCase().replace(/\W/g, '-');
 							block.content.push(comment);
 						} else if (comment.depth >= 2) {
 							block.subheading = comment.text;
+							block.subheadingID = block.subheading.toLowerCase().replace(/\W/g, '-');
 							block.content.push(comment);
 						}
 						break;
