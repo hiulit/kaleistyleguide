@@ -175,16 +175,47 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				var submenu = $('<ul>');
 
 				////////////NEEDS TO BE EXPORTED TO Menu.js
+				headingArray = [];
+				var i = 2;
 				_.each(page.blocks, function (block) {
 					if (block.heading) {
+						if(headingArray.lastIndexOf(block.headingID) !== -1) {
+							block.headingID = block.headingID + i;
+							headingArray.push(block.headingID);
+							i++;
+						} else {
+							headingArray.push(block.headingID);
+						}
 						var li = $('<li>');
 						li.append($('<h3 id="' + block.headingID + '">').text(block.heading));
 						submenu.append(li);
 					}
 					if (block.subheading) {
+						if(headingArray.lastIndexOf(block.subheadingID) !== -1) {
+							block.subheadingID = block.subheadingID + i;
+							headingArray.push(block.subheadingID);
+							i++;
+						} else {
+							headingArray.push(block.subheadingID);
+						}
 						var li = $('<li>');
 						li.append($('<h4 id="' + block.subheadingID + '">').text(block.subheading));
 						submenu.append(li);
+					}
+				});
+
+				headingArrayPage = [];
+				var i = 2;
+				$('.kalei-page__item h2').each(function() {
+					var hola = $(this).attr('id');
+					if(hola) {
+						if(headingArrayPage.lastIndexOf(hola) !== -1) {
+							hola = $(this).attr('id', hola + i);
+							headingArrayPage.push(hola);
+							i++;
+						} else {
+							headingArrayPage.push(hola);
+						}
 					}
 				});
 
@@ -199,18 +230,20 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				// Prism's File Highlight plugin function.
 				fileHighlight();
 
+
 				$(window).scroll(function () {
 					var scroll = $(window).scrollTop();
 					$('.kalei-page__item').each(function() {
+						// console.log($(this).find('> h1').attr('id'));
 						if(that.is_on_screen($(this), 20)) {
 							$('.kalei-sheet-submenu li').removeClass('active');
 							if($(this).find('> h1').text() !== '') {
 								$(".kalei-sheet-submenu li:contains('" + $(this).find('> h1').text() +"')").addClass('active');
-								console.log('H1', $(this).find('> h1').text(), '\n ----');
+								// console.log('H1', $(this).find('> h1').text(), '\n ----');
 							}
 							if($(this).find('> h2').text() !== '') {
 								$(".kalei-sheet-submenu li:contains('" + $(this).find('> h2').text() +"')").addClass('active');
-								console.log('H2', $(this).find('> h2').text());
+								// console.log('H2', $(this).find('> h2').text());
 							}
 						}
 					});
