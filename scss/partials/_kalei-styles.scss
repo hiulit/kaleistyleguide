@@ -127,7 +127,8 @@
 			cursor: default;
 			border-left: 2px solid $linkColor;
 			@include prem(padding-left, 8);
-			> h3 {
+			> h3,
+			> h4 {
 				color: $linkColor;
 			}
 			&:hover {

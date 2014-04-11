@@ -792,7 +792,8 @@ img {
     border-left: 2px solid #0090d4;
     padding-left: 8px;
     padding-left: 0.5rem; }
-    .kalei-sheet-submenu li.active > h3 {
+    .kalei-sheet-submenu li.active > h3,
+    .kalei-sheet-submenu li.active > h4 {
       color: #0090d4; }
     .kalei-sheet-submenu li.active:hover {
       border-left: 2px solid #0090d4;
