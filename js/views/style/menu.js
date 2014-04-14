@@ -123,13 +123,14 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 		},
 		events: {
 			'click .kalei-menu__list__item__link': function (ev) {
-				this.$el.find('a.active').removeClass('active');
+				this.$el.find('.active').removeClass('active');
 				$(ev.currentTarget).addClass('active');
 			},
 			'click .kalei-sheet-submenu li': function(ev) {
+				var scrollAnchor = $(ev.currentTarget).find('*').filter(':header').attr('id');
+				var scrollPoint = $('.kalei-page__item *[id="' + scrollAnchor + '"]').offset().top - 20;
 				$('html, body').animate({
-					scrollTop: $(".kalei-page__item h1:contains('"+$(ev.currentTarget).text()+"'), " +
-								   ".kalei-page__item h2:contains('"+$(ev.currentTarget).text()+"')").offset().top - 20
+					scrollTop: scrollPoint
 				}, '200');
 			}
 		}

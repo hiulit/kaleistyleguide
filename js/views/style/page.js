@@ -59,25 +59,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 
 			styleExt = styleUrl.substr(styleUrl.lastIndexOf('.')+1);
 
-			// If a stylesheet is already loaded, don't load it again.
-			// if(!$('link[href="' + styleUrl + '"]').length) {
-			// 	$('head').append('<link rel="stylesheet" href="' + styleUrl + '"" type="text/' + styleExt +'" />');
-			// }
-
-			// Scroll to top
-			var scroll = $(window).scrollTop();
-			if(scroll !== 0) {
-				$('body').animate({
-					scrollTop: 0
-				}, '200');
-			}
-
-			$('.kalei-menu__list__item__link').removeClass('active');
-
-			if(window.location.hash !== '') {
-				$('[href="' + window.location.hash + '"]').addClass('active');
-			}
-
 			require(['text!'+ styleUrl], function (stylesheet) {
 				var parser = null;
 				var regex = /(?:.*\/)(.*)\.(css|less|sass|scss)$/gi;
@@ -169,7 +150,20 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 						break;
 				}
 
-				console.log((new Date()).getTime() + ' bottom', page)
+				console.log((new Date()).getTime() + ' bottom', page);
+
+				// Scroll to top
+				var scroll = $(window).scrollTop();
+				if(scroll !== 0) {
+					$('body').animate({
+						scrollTop: 0
+					}, '200');
+				}
+
+				// Adds .active to the current hash (e.g. .readme.scss)
+				if(window.location.hash !== '') {
+					$('[href="' + window.location.hash + '"]').addClass('active');
+				}
 
 				$('.kalei-sheet-submenu').hide();
 				var submenu = $('<ul>');
@@ -204,10 +198,24 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 					}
 				});
 
+				$('li:first-child', submenu).addClass('active');
+				$('.kalei-sheet-submenu', $('[data-sheet="' + that.options.style + '"]')).html(submenu).show();
+				////////////NEEDS TO BE EXPORTED TO Menu.js
+
+				$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config}));
+
+				// Prism's colour coding in <code> blocks.
+				Prism.highlightAll();
+				// Prism's File Highlight plugin function.
+				fileHighlight();
+				// Call for Fixie.
+				fixie.init();
+
 				headingArrayPage = [];
 				var i = 2;
-				$('.kalei-page__item h2').each(function() {
+				$('.kalei-page__item').find('*').filter(':header').each(function() {
 					var hola = $(this).attr('id');
+					console.log('sadasdasasd');
 					if(hola) {
 						if(headingArrayPage.lastIndexOf(hola) !== -1) {
 							hola = $(this).attr('id', hola + i);
@@ -219,38 +227,14 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 					}
 				});
 
-				$('li:first-child', submenu).addClass('active');
-				$('.kalei-sheet-submenu', $('[data-sheet="' + that.options.style + '"]')).html(submenu).show();
-				////////////NEEDS TO BE EXPORTED TO Menu.js
-
-				$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config}));
-
-				// Prism's colour coding in <code> blocks.
-				Prism.highlightAll();
-				// Prism's File Highlight plugin function.
-				fileHighlight();
-
-
 				$(window).scroll(function () {
-					var scroll = $(window).scrollTop();
-					$('.kalei-page__item').each(function() {
-						// console.log($(this).find('> h1').attr('id'));
+					$('.kalei-page__item').find('*').filter(':header').each(function(i) {
 						if(that.is_on_screen($(this), 20)) {
 							$('.kalei-sheet-submenu li').removeClass('active');
-							if($(this).find('> h1').text() !== '') {
-								$(".kalei-sheet-submenu li:contains('" + $(this).find('> h1').text() +"')").addClass('active');
-								// console.log('H1', $(this).find('> h1').text(), '\n ----');
-							}
-							if($(this).find('> h2').text() !== '') {
-								$(".kalei-sheet-submenu li:contains('" + $(this).find('> h2').text() +"')").addClass('active');
-								// console.log('H2', $(this).find('> h2').text());
-							}
+							$('.kalei-sheet-submenu li').eq(i).addClass('active');
 						}
 					});
 				});
-
-				// Call for Fixie.
-				fixie.init();
 
 				// If the last element of the page is higher than window.height(),
 				// some additional padding-bottom is added so it stops at the top of the page.
