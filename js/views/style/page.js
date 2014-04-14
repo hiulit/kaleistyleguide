@@ -215,7 +215,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				var i = 2;
 				$('.kalei-page__item').find('*').filter(':header').each(function() {
 					var hola = $(this).attr('id');
-					console.log('sadasdasasd');
 					if(hola) {
 						if(headingArrayPage.lastIndexOf(hola) !== -1) {
 							hola = $(this).attr('id', hola + i);
@@ -440,7 +439,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 			// Parse the content blocks and return the HTML to display.
 			block.content.links = lexerLinks;
 			block.content = marked.parser(block.content);
-			// console.log(block.content.links, block.content);
 
 			return_val.push(block);
 			return return_val;
