@@ -107,7 +107,6 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 
 						// Pushes style sheet to currentMenu.
 						currentMenu.sheets.push(config.css_paths[i]);
-						console.log(config.css_paths[i]);
 					}
 				}
 
