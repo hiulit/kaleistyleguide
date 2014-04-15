@@ -95,7 +95,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 									matches.push(match[1]);
 								}
 								_.each(matches, function(match) {
-									// Check if is a filename
+									// Check if it's a filename
 									var path = match.split('/');
 									var filename, fullpath, _basepath = basepath;
 									if (path.length > 1) {
@@ -421,11 +421,11 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 						}
 						if (comment.depth === 1) {
 							block.heading = comment.text;
-							block.headingID = block.heading.toLowerCase().replace(/\W/g, '-');
+							block.headingID = block.heading.toLowerCase().replace(/\W+/g, '-');
 							block.content.push(comment);
 						} else if (comment.depth >= 2) {
 							block.subheading = comment.text;
-							block.subheadingID = block.subheading.toLowerCase().replace(/\W/g, '-');
+							block.subheadingID = block.subheading.toLowerCase().replace(/\W+/g, '-');
 							block.content.push(comment);
 						}
 						break;
