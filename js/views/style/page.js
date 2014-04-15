@@ -38,7 +38,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 					styleUrl = configDir + 'scss' + configPath;
 					window.location.href = configDir + '#' + configPath;;
 				} else {
-					console.log('PUT SOMETHING IN THE CONFIG.JS!! C\'MON.....!');
+					alert('PUT SOMETHING IN THE CONFIG.JS!! C\'MON.....!');
 				}
 			} else {
 				if(styleDir.substr(0,1) === '/') {
