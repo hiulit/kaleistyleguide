@@ -185,16 +185,20 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 						submenu.append(li);
 					}
 					if (block.subheading) {
-						if(headingArray.lastIndexOf(block.subheadingID) !== -1) {
-							block.subheadingID = block.subheadingID + i;
-							headingArray.push(block.subheadingID);
-							i++;
-						} else {
-							headingArray.push(block.subheadingID);
+						// console.log(block.subheadingArray, block.subheadingIDArray);
+						for(j = 0; j < block.subheadingArray.length; j++) {
+							console.log(block.subheadingArray[j], block.subheadingIDArray[j]);
+							if(headingArray.lastIndexOf(block.subheadingIDArray[j]) !== -1) {
+								block.subheadingIDArray[j] = block.subheadingIDArray[j] + i;
+								headingArray.push(block.subheadingIDArray[j]);
+								i++;
+							} else {
+								headingArray.push(block.subheadingIDArray[j]);
+							}
+							var li = $('<li>');
+							li.append($('<h4 id="' + block.subheadingIDArray[j] + '">').text(block.subheadingArray[j]));
+							submenu.append(li);
 						}
-						var li = $('<li>');
-						li.append($('<h4 id="' + block.subheadingID + '">').text(block.subheading));
-						submenu.append(li);
 					}
 				});
 
@@ -381,6 +385,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 			var block_def = {
 				content: [],
 				heading: '',
+				subheadingArray: [],
+				subheadingIDArray: [],
 			};
 
 			var block = _.clone(block_def);
@@ -428,6 +434,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 						} else if (comment.depth >= 2) {
 							block.subheading = comment.text;
 							block.subheadingID = block.subheading.toLowerCase().replace(/\W+/g, '-');
+
+							block.subheadingArray.push(block.subheading);
+							block.subheadingIDArray.push(block.subheadingID);
+
 							block.content.push(comment);
 						}
 						break;
