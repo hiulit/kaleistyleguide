@@ -36,7 +36,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 								(window.location.port === '' ? '' : ':'+ window.location.port) +
 								window.location.pathname;
 					styleUrl = configDir + 'scss' + configPath;
-					window.location.href = configDir + '#' + configPath;;
+					window.location.href = configDir + '#' + configPath;
 				} else {
 					alert('PUT SOMETHING IN THE CONFIG.JS!! C\'MON.....!');
 				}
@@ -227,10 +227,12 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				});
 
 				$(window).scroll(function () {
-					$('.kalei-page__item').find('*').filter(':header').each(function(i) {
+					$('.kalei-page__item').find('*').filter(':header').not($('.code-render').find('*')).each(function(i) {
 						if(that.is_on_screen($(this), 20)) {
+							hash = window.location.hash;
+							hash = hash.substr(hash.lastIndexOf('#') + 2);
 							$('.kalei-sheet-submenu li').removeClass('active');
-							$('.kalei-sheet-submenu li').eq(i).addClass('active');
+							$('.kalei-menu__list__item[data-sheet="' + hash + '"]').find($('.kalei-sheet-submenu li')).eq(i).addClass('active');
 						}
 					});
 				});
