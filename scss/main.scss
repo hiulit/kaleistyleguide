@@ -16,22 +16,6 @@ html {
 	@include font-size($baseFontSize);
 }
 
-body {
-	background-color: #fff;
-	margin: 0 auto;
-	max-width: 90%;
-	padding: 0;
-	@media screen and (min-width: 1400px) {
-		max-width: 80%;
-	}
-	@media screen and (min-width: 1500px) {
-		max-width: 70%;
-	}
-	@media screen and (min-width: 1600px) {
-		max-width: 60%;
-	}
-}
-
 h1, h2, h3, h4, h5, h6 {
 	color: $fontColor;
 	font-weight: 500;
