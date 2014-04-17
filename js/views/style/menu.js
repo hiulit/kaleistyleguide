@@ -122,14 +122,17 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 		},
 		events: {
 			'click .kalei-menu__list__item__link': function (ev) {
-				this.$el.find('.active').removeClass('active');
-				$(ev.currentTarget).addClass('active');
-				$(ev.currentTarget).parent().find('.kalei-sheet-submenu li:first-child').addClass('active');
+				if($(ev.currentTarget).hasClass('active')) {
+					ev.preventDefault();
+				} else {
+					this.$el.find('.active').removeClass('active');
+					$(ev.currentTarget).addClass('active');
+					$(ev.currentTarget).parent().find('.kalei-sheet-submenu li:first-child').addClass('active');
+				}
 			},
 			'click .kalei-sheet-submenu li': function(ev) {
 				var scrollAnchor = $(ev.currentTarget).find('*').filter(':header').attr('id');
 				var scrollPoint = $('.kalei-page__item *[id="' + scrollAnchor + '"]').offset().top - 19;
-				console.log(scrollPoint);
 				$('html, body').animate({
 					scrollTop: scrollPoint
 				}, '200');
