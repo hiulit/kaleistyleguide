@@ -155,9 +155,10 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				// Scroll to top
 				var scroll = $(window).scrollTop();
 				if(scroll !== 0) {
-					$('body').animate({
-						scrollTop: 0
-					}, '200');
+					// $('body').animate({
+					// 	scrollTop: 0
+					// }, '200');
+					$('html, body').scrollTop(0);
 				}
 
 				// Adds .active to the current hash (e.g. .readme.scss)
@@ -185,9 +186,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 						submenu.append(li);
 					}
 					if (block.subheading) {
-						// console.log(block.subheadingArray, block.subheadingIDArray);
 						for(j = 0; j < block.subheadingArray.length; j++) {
-							console.log(block.subheadingArray[j], block.subheadingIDArray[j]);
 							if(headingArray.lastIndexOf(block.subheadingIDArray[j]) !== -1) {
 								block.subheadingIDArray[j] = block.subheadingIDArray[j] + i;
 								headingArray.push(block.subheadingIDArray[j]);
