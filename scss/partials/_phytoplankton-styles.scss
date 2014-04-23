@@ -1,11 +1,11 @@
 // MENU - start
 
-.kalei-menu {
+.phytoplankton-menu {
 	height: 100%;
 	position: fixed;
 }
 
-.kalei-menu__list { // ul
+.phytoplankton-menu__list { // ul
 	bottom: 0;
 	left: 0;
 	list-style-type: none;
@@ -21,7 +21,7 @@
 	top: 0;
 }
 
-.kalei-menu__list__item { // ul > li
+.phytoplankton-menu__list__item { // ul > li
 	> h1 {
 		@include font-size(22);
 		margin-top: 0;
@@ -33,12 +33,12 @@
 }
 
 
-.kalei-menu__list__item__list { // ul > li > ul
+.phytoplankton-menu__list__item__list { // ul > li > ul
 	margin: 0;
 	padding: 0;
 }
 
-.kalei-menu__list__item__link {
+.phytoplankton-menu__list__item__link {
 	color: $fontColor;
 	display: block;
 	@include prem(padding, 0 10 0 40);
@@ -83,7 +83,7 @@
 	}
 }
 
-.kalei-sheet-submenu {
+.phytoplankton-sheet-submenu {
 	ul {
 		list-style-type: none;
 		margin: 0;
@@ -129,7 +129,7 @@
 
 // KALEI PAGE - start
 
-.kalei-page {
+.phytoplankton-page {
 	@include prem(padding, 0 40);
 	h1 {
 		border-bottom: 1px solid #ddd;
@@ -162,7 +162,7 @@
 	}
 }
 
-.kalei-page__item {
+.phytoplankton-page__item {
 	@include prem(padding, 20 40);
 	position: relative;
 }

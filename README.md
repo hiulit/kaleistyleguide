@@ -1,4 +1,4 @@
-# Kalei - Living Style Guide
+# Phytoplankton - Living Style Guide
 
 
 ## Generate bootstrap-like documentation for your own CSS!
@@ -27,7 +27,7 @@ To do this, it actually uses your style sheets so that, at anytime, you can revi
 
 ## Inspiration and alternatives
 
-Kalei is heavily influenced by the following projects and blog posts:
+Phytoplankton is heavily influenced by the following projects and blog posts:
 
 * [Pea.rs](http://pea.rs/)
 * [KSS](http://warpspire.com/posts/kss/)
@@ -60,7 +60,7 @@ Mad propz to all the great people behind the software listed below.
 
 Why don't you use the latest version of Sass (v3.3.4)?
 
-Kalei uses [sass.js](https://github.com/medialize/sass.js) for having Sass in the browser
+Phytoplankton uses [sass.js](https://github.com/medialize/sass.js) for having Sass in the browser
 ([not a trivial task](http://blog.rodneyrehm.de/archives/33-libsass.js-An-Emscripten-Experiment.html), btw)
 which in turn uses [libsass](https://github.com/hcatlin/libsass). The guys behind sass.js are [waiting for an
 official libasss release](https://twitter.com/rodneyrehm/status/447009238561595392).

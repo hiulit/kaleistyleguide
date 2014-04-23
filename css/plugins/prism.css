@@ -3,7 +3,7 @@
 
 > Lightweight, robust, elegant syntax highlighting.
 
-[Prism](http://prismjs.com/) is bundled with Kalei.
+[Prism](http://prismjs.com/) is bundled with Phytoplankton.
 
 It comes with:
 
@@ -42,7 +42,7 @@ Wrap your code with
 	</section>
 	```
 
-Kalei will automatically render the code as both HTML and the code block with syntax highlighting.
+Phytoplankton will automatically render the code as both HTML and the code block with syntax highlighting.
 
 ```markup
 <section>
@@ -151,13 +151,13 @@ Use the `data-src` attribute on an empty `<pre>` element, like so:
 
 	<pre data-src="js/main.js"></pre>
 
-This renders Kalei's `main.js`.
+This renders Phytoplankton's `main.js`.
 
 <pre data-src="js/main.js"></pre>
 
 It also can render HTML.
 
-This is Kalei's `index.html`.
+This is Phytoplankton's `index.html`.
 
 <pre data-src="index.html"></pre>
 
@@ -169,7 +169,7 @@ And if something goes wrong...
 /*
 # Caution!
 
-Kalei is bundled with a modified version of Prism due to **plugins** added to it.
+Phytoplankton is bundled with a modified version of Prism due to **plugins** added to it.
 
 The modifications are mostly just comments to clarify stuff but some are **features** added on it.
 

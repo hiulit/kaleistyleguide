@@ -597,11 +597,11 @@ img {
   opacity: 0.5;
   filter: alpha(opacity=50); }
 
-.kalei-menu {
+.phytoplankton-menu {
   height: 100%;
   position: fixed; }
 
-.kalei-menu__list {
+.phytoplankton-menu__list {
   bottom: 0;
   left: 0;
   list-style-type: none;
@@ -619,7 +619,7 @@ img {
   right: 0;
   top: 0; }
 
-.kalei-menu__list__item > h1 {
+.phytoplankton-menu__list__item > h1 {
   font-size: 22px;
   font-size: 1.375rem;
   line-height: 1.5;
@@ -633,16 +633,16 @@ img {
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal; }
-.kalei-menu__list__item > h2 {
+.phytoplankton-menu__list__item > h2 {
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5; }
 
-.kalei-menu__list__item__list {
+.phytoplankton-menu__list__item__list {
   margin: 0;
   padding: 0; }
 
-.kalei-menu__list__item__link {
+.phytoplankton-menu__list__item__link {
   color: #515151;
   display: block;
   padding: 0px 10px 0px 40px;
@@ -658,10 +658,10 @@ img {
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal; }
-  .kalei-menu__list__item__link:hover {
+  .phytoplankton-menu__list__item__link:hover {
     color: #0090d4;
     text-decoration: none; }
-    .kalei-menu__list__item__link:hover:after {
+    .phytoplankton-menu__list__item__link:hover:after {
       border-bottom: 6px solid transparent;
       border-left: 6px solid #0090d4;
       border-top: 6px solid transparent;
@@ -669,7 +669,7 @@ img {
       height: 0;
       position: absolute;
       width: 0; }
-  .kalei-menu__list__item__link:after {
+  .phytoplankton-menu__list__item__link:after {
     border-bottom: 6px solid transparent;
     border-left: 6px solid #515151;
     border-top: 6px solid transparent;
@@ -683,12 +683,12 @@ img {
     margin-top: -0.375rem;
     left: 10px;
     top: 50%; }
-  .kalei-menu__list__item__link.active {
+  .phytoplankton-menu__list__item__link.active {
     color: #0090d4;
     text-decoration: none; }
-    .kalei-menu__list__item__link.active:hover {
+    .phytoplankton-menu__list__item__link.active:hover {
       cursor: default; }
-    .kalei-menu__list__item__link.active:after {
+    .phytoplankton-menu__list__item__link.active:after {
       border-right: 6px solid transparent;
       border-left: 6px solid transparent;
       border-top: 6px solid #0090d4;
@@ -700,10 +700,10 @@ img {
       margin-left: 0.375rem;
       margin-top: -3px;
       margin-top: -0.1875rem; }
-  .kalei-menu__list__item__link:active {
+  .phytoplankton-menu__list__item__link:active {
     color: #0090d4;
     cursor: default; }
-    .kalei-menu__list__item__link:active:after {
+    .phytoplankton-menu__list__item__link:active:after {
       border-right: 6px solid transparent;
       border-left: 6px solid transparent;
       border-top: 6px solid #0090d4;
@@ -717,11 +717,11 @@ img {
       margin-top: -0.1875rem;
       top: 50%; }
 
-.kalei-sheet-submenu ul {
+.phytoplankton-sheet-submenu ul {
   list-style-type: none;
   margin: 0;
   padding: 0; }
-.kalei-sheet-submenu li {
+.phytoplankton-sheet-submenu li {
   cursor: pointer;
   padding-left: 10px;
   padding-left: 0.625rem;
@@ -729,8 +729,8 @@ img {
   padding-right: 0.625rem;
   margin-left: 40px;
   margin-left: 2.5rem; }
-  .kalei-sheet-submenu li h3,
-  .kalei-sheet-submenu li h4 {
+  .phytoplankton-sheet-submenu li h3,
+  .phytoplankton-sheet-submenu li h4 {
     font-size: 14px;
     font-size: 0.875rem;
     line-height: 1.5;
@@ -745,36 +745,36 @@ img {
     text-overflow: ellipsis;
     white-space: nowrap;
     word-wrap: normal; }
-  .kalei-sheet-submenu li h4 {
+  .phytoplankton-sheet-submenu li h4 {
     margin: 0px 0px 0px 10px;
     margin: 0rem 0rem 0rem 0.625rem; }
-  .kalei-sheet-submenu li.active {
+  .phytoplankton-sheet-submenu li.active {
     cursor: default;
     border-left: 2px solid #0090d4;
     padding-left: 8px;
     padding-left: 0.5rem; }
-    .kalei-sheet-submenu li.active > h3,
-    .kalei-sheet-submenu li.active > h4 {
+    .phytoplankton-sheet-submenu li.active > h3,
+    .phytoplankton-sheet-submenu li.active > h4 {
       color: #0090d4; }
-    .kalei-sheet-submenu li.active:hover {
+    .phytoplankton-sheet-submenu li.active:hover {
       border-left: 2px solid #0090d4;
       padding-left: 8px;
       padding-left: 0.5rem; }
-  .kalei-sheet-submenu li:hover {
+  .phytoplankton-sheet-submenu li:hover {
     border-left: 1px solid #0090d4;
     color: #0090d4;
     padding-left: 9px;
     padding-left: 0.5625rem; }
 
-.kalei-page {
+.phytoplankton-page {
   padding: 0px 40px;
   padding: 0rem 2.5rem; }
-  .kalei-page h1 {
+  .phytoplankton-page h1 {
     border-bottom: 1px solid #ddd;
     margin-top: 0; }
-  .kalei-page p a,
-  .kalei-page ol a,
-  .kalei-page ul a {
+  .phytoplankton-page p a,
+  .phytoplankton-page ol a,
+  .phytoplankton-page ul a {
     color: #0090d4;
     text-decoration: none;
     white-space: normal;
@@ -786,13 +786,13 @@ img {
     -moz-hyphens: auto;
     -ms-hyphens: auto;
     hyphens: auto; }
-    .kalei-page p a:hover,
-    .kalei-page ol a:hover,
-    .kalei-page ul a:hover {
+    .phytoplankton-page p a:hover,
+    .phytoplankton-page ol a:hover,
+    .phytoplankton-page ul a:hover {
       text-decoration: underline; }
-  .kalei-page p code,
-  .kalei-page ol code,
-  .kalei-page ul code {
+  .phytoplankton-page p code,
+  .phytoplankton-page ol code,
+  .phytoplankton-page ul code {
     background-color: #515151;
     border-radius: 4px;
     color: #fff;
@@ -815,7 +815,7 @@ img {
     -ms-hyphens: auto;
     hyphens: auto; }
 
-.kalei-page__item {
+.phytoplankton-page__item {
   padding: 20px 40px;
   padding: 1.25rem 2.5rem;
   position: relative; }

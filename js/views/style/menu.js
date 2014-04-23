@@ -9,7 +9,7 @@ define([
 ],
 function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 	var DashboardPage = Backbone.View.extend({
-		el: '.js-kalei-menu',
+		el: '.js-phytoplankton-menu',
 		render: function () {
 
 			var that = this;
@@ -114,24 +114,24 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				$(that.el).html(_.template(dashboardPageTemplate, {_:_, menuTitle: menuTitle, menus: menus}));
 				$('[href="' + window.location.hash + '"]').addClass('active');
 				if(window.location.hash === '') {
-					$('.js-kalei-home').addClass('active');
+					$('.js-phytoplankton-home').addClass('active');
 				}
 
 			});
 		},
 		events: {
-			'click .kalei-menu__list__item__link': function (ev) {
+			'click .phytoplankton-menu__list__item__link': function (ev) {
 				if($(ev.currentTarget).hasClass('active')) {
 					ev.preventDefault();
 				} else {
 					this.$el.find('.active').removeClass('active');
 					$(ev.currentTarget).addClass('active');
-					$(ev.currentTarget).parent().find('.kalei-sheet-submenu li:first-child').addClass('active');
+					$(ev.currentTarget).parent().find('.phytoplankton-sheet-submenu li:first-child').addClass('active');
 				}
 			},
-			'click .kalei-sheet-submenu li': function(ev) {
+			'click .phytoplankton-sheet-submenu li': function(ev) {
 				var scrollAnchor = $(ev.currentTarget).find(':header').attr('id');
-				var scrollPoint = $('.kalei-page__item *[id="' + scrollAnchor + '"]').offset().top - 20;
+				var scrollPoint = $('.phytoplankton-page__item *[id="' + scrollAnchor + '"]').offset().top - 20;
 				$('html, body').animate({
 					scrollTop: scrollPoint
 				}, '200');

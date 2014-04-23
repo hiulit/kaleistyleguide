@@ -1,16 +1,16 @@
-<ul class="kalei-menu__list">
+<ul class="phytoplankton-menu__list">
 	<% _.each(menus, function (menu) { %>
-		<li class="kalei-menu__list__item">
+		<li class="phytoplankton-menu__list__item">
 			<%= menu.category %>
-			<ul class="kalei-menu__list__item__list">
+			<ul class="phytoplankton-menu__list__item__list">
 				<% _.each(menu.sheets, function (sheet) { %>
-					<li class="kalei-menu__list__item" data-sheet="<%= sheet %>">
+					<li class="phytoplankton-menu__list__item" data-sheet="<%= sheet %>">
 						<h2>
-							<a class="kalei-menu__list__item__link" href="#/<%= sheet %>">
+							<a class="phytoplankton-menu__list__item__link" href="#/<%= sheet %>">
 								<%= sheet %>
 							</a>
 						</h2>
-						<div class="kalei-sheet-submenu"></div>
+						<div class="phytoplankton-sheet-submenu"></div>
 					</li>
 				<% }); %>
 			</ul>

@@ -7,7 +7,7 @@ define([
 	'text!templates/layout.html'
 ], function($, _, Backbone, Vm, Events, layoutTemplate){
 	var AppView = Backbone.View.extend({
-		el: '.js-kalei',
+		el: '.js-phytoplankton',
 		render: function () {
 			var that = this;
 			$(this.el).html(layoutTemplate);

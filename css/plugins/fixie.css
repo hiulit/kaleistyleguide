@@ -3,7 +3,7 @@
 
 > Automatically adds filler content to HTML documents.
 
-[Fixie.js](https://github.com/ryhan/fixie) is bundled with Kalei.
+[Fixie.js](https://github.com/ryhan/fixie) is bundled with Phytoplankton.
 
 Featuring the awesome [VeganIpsum - All filler, no killer](http://bengreen.org.uk/veganipsum/).
 */
@@ -59,7 +59,7 @@ This is a nice feature to have when you're creating the style guide, but you sho
 look for and remove `.fixie` when using it in production, in order not to create
 a caos and get fired! ;)
 
-Besides, Kalei uses a modified version of [Fixie.js](https://github.com/ryhan/fixie), because of the
+Besides, Phytoplankton uses a modified version of [Fixie.js](https://github.com/ryhan/fixie), because of the
 implementation of the [VeganIpsum - All filler, no killer](http://bengreen.org.uk/veganipsum/).
 So, if you ever want to use a newer version of [Fixie.js](https://github.com/ryhan/fixie)
 (although I highly doubt it , since it hasn't been updated for 2 years), look for...

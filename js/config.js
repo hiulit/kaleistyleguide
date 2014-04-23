@@ -1,6 +1,6 @@
 define({
 	// *1*
-	// This path is used as a default by the Kalei project itself.
+	// This path is used as a default by the Phytoplankton project itself.
 	// This is the preferred way to go!
 
 	css_path: window.location.protocol + '//' +

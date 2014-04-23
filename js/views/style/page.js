@@ -13,7 +13,7 @@ define([
 function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 	var that = null;
 	var StylePage = Backbone.View.extend({
-		el: '.kalei-page',
+		el: '.phytoplankton-page',
 		render: function () {
 
 			that = this;
@@ -166,7 +166,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 					$('[href="' + window.location.hash + '"]').addClass('active');
 				}
 
-				$('.kalei-sheet-submenu').hide();
+				$('.phytoplankton-sheet-submenu').hide();
 				var submenu = $('<ul>');
 
 				////////////NEEDS TO BE EXPORTED TO Menu.js
@@ -202,7 +202,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				});
 
 				$('li:first-child', submenu).addClass('active');
-				$('.kalei-sheet-submenu', $('[data-sheet="' + that.options.style + '"]')).html(submenu).show();
+				$('.phytoplankton-sheet-submenu', $('[data-sheet="' + that.options.style + '"]')).html(submenu).show();
 				////////////NEEDS TO BE EXPORTED TO Menu.js
 
 				$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config}));
@@ -216,7 +216,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 
 				headingArrayPage = [];
 				var i = 2;
-				$('.kalei-page__item').find('*').filter(':header').each(function() {
+				$('.phytoplankton-page__item').find('*').filter(':header').each(function() {
 					var hola = $(this).attr('id');
 					if(hola) {
 						if(headingArrayPage.lastIndexOf(hola) !== -1) {
@@ -231,14 +231,14 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 
 				$(window).scroll(function () {
 					var k = 0;
-					$('.kalei-page__item').find(':header').each(function(i) {
+					$('.phytoplankton-page__item').find(':header').each(function(i) {
 						if(!$(this).parent().parent().hasClass('code-render')) {
 							if(that.is_on_screen($(this), 30)) {
 								console.log(i,k,$(this).parent().parent().hasClass('code-render'))
 								hash = window.location.hash;
 								hash = hash.substr(hash.lastIndexOf('#') + 2);
-								$('.kalei-sheet-submenu li').removeClass('active');
-								$('.kalei-menu__list__item[data-sheet="' + hash + '"]').find($('.kalei-sheet-submenu li')).eq(k).addClass('active');
+								$('.phytoplankton-sheet-submenu li').removeClass('active');
+								$('.phytoplankton-menu__list__item[data-sheet="' + hash + '"]').find($('.phytoplankton-sheet-submenu li')).eq(k).addClass('active');
 								k++;
 							}
 						}
@@ -250,11 +250,11 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				// If the last element is lower, it doesn't add any padding-bottom.
 				// But we can think of something smarter.
 				function paddingBottom() {
-					if($('.kalei-page__item').length !== 0) {
+					if($('.phytoplankton-page__item').length !== 0) {
 						var pageHeight = $(window).height();
-						var lastElHeight = $('.kalei-page__item:last').outerHeight(); // outerHeight() returns height + padding).
-						var lastElPaddingTop = $('.kalei-page__item:last').css('padding-top');
-						var lastElPaddingBottom = $('.kalei-page__item:last').css('padding-bottom');
+						var lastElHeight = $('.phytoplankton-page__item:last').outerHeight(); // outerHeight() returns height + padding).
+						var lastElPaddingTop = $('.phytoplankton-page__item:last').css('padding-top');
+						var lastElPaddingBottom = $('.phytoplankton-page__item:last').css('padding-bottom');
 						lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2)); // Removes px from string and converts string to number.
 						lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2)); // Removes px from string and converts string to number.
 						lastElPaddingTotal = lastElPaddingTop+lastElPaddingBottom;
@@ -302,7 +302,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 					case 3:
 						// We need to import jsscp doesn't compile imports.
 						if(window.location.hash === '') {
-							result = $('.kalei-menu__list__item__link').attr('href');
+							result = $('.phytoplankton-menu__list__item__link').attr('href');
 							window.location.href =	window.location.protocol +
 													'//' + window.location.hostname +
 													(window.location.port === '' ? '' : ':'+ window.location.port) +
