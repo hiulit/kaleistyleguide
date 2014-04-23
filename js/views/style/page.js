@@ -230,12 +230,17 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				});
 
 				$(window).scroll(function () {
-					$('.kalei-page__item').find(':header').offsetParent().not('.code-render').each(function(i) {
-						if(that.is_on_screen($(this), 20)) {
-							hash = window.location.hash;
-							hash = hash.substr(hash.lastIndexOf('#') + 2);
-							$('.kalei-sheet-submenu li').removeClass('active');
-							$('.kalei-menu__list__item[data-sheet="' + hash + '"]').find($('.kalei-sheet-submenu li')).eq(i).addClass('active');
+					var k = 0;
+					$('.kalei-page__item').find(':header').each(function(i) {
+						if(!$(this).parent().parent().hasClass('code-render')) {
+							if(that.is_on_screen($(this), 30)) {
+								console.log(i,k,$(this).parent().parent().hasClass('code-render'))
+								hash = window.location.hash;
+								hash = hash.substr(hash.lastIndexOf('#') + 2);
+								$('.kalei-sheet-submenu li').removeClass('active');
+								$('.kalei-menu__list__item[data-sheet="' + hash + '"]').find($('.kalei-sheet-submenu li')).eq(k).addClass('active');
+								k++;
+							}
 						}
 					});
 				});
@@ -260,10 +265,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 						}
 					}
 				}
-
 				// Please help me xD
 				setTimeout(paddingBottom, 2000);
-
 			});
 		},
 

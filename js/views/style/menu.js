@@ -104,7 +104,6 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 							// Removes 'sheetPath' from 'sheet' leaving the path after 'extension/'.
 							config.css_paths[i] = result[0].replace(sheetPath, '');
 						}
-
 						// Pushes style sheet to currentMenu.
 						currentMenu.sheets.push(config.css_paths[i]);
 					}
@@ -132,7 +131,7 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 			},
 			'click .kalei-sheet-submenu li': function(ev) {
 				var scrollAnchor = $(ev.currentTarget).find(':header').attr('id');
-				var scrollPoint = $('.kalei-page__item *[id="' + scrollAnchor + '"]').offset().top - 19;
+				var scrollPoint = $('.kalei-page__item *[id="' + scrollAnchor + '"]').offset().top - 20;
 				$('html, body').animate({
 					scrollTop: scrollPoint
 				}, '200');
