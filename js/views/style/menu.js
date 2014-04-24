@@ -126,7 +126,6 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				$('html, body').animate({
 					scrollTop: scrollPoint
 				}, '200');
-				console.log(scrollAnchor);
 			}
 		}
 	});
