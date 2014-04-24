@@ -115,10 +115,10 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				} else {
 					this.$el.find('.active').removeClass('active');
 					$(ev.currentTarget).addClass('active');
-					$(ev.currentTarget).parent().find('.phytoplankton-sheet-submenu li:first-child').addClass('active');
+					$(ev.currentTarget).parent().find('li:first-child').addClass('active');
 				}
 			},
-			'click .phytoplankton-sheet-submenu li a': function(ev) {
+			'click .phytoplankton-menu__list__item ul li ul li a': function(ev) {
 				ev.preventDefault();
 				var scrollAnchor = $(ev.currentTarget).attr('href');
 				var scrollAnchor = scrollAnchor.substr(scrollAnchor.lastIndexOf('#') + 1);
@@ -126,7 +126,7 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				$('html, body').animate({
 					scrollTop: scrollPoint
 				}, '200');
-			}
+			}	
 		}
 	});
 	return DashboardPage;

@@ -19,20 +19,43 @@
 		margin: 0;
 		padding: 0;
 	}
+	li {
+		&.active {
+			a {
+				border-left: 2px solid $linkColor;
+				color: $linkColor;
+			}
+			li {
+				a {
+					color: $fontColor;
+				}
+			}
+		}
+		a {
+			color: $fontColor;
+			text-decoration: none;
+			&:hover {
+				border-left: 1px solid $linkColor;
+				color: $linkColor;
+			}
+			&:active {
+				color: $linkColor;
+			}
+		}
+	}
 	@include depth(1) {
 		@include font-size(16);
 		@include max-ellipsis(100%);
 		@include prem(padding, 0 10 0 40);
-		a {
-			color: $fontColor;
-			text-decoration: none;
-		}
 	}
 	@include depth(2) {
 		@include font-size(14);
 		@include prem(padding-left, 20);
 	}
 	@include depth(3) {
+		@include prem(padding-left, 20);
+	}
+	@include depth(4) {
 		@include prem(padding-left, 20);
 	}
 }
@@ -53,49 +76,49 @@
 	top: 0;
 }
 
-.phytoplankton-menu__list__item__link {
-	color: $fontColor;
-	display: block;
-	position: relative;
-	text-decoration: none;
-	@include max-ellipsis(100%);
-	&:hover {
-		color: $linkColor;
-		text-decoration: none;
-		&:after { // Triangle on :hover (change of color)
-			@include triangle(right, $linkColor, 6);
-		}
-	}
-	&:after { // Triangle
-		@include triangle(right, $fontColor, 6);
-		@include prem(margin-left, 9);
-		@include prem(margin-top, -6);
-		left: 10px;
-		top: 50%;
-	}
-	&.active {
-		color: $linkColor;
-		text-decoration: none;
-		&:hover {
-			cursor: default;
-		}
-		&:after { // Triangle when .active
-			@include triangle(down, $linkColor, 6);
-			@include prem(margin-left, 6);
-			@include prem(margin-top, -3);
-		}
-	}
-	&:active {
-		color: $linkColor;
-		cursor: default;
-		&:after { // Triangle when :active
-			@include triangle(down, $linkColor, 6);
-			@include prem(margin-left, 6);
-			@include prem(margin-top, -3);
-			top: 50%;
-		}
-	}
-}
+// .phytoplankton-menu__list__item__link {
+// 	// color: $fontColor;
+// 	display: block;
+// 	position: relative;
+// 	text-decoration: none;
+// 	@include max-ellipsis(100%);
+// 	&:hover {
+// 		color: $linkColor;
+// 		text-decoration: none;
+// 		&:after { // Triangle on :hover (change of color)
+// 			@include triangle(right, $linkColor, 6);
+// 		}
+// 	}
+// 	&:after { // Triangle
+// 		@include triangle(right, $fontColor, 6);
+// 		@include prem(margin-left, 9);
+// 		@include prem(margin-top, -6);
+// 		left: 10px;
+// 		top: 50%;
+// 	}
+// 	&.active {
+// 		// color: $linkColor;
+// 		text-decoration: none;
+// 		&:hover {
+// 			cursor: default;
+// 		}
+// 		&:after { // Triangle when .active
+// 			@include triangle(down, $linkColor, 6);
+// 			@include prem(margin-left, 6);
+// 			@include prem(margin-top, -3);
+// 		}
+// 	}
+// 	&:active {
+// 		color: $linkColor;
+// 		cursor: default;
+// 		&:after { // Triangle when :active
+// 			@include triangle(down, $linkColor, 6);
+// 			@include prem(margin-left, 6);
+// 			@include prem(margin-top, -3);
+// 			top: 50%;
+// 		}
+// 	}
+// }
 
 // .phytoplankton-sheet-submenu {
 // 	li {
