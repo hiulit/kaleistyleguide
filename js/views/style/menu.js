@@ -50,21 +50,10 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 						_.each(comments, function (comment) {
 							var tokens = [comment];
 							tokens.links = defLinks;
-							// Returns <h1>
 							if(comment.type === 'heading' && comment.depth === 1) {
-								// menuTitle = marked.parser(tokens);
 								menus.push(_.extend({}, currentMenu));
 								currentMenu.sheets = [];
-								currentMenu.category = marked.parser(tokens);
-							} // Returns <h2>
-							if(comment.type === 'heading' && comment.depth === 2) {
-								// console.log('heading 2 -----> ', comment);
-							}
-							// Returns <h3>
-							if(comment.type === 'heading' && comment.depth === 3) {
-								// menus.push(_.extend({}, currentMenu));
-								// currentMenu.sheets = [];
-								// currentMenu.category = marked.parser(tokens);
+								currentMenu.category = comment.text;
 							}
 						});
 					}
@@ -111,7 +100,7 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 
 				menus.push(currentMenu);
 
-				$(that.el).html(_.template(dashboardPageTemplate, {_:_, menuTitle: menuTitle, menus: menus}));
+				$(that.el).html(_.template(dashboardPageTemplate, {_:_, menus: menus}));
 				$('[href="' + window.location.hash + '"]').addClass('active');
 				if(window.location.hash === '') {
 					$('.js-phytoplankton-home').addClass('active');
@@ -130,7 +119,9 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				}
 			},
 			'click .phytoplankton-sheet-submenu li': function(ev) {
-				var scrollAnchor = $(ev.currentTarget).find(':header').attr('id');
+				ev.preventDefault();
+				var scrollAnchor = $(ev.currentTarget).find('a').attr('href');
+				var scrollAnchor = scrollAnchor.substr(scrollAnchor.lastIndexOf('#') + 1);
 				var scrollPoint = $('.phytoplankton-page__item *[id="' + scrollAnchor + '"]').offset().top - 20;
 				$('html, body').animate({
 					scrollTop: scrollPoint

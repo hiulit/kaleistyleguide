@@ -1,11 +1,43 @@
+@mixin depth($depth: 1) {
+	$chain: '';
+	@for $i from 0 to $depth {
+		$chain: $chain + ' > ul > li';
+	}
+	& #{$chain} {
+		@content;
+	}
+}
+
 // MENU - start
 
 .phytoplankton-menu {
 	height: 100%;
 	position: fixed;
+	ul,
+	li {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+	@include depth(1) {
+		@include font-size(16);
+		@include max-ellipsis(100%);
+		@include prem(padding, 0 10 0 40);
+		a {
+			color: $fontColor;
+			text-decoration: none;
+		}
+	}
+	@include depth(2) {
+		@include font-size(14);
+		@include prem(padding-left, 20);
+	}
+	@include depth(3) {
+		@include prem(padding-left, 20);
+	}
 }
 
-.phytoplankton-menu__list { // ul
+.phytoplankton-menu__list--first {
 	bottom: 0;
 	left: 0;
 	list-style-type: none;
@@ -21,27 +53,9 @@
 	top: 0;
 }
 
-.phytoplankton-menu__list__item { // ul > li
-	> h1 {
-		@include font-size(22);
-		margin-top: 0;
-		@include max-ellipsis(100%);
-	}
-	> h2 {
-		@include font-size(16);
-	}
-}
-
-
-.phytoplankton-menu__list__item__list { // ul > li > ul
-	margin: 0;
-	padding: 0;
-}
-
 .phytoplankton-menu__list__item__link {
 	color: $fontColor;
 	display: block;
-	@include prem(padding, 0 10 0 40);
 	position: relative;
 	text-decoration: none;
 	@include max-ellipsis(100%);
@@ -83,47 +97,28 @@
 	}
 }
 
-.phytoplankton-sheet-submenu {
-	ul {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-	}
-	li {
-		cursor: pointer;
-		@include prem(padding-left, 10);
-		@include prem(padding-right, 10);
-		@include prem(margin-left, 40);
-		h3,
-		h4 {
-			@include font-size(14);
-			font-weight: normal;
-			margin: 0;
-			@include max-ellipsis(100%);
-		}
-		h4 {
-			@include prem(margin, 0 0 0 10);
-		}
-		&.active {
-			cursor: default;
-			border-left: 2px solid $linkColor;
-			@include prem(padding-left, 8);
-			> h3,
-			> h4 {
-				color: $linkColor;
-			}
-			&:hover {
-				border-left: 2px solid $linkColor;
-				@include prem(padding-left, 8);
-			}
-		}
-		&:hover {
-			border-left: 1px solid $linkColor;
-			color: $linkColor;
-			@include prem(padding-left, 9);
-		}
-	}
-}
+// .phytoplankton-sheet-submenu {
+// 	li {
+// 		cursor: pointer;
+// 		@include prem(padding-left, 10);
+// 		@include prem(padding-right, 10);
+// 		@include prem(margin-left, 40);
+// 		&.active {
+// 			cursor: default;
+// 			border-left: 2px solid $linkColor;
+// 			@include prem(padding-left, 8);
+// 			&:hover {
+// 				border-left: 2px solid $linkColor;
+// 				@include prem(padding-left, 8);
+// 			}
+// 		}
+// 		&:hover {
+// 			border-left: 1px solid $linkColor;
+// 			color: $linkColor;
+// 			@include prem(padding-left, 9);
+// 		}
+// 	}
+// }
 
 // MENU - end
 

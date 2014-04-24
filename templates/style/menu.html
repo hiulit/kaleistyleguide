@@ -1,15 +1,13 @@
-<ul class="phytoplankton-menu__list">
+<ul class="phytoplankton-menu__list--first">
 	<% _.each(menus, function (menu) { %>
 		<li class="phytoplankton-menu__list__item">
 			<%= menu.category %>
-			<ul class="phytoplankton-menu__list__item__list">
+			<ul class="phytoplankton-menu__list">
 				<% _.each(menu.sheets, function (sheet) { %>
 					<li class="phytoplankton-menu__list__item" data-sheet="<%= sheet %>">
-						<h2>
-							<a class="phytoplankton-menu__list__item__link" href="#/<%= sheet %>">
-								<%= sheet %>
-							</a>
-						</h2>
+						<a class="phytoplankton-menu__list__item__link" href="#/<%= sheet %>">
+							<%= sheet %>
+						</a>
 						<div class="phytoplankton-sheet-submenu"></div>
 					</li>
 				<% }); %>

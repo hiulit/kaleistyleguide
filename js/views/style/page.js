@@ -146,7 +146,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 							parser = new jscssp();
 							stylesheet = parser.parse(stylesheetCompiled, false, true);
 							page = that.compute_css(stylesheet, stylesheetCompiled);
-
 						break;
 				}
 
@@ -155,9 +154,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				// Scroll to top
 				var scroll = $(window).scrollTop();
 				if(scroll !== 0) {
-					// $('body').animate({
-					// 	scrollTop: 0
-					// }, '200');
 					$('html, body').scrollTop(0);
 				}
 
@@ -182,10 +178,11 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 							headingArray.push(block.headingID);
 						}
 						var li = $('<li>');
-						li.append($('<h3 id="' + block.headingID + '">').text(block.heading));
+						li.append($('<a href="#' + block.headingID + '">').text(block.heading));
 						submenu.append(li);
 					}
 					if (block.subheading) {
+						var ul = $('<ul>');
 						for(j = 0; j < block.subheadingArray.length; j++) {
 							if(headingArray.lastIndexOf(block.subheadingIDArray[j]) !== -1) {
 								block.subheadingIDArray[j] = block.subheadingIDArray[j] + i;
@@ -195,9 +192,11 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 								headingArray.push(block.subheadingIDArray[j]);
 							}
 							var li = $('<li>');
-							li.append($('<h4 id="' + block.subheadingIDArray[j] + '">').text(block.subheadingArray[j]));
-							submenu.append(li);
+							li.append($('<a href="#' + block.subheadingIDArray[j] + '">').text(block.subheadingArray[j]));
+							console.log(li);
+							ul.append(li);
 						}
+						submenu.find('li:last').append(ul);
 					}
 				});
 
@@ -234,7 +233,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 					$('.phytoplankton-page__item').find(':header').each(function(i) {
 						if(!$(this).parent().parent().hasClass('code-render')) {
 							if(that.is_on_screen($(this), 30)) {
-								console.log(i,k,$(this).parent().parent().hasClass('code-render'))
 								hash = window.location.hash;
 								hash = hash.substr(hash.lastIndexOf('#') + 2);
 								$('.phytoplankton-sheet-submenu li').removeClass('active');
