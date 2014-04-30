@@ -194,13 +194,14 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 							var li = $('<li>');
 							li.append($('<a href="#' + block.subheadingIDArray[j] + '">').text(block.subheadingArray[j]));
 							ul.append(li);
+							console.log(block.subheadingIDArray[j]);
 						}
 						submenu.find('li:last').append(ul);
 					}
 				});
 
 				$('[data-sheet="' + that.options.style + '"]').append(submenu);
-				// $('.phytoplankton-menu__list__item > ul > li:first-child').addClass('active');
+				$('.phytoplankton-menu > ul > li > ul > li > ul > li:first-child').addClass('active');
 				////////////NEEDS TO BE EXPORTED TO Menu.js
 
 				$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config}));
@@ -212,20 +213,20 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				// Call for Fixie.
 				fixie.init();
 
-				// headingArrayPage = [];
-				// var i = 2;
-				// $('.phytoplankton-page__item').find('*').filter(':header').each(function() {
-				// 	var hola = $(this).attr('id');
-				// 	if(hola) {
-				// 		if(headingArrayPage.lastIndexOf(hola) !== -1) {
-				// 			hola = $(this).attr('id', hola + i);
-				// 			headingArrayPage.push(hola);
-				// 			i++;
-				// 		} else {
-				// 			headingArrayPage.push(hola);
-				// 		}
-				// 	}
-				// });
+				headingArrayPage = [];
+				var i = 2;
+				$('.phytoplankton-page__item').find('*').filter(':header').each(function() {
+					var hola = $(this).attr('id');
+					if(hola) {
+						if(headingArrayPage.lastIndexOf(hola) !== -1) {
+							hola = $(this).attr('id', hola + i);
+							headingArrayPage.push(hola);
+							i++;
+						} else {
+							headingArrayPage.push(hola);
+						}
+					}
+				});
 
 				$(window).scroll(function () {
 					var k = 0;
