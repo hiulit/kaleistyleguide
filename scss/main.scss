@@ -11,18 +11,19 @@
 }
 
 html {
+	background-color: $bgColor;
 	color: $fontColor;
 	font-family: $fontFamily;
 	@include font-size($baseFontSize);
 }
 
 h1, h2, h3, h4, h5, h6 {
-	color: $fontColor;
+	color: $linkColor;
 	font-weight: 500;
 }
 
 blockquote {
-	border-left: 4px solid #ddd;
+	border-left: 4px solid $linkColor;
 	@include prem(margin, 40);
 	@include prem(padding-left, 12);
 	p {

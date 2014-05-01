@@ -492,18 +492,19 @@ pre[class*="language-"] a[href].md-link:hover {
     box-sizing: border-box; }
 
 html {
-  color: #515151;
+  background-color: #303030;
+  color: white;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5; }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #515151;
+  color: #ffea0c;
   font-weight: 500; }
 
 blockquote {
-  border-left: 4px solid #ddd;
+  border-left: 4px solid #ffea0c;
   margin: 40px;
   margin: 2.5rem;
   padding-left: 12px;
@@ -516,7 +517,7 @@ blockquote {
     content: close-quote; }
 
 .oldie pre {
-  background-color: #515151; }
+  background-color: white; }
 .oldie .code-render {
   border: 1px solid #ccc; }
 
@@ -597,6 +598,27 @@ img {
   opacity: 0.5;
   filter: alpha(opacity=50); }
 
+.phytoplankton > div {
+  margin-top: 120px;
+  margin-top: 7.5rem; }
+.phytoplankton > img {
+  background-color: #303030;
+  padding: 20px;
+  padding: 1.25rem;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  z-index: 1; }
+.phytoplankton:before {
+  background-color: #ffea0c;
+  content: " ";
+  display: block;
+  height: 120px;
+  height: 7.5rem;
+  position: fixed;
+  width: 100%;
+  z-index: 1; }
+
 .phytoplankton-menu {
   height: 100%;
   position: fixed; }
@@ -606,25 +628,25 @@ img {
     margin: 0;
     padding: 0; }
   .phytoplankton-menu li a {
-    color: #515151;
+    color: white;
     display: block;
     text-decoration: none; }
     .phytoplankton-menu li a.active, .phytoplankton-menu li a:active {
-      color: #0090d4; }
+      color: #ffea0c; }
   .phytoplankton-menu li.active li a {
-    color: #515151; }
+    color: white; }
   .phytoplankton-menu li .has-triangle > a {
     position: relative; }
     .phytoplankton-menu li .has-triangle > a:hover {
-      color: #0090d4; }
+      color: #ffea0c; }
       .phytoplankton-menu li .has-triangle > a:hover:before {
-        border-left-color: #0090d4; }
+        border-left-color: #ffea0c; }
     .phytoplankton-menu li .has-triangle > a.active, .phytoplankton-menu li .has-triangle > a:active {
       cursor: default; }
       .phytoplankton-menu li .has-triangle > a.active:before, .phytoplankton-menu li .has-triangle > a:active:before {
         border-right: 6px solid transparent;
         border-left: 6px solid transparent;
-        border-top: 6px solid #0090d4;
+        border-top: 6px solid #ffea0c;
         content: " ";
         height: 0;
         position: absolute;
@@ -634,7 +656,7 @@ img {
         margin-top: -0.1875rem; }
     .phytoplankton-menu li .has-triangle > a:before {
       border-bottom: 6px solid transparent;
-      border-left: 6px solid #515151;
+      border-left: 6px solid white;
       border-top: 6px solid transparent;
       content: " ";
       height: 0;
@@ -645,13 +667,15 @@ img {
       margin-top: -0.375rem;
       top: 50%; }
   .phytoplankton-menu > ul > li {
+    color: #ffea0c;
     font-size: 22px;
     font-size: 1.375rem;
     line-height: 1.5;
     margin: 16px 0px;
     margin: 1rem 0rem;
     padding-left: 40px;
-    padding-left: 2.5rem; }
+    padding-left: 2.5rem;
+    text-transform: uppercase; }
   .phytoplankton-menu > ul > li > ul > li {
     font-size: 14px;
     font-size: 0.875rem;
@@ -659,7 +683,8 @@ img {
     margin: 16px 0px;
     margin: 1rem 0rem;
     padding-left: 20px;
-    padding-left: 1.25rem; }
+    padding-left: 1.25rem;
+    text-transform: none; }
     .phytoplankton-menu > ul > li > ul > li > a {
       margin-bottom: 16px;
       margin-bottom: 1rem; }
@@ -679,27 +704,27 @@ img {
       white-space: nowrap;
       word-wrap: normal; }
       .phytoplankton-menu > ul > li > ul > li > ul > li a:hover {
-        border-left: 1px solid #0090d4;
+        border-left: 1px solid #ffea0c;
         padding-left: 9px;
         padding-left: 0.5625rem; }
     .phytoplankton-menu > ul > li > ul > li > ul > li.active > a {
-      border-left: 2px solid #0090d4;
-      color: #0090d4;
+      border-left: 2px solid #ffea0c;
+      color: #ffea0c;
       cursor: default;
       padding-left: 8px;
       padding-left: 0.5rem; }
   .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li a {
-    padding-left: 30px;
-    padding-left: 1.875rem; }
+    padding-left: 20px;
+    padding-left: 1.25rem; }
     .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li a:hover {
-      padding-left: 29px;
-      padding-left: 1.8125rem; }
+      padding-left: 19px;
+      padding-left: 1.1875rem; }
   .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li.active > a {
-    border-left: 2px solid #0090d4;
-    color: #0090d4;
+    border-left: 2px solid #ffea0c;
+    color: #ffea0c;
     cursor: default;
-    padding-left: 28px;
-    padding-left: 1.75rem; }
+    padding-left: 18px;
+    padding-left: 1.125rem; }
 
 .phytoplankton-menu__list--first {
   bottom: 0;
@@ -723,12 +748,12 @@ img {
   padding: 0px 40px;
   padding: 0rem 2.5rem; }
   .phytoplankton-page h1 {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ffea0c;
     margin-top: 0; }
   .phytoplankton-page p a,
   .phytoplankton-page ol a,
   .phytoplankton-page ul a {
-    color: #0090d4;
+    color: #ffea0c;
     text-decoration: none;
     white-space: normal;
     -ms-word-break: break-all;
@@ -746,10 +771,14 @@ img {
   .phytoplankton-page p code,
   .phytoplankton-page ol code,
   .phytoplankton-page ul code {
-    background-color: #515151;
+    background-color: #ffea0c;
     border-radius: 4px;
-    color: #fff;
+    color: #303030;
     display: inline-block;
+    vertical-align: baseline;
+    zoom: 1;
+    *display: inline;
+    *vertical-align: auto;
     margin-left: 2px;
     margin-left: 0.125rem;
     margin-right: 2px;
@@ -784,9 +813,9 @@ img {
   position: relative; }
 
 .code-lang {
-  background-color: #0090d4;
+  background-color: #ffea0c;
   border-radius: 4px 4px 0 0;
-  color: #fff;
+  color: #303030;
   display: inline-block;
   vertical-align: baseline;
   zoom: 1;

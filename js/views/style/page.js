@@ -232,7 +232,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 					var k = 0;
 					$('.phytoplankton-page__item').find(':header').each(function(i) {
 						if(!$(this).offsetParent().hasClass('code-render')) {
-							if(that.is_on_screen($(this), 30)) {
+							if(that.is_on_screen($(this), (30 + 120))) {
 								hash = window.location.hash;
 								hash = hash.substr(hash.lastIndexOf('#') + 2);
 								$('.phytoplankton-menu__list__item li').removeClass('active');
@@ -249,8 +249,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				// But we can think of something smarter.
 				function paddingBottom() {
 					if($('.phytoplankton-page__item').length !== 0) {
-						var pageHeight = $(window).height();
-						var lastElHeight = $('.phytoplankton-page__item:last').outerHeight(); // outerHeight() returns height + padding).
+						var pageHeight = $(window).height() - 120;
+						var lastElHeight = $('.phytoplankton-page__item:last').outerHeight();
 						var lastElPaddingTop = $('.phytoplankton-page__item:last').css('padding-top');
 						var lastElPaddingBottom = $('.phytoplankton-page__item:last').css('padding-bottom');
 						lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2)); // Removes px from string and converts string to number.

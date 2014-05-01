@@ -8,6 +8,29 @@
 	}
 }
 
+.phytoplankton {
+	> div {
+		@include prem(margin-top, 120);
+	}
+	> img {
+		background-color: $bgColor;
+		@include prem(padding, 20);
+		position: absolute;
+		left: 20px;
+		top: 20px;
+		z-index: 1;
+	}
+	&:before {
+		background-color: $linkColor;
+		content: " ";
+		display: block;
+		@include prem(height, 120);
+		position: fixed;
+		width: 100%;
+		z-index: 1;
+	}
+}
+
 // MENU - start
 
 .phytoplankton-menu {
@@ -64,14 +87,17 @@
 		}
 	}
 	@include depth(1) {
+		color: $linkColor;
 		@include font-size(22);
 		@include prem(margin, 16 0);
 		@include prem(padding-left, 40);
+		text-transform: uppercase;
 	}
 	@include depth(2) {
 		@include font-size(14);
 		@include prem(margin, 16 0);
 		@include prem(padding-left, 20);
+		text-transform: none;
 		> a {
 			@include prem(margin-bottom, 16);
 		}
@@ -97,9 +123,9 @@
 	}
 	@include depth(4) {
 		a {
-			@include prem(padding-left, 30);
+			@include prem(padding-left, 20);
 			&:hover {
-				@include prem(padding-left, 29);
+				@include prem(padding-left, 19);
 			}
 		}
 		&.active {
@@ -107,7 +133,7 @@
 				border-left: 2px solid $linkColor;
 				color: $linkColor;
 				cursor: default;
-				@include prem(padding-left, 28);
+				@include prem(padding-left, 18);
 			}
 		}
 	}
@@ -203,7 +229,7 @@
 .phytoplankton-page {
 	@include prem(padding, 0 40);
 	h1 {
-		border-bottom: 1px solid #ddd;
+		border-bottom: 1px solid $linkColor;
 		margin-top: 0;
 	}
 	p,
@@ -219,10 +245,10 @@
 			}
 		}
 		code { // Inline <code> blocks
-			background-color: $fontColor;
+			background-color: $linkColor;
 			border-radius: 4px;
-			color: #fff;
-			display: inline-block;
+			color: $bgColor;
+			@include inline-block;
 			@include prem(margin-left, 2);
 			@include prem(margin-right, 2);
 			@include prem(padding-left, 4);
@@ -250,7 +276,7 @@
 .code-lang {
 	background-color: $linkColor;
 	border-radius: 4px 4px 0 0;
-	color: #fff;
+	color: $bgColor;
 	@include inline-block;
 	@include prem(padding, 8 20);
 	text-transform: uppercase;

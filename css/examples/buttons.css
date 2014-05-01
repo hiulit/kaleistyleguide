@@ -25,7 +25,7 @@ Add `.btn` to any of the following HTML tags to create buttons:
   zoom: 1;
   *display: inline;
   *vertical-align: auto;
-  color: #515151;
+  color: white;
   cursor: pointer;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
