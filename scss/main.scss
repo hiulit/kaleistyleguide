@@ -1,6 +1,5 @@
 @import "partials/global";
 @import "vendor/normalize/normalize";
-@import "vendor/prism/prism";
 
 * {
 	@include box-sizing(border-box);
@@ -17,8 +16,13 @@ html {
 	@include font-size($baseFontSize);
 }
 
-h1, h2, h3, h4, h5, h6 {
-	color: $linkColor;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: $fontColor;
 	font-weight: 500;
 }
 
