@@ -94,7 +94,7 @@
 		color: $linkColor;
 		@include font-size(14);
 		@include prem(margin, 16 0);
-		@include prem(padding-left, 40);
+		@include prem(padding-left, 20);
 		text-transform: uppercase;
 	}
 	@include depth(2) {
