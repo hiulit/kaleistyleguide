@@ -1,9 +1,3 @@
-/**
- * okaidia theme for JavaScript, CSS and HTML
- * Loosely based on Monokai textmate theme by http://www.monokai.nl/
- * @author ocodia
- */
-
 code,	/* So <code> and <pre> get highlighted*/
 		/* without any class. */
 pre,	/* This is a "feature that doesn't */
@@ -29,7 +23,7 @@ pre[class*="language-"] {
 	hyphens: none;
 }
 
-/* Code blocks */
+// Code blocks
 
 pre,	/* So <pre> gets highlighted*/
 		/* without any class. */
@@ -51,7 +45,8 @@ pre[class*="language-"] {
 	background: #272822;
 }
 
-/* Inline code */
+// Inline code
+
 :not(pre) > code[class*="language-"] {
 	padding: .1em;
 	border-radius: .3em;
@@ -125,7 +120,7 @@ color: #66d9ef;
 	cursor: help;
 }
 
-/* Styles for WebPlatform Docs plugin - start */
+// Styles for WebPlatform Docs plugin - start
 
 code[class*="language-"] a[href],
 pre[class*="language-"] a[href] {
@@ -139,9 +134,9 @@ pre[class*="language-"] a[href]:hover {
 	text-decoration: underline;
 }
 
-/* Styles for WebPlatform Docs plugin - end */
+// Styles for WebPlatform Docs plugin - end
 
-/* Styles for Autolinker plugin - start */
+// Styles for Autolinker plugin - start
 
 .token a {
 	color: inherit;
@@ -165,4 +160,4 @@ pre[class*="language-"] a[href].md-link:hover {
 	cursor: pointer;
 }
 
-/* Styles for Autolinker plugin - end */
+// Styles for Autolinker plugin - end

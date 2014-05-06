@@ -1,10 +1,7 @@
-/* http://prismjs.com/download.html?themes=prism&languages=markup+css+css-extras+clike+javascript+java+php+php-extras+coffeescript+scss+bash+c+cpp+python+sql+groovy+http+ruby+gherkin+csharp+go+nsis+aspnet */
-/**
- * prism.js default theme for JavaScript, CSS and HTML
- * Based on dabblet (http://dabblet.com)
- * @author Lea Verou
- */
-
+code,	/* So <code> and <pre> get highlighted*/
+		/* without any class. */
+pre,	/* This is a "feature that doesn't */
+		/* come the default plugin. */
 code[class*="language-"],
 pre[class*="language-"] {
 	color: black;
@@ -15,7 +12,6 @@ pre[class*="language-"] {
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
-
 
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
@@ -46,19 +42,29 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 	}
 }
 
-/* Code blocks */
+// Code blocks
+
+pre,	/* So <pre> gets highlighted*/
+		/* without any class. */
+		/* This is a "feature that doesn't */
+		/* come the default plugin. */
 pre[class*="language-"] {
 	padding: 1em;
 	margin: .5em 0;
 	overflow: auto;
 }
 
+:not(pre) > code,	/* So <code> and <pre> get highlighted*/
+					/* without any class. */
+pre,				/* This is a "feature that doesn't */
+					/* come the default plugin. */
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
 	background: #f5f2f0;
 }
 
-/* Inline code */
+// Inline code
+
 :not(pre) > code[class*="language-"] {
 	padding: .1em;
 	border-radius: .3em;
@@ -125,7 +131,7 @@ pre[class*="language-"] {
 	cursor: help;
 }
 
-/* Styles for WebPlatform Docs plugin - start */
+// Styles for WebPlatform Docs plugin - start
 
 code[class*="language-"] a[href],
 pre[class*="language-"] a[href] {
@@ -139,9 +145,9 @@ pre[class*="language-"] a[href]:hover {
 	text-decoration: underline;
 }
 
-/* Styles for WebPlatform Docs plugin - end */
+// Styles for WebPlatform Docs plugin - end
 
-/* Styles for Autolinker plugin - start */
+// Styles for Autolinker plugin - start
 
 .token a {
 	color: inherit;
@@ -165,4 +171,4 @@ pre[class*="language-"] a[href].md-link:hover {
 	cursor: pointer;
 }
 
-/* Styles for Autolinker plugin - end */
+// Styles for Autolinker plugin - end
