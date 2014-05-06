@@ -1,9 +1,5 @@
-/* http://prismjs.com/download.html?themes=prism&languages=markup+css+css-extras+clike+javascript+java+php+php-extras+coffeescript+scss+bash+c+cpp+python+sql+groovy+http+ruby+gherkin+csharp+go+nsis+aspnet */
-/**
- * prism.js default theme for JavaScript, CSS and HTML
- * Based on dabblet (http://dabblet.com)
- * @author Lea Verou
- */
+code,
+pre,
 code[class*="language-"],
 pre[class*="language-"] {
   color: black;
@@ -36,17 +32,18 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
   code[class*="language-"],
   pre[class*="language-"] {
     text-shadow: none; } }
-/* Code blocks */
+pre,
 pre[class*="language-"] {
   padding: 1em;
   margin: .5em 0;
   overflow: auto; }
 
+:not(pre) > code,
+pre,
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
   background: #f5f2f0; }
 
-/* Inline code */
 :not(pre) > code[class*="language-"] {
   padding: .1em;
   border-radius: .3em; }
@@ -101,7 +98,6 @@ pre[class*="language-"] {
 .token.entity {
   cursor: help; }
 
-/* Styles for WebPlatform Docs plugin - start */
 code[class*="language-"] a[href],
 pre[class*="language-"] a[href] {
   cursor: help;
@@ -112,8 +108,6 @@ pre[class*="language-"] a[href]:hover {
   cursor: help;
   text-decoration: underline; }
 
-/* Styles for WebPlatform Docs plugin - end */
-/* Styles for Autolinker plugin - start */
 .token a {
   color: inherit; }
 
@@ -133,7 +127,6 @@ code[class*="language-"] a[href].md-link:hover,
 pre[class*="language-"] a[href].md-link:hover {
   cursor: pointer; }
 
-/* Styles for Autolinker plugin - end */
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -609,32 +602,34 @@ img {
   opacity: 0.5;
   filter: alpha(opacity=50); }
 
-.phytoplankton > img {
-  background-color: white;
-  padding: 20px;
-  padding: 1.25rem;
-  position: fixed;
-  left: 20px;
-  top: 20px;
-  z-index: 1; }
 .phytoplankton:before {
   background-color: #0090d4;
   content: " ";
   display: block;
-  height: 120px;
-  height: 7.5rem;
+  height: 20px;
+  height: 1.25rem;
   position: fixed;
   width: 100%;
   z-index: 1; }
+
+.phytoplankton-logo {
+  background-color: white;
+  padding: 20px;
+  padding: 1.25rem;
+  position: fixed;
+  z-index: 1; }
+  .phytoplankton-logo > img {
+    padding-left: 20px;
+    padding-left: 1.25rem;
+    padding-top: 20px;
+    padding-top: 1.25rem; }
 
 .phytoplankton-menu {
   height: 100%;
   position: fixed; }
   .phytoplankton-menu .phytoplankton-menu__list--first {
-    margin-top: 120px;
-    margin-top: 7.5rem;
-    padding-top: 80px;
-    padding-top: 5rem; }
+    margin-top: 231px;
+    margin-top: 14.4375rem; }
   .phytoplankton-menu ul,
   .phytoplankton-menu li {
     list-style-type: none;
@@ -681,8 +676,8 @@ img {
       top: 50%; }
   .phytoplankton-menu > ul > li {
     color: #0090d4;
-    font-size: 22px;
-    font-size: 1.375rem;
+    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.5;
     margin: 16px 0px;
     margin: 1rem 0rem;
@@ -690,9 +685,6 @@ img {
     padding-left: 2.5rem;
     text-transform: uppercase; }
   .phytoplankton-menu > ul > li > ul > li {
-    font-size: 14px;
-    font-size: 0.875rem;
-    line-height: 1.5;
     margin: 16px 0px;
     margin: 1rem 0rem;
     padding-left: 20px;
@@ -751,8 +743,8 @@ img {
   top: 0; }
 
 .phytoplankton-page {
-  margin-top: 120px;
-  margin-top: 7.5rem;
+  margin-top: 20px;
+  margin-top: 1.25rem;
   padding: 0px 40px;
   padding: 0rem 2.5rem; }
   .phytoplankton-page h1 {
