@@ -122,7 +122,7 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				ev.preventDefault();
 				var scrollAnchor = $(ev.currentTarget).attr('href');
 				var scrollAnchor = scrollAnchor.substr(scrollAnchor.lastIndexOf('#') + 1);
-				var scrollPoint = $('.phytoplankton-page__item *[id="' + scrollAnchor + '"]').offset().top - (20 + 120);
+				var scrollPoint = $('.phytoplankton-page__item *[id="' + scrollAnchor + '"]').offset().top - (20 + 20);
 				$('html, body').animate({
 					scrollTop: scrollPoint
 				}, '200');

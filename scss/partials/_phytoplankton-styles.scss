@@ -9,22 +9,25 @@
 }
 
 .phytoplankton {
-	> img {
-		background-color: $bgColor;
-		@include prem(padding, 20);
-		position: fixed;
-		left: 20px;
-		top: 20px;
-		z-index: 1;
-	}
 	&:before {
 		background-color: $linkColor;
 		content: " ";
 		display: block;
-		@include prem(height, 120);
+		@include prem(height, 20);
 		position: fixed;
 		width: 100%;
 		z-index: 1;
+	}
+}
+
+.phytoplankton-logo {
+	background-color: $bgColor;
+	@include prem(padding, 20);
+	position: fixed;
+	z-index: 1;
+	> img {
+		@include prem(padding-left, 20);
+		@include prem(padding-top, 20);
 	}
 }
 
@@ -34,8 +37,8 @@
 	height: 100%;
 	position: fixed;
 	.phytoplankton-menu__list--first {
-		@include prem(margin-top, 120);
-		@include prem(padding-top, 80);
+		@include prem(margin-top, 231);
+		// @include prem(padding-top, 90);
 	}
 	ul,
 	li {
@@ -89,13 +92,12 @@
 	}
 	@include depth(1) {
 		color: $linkColor;
-		@include font-size(22);
+		@include font-size(14);
 		@include prem(margin, 16 0);
 		@include prem(padding-left, 40);
 		text-transform: uppercase;
 	}
 	@include depth(2) {
-		@include font-size(14);
 		@include prem(margin, 16 0);
 		@include prem(padding-left, 20);
 		text-transform: none;
@@ -147,87 +149,17 @@
 	margin: 0;
 	overflow-x: hidden;
 	overflow-y: auto;
-	// padding: 0;
-	// @include prem(padding-bottom, 20);
-	// @include prem(padding-left, 20);
 	position: absolute;
 	right: 0;
 	top: 0;
 }
-
-// .phytoplankton-menu__list__item__link {
-// 	// color: $fontColor;
-// 	display: block;
-// 	position: relative;
-// 	text-decoration: none;
-// 	@include max-ellipsis(100%);
-// 	&:hover {
-// 		color: $linkColor;
-// 		text-decoration: none;
-// 		&:after { // Triangle on :hover (change of color)
-// 			@include triangle(right, $linkColor, 6);
-// 		}
-// 	}
-// 	&:after { // Triangle
-// 		@include triangle(right, $fontColor, 6);
-// 		@include prem(margin-left, 9);
-// 		@include prem(margin-top, -6);
-// 		left: 10px;
-// 		top: 50%;
-// 	}
-// 	&.active {
-// 		// color: $linkColor;
-// 		text-decoration: none;
-// 		&:hover {
-// 			cursor: default;
-// 		}
-// 		&:after { // Triangle when .active
-// 			@include triangle(down, $linkColor, 6);
-// 			@include prem(margin-left, 6);
-// 			@include prem(margin-top, -3);
-// 		}
-// 	}
-// 	&:active {
-// 		color: $linkColor;
-// 		cursor: default;
-// 		&:after { // Triangle when :active
-// 			@include triangle(down, $linkColor, 6);
-// 			@include prem(margin-left, 6);
-// 			@include prem(margin-top, -3);
-// 			top: 50%;
-// 		}
-// 	}
-// }
-
-// .phytoplankton-sheet-submenu {
-// 	li {
-// 		cursor: pointer;
-// 		@include prem(padding-left, 10);
-// 		@include prem(padding-right, 10);
-// 		@include prem(margin-left, 40);
-// 		&.active {
-// 			cursor: default;
-// 			border-left: 2px solid $linkColor;
-// 			@include prem(padding-left, 8);
-// 			&:hover {
-// 				border-left: 2px solid $linkColor;
-// 				@include prem(padding-left, 8);
-// 			}
-// 		}
-// 		&:hover {
-// 			border-left: 1px solid $linkColor;
-// 			color: $linkColor;
-// 			@include prem(padding-left, 9);
-// 		}
-// 	}
-// }
 
 // MENU - end
 
 // KALEI PAGE - start
 
 .phytoplankton-page {
-	@include prem(margin-top, 120);
+	@include prem(margin-top, 20);
 	@include prem(padding, 0 40);
 	h1 {
 		border-bottom: 1px solid $linkColor;
