@@ -159,6 +159,7 @@
 // KALEI PAGE - start
 
 .phytoplankton-page {
+	@include font-size(18);
 	@include prem(margin-top, 20);
 	@include prem(padding, 0 40);
 	h1 {
@@ -178,7 +179,7 @@
 			}
 		}
 		code { // Inline <code> blocks
-			background-color: $linkColor;
+			background-color: $fontColor;
 			border-radius: 4px;
 			color: $bgColor;
 			@include inline-block;
@@ -186,6 +187,7 @@
 			@include prem(margin-right, 2);
 			@include prem(padding-left, 4);
 			@include prem(padding-right, 4);
+			text-shadow: 0 1px $fontColor;
 			white-space: normal;
 			@include hyphenation;
 		}
