@@ -1,7 +1,10 @@
 @import "../vendor/bourbon/bourbon";
 @import "mixins";
+@import "fonts";
 
-$fontFamily: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$fontFamily: "dosisregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$fontFamilyBold: "dosisbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$fontFamilyLight: "dosisblight", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $baseFontSize: 16;
 
 @import "themes/light";
