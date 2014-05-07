@@ -89,9 +89,9 @@
 	word-break: break-word;
 
 	-webkit-hyphens: auto;
-	    -moz-hyphens: auto;
+			-moz-hyphens: auto;
 		-ms-hyphens: auto;
-			  hyphens: auto;
+				hyphens: auto;
 }
 
 @mixin cf() {
@@ -131,4 +131,12 @@
 			border: 1px solid $bgColor;
 		}
 	}
+}
+
+@mixin inline-block {
+	display: inline-block;
+	vertical-align: baseline;
+	zoom: 1;
+	*display: inline;
+	*vertical-align: auto;
 }
