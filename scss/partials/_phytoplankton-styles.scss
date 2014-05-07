@@ -9,22 +9,22 @@
 }
 
 .phytoplankton {
-	&:before {
-		background-color: $linkColor;
-		content: " ";
-		display: block;
-		@include prem(height, 20);
-		position: fixed;
-		width: 100%;
-		z-index: 1;
-	}
+	// &:before {
+	// 	background-color: $linkColor;
+	// 	content: " ";
+	// 	display: block;
+	// 	@include prem(height, 20);
+	// 	position: fixed;
+	// 	width: 100%;
+	// 	z-index: 1;
+	// }
 }
 
 .phytoplankton-logo {
-	background-color: $bgColor;
-	@include prem(padding, 20);
-	position: fixed;
-	z-index: 1;
+	// background-color: $bgColor;
+	// @include prem(padding, 20);
+	// position: fixed;
+	// z-index: 1;
 	> img {
 		@include prem(padding-left, 20);
 		@include prem(padding-top, 20);
@@ -35,9 +35,12 @@
 
 .phytoplankton-menu {
 	height: 100%;
+	left: 0;
+	top: 0;
+	overflow: auto;
 	position: fixed;
 	.phytoplankton-menu__list--first {
-		@include prem(margin-top, 231);
+		// @include prem(margin-top, 231);
 		// @include prem(padding-top, 90);
 	}
 	ul,
@@ -106,7 +109,7 @@
 		}
 	}
 	@include depth(3) {
-		@include prem(padding-right, 10);
+		@include prem(padding-right, 20);
 		a {
 			@include prem(padding-left, 10);
 			@include max-ellipsis(100%);
@@ -142,26 +145,26 @@
 	}
 }
 
-.phytoplankton-menu__list--first {
-	bottom: 0;
-	left: 0;
-	list-style-type: none;
-	margin: 0;
-	overflow-x: hidden;
-	overflow-y: auto;
-	position: absolute;
-	right: 0;
-	top: 0;
-}
+// .phytoplankton-menu__list--first {
+// 	bottom: 0;
+// 	left: 0;
+// 	list-style-type: none;
+// 	margin: 0;
+// 	overflow-x: hidden;
+// 	overflow-y: auto;
+// 	position: absolute;
+// 	right: 0;
+// 	top: 0;
+// }
 
 // MENU - end
 
 // KALEI PAGE - start
 
 .phytoplankton-page {
-	@include font-size(18);
-	@include prem(margin-top, 20);
-	@include prem(padding, 0 40);
+	@include font-size(20);
+	// @include prem(margin-top, 20);
+	// @include prem(padding, 0 40);
 	h1 {
 		border-bottom: 1px solid $linkColor;
 		margin-top: 0;
@@ -195,7 +198,7 @@
 }
 
 .phytoplankton-page__item {
-	@include prem(padding, 20 40);
+	padding: 2% 20%;
 	position: relative;
 }
 

@@ -624,34 +624,18 @@ img {
   opacity: 0.5;
   filter: alpha(opacity=50); }
 
-.phytoplankton:before {
-  background-color: #0090d4;
-  content: " ";
-  display: block;
-  height: 20px;
-  height: 1.25rem;
-  position: fixed;
-  width: 100%;
-  z-index: 1; }
-
-.phytoplankton-logo {
-  background-color: white;
-  padding: 20px;
-  padding: 1.25rem;
-  position: fixed;
-  z-index: 1; }
-  .phytoplankton-logo > img {
-    padding-left: 20px;
-    padding-left: 1.25rem;
-    padding-top: 20px;
-    padding-top: 1.25rem; }
+.phytoplankton-logo > img {
+  padding-left: 20px;
+  padding-left: 1.25rem;
+  padding-top: 20px;
+  padding-top: 1.25rem; }
 
 .phytoplankton-menu {
   height: 100%;
+  left: 0;
+  top: 0;
+  overflow: auto;
   position: fixed; }
-  .phytoplankton-menu .phytoplankton-menu__list--first {
-    margin-top: 231px;
-    margin-top: 14.4375rem; }
   .phytoplankton-menu ul,
   .phytoplankton-menu li {
     list-style-type: none;
@@ -716,8 +700,8 @@ img {
       margin-bottom: 16px;
       margin-bottom: 1rem; }
   .phytoplankton-menu > ul > li > ul > li > ul > li {
-    padding-right: 10px;
-    padding-right: 0.625rem; }
+    padding-right: 20px;
+    padding-right: 1.25rem; }
     .phytoplankton-menu > ul > li > ul > li > ul > li a {
       padding-left: 10px;
       padding-left: 0.625rem;
@@ -753,25 +737,10 @@ img {
     padding-left: 18px;
     padding-left: 1.125rem; }
 
-.phytoplankton-menu__list--first {
-  bottom: 0;
-  left: 0;
-  list-style-type: none;
-  margin: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  position: absolute;
-  right: 0;
-  top: 0; }
-
 .phytoplankton-page {
-  font-size: 18px;
-  font-size: 1.125rem;
-  line-height: 1.5;
-  margin-top: 20px;
-  margin-top: 1.25rem;
-  padding: 0px 40px;
-  padding: 0rem 2.5rem; }
+  font-size: 20px;
+  font-size: 1.25rem;
+  line-height: 1.5; }
   .phytoplankton-page h1 {
     border-bottom: 1px solid #0090d4;
     margin-top: 0; }
@@ -824,8 +793,7 @@ img {
     hyphens: auto; }
 
 .phytoplankton-page__item {
-  padding: 20px 40px;
-  padding: 1.25rem 2.5rem;
+  padding: 2% 20%;
   position: relative; }
 
 .code-render {
