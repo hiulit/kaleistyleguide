@@ -183,21 +183,18 @@ It works for **headers**, **paragraphs**, **lists**, **images**, and just about 
 h1 {
   color: red; }
 
-.fixie-images-demo {
-  *zoom: 1; }
-  .fixie-images-demo:before, .fixie-images-demo:after {
-    content: " ";
-    display: table; }
-  .fixie-images-demo:after {
-    clear: both; }
-  .fixie-images-demo .fixie {
-    float: left;
-    height: 100%;
-    padding-left: 5px;
-    padding-left: 0.3125rem;
-    padding-right: 5px;
-    padding-right: 0.3125rem;
-    width: 25%; }
+.fixie-images-demo:after {
+  content: "";
+  display: table;
+  clear: both; }
+.fixie-images-demo .fixie {
+  float: left;
+  height: 100%;
+  padding-left: 5px;
+  padding-left: 0.3125rem;
+  padding-right: 5px;
+  padding-right: 0.3125rem;
+  width: 25%; }
 
 /*
 # Caution!
