@@ -24,7 +24,7 @@ Add `.btn` to any of the following HTML tags to create buttons:
 	@include inline-block;
 	color: $fontColor;
 	cursor: pointer;
-	font-family: $fontFamily;
+	font-family: $baseFontFamily;
 	@include font-size(14);
 	@include prem(line-height, 20);
 	@include prem(min-width, 90);

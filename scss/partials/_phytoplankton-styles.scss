@@ -34,6 +34,7 @@
 // MENU - start
 
 .phytoplankton-menu {
+	font-family: $headerFontFamily;
 	height: 100%;
 	left: 0;
 	top: 0;
@@ -95,7 +96,7 @@
 	}
 	@include depth(1) {
 		color: $linkColor;
-		@include font-size(14);
+		@include font-size(16);
 		@include prem(margin, 16 0);
 		@include prem(padding-left, 20);
 		text-transform: uppercase;
@@ -162,12 +163,16 @@
 // KALEI PAGE - start
 
 .phytoplankton-page {
-	@include font-size(20);
+	// @include font-size(20);
 	// @include prem(margin-top, 20);
 	// @include prem(padding, 0 40);
 	h1 {
-		border-bottom: 1px solid $linkColor;
+		color: $linkColor;
+		// border-bottom: 1px solid $linkColor;
 		margin-top: 0;
+	}
+	h2 {
+		color: $linkColor;
 	}
 	p,
 	ol,
@@ -182,15 +187,15 @@
 			}
 		}
 		code { // Inline <code> blocks
-			background-color: $fontColor;
+			// background-color: $fontColor;
 			border-radius: 4px;
-			color: $bgColor;
+			// color: $bgColor;
 			@include inline-block;
 			@include prem(margin-left, 2);
 			@include prem(margin-right, 2);
 			@include prem(padding-left, 4);
 			@include prem(padding-right, 4);
-			text-shadow: 0 1px $fontColor;
+			// text-shadow: 0 1px $fontColor;
 			white-space: normal;
 			@include hyphenation;
 		}
