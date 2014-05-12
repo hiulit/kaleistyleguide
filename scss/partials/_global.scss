@@ -2,9 +2,10 @@
 @import "mixins";
 @import "fonts";
 
-$fontFamily: "dosisregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$fontFamilyBold: "dosisbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$fontFamilyLight: "dosisblight", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $baseFontSize: 16;
+$baseFontFamily: "Open sans", Helvetica, Arial, sans-serif;
+$headerFontFamily: "dosisregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$headerFontFamilyBold: "dosisbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$headerFontFamilyLight: "dosisblight", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-@import "themes/light";
+@import "themes/dark";

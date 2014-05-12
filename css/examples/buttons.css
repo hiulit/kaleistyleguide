@@ -1,9 +1,27 @@
+@font-face {
+  font-family: 'dosisbold';
+  src: url("../fonts/dosis-bold-webfont.eot");
+  src: url("../fonts/dosis-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/dosis-bold-webfont.woff") format("woff"), url("../fonts/dosis-bold-webfont.ttf") format("truetype"), url("../fonts/dosis-bold-webfont.svg#dosisbold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'dosisregular';
+  src: url("../fonts/dosis-book-webfont.eot");
+  src: url("../fonts/dosis-book-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/dosis-book-webfont.woff") format("woff"), url("../fonts/dosis-book-webfont.ttf") format("truetype"), url("../fonts/dosis-book-webfont.svg#dosisbook") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'dosislight';
+  src: url("../fonts/dosis-light-webfont.eot");
+  src: url("../fonts/dosis-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/dosis-light-webfont.woff") format("woff"), url("../fonts/dosis-light-webfont.ttf") format("truetype"), url("../fonts/dosis-light-webfont.svg#dosislight") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 code,
 pre,
 code[class*="language-"],
 pre[class*="language-"] {
-  color: black;
-  text-shadow: 0 1px white;
+  color: #f8f8f2;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   font-family: Consolas, Monaco, 'Andale Mono', monospace;
   direction: ltr;
   text-align: left;
@@ -18,31 +36,18 @@ pre[class*="language-"] {
   -ms-hyphens: none;
   hyphens: none; }
 
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-  text-shadow: none;
-  background: #b3d4fc; }
-
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-  text-shadow: none;
-  background: #b3d4fc; }
-
-@media print {
-  code[class*="language-"],
-  pre[class*="language-"] {
-    text-shadow: none; } }
 pre,
 pre[class*="language-"] {
   padding: 1em;
   margin: .5em 0;
-  overflow: auto; }
+  overflow: auto;
+  border-radius: 0.3em; }
 
 :not(pre) > code,
 pre,
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #f5f2f0; }
+  background: #272822; }
 
 :not(pre) > code[class*="language-"] {
   padding: .1em;
@@ -55,24 +60,26 @@ pre[class*="language-"] {
   color: slategray; }
 
 .token.punctuation {
-  color: #999; }
+  color: #f8f8f2; }
 
 .namespace {
   opacity: .7; }
 
 .token.property,
 .token.tag,
-.token.boolean,
-.token.number,
 .token.constant,
 .token.symbol {
-  color: #905; }
+  color: #f92672; }
+
+.token.boolean,
+.token.number {
+  color: #ae81ff; }
 
 .token.selector,
 .token.attr-name,
 .token.string,
 .token.builtin {
-  color: #690; }
+  color: #a6e22e; }
 
 .token.operator,
 .token.entity,
@@ -80,17 +87,18 @@ pre[class*="language-"] {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-  color: #a67f59;
-  background: rgba(255, 255, 255, 0.5); }
+  color: #f8f8f2; }
 
 .token.atrule,
-.token.attr-value,
+.token.attr-value {
+  color: #e6db74; }
+
 .token.keyword {
-  color: #07a; }
+  color: #66d9ef; }
 
 .token.regex,
 .token.important {
-  color: #e90; }
+  color: #fd971f; }
 
 .token.important {
   font-weight: bold; }
@@ -154,9 +162,9 @@ Add `.btn` to any of the following HTML tags to create buttons:
   zoom: 1;
   *display: inline;
   *vertical-align: auto;
-  color: #515151;
+  color: white;
   cursor: pointer;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open sans", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.5;

@@ -12,7 +12,7 @@
 html {
 	background-color: $bgColor;
 	color: $fontColor;
-	font-family: $fontFamily;
+	font-family: $baseFontFamily;
 	@include font-size($baseFontSize);
 }
 
@@ -22,13 +22,14 @@ h3,
 h4,
 h5,
 h6 {
+	font-family: $headerFontFamily;
 	color: $fontColor;
 	font-weight: 500;
 }
 
 b,
 strong {
-	font-family: $fontFamilyBold;
+	font-family: $headerFontFamilyBold;
 }
 
 blockquote {
