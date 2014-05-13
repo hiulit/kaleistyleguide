@@ -42,7 +42,7 @@ pre,				/* This is a "feature that doesn't */
 					/* come the default plugin. */
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	background: #272822;
+	background: $prismColor;
 }
 
 // Inline code
