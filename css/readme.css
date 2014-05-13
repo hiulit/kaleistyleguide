@@ -21,7 +21,7 @@ To do this, it actually uses your style sheets so that, at anytime, you can revi
 /*
 # Installation
 
-1. Download the repository `git clone https://github.com/hiulit/kaleistyleguide.git`.
+1. Download the repository `git clone https://github.com/hiulit/kaleistyleguide.git`
 2. Serve it on a HTTP server (or a local environment using [MAMP](http://www.mamp.info/),
  [XAMPP](http://www.apachefriends.org/), etc.) and it should work!
 
@@ -57,7 +57,7 @@ Mad propz to all the great people behind the software listed below.
 /*
 # Pre-pocessors support
 
-* [Sass](http://sass-lang.com/) (v3.2.16) + [Bourbon](http://bourbon.io/)
+* [Sass](http://sass-lang.com/) (v3.2.16)
 * [Less](http://lesscss.org/) (v1.7.0)
 
 ## Notes
@@ -68,6 +68,8 @@ Phytoplankton uses [sass.js](https://github.com/medialize/sass.js) for having Sa
 ([not a trivial task](http://blog.rodneyrehm.de/archives/33-libsass.js-An-Emscripten-Experiment.html), btw)
 which in turn uses [libsass](https://github.com/hcatlin/libsass). The guys behind sass.js are [waiting for an
 official libasss release](https://twitter.com/rodneyrehm/status/447009238561595392).
+
+**Update:** Here it is the the [State of Libsass (versus Ruby Sass)](http://www.solitr.com/blog/2014/01/state-of-libsass/).
 
 */
 /*
