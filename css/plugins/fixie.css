@@ -173,9 +173,10 @@ It works for **headers**, **paragraphs**, **lists**, **images**, and just about 
 h1 {
   color: red; }
 
-.fixie-images-demo:after {
+.fixie-images-demo:before, .fixie-images-demo:after {
   content: "";
-  display: table;
+  display: table; }
+.fixie-images-demo:after {
   clear: both; }
 .fixie-images-demo .fixie {
   float: left;
