@@ -27,6 +27,13 @@ h6 {
 	font-weight: 500;
 }
 
+code,
+kbd,
+pre,
+samp {
+	font-family: $codeFont;
+}
+
 blockquote {
 	border-left: 4px solid $linkColor;
 	@include prem(margin, 40);
