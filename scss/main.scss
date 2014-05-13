@@ -27,11 +27,6 @@ h6 {
 	font-weight: 500;
 }
 
-b,
-strong {
-	font-family: $headerFontFamilyBold;
-}
-
 blockquote {
 	border-left: 4px solid $linkColor;
 	@include prem(margin, 40);
