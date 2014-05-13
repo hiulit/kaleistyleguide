@@ -516,6 +516,12 @@ h6 {
   color: white;
   font-weight: 500; }
 
+code,
+kbd,
+pre,
+samp {
+  font-family: Consolas, Monaco, "Andale Mono", monospace; }
+
 blockquote {
   border-left: 4px solid #ffea0c;
   margin: 40px;
@@ -618,10 +624,12 @@ img {
   padding-top: 1.25rem; }
 
 .phytoplankton-menu {
+  background-color: rgba(39, 40, 34, 0.5);
   font-family: "dosisregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  height: 100%;
-  left: 0;
-  top: 0;
+  bottom: 100px;
+  left: 20px;
+  right: 20px;
+  top: 40px;
   overflow: auto;
   position: fixed; }
   .phytoplankton-menu ul,
@@ -677,6 +685,8 @@ img {
     margin: 1rem 0rem;
     padding-left: 20px;
     padding-left: 1.25rem;
+    padding-right: 20px;
+    padding-right: 1.25rem;
     text-transform: uppercase; }
   .phytoplankton-menu > ul > li > ul > li {
     margin: 16px 0px;
@@ -687,31 +697,28 @@ img {
     .phytoplankton-menu > ul > li > ul > li > a {
       margin-bottom: 16px;
       margin-bottom: 1rem; }
-  .phytoplankton-menu > ul > li > ul > li > ul > li {
-    padding-right: 20px;
-    padding-right: 1.25rem; }
-    .phytoplankton-menu > ul > li > ul > li > ul > li a {
-      padding-left: 10px;
-      padding-left: 0.625rem;
-      max-width: 100%;
-      overflow: hidden;
-      -webkit-text-overflow: ellipsis;
-      -moz-text-overflow: ellipsis;
-      -ms-text-overflow: ellipsis;
-      -o-text-overflow: ellipsis;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      word-wrap: normal; }
-      .phytoplankton-menu > ul > li > ul > li > ul > li a:hover {
-        border-left: 1px solid #ffea0c;
-        padding-left: 9px;
-        padding-left: 0.5625rem; }
-    .phytoplankton-menu > ul > li > ul > li > ul > li.active > a {
-      border-left: 2px solid #ffea0c;
-      color: #ffea0c;
-      cursor: default;
-      padding-left: 8px;
-      padding-left: 0.5rem; }
+  .phytoplankton-menu > ul > li > ul > li > ul > li a {
+    padding-left: 10px;
+    padding-left: 0.625rem;
+    max-width: 100%;
+    overflow: hidden;
+    -webkit-text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal; }
+    .phytoplankton-menu > ul > li > ul > li > ul > li a:hover {
+      border-left: 1px solid #ffea0c;
+      padding-left: 9px;
+      padding-left: 0.5625rem; }
+  .phytoplankton-menu > ul > li > ul > li > ul > li.active > a {
+    border-left: 2px solid #ffea0c;
+    color: #ffea0c;
+    cursor: default;
+    padding-left: 8px;
+    padding-left: 0.5rem; }
   .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li a {
     padding-left: 20px;
     padding-left: 1.25rem; }
@@ -793,6 +800,7 @@ img {
   background-color: #ffea0c;
   border-radius: 4px 4px 0 0;
   color: #303030;
+  font-family: "dosisbold", "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: inline-block;
   vertical-align: baseline;
   zoom: 1;
@@ -808,7 +816,6 @@ img {
 pre,
 pre[class*="language-"] {
   border-radius: 4px;
-  box-shadow: inset 0px -2px 6px -3px rgba(0, 0, 0, 0.3);
   font-size: 14px;
   margin: 0;
   padding: 40px;
