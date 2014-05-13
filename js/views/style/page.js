@@ -194,7 +194,6 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 							var li = $('<li>');
 							li.append($('<a href="#' + block.subheadingIDArray[j] + '">').text(block.subheadingArray[j]));
 							ul.append(li);
-							console.log(block.subheadingIDArray[j]);
 						}
 						submenu.find('li:last').append(ul);
 					}
