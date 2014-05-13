@@ -66,6 +66,10 @@
 
 @mixin ellipsis() {
 	overflow: hidden;
+	-webkit-text-overflow: ellipsis;
+	-moz-text-overflow: ellipsis;
+	-ms-text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
@@ -103,7 +107,7 @@
 @mixin cf() {
 	&:before,
 	&:after {
-		content: " ";
+		content: "";
 		display: table;
 	}
 	&:after {
@@ -114,7 +118,7 @@
 @mixin clearfix() {
 	&:before,
 	&:after {
-		content: " ";
+		content: "";
 		display: table;
 	}
 	&:after {
