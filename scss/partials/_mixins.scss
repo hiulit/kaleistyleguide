@@ -66,7 +66,7 @@
 
 @mixin ellipsis() {
 	overflow: hidden;
-	@include prefixer(text-overflow, ellipsis, webkit moz ms o spec);
+	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 
@@ -94,7 +94,24 @@
 				hyphens: auto;
 }
 
+@mixin box-sizing($box-model) {
+	-webkit-box-sizing: $box-model;
+	-moz-box-sizing: $box-model;
+	box-sizing: $box-model;
+}
+
 @mixin cf() {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+@mixin clearfix() {
 	&:before,
 	&:after {
 		content: " ";
