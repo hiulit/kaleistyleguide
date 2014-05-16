@@ -618,12 +618,35 @@ img {
   filter: alpha(opacity=50); }
 
 .phytoplankton-logo {
+  display: none;
   position: fixed; }
   .phytoplankton-logo > img {
     padding-left: 40px;
     padding-left: 2.5rem;
     padding-top: 20px;
     padding-top: 1.25rem; }
+
+.phytoplankton-logo2 {
+  font-family: "dosislight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding-left: 40px;
+  padding-left: 2.5rem;
+  padding-top: 20px;
+  padding-top: 1.25rem;
+  position: fixed; }
+  .phytoplankton-logo2 span {
+    display: block; }
+
+.phytoplankton-logo2__title {
+  font-size: 50px;
+  font-size: 3.125rem;
+  line-height: 1.5;
+  line-height: 1;
+  text-transform: uppercase; }
+
+.phytoplankton-logo2__subtitle {
+  font-size: 20px;
+  font-size: 1.25rem;
+  line-height: 1.5; }
 
 .phytoplankton-menu {
   background-color: rgba(39, 40, 34, 0.5);

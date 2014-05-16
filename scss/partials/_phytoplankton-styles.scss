@@ -21,6 +21,7 @@
 }
 
 .phytoplankton-logo {
+	display: none;
 	// background-color: $bgColor;
 	// @include prem(padding, 20);
 	position: fixed;
@@ -29,6 +30,26 @@
 		@include prem(padding-left, 40);
 		@include prem(padding-top, 20);
 	}
+}
+
+.phytoplankton-logo2 {
+	font-family: $headerFontFamilyLight;
+	@include prem(padding-left, 40);
+	@include prem(padding-top, 20);
+	position: fixed;
+	span {
+		display: block;
+	}
+}
+
+.phytoplankton-logo2__title {
+	@include font-size(50);
+	line-height: 1;
+	text-transform: uppercase;
+}
+
+.phytoplankton-logo2__subtitle {
+	@include font-size(20);
 }
 
 // MENU - start
