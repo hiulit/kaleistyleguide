@@ -20,6 +20,19 @@
 	// }
 }
 
+.phytoplankton-top-bar {
+	background-color: $linkColor;
+	color: $bgColor;
+	font-family: $headerFontFamily;
+	@include font-size(24);
+	@include prem(height, 50);
+	@include prem(line-height, 46);
+	@include prem(padding-left, 40);
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+}
+
 .phytoplankton-logo {
 	display: none;
 	// background-color: $bgColor;
@@ -33,6 +46,7 @@
 }
 
 .phytoplankton-logo2 {
+	display: none;
 	font-family: $headerFontFamilyLight;
 	@include prem(padding-left, 40);
 	@include prem(padding-top, 20);
@@ -61,7 +75,7 @@
 	bottom: 40px;
 	left: 20px;
 	right: 20px;
-	top: 210px;
+	top: 90px;
 	overflow: auto;
 	position: fixed;
 	.phytoplankton-menu__list--first {
@@ -198,6 +212,7 @@
 // KALEI PAGE - start
 
 .phytoplankton-page {
+	@include prem(margin-top, 50);
 	// @include font-size(20);
 	// @include prem(margin-top, 20);
 	// @include prem(padding, 0 40);
@@ -238,15 +253,22 @@
 }
 
 .phytoplankton-page__item {
-	padding: 2% 20%;
+	@include prem(padding-bottom, 20);
+	padding-left: 14%;
+	padding-right: 14%;
+	@include prem(padding-top, 40);
 	position: relative;
+	+ .phytoplankton-page__item {
+		@include prem(padding-top, 20);
+	}
 }
 
 .code-render {
-	background-color: rgba(244, 244, 244, 0.25);
-	border-radius: 4px;
-	box-shadow: $boxShadowInsetTop, $boxShadowInsetBottom;
-	@include prem(margin-bottom, 16);
+	// background-color: rgba(244, 244, 244, 0.25);
+	border: 1px solid $linkColor;
+	border-radius: 0 4px 4px 4px;
+	// box-shadow: $boxShadowInsetTop, $boxShadowInsetBottom;
+	@include prem(margin-bottom, 20);
 	@include prem(padding, 40);
 	position: relative;
 }
@@ -271,5 +293,5 @@ pre[class*="language-"] {
 	// box-shadow: $boxShadowInsetBottom;
 	font-size: 14px;
 	margin: 0;
-	@include prem(padding, 40);
+	@include prem(padding, 20);
 }

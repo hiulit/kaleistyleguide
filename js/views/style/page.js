@@ -231,7 +231,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 					var k = 0;
 					$('.phytoplankton-page__item').find(':header').each(function(i) {
 						if(!$(this).offsetParent().hasClass('code-render')) {
-							if(that.is_on_screen($(this), (30 + 20))) {
+							if(that.is_on_screen($(this), (80 + 20))) {
 								hash = window.location.hash;
 								hash = hash.substr(hash.lastIndexOf('#') + 2);
 								$('.phytoplankton-menu__list__item li').removeClass('active');
@@ -248,7 +248,7 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 				// But we can think of something smarter.
 				function paddingBottom() {
 					if($('.phytoplankton-page__item').length !== 0) {
-						var pageHeight = $(window).height() - 20;
+						var pageHeight = $(window).height() - 70;
 						var lastElHeight = $('.phytoplankton-page__item:last').outerHeight();
 						var lastElPaddingTop = $('.phytoplankton-page__item:last').css('padding-top');
 						var lastElPaddingBottom = $('.phytoplankton-page__item:last').css('padding-bottom');
@@ -410,7 +410,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 						} else {
 							block.content.push({
 								type: 'html',
-								text: '<div class="code-render clearfix">' + comment.text + '</div>' +
+								text: '<div class="code-lang">Example</div>' +
+										'<div class="code-render clearfix">' + comment.text + '</div>' +
 										'<div class="code-lang">html</div>'
 							});
 							block.content.push(comment);
