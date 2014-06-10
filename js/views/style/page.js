@@ -411,8 +411,8 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 							block.content.push({
 								type: 'html',
 								text: '<div class="code-lang">Example</div>' +
-										'<div class="code-render clearfix">' + comment.text + '</div>' +
-										'<div class="code-lang">html</div>'
+										'<div class="code-render clearfix">' + comment.text + '</div>' //+
+										// '<div class="code-lang">html</div>'
 							});
 							block.content.push(comment);
 						}

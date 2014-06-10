@@ -678,6 +678,7 @@ img {
 
 .phytoplankton-menu {
   background-color: rgba(245, 242, 240, 0.5);
+  border: 1px solid rgba(204, 204, 204, 0.5);
   font-family: "dosisregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   bottom: 40px;
   left: 20px;
@@ -857,15 +858,6 @@ img {
     padding-top: 20px;
     padding-top: 1.25rem; }
 
-.code-render {
-  border: 1px solid #0090d4;
-  border-radius: 0 4px 4px 4px;
-  margin-bottom: 20px;
-  margin-bottom: 1.25rem;
-  padding: 40px;
-  padding: 2.5rem;
-  position: relative; }
-
 .code-lang {
   background-color: #0090d4;
   border-radius: 4px 4px 0 0;
@@ -883,8 +875,20 @@ img {
   .code-lang + pre[class*="language-"] {
     border-radius: 0 4px 4px 4px; }
 
+.code-render {
+  border: 1px solid #cccccc;
+  border-bottom: none;
+  border-radius: 0 4px 0 0;
+  padding: 40px;
+  padding: 2.5rem;
+  position: relative; }
+  .code-render + pre,
+  .code-render + pre[class*="language-"] {
+    border-radius: 0 0 4px 4px; }
+
 pre,
 pre[class*="language-"] {
+  border: 1px solid #cccccc;
   border-radius: 4px;
   font-size: 14px;
   margin: 0;

@@ -70,6 +70,7 @@
 
 .phytoplankton-menu {
 	background-color: rgba($prismColor, .5);
+	border: 1px solid rgba($codeBorderColor, .5);
 	font-family: $headerFontFamily;
 	// height: 100%;
 	bottom: 40px;
@@ -263,15 +264,6 @@
 	}
 }
 
-.code-render {
-	// background-color: rgba(244, 244, 244, 0.25);
-	border: 1px solid $linkColor;
-	border-radius: 0 4px 4px 4px;
-	// box-shadow: $boxShadowInsetTop, $boxShadowInsetBottom;
-	@include prem(margin-bottom, 20);
-	@include prem(padding, 40);
-	position: relative;
-}
 
 .code-lang {
 	background-color: $linkColor;
@@ -287,10 +279,22 @@
 	}
 }
 
+.code-render {
+	border: 1px solid $codeBorderColor;
+	border-bottom: none;
+	border-radius: 0 4px 0 0;
+	@include prem(padding, 40);
+	position: relative;
+	+ pre,
+	+ pre[class*="language-"] {
+		border-radius: 0 0 4px 4px;
+	}
+}
+
 pre,
 pre[class*="language-"] {
+	border: 1px solid $codeBorderColor;
 	border-radius: 4px;
-	// box-shadow: $boxShadowInsetBottom;
 	font-size: 14px;
 	margin: 0;
 	@include prem(padding, 20);
