@@ -298,4 +298,7 @@ pre[class*="language-"] {
 	font-size: 14px;
 	margin: 0;
 	@include prem(padding, 20);
+	+ .code-lang {
+		@include prem(margin-top, 20);
+	}
 }

@@ -894,3 +894,7 @@ pre[class*="language-"] {
   margin: 0;
   padding: 20px;
   padding: 1.25rem; }
+  pre + .code-lang,
+  pre[class*="language-"] + .code-lang {
+    margin-top: 20px;
+    margin-top: 1.25rem; }
