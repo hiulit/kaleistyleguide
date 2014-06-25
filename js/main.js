@@ -6,6 +6,7 @@ require.config({
 		jquery: 'libs/jquery/jquery-min',
 		underscore: 'libs/underscore/underscore-min',
 		backbone: 'libs/backbone/backbone-min',
+		handlebars: 'libs/handlebars/handlebars',
 		jscssp: 'libs/jscssp/jscssp',
 		fixie: 'libs/fixie/fixie',
 		// Require.js plugins
@@ -15,7 +16,15 @@ require.config({
 		// When you have HTML/CSS designers this aids in keeping them out of the js directory
 		templates: '../templates'
 	},
-	urlArgs: "bust=" +  (new Date()).getTime()
+
+	shim: {
+		handlebars: {
+			exports: 'Handlebars'
+		}
+	},
+
+	urlArgs: '' // Commented so we can debug
+	// urlArgs: "bust=" + (new Date()).getTime()
 
 });
 
