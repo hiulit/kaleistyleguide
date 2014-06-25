@@ -18,6 +18,10 @@ Just add the `.fixie` class to any element where you need dummy content.
 
 It works for **headers**, **paragraphs**, **lists**, **images**, and just about anything else.
 
+```hbs
+{ "template": "hello", "dataObject": "filtertabs" }
+```
+
 ```markup
 <h1 class="fixie"></h1>
 <h2 class="fixie"></h2>

@@ -1,0 +1,9 @@
+<div>{{name}}</div>
+<ul>
+	{{#each tabs}}
+	<li id="{{id}}" class="tab {{#if selected}}selected{{/if}}">
+		<div class="filter-tabs--notification js-notification-count" style="display:none"></div>
+		<a href="#">{{label}}</a>
+	</li>
+	{{/each}}
+</ul>
