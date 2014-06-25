@@ -2,6 +2,7 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
+	'handlebars',
 	'libs/marked/marked',
 	'text!templates/style/page.html',
 	'config',
@@ -10,10 +11,38 @@ define([
 	'libs/parseuri/parseuri',
 	'libs/less/less-1.3.3.min'
 ],
-function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
+function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, parseuri){
 	var that = null;
 	var StylePage = Backbone.View.extend({
 		el: '.phytoplankton-page',
+
+		mockupObjects: {
+			'filtertabs':  {
+				name: "Epeli",
+				tabs: [
+					{
+						selected: true,
+						label: 'Hola soy label',
+						id: '1'
+					},
+					{
+						selected: false,
+						label: 'Hola soy label 2',
+						id: '2'
+					}
+				]
+			}
+		},
+
+		hbsTemplates: {},
+
+		initialize: function() {
+			$.get('templates/hello.hbs', false).success(function(src){
+				that.hbsTemplates['hello'] = Handlebars.compile(src);
+				hbsTemplateUncompiled = src;
+			});
+		},
+
 		render: function () {
 
 			that = this;
@@ -365,6 +394,13 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 			return page;
 		},
 
+		parse_hbs: function(text, block) {
+			var properties = JSON.parse(text);
+			var obj = that.mockupObjects[properties.dataObject];
+			var template = that.hbsTemplates[properties.template];
+			return template(obj);
+		},
+
 		parse_commentblock: function (comment_block_text) {
 			// Removes /* & */.
 			comment_block_text = comment_block_text.replace(/(?:\/\*)|(?:\*\/)/gi, '');
@@ -397,22 +433,35 @@ function($, _, Backbone, marked, stylePageTemplate, config, jscssp, parseuri){
 						// Push the code without example nor language header.
 						if (!comment.lang) {
 							block.content.push(comment);
-						// If the code is not "markup" (html):
-						// Push the code without example but with language header.
-						} else if (comment.lang !== 'markup') {
-							block.content.push({
-								type: 'html',
-								text: '<div class="code-lang">' + comment.lang + '</div>'
-							});
-							block.content.push(comment);
 						// If it's "markup" (html):
 						// Push the code for an example with language header.
-						} else {
+						} else if(comment.lang === 'markup') {
 							block.content.push({
 								type: 'html',
 								text: '<div class="code-lang">Example</div>' +
 										'<div class="code-render clearfix">' + comment.text + '</div>' //+
 										// '<div class="code-lang">html</div>'
+							});
+							block.content.push(comment);
+						// If it's "hbs":
+						} else if(comment.lang === 'hbs') {
+							comment.hbsTemplateUncompiled = hbsTemplateUncompiled;
+							comment.text = that.parse_hbs(comment.text);
+							block.content.push({
+								type: 'html',
+								text: '<div class="code-lang">Example</div>' +
+										'<div class="code-render clearfix">' + comment.text + '</div>' //+
+										// '<div class="code-lang">html</div>'
+							});
+							comment.lang = 'markup';
+							block.content.push(comment);
+							console.log(comment);
+						// If the code is not "markup" (html):
+						// Push the code without example but with language header.
+						} else {
+							block.content.push({
+								type: 'html',
+								text: '<div class="code-lang">' + comment.lang + '</div>'
 							});
 							block.content.push(comment);
 						}
