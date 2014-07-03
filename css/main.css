@@ -858,7 +858,7 @@ img {
     padding-top: 20px;
     padding-top: 1.25rem; }
 
-.code-lang {
+.code-lang, .tabs__item {
   background-color: #0090d4;
   border-radius: 4px 4px 0 0;
   color: white;
@@ -871,8 +871,9 @@ img {
   padding: 8px 20px;
   padding: 0.5rem 1.25rem;
   text-transform: uppercase; }
-  .code-lang + pre,
-  .code-lang + pre[class*="language-"] {
+  .code-lang + pre, .tabs__item + pre,
+  .code-lang + pre[class*="language-"],
+  .tabs__item + pre[class*="language-"] {
     border-radius: 0 4px 4px 4px; }
 
 .code-render {
@@ -886,6 +887,24 @@ img {
   .code-render + pre[class*="language-"] {
     border-radius: 0 0 4px 4px; }
 
+.code-render--hbs {
+  margin-bottom: -40px;
+  margin-bottom: -2.5rem;
+  padding-bottom: 80px;
+  padding-bottom: 5rem; }
+  .code-render--hbs + .tabs .tabs__item {
+    border-radius: 0 4px 0 0; }
+    .code-render--hbs + .tabs .tabs__item + .tabs__item {
+      border-radius: 4px 4px 0 0; }
+  .code-render--hbs + .tabs + pre,
+  .code-render--hbs + .tabs pre[class*="language-"] {
+    border-radius: 0 0 4px 4px; }
+    .code-render--hbs + .tabs + pre + pre,
+    .code-render--hbs + .tabs + pre pre[class*="language-"],
+    .code-render--hbs + .tabs pre[class*="language-"] + pre,
+    .code-render--hbs + .tabs pre[class*="language-"] pre[class*="language-"] {
+      border-radius: 0 0 4px 4px; }
+
 pre,
 pre[class*="language-"] {
   border: 1px solid #cccccc;
@@ -894,7 +913,35 @@ pre[class*="language-"] {
   margin: 0;
   padding: 20px;
   padding: 1.25rem; }
-  pre + .code-lang,
-  pre[class*="language-"] + .code-lang {
+  pre + .code-lang, pre + .tabs__item,
+  pre[class*="language-"] + .code-lang,
+  pre[class*="language-"] + .tabs__item {
     margin-top: 20px;
     margin-top: 1.25rem; }
+
+.tabs {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1; }
+  .tabs + pre + pre {
+    display: none; }
+
+.tabs__item {
+  cursor: pointer;
+  opacity: 0.5;
+  filter: alpha(opacity=50); }
+  .tabs__item.is-active {
+    background-color: #0090d4;
+    cursor: default;
+    opacity: 1;
+    filter: alpha(opacity=100); }
+    .tabs__item.is-active:hover {
+      opacity: 1;
+      filter: alpha(opacity=100); }
+  .tabs__item:hover {
+    opacity: 1;
+    filter: alpha(opacity=100); }
+  .tabs__item + .tabs__item {
+    margin-left: 10px;
+    margin-left: 0.625rem; }

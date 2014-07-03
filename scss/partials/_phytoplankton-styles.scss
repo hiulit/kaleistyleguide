@@ -291,6 +291,27 @@
 	}
 }
 
+.code-render--hbs {
+	@include prem(margin-bottom, -40);
+	@include prem(padding-bottom, 80);
+	+ .tabs {
+		.tabs__item {
+			border-radius: 0 4px 0 0;
+			+ .tabs__item {
+				border-radius: 4px 4px 0 0;
+			}
+		}
+		+ pre,
+		pre[class*="language-"] {
+			border-radius: 0 0 4px 4px;
+			+ pre,
+			pre[class*="language-"] {
+				border-radius: 0 0 4px 4px;
+			}
+		}
+	}
+}
+
 pre,
 pre[class*="language-"] {
 	border: 1px solid $codeBorderColor;
@@ -300,5 +321,37 @@ pre[class*="language-"] {
 	@include prem(padding, 20);
 	+ .code-lang {
 		@include prem(margin-top, 20);
+	}
+}
+
+.tabs {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 1;
+	+ pre {
+		+ pre {
+			display: none;
+		}
+	}
+}
+
+.tabs__item {
+	@extend .code-lang;
+	cursor: pointer;
+	@include opacity(.5);
+	&.is-active {
+		background-color: $linkColor;
+		cursor: default;
+		@include opacity(1);
+		&:hover {
+			@include opacity(1);
+		}
+	}
+	&:hover {
+		@include opacity(1);
+	}
+	+ .tabs__item {
+		@include prem(margin-left, 10);
 	}
 }
