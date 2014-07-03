@@ -37,7 +37,7 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 		hbsTemplates: {},
 
 		initialize: function() {
-			$.get('templates/hello.hbs', false).success(function(src){
+			$.get('templates/hbs/hello.hbs', false).success(function(src){
 				that.hbsTemplates['hello'] = Handlebars.compile(src);
 				hbsTemplateUncompiled = src;
 			});
@@ -256,6 +256,21 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 					}
 				});
 
+				$('.tabs li').click(function() {
+					var tabID = $(this).attr('data-tab');
+					if(tabID === 'tab-1') {
+						$(this).next().removeClass('is-active');
+						$('.tabs + pre + pre').hide();
+						$(this).addClass('is-active');
+						$('.tabs + pre').show();
+					} else if (tabID === 'tab-2') {
+						$(this).prev().removeClass('is-active');
+						$('.tabs + pre').hide();
+						$(this).addClass('is-active');
+						$('.tabs + pre + pre').show();
+					}
+				});
+
 				$(window).scroll(function () {
 					var k = 0;
 					$('.phytoplankton-page__item').find(':header').each(function(i) {
@@ -450,8 +465,16 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 							block.content.push({
 								type: 'html',
 								text: '<div class="code-lang">Example</div>' +
-										'<div class="code-render clearfix">' + comment.text + '</div>' //+
-										// '<div class="code-lang">html</div>'
+										'<div class="code-render code-render--hbs clearfix">' + comment.text + '</div>' +
+										'<ul class="tabs">' +
+										'<li class="tabs__item is-active" data-tab="tab-1">Handlebars</li>' +
+										'<li class="tabs__item" data-tab="tab-2">HTML</li>' +
+										'</ul>'
+							});
+							block.content.push({
+								type: 'code',
+								lang: 'markup',
+								text: comment.hbsTemplateUncompiled
 							});
 							comment.lang = 'markup';
 							block.content.push(comment);

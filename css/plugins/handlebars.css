@@ -146,72 +146,11 @@ pre[class*="language-"] a[href].md-link:hover {
   cursor: pointer; }
 
 /*
-# Fixie.js
 
-> Automatically adds filler content to HTML documents.
+# You can use Handlebars now!!! :D
 
-[Fixie.js](https://github.com/ryhan/fixie) is bundled with Phytoplankton.
-
-Featuring the awesome [VeganIpsum - All filler, no killer](http://bengreen.org.uk/veganipsum/).
-*/
-/*
-# Example Usage
-
-Just add the `.fixie` class to any element where you need dummy content.
-
-It works for **headers**, **paragraphs**, **lists**, **images**, and just about anything else.
-
-```markup
-<h1 class="fixie"></h1>
-<h2 class="fixie"></h2>
-<p class="fixie"></p>
-<ul class="fixie">
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-</ul>
-<div class="fixie-images-demo">
-	<img class="fixie" />
-	<img class="fixie" />
-	<img class="fixie" />
-	<img class="fixie" />
-</div>
-<p class="fixie"></p>
+```hbs
+{ "template": "hello", "dataObject": "filtertabs" }
 ```
-*/
-h1 {
-  color: red; }
-
-.fixie-images-demo:before, .fixie-images-demo:after {
-  content: "";
-  display: table; }
-.fixie-images-demo:after {
-  clear: both; }
-.fixie-images-demo .fixie {
-  float: left;
-  height: 100%;
-  padding-left: 5px;
-  padding-left: 0.3125rem;
-  padding-right: 5px;
-  padding-right: 0.3125rem;
-  width: 25%; }
-
-/*
-# Caution!
-
-This is a nice feature to have when you're creating the style guide, but you should
-look for and remove `.fixie` when using it in production, in order not to create
-a caos and get fired! ;)
-
-Besides, Phytoplankton uses a modified version of [Fixie.js](https://github.com/ryhan/fixie), because of the
-implementation of the [VeganIpsum - All filler, no killer](http://bengreen.org.uk/veganipsum/).
-So, if you ever want to use a newer version of [Fixie.js](https://github.com/ryhan/fixie)
-(although I highly doubt it , since it hasn't been updated for 2 years), look for...
-
-	// This is a "feature" that doesn't
-	// come with the default plugin.
-
-... before touching anything.
 
 */
