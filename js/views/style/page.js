@@ -9,9 +9,10 @@ define([
 	'jscssp',
 	'libs/prism/prism',
 	'libs/parseuri/parseuri',
-	'libs/less/less-1.3.3.min'
+	'libs/less/less-1.3.3.min',
+	'hbs-objects/mockup-objects'
 ],
-function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, parseuri){
+function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, parseuri, mockupObjects){
 	var that = null;
 	var StylePage = Backbone.View.extend({
 		el: '.phytoplankton-page',
@@ -464,6 +465,7 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 							comment.text = that.parse_hbs(comment.text);
 							block.content.push({
 								type: 'html',
+								lang: 'markup',
 								text: '<div class="code-lang">Example</div>' +
 										'<div class="code-render code-render--hbs clearfix">' + comment.text + '</div>' +
 										'<ul class="tabs">' +
@@ -473,10 +475,9 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 							});
 							block.content.push({
 								type: 'code',
-								lang: 'markup',
+								lang: 'hbs',
 								text: comment.hbsTemplateUncompiled
 							});
-							comment.lang = 'markup';
 							block.content.push(comment);
 							console.log(comment);
 						// If the code is not "markup" (html):

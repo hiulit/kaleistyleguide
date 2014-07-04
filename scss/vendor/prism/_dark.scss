@@ -120,6 +120,16 @@ color: #66d9ef;
 	cursor: help;
 }
 
+.token {
+	&.handlebars {
+		color: #fd9720;
+		.curly-bracket,
+		.helper {
+			color: #66d9ef;
+		}
+	}
+}
+
 // Styles for WebPlatform Docs plugin - start
 
 code[class*="language-"] a[href],

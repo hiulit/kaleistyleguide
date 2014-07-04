@@ -897,12 +897,12 @@ img {
     .code-render--hbs + .tabs .tabs__item + .tabs__item {
       border-radius: 4px 4px 0 0; }
   .code-render--hbs + .tabs + pre,
-  .code-render--hbs + .tabs pre[class*="language-"] {
+  .code-render--hbs + .tabs + pre[class*="language-"] {
     border-radius: 0 0 4px 4px; }
     .code-render--hbs + .tabs + pre + pre,
-    .code-render--hbs + .tabs + pre pre[class*="language-"],
-    .code-render--hbs + .tabs pre[class*="language-"] + pre,
-    .code-render--hbs + .tabs pre[class*="language-"] pre[class*="language-"] {
+    .code-render--hbs + .tabs + pre + pre[class*="language-"],
+    .code-render--hbs + .tabs + pre[class*="language-"] + pre,
+    .code-render--hbs + .tabs + pre[class*="language-"] + pre[class*="language-"] {
       border-radius: 0 0 4px 4px; }
 
 pre,

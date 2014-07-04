@@ -302,10 +302,10 @@
 			}
 		}
 		+ pre,
-		pre[class*="language-"] {
+		+ pre[class*="language-"] {
 			border-radius: 0 0 4px 4px;
 			+ pre,
-			pre[class*="language-"] {
+			+ pre[class*="language-"] {
 				border-radius: 0 0 4px 4px;
 			}
 		}
