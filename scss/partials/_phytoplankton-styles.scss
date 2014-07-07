@@ -8,26 +8,16 @@
 	}
 }
 
-.phytoplankton {
-	// &:before {
-	// 	background-color: $linkColor;
-	// 	content: " ";
-	// 	display: block;
-	// 	@include prem(height, 20);
-	// 	position: fixed;
-	// 	width: 100%;
-	// 	z-index: 1;
-	// }
-}
+// TOP BAR - start
 
 .phytoplankton-top-bar {
 	background-color: $linkColor;
 	color: $bgColor;
 	font-family: $headerFontFamily;
-	@include font-size(24);
-	@include prem(height, 50);
-	@include prem(line-height, 46);
-	@include prem(padding-left, 40);
+	@include font-size(30);
+	@include prem(height, 75);
+	@include prem(line-height, 70);
+	@include prem(padding-left, 20);
 	position: fixed;
 	width: 100%;
 	z-index: 1;
@@ -35,10 +25,7 @@
 
 .phytoplankton-logo {
 	display: none;
-	// background-color: $bgColor;
-	// @include prem(padding, 20);
 	position: fixed;
-	// z-index: 1;
 	> img {
 		@include prem(padding-left, 40);
 		@include prem(padding-top, 20);
@@ -66,23 +53,20 @@
 	@include font-size(20);
 }
 
+// TOP BAR - end
+
 // MENU - start
 
 .phytoplankton-menu {
 	background-color: rgba($prismColor, .5);
 	border: 1px solid rgba($codeBorderColor, .5);
+	bottom: 0;
 	font-family: $headerFontFamily;
-	// height: 100%;
-	bottom: 40px;
-	left: 20px;
-	right: 20px;
-	top: 90px;
+	left: 0;
 	overflow: auto;
 	position: fixed;
-	.phytoplankton-menu__list--first {
-		// @include prem(margin-top, 231);
-		// @include prem(padding-top, 90);
-	}
+	right: 20px;
+	top: 75px;
 	ul,
 	li {
 		list-style-type: none;
@@ -160,7 +144,6 @@
 		}
 	}
 	@include depth(3) {
-		// @include prem(padding-right, 20);
 		a {
 			@include prem(padding-left, 10);
 			@include max-ellipsis(100%);
@@ -196,30 +179,14 @@
 	}
 }
 
-// .phytoplankton-menu__list--first {
-// 	bottom: 0;
-// 	left: 0;
-// 	list-style-type: none;
-// 	margin: 0;
-// 	overflow-x: hidden;
-// 	overflow-y: auto;
-// 	position: absolute;
-// 	right: 0;
-// 	top: 0;
-// }
-
 // MENU - end
 
 // KALEI PAGE - start
 
 .phytoplankton-page {
 	@include prem(margin-top, 50);
-	// @include font-size(20);
-	// @include prem(margin-top, 20);
-	// @include prem(padding, 0 40);
 	h1 {
 		color: $linkColor;
-		// border-bottom: 1px solid $linkColor;
 		margin-top: 0;
 	}
 	h2 {
@@ -238,15 +205,12 @@
 			}
 		}
 		code { // Inline <code> blocks
-			// background-color: $fontColor;
 			border-radius: 4px;
-			// color: $bgColor;
 			@include inline-block;
 			@include prem(margin-left, 2);
 			@include prem(margin-right, 2);
 			@include prem(padding-left, 4);
 			@include prem(padding-right, 4);
-			// text-shadow: 0 1px $fontColor;
 			white-space: normal;
 			@include hyphenation;
 		}

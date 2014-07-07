@@ -631,15 +631,15 @@ img {
   background-color: #0090d4;
   color: white;
   font-family: "dosisregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 24px;
-  font-size: 1.5rem;
+  font-size: 30px;
+  font-size: 1.875rem;
   line-height: 1.5;
-  height: 50px;
-  height: 3.125rem;
-  line-height: 46px;
-  line-height: 2.875rem;
-  padding-left: 40px;
-  padding-left: 2.5rem;
+  height: 75px;
+  height: 4.6875rem;
+  line-height: 70px;
+  line-height: 4.375rem;
+  padding-left: 20px;
+  padding-left: 1.25rem;
   position: fixed;
   width: 100%;
   z-index: 1; }
@@ -679,13 +679,13 @@ img {
 .phytoplankton-menu {
   background-color: rgba(245, 242, 240, 0.5);
   border: 1px solid rgba(204, 204, 204, 0.5);
+  bottom: 0;
   font-family: "dosisregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  bottom: 40px;
-  left: 20px;
-  right: 20px;
-  top: 90px;
+  left: 0;
   overflow: auto;
-  position: fixed; }
+  position: fixed;
+  right: 20px;
+  top: 75px; }
   .phytoplankton-menu ul,
   .phytoplankton-menu li {
     list-style-type: none;
