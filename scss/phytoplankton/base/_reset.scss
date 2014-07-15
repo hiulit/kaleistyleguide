@@ -1,0 +1,51 @@
+* {
+	@include box-sizing(border-box);
+	&:before,
+	&:after {
+		@include box-sizing(border-box);
+	}
+}
+
+html {
+	background-color: $bgColor;
+	color: $fontColor;
+	font-family: $baseFontFamily;
+	@include font-size($baseFontSize);
+	@media (max-width: 400px) {
+		@include font-size(14);
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $headerFontFamily;
+	color: $fontColor;
+	font-weight: 500;
+	line-height: 1.2;
+}
+
+code,
+kbd,
+pre,
+samp {
+	font-family: $codeFont;
+}
+
+blockquote {
+	border-left: 4px solid $linkColor;
+	@include prem(margin, 40);
+	@include prem(padding-left, 12);
+	p {
+		display: inline;
+	}
+	&:before {
+		content: open-quote;
+	}
+	&:after {
+		content: close-quote;
+	}
+}

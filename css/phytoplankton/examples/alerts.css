@@ -1,0 +1,66 @@
+/* $anchorColor: #00a7f1; */
+/*
+
+# Alerts
+
+```markup
+<div class="alert alert--info">This is an alert</div>
+<div class="alert alert--success">This is an alert</div>
+<div class="alert alert--error">This is an alert</div>
+```
+
+*/
+.alert {
+  color: #fff;
+  margin: 12px 0px 6px 0px;
+  margin: 0.75rem 0rem 0.375rem 0rem;
+  padding: 8px 12px;
+  padding: 0.5rem 0.75rem; }
+  .alert .alert__info-label {
+    padding: 0px 10px;
+    padding: 0rem 0.625rem; }
+  .alert .alert__close {
+    color: #fff;
+    float: right;
+    opacity: 0.75;
+    filter: alpha(opacity=75); }
+    .alert .alert__close:hover {
+      cursor: pointer;
+      color: #fff;
+      opacity: 1;
+      filter: alpha(opacity=100);
+      text-decoration: none; }
+  .alert .alert__icon-close {
+    margin: 0px 0px 0px 8px;
+    margin: 0rem 0rem 0rem 0.5rem; }
+
+.alert--info {
+  background-color: #00b5c2; }
+
+.alert--success {
+  background-color: #a1b728; }
+
+.alert--error, .alert--error-big {
+  background-color: #f99d1c; }
+
+.alert--error-big {
+  padding: 12px;
+  padding: 0.75rem; }
+
+.alert__icon {
+  display: block;
+  height: 18px;
+  height: 1.125rem;
+  margin-right: 8px;
+  margin-right: 0.5rem;
+  width: 22px;
+  width: 1.375rem; }
+
+.alert__text {
+  display: block;
+  margin-left: 30px;
+  margin-left: 1.875rem; }
+
+.alert__icon--alert {
+  background: url("../images/beezy/sprite-rez.png") no-repeat left top;
+  background-position: 0 0; }

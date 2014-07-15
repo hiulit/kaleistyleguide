@@ -2,24 +2,26 @@
 # Phytoplankton - Living Style Guide
 
 */
-@import url("../scss/readme.scss");
+@import url("../scss/phytoplankton/docs/readme.scss");
 
 /*
 # Documentation
 
 */
-@import url("../scss/documentation.scss");
+@import url("../scss/phytoplankton/docs/documentation.scss");
 
 /*
 # Plugins
 
 */
-@import url("../scss/plugins/fixie.scss");
-@import url("../scss/plugins/prism.scss");
-@import url("../scss/plugins/handlebars.scss");
+@import url("../scss/phytoplankton/plugins/fixie.scss");
+@import url("../scss/phytoplankton/plugins/prism.scss");
+@import url("../scss/phytoplankton/plugins/handlebars.scss");
 
 /*
 # Examples
 
 */
-@import url("../scss/examples/buttons.scss");
+@import url("../scss/phytoplankton/examples/alerts.scss");
+@import url("../scss/phytoplankton/examples/autocomplete.scss");
+@import url("../scss/phytoplankton/examples/buttons.scss");

@@ -1,0 +1,338 @@
+@mixin depth($depth: 1) {
+	$chain: '';
+	@for $i from 0 to $depth {
+		$chain: $chain + ' > ul > li';
+	}
+	& #{$chain} {
+		@content;
+	}
+}
+
+.phytoplankton-wrapper {
+	margin: 0 auto;
+	max-width: 40em;
+}
+
+// TOP BAR - start
+
+.phytoplankton-top-bar {
+	background-color: $linkColor;
+	color: $bgColor;
+	font-family: $headerFontFamily;
+	// @include font-size(30);
+	// @include prem(height, 75);
+	// @include prem(line-height, 70);
+	@include prem(padding-bottom, 8);
+	@include prem(padding-left, 0);
+	@include prem(padding-right, 20);
+	@include prem(padding-top, 8);
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+}
+
+.phytoplankton-menu-icon {
+	cursor: pointer;
+	float: left;
+	&:before {
+		content:"\2630";
+		// @include font-size(18);
+		@include prem(margin-left, -8);
+		@include prem(margin-right, 5);
+	}
+}
+
+.phytoplankton-menu-title {
+	float: right;
+}
+
+.phytoplankton-title {
+
+}
+
+.phytoplankton-title-dash {
+
+}
+
+.phytoplankton-subtitle {
+
+}
+
+// TOP BAR - end
+
+// MENU - start
+
+.phytoplankton-menu {
+	background-color: rgba($prismColor, 1);
+	// border: 1px solid rgba($codeBorderColor, 1);
+	bottom: 0;
+	// display: none;
+	font-family: $headerFontFamily;
+	left: -75%;
+	overflow: auto;
+	position: fixed;
+	// right: 45px;
+	top: 35px;
+	transition: all .25s ease-in-out;
+	width: 75%;
+	z-index: 1;
+	&.is-active {
+		left: 0;
+	}
+	ul,
+	li {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+	li {
+		a {
+			color: $fontColor;
+			display: block;
+			text-decoration: none;
+			&.active,
+			&:active {
+				color: $linkColor;
+			}
+		}
+		&.active {
+			li {
+				a {
+					color: $fontColor;
+				}
+			}
+		}
+		.has-triangle {
+			> a {
+				position: relative;
+				&:hover {
+					color: $linkColor;
+					&:before {
+						border-left-color: $linkColor;
+						transform: rotate(90deg);
+						-webkit-transform: rotate(90deg);
+					}
+				}
+				&.active,
+				&:active {
+					cursor: default;
+					&:before {
+						@include triangle(down, $linkColor, 6);
+						left: -23px;
+						@include prem(margin-top, -3);
+						transition: none;
+					}
+					&:hover {
+						&:before {
+							transform: rotate(0deg);
+							-webkit-transform: rotate(0deg);
+						}
+					}
+				}
+				&:before {
+					@include triangle(right, $fontColor, 6);
+					left: -20px;
+					@include prem(margin-top, -6);
+					top: 50%;
+					transition: all .25s ease-in-out;
+				}
+			}
+		}
+	}
+	@include depth(1) {
+		color: $linkColor;
+		@include font-size(16);
+		@include prem(margin, 16 0);
+		@include prem(padding-left, 20);
+		@include prem(padding-right, 20);
+		text-transform: uppercase;
+	}
+	@include depth(2) {
+		@include prem(margin, 16 0);
+		@include prem(padding-left, 20);
+		text-transform: none;
+		> a {
+			@include prem(margin-bottom, 16);
+		}
+	}
+	@include depth(3) {
+		a {
+			@include prem(padding-left, 10);
+			@include max-ellipsis(100%);
+			&:hover {
+				border-left: 1px solid $linkColor;
+				@include prem(padding-left, 9);
+			}
+		}
+		&.active {
+			> a {
+				border-left: 2px solid $linkColor;
+				color: $linkColor;
+				cursor: default;
+				@include prem(padding-left, 8);
+			}
+		}
+	}
+	@include depth(4) {
+		a {
+			@include prem(padding-left, 20);
+			&:hover {
+				@include prem(padding-left, 19);
+			}
+		}
+		&.active {
+			> a {
+				border-left: 2px solid $linkColor;
+				color: $linkColor;
+				cursor: default;
+				@include prem(padding-left, 18);
+			}
+		}
+	}
+}
+
+// MENU - end
+
+// KALEI PAGE - start
+
+.phytoplankton-page {
+	margin: 0 auto;
+	@include prem(margin-top, 40);
+	max-width: 40em;
+	h1 {
+		color: $linkColor;
+		margin-top: 0;
+		// font-size: 1.5em;
+	}
+	h2 {
+		color: $linkColor;
+	}
+	p,
+	ol,
+	ul { // So it doesn't mess with PrismJs styles on <pre> and <code> blocks
+		a {
+			color: $linkColor;
+			text-decoration: none;
+			white-space: normal;
+			@include hyphenation;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		code { // Inline <code> blocks
+			border-radius: 4px;
+			@include inline-block;
+			@include prem(margin-left, 2);
+			@include prem(margin-right, 2);
+			@include prem(padding-left, 4);
+			@include prem(padding-right, 4);
+			white-space: normal;
+			@include hyphenation;
+		}
+	}
+}
+
+.phytoplankton-page__item {
+	padding: 3% 6%;
+	padding-bottom: 0;
+	position: relative;
+	// + .phytoplankton-page__item {
+	// 	@include prem(padding-top, 20);
+	// }
+	@media (max-width: 400px) {
+		padding: 6%;
+		padding-bottom: 0;
+	}
+}
+
+
+.code-lang {
+	background-color: $linkColor;
+	border-radius: 4px 4px 0 0;
+	color: $bgColor;
+	font-family: $headerFontFamilyBold;
+	@include inline-block;
+	@include prem(padding, 8 20);
+	text-transform: uppercase;
+	+ pre,
+	+ pre[class*="language-"] {
+		border-radius: 0 4px 4px 4px;
+	}
+}
+
+.code-render {
+	border: 1px solid $codeBorderColor;
+	border-bottom: none;
+	border-radius: 0 4px 0 0;
+	@include prem(padding, 40);
+	position: relative;
+	+ pre,
+	+ pre[class*="language-"] {
+		border-radius: 0 0 4px 4px;
+	}
+}
+
+.code-render--hbs {
+	@include prem(margin-bottom, -40);
+	@include prem(padding-bottom, 80);
+	+ .tabs {
+		.tabs__item {
+			border-radius: 0 4px 0 0;
+			+ .tabs__item {
+				border-radius: 4px 4px 0 0;
+			}
+		}
+		+ pre,
+		+ pre[class*="language-"] {
+			border-radius: 0 0 4px 4px;
+			+ pre,
+			+ pre[class*="language-"] {
+				border-radius: 0 0 4px 4px;
+			}
+		}
+	}
+}
+
+pre,
+pre[class*="language-"] {
+	border: 1px solid $codeBorderColor;
+	border-radius: 4px;
+	font-size: 14px;
+	margin: 0;
+	@include prem(padding, 20);
+	+ .code-lang {
+		@include prem(margin-top, 20);
+	}
+}
+
+.tabs {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 1;
+	+ pre {
+		+ pre {
+			display: none;
+		}
+	}
+}
+
+.tabs__item {
+	@extend .code-lang;
+	cursor: pointer;
+	@include opacity(.5);
+	&.is-active {
+		background-color: $linkColor;
+		cursor: default;
+		@include opacity(1);
+		&:hover {
+			@include opacity(1);
+		}
+	}
+	&:hover {
+		@include opacity(1);
+	}
+	+ .tabs__item {
+		@include prem(margin-left, 10);
+	}
+}

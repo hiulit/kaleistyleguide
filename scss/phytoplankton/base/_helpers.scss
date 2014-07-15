@@ -1,0 +1,74 @@
+.pull-left {
+	float: left !important;
+	@include clearfix;
+}
+
+.pull-right {
+	float: right !important;
+	@include clearfix;
+}
+
+.inline-list {
+	margin: 0;
+	padding: 0;
+	li {
+		float: left;
+	}
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+img {
+	max-width: 100%;
+}
+
+.clearfix {
+	@include cf;
+}
+
+.is-disabled {
+	cursor: default;
+	@include opacity(.5);
+}
+
+.oldie { // fallback for IE8
+	pre {
+		background-color: $fontColor;
+	}
+	.code-render {
+		border: 1px solid #ccc;
+	}
+}
+
+.video-container { // Responsive video
+	height: 0;
+	@include prem(margin, 10 0);
+	padding-bottom: 56.25%;
+	padding-top: 25px;
+	position: relative;
+	iframe,
+	object {
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+}
+
+.is-locked {
+	height: 100%;
+	overflow: hidden;
+	// position: fixed;
+	width: 100%;
+}

@@ -93,7 +93,27 @@ outputs
 
 ---
 
+## Building libsass.js ##
+
+```bash
+git clone https://github.com/hcatlin/libsass/
+cd libsass
+git checkout v2.0
+git submodule init
+git submodule update
+emmake make js
+```
+
+
 ## Changelog
+
+### 0.4.0 (June 6th 2014) ###
+
+* upgrading to [libsass v2.0](https://github.com/hcatlin/libsass/releases/tag/v2.0) - Sending [#386](https://github.com/hcatlin/libsass/pull/386), [#387](https://github.com/hcatlin/libsass/pull/387), [#388]https://github.com/hcatlin/libsass/pull/388
+
+### 0.3.0 (April 5th 2014) ###
+
+* upgrading to [libsass @1122ead...](https://github.com/hcatlin/libsass/commit/1122ead208a8d1c438daaca70041ef6dd2361fa0) (to be on par with [node-sass](https://github.com/andrew/node-sass) [v.0.8.3](https://github.com/andrew/node-sass/releases/tag/v0.8.3))
 
 ### 0.2.0 (January 16th 2014) ###
 

@@ -1,0 +1,68 @@
+/*
+
+# Autocomplete
+
+```markup
+<input type="text" />
+<div class="bz-webpart autocomplete">
+	<ul>
+		<li class="autocomplete__item">
+			Hola
+		</li>
+		<li class="autocomplete__item">
+			Hola
+		</li>
+	</ul>
+</div>
+```
+
+*/
+
+.autocomplete {
+	background-color: #fff;
+	border: 1px solid $borderGrey;
+	@include box-sizing(border-box);
+	@include prem(max-height, 260);
+	overflow-y: auto;
+}
+
+.autocomplete--top {
+	border-bottom: 0;
+}
+
+.autocomplete--bottom {
+	border-top: 0;
+}
+
+.autocomplete__item {
+	@include clearfix;
+	@include prem(padding, 4);
+	&:hover {
+		background-color: $bgGrey;
+		cursor: pointer;
+	}
+	&.is-selected {
+		background-color: $bgGrey;
+	}
+	img {
+		height: 100%;
+	}
+}
+
+.autocomplete__item__name {
+	display: block;
+	@include font-size(11);
+}
+.autocomplete__item__email {
+	color: $bgGreyText;
+	display: block;
+	@include font-size(10);
+}
+
+.filter-autocomplete__item {
+	@include prem(padding, 10);
+	@include clearfix;
+	& + .filter-autocomplete {
+		@include prem(padding, 0 10 10 10);
+	}
+}
