@@ -15,6 +15,10 @@ define([
 				var styleMenuView = Vm.create(that, 'StyleMenuView', StyleMenuView);
 				styleMenuView.render();
 			});
+			require(['views/style/topBar'], function (styleTopBarView) {
+				var styleTopBarView = Vm.create(that, 'styleTopBarView', styleTopBarView);
+				styleTopBarView.render();
+			});
 		}
 	});
 	return AppView;
