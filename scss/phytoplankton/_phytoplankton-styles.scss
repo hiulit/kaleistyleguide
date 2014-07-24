@@ -20,14 +20,14 @@
 	color: $bgColor;
 	font-family: $headerFontFamily;
 	@include font-size(20);
-	height: 7%;
+	height: 8%;
 	// @include font-size(30);
 	// @include prem(height, 75);
 	// @include prem(line-height, 70);
-	@include prem(padding-bottom, 8);
-	@include prem(padding-left, 0);
-	@include prem(padding-right, 20);
-	@include prem(padding-top, 8);
+	// @include prem(padding-bottom, 8);
+	// @include prem(padding-left, 0);
+	// @include prem(padding-right, 20);
+	// @include prem(padding-top, 8);
 	position: fixed;
 	width: 100%;
 	z-index: 1;
@@ -36,16 +36,21 @@
 .phytoplankton-menu-icon {
 	cursor: pointer;
 	float: left;
+	@include prem(padding, 10);
 	&:before {
 		content:"\2630";
 		// @include font-size(18);
 		@include prem(margin-left, -8);
 		@include prem(margin-right, 5);
 	}
+	@media (max-width: 700px) {
+		@include font-size(24);
+	}
 }
 
 .phytoplankton-menu-title {
 	float: right;
+	@include prem(padding, 10);
 }
 
 .phytoplankton-title {
@@ -67,14 +72,16 @@
 .phytoplankton-menu {
 	background-color: rgba($prismColor, 1);
 	// border: 1px solid rgba($codeBorderColor, 1);
-	// bottom: 0;
+	bottom: 0;
 	// display: none;
 	font-family: $headerFontFamily;
-	left: -75%;
-	overflow: auto;
+	// left: -75%;
+	transform: translate3d(-100%, 0, 0);
+	overflow-x: hidden;
+	overflow-y: auto;
 	position: fixed;
-	right: 25%;
-	top: 7%;
+	// right: 25%;
+	top: 8%;
 	transition: all .25s ease-in-out;
 	width: 75%;
 	z-index: 1;
@@ -82,7 +89,8 @@
 	// width: 40em;
 	&.is-active {
 		// display: block;
-		left: 0;
+		transform: translate3d(0, 0, 0);
+		// left: 0;
 	}
 	ul,
 	li {
@@ -94,6 +102,7 @@
 		a {
 			color: $fontColor;
 			display: block;
+			@include max-ellipsis(100%);
 			text-decoration: none;
 			&.active,
 			&:active {
@@ -151,6 +160,9 @@
 		@include prem(padding-left, 20);
 		@include prem(padding-right, 20);
 		text-transform: uppercase;
+		@media (max-width: 700px) {
+			@include font-size(20);
+		}
 	}
 	@include depth(2) {
 		@include prem(margin, 16 0);
@@ -163,7 +175,6 @@
 	@include depth(3) {
 		a {
 			@include prem(padding-left, 10);
-			@include max-ellipsis(100%);
 			&:hover {
 				border-left: 1px solid $linkColor;
 				@include prem(padding-left, 9);
