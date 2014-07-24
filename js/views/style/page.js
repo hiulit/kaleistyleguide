@@ -187,26 +187,6 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 					$('html, body').scrollTop(0);
 				}
 
-				// $('body').css('overflow', 'auto');
-				$('.js-phytoplankton-menu').removeClass('is-active');
-				$('body').removeClass('is-locked');
-				// $('.js-phytoplankton-menu').hide();
-				$('.phytoplankton-menu-icon, phytoplankton-menu__list__item__link').click(function() {
-					if($(this).hasClass('is-active')) {
-						$('body').removeClass('is-locked');
-						// $('body').css('overflow', 'auto');
-						$(this).removeClass('is-active');
-						$('.js-phytoplankton-menu').removeClass('is-active');
-						// $('.js-phytoplankton-menu').hide();
-					} else {
-						$('body').addClass('is-locked');
-						// $('body').css('overflow', 'hidden');
-						$(this).addClass('is-active');
-						$('.js-phytoplankton-menu').addClass('is-active');
-						// $('.js-phytoplankton-menu').show();
-					}
-				});
-
 				// Adds .active to the current hash (e.g. .readme.scss)
 				if(window.location.hash !== '') {
 					$('[href="' + window.location.hash + '"]').addClass('active');
@@ -499,7 +479,6 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 								text: comment.hbsTemplateUncompiled
 							});
 							block.content.push(comment);
-							console.log(comment);
 						// If the code is not "markup" (html):
 						// Push the code without example but with language header.
 						} else {

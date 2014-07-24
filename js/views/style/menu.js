@@ -10,6 +10,26 @@ define([
 function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 	var DashboardPage = Backbone.View.extend({
 		el: '.js-phytoplankton-menu',
+		events: {
+			'click .phytoplankton-menu__list__item__link': function (ev) {
+				if($(ev.currentTarget).hasClass('active')) {
+					ev.preventDefault();
+				} else {
+					this.$el.find('.active').removeClass('active');
+					$(ev.currentTarget).addClass('active');
+					$(ev.currentTarget).parent().find('li:first-child').addClass('active');
+				}
+			},
+			'click .phytoplankton-menu__list__item ul li ul li a': function(ev) {
+				ev.preventDefault();
+				var scrollAnchor = $(ev.currentTarget).attr('href');
+				var scrollAnchor = scrollAnchor.substr(scrollAnchor.lastIndexOf('#') + 1);
+				var scrollPoint = $('.phytoplankton-page__item *[id="' + scrollAnchor + '"]').offset().top - (50 + 40);
+				$('html, body').animate({
+					scrollTop: scrollPoint
+				}, '200');
+			}
+		},
 		render: function () {
 
 			var that = this;
@@ -107,26 +127,6 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 				}
 
 			});
-		},
-		events: {
-			'click .phytoplankton-menu__list__item__link': function (ev) {
-				if($(ev.currentTarget).hasClass('active')) {
-					ev.preventDefault();
-				} else {
-					this.$el.find('.active').removeClass('active');
-					$(ev.currentTarget).addClass('active');
-					$(ev.currentTarget).parent().find('li:first-child').addClass('active');
-				}
-			},
-			'click .phytoplankton-menu__list__item ul li ul li a': function(ev) {
-				ev.preventDefault();
-				var scrollAnchor = $(ev.currentTarget).attr('href');
-				var scrollAnchor = scrollAnchor.substr(scrollAnchor.lastIndexOf('#') + 1);
-				var scrollPoint = $('.phytoplankton-page__item *[id="' + scrollAnchor + '"]').offset().top - (50 + 40);
-				$('html, body').animate({
-					scrollTop: scrollPoint
-				}, '200');
-			}
 		}
 	});
 	return DashboardPage;
