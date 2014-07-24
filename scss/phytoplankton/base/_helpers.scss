@@ -66,9 +66,23 @@ img {
 	}
 }
 
-// .is-locked {
-// 	height: 100%;
-// 	overflow: hidden;
-// 	// position: fixed;
-// 	width: 100%;
-// }
+.is-opaque {
+	&:before {
+		background-color: rgba(0, 0, 0, 0.25);
+		content: "";
+		display: block;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+	}
+}
+
+.is-locked {
+	height: 100%;
+	overflow: hidden;
+	position: fixed;
+	width: 100%;
+}
