@@ -309,6 +309,11 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 				}
 				// Please help me xD
 				setTimeout(paddingBottom, 2000);
+
+				// Removes Menu
+				// setTimeout(function(){
+
+				// }, 1000);
 			});
 		},
 

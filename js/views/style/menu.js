@@ -12,6 +12,8 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 		el: '.js-phytoplankton-menu',
 		events: {
 			'click .phytoplankton-menu__list__item__link': function (ev) {
+				$('.js-phytoplankton-menu').removeClass('is-active');
+				$('body').removeClass('is-opaque is-locked');
 				if($(ev.currentTarget).hasClass('active')) {
 					ev.preventDefault();
 				} else {
