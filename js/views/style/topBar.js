@@ -7,7 +7,7 @@ define([
 function($, _, Backbone, template){
 	var that = null;
 	var StylePage = Backbone.View.extend({
-		el: '.phytoplankton-top-bar',
+		el: '.phytoplankton-header',
 		events: {
 			'click .phytoplankton-menu-icon': function() {
 				$('.js-phytoplankton-menu').toggleClass('is-active');
