@@ -1,21 +1,3 @@
-/**
- * 1. Global
- * 	1.1. Variables
- * 	1.2. Mixins
- *
- * 2. Themes
- * 	2.1. Dark
- * 	2.2. Light
- *
- * 3. Base
- * 	3.1. Normalize
- * 	3.2. Reset
- * 	3.3. Typography
- * 	3.4. Helpers
- *
- * 4. Layout
- * 	4.1 Grid
- */
 code,
 pre,
 code[class*="language-"],
@@ -679,10 +661,14 @@ img {
   line-height: 1.5;
   height: 8%;
   position: fixed;
-  width: 100%;
+  width: 25%;
   z-index: 1; }
+  @media (max-width: 700px) {
+    .phytoplankton-top-bar {
+      width: 100%; } }
 
 .phytoplankton-menu-icon {
+  display: none;
   cursor: pointer;
   float: left;
   padding: 10px;
@@ -695,29 +681,35 @@ img {
     margin-right: 0.3125rem; }
   @media (max-width: 700px) {
     .phytoplankton-menu-icon {
+      display: block;
       font-size: 24px;
       font-size: 1.5rem;
       line-height: 1.5; } }
 
 .phytoplankton-menu-title {
-  float: right;
   padding: 10px;
   padding: 0.625rem; }
+  @media (max-width: 700px) {
+    .phytoplankton-menu-title {
+      float: right; } }
 
 .phytoplankton-menu {
   background-color: #f5f2f0;
   bottom: 0;
   font-family: "dosisregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  transform: translate3d(-100%, 0, 0);
   overflow-x: hidden;
   overflow-y: auto;
   position: fixed;
   top: 8%;
-  transition: all .25s ease-in-out;
-  width: 75%;
-  z-index: 1; }
-  .phytoplankton-menu.is-active {
-    transform: translate3d(0, 0, 0); }
+  z-index: 1;
+  width: 25%; }
+  @media (max-width: 700px) {
+    .phytoplankton-menu {
+      transform: translate3d(-100%, 0, 0);
+      transition: all .25s ease-in-out;
+      width: 75%; }
+      .phytoplankton-menu.is-active {
+        transform: translate3d(0, 0, 0); } }
   .phytoplankton-menu ul,
   .phytoplankton-menu li {
     list-style-type: none;
@@ -831,10 +823,15 @@ img {
     padding-left: 1.125rem; }
 
 .phytoplankton-page {
-  margin: 0 auto;
-  margin-top: 40px;
-  margin-top: 2.5rem;
-  max-width: 40em; }
+  float: right;
+  width: 75%; }
+  @media (max-width: 700px) {
+    .phytoplankton-page {
+      float: none;
+      margin: 0 auto;
+      margin-top: 40px;
+      margin-top: 2.5rem;
+      max-width: 40em; } }
   .phytoplankton-page h1 {
     color: #0090d4;
     margin-top: 0; }
