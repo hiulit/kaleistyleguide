@@ -12,8 +12,6 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 		el: '.js-phytoplankton-menu',
 		events: {
 			'click .phytoplankton-menu__list__item__link': function (ev) {
-				$('.js-phytoplankton-menu').removeClass('is-active');
-				$('body').removeClass('is-opaque is-locked');
 				if($(ev.currentTarget).hasClass('active')) {
 					ev.preventDefault();
 				} else {
@@ -21,6 +19,10 @@ function($, _, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 					$(ev.currentTarget).addClass('active');
 					$(ev.currentTarget).parent().find('li:first-child').addClass('active');
 				}
+			},
+			'click .phytoplankton-menu__list__item a': function() {
+				$('.js-phytoplankton-menu').removeClass('is-active');
+				$('body').removeClass('is-opaque is-locked');
 			},
 			'click .phytoplankton-menu__list__item ul li ul li a': function(ev) {
 				ev.preventDefault();
