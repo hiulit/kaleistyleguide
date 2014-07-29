@@ -652,20 +652,25 @@ img {
   margin: 0 auto;
   max-width: 40em; }
 
-.phytoplankton-top-bar {
+.phytoplankton-wrapper--small {
+  margin: 0 auto;
+  max-width: 80%; }
+  @media (max-width: 700px) {
+    .phytoplankton-wrapper--small {
+      max-width: 100%; } }
+
+.phytoplankton-header {
   background-color: #0090d4;
   color: white;
   font-family: "dosisregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
   font-size: 1.25rem;
   line-height: 1.5;
-  height: 8%;
+  height: 60px;
+  height: 3.75rem;
   position: fixed;
-  width: 25%;
+  width: 100%;
   z-index: 1; }
-  @media (max-width: 700px) {
-    .phytoplankton-top-bar {
-      width: 100%; } }
 
 .phytoplankton-menu-icon {
   display: none;
@@ -687,24 +692,31 @@ img {
       line-height: 1.5; } }
 
 .phytoplankton-menu-title {
-  padding: 10px;
-  padding: 0.625rem; }
+  padding: 15px;
+  padding: 0.9375rem; }
   @media (max-width: 700px) {
     .phytoplankton-menu-title {
       float: right; } }
 
 .phytoplankton-menu {
   background-color: #f5f2f0;
-  bottom: 0;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  bottom: 30px;
+  bottom: 1.875rem;
   font-family: "dosisregular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   overflow-x: hidden;
   overflow-y: auto;
   position: fixed;
-  top: 8%;
+  top: 90px;
+  top: 5.625rem;
   z-index: 2;
   width: 25%; }
   @media (max-width: 700px) {
     .phytoplankton-menu {
+      bottom: 0;
+      top: 60px;
+      top: 3.75rem;
       transform: translate3d(-100%, 0, 0);
       transition: all .25s ease-in-out;
       width: 75%; }
@@ -831,15 +843,14 @@ img {
       padding-left: 1.125rem; }
 
 .phytoplankton-page {
-  float: right;
+  margin-top: 60px;
+  margin-top: 3.75rem;
+  margin-left: 30%;
   width: 75%; }
   @media (max-width: 700px) {
     .phytoplankton-page {
-      float: none;
-      margin: 0 auto;
-      margin-top: 40px;
-      margin-top: 2.5rem;
-      max-width: 40em; } }
+      margin-left: 0;
+      width: 100%; } }
   .phytoplankton-page h1 {
     color: #0090d4;
     margin-top: 0; }
@@ -891,7 +902,7 @@ img {
     hyphens: auto; }
 
 .phytoplankton-page__item {
-  padding: 3% 6%;
+  padding: 3% 10%;
   padding-bottom: 0;
   position: relative; }
   @media (max-width: 400px) {

@@ -13,27 +13,26 @@
 	max-width: 40em;
 }
 
+.phytoplankton-wrapper--small {
+	margin: 0 auto;
+	max-width: 80%;
+	@media (max-width: 700px) {
+		max-width: 100%;
+	}
+}
+
+
 // TOP BAR - start
 
-.phytoplankton-top-bar {
+.phytoplankton-header {
 	background-color: $linkColor;
 	color: $bgColor;
 	font-family: $headerFontFamily;
 	@include font-size(20);
-	height: 8%;
-	// @include font-size(30);
-	// @include prem(height, 75);
-	// @include prem(line-height, 70);
-	// @include prem(padding-bottom, 8);
-	// @include prem(padding-left, 0);
-	// @include prem(padding-right, 20);
-	// @include prem(padding-top, 8);
+	@include prem(height, 60);
 	position: fixed;
-	width: 25%;
+	width: 100%;
 	z-index: 1;
-	@media (max-width: 700px) {
-		width: 100%;
-	}
 }
 
 .phytoplankton-menu-icon {
@@ -43,7 +42,6 @@
 	@include prem(padding, 10);
 	&:before {
 		content:"\2630";
-		// @include font-size(18);
 		@include prem(margin-left, -8);
 		@include prem(margin-right, 5);
 	}
@@ -54,22 +52,10 @@
 }
 
 .phytoplankton-menu-title {
-	@include prem(padding, 10);
+	@include prem(padding, 15);
 	@media (max-width: 700px) {
 		float: right;
 	}
-}
-
-.phytoplankton-title {
-
-}
-
-.phytoplankton-title-dash {
-
-}
-
-.phytoplankton-subtitle {
-
 }
 
 // TOP BAR - end
@@ -78,21 +64,24 @@
 
 .phytoplankton-menu {
 	background-color: rgba($prismColor, 1);
-	// border: 1px solid rgba($codeBorderColor, 1);
-	bottom: 0;
+	border: 1px solid rgba($codeBorderColor, 1);
+	border-radius: 4px;
+	@include prem(bottom, 30);
 	// display: none;
 	font-family: $headerFontFamily;
 	// left: -75%;
 	overflow-x: hidden;
 	overflow-y: auto;
 	position: fixed;
-	top: 8%;
+	@include prem(top, 90);
 	// right: 25%;
 	z-index: 2;
 	// margin: 0 auto;
 	// width: 40em;
 	width: 25%;
 	@media (max-width: 700px) {
+		bottom: 0;
+		@include prem(top, 60);
 		transform: translate3d(-100%, 0, 0);
 		transition: all .25s ease-in-out;
 		width: 75%;
@@ -227,13 +216,15 @@
 // KALEI PAGE - start
 
 .phytoplankton-page {
-	float: right;
+	// float: right;
+	@include prem(margin-top, 60);
+	margin-left: 30%;
 	width: 75%;
 	@media (max-width: 700px) {
-		float: none;
-		margin: 0 auto;
-		@include prem(margin-top, 40);
-		max-width: 40em;
+		// float: none;
+		margin-left: 0;
+		// @include prem(margin-top, 40);
+		width: 100%;
 	}
 	h1 {
 		color: $linkColor;
@@ -269,7 +260,7 @@
 }
 
 .phytoplankton-page__item {
-	padding: 3% 6%;
+	padding: 3% 10%;
 	padding-bottom: 0;
 	position: relative;
 	// + .phytoplankton-page__item {
