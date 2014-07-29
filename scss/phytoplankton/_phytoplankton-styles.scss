@@ -118,6 +118,7 @@
 				color: $linkColor;
 			}
 			span {
+				display: block;
 				@include max-ellipsis(100%);
 			}
 		}

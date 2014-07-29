@@ -722,6 +722,7 @@ img {
     .phytoplankton-menu li a.active, .phytoplankton-menu li a:active {
       color: #0090d4; }
     .phytoplankton-menu li a span {
+      display: block;
       max-width: 100%;
       overflow: hidden;
       -webkit-text-overflow: ellipsis;
