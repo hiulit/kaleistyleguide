@@ -112,11 +112,13 @@
 		a {
 			color: $fontColor;
 			display: block;
-			@include max-ellipsis(100%);
 			text-decoration: none;
 			&.active,
 			&:active {
 				color: $linkColor;
+			}
+			span {
+				@include max-ellipsis(100%);
 			}
 		}
 		&.active {

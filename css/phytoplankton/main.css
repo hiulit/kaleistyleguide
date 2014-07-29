@@ -718,18 +718,19 @@ img {
   .phytoplankton-menu li a {
     color: #515151;
     display: block;
-    max-width: 100%;
-    overflow: hidden;
-    -webkit-text-overflow: ellipsis;
-    -moz-text-overflow: ellipsis;
-    -ms-text-overflow: ellipsis;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap: normal;
     text-decoration: none; }
     .phytoplankton-menu li a.active, .phytoplankton-menu li a:active {
       color: #0090d4; }
+    .phytoplankton-menu li a span {
+      max-width: 100%;
+      overflow: hidden;
+      -webkit-text-overflow: ellipsis;
+      -moz-text-overflow: ellipsis;
+      -ms-text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      word-wrap: normal; }
   .phytoplankton-menu li.active li a {
     color: #515151; }
   .phytoplankton-menu li .has-triangle > a {

@@ -6,7 +6,9 @@
 				<% _.each(menu.sheets, function (sheet) { %>
 					<li class="phytoplankton-menu__list__item has-triangle" data-sheet="<%= sheet %>">
 						<a class="phytoplankton-menu__list__item__link" href="#/<%= sheet %>">
-							<%= sheet %>
+							<span>
+								<%= sheet %>
+							</span>
 						</a>
 					</li>
 				<% }); %>
