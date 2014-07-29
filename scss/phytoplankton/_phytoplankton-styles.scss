@@ -185,6 +185,7 @@
 		}
 	}
 	@include depth(3) {
+		@include prem(padding-bottom, 8);
 		a {
 			@include prem(padding-left, 10);
 			&:hover {
@@ -202,10 +203,11 @@
 		}
 	}
 	@include depth(4) {
+		@include prem(padding-top, 8);
 		a {
-			@include prem(padding-left, 20);
+			@include prem(padding-left, 30);
 			&:hover {
-				@include prem(padding-left, 19);
+				@include prem(padding-left, 29);
 			}
 		}
 		&.active {
