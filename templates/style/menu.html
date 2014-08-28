@@ -7,7 +7,7 @@
 					<li class="phytoplankton-menu__list__item has-triangle" data-sheet="<%= sheet %>">
 						<a class="phytoplankton-menu__list__item__link" href="#/<%= sheet %>">
 							<span>
-								<%= sheet %>
+								<%= _.str.strRightBack(sheet, '/') %>
 							</span>
 						</a>
 					</li>
