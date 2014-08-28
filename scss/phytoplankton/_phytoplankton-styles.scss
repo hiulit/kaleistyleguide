@@ -67,17 +67,12 @@
 	border: 1px solid rgba($codeBorderColor, 1);
 	border-radius: 4px;
 	@include prem(bottom, 30);
-	// display: none;
 	font-family: $headerFontFamily;
-	// left: -75%;
 	overflow-x: hidden;
 	overflow-y: auto;
 	position: fixed;
 	@include prem(top, 90);
-	// right: 25%;
 	z-index: 2;
-	// margin: 0 auto;
-	// width: 40em;
 	width: 25%;
 	@media (max-width: 700px) {
 		bottom: 0;
@@ -86,9 +81,7 @@
 		transition: all .25s ease-in-out;
 		width: 75%;
 		&.is-active {
-			// display: block;
 			transform: translate3d(0, 0, 0);
-			// left: 0;
 		}
 	}
 	ul,
@@ -221,15 +214,12 @@
 	margin-left: 30%;
 	width: 75%;
 	@media (max-width: 700px) {
-		// float: none;
 		margin-left: 0;
-		// @include prem(margin-top, 40);
 		width: 100%;
 	}
 	h1 {
 		color: $linkColor;
 		margin-top: 0;
-		// font-size: 1.5em;
 	}
 	h2 {
 		color: $linkColor;
@@ -264,9 +254,6 @@
 	padding: 5% 10%;
 	padding-bottom: 0;
 	position: relative;
-	// + .phytoplankton-page__item {
-	// 	@include prem(padding-top, 20);
-	// }
 	@media (max-width: 400px) {
 		padding: 6%;
 		padding-bottom: 0;
