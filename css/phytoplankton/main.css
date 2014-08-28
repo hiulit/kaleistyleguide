@@ -855,7 +855,9 @@ img {
     color: #0090d4;
     margin-top: 0; }
   .phytoplankton-page h2 {
-    color: #0090d4; }
+    color: #0090d4;
+    margin: 32px 0px;
+    margin: 2rem 0rem; }
   .phytoplankton-page p a,
   .phytoplankton-page ol a,
   .phytoplankton-page ul a {
@@ -902,7 +904,7 @@ img {
     hyphens: auto; }
 
 .phytoplankton-page__item {
-  padding: 3% 10%;
+  padding: 5% 10%;
   padding-bottom: 0;
   position: relative; }
   @media (max-width: 400px) {
@@ -963,6 +965,8 @@ pre[class*="language-"] {
   border-radius: 4px;
   font-size: 14px;
   margin: 0;
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
   padding: 20px;
   padding: 1.25rem; }
   pre + .code-lang, pre + .tabs__item,

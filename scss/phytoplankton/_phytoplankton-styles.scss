@@ -233,6 +233,7 @@
 	}
 	h2 {
 		color: $linkColor;
+		@include prem(margin, 32 0);
 	}
 	p,
 	ol,
@@ -260,7 +261,7 @@
 }
 
 .phytoplankton-page__item {
-	padding: 3% 10%;
+	padding: 5% 10%;
 	padding-bottom: 0;
 	position: relative;
 	// + .phytoplankton-page__item {
@@ -326,6 +327,7 @@ pre[class*="language-"] {
 	border-radius: 4px;
 	font-size: 14px;
 	margin: 0;
+	@include prem(margin-bottom, 16);
 	@include prem(padding, 20);
 	+ .code-lang {
 		@include prem(margin-top, 20);
