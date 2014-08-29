@@ -24,9 +24,20 @@ define({
 
 	// css_paths: ['scss/readme.scss', 'scss/examples/buttons.scss'],
 
+	// By default, Kalei parses raw CSS files using the jscssp library.
+	// If you'd rather use a different processor or preprocessor, you can choose from the below:
+	css_processor:
+		'jscssp',
+		// 'less',
+
 	// You can optionally set configuration for marked.js
 	marked_options: {
 		tables: true,
 		langPrefix: 'language-'
-	}
+	},
+
+	// Enter URLs of any external stylesheets you wish to include with this demo.
+	// These will not be parsed as part of the documentation and are simply loaded into the page header.
+	external_stylesheets: []
+	
 });
