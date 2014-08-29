@@ -1,0 +1,57 @@
+/*
+Syntax error: File to import not found or unreadable: ../global/variables.
+              Load paths:
+                D:/xampp/htdocs/kaleistyleguide (DEPRECATED)
+                D:/xampp/htdocs/kaleistyleguide/scss
+        on line 1 of scss/phytoplankton-examples/plugins/fixie.scss
+
+1: @import "../global/variables";
+2: @import "../global/colors";
+3: @import "../global/mixins";
+4: 
+5: /*
+6: # Fixie.js
+
+Backtrace:
+scss/phytoplankton-examples/plugins/fixie.scss:1
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/import_node.rb:66:in `rescue in import'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/import_node.rb:45:in `import'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/import_node.rb:28:in `imported_file'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/import_node.rb:37:in `css_import?'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/visitors/perform.rb:283:in `visit_import'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/stack.rb:79:in `block in with_base'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/stack.rb:121:in `with_frame'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/stack.rb:79:in `with_base'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/visitors/perform.rb:152:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/visitors/perform.rb:161:in `block in visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/visitors/perform.rb:160:in `visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/visitors/perform.rb:180:in `visit_root'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/visitors/perform.rb:151:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/visitors/perform.rb:8:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/tree/root_node.rb:20:in `render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/engine.rb:274:in `render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/plugin/compiler.rb:414:in `update_stylesheet'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/plugin/compiler.rb:189:in `block in update_stylesheets'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/plugin/compiler.rb:186:in `each'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/plugin/compiler.rb:186:in `update_stylesheets'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/plugin/compiler.rb:393:in `on_file_changed'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.3.3/lib/sass/plugin/compiler.rb:248:in `block in watch'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/listen-2.7.0/lib/listen/listener.rb:143:in `call'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/listen-2.7.0/lib/listen/listener.rb:143:in `block in _wait_for_changes'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/listen-2.7.0/lib/listen/listener.rb:138:in `loop'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/listen-2.7.0/lib/listen/listener.rb:138:in `_wait_for_changes'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/listen-2.7.0/lib/listen/listener.rb:42:in `block in start'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: ../global/variables.\A               Load paths:\A                 D:/xampp/htdocs/kaleistyleguide (DEPRECATED)\A                 D:/xampp/htdocs/kaleistyleguide/scss\A         on line 1 of scss/phytoplankton-examples/plugins/fixie.scss\A \A 1: @import \"../global/variables\";\A 2: @import \"../global/colors\";\A 3: @import \"../global/mixins\";\A 4: \A 5: /*\A 6: # Fixie.js"; }

@@ -1,0 +1,142 @@
+.phytoplankton-page {
+	// float: right;
+	@include prem(margin-top, 60);
+	margin-left: 30%;
+	width: 75%;
+	@media (max-width: 700px) {
+		margin-left: 0;
+		width: 100%;
+	}
+	h1 {
+		margin-top: 0;
+	}
+	h2 {
+		@include prem(margin-top, 32);
+	}
+	p,
+	ol,
+	ul { // So it doesn't mess with PrismJs styles on <pre> and <code> blocks
+		a {
+			color: $linkColor;
+			text-decoration: none;
+			white-space: normal;
+			@include hyphenation;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		code { // Inline <code> blocks
+			border-radius: 4px;
+			@include inline-block;
+			@include prem(margin-left, 2);
+			@include prem(margin-right, 2);
+			@include prem(padding-left, 4);
+			@include prem(padding-right, 4);
+			white-space: normal;
+			@include hyphenation;
+		}
+	}
+}
+
+.phytoplankton-page__item {
+	padding: 5% 10%;
+	padding-bottom: 0;
+	position: relative;
+	@media (max-width: 400px) {
+		padding: 6%;
+		padding-bottom: 0;
+	}
+}
+
+
+.code-lang {
+	background-color: $linkColor;
+	border-radius: 4px 4px 0 0;
+	color: $bgColor;
+	font-family: $headerFontFamilyBold;
+	@include inline-block;
+	@include prem(padding, 8 20);
+	text-transform: uppercase;
+	+ pre,
+	+ pre[class*="language-"] {
+		border-radius: 0 4px 4px 4px;
+	}
+}
+
+.code-render {
+	border: 1px solid $codeBorderColor;
+	border-bottom: none;
+	border-radius: 0 4px 0 0;
+	@include prem(padding, 40);
+	position: relative;
+	+ pre,
+	+ pre[class*="language-"] {
+		border-radius: 0 0 4px 4px;
+	}
+}
+
+.code-render--hbs {
+	@include prem(margin-bottom, -40);
+	@include prem(padding-bottom, 80);
+	+ .tabs {
+		.tabs__item {
+			border-radius: 0 4px 0 0;
+			+ .tabs__item {
+				border-radius: 4px 4px 0 0;
+			}
+		}
+		+ pre,
+		+ pre[class*="language-"] {
+			border-radius: 0 0 4px 4px;
+			+ pre,
+			+ pre[class*="language-"] {
+				border-radius: 0 0 4px 4px;
+			}
+		}
+	}
+}
+
+pre,
+pre[class*="language-"] {
+	border: 1px solid $codeBorderColor;
+	border-radius: 4px;
+	font-size: 14px;
+	margin: 0;
+	@include prem(margin-bottom, 16);
+	@include prem(padding, 20);
+	+ .code-lang {
+		@include prem(margin-top, 20);
+	}
+}
+
+.tabs {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 1;
+	+ pre {
+		+ pre {
+			display: none;
+		}
+	}
+}
+
+.tabs__item {
+	@extend .code-lang;
+	cursor: pointer;
+	@include opacity(.5);
+	&.is-active {
+		background-color: $linkColor;
+		cursor: default;
+		@include opacity(1);
+		&:hover {
+			@include opacity(1);
+		}
+	}
+	&:hover {
+		@include opacity(1);
+	}
+	+ .tabs__item {
+		@include prem(margin-left, 10);
+	}
+}

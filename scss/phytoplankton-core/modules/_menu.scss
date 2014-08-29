@@ -1,0 +1,141 @@
+.phytoplankton-menu {
+	background-color: rgba($prismColor, 1);
+	border: 1px solid rgba($codeBorderColor, 1);
+	border-radius: 4px;
+	@include prem(bottom, 30);
+	font-family: $headerFontFamily;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: fixed;
+	@include prem(top, 90);
+	z-index: 2;
+	width: 25%;
+	@media (max-width: 700px) {
+		bottom: 0;
+		@include prem(top, 60);
+		transform: translate3d(-100%, 0, 0);
+		transition: all .25s ease-in-out;
+		width: 75%;
+		&.is-active {
+			transform: translate3d(0, 0, 0);
+		}
+	}
+	ul,
+	li {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+	li {
+		a {
+			color: $fontColor;
+			display: block;
+			text-decoration: none;
+			&.active,
+			&:active {
+				color: $linkColor;
+			}
+			span {
+				display: block;
+				@include max-ellipsis(100%);
+			}
+		}
+		&.active {
+			li {
+				a {
+					color: $fontColor;
+				}
+			}
+		}
+		.has-triangle {
+			> a {
+				position: relative;
+				&:hover {
+					color: $linkColor;
+					&:before {
+						border-left-color: $linkColor;
+						transform: rotate(90deg);
+						-webkit-transform: rotate(90deg);
+					}
+				}
+				&.active,
+				&:active {
+					cursor: default;
+					&:before {
+						@include triangle(down, $linkColor, 6);
+						left: -23px;
+						@include prem(margin-top, -3);
+						transition: none;
+					}
+					&:hover {
+						&:before {
+							transform: rotate(0deg);
+							-webkit-transform: rotate(0deg);
+						}
+					}
+				}
+				&:before {
+					@include triangle(right, $fontColor, 6);
+					left: -20px;
+					@include prem(margin-top, -6);
+					top: 50%;
+					transition: all .25s ease-in-out;
+				}
+			}
+		}
+	}
+	@include depth(1) {
+		color: $linkColor;
+		@include font-size(16);
+		@include prem(margin, 16 0);
+		@include prem(padding-left, 20);
+		@include prem(padding-right, 20);
+		text-transform: uppercase;
+		@media (max-width: 700px) {
+			@include font-size(20);
+		}
+	}
+	@include depth(2) {
+		@include prem(margin, 16 0);
+		@include prem(padding-left, 20);
+		text-transform: none;
+		> a {
+			@include prem(margin-bottom, 16);
+		}
+	}
+	@include depth(3) {
+		@include prem(padding-bottom, 8);
+		a {
+			@include prem(padding-left, 10);
+			&:hover {
+				border-left: 1px solid $linkColor;
+				@include prem(padding-left, 9);
+			}
+		}
+		&.active {
+			> a {
+				border-left: 2px solid $linkColor;
+				color: $linkColor;
+				cursor: default;
+				@include prem(padding-left, 8);
+			}
+		}
+	}
+	@include depth(4) {
+		@include prem(padding-top, 8);
+		a {
+			@include prem(padding-left, 30);
+			&:hover {
+				@include prem(padding-left, 29);
+			}
+		}
+		&.active {
+			> a {
+				border-left: 2px solid $linkColor;
+				color: $linkColor;
+				cursor: default;
+				@include prem(padding-left, 28);
+			}
+		}
+	}
+}

@@ -1,0 +1,33 @@
+.phytoplankton-header {
+	background-color: $linkColor;
+	color: $bgColor;
+	font-family: $headerFontFamily;
+	@include font-size(20);
+	@include prem(height, 60);
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+}
+
+.phytoplankton-menu-icon {
+	display: none;
+	cursor: pointer;
+	float: left;
+	@include prem(padding, 10);
+	&:before {
+		content:"\2630";
+		@include prem(margin-left, -8);
+		@include prem(margin-right, 5);
+	}
+	@media (max-width: 700px) {
+		display: block;
+		@include font-size(24);
+	}
+}
+
+.phytoplankton-menu-title {
+	@include prem(padding, 15);
+	@media (max-width: 700px) {
+		float: right;
+	}
+}

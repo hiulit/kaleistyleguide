@@ -2,26 +2,26 @@
 # Phytoplankton - Living Style Guide
 
 */
-@import url("../scss/phytoplankton/docs/readme.scss");
+@import url("../scss/phytoplankton-examples/readme.scss");
 
 /*
 # Documentation
 
 */
-@import url("../scss/phytoplankton/docs/documentation.scss");
+@import url("../scss/phytoplankton-examples/docs/documentation.scss");
 
 /*
 # Plugins
 
 */
-@import url("../scss/phytoplankton/plugins/fixie.scss");
-@import url("../scss/phytoplankton/plugins/prism.scss");
-@import url("../scss/phytoplankton/plugins/handlebars.scss");
+@import url("../scss/phytoplankton-examples/plugins/fixie.scss");
+@import url("../scss/phytoplankton-examples/plugins/prism.scss");
+@import url("../scss/phytoplankton-examples/plugins/handlebars.scss");
 
 /*
 # Examples
 
 */
-@import url("../scss/phytoplankton/examples/alerts.scss");
-@import url("../scss/phytoplankton/examples/autocomplete.scss");
-@import url("../scss/phytoplankton/examples/buttons.scss");
+@import url("../scss/phytoplankton-examples/examples/alerts.scss");
+@import url("../scss/phytoplankton-examples/examples/autocomplete.scss");
+@import url("../scss/phytoplankton-examples/examples/buttons.scss");

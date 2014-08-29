@@ -167,3 +167,13 @@
 	-moz-box-sizing: $box-type;
 	box-sizing: $box-type;
 }
+
+@mixin depth($depth: 1) {
+	$chain: '';
+	@for $i from 0 to $depth {
+		$chain: $chain + ' > ul > li';
+	}
+	& #{$chain} {
+		@content;
+	}
+}
