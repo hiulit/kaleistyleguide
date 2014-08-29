@@ -13,7 +13,14 @@ define([
 	'hbs-objects/mockup-objects'
 ],
 function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, parseuri, mockupObjects){
+
 	var that = null;
+
+	// This is important for some preprocessors to operate efficiently and correctly.
+	// They should cascade and compute aggregate styles for all imported rules internally,
+	// and following this there will be no need to update the style block assigned to the page.
+	firstRun = true;
+
 	var StylePage = Backbone.View.extend({
 		el: '.phytoplankton-page',
 
@@ -61,7 +68,7 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 					console.log('NOT supported yet');
 				} else if(config.css_paths) {
 					configPath = config.css_paths[0].substr(config.css_paths[0].lastIndexOf('/'));
-					configDir =	window.location.protocol + '//' +
+					configDir = window.location.protocol + '//' +
 								window.location.hostname +
 								(window.location.port === '' ? '' : ':'+ window.location.port) +
 								window.location.pathname;
@@ -242,6 +249,8 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 				// Call for Fixie.
 				fixie.init();
 
+				firstRun = false;
+
 				headingArrayPage = [];
 				var i = 2;
 				$('.phytoplankton-page__item').find('*').filter(':header').each(function() {
@@ -297,8 +306,8 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 						var lastElHeight = $('.phytoplankton-page__item:last').outerHeight();
 						var lastElPaddingTop = $('.phytoplankton-page__item:last').css('padding-top');
 						var lastElPaddingBottom = $('.phytoplankton-page__item:last').css('padding-bottom');
-						lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2)); // Removes px from string and converts string to number.
-						lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2)); // Removes px from string and converts string to number.
+						lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2)); // Removes 'px' from string and converts string to number.
+						lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2)); // Removes 'px' from string and converts string to number.
 						lastElPaddingTotal = lastElPaddingTop+lastElPaddingBottom;
 						if(lastElHeight >= pageHeight) {
 							$(that.el).css({ 'padding-bottom' : 0 });
@@ -347,14 +356,16 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 						break;
 					// Import Rule (@import)
 					case 3:
-						// We need to import jsscp doesn't compile imports.
+						// If it's the 'imports.css'
 						if(window.location.hash === '') {
+							// Get the first link from the menu
 							result = $('.phytoplankton-menu__list__item__link').attr('href');
 							window.location.href =	window.location.protocol +
 													'//' + window.location.hostname +
 													(window.location.port === '' ? '' : ':'+ window.location.port) +
 													window.location.pathname + result;
 						}
+						// Remove all the @import
 						stylesheet.deleteRule(rule);
 						break;
 					// Comment Block.
@@ -394,11 +405,6 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 				} else if (rule.rules !== null) {
 				//Import Rule
 				} else if (rule.path !== null) {
-					// var previous_heading = page.blocks.length - 1;
-					// if (typeof page.blocks[previous_heading].import_rule == "undefined") {
-					//     page.blocks[previous_heading].import_rule = []
-					// }
-					// page.blocks[previous_heading].import_rule.push(rule.path)
 				}
 			});
 
