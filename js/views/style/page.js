@@ -24,32 +24,33 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 	var StylePage = Backbone.View.extend({
 		el: '.phytoplankton-page',
 
-		mockupObjects: {
-			'filtertabs':  {
-				name: "Epeli",
-				tabs: [
-					{
-						selected: true,
-						label: 'Hola soy label',
-						id: '1'
-					},
-					{
-						selected: false,
-						label: 'Hola soy label 2',
-						id: '2'
-					}
-				]
-			}
-		},
+		// HANDLEBARS
+		// mockupObjects: {
+		// 	'filtertabs':  {
+		// 		name: "Epeli",
+		// 		tabs: [
+		// 			{
+		// 				selected: true,
+		// 				label: 'Hola soy label',
+		// 				id: '1'
+		// 			},
+		// 			{
+		// 				selected: false,
+		// 				label: 'Hola soy label 2',
+		// 				id: '2'
+		// 			}
+		// 		]
+		// 	}
+		// },
 
-		hbsTemplates: {},
+		// hbsTemplates: {},
 
-		initialize: function() {
-			$.get('templates/hbs/hello.hbs', false).success(function(src){
-				that.hbsTemplates['hello'] = Handlebars.compile(src);
-				hbsTemplateUncompiled = src;
-			});
-		},
+		// initialize: function() {
+		// 	$.get('templates/hbs/hello.hbs', false).success(function(src){
+		// 		that.hbsTemplates['hello'] = Handlebars.compile(src);
+		// 		hbsTemplateUncompiled = src;
+		// 	});
+		// },
 
 		render: function () {
 
@@ -67,13 +68,18 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 				} else if(config.css_path_url) {
 					console.log('NOT supported yet');
 				} else if(config.css_paths) {
-					configPath = config.css_paths[0].substr(config.css_paths[0].lastIndexOf('/'));
+					var regex = /(?:.*\/)(.*)\.(css|less|sass|scss)$/gi;
+					var result = regex.exec(config.css_paths[0]);
+						// result[0] Original Input.
+						// result[1] Filename.
+						// result[2] Extension.
+					configPath = config.css_paths[0].replace(result[2] + '/', '');
 					configDir = window.location.protocol + '//' +
 								window.location.hostname +
 								(window.location.port === '' ? '' : ':'+ window.location.port) +
 								window.location.pathname;
-					styleUrl = configDir + 'scss' + configPath;
-					window.location.href = configDir + '#' + configPath;
+					styleUrl = configDir + result[2] + '/' + configPath;
+					window.location.href = configDir + '#/' + configPath;
 				} else {
 					alert('PUT SOMETHING IN THE CONFIG.JS!! C\'MON.....!');
 				}

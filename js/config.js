@@ -3,11 +3,11 @@ define({
 	// This path is used as a default by the Phytoplankton project itself.
 	// This is the preferred way to go!
 
-	css_path: window.location.protocol + '//' +
-				window.location.hostname +
-				(window.location.port === '' ? '' : ':'+ window.location.port) +
-				window.location.pathname +
-				'css/imports.css',
+	// css_path: window.location.protocol + '//' +
+	// 			window.location.hostname +
+	// 			(window.location.port === '' ? '' : ':'+ window.location.port) +
+	// 			window.location.pathname +
+	// 			'css/imports.css',
 
 	// *2*
 	// You can configure any path you want.
@@ -22,7 +22,7 @@ define({
 	// You just get a list of the style sheets, just as it is.
 	// And also it's a bit buggy :P
 
-	// css_paths: ['scss/readme.scss', 'scss/examples/buttons.scss'],
+	css_paths: ['scss/phytoplankton-examples/readme.scss', 'scss/phytoplankton-examples/plugins/prism.scss'],
 
 	// By default, Kalei parses raw CSS files using the jscssp library.
 	// If you'd rather use a different processor or preprocessor, you can choose from the below:
@@ -39,5 +39,5 @@ define({
 	// Enter URLs of any external stylesheets you wish to include with this demo.
 	// These will not be parsed as part of the documentation and are simply loaded into the page header.
 	external_stylesheets: []
-	
+
 });
