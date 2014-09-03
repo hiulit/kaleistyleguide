@@ -7,12 +7,13 @@
 		width: 100%;
 	}
 	h1 {
-		margin-top: 0;
-		@include font-size(40);
+		@include sassy-gridlover-heading(3, true);
 	}
 	h2 {
-		// @include prem(margin-top, 32);
-		@include font-size(30);
+		@include sassy-gridlover-heading(2, true);
+	}
+	p, ul, ol, pre, table, blockquote {
+		@include sassy-gridlover-margins(true);
 	}
 	p,
 	ol,

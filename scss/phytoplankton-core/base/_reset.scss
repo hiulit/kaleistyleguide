@@ -10,10 +10,13 @@ html {
 	background-color: $bgColor;
 	color: $fontColor;
 	font-family: $baseFontFamily;
-	@include font-size($baseFontSize);
 	@media (max-width: 400px) {
 		@include font-size(14);
 	}
+}
+
+body {
+	@include sassy-gridlover-body($baseFontSize, true);
 }
 
 h1,
