@@ -1,14 +1,14 @@
 .phytoplankton-menu {
-	display: none;
+	// display: none;
 	background-color: rgba($prismColor, 1);
-	border: 1px solid rgba($codeBorderColor, 1);
-	border-radius: 4px;
-	@include prem(bottom, 30);
+	border-right: 1px solid rgba($codeBorderColor, 1);
+	// border-radius: 4px;
+	@include prem(bottom, 0);
 	font-family: $headerFontFamily;
 	overflow-x: hidden;
 	overflow-y: auto;
 	position: fixed;
-	@include prem(top, 90);
+	@include prem(top, 60);
 	z-index: 2;
 	width: 25%;
 	@media (max-width: 700px) {

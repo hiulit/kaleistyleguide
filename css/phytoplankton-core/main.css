@@ -650,17 +650,6 @@ img {
 .grid-full {
   width: 100%; }
 
-.phytoplankton-wrapper {
-  margin: 0 auto;
-  max-width: 40em; }
-
-.phytoplankton-wrapper--small {
-  margin: 0 auto;
-  max-width: 80%; }
-  @media (max-width: 700px) {
-    .phytoplankton-wrapper--small {
-      max-width: 100%; } }
-
 .phytoplankton-header {
   background-color: #0090d4;
   color: white;
@@ -701,18 +690,16 @@ img {
       float: right; } }
 
 .phytoplankton-menu {
-  display: none;
   background-color: #f5f2f0;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  bottom: 30px;
-  bottom: 1.875rem;
+  border-right: 1px solid #cccccc;
+  bottom: 0px;
+  bottom: 0rem;
   font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   overflow-x: hidden;
   overflow-y: auto;
   position: fixed;
-  top: 90px;
-  top: 5.625rem;
+  top: 60px;
+  top: 3.75rem;
   z-index: 2;
   width: 25%; }
   @media (max-width: 700px) {
@@ -846,28 +833,32 @@ img {
       padding-left: 1.75rem; }
 
 .phytoplankton-page {
+  float: right;
   margin-top: 60px;
-  margin-top: 3.75rem; }
+  margin-top: 3.75rem;
+  padding: 0px 60px;
+  padding: 0rem 3.75rem;
+  width: 75%; }
   @media (max-width: 700px) {
     .phytoplankton-page {
       margin-left: 0;
       width: 100%; } }
   .phytoplankton-page h1 {
-    font-size: 68px;
-    line-height: 76px;
-    margin-bottom: 19px;
-    margin-top: 38px;
-    font-size: 4.25rem;
-    line-height: 4.75rem;
-    margin-bottom: 1.1875rem;
-    margin-top: 2.375rem; }
-  .phytoplankton-page h2 {
-    font-size: 42px;
+    font-size: 54px;
     line-height: 57px;
     margin-bottom: 19px;
     margin-top: 38px;
-    font-size: 2.625rem;
+    font-size: 3.375rem;
     line-height: 3.5625rem;
+    margin-bottom: 1.1875rem;
+    margin-top: 2.375rem; }
+  .phytoplankton-page h2 {
+    font-size: 36px;
+    line-height: 38px;
+    margin-bottom: 19px;
+    margin-top: 38px;
+    font-size: 2.25rem;
+    line-height: 2.375rem;
     margin-bottom: 1.1875rem;
     margin-top: 2.375rem; }
   .phytoplankton-page p, .phytoplankton-page ul, .phytoplankton-page ol, .phytoplankton-page pre, .phytoplankton-page table, .phytoplankton-page blockquote {

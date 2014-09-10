@@ -1,7 +1,9 @@
 .phytoplankton-page {
-	@include prem(margin-top, 60);
 	// margin-left: 30%;
-	// width: 75%;
+	float: right;
+	@include prem(margin-top, 60);
+	@include prem(padding, 0 60);
+	width: 75%;
 	@media (max-width: 700px) {
 		margin-left: 0;
 		width: 100%;
