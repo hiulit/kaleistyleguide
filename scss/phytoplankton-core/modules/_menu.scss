@@ -1,14 +1,10 @@
 .phytoplankton-menu {
-	// display: none;
-	background-color: rgba($prismColor, 1);
-	border-right: 1px solid rgba($codeBorderColor, 1);
-	// border-radius: 4px;
+	background-color: $menuBgColor;
 	@include prem(bottom, 0);
-	font-family: $headerFontFamily;
 	overflow-x: hidden;
 	overflow-y: auto;
 	position: fixed;
-	@include prem(top, 60);
+	@include prem(top, 0);
 	z-index: 2;
 	width: 25%;
 	@media (max-width: 700px) {
@@ -29,42 +25,40 @@
 	}
 	li {
 		a {
-			color: $fontColor;
+			color: $menuFontColor;
 			display: block;
 			text-decoration: none;
 			&.active,
 			&:active {
-				color: $linkColor;
+				color: $menuFontColor;
 			}
 			span {
 				display: block;
 				@include max-ellipsis(100%);
 			}
 		}
-		&.active {
-			li {
-				a {
-					color: $fontColor;
-				}
-			}
-		}
 		.has-triangle {
 			> a {
+				border-bottom: 2px solid $menuFgColor;
+				@include prem(padding, 16);
+				@include prem(padding-left, 40);
 				position: relative;
 				&:hover {
-					color: $linkColor;
+					background-color: $linkColor;
+					color: $menuFontColor;
 					&:before {
-						border-left-color: $linkColor;
+						border-left-color: $menuFontColor;
 						transform: rotate(90deg);
 						-webkit-transform: rotate(90deg);
 					}
 				}
 				&.active,
 				&:active {
+					background-color: $linkColor;
 					cursor: default;
 					&:before {
-						@include triangle(down, $linkColor, 6);
-						left: -23px;
+						@include triangle(down, $menuFontColor, 6);
+						left: 12px;
 						@include prem(margin-top, -3);
 						transition: none;
 					}
@@ -76,8 +70,8 @@
 					}
 				}
 				&:before {
-					@include triangle(right, $fontColor, 6);
-					left: -20px;
+					@include triangle(right, $menuFontColor, 6);
+					left: 15px;
 					@include prem(margin-top, -6);
 					top: 50%;
 					transition: all .25s ease-in-out;
@@ -85,38 +79,41 @@
 			}
 		}
 	}
+	.phytoplankton-menu__header {
+		background-color: $menuFgColor;
+		@include prem(padding, 16);
+	}
 	@include depth(1) {
-		color: $linkColor;
-		@include font-size(16);
-		@include prem(margin, 16 0);
-		@include prem(padding-left, 20);
-		@include prem(padding-right, 20);
+		color: $menuFontColor;
+		@include font-size(14);
 		text-transform: uppercase;
 		@media (max-width: 700px) {
 			@include font-size(20);
 		}
 	}
 	@include depth(2) {
-		@include prem(margin, 16 0);
-		@include prem(padding-left, 20);
 		text-transform: none;
-		> a {
+		> ul {
 			@include prem(margin-bottom, 16);
+			@include prem(margin-top, 16);
 		}
 	}
 	@include depth(3) {
 		@include prem(padding-bottom, 8);
+		@include prem(padding-left, 30);
 		a {
+			color: #969696;
 			@include prem(padding-left, 10);
 			&:hover {
-				border-left: 1px solid $linkColor;
+				border-left: 1px solid $menuFontColor;
+				color: $menuFontColor;
 				@include prem(padding-left, 9);
 			}
 		}
 		&.active {
 			> a {
-				border-left: 2px solid $linkColor;
-				color: $linkColor;
+				border-left: 2px solid $menuFontColor;
+				color: $menuFontColor;
 				cursor: default;
 				@include prem(padding-left, 8);
 			}
@@ -132,8 +129,8 @@
 		}
 		&.active {
 			> a {
-				border-left: 2px solid $linkColor;
-				color: $linkColor;
+				border-left: 2px solid $menuFontColor;
+				color: $menuFontColor;
 				cursor: default;
 				@include prem(padding-left, 28);
 			}
