@@ -1,8 +1,6 @@
 .phytoplankton-page {
-	// margin-left: 30%;
 	float: right;
-	@include prem(margin-top, 60);
-	@include prem(padding, 0 60);
+	@include prem(padding, 0 80);
 	width: 75%;
 	@media (max-width: 700px) {
 		margin-left: 0;
@@ -43,9 +41,11 @@
 }
 
 .phytoplankton-page__item {
-	// padding: 5% 10%;
-	// padding-bottom: 0;
 	position: relative;
+	+ .phytoplankton-page__item {
+		border-top: 1px solid #ccc;
+		@include prem(margin-top, 50); // margin top + (line height - font size)
+	}
 	@media (max-width: 400px) {
 		padding: 6%;
 		padding-bottom: 0;
