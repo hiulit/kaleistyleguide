@@ -123,6 +123,9 @@ function($, _, str, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 					}
 				}
 
+				// Removes first item in 'menus' array, I don't know why but we have to do it...
+				menus.shift();
+				// Pushes the corrected version of 'menus'.
 				menus.push(currentMenu);
 
 				$(that.el).html(_.template(dashboardPageTemplate, {_:_, menus: menus}));
