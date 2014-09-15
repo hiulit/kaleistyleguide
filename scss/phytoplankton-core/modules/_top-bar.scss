@@ -1,6 +1,7 @@
 .phytoplankton-header {
 	background-color: $linkColor;
 	color: $bgColor;
+	display: none;
 	font-family: $headerFontFamily;
 	@include font-size(20);
 	@include prem(height, 60);
