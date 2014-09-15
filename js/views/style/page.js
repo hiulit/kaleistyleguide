@@ -242,6 +242,7 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 					}
 				});
 
+				$('.phytoplankton-menu > ul > li > ul > li > ul').remove();
 				$('[data-sheet="' + that.options.style + '"]').append(submenu);
 				$('.phytoplankton-menu > ul > li > ul > li > ul > li:first-child').addClass('active');
 				////////////NEEDS TO BE EXPORTED TO Menu.js
