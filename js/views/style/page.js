@@ -110,7 +110,9 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 					// result[1] Filename.
 					// result[2] Extension.
 
-				var page = {blocks:[]};
+				var page = {
+					blocks:[]
+				};
 
 				switch (result[2]) {
 					case 'css':
@@ -199,37 +201,20 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 
 				////////////NEEDS TO BE EXPORTED TO Menu.js
 				// Creates the menu.
-				headingArray = [];
-				var i = 2;
 				_.each(page.blocks, function (block) {
-					if (block.heading) {
-						// if(headingArray.lastIndexOf(block.headingID) !== -1) {
-						// 	block.headingID = block.headingID + i;
-						// 	headingArray.push(block.headingID);
-						// 	i++;
-						// } else {
-							headingArray.push(block.headingID);
-						// }
-						var li = $('<li>');
-						li.append($('<a href="#' + block.headingID + '">').text(block.heading));
-						submenu.append(li);
-					}
-					if (block.subheading) {
-						var ul = $('<ul>');
-						for(j = 0; j < block.subheadingArray.length; j++) {
-							if(headingArray.lastIndexOf(block.subheadingIDArray[j]) !== -1) {
-								block.subheadingIDArray[j] = block.subheadingIDArray[j] + i;
-								headingArray.push(block.subheadingIDArray[j]);
-								i++;
-							} else {
-								headingArray.push(block.subheadingIDArray[j]);
-							}
+					var ul = $('<ul>');
+					_.each(block.heading, function(val, i) {
+						if(i >= 1) {
 							var li = $('<li>');
-							li.append($('<a href="#' + block.subheadingIDArray[j] + '">').text(block.subheadingArray[j]));
+							li.append($('<a href="#' + block.headingID[i] + '">').text(val));
 							ul.append(li);
+						} else {
+							var li = $('<li>');
+							li.append($('<a href="#' + block.headingID[i] + '">').text(val));
+							submenu.append(li);
 						}
-						submenu.find('li:last').append(ul);
-					}
+					});
+					submenu.find('li:last').append(ul);
 				});
 
 				$('.phytoplankton-menu > ul > li > ul > li > ul').remove();
@@ -316,10 +301,6 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 				// Please help me xD
 				setTimeout(paddingBottom, 2000);
 
-				// Removes Menu
-				// setTimeout(function(){
-
-				// }, 1000);
 			});
 		},
 
@@ -441,14 +422,11 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 			var lexerLinks = lexedCommentblock.links || {};
 
 			var return_val = [];
-			var block_def = {
+			var block = {
 				content: [],
-				heading: '',
-				subheadingArray: [],
-				subheadingIDArray: [],
+				heading: [],
+				headingID: []
 			};
-
-			var block = _.clone(block_def);
 
 			_.each(lexedCommentblock, function (comment) {
 				switch (comment.type) {
@@ -498,27 +476,9 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 						}
 						break;
 					case 'heading':
-						// if (block.heading !== '' && comment.depth === 1) {
-						// 	// Multiple headings in one comment block.
-						// 	// We want to break them up.
-						// 	// Parse the content blocks and return the HTML to display.
-						// 	block.content.links = lexerLinks;
-						// 	block.content = marked.parser(block.content);
-						// 	return_val.push(block);
-						// 	block = _.clone(block_def);
-						// 	console.log('HOLA');
-						// }
-						if (comment.depth === 1) {
-							block.heading = comment.text;
-							block.headingID = block.heading.toLowerCase().replace(/\W+/g, '-');
-							block.content.push(comment);
-						} else if (comment.depth >= 2) {
-							block.subheading = comment.text;
-							block.subheadingID = block.subheading.toLowerCase().replace(/\W+/g, '-');
-							block.subheadingArray.push(block.subheading);
-							block.subheadingIDArray.push(block.subheadingID);
-							block.content.push(comment);
-						}
+						block.heading.push(comment.text);
+						block.headingID.push(comment.text.toLowerCase().replace(/\W+/g, '-'));
+						block.content.push(comment);
 						break;
 					default:
 						// Push everything else.
