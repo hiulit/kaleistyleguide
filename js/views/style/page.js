@@ -174,17 +174,6 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 							Sass.writeFile(styleUrl, stylesheet);
 							// Compiles Sass stylesheet into CSS.
 							var stylesheetCompiled = Sass.compile(stylesheet);
-							// // Embeds CSS styles in <head>.
-							// var style = document.createElement('style');
-							// var attr = document.createAttribute('id');
-							// var fileName = styleUrl.substr(styleUrl.lastIndexOf('/')+1);
-							// fileName = fileName.substr(0, fileName.lastIndexOf('.'));
-							// attr.value = fileName;
-							// style.setAttributeNode(attr);
-							// style.textContent = stylesheetCompiled;
-							// if(!$('style[id="' + fileName + '"]').length) {
-							// 	document.head.appendChild(style);
-							// }
 							// Parses the CSS.
 							parser = new jscssp();
 							stylesheet = parser.parse(stylesheetCompiled, false, true);
@@ -209,17 +198,18 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 				var submenu = $('<ul>');
 
 				////////////NEEDS TO BE EXPORTED TO Menu.js
+				// Creates the menu.
 				headingArray = [];
 				var i = 2;
 				_.each(page.blocks, function (block) {
 					if (block.heading) {
-						if(headingArray.lastIndexOf(block.headingID) !== -1) {
-							block.headingID = block.headingID + i;
+						// if(headingArray.lastIndexOf(block.headingID) !== -1) {
+						// 	block.headingID = block.headingID + i;
+						// 	headingArray.push(block.headingID);
+						// 	i++;
+						// } else {
 							headingArray.push(block.headingID);
-							i++;
-						} else {
-							headingArray.push(block.headingID);
-						}
+						// }
 						var li = $('<li>');
 						li.append($('<a href="#' + block.headingID + '">').text(block.heading));
 						submenu.append(li);
@@ -508,15 +498,16 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 						}
 						break;
 					case 'heading':
-						if (block.heading !== '' && comment.depth === 1) {
-							// Multiple headings in one comment block.
-							// We want to break them up.
-							// Parse the content blocks and return the HTML to display.
-							block.content.links = lexerLinks;
-							block.content = marked.parser(block.content);
-							return_val.push(block);
-							block = _.clone(block_def);
-						}
+						// if (block.heading !== '' && comment.depth === 1) {
+						// 	// Multiple headings in one comment block.
+						// 	// We want to break them up.
+						// 	// Parse the content blocks and return the HTML to display.
+						// 	block.content.links = lexerLinks;
+						// 	block.content = marked.parser(block.content);
+						// 	return_val.push(block);
+						// 	block = _.clone(block_def);
+						// 	console.log('HOLA');
+						// }
 						if (comment.depth === 1) {
 							block.heading = comment.text;
 							block.headingID = block.heading.toLowerCase().replace(/\W+/g, '-');
@@ -524,10 +515,8 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 						} else if (comment.depth >= 2) {
 							block.subheading = comment.text;
 							block.subheadingID = block.subheading.toLowerCase().replace(/\W+/g, '-');
-
 							block.subheadingArray.push(block.subheading);
 							block.subheadingIDArray.push(block.subheadingID);
-
 							block.content.push(comment);
 						}
 						break;
