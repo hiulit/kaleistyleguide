@@ -11,3 +11,6 @@
 <style>
 	<%= page.css %>
 </style>
+<% _.each(externalStyles, function (url) { %>
+	<link rel="stylesheet" type="text/css" href="<%= url %>" />
+<% }); %>

@@ -247,7 +247,7 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 				$('.phytoplankton-menu > ul > li > ul > li > ul > li:first-child').addClass('active');
 				////////////NEEDS TO BE EXPORTED TO Menu.js
 
-				$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config}));
+				$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config, externalStyles: config.external_stylesheets}));
 
 				// Prism's colour coding in <code> blocks.
 				Prism.highlightAll();
