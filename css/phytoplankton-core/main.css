@@ -847,6 +847,7 @@ img {
   @media (max-width: 700px) {
     .phytoplankton-page {
       margin-left: 0;
+      padding: 0 4%;
       width: 100%; } }
   .phytoplankton-page h1 {
     font-size: 38px;
