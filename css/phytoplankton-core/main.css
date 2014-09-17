@@ -651,7 +651,8 @@ img {
   width: 100%; }
 
 .phytoplankton-header {
-  background-color: #0090d4;
+  background-color: #282828;
+  border-bottom: 1px solid #1e1e1e;
   color: white;
   display: none;
   font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -685,13 +686,6 @@ img {
       font-size: 24px;
       font-size: 1.5rem;
       line-height: 1.5; } }
-
-.phytoplankton-menu-title {
-  padding: 15px;
-  padding: 0.9375rem; }
-  @media (max-width: 700px) {
-    .phytoplankton-menu-title {
-      float: right; } }
 
 .phytoplankton-menu {
   background-color: #282828;
@@ -847,6 +841,8 @@ img {
   @media (max-width: 700px) {
     .phytoplankton-page {
       margin-left: 0;
+      margin-top: 60px;
+      margin-top: 3.75rem;
       padding: 0 4%;
       width: 100%; } }
   .phytoplankton-page h1 {

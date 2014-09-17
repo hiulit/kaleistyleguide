@@ -1,5 +1,6 @@
 .phytoplankton-header {
-	background-color: $linkColor;
+	background-color: $menuBgColor;
+	border-bottom: 1px solid $menuFgColor;
 	color: $bgColor;
 	display: none;
 	font-family: $headerFontFamily;
@@ -29,9 +30,9 @@
 	}
 }
 
-.phytoplankton-menu-title {
-	@include prem(padding, 15);
-	@media (max-width: 700px) {
-		float: right;
-	}
-}
+// .phytoplankton-menu-title {
+// 	@include prem(padding, 15);
+// 	@media (max-width: 700px) {
+// 		float: right;
+// 	}
+// }
