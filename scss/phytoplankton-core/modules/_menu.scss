@@ -99,11 +99,13 @@
 		}
 	}
 	@include depth(3) {
-		@include prem(padding-bottom, 8);
 		@include prem(padding-left, 30);
+		@include prem(padding-right, 20);
 		a {
 			color: #969696;
+			@include prem(padding-bottom, 4);
 			@include prem(padding-left, 10);
+			@include prem(padding-top, 4);
 			&:hover {
 				border-left: 1px solid $menuFontColor;
 				color: $menuFontColor;
@@ -120,7 +122,6 @@
 		}
 	}
 	@include depth(4) {
-		@include prem(padding-top, 8);
 		a {
 			@include prem(padding-left, 30);
 			&:hover {

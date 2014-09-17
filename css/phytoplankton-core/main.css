@@ -804,14 +804,18 @@ img {
       margin-top: 16px;
       margin-top: 1rem; }
   .phytoplankton-menu > ul > li > ul > li > ul > li {
-    padding-bottom: 8px;
-    padding-bottom: 0.5rem;
     padding-left: 30px;
-    padding-left: 1.875rem; }
+    padding-left: 1.875rem;
+    padding-right: 20px;
+    padding-right: 1.25rem; }
     .phytoplankton-menu > ul > li > ul > li > ul > li a {
       color: #969696;
+      padding-bottom: 4px;
+      padding-bottom: 0.25rem;
       padding-left: 10px;
-      padding-left: 0.625rem; }
+      padding-left: 0.625rem;
+      padding-top: 4px;
+      padding-top: 0.25rem; }
       .phytoplankton-menu > ul > li > ul > li > ul > li a:hover {
         border-left: 1px solid white;
         color: white;
@@ -823,26 +827,22 @@ img {
       cursor: default;
       padding-left: 8px;
       padding-left: 0.5rem; }
-  .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li {
-    padding-top: 8px;
-    padding-top: 0.5rem; }
-    .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li a {
-      padding-left: 30px;
-      padding-left: 1.875rem; }
-      .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li a:hover {
-        padding-left: 29px;
-        padding-left: 1.8125rem; }
-    .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li.active > a {
-      border-left: 2px solid white;
-      color: white;
-      cursor: default;
-      padding-left: 28px;
-      padding-left: 1.75rem; }
+  .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li a {
+    padding-left: 30px;
+    padding-left: 1.875rem; }
+    .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li a:hover {
+      padding-left: 29px;
+      padding-left: 1.8125rem; }
+  .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li.active > a {
+    border-left: 2px solid white;
+    color: white;
+    cursor: default;
+    padding-left: 28px;
+    padding-left: 1.75rem; }
 
 .phytoplankton-page {
   float: right;
-  padding: 0px 80px;
-  padding: 0rem 5rem;
+  padding: 0 8%;
   width: 75%; }
   @media (max-width: 700px) {
     .phytoplankton-page {
