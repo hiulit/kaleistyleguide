@@ -233,6 +233,7 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 
 				firstRun = false;
 
+				// Rename Page Heading's ID
 				headingArrayPage = [];
 				var i = 2;
 				$('.phytoplankton-page__item').find('*').filter(':header').each(function() {
@@ -246,6 +247,23 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 							headingArrayPage.push(hola);
 						}
 					}
+				});
+
+				// Rename Menu Heading's ID
+				headingArrayMenu = [];
+				var k = 2;
+				$('.phytoplankton-menu > ul > li > ul > li > ul > li a').each(function() {
+					var adeu = $(this).attr('href');
+					if(adeu) {
+						if(headingArrayMenu.lastIndexOf(adeu) !== -1) {
+							adeu = $(this).attr('href', adeu + k);
+							headingArrayMenu.push(adeu);
+							k++;
+						} else {
+							headingArrayMenu.push(adeu);
+						}
+					}
+					console.log(adeu);
 				});
 
 				$('.tabs li').click(function() {
