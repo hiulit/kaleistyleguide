@@ -867,6 +867,8 @@ img {
     line-height: 2.375rem;
     margin-bottom: 1.1875rem;
     margin-top: 2.375rem; }
+  .phytoplankton-page ul ul {
+    list-style-type: disc; }
   .phytoplankton-page p, .phytoplankton-page ul, .phytoplankton-page ol, .phytoplankton-page pre, .phytoplankton-page table, .phytoplankton-page blockquote {
     margin-bottom: 19px;
     margin-top: 19px;
