@@ -217,10 +217,10 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 					submenu.find('li:last').append(ul);
 				});
 
+				////////////NEEDS TO BE EXPORTED TO Menu.js
 				$('.phytoplankton-menu > ul > li > ul > li > ul').remove();
 				$('[data-sheet="' + that.options.style + '"]').append(submenu);
 				$('.phytoplankton-menu > ul > li > ul > li > ul > li:first-child').addClass('active');
-				////////////NEEDS TO BE EXPORTED TO Menu.js
 
 				$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config, externalStyles: config.external_stylesheets}));
 
@@ -381,7 +381,7 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 					page.blocks = page.blocks.concat(that.parse_commentblock(rule.value));
 				// Standard Rule.
 				} else if (rule.rules !== null) {
-				//Import Rule
+				// Import Rule
 				} else if (rule.path !== null) {
 				}
 			});
@@ -441,11 +441,9 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 							block.content.push({
 								type: 'html',
 								text: '<div class="code-lang">Example</div>' +
-										'<div class="code-render clearfix">' + comment.text + '</div>' //+
-										// '<div class="code-lang">html</div>'
+										'<div class="code-render clearfix">' + comment.text + '</div>'
 							});
 							block.content.push(comment);
-						// If it's "hbs":
 						} else if(comment.lang === 'hbs') {
 							comment.hbsTemplateUncompiled = hbsTemplateUncompiled;
 							comment.text = that.parse_hbs(comment.text);
