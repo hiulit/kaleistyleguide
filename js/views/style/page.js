@@ -233,37 +233,28 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 
 				firstRun = false;
 
-				// Rename Page Heading's ID
-				headingArrayPage = [];
-				var i = 2;
-				$('.phytoplankton-page__item').find('*').filter(':header').each(function() {
-					var hola = $(this).attr('id');
-					if(hola) {
-						if(headingArrayPage.lastIndexOf(hola) !== -1) {
-							hola = $(this).attr('id', hola + i);
-							headingArrayPage.push(hola);
-							i++;
-						} else {
-							headingArrayPage.push(hola);
-						}
+				function renameHeadingID(tag, that, array, index) {
+					var nameID = that.attr(tag);
+					if(array.lastIndexOf(nameID) !== -1) {
+						nameID = that.attr(tag, nameID + index);
+						array.push(nameID);
+					} else {
+						array.push(nameID);
 					}
+				}
+
+				// Rename Page Heading's ID
+				headingArray = [];
+				$('.phytoplankton-page__item').find('*').filter(':header').each(function(i) {
+					var that = $(this);
+					renameHeadingID('id', that, headingArray, i);
 				});
 
 				// Rename Menu Heading's ID
 				headingArrayMenu = [];
-				var k = 2;
-				$('.phytoplankton-menu > ul > li > ul > li > ul > li a').each(function() {
-					var adeu = $(this).attr('href');
-					if(adeu) {
-						if(headingArrayMenu.lastIndexOf(adeu) !== -1) {
-							adeu = $(this).attr('href', adeu + k);
-							headingArrayMenu.push(adeu);
-							k++;
-						} else {
-							headingArrayMenu.push(adeu);
-						}
-					}
-					console.log(adeu);
+				$('.phytoplankton-menu > ul > li > ul > li > ul > li a').each(function(i) {
+					var that = $(this);
+					renameHeadingID('href', that, headingArrayMenu, i);
 				});
 
 				$('.tabs li').click(function() {
