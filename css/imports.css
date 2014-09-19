@@ -2,25 +2,17 @@
 # Phytoplankton - Living Style Guide
 
 */
-@import url("../scss/phytoplankton-examples/readme.scss");
+@import url("../css/phytoplankton-examples/readme.css");
 
 /*
 # Documentation
 
 */
-@import url("../scss/phytoplankton-examples/docs/documentation.scss");
+@import url("../css/phytoplankton-examples/docs/documentation.css");
 
 /*
 # Plugins
 
 */
-@import url("../scss/phytoplankton-examples/plugins/fixie.scss");
-@import url("../scss/phytoplankton-examples/plugins/prism.scss");
-
-/*
-# Examples
-
-*/
-@import url("../scss/phytoplankton-examples/examples/alerts.scss");
-@import url("../scss/phytoplankton-examples/examples/autocomplete.scss");
-@import url("../scss/phytoplankton-examples/examples/buttons.scss");
+@import url("../css/phytoplankton-examples/plugins/fixie.css");
+@import url("../css/phytoplankton-examples/plugins/prism.css");

@@ -24,6 +24,34 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 	var StylePage = Backbone.View.extend({
 		el: '.phytoplankton-page',
 
+		// HANDLEBARS
+		// mockupObjects: {
+		// 	'filtertabs':  {
+		// 		name: "Epeli",
+		// 		tabs: [
+		// 			{
+		// 				selected: true,
+		// 				label: 'Hola soy label',
+		// 				id: '1'
+		// 			},
+		// 			{
+		// 				selected: false,
+		// 				label: 'Hola soy label 2',
+		// 				id: '2'
+		// 			}
+		// 		]
+		// 	}
+		// },
+
+		// hbsTemplates: {},
+
+		// initialize: function() {
+		// 	$.get('templates/hbs/hello.hbs', false).success(function(src){
+		// 		that.hbsTemplates['hello'] = Handlebars.compile(src);
+		// 		hbsTemplateUncompiled = src;
+		// 	});
+		// },
+
 		render: function () {
 
 			that = this;
@@ -74,134 +102,86 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 
 			styleExt = styleUrl.substr(styleUrl.lastIndexOf('.')+1);
 
-			var parser = null,
-				page = {
-					blocks: []
+			require(['text!'+ styleUrl], function (stylesheet) {
+				var parser = null;
+				var regex = /(?:.*\/)(.*)\.(css|less|sass|scss)$/gi;
+				var result = regex.exec(styleUrl);
+					// result[0] Original Input.
+					// result[1] Filename.
+					// result[2] Extension.
+
+				var page = {
+					blocks:[]
 				};
 
-			switch (config.css_processor) {
-				case 'jscssp':
-					// insert into page and process the 'real' CSS on first parse
-					if (firstRun) {
-						$('head').append('<link rel="stylesheet" href="' + config.css_path + '" type="text/css" />');
-					}
-
-					// parse this file
-					require(['text!'+ styleUrl], function (stylesheet) {
-						parser = new jscssp();
-						stylesheet = parser.parse(stylesheet, false, true);
-
-						page = that.compute_css(stylesheet);
-						that.render_page(page);
-					});
-					break;
-				case 'less':
-					parser = new(less.Parser)({
-						filename: primaryStyleFile,
-						rootpath: configDir + '/',
-						relativeUrls: true,
-						insecure: true,
-						paths: [configDir + '/'], // Specify search paths for @import directives
-					});
-
-					// insert into page and process the 'real' CSS on first parse
-					if (firstRun) {
-						require(['text!'+ config.css_path], function (stylesheet) {
-							parser.parse('.codedemo {' + stylesheet + '}', function (err, tree) {
-								$('head').append('<style type="text/css">' + tree.toCSS() + '</style>');
+				switch (result[2]) {
+					case 'css':
+							parser = new jscssp();
+							stylesheetCompiled = stylesheet;
+							stylesheet = parser.parse(stylesheet, false, true);
+							page = that.compute_css(stylesheet, stylesheetCompiled);
+						break;
+					case 'less':
+							parser = new(less.Parser)({
+								paths: [configDir + 'less/'], // Specify search paths for @import directives.
 							});
-						});
-					}
+							parser.parse(stylesheet, function (err, tree) {
+								stylesheet = tree;
+							});
+							page = that.compute_less(stylesheet);
+						break;
+					case 'scss':
+							// Thanks, so many thanks to Oriol Torras @uriusfurius.
+							function findImports(str, basepath) {
+								var url = configDir + styleExt + '/';
+								var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
+								var match, matches = [];
+								while ((match = regex.exec(str)) !== null) {
+									matches.push(match[1]);
+								}
+								_.each(matches, function(match) {
+									// Check if it's a filename
+									var path = match.split('/');
+									var filename, fullpath, _basepath = basepath;
+									if (path.length > 1) {
+										filename = path.pop();
+										var something, basepathParts;
+										if (_basepath) {
+											basepathParts = _basepath.split('/');
+										}
+										while ((something = path.shift()) === '..') {
+											basepathParts.pop();
+										}
+										if (something) {
+											path.unshift(something);
+										}
+										_basepath = (basepathParts ? basepathParts.join('/') + '/' : '') + path.join('/');
+									} else {
+										filename = path.join('');
+									}
+									filename = '_' + filename + '.' + styleExt;
+									fullpath = _basepath + '/' + filename;
 
-					require(['text!'+ styleUrl], function (stylesheet) {
-						parser.parse(stylesheet, function (err, tree) {
+									var importContent = Module.read(url + fullpath);
+									Sass.writeFile(match, importContent);
 
-							page = that.compute_less(tree);
-							that.render_page(page);
-						});
-					});
-					break;
-			}
-		},
+									findImports(importContent, _basepath);
+								});
+							}
 
-		render_page: function(page) {
-
-			// require(['text!'+ styleUrl], function (stylesheet) {
-			// 	var parser = null;
-			// 	var regex = /(?:.*\/)(.*)\.(css|less|sass|scss)$/gi;
-			// 	var result = regex.exec(styleUrl);
-			// 		// result[0] Original Input.
-			// 		// result[1] Filename.
-			// 		// result[2] Extension.
-
-			// 	switch (result[2]) {
-			// 		case 'css':
-			// 				parser = new jscssp();
-			// 				stylesheetCompiled = stylesheet;
-			// 				stylesheet = parser.parse(stylesheet, false, true);
-			// 				page = that.compute_css(stylesheet, stylesheetCompiled);
-			// 			break;
-			// 		case 'less':
-			// 				parser = new(less.Parser)({
-			// 					paths: [configDir + 'less/'], // Specify search paths for @import directives.
-			// 				});
-			// 				parser.parse(stylesheet, function (err, tree) {
-			// 					stylesheet = tree;
-			// 				});
-			// 				page = that.compute_less(stylesheet);
-			// 			break;
-			// 		case 'scss':
-			// 				// Thanks, so many thanks to Oriol Torras @uriusfurius.
-			// 				function findImports(str, basepath) {
-			// 					var url = configDir + styleExt + '/';
-			// 					var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
-			// 					var match, matches = [];
-			// 					while ((match = regex.exec(str)) !== null) {
-			// 						matches.push(match[1]);
-			// 					}
-			// 					_.each(matches, function(match) {
-			// 						// Check if it's a filename
-			// 						var path = match.split('/');
-			// 						var filename, fullpath, _basepath = basepath;
-			// 						if (path.length > 1) {
-			// 							filename = path.pop();
-			// 							var something, basepathParts;
-			// 							if (_basepath) {
-			// 								basepathParts = _basepath.split('/');
-			// 							}
-			// 							while ((something = path.shift()) === '..') {
-			// 								basepathParts.pop();
-			// 							}
-			// 							if (something) {
-			// 								path.unshift(something);
-			// 							}
-			// 							_basepath = (basepathParts ? basepathParts.join('/') + '/' : '') + path.join('/');
-			// 						} else {
-			// 							filename = path.join('');
-			// 						}
-			// 						filename = '_' + filename + '.' + styleExt;
-			// 						fullpath = _basepath + '/' + filename;
-
-			// 						var importContent = Module.read(url + fullpath);
-			// 						Sass.writeFile(match, importContent);
-
-			// 						findImports(importContent, _basepath);
-			// 					});
-			// 				}
-
-			// 				configPath = configPath.substr(0, configPath.lastIndexOf('/'));
-			// 				// Recursive function to find all @imports.
-			// 				findImports(stylesheet, configPath);
-			// 				// Writes style sheet so sass.js can compile it.
-			// 				Sass.writeFile(styleUrl, stylesheet);
-			// 				// Compiles Sass stylesheet into CSS.
-			// 				var stylesheetCompiled = Sass.compile(stylesheet);
-			// 				// Parses the CSS.
-			// 				parser = new jscssp();
-			// 				stylesheet = parser.parse(stylesheetCompiled, false, true);
-			// 				page = that.compute_css(stylesheet, stylesheetCompiled);
-			// 			break;
-			// 	}
+							configPath = configPath.substr(0, configPath.lastIndexOf('/'));
+							// Recursive function to find all @imports.
+							findImports(stylesheet, configPath);
+							// Writes style sheet so sass.js can compile it.
+							Sass.writeFile(styleUrl, stylesheet);
+							// Compiles Sass stylesheet into CSS.
+							var stylesheetCompiled = Sass.compile(stylesheet);
+							// Parses the CSS.
+							parser = new jscssp();
+							stylesheet = parser.parse(stylesheetCompiled, false, true);
+							page = that.compute_css(stylesheet, stylesheetCompiled);
+						break;
+				}
 
 				console.log((new Date()).getTime() + ' bottom', page);
 
@@ -330,7 +310,7 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 				// Please help me xD
 				setTimeout(paddingBottom, 2000);
 
-			// });
+			});
 		},
 
 		is_on_screen: function(el, offset) {
@@ -352,7 +332,7 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 		compute_css: function(stylesheet, stylesheetCompiled) {
 			var page = {
 				blocks: [],
-				// css: '',
+				css: '',
 				stylesheets: []
 			};
 
@@ -384,23 +364,23 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 				}
 			});
 
-			// page.css = stylesheetCompiled;
+			page.css = stylesheetCompiled;
 
-			// var parser = new(less.Parser);
-			// var stylesheet;
-			// page.css = '.code-render { ' + page.css + ' }';
-			// parser.parse(page.css, function (err, tree) {
-			// 	stylesheet = tree;
-			// });
+			var parser = new(less.Parser);
+			var stylesheet;
+			page.css = '.code-render { ' + page.css + ' }';
+			parser.parse(page.css, function (err, tree) {
+				stylesheet = tree;
+			});
 
-			// page.css = stylesheet.toCSS({ compress: true });
+			page.css = stylesheet.toCSS({ compress: true });
 			return page;
 		},
 
 		compute_less: function(stylesheet) {
 			var page = {
 				blocks: [],
-				// css: '',
+				css: '',
 				stylesheets: []
 			};
 
@@ -415,16 +395,16 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 				}
 			});
 
-			// page.css = stylesheet.toCSS({ compress: true });
+			page.css = stylesheet.toCSS({ compress: true });
 
-			// var parser = new(less.Parser);
-			// var stylesheet;
-			// page.css = '.code-render { ' + page.css + ' }';
-			// parser.parse(page.css, function (err, tree) {
-			// 	stylesheet = tree;
-			// });
+			var parser = new(less.Parser);
+			var stylesheet;
+			page.css = '.code-render { ' + page.css + ' }';
+			parser.parse(page.css, function (err, tree) {
+				stylesheet = tree;
+			});
 
-			// page.css = stylesheet.toCSS({ compress: true });
+			page.css = stylesheet.toCSS({ compress: true });
 			return page;
 		},
 
