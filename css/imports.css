@@ -14,5 +14,5 @@
 # Plugins
 
 */
-@import url("../css/phytoplankton-examples/plugins/fixie.css");
+@import url("../scss/phytoplankton-examples/plugins/fixie.scss");
 @import url("../css/phytoplankton-examples/plugins/prism.css");

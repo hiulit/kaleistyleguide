@@ -24,12 +24,6 @@ define({
 
 	// css_paths: ['scss/phytoplankton-examples/readme.scss', 'scss/phytoplankton-examples/plugins/prism.scss'],
 
-	// By default, Kalei parses raw CSS files using the jscssp library.
-	// If you'd rather use a different processor or preprocessor, you can choose from the below:
-	css_processor:
-		'jscssp',
-		// 'less',
-
 	// You can optionally set configuration for marked.js
 	marked_options: {
 		tables: true,
