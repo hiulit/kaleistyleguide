@@ -524,6 +524,7 @@ samp {
 
 blockquote {
   border-left: 4px solid #cccccc;
+  color: #777;
   margin: 40px;
   margin: 2.5rem;
   padding-left: 12px;
@@ -898,12 +899,20 @@ img {
     zoom: 1;
     *display: inline;
     *vertical-align: auto;
+    font-size: 14px;
+    line-height: 17px;
+    font-size: 0.875rem;
+    line-height: 1.0625rem;
     margin-left: 2px;
     margin-left: 0.125rem;
     margin-right: 2px;
     margin-right: 0.125rem;
+    padding-bottom: 2px;
+    padding-bottom: 0.125rem;
     padding-left: 4px;
     padding-left: 0.25rem;
+    padding-top: 2px;
+    padding-top: 0.125rem;
     padding-right: 4px;
     padding-right: 0.25rem;
     white-space: normal;
