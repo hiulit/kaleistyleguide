@@ -37,9 +37,12 @@
 		code { // Inline <code> blocks
 			border-radius: 4px;
 			@include inline-block;
+			@include sassy-gridlover-body(14, true);
 			@include prem(margin-left, 2);
 			@include prem(margin-right, 2);
+			@include prem(padding-bottom, 2);
 			@include prem(padding-left, 4);
+			@include prem(padding-top, 2);
 			@include prem(padding-right, 4);
 			white-space: normal;
 			@include hyphenation;
