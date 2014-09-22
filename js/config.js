@@ -24,8 +24,10 @@ define({
 
 	// css_paths: ['scss/phytoplankton-examples/readme.scss', 'scss/phytoplankton-examples/plugins/prism.scss'],
 
-	// You can optionally set configuration for marked.js
+	// Set configuration for marked.js
 	marked_options: {
+		sanitize: false,
+		gfm: true,
 		tables: true,
 		langPrefix: 'language-'
 	},

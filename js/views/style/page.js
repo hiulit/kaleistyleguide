@@ -420,12 +420,7 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 			// Removes /* & */.
 			comment_block_text = comment_block_text.replace(/(?:\/\*)|(?:\*\/)/gi, '');
 
-			marked.setOptions(_.extend({
-					sanitize: false,
-					gfm: true
-				},
-				config.marked_options || {}
-			));
+			marked.setOptions(config.marked_options);
 
 			var lexedCommentblock = marked.lexer(comment_block_text);
 			// Lexer appends definition links to returned token object.

@@ -45,13 +45,7 @@ function($, _, str, Backbone, dashboardPageTemplate, jscssp, config, marked) {
 
 			require(['text!' + config.css_path], function (styles) {
 				// Default "imports.css"
-				var markedOpts = _.extend({
-										sanitize: false,
-										gfm: true
-									},
-									config.marked_options || {}
-								);
-				marked.setOptions(markedOpts);
+				marked.setOptions(config.marked_options);
 
 				var parser = new jscssp();
 				var stylesheet = parser.parse(styles, false, true);
