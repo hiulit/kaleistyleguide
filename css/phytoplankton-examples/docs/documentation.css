@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "CP850";
 /*
 # Phytoplankton ♥ Markdown
 
@@ -150,7 +150,4 @@ These styles are appended at the end of `<div class="phytoplankton-page">` so th
 </div>
 ```
 
-
 */
-
-/*# sourceMappingURL=documentation.css.map */
