@@ -38,8 +38,8 @@
 			}
 		}
 		.has-triangle {
+			border-bottom: 2px solid $menuFgColor;
 			> a {
-				border-bottom: 2px solid $menuFgColor;
 				@include prem(padding, 16);
 				@include prem(padding-left, 40);
 				position: relative;
