@@ -11,6 +11,7 @@ function($, _, Backbone, template){
 		events: {
 			'click .phytoplankton-menu-icon': function() {
 				$('.js-phytoplankton-menu').toggleClass('is-active');
+				$('.js-phytoplankton-menu-icon').toggleClass('is-active');
 				$('body').toggleClass('is-opaque is-locked');
 			}
 		},
