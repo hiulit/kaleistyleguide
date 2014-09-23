@@ -1,0 +1,105 @@
+/**
+ * Vegan burger parts
+ *
+ * (---) top 	-> &:before
+ * [---] middle 	-> &
+ * (---) bottom -> &:after
+ */
+
+/**
+ * Vegan burger
+ */
+
+@mixin vegan-burger($width: 30px, $height: 5px, $gutter: 3px, $color: #000, $border-radius: 0, $transition-duration: .3s) {
+	$vegan-burger-height: $height !global;
+	$vegan-burger-gutter: $gutter !global;
+	position: relative;
+	margin-top: $height + $gutter;
+	margin-bottom: $height + $gutter;
+	&,
+	&:before,
+	&:after {
+		display: block;
+		width: $width;
+		height: $height;
+		background-color: $color;
+		@if $border-radius != 0 {
+				border-radius: $border-radius;
+		}
+
+		-webkit-transition-property: background-color, -webkit-transform;
+		-moz-transition-property: background-color, -moz-transform;
+		-o-transition-property: background-color, -o-transform;
+		transition-property: background-color, transform;
+
+		-webkit-transition-duration: $transition-duration;
+		-moz-transition-duration: $transition-duration;
+		-o-transition-duration: $transition-duration;
+		transition-duration: $transition-duration;
+	}
+	&:before,
+	&:after {
+		position: absolute;
+		content: "";
+	}
+	&:before {
+		top: -($height + $gutter);
+	}
+	&:after {
+		top: $height + $gutter;
+	}
+}
+
+/**
+ * Select parts of the vegan burger
+ */
+
+@mixin vegan-burger-parts {
+	&,
+	&:before,
+	&:after {
+		@content;
+	}
+}
+
+@mixin vegan-burger-top {
+	&:before {
+		@content;
+	}
+}
+
+@mixin vegan-burger-middle {
+	& {
+		@content;
+	}
+}
+
+@mixin vegan-burger-bottom {
+	&:after {
+		@content;
+	}
+}
+
+/**
+ * Vegan burger animations
+ */
+
+@mixin vegan-burger-to-cross {
+	& {
+		background-color: transparent;
+	}
+	&:before {
+		-webkit-transform: translateY($vegan-burger-gutter + $vegan-burger-height) rotate(45deg);
+		-moz-transform: translateY($vegan-burger-gutter + $vegan-burger-height) rotate(45deg);
+		-ms-transform: translateY($vegan-burger-gutter + $vegan-burger-height) rotate(45deg);
+		-o-transform: translateY($vegan-burger-gutter + $vegan-burger-height) rotate(45deg);
+		transform: translateY($vegan-burger-gutter + $vegan-burger-height) rotate(45deg);
+	}
+	&:after {
+		-webkit-transform: translateY(-($vegan-burger-gutter + $vegan-burger-height)) rotate(-45deg);
+		-moz-transform: translateY(-($vegan-burger-gutter + $vegan-burger-height)) rotate(-45deg);
+		-ms-transform: translateY(-($vegan-burger-gutter + $vegan-burger-height)) rotate(-45deg);
+		-o-transform: translateY(-($vegan-burger-gutter + $vegan-burger-height)) rotate(-45deg);
+		transform: translateY(-($vegan-burger-gutter + $vegan-burger-height)) rotate(-45deg);
+	}
+}

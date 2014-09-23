@@ -12,27 +12,33 @@
 	@media (max-width: 700px) {
 		display: block;
 	}
+	.phytoplankton-menu-icon {
+		.phytoplankton-vegan-burger {
+			@include inline-block;
+		}
+	}
 }
 
 .phytoplankton-menu-icon {
 	display: none;
 	cursor: pointer;
 	float: left;
-	@include prem(padding, 10);
-	&:before {
-		content:"\2630";
-		@include prem(margin-left, -8);
-		@include prem(margin-right, 5);
-	}
+	@include prem(padding-left, 10);
 	@media (max-width: 700px) {
 		display: block;
 		@include font-size(24);
+		@include prem(line-height, 60);
+	}
+	.phytoplankton-vegan-burger {
+		@include vegan-burger(25px, 3px, 5px, #fff);
+	}
+	&.is-active {
+		.phytoplankton-vegan-burger {
+			@include vegan-burger-to-cross;
+		}
 	}
 }
 
-// .phytoplankton-menu-title {
-// 	@include prem(padding, 15);
-// 	@media (max-width: 700px) {
-// 		float: right;
-// 	}
-// }
+.phytoplankton-menu-icon__text {
+	@include inline-block;
+}
