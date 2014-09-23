@@ -1,14 +1,10 @@
-/**
- * Vegan burger parts
- *
- * (---) top 	-> &:before
- * [---] middle 	-> &
- * (---) bottom -> &:after
- */
+// Vegan burger parts
 
-/**
- * Vegan burger
- */
+// (---) top 	-> &:before
+// [---] middle 	-> &
+// (---) bottom -> &:after
+
+// Vegan burger
 
 @mixin vegan-burger($width: 30px, $height: 5px, $gutter: 3px, $color: #000, $border-radius: 0, $transition-duration: .3s) {
 	$vegan-burger-height: $height !global;
@@ -50,9 +46,7 @@
 	}
 }
 
-/**
- * Select parts of the vegan burger
- */
+// Select parts of the vegan burger
 
 @mixin vegan-burger-parts {
 	&,
@@ -80,9 +74,7 @@
 	}
 }
 
-/**
- * Vegan burger animations
- */
+// Vegan burger animations
 
 @mixin vegan-burger-to-cross {
 	& {
