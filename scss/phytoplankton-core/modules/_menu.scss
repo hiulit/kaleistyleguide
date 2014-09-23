@@ -7,7 +7,7 @@
 	@include prem(top, 0);
 	z-index: 2;
 	width: 25%;
-	@media (max-width: 700px) {
+	@media screen and (max-width: 700px) {
 		bottom: 0;
 		@include prem(top, 60);
 		transform: translate3d(-100%, 0, 0);
@@ -15,6 +15,9 @@
 		width: 75%;
 		&.is-active {
 			transform: translate3d(0, 0, 0);
+		}
+		@media screen and (orientation: landscape) {
+			width: 50%;
 		}
 	}
 	ul,
@@ -87,7 +90,7 @@
 		color: $menuFontColor;
 		@include font-size(14);
 		text-transform: uppercase;
-		@media (max-width: 700px) {
+		@media screen and (max-width: 700px) {
 			@include font-size(20);
 		}
 	}
