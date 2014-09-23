@@ -7,12 +7,13 @@ define([
 	'text!templates/style/page.html',
 	'config',
 	'jscssp',
+	'libs/sassjs/dist/sass.min',
 	'libs/prism/prism',
 	'libs/parseuri/parseuri',
 	'libs/less/less-1.3.3.min',
 	'hbs-objects/mockup-objects'
 ],
-function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, parseuri, mockupObjects){
+function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, Sass, parseuri, mockupObjects){
 
 	var that = null;
 
@@ -312,6 +313,10 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 			}
 			// Please help me xD
 			setTimeout(paddingBottom, 2000);
+
+			$(window).resize(function() {
+				paddingBottom();
+			});
 		},
 
 		is_on_screen: function(el, offset) {
