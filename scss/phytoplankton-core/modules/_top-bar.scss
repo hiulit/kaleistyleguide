@@ -26,7 +26,7 @@
 	@include prem(padding-left, 10);
 	@media (max-width: 700px) {
 		display: block;
-		@include font-size(24);
+		@include font-size(26);
 		@include prem(line-height, 60);
 	}
 	.phytoplankton-vegan-burger {
