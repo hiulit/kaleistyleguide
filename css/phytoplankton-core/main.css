@@ -684,8 +684,8 @@ img {
   @media (max-width: 700px) {
     .phytoplankton-menu-icon {
       display: block;
-      font-size: 24px;
-      font-size: 1.5rem;
+      font-size: 26px;
+      font-size: 1.625rem;
       line-height: 1.5;
       line-height: 60px;
       line-height: 3.75rem; } }
@@ -982,10 +982,6 @@ img {
     border-top: 1px solid #ccc;
     margin-top: 50px;
     margin-top: 3.125rem; }
-  @media (max-width: 400px) {
-    .phytoplankton-page__item {
-      padding: 6%;
-      padding-bottom: 0; } }
 
 .code-lang, .tabs__item {
   background-color: #0090d4;
