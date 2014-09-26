@@ -414,12 +414,12 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 			return page;
 		},
 
-		parse_hbs: function(text, block) {
-			var properties = JSON.parse(text);
-			var obj = that.mockupObjects[properties.dataObject];
-			var template = that.hbsTemplates[properties.template];
-			return template(obj);
-		},
+		// parse_hbs: function(text, block) {
+		// 	var properties = JSON.parse(text);
+		// 	var obj = that.mockupObjects[properties.dataObject];
+		// 	var template = that.hbsTemplates[properties.template];
+		// 	return template(obj);
+		// },
 
 		parse_commentblock: function (comment_block_text) {
 			// Removes /* & */.
@@ -456,25 +456,25 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 							});
 							block.content.push(comment);
 						// If it's "hbs":
-						} else if(comment.lang === 'hbs') {
-							comment.hbsTemplateUncompiled = hbsTemplateUncompiled;
-							comment.text = that.parse_hbs(comment.text);
-							block.content.push({
-								type: 'html',
-								lang: 'markup',
-								text: '<div class="code-lang">Example</div>' +
-										'<div class="code-render code-render--hbs clearfix">' + comment.text + '</div>' +
-										'<ul class="tabs">' +
-										'<li class="tabs__item is-active" data-tab="tab-1">Handlebars</li>' +
-										'<li class="tabs__item" data-tab="tab-2">HTML</li>' +
-										'</ul>'
-							});
-							block.content.push({
-								type: 'code',
-								lang: 'hbs',
-								text: comment.hbsTemplateUncompiled
-							});
-							block.content.push(comment);
+						// } else if(comment.lang === 'hbs') {
+						// 	comment.hbsTemplateUncompiled = hbsTemplateUncompiled;
+						// 	comment.text = that.parse_hbs(comment.text);
+						// 	block.content.push({
+						// 		type: 'html',
+						// 		lang: 'markup',
+						// 		text: '<div class="code-lang">Example</div>' +
+						// 				'<div class="code-render code-render--hbs clearfix">' + comment.text + '</div>' +
+						// 				'<ul class="tabs">' +
+						// 				'<li class="tabs__item is-active" data-tab="tab-1">Handlebars</li>' +
+						// 				'<li class="tabs__item" data-tab="tab-2">HTML</li>' +
+						// 				'</ul>'
+						// 	});
+						// 	block.content.push({
+						// 		type: 'code',
+						// 		lang: 'hbs',
+						// 		text: comment.hbsTemplateUncompiled
+						// 	});
+						// 	block.content.push(comment);
 						// If the code is not "markup" (html):
 						// Push the code without example but with language header.
 						} else {
