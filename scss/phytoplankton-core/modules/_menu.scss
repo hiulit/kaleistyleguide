@@ -85,6 +85,7 @@
 	.phytoplankton-menu__header {
 		background-color: $menuFgColor;
 		@include prem(padding, 16);
+		font-weight: 600;
 	}
 	@include depth(1) {
 		color: $menuFontColor;

@@ -10,9 +10,11 @@
 	}
 	h1 {
 		@include sassy-gridlover-heading(3, true);
+		font-weight: 600;
 	}
 	h2 {
 		@include sassy-gridlover-heading(2, true);
+		font-weight: 600;
 	}
 	ul {
 		ul {
