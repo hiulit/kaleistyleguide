@@ -831,7 +831,8 @@ img {
   .phytoplankton-menu .phytoplankton-menu__header {
     background-color: #1e1e1e;
     padding: 16px;
-    padding: 1rem; }
+    padding: 1rem;
+    font-weight: 600; }
   .phytoplankton-menu > ul > li {
     color: #fff;
     font-size: 14px;
@@ -906,7 +907,8 @@ img {
     font-size: 2.375rem;
     line-height: 2.375rem;
     margin-bottom: 1.1875rem;
-    margin-top: 2.375rem; }
+    margin-top: 2.375rem;
+    font-weight: 600; }
   .phytoplankton-page h2 {
     font-size: 28px;
     line-height: 38px;
@@ -915,7 +917,8 @@ img {
     font-size: 1.75rem;
     line-height: 2.375rem;
     margin-bottom: 1.1875rem;
-    margin-top: 2.375rem; }
+    margin-top: 2.375rem;
+    font-weight: 600; }
   .phytoplankton-page ul ul {
     list-style-type: disc; }
   .phytoplankton-page p, .phytoplankton-page ul, .phytoplankton-page ol, .phytoplankton-page pre, .phytoplankton-page table, .phytoplankton-page blockquote {
