@@ -1,17 +1,14 @@
-@import "global/variables";
-@import "global/mixins";
-@import "global/colors";
-
+@import "vendor/normalize/normalize";
+@import "vendor/prism/default";
 @import "vendor/sassy-gridlover/sassy-gridlover";
 @import "vendor/vegan-burger/vegan-burger";
 
-// Comment/uncomment to select the desired theme
-// @import "themes/dark";
-@import "themes/light";
+@import "base/variables";
+@import "base/mixins";
+@import "base/colors";
 
-@import "base/normalize";
-@import "base/reset";
 @import "base/typography";
+@import "base/reset";
 @import "base/helpers";
 
 @import "layout/grid";

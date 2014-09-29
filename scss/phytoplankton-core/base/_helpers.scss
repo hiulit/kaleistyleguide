@@ -41,15 +41,6 @@ img {
 	@include opacity(.5);
 }
 
-.oldie { // fallback for IE8
-	pre {
-		background-color: $fontColor;
-	}
-	.code-render {
-		border: 1px solid #ccc;
-	}
-}
-
 .video-container { // Responsive video
 	height: 0;
 	@include prem(margin, 10 0);

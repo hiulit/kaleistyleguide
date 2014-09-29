@@ -19,16 +19,13 @@ body {
 	@include sassy-gridlover-body($baseFontSize, true);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: $headerFontFamilyLight;
-	color: $fontColor;
-	// font-weight: 500;
-	line-height: 1.2;
+h1 {
+	@include sassy-gridlover-heading(3, true);
+	font-weight: 600;
+}
+h2 {
+	@include sassy-gridlover-heading(2, true);
+	font-weight: 600;
 }
 
 code,
@@ -51,5 +48,17 @@ blockquote {
 	}
 	&:after {
 		content: close-quote;
+	}
+}
+
+// Hack to solve extra line number on code blocks.
+// Prism's Line Number plugin.
+// This is a "feature" that doesn't
+// come with the default plugin.
+.line-numbers-rows {
+	> span {
+		&:last-child {
+			display: none;
+		}
 	}
 }

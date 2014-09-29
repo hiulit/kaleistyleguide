@@ -230,6 +230,8 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 
 			$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config, externalStyles: config.external_stylesheets}));
 
+			// Adds class so Prism's Line Number plugin can work.
+			$('.code-lang + pre, .code-render + pre, pre[data-src]').addClass('line-numbers');
 			// Prism's colour coding in <code> blocks.
 			Prism.highlightAll();
 			// Prism's File Highlight plugin function.
@@ -455,6 +457,7 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 										// '<div class="code-lang">html</div>'
 							});
 							block.content.push(comment);
+							console.log(comment);
 						// If it's "hbs":
 						// } else if(comment.lang === 'hbs') {
 						// 	comment.hbsTemplateUncompiled = hbsTemplateUncompiled;

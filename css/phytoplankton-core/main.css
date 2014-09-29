@@ -1,132 +1,3 @@
-code,
-pre,
-code[class*="language-"],
-pre[class*="language-"] {
-  color: black;
-  text-shadow: 0 1px white;
-  font-family: Consolas, Monaco, 'Andale Mono', monospace;
-  direction: ltr;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none; }
-
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-  text-shadow: none;
-  background: #b3d4fc; }
-
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-  text-shadow: none;
-  background: #b3d4fc; }
-
-@media print {
-  code[class*="language-"],
-  pre[class*="language-"] {
-    text-shadow: none; } }
-pre,
-pre[class*="language-"] {
-  padding: 1em;
-  margin: .5em 0;
-  overflow: auto; }
-
-:not(pre) > code,
-pre,
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-  background: #f5f2f0; }
-
-:not(pre) > code[class*="language-"] {
-  padding: .1em;
-  border-radius: .3em; }
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  color: slategray; }
-
-.token.punctuation {
-  color: #999; }
-
-.namespace {
-  opacity: .7; }
-
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol {
-  color: #905; }
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.builtin {
-  color: #690; }
-
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string,
-.token.variable {
-  color: #a67f59;
-  background: rgba(255, 255, 255, 0.5); }
-
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-  color: #07a; }
-
-.token.regex,
-.token.important {
-  color: #e90; }
-
-.token.important {
-  font-weight: bold; }
-
-.token.entity {
-  cursor: help; }
-
-code[class*="language-"] a[href],
-pre[class*="language-"] a[href] {
-  cursor: help;
-  text-decoration: none; }
-
-code[class*="language-"] a[href]:hover,
-pre[class*="language-"] a[href]:hover {
-  cursor: help;
-  text-decoration: underline; }
-
-.token a {
-  color: inherit; }
-
-code[class*="language-"] a[href].url-link,
-pre[class*="language-"] a[href].url-link,
-code[class*="language-"] a[href].email-link,
-pre[class*="language-"] a[href].email-link,
-code[class*="language-"] a[href].md-link,
-pre[class*="language-"] a[href].md-link {
-  cursor: pointer; }
-
-code[class*="language-"] a[href].url-link:hover,
-pre[class*="language-"] a[href].url-link:hover,
-code[class*="language-"] a[href].email-link:hover,
-pre[class*="language-"] a[href].email-link:hover,
-code[class*="language-"] a[href].md-link:hover,
-pre[class*="language-"] a[href].md-link:hover {
-  cursor: pointer; }
-
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -481,6 +352,180 @@ td,
 th {
   padding: 0; }
 
+code,
+pre,
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #fff;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none; }
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+  background: #b3d4fc; }
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+  background: #b3d4fc; }
+
+@media print {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none; } }
+/* Code blocks */
+pre,
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto; }
+
+:not(pre) > code,
+pre,
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #3D3F52; }
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em; }
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: slategray; }
+
+.token.punctuation {
+  color: #fff; }
+
+.namespace {
+  opacity: .7; }
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #f72378; }
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #9bfb54; }
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #a67f59; }
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #fbf935; }
+
+.token.function {
+  color: #DD4A68; }
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #e90; }
+
+.token.important {
+  font-weight: bold; }
+
+.token.entity {
+  cursor: help; }
+
+pre.line-numbers {
+  position: relative;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 3.8em;
+  counter-reset: linenumber; }
+
+pre.line-numbers > code {
+  position: relative; }
+
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: -1.2em;
+  bottom: -1.2em;
+  background-color: #343545;
+  font-size: 100%;
+  left: -3.8em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  width: 3em;
+  /* works for line-numbers below 1000 lines */
+  letter-spacing: -1px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.line-numbers-rows > span {
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber; }
+
+.line-numbers-rows > span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right; }
+
+code[class*="language-"] a[href],
+pre[class*="language-"] a[href] {
+  cursor: help;
+  text-decoration: none; }
+
+code[class*="language-"] a[href]:hover,
+pre[class*="language-"] a[href]:hover {
+  cursor: help;
+  text-decoration: underline; }
+
+.token a {
+  color: inherit; }
+
+code[class*="language-"] a[href].url-link,
+pre[class*="language-"] a[href].url-link,
+code[class*="language-"] a[href].email-link,
+pre[class*="language-"] a[href].email-link,
+code[class*="language-"] a[href].md-link,
+pre[class*="language-"] a[href].md-link {
+  cursor: pointer; }
+
+code[class*="language-"] a[href].url-link:hover,
+pre[class*="language-"] a[href].url-link:hover,
+code[class*="language-"] a[href].email-link:hover,
+pre[class*="language-"] a[href].email-link:hover,
+code[class*="language-"] a[href].md-link:hover,
+pre[class*="language-"] a[href].md-link:hover {
+  cursor: pointer; }
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -497,8 +542,9 @@ html {
   @media (max-width: 400px) {
     html {
       font-size: 14px;
+      line-height: 16.8px;
       font-size: 0.875rem;
-      line-height: 1.5; } }
+      line-height: 1.05rem; } }
 
 body {
   font-size: 16px;
@@ -506,15 +552,27 @@ body {
   font-size: 1rem;
   line-height: 1.1875rem; }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #282828;
-  line-height: 1.2; }
+h1 {
+  font-size: 38px;
+  line-height: 38px;
+  margin-bottom: 19px;
+  margin-top: 38px;
+  font-size: 2.375rem;
+  line-height: 2.375rem;
+  margin-bottom: 1.1875rem;
+  margin-top: 2.375rem;
+  font-weight: 600; }
+
+h2 {
+  font-size: 28px;
+  line-height: 38px;
+  margin-bottom: 19px;
+  margin-top: 38px;
+  font-size: 1.75rem;
+  line-height: 2.375rem;
+  margin-bottom: 1.1875rem;
+  margin-top: 2.375rem;
+  font-weight: 600; }
 
 code,
 kbd,
@@ -536,24 +594,9 @@ blockquote {
   blockquote:after {
     content: close-quote; }
 
-@font-face {
-  font-family: 'dosisbold';
-  src: url("../../webfonts/dosis/dosis-bold-webfont.eot");
-  src: url("../../webfonts/dosis/dosis-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../../webfonts/dosis/dosis-bold-webfont.woff") format("woff"), url("../../webfonts/dosis/dosis-bold-webfont.ttf") format("truetype"), url("../../webfonts/dosis/dosis-bold-webfont.svg#dosisbold") format("svg");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: 'dosisregular';
-  src: url("../../webfonts/dosis/dosis-book-webfont.eot");
-  src: url("../../webfonts/dosis/dosis-book-webfont.eot?#iefix") format("embedded-opentype"), url("../../webfonts/dosis/dosis-book-webfont.woff") format("woff"), url("../../webfonts/dosis/dosis-book-webfont.ttf") format("truetype"), url("../../webfonts/dosis/dosis-book-webfont.svg#dosisbook") format("svg");
-  font-weight: normal;
-  font-style: normal; }
-@font-face {
-  font-family: 'dosislight';
-  src: url("../../webfonts/dosis/dosis-light-webfont.eot");
-  src: url("../../webfonts/dosis/dosis-light-webfont.eot?#iefix") format("embedded-opentype"), url("../../webfonts/dosis/dosis-light-webfont.woff") format("woff"), url("../../webfonts/dosis/dosis-light-webfont.ttf") format("truetype"), url("../../webfonts/dosis/dosis-light-webfont.svg#dosislight") format("svg");
-  font-weight: normal;
-  font-style: normal; }
+.line-numbers-rows > span:last-child {
+  display: none; }
+
 .pull-left {
   float: left !important; }
   .pull-left:before, .pull-left:after {
@@ -598,11 +641,6 @@ img {
   cursor: default;
   opacity: 0.5;
   filter: alpha(opacity=50); }
-
-.oldie pre {
-  background-color: #282828; }
-.oldie .code-render {
-  border: 1px solid #ccc; }
 
 .video-container {
   height: 0;
@@ -652,14 +690,15 @@ img {
   width: 100%; }
 
 .phytoplankton-header {
-  background-color: #282828;
-  border-bottom: 1px solid #1e1e1e;
+  background-color: #3D3F52;
+  border-bottom: 1px solid #343545;
   color: #fff;
   display: none;
   font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
+  line-height: 24px;
   font-size: 1.25rem;
-  line-height: 1.5;
+  line-height: 1.5rem;
   height: 60px;
   height: 3.75rem;
   position: fixed;
@@ -685,8 +724,9 @@ img {
     .phytoplankton-menu-icon {
       display: block;
       font-size: 26px;
+      line-height: 31.2px;
       font-size: 1.625rem;
-      line-height: 1.5;
+      line-height: 1.95rem;
       line-height: 60px;
       line-height: 3.75rem; } }
   .phytoplankton-menu-icon .phytoplankton-vegan-burger {
@@ -736,7 +776,7 @@ img {
   *vertical-align: auto; }
 
 .phytoplankton-menu {
-  background-color: #282828;
+  background-color: #3D3F52;
   bottom: 0px;
   bottom: 0rem;
   overflow-x: hidden;
@@ -783,7 +823,7 @@ img {
       white-space: nowrap;
       word-wrap: normal; }
   .phytoplankton-menu li .has-triangle {
-    border-bottom: 2px solid #1e1e1e; }
+    border-bottom: 2px solid #343545; }
     .phytoplankton-menu li .has-triangle > a {
       padding: 16px;
       padding: 1rem;
@@ -829,21 +869,23 @@ img {
         top: 50%;
         transition: all .25s ease-in-out; }
   .phytoplankton-menu .phytoplankton-menu__header {
-    background-color: #1e1e1e;
+    background-color: #343545;
     padding: 16px;
     padding: 1rem;
     font-weight: 600; }
   .phytoplankton-menu > ul > li {
     color: #fff;
     font-size: 14px;
+    line-height: 16.8px;
     font-size: 0.875rem;
-    line-height: 1.5;
+    line-height: 1.05rem;
     text-transform: uppercase; }
     @media screen and (max-width: 700px) {
       .phytoplankton-menu > ul > li {
         font-size: 20px;
+        line-height: 24px;
         font-size: 1.25rem;
-        line-height: 1.5; } }
+        line-height: 1.5rem; } }
   .phytoplankton-menu > ul > li > ul > li {
     text-transform: none; }
     .phytoplankton-menu > ul > li > ul > li > ul {
@@ -899,26 +941,6 @@ img {
       margin-top: 3.75rem;
       padding: 0 4%;
       width: 100%; } }
-  .phytoplankton-page h1 {
-    font-size: 38px;
-    line-height: 38px;
-    margin-bottom: 19px;
-    margin-top: 38px;
-    font-size: 2.375rem;
-    line-height: 2.375rem;
-    margin-bottom: 1.1875rem;
-    margin-top: 2.375rem;
-    font-weight: 600; }
-  .phytoplankton-page h2 {
-    font-size: 28px;
-    line-height: 38px;
-    margin-bottom: 19px;
-    margin-top: 38px;
-    font-size: 1.75rem;
-    line-height: 2.375rem;
-    margin-bottom: 1.1875rem;
-    margin-top: 2.375rem;
-    font-weight: 600; }
   .phytoplankton-page ul ul {
     list-style-type: disc; }
   .phytoplankton-page p, .phytoplankton-page ul, .phytoplankton-page ol, .phytoplankton-page pre, .phytoplankton-page table, .phytoplankton-page blockquote {
@@ -987,9 +1009,9 @@ img {
     margin-top: 3.125rem; }
 
 .code-lang, .tabs__item {
-  background-color: #0090d4;
-  border-radius: 4px 4px 0 0;
-  color: #fff;
+  background-color: #343545;
+  border-radius: 6px 6px 0 0;
+  color: #999;
   font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: inline-block;
   vertical-align: baseline;
@@ -1002,18 +1024,18 @@ img {
   .code-lang + pre, .tabs__item + pre,
   .code-lang + pre[class*="language-"],
   .tabs__item + pre[class*="language-"] {
-    border-radius: 0 4px 4px 4px; }
+    border-radius: 0 6px 6px 6px; }
 
 .code-render {
   border: 1px solid #ccc;
   border-bottom: none;
-  border-radius: 0 4px 0 0;
+  border-radius: 0 6px 0 0;
   padding: 40px;
   padding: 2.5rem;
   position: relative; }
   .code-render + pre,
   .code-render + pre[class*="language-"] {
-    border-radius: 0 0 4px 4px; }
+    border-radius: 0 0 6px 6px; }
 
 .code-render--hbs {
   margin-bottom: -40px;
@@ -1021,28 +1043,25 @@ img {
   padding-bottom: 80px;
   padding-bottom: 5rem; }
   .code-render--hbs + .tabs .tabs__item {
-    border-radius: 0 4px 0 0; }
+    border-radius: 0 6px 0 0; }
     .code-render--hbs + .tabs .tabs__item + .tabs__item {
-      border-radius: 4px 4px 0 0; }
+      border-radius: 6px 6px 0 0; }
   .code-render--hbs + .tabs + pre,
   .code-render--hbs + .tabs + pre[class*="language-"] {
-    border-radius: 0 0 4px 4px; }
+    border-radius: 0 0 6px 6px; }
     .code-render--hbs + .tabs + pre + pre,
     .code-render--hbs + .tabs + pre + pre[class*="language-"],
     .code-render--hbs + .tabs + pre[class*="language-"] + pre,
     .code-render--hbs + .tabs + pre[class*="language-"] + pre[class*="language-"] {
-      border-radius: 0 0 4px 4px; }
+      border-radius: 0 0 6px 6px; }
 
 pre,
 pre[class*="language-"] {
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 14px;
   margin: 0;
   margin-bottom: 16px;
-  margin-bottom: 1rem;
-  padding: 20px;
-  padding: 1.25rem; }
+  margin-bottom: 1rem; }
   pre + .code-lang, pre + .tabs__item,
   pre[class*="language-"] + .code-lang,
   pre[class*="language-"] + .tabs__item {

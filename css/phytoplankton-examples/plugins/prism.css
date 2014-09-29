@@ -10,20 +10,21 @@ It comes with:
 * Development version
 * Core
 * Theme
-	* Okaida
+	* Default *(modified version)*
 * Languages
 	* All
 * Plugins
+	* Line Numbers
 	* Autolinker
 	* WebPlatform Docs
-	* File Highlight
+	* File Highlight *(modified version)*
 
 But you can use any theme or add any plugin you want.
 
 Just go to the [Prism's download page](http://prismjs.com/download.html) and customize it
 to suit yourself.
 
-*See more info about adding or removing plugins on the **Caution!** section at the bottom.*
+*See more info about adding or removing themes/plugins on the **Caution!** section at the bottom.*
 
 */
 /*
@@ -114,9 +115,17 @@ for the full list of languages.
 
 Prism comes with:
 
+* [Line Numbers](http://prismjs.com/plugins/line-numbers/)
 * [Autolinker](http://prismjs.com/plugins/autolinker/)
 * [WebPlatform Docs](http://prismjs.com/plugins/wpd/)
 * [File Highlight](http://prismjs.com/plugins/file-highlight/)
+
+## Line Numbers
+
+Line number at the beginning of code lines.
+
+It will only add the numbers when using [fenced code blocks](https://help.github.com/articles/github-flavored-markdown#fenced-code-blocks) `` ``` `` +
+`language code`.
 
 ## Autolinker
 
@@ -181,3 +190,5 @@ If you want to add or remove some of Prism's plugins, look for...
 ... before touching anything.
 
 */
+
+/*# sourceMappingURL=prism.css.map */

@@ -1,0 +1,10 @@
+$bgColor: #fff;
+$blockquoteColor: #ccc;
+$codeBgColor: #3D3F52;
+$codeFgColor: #343545;
+$fontColor: #282828;
+$menuBgColor: $codeBgColor; //$fontColor;
+$menuFgColor: $codeFgColor; // #1e1e1e;
+$menuFontColor: $bgColor;
+$linkColor: #0090d4; // #22D400;
+$linkColorActive: darken($linkColor, 9);

@@ -1,32 +1,5 @@
-@font-face {
-	font-family: 'dosisbold';
-	src: url('../../webfonts/dosis/dosis-bold-webfont.eot');
-	src: url('../../webfonts/dosis/dosis-bold-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('../../webfonts/dosis/dosis-bold-webfont.woff') format('woff'),
-		 url('../../webfonts/dosis/dosis-bold-webfont.ttf') format('truetype'),
-		 url('../../webfonts/dosis/dosis-bold-webfont.svg#dosisbold') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'dosisregular';
-	src: url('../../webfonts/dosis/dosis-book-webfont.eot');
-	src: url('../../webfonts/dosis/dosis-book-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('../../webfonts/dosis/dosis-book-webfont.woff') format('woff'),
-		 url('../../webfonts/dosis/dosis-book-webfont.ttf') format('truetype'),
-		 url('../../webfonts/dosis/dosis-book-webfont.svg#dosisbook') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'dosislight';
-	src: url('../../webfonts/dosis/dosis-light-webfont.eot');
-	src: url('../../webfonts/dosis/dosis-light-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('../../webfonts/dosis/dosis-light-webfont.woff') format('woff'),
-		 url('../../webfonts/dosis/dosis-light-webfont.ttf') format('truetype'),
-		 url('../../webfonts/dosis/dosis-light-webfont.svg#dosislight') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
+$baseFontFamily: "Open sans", "Helvetica Neure", Helvetica, Arial, sans-serif;
+$headerFontFamily: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$headerFontFamilyBold: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$headerFontFamilyLight: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$codeFont: Consolas, Monaco, "Andale Mono", monospace;
