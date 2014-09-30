@@ -202,7 +202,7 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 				$('[href="' + window.location.hash + '"]').addClass('active');
 			}
 
-			$('.phytoplankton-menu__list__item ul li ul li').remove();
+			// $('.phytoplankton-menu__list__item ul li ul li').remove();
 			var submenu = $('<ul>');
 
 			////////////NEEDS TO BE EXPORTED TO Menu.js
@@ -457,7 +457,6 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 										// '<div class="code-lang">html</div>'
 							});
 							block.content.push(comment);
-							console.log(comment);
 						// If it's "hbs":
 						// } else if(comment.lang === 'hbs') {
 						// 	comment.hbsTemplateUncompiled = hbsTemplateUncompiled;
