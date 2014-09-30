@@ -22,22 +22,21 @@ To do this, it actually uses your style sheets so that, at anytime, you can revi
 /*
 # Installation
 
-1. Download the repository `git clone https://github.com/hiulit/kaleistyleguide.git`
+**No** Node.js, **no** Grunt, **no** Gulp, **no** nothing...
+
+Just:
+
+1. [Download](https://github.com/hiulit/kaleistyleguide) the repository `git clone https://github.com/hiulit/kaleistyleguide.git`
 2. Serve it on a HTTP server (or a local environment using [MAMP](http://www.mamp.info/),
- [XAMPP](http://www.apachefriends.org/), etc.) and it should work!
+ [XAMPP](http://www.apachefriends.org/), etc.)
+3. And it should work! :D
 
 */
 
 /*
 # Inspiration and alternatives
 
-Phytoplankton is heavily influenced by the following projects and blog posts:
-
-* [Pea.rs](http://pea.rs/)
-* [KSS](http://warpspire.com/posts/kss/)
-* [StyleDocco](http://jacobrask.github.com/styledocco/)
-* [Anchoring Your Design Language in a Live Style Guide](http://uxmag.com/articles/anchoring-your-design-language-in-a-live-style-guide)
-* [Nadarei KSS](http://nadarei.co/nkss-rails/) - rails
+Phytoplankton is heavily influenced by the projects found in [the Style Guide guide](http://vinspee.me/style-guide-guide/)
 
 */
 
@@ -52,9 +51,10 @@ Mad propz to all the great people behind the software listed below.
 * [sass.js](https://github.com/medialize/sass.js) - API for emscripted libsass to run in the browser.
 * [Fixie.js](https://github.com/ryhan/fixie) - Automatically add filler content to HTML documents.
 * [Prism](http://prismjs.com/) - Lightweight, robust, elegant syntax highlighting.
-* [Backbone.js](http://backbonejs.org/)
-* [Underscore.js](http://underscorejs.org/)
-* [jQuery](http://jquery.com)
+* [RequireJS](http://requirejs.org/) - JavaScript file and module loader.
+* [Backbone.js](http://backbonejs.org/) - Gives structure to web applications by providing models, collections and views.
+* [Underscore.js](http://underscorejs.org/) - JavaScript library that provides a whole mess of useful functional programming helpers without extending any built-in objects.
+* [jQuery](http://jquery.com) - Fast, small, and feature-rich JavaScript library.
 
 */
 
