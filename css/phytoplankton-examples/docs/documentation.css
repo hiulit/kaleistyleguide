@@ -1,6 +1,6 @@
-@charset "CP850";
+@charset "UTF-8";
 /*
-# Phytoplankton ♥ Markdown
+# Phytoplankton ÔÖÑ Markdown
 
 One of the great things about Phytoplankton is that you can use the same style sheets you're using right now in your project.
 How cool is that, right?
@@ -52,8 +52,9 @@ Each comment will become a new section.
 /*
 # Headings
 
-The `<h1>` (or `#` in Markdown) of the comment will become the title of the section.
-And this title will appear in the left menu as a section's title.
+The `<h1>` (or `#` in Markdown) and the `<h2>` (or `##` in Markdown) of the comments will become the titles and subtitles of the sections.
+
+These titles and subtitles will be converted into the left menu.
 
 The rest of the headings won't appear as sections of the menu.
 
@@ -61,7 +62,7 @@ The rest of the headings won't appear as sections of the menu.
 /*
 # Code blocks
 
-You can write you code indented with 1 tab (or 4 spaces) to show it as a code block, like this one:
+You can write your code indented with 1 tab (or 4 spaces) to show it as a code block, like this one:
 
 	I'm a code block! Indented with 1 tab (or 4 spaces)
 
@@ -69,7 +70,7 @@ You can write you code indented with 1 tab (or 4 spaces) to show it as a code bl
 /*
 # Syntax highlighter
 
-*Phytoplankton uses [Prism](http://prismjs.com/) as the syntax highlighter. See more at [plugins/prism.scss](#/plugins/prism.scss)*.
+*Phytoplankton uses [Prism](http://prismjs.com/) as the syntax highlighter. See more at [plugins/prism.scss](#/phytoplankton-examples/plugins/prism.scss)*.
 
 Wrap your code with
 [fenced code blocks](https://help.github.com/articles/github-flavored-markdown#fenced-code-blocks) `` ``` `` +
@@ -151,3 +152,5 @@ These styles are appended at the end of `<div class="phytoplankton-page">` so th
 ```
 
 */
+
+/*# sourceMappingURL=documentation.css.map */
