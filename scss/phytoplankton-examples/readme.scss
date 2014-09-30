@@ -72,7 +72,7 @@ Phytoplankton uses [sass.js](https://github.com/medialize/sass.js) for having Sa
 ([not a trivial task](http://blog.rodneyrehm.de/archives/33-libsass.js-An-Emscripten-Experiment.html), btw)
 which in turn uses [libsass](https://github.com/hcatlin/libsass).
 
-**Update:** Here it is the the [State of Libsass (versus Ruby Sass)](http://www.solitr.com/blog/2014/01/state-of-libsass/).
+Here it is the the [State of Libsass (versus Ruby Sass)](http://www.solitr.com/blog/2014/01/state-of-libsass/).
 
 */
 
@@ -81,15 +81,16 @@ which in turn uses [libsass](https://github.com/hcatlin/libsass).
 
 * Chrome
 * Firefox
-* IE 8+
+* ~~IE 8+~~
+* IE 9+
 
 ## Notes
 
-Say whaaaa...?!! Did I just see that you support IE 8+?
+~~Say whaaaa...?!! Did I just see that you support IE 8+?~~
 
-Well... If you want to pimp your experience and leverage [sass.js](https://github.com/medialize/sass.js) and [Prism](http://prismjs.com/),
+~~Well... If you want to pimp your experience and leverage [sass.js](https://github.com/medialize/sass.js) and [Prism](http://prismjs.com/),
 please ensure you use a real browser **IE 10+**.
-If not, you can still use plain, old boring CSS. Or try using [Less](http://lesscss.org/).
+If not, you can still use plain, old boring CSS. Or try using [Less](http://lesscss.org/).~~
 
 Not tested on Opera.
 
@@ -98,7 +99,7 @@ Not tested on Opera.
 /*
 # Changelog
 
-## 0.1.0 (September 16th 2014)
+## 0.1.0 (September 30th 2014)
 
 * Not officially released.
 
@@ -107,7 +108,7 @@ Not tested on Opera.
 /*
 # Author
 
-* Me, [Xavier Gómez](https://github.com/hiulit) ([@hiulit](https://twitter.com/hiulit)).
+* Me, [Xavier Gomez](https://github.com/hiulit) ([@hiulit](https://twitter.com/hiulit)).
 
 */
 
