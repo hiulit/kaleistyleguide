@@ -489,9 +489,12 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 						}
 						break;
 					case 'heading':
-						block.heading.push(comment.text);
-						block.headingID.push(comment.text.toLowerCase().replace(/\W+/g, '-'));
-						block.content.push(comment);
+						// Fixes the sourceMappingURL from Sass files
+						if(comment.text.indexOf("sourceMappingURL=") === -1) {
+							block.heading.push(comment.text);
+							block.headingID.push(comment.text.toLowerCase().replace(/\W+/g, '-'));
+							block.content.push(comment);
+						}
 						break;
 					default:
 						// Push everything else.
