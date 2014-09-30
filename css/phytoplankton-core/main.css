@@ -662,17 +662,12 @@ img {
   content: "";
   display: block;
   height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
+  position: fixed;
   width: 100%;
   z-index: 1; }
-
-.is-locked {
-  height: 100%;
-  overflow: hidden;
-  position: fixed;
-  width: 100%; }
+  @media screen and (min-width: 700px) {
+    .is-opaque:before {
+      display: none; } }
 
 .grid-1-4 {
   width: 25%; }
