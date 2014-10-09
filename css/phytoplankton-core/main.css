@@ -657,6 +657,12 @@ img {
     top: 0;
     width: 100%; }
 
+.fork-me {
+  display: block; }
+  @media screen and (max-width: 700px) {
+    .fork-me {
+      display: none; } }
+
 .grid-1-4 {
   width: 25%; }
 
