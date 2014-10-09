@@ -6,10 +6,7 @@
 	font-family: $headerFontFamily;
 	@include font-size(20);
 	@include prem(height, 60);
-	position: fixed;
-	width: 100%;
-	z-index: 1;
-	@media (max-width: 700px) {
+	@media screen and (max-width: 700px) {
 		display: block;
 	}
 	.phytoplankton-menu-icon {
@@ -20,15 +17,11 @@
 }
 
 .phytoplankton-menu-icon {
-	display: none;
 	cursor: pointer;
 	float: left;
+	@include font-size(26);
+	@include prem(line-height, 60);
 	@include prem(padding-left, 10);
-	@media (max-width: 700px) {
-		display: block;
-		@include font-size(26);
-		@include prem(line-height, 60);
-	}
 	.phytoplankton-vegan-burger {
 		@include vegan-burger(25px, 3px, 5px, #fff);
 	}
