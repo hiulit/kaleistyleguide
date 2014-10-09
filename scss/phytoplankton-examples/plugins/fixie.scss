@@ -20,6 +20,8 @@ Just add the `.fixie` class to any element where you need dummy content.
 
 It works for **headers**, **paragraphs**, **lists**, **images**, and just about anything else.
 
+@javascript { "click.js" }
+
 ```markup
 <h1 class="fixie"></h1>
 <h2 class="fixie"></h2>
@@ -37,6 +39,7 @@ It works for **headers**, **paragraphs**, **lists**, **images**, and just about 
 	<img class="fixie" />
 </div>
 <p class="fixie"></p>
+<button class="js-click">Click</button>
 ```
 */
 
