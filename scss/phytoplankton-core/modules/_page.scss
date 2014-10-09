@@ -1,12 +1,17 @@
 .phytoplankton-page {
 	float: right;
+	overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
 	padding: 0 8%;
 	width: 75%;
-	@media (max-width: 700px) {
-		margin-left: 0;
-		@include prem(margin-top, 60);
+	@media screen and (max-width: 700px) {
 		padding: 0 4%;
 		width: 100%;
+		transform: translate3d(0, 0, 0);
+		transition: all .25s ease-in-out;
+		&.is-active {
+			transform: translate3d(75%, 0, 0);
+		}
 	}
 	ul {
 		ul {

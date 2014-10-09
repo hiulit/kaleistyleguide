@@ -12,7 +12,8 @@ function($, _, Backbone, template){
 			'click .phytoplankton-menu-icon': function() {
 				$('.js-phytoplankton-menu').toggleClass('is-active');
 				$('.js-phytoplankton-menu-icon').toggleClass('is-active');
-				$('body').toggleClass('is-opaque is-locked');
+				$('.js-phytoplankton-header').toggleClass('is-active');
+				$('.js-phytoplankton-page').toggleClass('is-active');
 			}
 		},
 		render: function () {
