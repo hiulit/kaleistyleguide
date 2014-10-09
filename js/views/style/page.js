@@ -204,10 +204,13 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 
 			// $('.phytoplankton-menu__list__item ul li ul li').remove();
 			var submenu = $('<ul>');
-
+			var externalScripts = [];
 			////////////NEEDS TO BE EXPORTED TO Menu.js
 			// Creates the menu.
 			_.each(page.blocks, function (block) {
+				if(block.scriptsArray.length > 0) {
+					externalScripts.push(block.scriptsArray[0]);
+				}
 				var ul = $('<ul>');
 				_.each(block.heading, function(val, i) {
 					if(i >= 1) {
@@ -230,6 +233,12 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 
 			$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config, externalStyles: config.external_stylesheets}));
 
+			_.each(externalScripts, function (val, i) {
+				$('head').append(externalScripts[i]);
+			});
+
+			// Removes all <p> that contains @javascript
+			$('p:contains("@javascript")').remove();
 			// Adds class so Prism's Line Number plugin can work.
 			$('.code-lang + pre, .code-render + pre, pre[data-src]').addClass('line-numbers');
 			// Prism's colour coding in <code> blocks.
@@ -437,11 +446,27 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 			var block = {
 				content: [],
 				heading: [],
-				headingID: []
+				headingID: [],
+				scriptsArray: []
 			};
 
 			_.each(lexedCommentblock, function (comment) {
 				switch (comment.type) {
+					case 'paragraph':
+						// Finds all the scripts to be loaded
+						var str = comment.text;
+						var regex = /@javascript [\{](.*?)[\}]/g;
+						var match;
+						while ((match = regex.exec(str)) !== null) {
+							match[1] = match[1].trim();
+							match[1] = match[1].replace(/\"/g, '');
+							var script = document.createElement('script');
+							script.type = 'text/javascript';
+							script.src = 'js/external-scripts/' + match[1] +'';
+							block.scriptsArray.push(script);
+						}
+						block.content.push(comment);
+						break;
 					case 'code':
 						// If there's no language:
 						// Push the code without example nor language header.
