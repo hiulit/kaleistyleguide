@@ -657,18 +657,6 @@ img {
     top: 0;
     width: 100%; }
 
-.is-opaque:before {
-  background-color: rgba(0, 0, 0, 0.25);
-  content: "";
-  display: block;
-  height: 100%;
-  position: fixed;
-  width: 100%;
-  z-index: 1; }
-  @media screen and (min-width: 700px) {
-    .is-opaque:before {
-      display: none; } }
-
 .grid-1-4 {
   width: 25%; }
 
@@ -695,13 +683,16 @@ img {
   font-size: 1.25rem;
   line-height: 1.5rem;
   height: 60px;
-  height: 3.75rem;
-  position: fixed;
-  width: 100%;
-  z-index: 1; }
-  @media (max-width: 700px) {
+  height: 3.75rem; }
+  @media screen and (max-width: 700px) {
     .phytoplankton-header {
       display: block; } }
+  @media screen and (max-width: 700px) {
+    .phytoplankton-header {
+      transform: translate3d(0, 0, 0);
+      transition: all .25s ease-in-out; }
+      .phytoplankton-header.is-active {
+        transform: translate3d(75%, 0, 0); } }
   .phytoplankton-header .phytoplankton-menu-icon .phytoplankton-vegan-burger {
     display: inline-block;
     vertical-align: baseline;
@@ -710,20 +701,16 @@ img {
     *vertical-align: auto; }
 
 .phytoplankton-menu-icon {
-  display: none;
   cursor: pointer;
   float: left;
+  font-size: 26px;
+  line-height: 31.2px;
+  font-size: 1.625rem;
+  line-height: 1.95rem;
+  line-height: 60px;
+  line-height: 3.75rem;
   padding-left: 10px;
   padding-left: 0.625rem; }
-  @media (max-width: 700px) {
-    .phytoplankton-menu-icon {
-      display: block;
-      font-size: 26px;
-      line-height: 31.2px;
-      font-size: 1.625rem;
-      line-height: 1.95rem;
-      line-height: 60px;
-      line-height: 3.75rem; } }
   .phytoplankton-menu-icon .phytoplankton-vegan-burger {
     position: relative;
     margin-top: 8px;
@@ -772,20 +759,15 @@ img {
 
 .phytoplankton-menu {
   background-color: #3D3F52;
-  bottom: 0px;
-  bottom: 0rem;
+  bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   position: fixed;
-  top: 0px;
-  top: 0rem;
-  z-index: 2;
+  top: 0;
   width: 25%; }
   @media screen and (max-width: 700px) {
     .phytoplankton-menu {
-      bottom: 0;
-      top: 60px;
-      top: 3.75rem;
       transform: translate3d(-100%, 0, 0);
       transition: all .25s ease-in-out;
       width: 75%; }
@@ -927,15 +909,18 @@ img {
 
 .phytoplankton-page {
   float: right;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 0 8%;
   width: 75%; }
-  @media (max-width: 700px) {
+  @media screen and (max-width: 700px) {
     .phytoplankton-page {
-      margin-left: 0;
-      margin-top: 60px;
-      margin-top: 3.75rem;
       padding: 0 4%;
-      width: 100%; } }
+      width: 100%;
+      transform: translate3d(0, 0, 0);
+      transition: all .25s ease-in-out; }
+      .phytoplankton-page.is-active {
+        transform: translate3d(75%, 0, 0); } }
   .phytoplankton-page ul ul {
     list-style-type: disc; }
   .phytoplankton-page p, .phytoplankton-page ul, .phytoplankton-page ol, .phytoplankton-page pre, .phytoplankton-page table, .phytoplankton-page blockquote {
