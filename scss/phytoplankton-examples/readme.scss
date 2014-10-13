@@ -71,13 +71,17 @@ Extras:
 
 ## Notes
 
-Why don't you use the latest version of Sass (v3.4.4)?
+Why don't you use the latest version of Sass (v3.4.5)?
 
 Phytoplankton uses [sass.js](https://github.com/medialize/sass.js) for having Sass in the browser
 ([not a trivial task](http://blog.rodneyrehm.de/archives/33-libsass.js-An-Emscripten-Experiment.html), btw)
 which in turn uses [libsass](https://github.com/hcatlin/libsass).
 
-Here it is the the [State of Libsass (versus Ruby Sass)](http://www.solitr.com/blog/2014/01/state-of-libsass/).
+**Update 1**: Here it is the the [State of Libsass (versus Ruby Sass)](http://www.solitr.com/blog/2014/01/state-of-libsass/).
+
+**Update 2**: Here it is [The LibSass Compatibility Plan](https://github.com/sass/libsass/wiki/The-LibSass-Compatibility-Plan).
+
+*It seems that finally, thanks to the effort of a lot of people,  libsass will reach parity with Ruby Sass*.
 
 */
 
