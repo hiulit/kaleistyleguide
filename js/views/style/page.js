@@ -13,40 +13,12 @@ define([
 	'libs/less/less-1.3.3.min',
 	'hbs-objects/mockup-objects'
 ],
-function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, Sass, parseuri, mockupObjects){
+function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, Sass, parseuri){
 
 	var that = null;
 
 	var StylePage = Backbone.View.extend({
 		el: '.phytoplankton-page',
-
-		// HANDLEBARS
-		// mockupObjects: {
-		// 	'filtertabs':  {
-		// 		name: "Epeli",
-		// 		tabs: [
-		// 			{
-		// 				selected: true,
-		// 				label: 'Hola soy label',
-		// 				id: '1'
-		// 			},
-		// 			{
-		// 				selected: false,
-		// 				label: 'Hola soy label 2',
-		// 				id: '2'
-		// 			}
-		// 		]
-		// 	}
-		// },
-
-		// hbsTemplates: {},
-
-		// initialize: function() {
-		// 	$.get('templates/hbs/hello.hbs', false).success(function(src){
-		// 		that.hbsTemplates['hello'] = Handlebars.compile(src);
-		// 		hbsTemplateUncompiled = src;
-		// 	});
-		// },
 
 		render: function () {
 
@@ -288,6 +260,16 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 			});
 
 			$(window).scroll(function () {
+				var mq = window.matchMedia('@media screen and (max-width: 700px)');
+				if(mq.matches) {
+						// the width of browser is more then 700px
+				} else {
+						// the width of browser is less then 700px
+					$('.phytoplankton-header').hide();
+					setTimeout(function() {
+						$('.phytoplankton-header').css('top', $(this).scrollTop()).show();
+					} , 300);
+				}
 				var k = 0;
 				$('.phytoplankton-page__item').find(':header').each(function(i) {
 					if(!$(this).offsetParent().hasClass('code-render')) {
@@ -425,12 +407,25 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 			return page;
 		},
 
-		// parse_hbs: function(text, block) {
-		// 	var properties = JSON.parse(text);
-		// 	var obj = that.mockupObjects[properties.dataObject];
-		// 	var template = that.hbsTemplates[properties.template];
-		// 	return template(obj);
-		// },
+		parse_hbs: function(text) {
+			var properties = JSON.parse(text);
+			var obj = mockupObjects[properties.dataObject];
+			var source;
+			var template;
+			$.ajax({
+				url: 'templates/hbs/'+ properties.template +'.hbs',
+				async: false,
+				cache: true,
+				success: function(data) {
+					source = data;
+					template = Handlebars.compile(source);
+				}
+			});
+			return [
+				template(obj),
+				source
+			];
+		},
 
 		parse_commentblock: function (comment_block_text) {
 			// Removes /* & */.
@@ -483,25 +478,26 @@ function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, 
 							});
 							block.content.push(comment);
 						// If it's "hbs":
-						// } else if(comment.lang === 'hbs') {
-						// 	comment.hbsTemplateUncompiled = hbsTemplateUncompiled;
-						// 	comment.text = that.parse_hbs(comment.text);
-						// 	block.content.push({
-						// 		type: 'html',
-						// 		lang: 'markup',
-						// 		text: '<div class="code-lang">Example</div>' +
-						// 				'<div class="code-render code-render--hbs clearfix">' + comment.text + '</div>' +
-						// 				'<ul class="tabs">' +
-						// 				'<li class="tabs__item is-active" data-tab="tab-1">Handlebars</li>' +
-						// 				'<li class="tabs__item" data-tab="tab-2">HTML</li>' +
-						// 				'</ul>'
-						// 	});
-						// 	block.content.push({
-						// 		type: 'code',
-						// 		lang: 'hbs',
-						// 		text: comment.hbsTemplateUncompiled
-						// 	});
-						// 	block.content.push(comment);
+						} else if(comment.lang === 'hbs') {
+							var lala = that.parse_hbs(comment.text);
+							comment.text = lala[0];
+							comment.hbsTemplateUncompiled = lala[1];
+							block.content.push({
+								type: 'html',
+								lang: 'markup',
+								text: '<div class="code-lang">Example</div>' +
+										'<div class="code-render code-render--hbs clearfix">' + comment.text + '</div>' +
+										'<ul class="tabs">' +
+										'<li class="tabs__item is-active" data-tab="tab-1">Handlebars</li>' +
+										'<li class="tabs__item" data-tab="tab-2">HTML</li>' +
+										'</ul>'
+							});
+							block.content.push({
+								type: 'code',
+								lang: 'markup',
+								text: comment.hbsTemplateUncompiled
+							});
+							block.content.push(comment);
 						// If the code is not "markup" (html):
 						// Push the code without example but with language header.
 						} else {
