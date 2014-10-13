@@ -3,7 +3,7 @@ define([
 	'underscore',
 	'backbone',
 	'handlebars',
-	'libs/marked/marked',
+	'marked',
 	'text!templates/style/page.html',
 	'config',
 	'jscssp',
@@ -13,7 +13,7 @@ define([
 	'libs/less/less-1.3.3.min',
 	'hbs-objects/mockup-objects'
 ],
-function($, _, Backbone, handlebars, marked, stylePageTemplate, config, jscssp, Sass, parseuri){
+function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, Sass, parseuri){
 
 	var that = null;
 

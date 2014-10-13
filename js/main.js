@@ -6,9 +6,10 @@ require.config({
 		jquery: 'libs/jquery/jquery-min',
 		underscore: 'libs/underscore/underscore-min',
 		backbone: 'libs/backbone/backbone-min',
-		handlebars: 'libs/handlebars/handlebars',
-		jscssp: 'libs/jscssp/jscssp',
-		fixie: 'libs/fixie/fixie',
+		handlebars: 'libs/handlebars/handlebars.min',
+		jscssp: 'libs/jscssp/jscssp.min',
+		marked: 'libs/marked/marked.min',
+		fixie: 'libs/fixie/fixie.min',
 		// Require.js plugins
 		text: 'libs/require/text',
 		order: 'libs/require/order',

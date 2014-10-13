@@ -3,12 +3,12 @@ define([
 	'underscore',
 	'libs/underscore/underscore.string.min',
 	'backbone',
+	'marked',
 	'text!templates/style/menu.html',
-	'jscssp',
 	'config',
-	'libs/marked/marked'
+	'jscssp'
 ],
-function($, _, str, Backbone, dashboardPageTemplate, jscssp, config, marked) {
+function($, _, str, Backbone, marked, dashboardPageTemplate, config, jscssp) {
 	var DashboardPage = Backbone.View.extend({
 		el: '.js-phytoplankton-menu',
 		events: {
