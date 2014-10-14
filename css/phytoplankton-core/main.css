@@ -457,6 +457,12 @@ pre[class*="language-"] {
 .token.entity {
   cursor: help; }
 
+.token.handlebars {
+  color: #fd9720; }
+  .token.handlebars .curly-bracket,
+  .token.handlebars .helper {
+    color: #66d9ef; }
+
 pre.line-numbers {
   position: relative;
   padding-top: 1em;
