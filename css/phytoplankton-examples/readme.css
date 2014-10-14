@@ -50,6 +50,7 @@ Mad propz to all the great people behind the software listed below.
 * [RequireJS](http://requirejs.org/) - JavaScript file and module loader.
 * [Backbone.js](http://backbonejs.org/) - Gives structure to web applications by providing models, collections and views.
 * [Underscore.js](http://underscorejs.org/) - JavaScript library that provides a whole mess of useful functional programming helpers without extending any built-in objects.
+* [Handlebars.js](http://handlebarsjs.com/) - Minimal templating on steroids.
 * [jQuery](http://jquery.com) - Fast, small, and feature-rich JavaScript library.
 
 Extras:
@@ -66,13 +67,17 @@ Extras:
 
 ## Notes
 
-Why don't you use the latest version of Sass (v3.4.4)?
+Why don't you use the latest version of Sass (v3.4.5)?
 
 Phytoplankton uses [sass.js](https://github.com/medialize/sass.js) for having Sass in the browser
 ([not a trivial task](http://blog.rodneyrehm.de/archives/33-libsass.js-An-Emscripten-Experiment.html), btw)
 which in turn uses [libsass](https://github.com/hcatlin/libsass).
 
-Here it is the the [State of Libsass (versus Ruby Sass)](http://www.solitr.com/blog/2014/01/state-of-libsass/).
+**Update 1**: Here it is the the [State of Libsass (versus Ruby Sass)](http://www.solitr.com/blog/2014/01/state-of-libsass/).
+
+**Update 2**: Here it is [The LibSass Compatibility Plan](https://github.com/sass/libsass/wiki/The-LibSass-Compatibility-Plan).
+
+*It seems that finally, thanks to the effort of a lot of people,  libsass will reach parity with Ruby Sass*.
 
 */
 /*
@@ -80,24 +85,15 @@ Here it is the the [State of Libsass (versus Ruby Sass)](http://www.solitr.com/b
 
 * Chrome
 * Firefox
-* ~~IE 8+~~
 * IE 9+
 
-## Notes
-
-~~Say whaaaa...?!! Did I just see that you support IE 8+?~~
-
-~~Well... If you want to pimp your experience and leverage [sass.js](https://github.com/medialize/sass.js) and [Prism](http://prismjs.com/),
-please ensure you use a real browser **IE 10+**.
-If not, you can still use plain, old boring CSS. Or try using [Less](http://lesscss.org/).~~
-
-Not tested on Opera.
+Not tested on Opera nor on Safari.
 
 */
 /*
 # Changelog
 
-## 0.1.0 (September 30th 2014)
+## 0.1.0 (October 13th 2014)
 
 * Not officially released.
 
@@ -105,7 +101,7 @@ Not tested on Opera.
 /*
 # Author
 
-* Me, [Xavier Gomez](https://github.com/hiulit) ([@hiulit](https://twitter.com/hiulit)).
+* [Xavier Gomez](https://github.com/hiulit) ([@hiulit](https://twitter.com/hiulit)).
 
 */
 /*
