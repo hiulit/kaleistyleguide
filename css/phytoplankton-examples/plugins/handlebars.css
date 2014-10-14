@@ -16,7 +16,16 @@ Wrap your code with
 	{ "template": "hello", "dataObject": "filtertabs" }
 	```
 
-Phytoplankton will automatically render the code as both HTML and the code block (both the Handlebars template and the HTML) with syntax highlighting.
+Basically what you're doing is passing a **JSON Object** with 2 properties:
+
+* `template`: The name of the template (stored in `templates/hbs/`).
+* `dataObject`: The template context object (stored in `js/hbs-objects/mockup-objects.js`).
+
+Here's how `mockup-objects.js` looks like.
+
+<pre data-src="js/hbs-objects/mockup-objects.js"></pre>
+
+Phytoplankton will automatically render the code as both HTML and the code blocks (uncompiled and compiled Handlebars) with syntax highlighting.
 
 ```hbs
 { "template": "hello", "dataObject": "filtertabs" }
