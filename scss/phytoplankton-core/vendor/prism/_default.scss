@@ -133,6 +133,20 @@ pre[class*="language-"] {
 	cursor: help;
 }
 
+// Adds support for Handlebars.
+
+// This is a "feature" that doesn't
+// come with the default plugin.
+.token {
+	&.handlebars {
+		color: #fd9720;
+		.curly-bracket,
+		.helper {
+			color: #66d9ef;
+		}
+	}
+}
+
 pre.line-numbers {
 	position: relative;
 	padding-top: 1em;
@@ -180,6 +194,7 @@ pre.line-numbers > code {
 }
 
 // Styles for WebPlatform Docs plugin - start
+
 // This is a "feature" that doesn't
 // come with the default plugin.
 
@@ -198,9 +213,10 @@ pre[class*="language-"] a[href]:hover {
 // Styles for WebPlatform Docs plugin - end
 
 // Styles for Autolinker plugin - start
+
 // This is a "feature" that doesn't
 // come with the default plugin.
-// 
+
 .token a {
 	color: inherit;
 }

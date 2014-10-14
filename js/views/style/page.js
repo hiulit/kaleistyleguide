@@ -494,7 +494,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 							});
 							block.content.push({
 								type: 'code',
-								lang: 'markup',
+								lang: 'hbs',
 								text: comment.hbsTemplateUncompiled
 							});
 							block.content.push(comment);

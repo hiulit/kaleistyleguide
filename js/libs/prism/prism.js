@@ -413,7 +413,15 @@ Prism.languages.markup = {
 			'attr-value': {
 				pattern: /=(?:('|")[\w\W]*?(\1)|[^\s>]+)/gi,
 				inside: {
-					'punctuation': /=|>|"/g
+					'punctuation': /=|>|"/g,
+					// This is a "feature" that doesn't come with the default plugin.
+					'handlebars': {
+						pattern: /({{.*?}})/g,
+						inside: {
+							'curly-bracket': /({{|}})/g,
+							'helper': /(#\w+|\/\w+)/g
+						}
+					}
 				}
 			},
 			'punctuation': /\/?>/g,
@@ -428,6 +436,19 @@ Prism.languages.markup = {
 	},
 	'entity': /\&#?[\da-z]{1,8};/gi
 };
+
+// Handlebars plugin
+// This is a "feature" that doesn't come with the default plugin.
+Prism.languages.hbs = Prism.languages.extend('markup', {
+	'handlebars': {
+		pattern: /({{.*?}})/g,
+		inside: {
+			'curly-bracket': /({{|}})/g,
+			'helper': /(#\w+|\/\w+)/g,
+			'attr-value': /(".*?")/g
+		}
+	}
+});
 
 // Plugin to make entity title show the real entity, idea by Roman Komarov
 Prism.hooks.add('wrap', function(env) {
