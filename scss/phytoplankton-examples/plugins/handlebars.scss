@@ -4,7 +4,23 @@
 
 /*
 
-# You can use Handlebars now!!! :D
+# Handlebars.js
+
+> Minimal templating on steroids.
+
+[Handlebars.js](http://handlebarsjs.com/) is bundled with Phytoplankton.
+
+# Example usage
+
+Wrap your code with
+[fenced code blocks](https://help.github.com/articles/github-flavored-markdown#fenced-code-blocks) `` ``` `` +
+`hbs`, like this:
+
+	```hbs
+	{ "template": "hello", "dataObject": "filtertabs" }
+	```
+
+Phytoplankton will automatically render the code as both HTML and the code block (both the Handlebars template and the HTML) with syntax highlighting.
 
 ```hbs
 { "template": "hello", "dataObject": "filtertabs" }
