@@ -6,6 +6,18 @@
 
 [Handlebars.js](http://handlebarsjs.com/) is bundled with Phytoplankton.
 
+# Templates
+
+Templates are placed in `templates/hbs/`.
+
+# Context
+
+Context objects are placed in `js/hbs/context.js`.
+
+# Helpers
+
+Helpers are placed in `js/hbs/helpers.js`.
+
 # Example usage
 
 Wrap your code with
@@ -13,22 +25,26 @@ Wrap your code with
 `hbs`, like this:
 
 	```hbs
-	{ "template": "hello", "dataObject": "filtertabs" }
+	{ "template": "hello", "context": "filtertabs" }
 	```
 
 Basically what you're doing is passing a **JSON Object** with 2 properties:
 
-* `template`: The name of the template (stored in `templates/hbs/`).
-* `dataObject`: The template context object (stored in `js/hbs-objects/mockup-objects.js`).
+* `template`: The name of the template (placed in `templates/hbs/`).
+* `context`: The template context object (placed in `js/hbs/context.js`).
 
-Here's how `mockup-objects.js` looks like.
+Here's how `context.js` looks like.
 
-<pre data-src="js/hbs-objects/mockup-objects.js"></pre>
+<pre data-src="js/hbs/context.js"></pre>
+
+If you need to use **Handlebars helpers** you can place them in `js/hbs/helpers`.
+
+<pre data-src="js/hbs/helpers.js"></pre>
 
 Phytoplankton will automatically render the code as both HTML and the code blocks (uncompiled and compiled Handlebars) with syntax highlighting.
 
 ```hbs
-{ "template": "hello", "dataObject": "filtertabs" }
+{ "template": "hello", "context": "filtertabs" }
 ```
 
 */
