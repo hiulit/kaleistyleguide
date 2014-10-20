@@ -1,5 +1,6 @@
 .phytoplankton-page {
 	float: right;
+	@include prem(margin-top, 60);
 	overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
 	padding: 0 8%;
@@ -11,6 +12,9 @@
 		transition: all .25s ease-in-out;
 		&.is-active {
 			transform: translate3d(75%, 0, 0);
+			@media screen and (orientation: landscape) {
+				transform: translate3d(50%, 0, 0);
+			}
 		}
 	}
 	ul {
@@ -45,6 +49,46 @@
 			@include prem(padding-right, 4);
 			white-space: normal;
 			@include hyphenation;
+		}
+	}
+	pre,
+	pre[class*="language-"] {
+		border-radius: $borderRadiusPx;
+		font-size: 14px;
+		margin: 0;
+		@include prem(margin-bottom, 16);
+		+ .code-lang {
+			@include prem(margin-top, 20);
+		}
+	}
+	.tabs {
+		margin: 0;
+		padding: 0;
+		position: relative;
+		+ pre {
+			+ pre {
+				display: none;
+			}
+		}
+	}
+	.tabs__item {
+		@extend .code-lang;
+		cursor: pointer;
+		@include opacity(.5);
+		transition: opacity, .25s, ease-in-out;
+		&.is-active {
+			// background-color: $linkColor;
+			cursor: default;
+			@include opacity(1);
+			&:hover {
+				@include opacity(1);
+			}
+		}
+		&:hover {
+			@include opacity(1);
+		}
+		+ .tabs__item {
+			@include prem(margin-left, 10);
 		}
 	}
 }
@@ -85,15 +129,9 @@
 }
 
 .code-render--hbs {
-	@include prem(margin-bottom, -40);
-	@include prem(padding-bottom, 80);
+	@include prem(margin-bottom, -35);
+	@include prem(padding-bottom, 70);
 	+ .tabs {
-		.tabs__item {
-			border-radius: 0 $borderRadiusPx 0 0;
-			+ .tabs__item {
-				border-radius: $borderRadiusPx $borderRadiusPx 0 0;
-			}
-		}
 		+ pre,
 		+ pre[class*="language-"] {
 			border-radius: 0 0 $borderRadiusPx $borderRadiusPx;
@@ -102,48 +140,5 @@
 				border-radius: 0 0 $borderRadiusPx $borderRadiusPx;
 			}
 		}
-	}
-}
-
-pre,
-pre[class*="language-"] {
-	border-radius: $borderRadiusPx;
-	font-size: 14px;
-	margin: 0;
-	@include prem(margin-bottom, 16);
-	+ .code-lang {
-		@include prem(margin-top, 20);
-	}
-}
-
-.tabs {
-	margin: 0;
-	padding: 0;
-	position: relative;
-	z-index: 1;
-	+ pre {
-		+ pre {
-			display: none;
-		}
-	}
-}
-
-.tabs__item {
-	@extend .code-lang;
-	cursor: pointer;
-	@include opacity(.5);
-	&.is-active {
-		background-color: $linkColor;
-		cursor: default;
-		@include opacity(1);
-		&:hover {
-			@include opacity(1);
-		}
-	}
-	&:hover {
-		@include opacity(1);
-	}
-	+ .tabs__item {
-		@include prem(margin-left, 10);
 	}
 }

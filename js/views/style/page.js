@@ -11,7 +11,8 @@ define([
 	'libs/prism/prism',
 	'libs/parseuri/parseuri',
 	'libs/less/less-1.3.3.min',
-	'hbs-objects/mockup-objects'
+	'hbs/context',
+	'hbs/helpers'
 ],
 function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, Sass, parseuri){
 
@@ -409,7 +410,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 
 		parse_hbs: function(text) {
 			var properties = JSON.parse(text);
-			var obj = mockupObjects[properties.dataObject];
+			var obj = mockupObjects[properties.context];
 			var source;
 			var template;
 			$.ajax({
