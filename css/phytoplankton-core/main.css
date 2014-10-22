@@ -932,8 +932,6 @@ img {
 
 .phytoplankton-page {
   float: right;
-  margin-top: 60px;
-  margin-top: 3.75rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding: 0 8%;
