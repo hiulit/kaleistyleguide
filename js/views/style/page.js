@@ -10,7 +10,7 @@ define([
 	'libs/sassjs/dist/sass.min',
 	'libs/prism/prism',
 	'libs/parseuri/parseuri',
-	'libs/less/less-1.3.3.min',
+	'libs/less/less-1.7.5.min',
 	'hbs/context',
 	'hbs/helpers'
 ],
@@ -261,16 +261,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			});
 
 			$(window).scroll(function () {
-				var mq = window.matchMedia('@media screen and (max-width: 700px)');
-				if(mq.matches) {
-						// the width of browser is more then 700px
-				} else {
-						// the width of browser is less then 700px
-					$('.phytoplankton-header').hide();
-					setTimeout(function() {
-						$('.phytoplankton-header').css('top', $(this).scrollTop()).show();
-					} , 300);
-				}
 				var k = 0;
 				$('.phytoplankton-page__item').find(':header').each(function(i) {
 					if(!$(this).offsetParent().hasClass('code-render')) {
@@ -365,15 +355,37 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			});
 
 			page.css = stylesheetCompiled;
-
-			var parser = new(less.Parser);
-			var stylesheet;
 			page.css = '.code-render { ' + page.css + ' }';
-			parser.parse(page.css, function (err, tree) {
-				stylesheet = tree;
-			});
+			var src = page.css;
 
-			page.css = stylesheet.toCSS({ compress: true });
+			if (less.render) { // Less v2.0.0 and above.
+				less.render(src, function (e, result) {
+					var s = src;
+					if (!e) {
+						console.log(result.css);
+					}
+					else {
+						showError(e);
+					}
+				});
+			}
+			else { // Less v1.7.5 and below.
+				var parser = new(less.Parser);
+				parser.parse(src, function (e, tree) {
+					if (!e) {
+						try {
+							page.css = tree.toCSS({ compress: true });
+						}
+						catch (e) {
+							showError(e);
+						}
+					}
+					else {
+						showError(e);
+					}
+				});
+			}
+
 			return page;
 		},
 
@@ -395,16 +407,37 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				}
 			});
 
-			page.css = stylesheet.toCSS({ compress: true });
-
-			var parser = new(less.Parser);
-			var stylesheet;
 			page.css = '.code-render { ' + page.css + ' }';
-			parser.parse(page.css, function (err, tree) {
-				stylesheet = tree;
-			});
+			var src = page.css;
 
-			page.css = stylesheet.toCSS({ compress: true });
+			if (less.render) { // Less v2.0.0 and above.
+				less.render(src, function (e, result) {
+					var s = src;
+					if (!e) {
+						console.log(result.css);
+					}
+					else {
+						showError(e);
+					}
+				});
+			}
+			else { // Less v1.7.5 and below.
+				var parser = new(less.Parser);
+				parser.parse(src, function (e, tree) {
+					if (!e) {
+						try {
+							page.css = tree.toCSS({ compress: true });
+						}
+						catch (e) {
+							showError(e);
+						}
+					}
+					else {
+						showError(e);
+					}
+				});
+			}
+
 			return page;
 		},
 
