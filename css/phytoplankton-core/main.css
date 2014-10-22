@@ -699,7 +699,7 @@ img {
   line-height: 1.5rem;
   height: 60px;
   height: 3.75rem;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   width: 75%;
@@ -831,14 +831,14 @@ img {
       padding-left: 2.5rem;
       position: relative; }
       .phytoplankton-menu li .has-triangle > a:hover {
-        background-color: #0090d4;
+        background-color: #22D400;
         color: #fff; }
         .phytoplankton-menu li .has-triangle > a:hover:before {
           border-left-color: #fff;
           transform: rotate(90deg);
           -webkit-transform: rotate(90deg); }
       .phytoplankton-menu li .has-triangle > a.active, .phytoplankton-menu li .has-triangle > a:active {
-        background-color: #0090d4;
+        background-color: #22D400;
         cursor: default; }
         .phytoplankton-menu li .has-triangle > a.active:before, .phytoplankton-menu li .has-triangle > a:active:before {
           border-right: 6px solid transparent;
@@ -938,10 +938,12 @@ img {
   width: 75%; }
   @media screen and (max-width: 700px) {
     .phytoplankton-page {
+      margin-top: 60px;
+      margin-top: 3.75rem;
       padding: 0 4%;
-      width: 100%;
       transform: translate3d(0, 0, 0);
-      transition: all .25s ease-in-out; }
+      transition: all .25s ease-in-out;
+      width: 100%; }
       .phytoplankton-page.is-active {
         transform: translate3d(75%, 0, 0); } }
     @media screen and (max-width: 700px) and (orientation: landscape) {
@@ -958,7 +960,7 @@ img {
   .phytoplankton-page p a,
   .phytoplankton-page ol a,
   .phytoplankton-page ul a {
-    color: #0090d4;
+    color: #22D400;
     text-decoration: none;
     white-space: normal;
     -ms-word-break: break-all;
@@ -968,10 +970,12 @@ img {
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
     -ms-hyphens: auto;
-    hyphens: auto; }
+    hyphens: auto;
+    transition: color, .25s, ease-in-out; }
     .phytoplankton-page p a:hover,
     .phytoplankton-page ol a:hover,
     .phytoplankton-page ul a:hover {
+      color: #1ba600;
       text-decoration: underline; }
   .phytoplankton-page p code,
   .phytoplankton-page ol code,

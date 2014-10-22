@@ -1,15 +1,15 @@
 .phytoplankton-page {
 	float: right;
-	// @include prem(margin-top, 60);
 	overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
 	padding: 0 8%;
 	width: 75%;
 	@media screen and (max-width: 700px) {
+		@include prem(margin-top, 60);
 		padding: 0 4%;
-		width: 100%;
 		transform: translate3d(0, 0, 0);
 		transition: all .25s ease-in-out;
+		width: 100%;
 		&.is-active {
 			transform: translate3d(75%, 0, 0);
 			@media screen and (orientation: landscape) {
@@ -33,7 +33,9 @@
 			text-decoration: none;
 			white-space: normal;
 			@include hyphenation;
+			transition: color, .25s, ease-in-out;
 			&:hover {
+				color: $linkColorActive;
 				text-decoration: underline;
 			}
 		}
