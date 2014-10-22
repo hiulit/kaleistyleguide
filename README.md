@@ -48,7 +48,7 @@ Mad propz to all the great people behind the software listed below.
 ## Pre-pocessors support
 
 * [Sass](http://sass-lang.com/) ([libsass v2.0](https://github.com/sass/libsass/releases/tag/v2.0))
-* [Less](http://lesscss.org/) (v1.7.0)
+* [Less](http://lesscss.org/) (v1.7.5)
 
 ## Notes
 
