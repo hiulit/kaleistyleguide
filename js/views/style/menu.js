@@ -43,94 +43,27 @@ function($, _, str, Backbone, marked, dashboardPageTemplate, config, jscssp) {
 
 			that.$el.html('Loading styles');
 
-			var page = {blocks:[]};
+			var menus = [];
+			var currentMenu = {
+				sheets: [],
+				title: ''
+			};
+			var sheetPath;
 
-			require(['text!' + config.css_path], function (styles) {
-				// Default "imports.css"
-				marked.setOptions(config.marked_options);
-
-				var parser = new jscssp();
-				var stylesheet = parser.parse(styles, false, true);
-				var menus = [];
-				var menuTitle = '';
-				var currentMenu = {
-					sheets: [],
-					category: ''
-				};
-				var sheetPath;
-
-				_.each(stylesheet.cssRules, function(rule) {
-					// If /* Comment */
-					if(rule.type === 101) {
-						var comment = rule.parsedCssText;
-						comment = comment.replace('/*', '');
-						comment = comment.replace('*/', '');
-
-						var comments = marked.lexer(comment);
-						var defLinks = comments.links || {};
-						_.each(comments, function (comment) {
-							var tokens = [comment];
-							tokens.links = defLinks;
-							if(comment.type === 'heading' && comment.depth === 1) {
-								menus.push(_.extend({}, currentMenu));
-								currentMenu.sheets = [];
-								currentMenu.category = comment.text;
-							}
-						});
-					}
-					// If @import url('');
-					if(rule.type === 3) {
-						// Removes @import url(''); leaving just the style sheet name.
-						var sheet = rule.href.substr(rule.href.indexOf('(')+2, rule.href.indexOf(')')-rule.href.indexOf('(')-3);
-
-						var regex = /(?:.*\/)(.*)\.(css|sass|scss|less)$/gi;
-						var result = [];
-						if((result = regex.exec(sheet)) !== null) {
-							// result[0] Original Input.
-							// result[1] Filename.
-							// result[2] Extension.
-
-							// Returns the path before 'extension/'.
-							sheetPath = result[0].substr(0, result[0].lastIndexOf('' + result[2] + '/') + (result[2].length + 1));
-							// Removes 'sheetPath' from 'sheet' leaving the path after 'extension/'.
-							sheet = result[0].replace(sheetPath, '');
-						}
-						// Pushes style sheet to currentMenu.
-						currentMenu.sheets.push(sheet);
-					}
+			_.each(config.menu, function(data) {
+				currentMenu.title = data.title;
+				currentMenu.sheets = [];
+				_.each(data.url, function(url) {
+					currentMenu.sheets.push(url);
 				});
-
-				if(config.css_paths) {
-					for(var i = 0; i < config.css_paths.length; i++) {
-						var regex = /(?:.*\/)(.*)\.(css|sass|scss|less)$/gi;
-						var result = [];
-						if((result = regex.exec(config.css_paths[i])) !== null) {
-							// result[0] Original Input.
-							// result[1] Filename.
-							// result[2] Extension.
-
-							// Returns the path before 'extension/'.
-							sheetPath = result[0].substr(0, result[0].lastIndexOf('' + result[2] + '/') + (result[2].length + 1));
-							// Removes 'sheetPath' from 'sheet' leaving the path after 'extension/'.
-							config.css_paths[i] = result[0].replace(sheetPath, '');
-						}
-						// Pushes style sheet to currentMenu.
-						currentMenu.sheets.push(config.css_paths[i]);
-					}
-				}
-
-				// Removes first item in 'menus' array, I don't know why but we have to do it...
-				menus.shift();
-				// Pushes the corrected version of 'menus'.
-				menus.push(currentMenu);
-
-				$(that.el).html(_.template(dashboardPageTemplate, {_:_, menus: menus}));
-				$('[href="' + window.location.hash + '"]').addClass('active');
-				if(window.location.hash === '') {
-					$('.js-phytoplankton-home').addClass('active');
-				}
-
+				menus.push(_.extend({}, currentMenu));
 			});
+
+			$(that.el).html(_.template(dashboardPageTemplate, {_:_, menus: menus}));
+			$('[href="' + window.location.hash + '"]').addClass('active');
+			if(window.location.hash === '') {
+				$('.js-phytoplankton-home').addClass('active');
+				}
 		}
 	});
 	return DashboardPage;

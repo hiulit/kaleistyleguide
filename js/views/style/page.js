@@ -31,42 +31,19 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			var styleExt;
 			var styleDir = this.options.style;
 
+			configDir =	window.location.protocol + '//' +
+							window.location.hostname +
+							(window.location.port === '' ? '' : ':'+ window.location.port) +
+							window.location.pathname;
+
+			configPath = config.menu[0].url[0];
+
 			if(styleDir === null) {
-				if(config.css_path) {
-					styleUrl = config.css_path;
-				} else if(config.css_path_url) {
-					console.log('NOT supported yet');
-				} else if(config.css_paths) {
-					var regex = /(?:.*\/)(.*)\.(css|less|sass|scss)$/gi;
-					var result = regex.exec(config.css_paths[0]);
-						// result[0] Original Input.
-						// result[1] Filename.
-						// result[2] Extension.
-					configPath = config.css_paths[0].replace(result[2] + '/', '');
-					configDir = window.location.protocol + '//' +
-								window.location.hostname +
-								(window.location.port === '' ? '' : ':'+ window.location.port) +
-								window.location.pathname;
-					styleUrl = configDir + result[2] + '/' + configPath;
-					window.location.href = configDir + '#/' + configPath;
-				} else {
-					alert('PUT SOMETHING IN THE CONFIG.JS!! C\'MON.....!');
-				}
+				styleUrl = configDir + 'scss/' + configPath;
+				window.location.href =	configDir + '#/' + configPath;
 			} else {
-				if(styleDir.substr(0,1) === '/') {
-					// Non relative.
-					configDir = configPath.substr(0, configPath.lastIndexOf('/'));
-					var pUrl = parseuri(configDir);
-					styleUrl = pUrl.protocol + '://' + pUrl.host + (pUrl.port === '' ? '' : ':'+ pUrl) + styleDir;
-				} else {
-					configPath = styleDir;
-					configDir =	window.location.protocol + '//' +
-								window.location.hostname +
-								(window.location.port === '' ? '' : ':'+ window.location.port) +
-								window.location.pathname;
-					styleExt = configPath.substr(configPath.lastIndexOf('.')+1);
-					styleUrl = configDir + styleExt + '/' + configPath;
-				}
+				styleUrl = configDir + 'scss/' + styleDir;
+				configPath = styleDir;
 			}
 
 			styleExt = styleUrl.substr(styleUrl.lastIndexOf('.')+1);
@@ -80,7 +57,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 					// result[2] Extension.
 
 				var page = {
-					blocks:[]
+					blocks: []
 				};
 
 				switch (result[2]) {
