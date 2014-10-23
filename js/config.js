@@ -5,7 +5,7 @@ define({
 		{
 			title: "Phytoplankton Style Guide",
 			url: [
-				"phytoplankton-examples/readme.css"
+				"phytoplankton-examples/readme.scss"
 			]
 		},
 		{
