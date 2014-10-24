@@ -39,14 +39,14 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			configPath = config.menu[0].url[0];
 
 			if(styleDir === null) {
-				styleUrl = configDir + 'scss/' + configPath;
+				styleExt = configPath.substr(configPath.lastIndexOf('.')+1);
+				styleUrl = configDir + styleExt + '/' + configPath;
 				window.location.href =	configDir + '#/' + configPath;
 			} else {
-				styleUrl = configDir + 'scss/' + styleDir;
+				styleExt = styleDir.substr(styleDir.lastIndexOf('.')+1);
+				styleUrl = configDir + styleExt + '/' + styleDir;
 				configPath = styleDir;
 			}
-
-			styleExt = styleUrl.substr(styleUrl.lastIndexOf('.')+1);
 
 			require(['text!'+ styleUrl], function (stylesheet) {
 				var parser = null;
