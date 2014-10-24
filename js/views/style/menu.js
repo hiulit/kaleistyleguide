@@ -50,6 +50,7 @@ function($, _, str, Backbone, marked, dashboardPageTemplate, config, jscssp) {
 			};
 			var sheetPath;
 
+			// Creates menu from config.js
 			_.each(config.menu, function(data) {
 				currentMenu.title = data.title;
 				currentMenu.sheets = [];
@@ -60,10 +61,9 @@ function($, _, str, Backbone, marked, dashboardPageTemplate, config, jscssp) {
 			});
 
 			$(that.el).html(_.template(dashboardPageTemplate, {_:_, menus: menus}));
+
+			// Adds .active class to the actual page's menu.
 			$('[href="' + window.location.hash + '"]').addClass('active');
-			if(window.location.hash === '') {
-				$('.js-phytoplankton-home').addClass('active');
-				}
 		}
 	});
 	return DashboardPage;
