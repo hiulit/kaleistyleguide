@@ -70,17 +70,47 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 							that.render_page(page);
 						break;
 					case 'less':
-							parser = new(less.Parser)({
-								filename: primaryStyleFile,
-								rootpath: configDir + '/',
-								relativeUrls: true,
-								insecure: true,
-								paths: [configDir + 'less/'], // Specify search paths for @import directives.
-							});
-							parser.parse(stylesheet, function (err, tree) {
-								page = that.compute_less(tree);
-								that.render_page(page);
-							});
+							if (less.render) { // Less v2.0.0 and above.
+								console.log('render');
+								less.render(stylesheet, function (e, result) {
+									var s = stylesheet;
+									if (!e) {
+										console.log(result.css);
+									}
+									else {
+										showError(e);
+									}
+								});
+							}
+							else { // Less v1.7.5 and below.
+								console.log('below');
+								var parser = new(less.Parser);
+								parser.parse(stylesheet, function (e, tree) {
+									if (!e) {
+										try {
+											page = that.compute_less(tree, stylesheetCompiled);
+											that.render_page(page);
+										}
+										catch (e) {
+											showError(e);
+										}
+									}
+									else {
+										showError(e);
+									}
+								});
+							}
+							// parser = new(less.Parser)({
+							// 	// filename: stylesheet,
+							// 	// rootpath: configDir + '/',
+							// 	// relativeUrls: true,
+							// 	// insecure: true,
+							// 	// paths: [configDir + 'less/'], // Specify search paths for @import directives.
+							// });
+							// parser.parse(stylesheet, function (err, tree) {
+							// 	page = that.compute_less(tree, stylesheetCompiled);
+							// 	that.render_page(page);
+							// });
 						break;
 					case 'sass':
 					case 'scss':
@@ -154,7 +184,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				$('[href="' + window.location.hash + '"]').addClass('active');
 			}
 
-			// $('.phytoplankton-menu__list__item ul li ul li').remove();
 			var submenu = $('<ul>');
 			var externalScripts = [];
 			////////////NEEDS TO BE EXPORTED TO Menu.js
@@ -360,7 +389,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			return page;
 		},
 
-		compute_less: function(stylesheet) {
+		compute_less: function(stylesheet, stylesheetCompiled) {
 			var page = {
 				blocks: [],
 				css: '',
@@ -378,9 +407,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				}
 			});
 
+			page.css = stylesheetCompiled;
 			page.css = '.code-render { ' + page.css + ' }';
 			var src = page.css;
 
+			// Remove CSS comments.
 			if (less.render) { // Less v2.0.0 and above.
 				less.render(src, function (e, result) {
 					var s = src;
