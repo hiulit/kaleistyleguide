@@ -60,11 +60,13 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 					blocks: []
 				};
 
+				var stylesheetCompiled = stylesheet;
+
 				switch (result[2]) {
 					case 'css':
 							parser = new jscssp();
 							stylesheet = parser.parse(stylesheet, false, true);
-							page = that.compute_css(stylesheet);
+							page = that.compute_css(stylesheet, stylesheetCompiled);
 							that.render_page(page);
 						break;
 					case 'less':
@@ -326,6 +328,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			page.css = '.code-render { ' + page.css + ' }';
 			var src = page.css;
 
+			// Remove CSS comments.
 			if (less.render) { // Less v2.0.0 and above.
 				less.render(src, function (e, result) {
 					var s = src;
