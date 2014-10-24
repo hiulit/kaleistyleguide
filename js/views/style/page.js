@@ -310,15 +310,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 						break;
 					// Import Rule (@import)
 					case 3:
-						// If it's the 'imports.css'
-						if(window.location.hash === '') {
-							// Get the first link from the menu
-							result = $('.phytoplankton-menu__list__item__link').attr('href');
-							window.location.href =	window.location.protocol +
-													'//' + window.location.hostname +
-													(window.location.port === '' ? '' : ':'+ window.location.port) +
-													window.location.pathname + result;
-						}
 						// Remove all the @import
 						stylesheet.deleteRule(rule);
 						break;
