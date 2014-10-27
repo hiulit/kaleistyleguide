@@ -4,16 +4,30 @@
 Here you have a little example to see [Sass](http://sass-lang.com/) working on the browser thanks to [sass.js](https://github.com/medialize/sass.js).
 
 ```scss
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
+
+$font-stack: Helvetica, sans-serif;
+$primary-color: #b000b5;
+
 .box {
 	border: 1px solid #ccc;
 	@include border-radius(10px);
 	padding: 20px;
+	p {
+		font-family: $font-stack;
+		color: $primary-color;
+	}
 }
 ```
 
 ```markup
 <div class="box">
-	I'm a box
+	<p class="fixie"></p>
 </div>
 ```
 
@@ -25,5 +39,8 @@ Here you have a little example to see [Sass](http://sass-lang.com/) working on t
   -ms-border-radius: 10px;
   border-radius: 10px;
   padding: 20px; }
+  .box p {
+    font-family: Helvetica, sans-serif;
+    color: #b000b5; }
 
 /*# sourceMappingURL=scss.css.map */
