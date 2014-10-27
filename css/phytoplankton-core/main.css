@@ -600,6 +600,11 @@ blockquote {
   blockquote:after {
     content: close-quote; }
 
+td, th {
+  border: 1px solid #ccc;
+  padding: 8px;
+  padding: 0.5rem; }
+
 .line-numbers-rows > span:last-child {
   display: none; }
 
