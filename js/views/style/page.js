@@ -70,7 +70,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 							that.render_page(page);
 						break;
 					case 'less':
-							if (less.render) { // Less v2.0.0 and above.
+							if (less.render) { // Less v2.0.0 and above (not working actually).
 								console.log('render');
 								less.render(stylesheet, function (e, result) {
 									var s = stylesheet;
@@ -358,7 +358,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			var src = page.css;
 
 			// Remove CSS comments.
-			if (less.render) { // Less v2.0.0 and above.
+			if (less.render) { // Less v2.0.0 and above (not working actually).
 				less.render(src, function (e, result) {
 					var s = src;
 					if (!e) {
@@ -412,7 +412,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			var src = page.css;
 
 			// Remove CSS comments.
-			if (less.render) { // Less v2.0.0 and above.
+			if (less.render) { // Less v2.0.0 and above (not working actually).
 				less.render(src, function (e, result) {
 					var s = src;
 					if (!e) {
@@ -453,7 +453,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				async: false,
 				cache: true,
 				success: function(data) {
-					source = data;
+					source = String(data); // Uses String() for Firefox to work properly.
 					template = Handlebars.compile(source);
 				}
 			});
