@@ -15,17 +15,18 @@ define({
 			]
 		},
 		{
+			title: "Prepocessors",
+			url: [
+				"phytoplankton-examples/prepocessors/less.less",
+				"phytoplankton-examples/prepocessors/scss.scss"
+			]
+		},
+		{
 			title: "Plugins",
 			url: [
 				"phytoplankton-examples/plugins/fixie.css",
 				"phytoplankton-examples/plugins/handlebars.scss",
 				"phytoplankton-examples/plugins/prism.scss"
-			]
-		},
-		{
-			title: "LESS",
-			url: [
-				"phytoplankton-examples/less/styles.less"
 			]
 		}
 	],
