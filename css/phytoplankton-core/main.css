@@ -600,6 +600,9 @@ blockquote {
   blockquote:after {
     content: close-quote; }
 
+table {
+  width: 100%; }
+
 td, th {
   border: 1px solid #ccc;
   padding: 8px;
