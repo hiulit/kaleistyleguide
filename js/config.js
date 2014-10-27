@@ -5,13 +5,13 @@ define({
 		{
 			title: "Phytoplankton Style Guide",
 			url: [
-				"phytoplankton-examples/readme.scss"
+				"phytoplankton-examples/readme.css"
 			]
 		},
 		{
 			title: "Documentation",
 			url: [
-				"phytoplankton-examples/docs/documentation.scss"
+				"phytoplankton-examples/docs/documentation.css"
 			]
 		},
 		{
@@ -25,8 +25,8 @@ define({
 			title: "Plugins",
 			url: [
 				"phytoplankton-examples/plugins/fixie.css",
-				"phytoplankton-examples/plugins/handlebars.scss",
-				"phytoplankton-examples/plugins/prism.scss"
+				"phytoplankton-examples/plugins/handlebars.css",
+				"phytoplankton-examples/plugins/prism.css"
 			]
 		}
 	],

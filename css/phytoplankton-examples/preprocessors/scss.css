@@ -17,7 +17,7 @@ $primary-color: #b000b5;
 .box {
 	border: 1px solid #ccc;
 	@include border-radius(10px);
-	padding: 20px;
+	padding: 40 / 2 * 1px;
 	p {
 		font-family: $font-stack;
 		color: $primary-color;

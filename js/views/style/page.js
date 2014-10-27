@@ -7,14 +7,13 @@ define([
 	'text!templates/style/page.html',
 	'config',
 	'jscssp',
-	'libs/sassjs/dist/sass.min',
 	'libs/prism/prism',
 	'libs/parseuri/parseuri',
 	'libs/less/less-1.7.5.min',
 	'hbs/context',
 	'hbs/helpers'
 ],
-function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, Sass, parseuri){
+function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, parseuri){
 
 	var that = null;
 
@@ -114,6 +113,13 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 						break;
 					case 'sass':
 					case 'scss':
+					if('querySelector' in document
+						&& document.documentMode >= 10 // Checks if it's IE10+.
+						|| document.documentMode === undefined // Checks if it's not IE.
+						&& 'localStorage' in window
+						&& 'addEventListener' in window) {
+						// Loads sass.js
+						require(['libs/sassjs/dist/sass.min'], function(Sass) {
 							// Thanks, so many thanks to Oriol Torras @uriusfurius.
 							function findImports(str, basepath) {
 								var url = configDir + styleExt + '/';
@@ -164,6 +170,10 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 							stylesheet = parser.parse(stylesheetCompiled, false, true);
 							page = that.compute_css(stylesheet, stylesheetCompiled);
 							that.render_page(page);
+						});
+					} else {
+						alert('Your browser doesn\'t support Sass.js.\nUpdate it to a newer version or use a modern browser ;)');
+					}
 						break;
 				}
 			});
