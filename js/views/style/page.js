@@ -357,7 +357,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 					// Comment Block.
 					case 101:
 						if(window.location.hash !== '') {
-							page.blocks = page.blocks.concat(that.parse_commentblock(rule.parsedCssText))
+							page.blocks = page.blocks.concat(that.parse_commentblock(rule.parsedCssText, stylesheetCompiled))
 						}
 						break;
 				}
@@ -453,6 +453,39 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			return page;
 		},
 
+		parse_styles: function(stylesheet) {
+			var src = stylesheet;
+			// Remove CSS comments.
+			if (less.render) { // Less v2.0.0 and above (not working actually).
+				less.render(src, function (e, result) {
+					var s = src;
+					if (!e) {
+						console.log(result.css);
+					}
+					else {
+						showError(e);
+					}
+				});
+			}
+			else { // Less v1.7.5 and below.
+				var parser = new(less.Parser);
+				parser.parse(src, function (e, tree) {
+					if (!e) {
+						try {
+							stylesheet = tree.toCSS({ compress: true });
+						}
+						catch (e) {
+							showError(e);
+						}
+					}
+					else {
+						showError(e);
+					}
+				});
+			}
+			return stylesheet;
+		},
+
 		parse_hbs: function(text) {
 			var properties = JSON.parse(text);
 			var obj = mockupObjects[properties.context];
@@ -473,7 +506,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			];
 		},
 
-		parse_commentblock: function (comment_block_text) {
+		parse_commentblock: function (comment_block_text, stylesheetCompiled) {
 			// Removes /* & */.
 			comment_block_text = comment_block_text.replace(/(?:\/\*)|(?:\*\/)/gi, '');
 
@@ -516,11 +549,21 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 						// If it's "markup" (html):
 						// Push the code for an example with language header.
 						} else if(comment.lang === 'markup') {
+							var lala = that.parse_styles(stylesheetCompiled);
+							console.log(lala);
 							block.content.push({
 								type: 'html',
 								text: '<div class="code-lang">Example</div>' +
-										'<div class="code-render clearfix">' + comment.text + '</div>' //+
-										// '<div class="code-lang">html</div>'
+										'<div class="code-render code-render--tabs clearfix">' + comment.text + '</div>' +
+										'<ul class="tabs">' +
+										'<li class="tabs__item is-active" data-tab="tab-1">HTML</li>' +
+										'<li class="tabs__item" data-tab="tab-2">Styles</li>' +
+										'</ul>'
+							});
+							block.content.push({
+								type: 'code',
+								lang: 'scss',
+								text: lala
 							});
 							block.content.push(comment);
 						// If it's "hbs":
@@ -532,7 +575,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 								type: 'html',
 								lang: 'markup',
 								text: '<div class="code-lang">Example</div>' +
-										'<div class="code-render code-render--hbs clearfix">' + comment.text + '</div>' +
+										'<div class="code-render code-render--tabs clearfix">' + comment.text + '</div>' +
 										'<ul class="tabs">' +
 										'<li class="tabs__item is-active" data-tab="tab-1">Handlebars</li>' +
 										'<li class="tabs__item" data-tab="tab-2">HTML</li>' +
