@@ -1092,18 +1092,18 @@ img {
   .code-render + pre[class*="language-"] {
     border-radius: 0 0 6px 6px; }
 
-.code-render--hbs {
+.code-render--tabs {
   margin-bottom: -35px;
   margin-bottom: -2.1875rem;
   padding-bottom: 70px;
   padding-bottom: 4.375rem; }
-  .code-render--hbs + .tabs + pre,
-  .code-render--hbs + .tabs + pre[class*="language-"] {
+  .code-render--tabs + .tabs + pre,
+  .code-render--tabs + .tabs + pre[class*="language-"] {
     border-radius: 0 0 6px 6px; }
-    .code-render--hbs + .tabs + pre + pre,
-    .code-render--hbs + .tabs + pre + pre[class*="language-"],
-    .code-render--hbs + .tabs + pre[class*="language-"] + pre,
-    .code-render--hbs + .tabs + pre[class*="language-"] + pre[class*="language-"] {
+    .code-render--tabs + .tabs + pre + pre,
+    .code-render--tabs + .tabs + pre + pre[class*="language-"],
+    .code-render--tabs + .tabs + pre[class*="language-"] + pre,
+    .code-render--tabs + .tabs + pre[class*="language-"] + pre[class*="language-"] {
       border-radius: 0 0 6px 6px; }
 
 /*# sourceMappingURL=main.css.map */

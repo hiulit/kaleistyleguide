@@ -130,7 +130,7 @@
 	}
 }
 
-.code-render--hbs {
+.code-render--tabs {
 	@include prem(margin-bottom, -35);
 	@include prem(padding-bottom, 70);
 	+ .tabs {
