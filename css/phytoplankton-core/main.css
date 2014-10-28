@@ -10,13 +10,15 @@ html {
   -ms-text-size-adjust: 100%;
   /* 2 */
   -webkit-text-size-adjust: 100%;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Remove default margin.
  */
 body {
-  margin: 0; }
+  margin: 0;
+}
 
 /* HTML5 display definitions
 	 ========================================================================== */
@@ -35,7 +37,8 @@ main,
 nav,
 section,
 summary {
-  display: block; }
+  display: block;
+}
 
 /**
  * 1. Correct `inline-block` display not defined in IE 8/9.
@@ -48,7 +51,8 @@ video {
   display: inline-block;
   /* 1 */
   vertical-align: baseline;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Prevent modern browsers from displaying `audio` without controls.
@@ -56,7 +60,8 @@ video {
  */
 audio:not([controls]) {
   display: none;
-  height: 0; }
+  height: 0;
+}
 
 /**
  * Address `[hidden]` styling not present in IE 8/9.
@@ -64,7 +69,8 @@ audio:not([controls]) {
  */
 [hidden],
 template {
-  display: none; }
+  display: none;
+}
 
 /* Links
 	 ========================================================================== */
@@ -72,14 +78,16 @@ template {
  * Remove the gray background color from active links in IE 10.
  */
 a {
-  background: transparent; }
+  background: transparent;
+}
 
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
  */
 a:active,
 a:hover {
-  outline: 0; }
+  outline: 0;
+}
 
 /* Text-level semantics
 	 ========================================================================== */
@@ -87,20 +95,23 @@ a:hover {
  * Address styling not present in IE 8/9, Safari 5, and Chrome.
  */
 abbr[title] {
-  border-bottom: 1px dotted; }
+  border-bottom: 1px dotted;
+}
 
 /**
  * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
  */
 b,
 strong {
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 /**
  * Address styling not present in Safari 5 and Chrome.
  */
 dfn {
-  font-style: italic; }
+  font-style: italic;
+}
 
 /**
  * Address variable `h1` font-size and margin within `section` and `article`
@@ -108,20 +119,23 @@ dfn {
  */
 h1 {
   font-size: 2em;
-  margin: 0.67em 0; }
+  margin: 0.67em 0;
+}
 
 /**
  * Address styling not present in IE 8/9.
  */
 mark {
   background: #ff0;
-  color: #000; }
+  color: #000;
+}
 
 /**
  * Address inconsistent and variable font size in all browsers.
  */
 small {
-  font-size: 80%; }
+  font-size: 80%;
+}
 
 /**
  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
@@ -131,13 +145,16 @@ sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+}
 
 sup {
-  top: -0.5em; }
+  top: -0.5em;
+}
 
 sub {
-  bottom: -0.25em; }
+  bottom: -0.25em;
+}
 
 /* Embedded content
 	 ========================================================================== */
@@ -145,13 +162,15 @@ sub {
  * Remove border when inside `a` element in IE 8/9.
  */
 img {
-  border: 0; }
+  border: 0;
+}
 
 /**
  * Correct overflow displayed oddly in IE 9.
  */
 svg:not(:root) {
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 /* Grouping content
 	 ========================================================================== */
@@ -159,7 +178,8 @@ svg:not(:root) {
  * Address margin not present in IE 8/9 and Safari 5.
  */
 figure {
-  margin: 1em 40px; }
+  margin: 1em 40px;
+}
 
 /**
  * Address differences between Firefox and other browsers.
@@ -167,13 +187,15 @@ figure {
 hr {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  height: 0; }
+  height: 0;
+}
 
 /**
  * Contain overflow in all browsers.
  */
 pre {
-  overflow: auto; }
+  overflow: auto;
+}
 
 /**
  * Address odd `em`-unit font size rendering in all browsers.
@@ -183,7 +205,8 @@ kbd,
 pre,
 samp {
   font-family: monospace, monospace;
-  font-size: 1em; }
+  font-size: 1em;
+}
 
 /* Forms
 	 ========================================================================== */
@@ -207,13 +230,15 @@ textarea {
   font: inherit;
   /* 2 */
   margin: 0;
-  /* 3 */ }
+  /* 3 */
+}
 
 /**
  * Address `overflow` set to `hidden` in IE 8/9/10.
  */
 button {
-  overflow: visible; }
+  overflow: visible;
+}
 
 /**
  * Address inconsistent `text-transform` inheritance for `button` and `select`.
@@ -223,7 +248,8 @@ button {
  */
 button,
 select {
-  text-transform: none; }
+  text-transform: none;
+}
 
 /**
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
@@ -239,14 +265,16 @@ input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
   cursor: pointer;
-  /* 3 */ }
+  /* 3 */
+}
 
 /**
  * Re-set default cursor for disabled elements.
  */
 button[disabled],
 html input[disabled] {
-  cursor: default; }
+  cursor: default;
+}
 
 /**
  * Remove inner padding and border in Firefox 4+.
@@ -254,14 +282,16 @@ html input[disabled] {
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 /**
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
 input {
-  line-height: normal; }
+  line-height: normal;
+}
 
 /**
  * It's recommended that you don't attempt to style these elements.
@@ -275,7 +305,8 @@ input[type="radio"] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Fix the cursor style for Chrome's increment/decrement buttons. For certain
@@ -284,7 +315,8 @@ input[type="radio"] {
  */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  height: auto; }
+  height: auto;
+}
 
 /**
  * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
@@ -297,7 +329,8 @@ input[type="search"] {
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   /* 2 */
-  box-sizing: content-box; }
+  box-sizing: content-box;
+}
 
 /**
  * Remove inner padding and search cancel button in Safari and Chrome on OS X.
@@ -306,7 +339,8 @@ input[type="search"] {
  */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none; }
+  -webkit-appearance: none;
+}
 
 /**
  * Define consistent border, margin, and padding.
@@ -314,7 +348,8 @@ input[type="search"]::-webkit-search-decoration {
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em; }
+  padding: 0.35em 0.625em 0.75em;
+}
 
 /**
  * 1. Correct `color` not being inherited in IE 8/9.
@@ -324,20 +359,23 @@ legend {
   border: 0;
   /* 1 */
   padding: 0;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Remove default vertical scrollbar in IE 8/9.
  */
 textarea {
-  overflow: auto; }
+  overflow: auto;
+}
 
 /**
  * Don't inherit the `font-weight` (applied by a rule above).
  * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
  */
 optgroup {
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 /* Tables
 	 ========================================================================== */
@@ -346,11 +384,13 @@ optgroup {
  */
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+}
 
 td,
 th {
-  padding: 0; }
+  padding: 0;
+}
 
 code,
 pre,
@@ -370,49 +410,60 @@ pre[class*="language-"] {
   -webkit-hyphens: none;
   -moz-hyphens: none;
   -ms-hyphens: none;
-  hyphens: none; }
+  hyphens: none;
+}
 
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-  background: #b3d4fc; }
+  background: #b3d4fc;
+}
 
 pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 code[class*="language-"]::selection, code[class*="language-"] ::selection {
-  background: #b3d4fc; }
+  background: #b3d4fc;
+}
 
 @media print {
   code[class*="language-"],
   pre[class*="language-"] {
-    text-shadow: none; } }
+    text-shadow: none;
+  }
+}
 /* Code blocks */
 pre,
 pre[class*="language-"] {
   padding: 1em;
   margin: .5em 0;
-  overflow: auto; }
+  overflow: auto;
+}
 
 :not(pre) > code,
 pre,
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #3D3F52; }
+  background: #3D3F52;
+}
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
   padding: .1em;
-  border-radius: .3em; }
+  border-radius: .3em;
+}
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: slategray; }
+  color: slategray;
+}
 
 .token.punctuation {
-  color: #fff; }
+  color: #fff;
+}
 
 .namespace {
-  opacity: .7; }
+  opacity: .7;
+}
 
 .token.property,
 .token.tag,
@@ -421,7 +472,8 @@ pre[class*="language-"] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #f72378; }
+  color: #f72378;
+}
 
 .token.selector,
 .token.attr-name,
@@ -429,49 +481,60 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #9bfb54; }
+  color: #9bfb54;
+}
 
 .token.operator,
 .token.entity,
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: #a67f59; }
+  color: #a67f59;
+}
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  color: #fbf935; }
+  color: #fbf935;
+}
 
 .token.function {
-  color: #DD4A68; }
+  color: #DD4A68;
+}
 
 .token.regex,
 .token.important,
 .token.variable {
-  color: #e90; }
+  color: #e90;
+}
 
 .token.important {
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 .token.entity {
-  cursor: help; }
+  cursor: help;
+}
 
 .token.handlebars {
-  color: #fd9720; }
-  .token.handlebars .curly-bracket,
-  .token.handlebars .helper {
-    color: #66d9ef; }
+  color: #fd9720;
+}
+.token.handlebars .curly-bracket,
+.token.handlebars .helper {
+  color: #66d9ef;
+}
 
 pre.line-numbers {
   position: relative;
   padding-top: 1em;
   padding-bottom: 1em;
   padding-left: 3.8em;
-  counter-reset: linenumber; }
+  counter-reset: linenumber;
+}
 
 pre.line-numbers > code {
-  position: relative; }
+  position: relative;
+}
 
 .line-numbers .line-numbers-rows {
   position: absolute;
@@ -489,32 +552,38 @@ pre.line-numbers > code {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none; }
+  user-select: none;
+}
 
 .line-numbers-rows > span {
   pointer-events: none;
   display: block;
-  counter-increment: linenumber; }
+  counter-increment: linenumber;
+}
 
 .line-numbers-rows > span:before {
   content: counter(linenumber);
   color: #999;
   display: block;
   padding-right: 0.8em;
-  text-align: right; }
+  text-align: right;
+}
 
 code[class*="language-"] a[href],
 pre[class*="language-"] a[href] {
   cursor: help;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 code[class*="language-"] a[href]:hover,
 pre[class*="language-"] a[href]:hover {
   cursor: help;
-  text-decoration: underline; }
+  text-decoration: underline;
+}
 
 .token a {
-  color: inherit; }
+  color: inherit;
+}
 
 code[class*="language-"] a[href].url-link,
 pre[class*="language-"] a[href].url-link,
@@ -522,7 +591,8 @@ code[class*="language-"] a[href].email-link,
 pre[class*="language-"] a[href].email-link,
 code[class*="language-"] a[href].md-link,
 pre[class*="language-"] a[href].md-link {
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 code[class*="language-"] a[href].url-link:hover,
 pre[class*="language-"] a[href].url-link:hover,
@@ -530,33 +600,40 @@ code[class*="language-"] a[href].email-link:hover,
 pre[class*="language-"] a[href].email-link:hover,
 code[class*="language-"] a[href].md-link:hover,
 pre[class*="language-"] a[href].md-link:hover {
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-  *:before, *:after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box; }
+  box-sizing: border-box;
+}
+*:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 html {
   background-color: #fff;
   color: #282828;
-  font-family: "Open sans", "Helvetica Neure", Helvetica, Arial, sans-serif; }
-  @media (max-width: 400px) {
-    html {
-      font-size: 14px;
-      line-height: 16.8px;
-      font-size: 0.875rem;
-      line-height: 1.05rem; } }
+  font-family: "Open sans", "Helvetica Neure", Helvetica, Arial, sans-serif;
+}
+@media (max-width: 400px) {
+  html {
+    font-size: 14px;
+    line-height: 16.8px;
+    font-size: 0.875rem;
+    line-height: 1.05rem;
+  }
+}
 
 body {
   font-size: 16px;
   line-height: 19px;
   font-size: 1rem;
-  line-height: 1.1875rem; }
+  line-height: 1.1875rem;
+}
 
 h1 {
   font-size: 38px;
@@ -567,7 +644,8 @@ h1 {
   line-height: 2.375rem;
   margin-bottom: 1.1875rem;
   margin-top: 2.375rem;
-  font-weight: 600; }
+  font-weight: 600;
+}
 
 h2 {
   font-size: 28px;
@@ -578,13 +656,15 @@ h2 {
   line-height: 2.375rem;
   margin-bottom: 1.1875rem;
   margin-top: 2.375rem;
-  font-weight: 600; }
+  font-weight: 600;
+}
 
 code,
 kbd,
 pre,
 samp {
-  font-family: Consolas, Monaco, "Andale Mono", monospace; }
+  font-family: Consolas, Monaco, "Andale Mono", monospace;
+}
 
 blockquote {
   border-left: 4px solid #ccc;
@@ -592,69 +672,91 @@ blockquote {
   margin: 40px;
   margin: 2.5rem;
   padding-left: 12px;
-  padding-left: 0.75rem; }
-  blockquote p {
-    display: inline; }
-  blockquote:before {
-    content: open-quote; }
-  blockquote:after {
-    content: close-quote; }
+  padding-left: 0.75rem;
+}
+blockquote p {
+  display: inline;
+}
+blockquote:before {
+  content: open-quote;
+}
+blockquote:after {
+  content: close-quote;
+}
 
 table {
-  width: 100%; }
+  width: 100%;
+}
 
 td, th {
   border: 1px solid #ccc;
   padding: 8px;
-  padding: 0.5rem; }
+  padding: 0.5rem;
+}
 
 .line-numbers-rows > span:last-child {
-  display: none; }
+  display: none;
+}
 
 .pull-left {
-  float: left !important; }
-  .pull-left:before, .pull-left:after {
-    content: "";
-    display: table; }
-  .pull-left:after {
-    clear: both; }
+  float: left !important;
+}
+.pull-left:before, .pull-left:after {
+  content: "";
+  display: table;
+}
+.pull-left:after {
+  clear: both;
+}
 
 .pull-right {
-  float: right !important; }
-  .pull-right:before, .pull-right:after {
-    content: "";
-    display: table; }
-  .pull-right:after {
-    clear: both; }
+  float: right !important;
+}
+.pull-right:before, .pull-right:after {
+  content: "";
+  display: table;
+}
+.pull-right:after {
+  clear: both;
+}
 
 .inline-list {
   margin: 0;
-  padding: 0; }
-  .inline-list li {
-    float: left; }
+  padding: 0;
+}
+.inline-list li {
+  float: left;
+}
 
 .text-left {
-  text-align: left; }
+  text-align: left;
+}
 
 .text-center {
-  text-align: center; }
+  text-align: center;
+}
 
 .text-right {
-  text-align: right; }
+  text-align: right;
+}
 
 img {
-  max-width: 100%; }
+  max-width: 100%;
+}
 
 .clearfix:before, .clearfix:after {
   content: "";
-  display: table; }
+  display: table;
+}
 .clearfix:after {
-  clear: both; }
+  clear: both;
+}
 
 .is-disabled {
   cursor: default;
   opacity: 0.5;
-  filter: alpha(opacity=50); }
+  filter: alpha(opacity=50);
+}
 
 .video-container {
   height: 0;
@@ -662,38 +764,49 @@ img {
   margin: 0.625rem 0rem;
   padding-bottom: 56.25%;
   padding-top: 25px;
-  position: relative; }
-  .video-container iframe,
-  .video-container object {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%; }
+  position: relative;
+}
+.video-container iframe,
+.video-container object {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
 
 .is-locked {
-  position: absolute; }
+  position: absolute;
+}
 
 .fork-me {
-  display: block; }
-  @media screen and (max-width: 700px) {
-    .fork-me {
-      display: none; } }
+  display: block;
+}
+@media screen and (max-width: 700px) {
+  .fork-me {
+    display: none;
+  }
+}
 
 .grid-1-4 {
-  width: 25%; }
+  width: 25%;
+}
 
 .grid-1-2 {
-  width: 50%; }
+  width: 50%;
+}
 
 .grid-1-3 {
-  width: 33.33333%; }
+  width: 33.33333%;
+}
 
 .grid-3-4 {
-  width: 75%; }
+  width: 75%;
+}
 
 .grid-full {
-  width: 100%; }
+  width: 100%;
+}
 
 .phytoplankton-header {
   background-color: #3D3F52;
@@ -711,25 +824,32 @@ img {
   right: 0;
   top: 0;
   width: 75%;
-  z-index: 1; }
-  @media screen and (max-width: 700px) {
-    .phytoplankton-header {
-      display: block;
-      transform: translate3d(0, 0, 0);
-      transition: all .25s ease-in-out;
-      width: 100%; }
-      .phytoplankton-header.is-active {
-        transform: translate3d(75%, 0, 0); } }
-    @media screen and (max-width: 700px) and (orientation: landscape) {
-      .phytoplankton-header.is-active {
-        transform: translate3d(50%, 0, 0); } }
+  z-index: 1;
+}
+@media screen and (max-width: 700px) {
+  .phytoplankton-header {
+    display: block;
+    transform: translate3d(0, 0, 0);
+    transition: all .25s ease-in-out;
+    width: 100%;
+  }
+  .phytoplankton-header.is-active {
+    transform: translate3d(75%, 0, 0);
+  }
+}
+@media screen and (max-width: 700px) and (orientation: landscape) {
+  .phytoplankton-header.is-active {
+    transform: translate3d(50%, 0, 0);
+  }
+}
 
-  .phytoplankton-header .phytoplankton-menu-icon .phytoplankton-vegan-burger {
-    display: inline-block;
-    vertical-align: baseline;
-    zoom: 1;
-    *display: inline;
-    *vertical-align: auto; }
+.phytoplankton-header .phytoplankton-menu-icon .phytoplankton-vegan-burger {
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+}
 
 .phytoplankton-menu-icon {
   cursor: pointer;
@@ -741,52 +861,62 @@ img {
   line-height: 60px;
   line-height: 3.75rem;
   padding-left: 10px;
-  padding-left: 0.625rem; }
-  .phytoplankton-menu-icon .phytoplankton-vegan-burger {
-    position: relative;
-    margin-top: 8px;
-    margin-bottom: 8px; }
-    .phytoplankton-menu-icon .phytoplankton-vegan-burger, .phytoplankton-menu-icon .phytoplankton-vegan-burger:before, .phytoplankton-menu-icon .phytoplankton-vegan-burger:after {
-      display: block;
-      width: 25px;
-      height: 3px;
-      background-color: #fff;
-      -webkit-transition-property: background-color, -webkit-transform;
-      -moz-transition-property: background-color, -moz-transform;
-      -o-transition-property: background-color, -o-transform;
-      transition-property: background-color, transform;
-      -webkit-transition-duration: 0.3s;
-      -moz-transition-duration: 0.3s;
-      -o-transition-duration: 0.3s;
-      transition-duration: 0.3s; }
-    .phytoplankton-menu-icon .phytoplankton-vegan-burger:before, .phytoplankton-menu-icon .phytoplankton-vegan-burger:after {
-      position: absolute;
-      content: ""; }
-    .phytoplankton-menu-icon .phytoplankton-vegan-burger:before {
-      top: -8px; }
-    .phytoplankton-menu-icon .phytoplankton-vegan-burger:after {
-      top: 8px; }
-  .phytoplankton-menu-icon.is-active .phytoplankton-vegan-burger {
-    background-color: transparent; }
-  .phytoplankton-menu-icon.is-active .phytoplankton-vegan-burger:before {
-    -webkit-transform: translateY(8px) rotate(45deg);
-    -moz-transform: translateY(8px) rotate(45deg);
-    -ms-transform: translateY(8px) rotate(45deg);
-    -o-transform: translateY(8px) rotate(45deg);
-    transform: translateY(8px) rotate(45deg); }
-  .phytoplankton-menu-icon.is-active .phytoplankton-vegan-burger:after {
-    -webkit-transform: translateY(-8px) rotate(-45deg);
-    -moz-transform: translateY(-8px) rotate(-45deg);
-    -ms-transform: translateY(-8px) rotate(-45deg);
-    -o-transform: translateY(-8px) rotate(-45deg);
-    transform: translateY(-8px) rotate(-45deg); }
+  padding-left: 0.625rem;
+}
+.phytoplankton-menu-icon .phytoplankton-vegan-burger {
+  position: relative;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.phytoplankton-menu-icon .phytoplankton-vegan-burger, .phytoplankton-menu-icon .phytoplankton-vegan-burger:before, .phytoplankton-menu-icon .phytoplankton-vegan-burger:after {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  -webkit-transition-property: background-color, -webkit-transform;
+  -moz-transition-property: background-color, -moz-transform;
+  -o-transition-property: background-color, -o-transform;
+  transition-property: background-color, transform;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.phytoplankton-menu-icon .phytoplankton-vegan-burger:before, .phytoplankton-menu-icon .phytoplankton-vegan-burger:after {
+  position: absolute;
+  content: "";
+}
+.phytoplankton-menu-icon .phytoplankton-vegan-burger:before {
+  top: -8px;
+}
+.phytoplankton-menu-icon .phytoplankton-vegan-burger:after {
+  top: 8px;
+}
+.phytoplankton-menu-icon.is-active .phytoplankton-vegan-burger {
+  background-color: transparent;
+}
+.phytoplankton-menu-icon.is-active .phytoplankton-vegan-burger:before {
+  -webkit-transform: translateY(8px) rotate(45deg);
+  -moz-transform: translateY(8px) rotate(45deg);
+  -ms-transform: translateY(8px) rotate(45deg);
+  -o-transform: translateY(8px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
+}
+.phytoplankton-menu-icon.is-active .phytoplankton-vegan-burger:after {
+  -webkit-transform: translateY(-8px) rotate(-45deg);
+  -moz-transform: translateY(-8px) rotate(-45deg);
+  -ms-transform: translateY(-8px) rotate(-45deg);
+  -o-transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
+}
 
 .phytoplankton-menu-icon__text {
   display: inline-block;
   vertical-align: baseline;
   zoom: 1;
   *display: inline;
-  *vertical-align: auto; }
+  *vertical-align: auto;
+}
 
 .phytoplankton-menu {
   background-color: #3D3F52;
@@ -796,272 +926,325 @@ img {
   -webkit-overflow-scrolling: touch;
   position: fixed;
   top: 0;
-  width: 25%; }
-  @media screen and (max-width: 700px) {
-    .phytoplankton-menu {
-      transform: translate3d(-100%, 0, 0);
-      transition: all .25s ease-in-out;
-      width: 75%; }
-      .phytoplankton-menu.is-active {
-        transform: translate3d(0, 0, 0); } }
-  @media screen and (max-width: 700px) and (orientation: landscape) {
-    .phytoplankton-menu {
-      width: 50%; } }
+  width: 25%;
+}
+@media screen and (max-width: 700px) {
+  .phytoplankton-menu {
+    transform: translate3d(-100%, 0, 0);
+    transition: all .25s ease-in-out;
+    width: 75%;
+  }
+  .phytoplankton-menu.is-active {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@media screen and (max-width: 700px) and (orientation: landscape) {
+  .phytoplankton-menu {
+    width: 50%;
+  }
+}
 
-  .phytoplankton-menu ul,
-  .phytoplankton-menu li {
-    list-style-type: none;
-    margin: 0;
-    padding: 0; }
-  .phytoplankton-menu li a {
-    color: #fff;
-    display: block;
-    text-decoration: none; }
-    .phytoplankton-menu li a.active, .phytoplankton-menu li a:active {
-      color: #fff; }
-    .phytoplankton-menu li a span {
-      display: block;
-      max-width: 100%;
-      overflow: hidden;
-      -webkit-text-overflow: ellipsis;
-      -moz-text-overflow: ellipsis;
-      -ms-text-overflow: ellipsis;
-      -o-text-overflow: ellipsis;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      word-wrap: normal; }
-  .phytoplankton-menu li .has-triangle {
-    border-bottom: 2px solid #343545; }
-    .phytoplankton-menu li .has-triangle > a {
-      padding: 16px;
-      padding: 1rem;
-      padding-left: 40px;
-      padding-left: 2.5rem;
-      position: relative; }
-      .phytoplankton-menu li .has-triangle > a:hover {
-        background-color: #22D400;
-        color: #fff; }
-        .phytoplankton-menu li .has-triangle > a:hover:before {
-          border-left-color: #fff;
-          transform: rotate(90deg);
-          -webkit-transform: rotate(90deg); }
-      .phytoplankton-menu li .has-triangle > a.active, .phytoplankton-menu li .has-triangle > a:active {
-        background-color: #22D400;
-        cursor: default; }
-        .phytoplankton-menu li .has-triangle > a.active:before, .phytoplankton-menu li .has-triangle > a:active:before {
-          border-right: 6px solid transparent;
-          border-left: 6px solid transparent;
-          border-top: 6px solid #fff;
-          content: " ";
-          height: 0;
-          position: absolute;
-          width: 0;
-          left: 12px;
-          margin-top: -3px;
-          margin-top: -0.1875rem;
-          transition: none; }
-        .phytoplankton-menu li .has-triangle > a.active:hover:before, .phytoplankton-menu li .has-triangle > a:active:hover:before {
-          transform: rotate(0deg);
-          -webkit-transform: rotate(0deg); }
-      .phytoplankton-menu li .has-triangle > a:before {
-        border-bottom: 6px solid transparent;
-        border-left: 6px solid #fff;
-        border-top: 6px solid transparent;
-        content: " ";
-        height: 0;
-        position: absolute;
-        width: 0;
-        left: 15px;
-        margin-top: -6px;
-        margin-top: -0.375rem;
-        top: 50%;
-        transition: all .25s ease-in-out; }
-  .phytoplankton-menu .phytoplankton-menu__header {
-    background-color: #343545;
-    padding: 16px;
-    padding: 1rem;
-    font-weight: 600; }
+.phytoplankton-menu ul,
+.phytoplankton-menu li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.phytoplankton-menu li a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+.phytoplankton-menu li a.active, .phytoplankton-menu li a:active {
+  color: #fff;
+}
+.phytoplankton-menu li a span {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  -webkit-text-overflow: ellipsis;
+  -moz-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+.phytoplankton-menu li .has-triangle {
+  border-bottom: 2px solid #343545;
+}
+.phytoplankton-menu li .has-triangle > a {
+  padding: 16px;
+  padding: 1rem;
+  padding-left: 40px;
+  padding-left: 2.5rem;
+  position: relative;
+}
+.phytoplankton-menu li .has-triangle > a:hover {
+  background-color: #22D400;
+  color: #fff;
+}
+.phytoplankton-menu li .has-triangle > a:hover:before {
+  border-left-color: #fff;
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+}
+.phytoplankton-menu li .has-triangle > a.active, .phytoplankton-menu li .has-triangle > a:active {
+  background-color: #22D400;
+  cursor: default;
+}
+.phytoplankton-menu li .has-triangle > a.active:before, .phytoplankton-menu li .has-triangle > a:active:before {
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  border-top: 6px solid #fff;
+  content: " ";
+  height: 0;
+  position: absolute;
+  width: 0;
+  left: 12px;
+  margin-top: -3px;
+  margin-top: -0.1875rem;
+  transition: none;
+}
+.phytoplankton-menu li .has-triangle > a.active:hover:before, .phytoplankton-menu li .has-triangle > a:active:hover:before {
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+}
+.phytoplankton-menu li .has-triangle > a:before {
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid #fff;
+  border-top: 6px solid transparent;
+  content: " ";
+  height: 0;
+  position: absolute;
+  width: 0;
+  left: 15px;
+  margin-top: -6px;
+  margin-top: -0.375rem;
+  top: 50%;
+  transition: all .25s ease-in-out;
+}
+.phytoplankton-menu .phytoplankton-menu__header {
+  background-color: #343545;
+  padding: 16px;
+  padding: 1rem;
+  font-weight: 600;
+}
+.phytoplankton-menu > ul > li {
+  color: #fff;
+  font-size: 14px;
+  line-height: 16.8px;
+  font-size: 0.875rem;
+  line-height: 1.05rem;
+  text-transform: uppercase;
+}
+@media screen and (max-width: 700px) {
   .phytoplankton-menu > ul > li {
-    color: #fff;
-    font-size: 14px;
-    line-height: 16.8px;
-    font-size: 0.875rem;
-    line-height: 1.05rem;
-    text-transform: uppercase; }
-    @media screen and (max-width: 700px) {
-      .phytoplankton-menu > ul > li {
-        font-size: 20px;
-        line-height: 24px;
-        font-size: 1.25rem;
-        line-height: 1.5rem; } }
-  .phytoplankton-menu > ul > li > ul > li {
-    text-transform: none; }
-    .phytoplankton-menu > ul > li > ul > li > ul {
-      margin-bottom: 16px;
-      margin-bottom: 1rem;
-      margin-top: 16px;
-      margin-top: 1rem; }
-  .phytoplankton-menu > ul > li > ul > li > ul > li {
-    padding-left: 30px;
-    padding-left: 1.875rem;
-    padding-right: 20px;
-    padding-right: 1.25rem; }
-    .phytoplankton-menu > ul > li > ul > li > ul > li a {
-      color: #969696;
-      padding-bottom: 4px;
-      padding-bottom: 0.25rem;
-      padding-left: 10px;
-      padding-left: 0.625rem;
-      padding-top: 4px;
-      padding-top: 0.25rem; }
-      .phytoplankton-menu > ul > li > ul > li > ul > li a:hover {
-        border-left: 1px solid #fff;
-        color: #fff;
-        padding-left: 9px;
-        padding-left: 0.5625rem; }
-    .phytoplankton-menu > ul > li > ul > li > ul > li.active > a {
-      border-left: 2px solid #fff;
-      color: #fff;
-      cursor: default;
-      padding-left: 8px;
-      padding-left: 0.5rem; }
-  .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li a {
-    padding-left: 30px;
-    padding-left: 1.875rem; }
-    .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li a:hover {
-      padding-left: 29px;
-      padding-left: 1.8125rem; }
-  .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li.active > a {
-    border-left: 2px solid #fff;
-    color: #fff;
-    cursor: default;
-    padding-left: 28px;
-    padding-left: 1.75rem; }
+    font-size: 20px;
+    line-height: 24px;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
+}
+.phytoplankton-menu > ul > li > ul > li {
+  text-transform: none;
+}
+.phytoplankton-menu > ul > li > ul > li > ul {
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
+  margin-top: 16px;
+  margin-top: 1rem;
+}
+.phytoplankton-menu > ul > li > ul > li > ul > li {
+  padding-left: 30px;
+  padding-left: 1.875rem;
+  padding-right: 20px;
+  padding-right: 1.25rem;
+}
+.phytoplankton-menu > ul > li > ul > li > ul > li a {
+  color: #969696;
+  padding-bottom: 4px;
+  padding-bottom: 0.25rem;
+  padding-left: 10px;
+  padding-left: 0.625rem;
+  padding-top: 4px;
+  padding-top: 0.25rem;
+}
+.phytoplankton-menu > ul > li > ul > li > ul > li a:hover {
+  border-left: 1px solid #fff;
+  color: #fff;
+  padding-left: 9px;
+  padding-left: 0.5625rem;
+}
+.phytoplankton-menu > ul > li > ul > li > ul > li.active > a {
+  border-left: 2px solid #fff;
+  color: #fff;
+  cursor: default;
+  padding-left: 8px;
+  padding-left: 0.5rem;
+}
+.phytoplankton-menu > ul > li > ul > li > ul > li > ul > li a {
+  padding-left: 30px;
+  padding-left: 1.875rem;
+}
+.phytoplankton-menu > ul > li > ul > li > ul > li > ul > li a:hover {
+  padding-left: 29px;
+  padding-left: 1.8125rem;
+}
+.phytoplankton-menu > ul > li > ul > li > ul > li > ul > li.active > a {
+  border-left: 2px solid #fff;
+  color: #fff;
+  cursor: default;
+  padding-left: 28px;
+  padding-left: 1.75rem;
+}
 
 .phytoplankton-page {
   float: right;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding: 0 8%;
-  width: 75%; }
-  @media screen and (max-width: 700px) {
-    .phytoplankton-page {
-      margin-top: 60px;
-      margin-top: 3.75rem;
-      padding: 0 4%;
-      transform: translate3d(0, 0, 0);
-      transition: all .25s ease-in-out;
-      width: 100%; }
-      .phytoplankton-page.is-active {
-        transform: translate3d(75%, 0, 0); } }
-    @media screen and (max-width: 700px) and (orientation: landscape) {
-      .phytoplankton-page.is-active {
-        transform: translate3d(50%, 0, 0); } }
+  width: 75%;
+}
+@media screen and (max-width: 700px) {
+  .phytoplankton-page {
+    margin-top: 60px;
+    margin-top: 3.75rem;
+    padding: 0 4%;
+    transform: translate3d(0, 0, 0);
+    transition: all .25s ease-in-out;
+    width: 100%;
+  }
+  .phytoplankton-page.is-active {
+    transform: translate3d(75%, 0, 0);
+  }
+}
+@media screen and (max-width: 700px) and (orientation: landscape) {
+  .phytoplankton-page.is-active {
+    transform: translate3d(50%, 0, 0);
+  }
+}
 
-  .phytoplankton-page ul ul {
-    list-style-type: disc; }
-  .phytoplankton-page p, .phytoplankton-page ul, .phytoplankton-page ol, .phytoplankton-page pre, .phytoplankton-page table, .phytoplankton-page blockquote {
-    margin-bottom: 19px;
-    margin-top: 19px;
-    margin-bottom: 1.1875rem;
-    margin-top: 1.1875rem; }
-  .phytoplankton-page p a,
-  .phytoplankton-page ol a,
-  .phytoplankton-page ul a {
-    color: #22D400;
-    text-decoration: none;
-    white-space: normal;
-    -ms-word-break: break-all;
-    word-break: break-all;
-    /* Non standard for webkit */
-    word-break: break-word;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
-    transition: color, .25s, ease-in-out; }
-    .phytoplankton-page p a:hover,
-    .phytoplankton-page ol a:hover,
-    .phytoplankton-page ul a:hover {
-      color: #1ba600;
-      text-decoration: underline; }
-  .phytoplankton-page p code,
-  .phytoplankton-page ol code,
-  .phytoplankton-page ul code {
-    border-radius: 4px;
-    display: inline-block;
-    vertical-align: baseline;
-    zoom: 1;
-    *display: inline;
-    *vertical-align: auto;
-    font-size: 14px;
-    line-height: 17px;
-    font-size: 0.875rem;
-    line-height: 1.0625rem;
-    margin-left: 2px;
-    margin-left: 0.125rem;
-    margin-right: 2px;
-    margin-right: 0.125rem;
-    padding-bottom: 2px;
-    padding-bottom: 0.125rem;
-    padding-left: 4px;
-    padding-left: 0.25rem;
-    padding-top: 2px;
-    padding-top: 0.125rem;
-    padding-right: 4px;
-    padding-right: 0.25rem;
-    white-space: normal;
-    -ms-word-break: break-all;
-    word-break: break-all;
-    /* Non standard for webkit */
-    word-break: break-word;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto; }
-  .phytoplankton-page pre,
-  .phytoplankton-page pre[class*="language-"] {
-    border-radius: 6px;
-    font-size: 14px;
-    margin: 0;
-    margin-bottom: 16px;
-    margin-bottom: 1rem; }
-    .phytoplankton-page pre + .code-lang, .phytoplankton-page pre + .tabs__item,
-    .phytoplankton-page pre[class*="language-"] + .code-lang,
-    .phytoplankton-page pre[class*="language-"] + .tabs__item {
-      margin-top: 20px;
-      margin-top: 1.25rem; }
-  .phytoplankton-page .tabs {
-    margin: 0;
-    padding: 0;
-    position: relative; }
-    .phytoplankton-page .tabs + pre + pre {
-      display: none; }
-  .phytoplankton-page .tabs__item {
-    cursor: pointer;
-    opacity: 0.5;
-    filter: alpha(opacity=50);
-    transition: opacity, .25s, ease-in-out; }
-    .phytoplankton-page .tabs__item.is-active {
-      cursor: default;
-      opacity: 1;
-      filter: alpha(opacity=100); }
-      .phytoplankton-page .tabs__item.is-active:hover {
-        opacity: 1;
-        filter: alpha(opacity=100); }
-    .phytoplankton-page .tabs__item:hover {
-      opacity: 1;
-      filter: alpha(opacity=100); }
-    .phytoplankton-page .tabs__item + .tabs__item {
-      margin-left: 10px;
-      margin-left: 0.625rem; }
+.phytoplankton-page ul ul {
+  list-style-type: disc;
+}
+.phytoplankton-page p, .phytoplankton-page ul, .phytoplankton-page ol, .phytoplankton-page pre, .phytoplankton-page table, .phytoplankton-page blockquote {
+  margin-bottom: 19px;
+  margin-top: 19px;
+  margin-bottom: 1.1875rem;
+  margin-top: 1.1875rem;
+}
+.phytoplankton-page p a,
+.phytoplankton-page ol a,
+.phytoplankton-page ul a {
+  color: #22D400;
+  text-decoration: none;
+  white-space: normal;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  /* Non standard for webkit */
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  transition: color, .25s, ease-in-out;
+}
+.phytoplankton-page p a:hover,
+.phytoplankton-page ol a:hover,
+.phytoplankton-page ul a:hover {
+  color: #1ba600;
+  text-decoration: underline;
+}
+.phytoplankton-page p code,
+.phytoplankton-page ol code,
+.phytoplankton-page ul code {
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+  font-size: 14px;
+  line-height: 17px;
+  font-size: 0.875rem;
+  line-height: 1.0625rem;
+  margin-left: 2px;
+  margin-left: 0.125rem;
+  margin-right: 2px;
+  margin-right: 0.125rem;
+  padding-bottom: 2px;
+  padding-bottom: 0.125rem;
+  padding-left: 4px;
+  padding-left: 0.25rem;
+  padding-top: 2px;
+  padding-top: 0.125rem;
+  padding-right: 4px;
+  padding-right: 0.25rem;
+  white-space: normal;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  /* Non standard for webkit */
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+.phytoplankton-page pre,
+.phytoplankton-page pre[class*="language-"] {
+  border-radius: 6px;
+  font-size: 14px;
+  margin: 0;
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
+}
+.phytoplankton-page pre + .code-lang, .phytoplankton-page pre + .tabs__item,
+.phytoplankton-page pre[class*="language-"] + .code-lang,
+.phytoplankton-page pre[class*="language-"] + .tabs__item {
+  margin-top: 20px;
+  margin-top: 1.25rem;
+}
+.phytoplankton-page .tabs {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.phytoplankton-page .tabs + pre + pre {
+  display: none;
+}
+.phytoplankton-page .tabs__item {
+  cursor: pointer;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  transition: opacity, .25s, ease-in-out;
+}
+.phytoplankton-page .tabs__item.is-active {
+  cursor: default;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.phytoplankton-page .tabs__item.is-active:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.phytoplankton-page .tabs__item:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.phytoplankton-page .tabs__item + .tabs__item {
+  margin-left: 10px;
+  margin-left: 0.625rem;
+}
 
 .phytoplankton-page__item {
-  position: relative; }
-  .phytoplankton-page__item + .phytoplankton-page__item {
-    border-top: 1px solid #ccc;
-    margin-top: 50px;
-    margin-top: 3.125rem; }
+  position: relative;
+}
+.phytoplankton-page__item + .phytoplankton-page__item {
+  border-top: 1px solid #ccc;
+  margin-top: 50px;
+  margin-top: 3.125rem;
+}
 
 .code-lang, .phytoplankton-page .tabs__item {
   background-color: #343545;
@@ -1075,11 +1258,13 @@ img {
   *vertical-align: auto;
   padding: 8px 20px;
   padding: 0.5rem 1.25rem;
-  text-transform: uppercase; }
-  .code-lang + pre, .phytoplankton-page .tabs__item + pre,
-  .code-lang + pre[class*="language-"],
-  .phytoplankton-page .tabs__item + pre[class*="language-"] {
-    border-radius: 0 6px 6px 6px; }
+  text-transform: uppercase;
+}
+.code-lang + pre, .phytoplankton-page .tabs__item + pre,
+.code-lang + pre[class*="language-"],
+.phytoplankton-page .tabs__item + pre[class*="language-"] {
+  border-radius: 0 6px 6px 6px;
+}
 
 .code-render {
   border: 1px solid #ccc;
@@ -1087,23 +1272,28 @@ img {
   border-radius: 0 6px 0 0;
   padding: 40px;
   padding: 2.5rem;
-  position: relative; }
-  .code-render + pre,
-  .code-render + pre[class*="language-"] {
-    border-radius: 0 0 6px 6px; }
+  position: relative;
+}
+.code-render + pre,
+.code-render + pre[class*="language-"] {
+  border-radius: 0 0 6px 6px;
+}
 
 .code-render--tabs {
   margin-bottom: -35px;
   margin-bottom: -2.1875rem;
   padding-bottom: 70px;
-  padding-bottom: 4.375rem; }
-  .code-render--tabs + .tabs + pre,
-  .code-render--tabs + .tabs + pre[class*="language-"] {
-    border-radius: 0 0 6px 6px; }
-    .code-render--tabs + .tabs + pre + pre,
-    .code-render--tabs + .tabs + pre + pre[class*="language-"],
-    .code-render--tabs + .tabs + pre[class*="language-"] + pre,
-    .code-render--tabs + .tabs + pre[class*="language-"] + pre[class*="language-"] {
-      border-radius: 0 0 6px 6px; }
+  padding-bottom: 4.375rem;
+}
+.code-render--tabs + .tabs + pre,
+.code-render--tabs + .tabs + pre[class*="language-"] {
+  border-radius: 0 0 6px 6px;
+}
+.code-render--tabs + .tabs + pre + pre,
+.code-render--tabs + .tabs + pre + pre[class*="language-"],
+.code-render--tabs + .tabs + pre[class*="language-"] + pre,
+.code-render--tabs + .tabs + pre[class*="language-"] + pre[class*="language-"] {
+  border-radius: 0 0 6px 6px;
+}
 
 /*# sourceMappingURL=main.css.map */

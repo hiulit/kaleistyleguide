@@ -38,9 +38,11 @@ $primary-color: #b000b5;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   border-radius: 10px;
-  padding: 20px; }
-  .box p {
-    font-family: Helvetica, sans-serif;
-    color: #b000b5; }
+  padding: 20px;
+}
+.box p {
+  font-family: Helvetica, sans-serif;
+  color: #b000b5;
+}
 
 /*# sourceMappingURL=scss.css.map */
