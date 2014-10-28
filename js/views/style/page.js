@@ -163,6 +163,9 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 							findImports(stylesheet, configPath);
 							// Writes style sheet so sass.js can compile it.
 							Sass.writeFile(styleUrl, stylesheet);
+							Sass.options({
+								style: Sass.style.expanded
+							});
 							// Compiles Sass stylesheet into CSS.
 							var stylesheetCompiled = Sass.compile(stylesheet);
 							// Parses the CSS.
