@@ -231,7 +231,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			// Removes all <p> that contains @javascript
 			$('p:contains("@javascript")').remove();
 			// Adds class so Prism's Line Number plugin can work.
-			$('.code-lang + pre, .code-render + pre, pre[data-src]').addClass('line-numbers');
+			$('.code-lang + pre, .code-render + pre, pre[data-src], .tabs + pre, .tabs + pre + pre').addClass('line-numbers');
 			// Prism's colour coding in <code> blocks.
 			Prism.highlightAll();
 			// Prism's File Highlight plugin function.
@@ -341,17 +341,20 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			var page = {
 				blocks: [],
 				css: '',
+				cssArray: [],
+				styles: '',
 				stylesheets: []
 			};
 
 			_.each(stylesheet.cssRules, function(rule) {
 				switch (rule.type) {
-					// Standard rule?
+					// Standard rule.
 					case 1:
+						page.cssArray.push('.code-render ' + rule.parsedCssText);
 						break;
-					// Import Rule (@import)
+					// Import Rule (@import).
 					case 3:
-						// Remove all the @import
+						// Remove all the @import.
 						stylesheet.deleteRule(rule);
 						break;
 					// Comment Block.
@@ -363,38 +366,10 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				}
 			});
 
-			page.css = stylesheetCompiled;
-			page.css = '.code-render { ' + page.css + ' }';
-			var src = page.css;
+			page.css = page.cssArray.join('');
 
-			// Remove CSS comments.
-			if (less.render) { // Less v2.0.0 and above (not working actually).
-				less.render(src, function (e, result) {
-					var s = src;
-					if (!e) {
-						console.log(result.css);
-					}
-					else {
-						showError(e);
-					}
-				});
-			}
-			else { // Less v1.7.5 and below.
-				var parser = new(less.Parser);
-				parser.parse(src, function (e, tree) {
-					if (!e) {
-						try {
-							page.css = tree.toCSS({ compress: true });
-						}
-						catch (e) {
-							showError(e);
-						}
-					}
-					else {
-						showError(e);
-					}
-				});
-			}
+			page.styles = stylesheetCompiled;
+			page.styles = that.remove_comments(page.styles);
 
 			return page;
 		},
@@ -453,36 +428,10 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			return page;
 		},
 
-		parse_styles: function(stylesheet) {
-			var src = stylesheet;
-			// Remove CSS comments.
-			if (less.render) { // Less v2.0.0 and above (not working actually).
-				less.render(src, function (e, result) {
-					var s = src;
-					if (!e) {
-						console.log(result.css);
-					}
-					else {
-						showError(e);
-					}
-				});
-			}
-			else { // Less v1.7.5 and below.
-				var parser = new(less.Parser);
-				parser.parse(src, function (e, tree) {
-					if (!e) {
-						try {
-							stylesheet = tree.toCSS({ compress: true });
-						}
-						catch (e) {
-							showError(e);
-						}
-					}
-					else {
-						showError(e);
-					}
-				});
-			}
+		remove_comments: function(stylesheet) {
+			// Remove (and trim) CSS comments.
+			stylesheet = stylesheet.replace(/(\/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*?\*\/)/g, ''); // Remove comments.
+			stylesheet = stylesheet.replace(/(^\s+|\s+$)/g,''); // Trim leading and trailing.
 			return stylesheet;
 		},
 
@@ -549,23 +498,33 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 						// If it's "markup" (html):
 						// Push the code for an example with language header.
 						} else if(comment.lang === 'markup') {
-							var lala = that.parse_styles(stylesheetCompiled);
-							console.log(lala);
-							block.content.push({
-								type: 'html',
-								text: '<div class="code-lang">Example</div>' +
-										'<div class="code-render code-render--tabs clearfix">' + comment.text + '</div>' +
-										'<ul class="tabs">' +
-										'<li class="tabs__item is-active" data-tab="tab-1">HTML</li>' +
-										'<li class="tabs__item" data-tab="tab-2">Styles</li>' +
-										'</ul>'
-							});
-							block.content.push({
-								type: 'code',
-								lang: 'scss',
-								text: lala
-							});
-							block.content.push(comment);
+							var lala = that.remove_comments(stylesheetCompiled);
+							if(lala) { // If has styles (CSS)
+								block.content.push({
+									type: 'html',
+									text: '<div class="code-lang">Example</div>' +
+											'<div class="code-render code-render--tabs clearfix">' + comment.text + '</div>' +
+											'<ul class="tabs">' +
+											'<li class="tabs__item is-active" data-tab="tab-1">HTML</li>' +
+											'<li class="tabs__item" data-tab="tab-2">Styles</li>' +
+											'</ul>'
+								});
+								block.content.push(comment);
+								block.content.push({
+									type: 'code',
+									lang: 'scss',
+									text: lala
+								});
+								// block.content.push(comment);
+							} else {
+								block.content.push({
+									type: 'html',
+									text: '<div class="code-lang">Example</div>' +
+											'<div class="code-render clearfix">' + comment.text + '</div>' +
+											'<div class="code-lang">HTML</div>'
+								});
+								block.content.push(comment);
+							}
 						// If it's "hbs":
 						} else if(comment.lang === 'hbs') {
 							var lala = that.parse_hbs(comment.text);
