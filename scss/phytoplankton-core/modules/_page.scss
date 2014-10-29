@@ -70,6 +70,9 @@
 		+ pre {
 			+ pre {
 				display: none;
+				+ pre {
+					display: none;
+				}
 			}
 		}
 	}
@@ -140,6 +143,10 @@
 			+ pre,
 			+ pre[class*="language-"] {
 				border-radius: 0 0 $borderRadiusPx $borderRadiusPx;
+				+ pre,
+				+ pre[class*="language-"] {
+					border-radius: 0 0 $borderRadiusPx $borderRadiusPx;
+				}
 			}
 		}
 	}

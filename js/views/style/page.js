@@ -65,7 +65,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 					case 'css':
 							parser = new jscssp();
 							stylesheet = parser.parse(stylesheet, false, true);
-							page = that.compute_css(stylesheet, stylesheetCompiled);
+							var cssCompiled = that.remove_comments(stylesheetCompiled);
+							page = that.compute_css(stylesheet, stylesheetCompiled, cssCompiled, styleExt);
 							that.render_page(page);
 						break;
 					case 'less':
@@ -87,7 +88,9 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 								parser.parse(stylesheet, function (e, tree) {
 									if (!e) {
 										try {
-											page = that.compute_less(tree, stylesheetCompiled);
+											var cssCompiled = tree.toCSS({ compress: false});
+											cssCompiled = that.remove_comments(cssCompiled);
+											page = that.compute_less(tree, stylesheetCompiled, cssCompiled, styleExt);
 											that.render_page(page);
 										}
 										catch (e) {
@@ -99,17 +102,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 									}
 								});
 							}
-							// parser = new(less.Parser)({
-							// 	// filename: stylesheet,
-							// 	// rootpath: configDir + '/',
-							// 	// relativeUrls: true,
-							// 	// insecure: true,
-							// 	// paths: [configDir + 'less/'], // Specify search paths for @import directives.
-							// });
-							// parser.parse(stylesheet, function (err, tree) {
-							// 	page = that.compute_less(tree, stylesheetCompiled);
-							// 	that.render_page(page);
-							// });
 						break;
 					case 'sass':
 					case 'scss':
@@ -168,10 +160,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 							});
 							// Compiles Sass stylesheet into CSS.
 							var stylesheetCompiled = Sass.compile(stylesheet);
+							var cssCompiled = that.remove_comments(stylesheet);
 							// Parses the CSS.
 							parser = new jscssp();
 							stylesheet = parser.parse(stylesheetCompiled, false, true);
-							page = that.compute_css(stylesheet, stylesheetCompiled);
+							page = that.compute_css(stylesheet, stylesheetCompiled, cssCompiled, styleExt);
 							that.render_page(page);
 						});
 					} else {
@@ -234,7 +227,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			// Removes all <p> that contains @javascript
 			$('p:contains("@javascript")').remove();
 			// Adds class so Prism's Line Number plugin can work.
-			$('.code-lang + pre, .code-render + pre, pre[data-src], .tabs + pre, .tabs + pre + pre').addClass('line-numbers');
+			$('.code-lang + pre, .code-render + pre, pre[data-src], .tabs + pre, .tabs + pre + pre, .tabs + pre + pre + pre').addClass('line-numbers');
 			// Prism's colour coding in <code> blocks.
 			Prism.highlightAll();
 			// Prism's File Highlight plugin function.
@@ -270,14 +263,25 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				var tabID = $(this).attr('data-tab');
 				if(tabID === 'tab-1') {
 					$(this).next().removeClass('is-active');
-					$('.tabs + pre + pre').hide();
+					$(this).next().next().removeClass('is-active');
 					$(this).addClass('is-active');
+					$('.tabs + pre + pre').hide();
+					$('.tabs + pre + pre + pre').hide();
 					$('.tabs + pre').show();
 				} else if (tabID === 'tab-2') {
 					$(this).prev().removeClass('is-active');
-					$('.tabs + pre').hide();
+					$(this).next().removeClass('is-active');
 					$(this).addClass('is-active');
+					$('.tabs + pre').hide();
+					$('.tabs + pre + pre + pre').hide();
 					$('.tabs + pre + pre').show();
+				} else if (tabID === 'tab-3') {
+					$(this).prev().removeClass('is-active');
+					$(this).prev().prev().removeClass('is-active');
+					$(this).addClass('is-active');
+					$('.tabs + pre').hide();
+					$('.tabs + pre + pre').hide();
+					$('.tabs + pre + pre + pre').show();
 				}
 			});
 
@@ -340,7 +344,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 
 		},
 
-		compute_css: function(stylesheet, stylesheetCompiled) {
+		compute_css: function(stylesheet, stylesheetCompiled, cssCompiled, styleExt) {
 			var page = {
 				blocks: [],
 				css: '',
@@ -348,6 +352,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				styles: '',
 				stylesheets: []
 			};
+
+			console.log(styleExt);
 
 			_.each(stylesheet.cssRules, function(rule) {
 				switch (rule.type) {
@@ -363,7 +369,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 					// Comment Block.
 					case 101:
 						if(window.location.hash !== '') {
-							page.blocks = page.blocks.concat(that.parse_commentblock(rule.parsedCssText, stylesheetCompiled))
+							page.blocks = page.blocks.concat(that.parse_commentblock(rule.parsedCssText, stylesheetCompiled, cssCompiled, styleExt))
 						}
 						break;
 				}
@@ -377,23 +383,19 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			return page;
 		},
 
-		compute_less: function(stylesheet, stylesheetCompiled) {
+		compute_less: function(stylesheet, stylesheetCompiled, cssCompiled, styleExt) {
 			var page = {
 				blocks: [],
 				css: '',
-				cssArray: [],
-				styles: '',
 				stylesheets: []
 			};
 
 			_.each(stylesheet.rules, function(rule) {
 				// Comment block.
 				if (rule.silent === false) {
-					page.blocks = page.blocks.concat(that.parse_commentblock(rule.value, stylesheetCompiled));
+					page.blocks = page.blocks.concat(that.parse_commentblock(rule.value, stylesheetCompiled, cssCompiled, styleExt));
 				// Standard Rule.
 				} else if (rule.rules !== null) {
-					console.log(rule.rules);
-					// page.cssArray.push('.code-render ' + rule.parsedCssText);
 				//Import Rule
 				} else if (rule.path !== null) {
 				}
@@ -462,7 +464,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			];
 		},
 
-		parse_commentblock: function (comment_block_text, stylesheetCompiled) {
+		parse_commentblock: function (comment_block_text, stylesheetCompiled, cssCompiled, styleExt) {
 			// Removes /* & */.
 			comment_block_text = comment_block_text.replace(/(?:\/\*)|(?:\*\/)/gi, '');
 
@@ -507,22 +509,36 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 						} else if(comment.lang === 'markup') {
 							var lala = that.remove_comments(stylesheetCompiled);
 							if(lala) { // If has styles (CSS)
+								// Pushes the example
 								block.content.push({
 									type: 'html',
 									text: '<div class="code-lang">Example</div>' +
-											'<div class="code-render code-render--tabs clearfix">' + comment.text + '</div>' +
-											'<ul class="tabs">' +
+											'<div class="code-render code-render--tabs clearfix">' + comment.text + '</div>'
+								});
+								// Pushes the tabs
+								block.content.push({
+									type: 'html',
+									text: '<ul class="tabs">' +
 											'<li class="tabs__item is-active" data-tab="tab-1">HTML</li>' +
-											'<li class="tabs__item" data-tab="tab-2">Styles</li>' +
+											'<li class="tabs__item" data-tab="tab-2">' + styleExt + '</li>' +
+											'<li class="tabs__item" data-tab="tab-3">CSS</li>' +
 											'</ul>'
 								});
+
 								block.content.push(comment);
+
+								//Pushes the uncompiled styles
 								block.content.push({
 									type: 'code',
-									lang: 'scss',
+									lang: styleExt,
 									text: lala
 								});
-								// block.content.push(comment);
+								//Pushes the compiled styles
+								block.content.push({
+									type: 'code',
+									lang: 'css',
+									text: cssCompiled
+								});
 							} else {
 								block.content.push({
 									type: 'html',
