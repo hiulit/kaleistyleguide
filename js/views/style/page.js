@@ -91,7 +91,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 											that.render_page(page);
 										}
 										catch (e) {
-											showError(e);
+											console.log(e);
 										}
 									}
 									else {
@@ -381,15 +381,19 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			var page = {
 				blocks: [],
 				css: '',
+				cssArray: [],
+				styles: '',
 				stylesheets: []
 			};
 
 			_.each(stylesheet.rules, function(rule) {
 				// Comment block.
 				if (rule.silent === false) {
-					page.blocks = page.blocks.concat(that.parse_commentblock(rule.value));
+					page.blocks = page.blocks.concat(that.parse_commentblock(rule.value, stylesheetCompiled));
 				// Standard Rule.
 				} else if (rule.rules !== null) {
+					console.log(rule.rules);
+					// page.cssArray.push('.code-render ' + rule.parsedCssText);
 				//Import Rule
 				} else if (rule.path !== null) {
 				}
