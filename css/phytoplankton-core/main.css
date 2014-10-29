@@ -1213,6 +1213,9 @@ img {
 .phytoplankton-page .tabs + pre + pre {
   display: none;
 }
+.phytoplankton-page .tabs + pre + pre + pre {
+  display: none;
+}
 .phytoplankton-page .tabs__item {
   cursor: pointer;
   opacity: 0.5;
@@ -1293,6 +1296,16 @@ img {
 .code-render--tabs + .tabs + pre + pre[class*="language-"],
 .code-render--tabs + .tabs + pre[class*="language-"] + pre,
 .code-render--tabs + .tabs + pre[class*="language-"] + pre[class*="language-"] {
+  border-radius: 0 0 6px 6px;
+}
+.code-render--tabs + .tabs + pre + pre + pre,
+.code-render--tabs + .tabs + pre + pre + pre[class*="language-"],
+.code-render--tabs + .tabs + pre + pre[class*="language-"] + pre,
+.code-render--tabs + .tabs + pre + pre[class*="language-"] + pre[class*="language-"],
+.code-render--tabs + .tabs + pre[class*="language-"] + pre + pre,
+.code-render--tabs + .tabs + pre[class*="language-"] + pre + pre[class*="language-"],
+.code-render--tabs + .tabs + pre[class*="language-"] + pre[class*="language-"] + pre,
+.code-render--tabs + .tabs + pre[class*="language-"] + pre[class*="language-"] + pre[class*="language-"] {
   border-radius: 0 0 6px 6px;
 }
 
