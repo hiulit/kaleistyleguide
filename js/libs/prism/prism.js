@@ -786,6 +786,10 @@ Prism.languages.insertBefore('scss', 'ignore', {
 	'operator': /\s+([-+]{1,2}|={1,2}|!=|\|?\||\?|\*|\/|\%)\s+/g
 });
 ;
+
+// This is a "feature" that doesn't come with the default plugin.
+Prism.languages.less = Prism.languages.extend('scss');
+
 Prism.languages.bash = Prism.languages.extend('clike', {
 	'comment': {
 		pattern: /(^|[^"{\\])(#.*?(\r?\n|$))/g,
