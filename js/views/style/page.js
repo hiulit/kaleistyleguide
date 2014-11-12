@@ -59,14 +59,14 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 					blocks: []
 				};
 
-				var stylesheetCompiled = stylesheet;
+				var cssUncompiled = stylesheet;
 
 				switch (result[2]) {
 					case 'css':
 							parser = new jscssp();
-							stylesheet = parser.parse(stylesheet, false, true);
-							var cssCompiled = that.remove_comments(stylesheetCompiled);
-							page = that.compute_css(stylesheet, stylesheetCompiled, cssCompiled, styleExt);
+							parsedStylesheet = parser.parse(stylesheet, false, true);
+							var cssCompiled = that.remove_comments(cssUncompiled);
+							page = that.compute_css(parsedStylesheet, cssUncompiled, cssCompiled, styleExt);
 							that.render_page(page);
 						break;
 					case 'less':
@@ -90,7 +90,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 										try {
 											var cssCompiled = tree.toCSS({ compress: false});
 											cssCompiled = that.remove_comments(cssCompiled);
-											page = that.compute_less(tree, stylesheetCompiled, cssCompiled, styleExt);
+											page = that.compute_less(tree, cssUncompiled, cssCompiled, styleExt);
 											that.render_page(page);
 										}
 										catch (e) {
@@ -159,12 +159,13 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 								style: Sass.style.expanded
 							});
 							// Compiles Sass stylesheet into CSS.
-							var stylesheetCompiled = Sass.compile(stylesheet);
-							var cssCompiled = that.remove_comments(stylesheet);
+							var cssCompiled = Sass.compile(stylesheet);
+							// cssCompiled = that.remove_comments(cssCompiled);
+							var cssUncompiled = that.remove_comments(stylesheet);
 							// Parses the CSS.
 							parser = new jscssp();
-							stylesheet = parser.parse(stylesheetCompiled, false, true);
-							page = that.compute_css(stylesheet, stylesheetCompiled, cssCompiled, styleExt);
+							parsedStylesheet = parser.parse(cssCompiled, false, true);
+							page = that.compute_css(parsedStylesheet, cssUncompiled, cssCompiled, styleExt);
 							that.render_page(page);
 						});
 					} else {
@@ -344,56 +345,55 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 
 		},
 
-		compute_css: function(stylesheet, stylesheetCompiled, cssCompiled, styleExt) {
+		compute_css: function(parsedStylesheet, cssUncompiled, cssCompiled, styleExt) {
 			var page = {
 				blocks: [],
 				css: '',
-				cssArray: [],
-				styles: '',
-				stylesheets: []
+				// styles: '',
+				// stylesheets: []
 			};
 
-			console.log(styleExt);
+			var cssArray = [];
 
-			_.each(stylesheet.cssRules, function(rule) {
+			_.each(parsedStylesheet.cssRules, function(rule) {
 				switch (rule.type) {
 					// Standard rule.
 					case 1:
-						page.cssArray.push('.code-render ' + rule.parsedCssText);
+						cssArray.push('.code-render ' + rule.parsedCssText);
 						break;
 					// Import Rule (@import).
 					case 3:
 						// Remove all the @import.
-						stylesheet.deleteRule(rule);
+						parsedStylesheet.deleteRule(rule);
 						break;
 					// Comment Block.
 					case 101:
 						if(window.location.hash !== '') {
-							page.blocks = page.blocks.concat(that.parse_commentblock(rule.parsedCssText, stylesheetCompiled, cssCompiled, styleExt))
+							page.blocks = page.blocks.concat(that.parse_commentblock(rule.parsedCssText, cssUncompiled, cssCompiled, styleExt))
 						}
 						break;
 				}
 			});
 
-			page.css = page.cssArray.join('');
+			page.css = cssArray.join('');
 
-			page.styles = stylesheetCompiled;
-			page.styles = that.remove_comments(page.styles);
+			// page.styles = cssUncompiled;
+			// page.styles = that.remove_comments(page.styles);
 
 			return page;
 		},
 
-		compute_less: function(stylesheet, stylesheetCompiled, cssCompiled, styleExt) {
+		compute_less: function(stylesheet, cssUncompiled, cssCompiled, styleExt) {
 			var page = {
 				blocks: [],
 				css: '',
-				stylesheets: []
+				// stylesheets: []
 			};
 
 			_.each(stylesheet.rules, function(rule) {
 				// Comment block.
 				if (rule.silent === false) {
-					page.blocks = page.blocks.concat(that.parse_commentblock(rule.value, stylesheetCompiled, cssCompiled, styleExt));
+					page.blocks = page.blocks.concat(that.parse_commentblock(rule.value, cssUncompiled, cssCompiled, styleExt));
 				// Standard Rule.
 				} else if (rule.rules !== null) {
 				//Import Rule
@@ -401,7 +401,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				}
 			});
 
-			page.css = stylesheetCompiled;
+			page.css = cssUncompiled;
 			page.css = '.code-render { ' + page.css + ' }';
 			var src = page.css;
 
@@ -464,13 +464,13 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			];
 		},
 
-		parse_commentblock: function (comment_block_text, stylesheetCompiled, cssCompiled, styleExt) {
+		parse_commentblock: function (parsedCommentBlock, cssUncompiled, cssCompiled, styleExt) {
 			// Removes /* & */.
-			comment_block_text = comment_block_text.replace(/(?:\/\*)|(?:\*\/)/gi, '');
+			parsedCommentBlock = parsedCommentBlock.replace(/(?:\/\*)|(?:\*\/)/gi, '');
 
 			marked.setOptions(config.marked_options);
 
-			var lexedCommentblock = marked.lexer(comment_block_text);
+			var lexedCommentblock = marked.lexer(parsedCommentBlock);
 			// Lexer appends definition links to returned token object.
 			var lexerLinks = lexedCommentblock.links || {};
 
@@ -507,8 +507,9 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 						// If it's "markup" (html):
 						// Push the code for an example with language header.
 						} else if(comment.lang === 'markup') {
-							var lala = that.remove_comments(stylesheetCompiled);
-							if(lala) { // If has styles (CSS)
+							cssUncompiled = that.remove_comments(cssUncompiled);
+							cssCompiled = that.remove_comments(cssCompiled);
+							if(cssUncompiled) { // If has styles (CSS)
 								// Pushes the example
 								block.content.push({
 									type: 'html',
@@ -518,21 +519,23 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 								// Pushes the tabs
 								block.content.push({
 									type: 'html',
-									text: '<ul class="tabs">' +
-											'<li class="tabs__item is-active" data-tab="tab-1">HTML</li>' +
-											'<li class="tabs__item" data-tab="tab-2">' + styleExt + '</li>' +
-											'<li class="tabs__item" data-tab="tab-3">CSS</li>' +
+									text: 	'<ul class="tabs">' +
+												'<li class="tabs__item is-active" data-tab="tab-1">HTML</li>' +
+												'<li class="tabs__item" data-tab="tab-2">' + styleExt + '</li>' +
+												'<li class="tabs__item" data-tab="tab-3">CSS</li>' +
 											'</ul>'
 								});
 
 								block.content.push(comment);
 
-								//Pushes the uncompiled styles
-								block.content.push({
-									type: 'code',
-									lang: styleExt,
-									text: lala
-								});
+								// if(styleExt !== 'css') {
+									//Pushes the uncompiled styles
+									block.content.push({
+										type: 'code',
+										lang: styleExt,
+										text: cssUncompiled
+									});
+								// }
 								//Pushes the compiled styles
 								block.content.push({
 									type: 'code',
