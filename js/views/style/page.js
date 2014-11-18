@@ -160,7 +160,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 							});
 							// Compiles Sass stylesheet into CSS.
 							var cssCompiled = Sass.compile(stylesheet);
-							// cssCompiled = that.remove_comments(cssCompiled);
 							var cssUncompiled = that.remove_comments(stylesheet);
 							// Parses the CSS.
 							parser = new jscssp();
@@ -224,6 +223,44 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			_.each(externalScripts, function (val, i) {
 				$('head').append(externalScripts[i]);
 			});
+
+			require(['libs/zeroclipboard/dist/ZeroClipboard'], function(ZeroClipboard) {
+
+				$('pre code').each(function() {
+
+					var copy = $( "<div/>", {
+						"class": "copy-to-clipboard",
+						// "href" : "#",
+						"text": "Copy to Clipboard",
+						// "title": "Copy to Clipboard"
+					}),
+					code = $(this).text(),
+					clip = new ZeroClipboard( copy, {
+						text: code
+					});
+
+					clip.on( 'ready', function(event) {
+						console.log( 'movie is loaded' );
+
+						clip.on( 'copy', function(event) {
+							event.clipboardData.setData('text/plain', code);
+						} );
+
+						clip.on( 'aftercopy', function(event) {
+							console.log('Copied text to clipboard: ' + event.data['text/plain']);
+						} );
+					} );
+
+					clip.on( 'error', function(event) {
+						// console.log( 'ZeroClipboard error of type "' + event.name + '": ' + event.message );
+						ZeroClipboard.destroy();
+					} );
+					$(this).parent().append(copy);
+				});
+
+
+			});
+
 
 			// Removes all <p> that contains @javascript
 			$('p:contains("@javascript")').remove();
@@ -348,9 +385,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 		compute_css: function(parsedStylesheet, cssUncompiled, cssCompiled, styleExt) {
 			var page = {
 				blocks: [],
-				css: '',
-				// styles: '',
-				// stylesheets: []
+				css: ''
 			};
 
 			var cssArray = [];
@@ -377,17 +412,13 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 
 			page.css = cssArray.join('');
 
-			// page.styles = cssUncompiled;
-			// page.styles = that.remove_comments(page.styles);
-
 			return page;
 		},
 
 		compute_less: function(stylesheet, cssUncompiled, cssCompiled, styleExt) {
 			var page = {
 				blocks: [],
-				css: '',
-				// stylesheets: []
+				css: ''
 			};
 
 			_.each(stylesheet.rules, function(rule) {
@@ -485,7 +516,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			_.each(lexedCommentblock, function (comment) {
 				switch (comment.type) {
 					case 'paragraph':
-						// Finds all the scripts to be loaded
+						// Finds all the scripts to be loaded.
 						var str = comment.text;
 						var regex = /@javascript [\{](.*?)[\}]/g;
 						var match;
@@ -516,26 +547,37 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 									text: '<div class="code-lang">Example</div>' +
 											'<div class="code-render code-render--tabs clearfix">' + comment.text + '</div>'
 								});
-								// Pushes the tabs
-								block.content.push({
-									type: 'html',
-									text: 	'<ul class="tabs">' +
-												'<li class="tabs__item is-active" data-tab="tab-1">HTML</li>' +
-												'<li class="tabs__item" data-tab="tab-2">' + styleExt + '</li>' +
-												'<li class="tabs__item" data-tab="tab-3">CSS</li>' +
-											'</ul>'
-								});
+								if(styleExt !== 'css') {
+									// Pushes the tabs
+									block.content.push({
+										type: 'html',
+										text: 	'<ul class="tabs">' +
+													'<li class="tabs__item is-active" data-tab="tab-1">HTML</li>' +
+													'<li class="tabs__item" data-tab="tab-2">' + styleExt + '</li>' +
+													'<li class="tabs__item" data-tab="tab-3">CSS</li>' +
+												'</ul>'
+									});
+								} else {
+									// Pushes the tabs
+									block.content.push({
+										type: 'html',
+										text: 	'<ul class="tabs">' +
+													'<li class="tabs__item is-active" data-tab="tab-1">HTML</li>' +
+													'<li class="tabs__item" data-tab="tab-2">' + styleExt + '</li>' +
+												'</ul>'
+									});
+								}
 
 								block.content.push(comment);
 
-								// if(styleExt !== 'css') {
+								if(styleExt !== 'css') {
 									//Pushes the uncompiled styles
 									block.content.push({
 										type: 'code',
 										lang: styleExt,
 										text: cssUncompiled
 									});
-								// }
+								}
 								//Pushes the compiled styles
 								block.content.push({
 									type: 'code',
