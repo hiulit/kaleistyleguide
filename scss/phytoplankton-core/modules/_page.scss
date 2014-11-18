@@ -100,6 +100,18 @@
 
 .phytoplankton-page__item {
 	position: relative;
+	> h1 {
+		counter-increment: heading1;
+		&:before {
+			content: counter(heading1) ". ";
+		}
+	}
+	> h2 {
+		counter-increment: heading2;
+		&:before {
+			content: counter(heading1) "." counter(heading2) ". " ;
+		}
+	}
 	+ .phytoplankton-page__item {
 		border-top: 1px solid #ccc;
 		@include prem(margin-top, 50); // margin top + (line height - font size)
@@ -149,5 +161,18 @@
 				}
 			}
 		}
+	}
+}
+
+.copy-to-clipboard {
+	@extend .code-lang;
+	border-radius: 0 0 6px 6px;
+	cursor: pointer;
+	@include opacity(.5);
+	position: absolute;
+	top: 0;
+	right: 0;
+	&.zeroclipboard-is-hover {
+		@include opacity(1);
 	}
 }
