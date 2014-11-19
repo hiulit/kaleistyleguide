@@ -55,6 +55,10 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 					// result[1] Filename.
 					// result[2] Extension.
 
+				if(result === null) {
+					return alert('Yo\'re missing the extension (.css, .sass, .scss, .less) in the URL.');
+				}
+
 				var page = {
 					blocks: []
 				};
@@ -224,6 +228,17 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				$('head').append(externalScripts[i]);
 			});
 
+			// Removes all <p> that contains @javascript
+			$('p:contains("@javascript")').remove();
+			// Adds class so Prism's Line Number plugin can work.
+			$('.code-lang + pre, .code-render + pre, pre[data-src], .tabs + pre, .tabs + pre + pre, .tabs + pre + pre + pre').addClass('line-numbers');
+			// Prism's colour coding in <code> blocks.
+			Prism.highlightAll();
+			// Prism's File Highlight plugin function.
+			fileHighlight();
+			// Call for Fixie.
+			fixie.init();
+
 			require(['libs/zeroclipboard/dist/ZeroClipboard'], function(ZeroClipboard) {
 
 				$('pre code').each(function() {
@@ -260,18 +275,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 
 
 			});
-
-
-			// Removes all <p> that contains @javascript
-			$('p:contains("@javascript")').remove();
-			// Adds class so Prism's Line Number plugin can work.
-			$('.code-lang + pre, .code-render + pre, pre[data-src], .tabs + pre, .tabs + pre + pre, .tabs + pre + pre + pre').addClass('line-numbers');
-			// Prism's colour coding in <code> blocks.
-			Prism.highlightAll();
-			// Prism's File Highlight plugin function.
-			fileHighlight();
-			// Call for Fixie.
-			fixie.init();
 
 			function renameHeadingID(tag, that, array, index) {
 				var nameID = that.attr(tag);
