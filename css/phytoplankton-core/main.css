@@ -1026,10 +1026,7 @@ img {
   .phytoplankton-page pre,
   .phytoplankton-page pre[class*="language-"] {
     border-radius: 6px;
-    font-size: 14px;
-    margin: 0;
-    margin-bottom: 16px;
-    margin-bottom: 1rem; }
+    font-size: 14px; }
     .phytoplankton-page pre + .code-lang, .phytoplankton-page pre + .tabs__item, .phytoplankton-page pre + .copy-to-clipboard,
     .phytoplankton-page pre[class*="language-"] + .code-lang,
     .phytoplankton-page pre[class*="language-"] + .tabs__item,
@@ -1044,6 +1041,8 @@ img {
       display: none; }
       .phytoplankton-page .tabs + pre + pre + pre {
         display: none; }
+    .phytoplankton-page .tabs ~ pre {
+      margin-top: 0; }
   .phytoplankton-page .tabs__item {
     cursor: pointer;
     opacity: 0.5;
@@ -1132,12 +1131,13 @@ img {
         border-radius: 0 0 6px 6px; }
 
 .copy-to-clipboard {
-  border-radius: 0 0 6px 6px;
+  border-radius: 0 6px 6px 6px;
   cursor: pointer;
   opacity: 0.5;
   filter: alpha(opacity=50);
   position: absolute;
   top: 0;
+  transition: opacity, .25s, ease-in-out;
   right: 0; }
   .copy-to-clipboard.zeroclipboard-is-hover {
     opacity: 1;

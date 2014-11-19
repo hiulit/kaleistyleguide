@@ -57,8 +57,6 @@
 	pre[class*="language-"] {
 		border-radius: $borderRadiusPx;
 		font-size: 14px;
-		margin: 0;
-		@include prem(margin-bottom, 16);
 		+ .code-lang {
 			@include prem(margin-top, 20);
 		}
@@ -74,6 +72,9 @@
 					display: none;
 				}
 			}
+		}
+		~ pre {
+			margin-top: 0;
 		}
 	}
 	.tabs__item {
@@ -166,11 +167,12 @@
 
 .copy-to-clipboard {
 	@extend .code-lang;
-	border-radius: 0 0 6px 6px;
+	border-radius: 0 6px 6px 6px;
 	cursor: pointer;
 	@include opacity(.5);
 	position: absolute;
 	top: 0;
+	transition: opacity, .25s, ease-in-out;
 	right: 0;
 	&.zeroclipboard-is-hover {
 		@include opacity(1);
