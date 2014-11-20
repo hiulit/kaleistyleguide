@@ -37,16 +37,13 @@ It works for **headers**, **paragraphs**, **lists**, **images**, and just about 
 ```
 */
 h1 {
-  color: red;
-}
+  color: red; }
 
 .fixie-images-demo:before, .fixie-images-demo:after {
   content: "";
-  display: table;
-}
+  display: table; }
 .fixie-images-demo:after {
-  clear: both;
-}
+  clear: both; }
 .fixie-images-demo .fixie {
   float: left;
   height: 100%;
@@ -54,8 +51,7 @@ h1 {
   padding-left: 0.3125rem;
   padding-right: 5px;
   padding-right: 0.3125rem;
-  width: 25%;
-}
+  width: 25%; }
 
 /*
 # Caution!
