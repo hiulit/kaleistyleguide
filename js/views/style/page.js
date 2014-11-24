@@ -231,7 +231,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			// Removes all <p> that contains @javascript
 			$('p:contains("@javascript")').remove();
 			// Adds class so Prism's Line Number plugin can work.
-			$('.code-lang + pre, .code-render + pre, pre[data-src], .tabs + pre, .tabs + pre + pre, .tabs + pre + pre + pre').addClass('line-numbers');
+			$('.code-render + pre, pre[data-src], .tabs + pre, .tabs + pre + pre, .tabs + pre + pre + pre').addClass('line-numbers');
 			// Prism's colour coding in <code> blocks.
 			Prism.highlightAll();
 			// Prism's File Highlight plugin function.
@@ -241,7 +241,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 
 			require(['libs/zeroclipboard/dist/ZeroClipboard'], function(ZeroClipboard) {
 
-				$('pre code').each(function() {
+				$('pre[class*="language-"] code').each(function() {
 
 					var copy = $( "<div/>", {
 						"class": "copy-to-clipboard",
@@ -547,13 +547,12 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 								// Pushes the example
 								block.content.push({
 									type: 'html',
-									text: '<div class="code-lang">Example</div>' +
-											'<div class="code-render code-render--tabs clearfix">' + comment.text + '</div>'
+									text: '<div class="code-render clearfix">' + comment.text + '</div>'
 								});
 								if(styleExt !== 'css') {
 									// Pushes the tabs
 									block.content.push({
-										type: 'html',
+										type: 	'html',
 										text: 	'<ul class="tabs">' +
 													'<li class="tabs__item is-active" data-tab="tab-1">HTML</li>' +
 													'<li class="tabs__item" data-tab="tab-2">' + styleExt + '</li>' +
@@ -563,7 +562,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 								} else {
 									// Pushes the tabs
 									block.content.push({
-										type: 'html',
+										type: 	'html',
 										text: 	'<ul class="tabs">' +
 													'<li class="tabs__item is-active" data-tab="tab-1">HTML</li>' +
 													'<li class="tabs__item" data-tab="tab-2">' + styleExt + '</li>' +
@@ -589,10 +588,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 								});
 							} else {
 								block.content.push({
-									type: 'html',
-									text: '<div class="code-lang">Example</div>' +
-											'<div class="code-render clearfix">' + comment.text + '</div>' +
-											'<div class="code-lang">HTML</div>'
+									type: 	'html',
+									text: 	'<div class="code-render clearfix">' + comment.text + '</div>'
 								});
 								block.content.push(comment);
 							}
@@ -604,8 +601,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 							block.content.push({
 								type: 'html',
 								lang: 'markup',
-								text: '<div class="code-lang">Example</div>' +
-										'<div class="code-render code-render--tabs clearfix">' + comment.text + '</div>' +
+								text: '<div class="code-render clearfix">' + comment.text + '</div>' +
 										'<ul class="tabs">' +
 										'<li class="tabs__item is-active" data-tab="tab-1">Handlebars</li>' +
 										'<li class="tabs__item" data-tab="tab-2">HTML</li>' +
@@ -620,10 +616,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 						// If the code is not "markup" (html):
 						// Push the code without example but with language header.
 						} else {
-							block.content.push({
-								type: 'html',
-								text: '<div class="code-lang">' + comment.lang + '</div>'
-							});
 							block.content.push(comment);
 						}
 						break;
