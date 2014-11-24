@@ -64,15 +64,3 @@ td, th {
 	border: 1px solid #ccc;
 	@include prem(padding, 8);
 }
-
-// Hack to solve extra line number on code blocks.
-// Prism's Line Number plugin.
-// This is a "feature" that doesn't
-// come with the default plugin.
-.line-numbers-rows {
-	> span {
-		&:last-child {
-			display: none;
-		}
-	}
-}
