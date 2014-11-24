@@ -1350,7 +1350,7 @@ Prism.hooks.add('after-highlight', function (env) {
 		return;
 	}
 
-	var linesNum = (1 + env.code.split('\n').length);
+	var linesNum = (/*1*/ + env.code.split('\n').length);
 	var lineNumbersWrapper;
 
 	lines = new Array(linesNum);
@@ -1656,7 +1656,27 @@ var fileHighlight = (function fileHighlight(){	// Reference to fileHighlight fun
 	});
 	
 	return fileHighlight;	// Reference to fileHighlight function.
-						// This is a "feature" that doesn't
-						// come with the default plugin.
+							// This is a "feature" that doesn't
+							// come with the default plugin.
 
 })();;
+
+(function(){
+
+if (!self.Prism) {
+	return;
+}
+
+var Languages = {
+	'csharp': 'C#',
+	'cpp': 'C++'
+};
+Prism.hooks.add('before-highlight', function(env) {
+	var language = Languages[env.language] || env.language;
+	if(language === 'markup') {	// This is a "feature" that doesn't
+		language = 'html';		// come with the default plugin.
+	}
+	env.element.parentNode.setAttribute('data-language', language);
+});
+
+})();
