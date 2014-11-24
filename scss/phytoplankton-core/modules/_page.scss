@@ -40,7 +40,6 @@
 			}
 		}
 		code { // Inline <code> blocks
-			border-radius: 4px;
 			@include inline-block;
 			@include sassy-gridlover-body(14, true);
 			@include prem(margin-left, 2);
@@ -55,16 +54,32 @@
 	}
 	pre,
 	pre[class*="language-"] {
-		border-radius: $borderRadiusPx;
 		font-size: 14px;
-		+ .code-lang {
-			@include prem(margin-top, 20);
+		@include md-depth(2);
+		@include prem(padding-top, 35);
+		&[data-language] {
+			&:before {
+				@extend .code-lang;
+				content: attr(data-language);
+				@include font-size(16);
+				left: 0;
+				position: absolute;
+				top: 0;
+			}
 		}
+	}
+	pre {
+		@include prem(padding-top, 16);
+	}
+	table {
+		@include md-depth(2);
 	}
 	.tabs {
 		margin: 0;
+		@include prem(margin-bottom, -35);
 		padding: 0;
 		position: relative;
+		z-index: 1;
 		+ pre {
 			+ pre {
 				display: none;
@@ -75,15 +90,18 @@
 		}
 		~ pre {
 			margin-top: 0;
+			&:before {
+				display: none;
+			}
 		}
 	}
 	.tabs__item {
 		@extend .code-lang;
 		cursor: pointer;
+		@include inline-block;
 		@include opacity(.5);
 		transition: opacity, .25s, ease-in-out;
 		&.is-active {
-			// background-color: $linkColor;
 			cursor: default;
 			@include opacity(1);
 			&:hover {
@@ -92,9 +110,6 @@
 		}
 		&:hover {
 			@include opacity(1);
-		}
-		+ .tabs__item {
-			@include prem(margin-left, 10);
 		}
 	}
 }
@@ -117,66 +132,44 @@
 		// }
 	}
 	+ .phytoplankton-page__item {
-		// border-top: 1px solid #ccc;
 		@include prem(margin-top, 32);
 	}
 }
 
 
 .code-lang {
-	background-color: #343545;
-	border-radius: $borderRadiusPx $borderRadiusPx 0 0;
+	background-color: #f5f2f0;
 	color: #999;
 	font-family: $headerFontFamilyBold;
-	@include inline-block;
 	@include prem(padding, 8 20);
 	text-transform: uppercase;
-	+ pre,
-	+ pre[class*="language-"] {
-		border-radius: 0 $borderRadiusPx $borderRadiusPx $borderRadiusPx;
-	}
 }
 
 .code-render {
-	border: 1px solid #ccc;
-	border-bottom: none;
-	border-radius: 0 $borderRadiusPx 0 0;
-	@include prem(padding, 40);
+	@include md-depth(2);
+	@include prem(padding, 75 40 40 40);
 	position: relative;
-	+ pre,
-	+ pre[class*="language-"] {
-		border-radius: 0 0 $borderRadiusPx $borderRadiusPx;
+	~ pre {
+		margin-top: 0;
 	}
-}
-
-.code-render--tabs {
-	@include prem(margin-bottom, -35);
-	@include prem(padding-bottom, 70);
-	+ .tabs {
-		+ pre,
-		+ pre[class*="language-"] {
-			border-radius: 0 0 $borderRadiusPx $borderRadiusPx;
-			+ pre,
-			+ pre[class*="language-"] {
-				border-radius: 0 0 $borderRadiusPx $borderRadiusPx;
-				+ pre,
-				+ pre[class*="language-"] {
-					border-radius: 0 0 $borderRadiusPx $borderRadiusPx;
-				}
-			}
-		}
+	&:before {
+		@extend .code-lang;
+		content: "Example";
+		left: 0;
+		position: absolute;
+		top: 0;
 	}
 }
 
 .copy-to-clipboard {
 	@extend .code-lang;
-	border-radius: 0 6px 6px 6px;
 	cursor: pointer;
 	@include opacity(.5);
 	position: absolute;
 	top: 0;
 	transition: opacity, .25s, ease-in-out;
 	right: 0;
+	z-index: 1;
 	&.zeroclipboard-is-hover {
 		@include opacity(1);
 	}
