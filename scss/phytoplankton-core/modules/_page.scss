@@ -67,6 +67,9 @@
 				top: 0;
 			}
 		}
+		&:not([data-language]) {
+			@include prem(padding, 16);
+		}
 	}
 	pre {
 		@include prem(padding-top, 16);

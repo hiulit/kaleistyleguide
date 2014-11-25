@@ -231,7 +231,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			// Removes all <p> that contains @javascript
 			$('p:contains("@javascript")').remove();
 			// Adds class so Prism's Line Number plugin can work.
-			$('.code-render + pre, pre[data-src], .tabs + pre, .tabs + pre + pre, .tabs + pre + pre + pre').addClass('line-numbers');
+			$('pre').addClass('line-numbers');
 			// Prism's colour coding in <code> blocks.
 			Prism.highlightAll();
 			// Prism's File Highlight plugin function.
