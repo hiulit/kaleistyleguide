@@ -81,7 +81,8 @@ Not tested on Opera nor on Safari.
 * Handlebars path configurable.
 * Upgrade to Less 2.0.0 and above.
 * Improve Tabs system
-* Add styles tab name dynamically (scss, less, etc).
+* ~~Add styles tab name dynamically (scss, less, etc).~~
+* Fix ZeroClipboard on dynamic content (e.g. <pre data-src="")
 
  */
 /*
