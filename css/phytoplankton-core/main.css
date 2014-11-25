@@ -1048,6 +1048,10 @@ img {
       left: 0;
       position: absolute;
       top: 0; }
+    .phytoplankton-page pre:not([data-language]),
+    .phytoplankton-page pre[class*="language-"]:not([data-language]) {
+      padding: 16px;
+      padding: 1rem; }
   .phytoplankton-page pre {
     padding-top: 16px;
     padding-top: 1rem; }
