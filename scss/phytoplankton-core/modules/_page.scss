@@ -1,7 +1,5 @@
 .phytoplankton-page {
 	float: right;
-	overflow-y: auto;
-		-webkit-overflow-scrolling: touch;
 	@include prem(padding, 24);
 	width: 75%;
 	@media screen and (max-width: 700px) {
