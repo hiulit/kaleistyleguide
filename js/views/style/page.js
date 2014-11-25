@@ -355,7 +355,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 					lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2)); // Removes 'px' from string and converts string to number.
 					lastElPaddingTotal = lastElPaddingTop+lastElPaddingBottom;
 					if(lastElHeight >= pageHeight) {
-						$(that.el).css({ 'padding-bottom' : 0 });
+						// $(that.el).css({ 'padding-bottom' : 0 });
 					} else {
 						$(that.el).css({ 'padding-bottom' : (pageHeight-lastElHeight) });
 					}
