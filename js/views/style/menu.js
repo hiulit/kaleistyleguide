@@ -12,7 +12,7 @@ function($, _, str, Backbone, marked, dashboardPageTemplate, config, jscssp) {
 	var DashboardPage = Backbone.View.extend({
 		el: '.js-phytoplankton-menu',
 		events: {
-			'click .phytoplankton-menu__list__item__link': function (ev) {
+			'click .phytoplankton-menu__list__item__subheader': function (ev) {
 				if($(ev.currentTarget).hasClass('active')) {
 					ev.preventDefault();
 				} else {
