@@ -7,8 +7,8 @@
 }
 
 html {
-	background-color: $bgColor;
-	color: $fontColor;
+	background-color: $bg-color;
+	color: $font-color;
 	font-family: $baseFontFamily;
 	@media (max-width: 400px) {
 		@include font-size(14);
@@ -16,7 +16,7 @@ html {
 }
 
 body {
-	counter-reset: heading1;
+	// counter-reset: heading1;
 	@include sassy-gridlover-body($baseFontSize, true);
 }
 
@@ -41,8 +41,8 @@ pre {
 }
 
 blockquote {
-	border-left: 4px solid $blockquoteColor;
-	color: #777;
+	border-left: 4px solid $blockquote-color;
+	color: $blockquote-color;
 	@include prem(margin, 40);
 	@include prem(padding-left, 12);
 	p {
