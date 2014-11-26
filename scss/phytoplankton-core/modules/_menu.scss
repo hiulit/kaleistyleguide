@@ -1,9 +1,10 @@
 .phytoplankton-menu {
-	background-color: $menuBgColor;
+	@include md-depth(1);
 	bottom: 0;
 	overflow-x: hidden;
 	overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
+	@include prem(padding, 16);
 	position: fixed;
 	top: 0;
 	width: 25%;
@@ -24,107 +25,44 @@
 		margin: 0;
 		padding: 0;
 	}
-	li {
-		a {
-			color: $menuFontColor;
-			display: block;
-			text-decoration: none;
-			&.active,
-			&:active {
-				color: $menuFontColor;
-			}
-			span {
-				display: block;
-				@include max-ellipsis(100%);
-			}
-		}
-		.has-triangle {
-			border-bottom: 2px solid $menuFgColor;
-			> a {
-				@include prem(padding, 16);
-				@include prem(padding-left, 40);
-				position: relative;
-				&:hover {
-					background-color: $linkColor;
-					color: $menuFontColor;
-					&:before {
-						border-left-color: $menuFontColor;
-						transform: rotate(90deg);
-						-webkit-transform: rotate(90deg);
-					}
-				}
-				&.active,
-				&:active {
-					background-color: $linkColor;
-					cursor: default;
-					&:before {
-						@include triangle(down, $menuFontColor, 6);
-						left: 12px;
-						@include prem(margin-top, -3);
-						transition: none;
-					}
-					&:hover {
-						&:before {
-							transform: rotate(0deg);
-							-webkit-transform: rotate(0deg);
-						}
-					}
-				}
-				&:before {
-					@include triangle(right, $menuFontColor, 6);
-					left: 15px;
-					@include prem(margin-top, -6);
-					top: 50%;
-					transition: all .25s ease-in-out;
-				}
-			}
-		}
-	}
-	.phytoplankton-menu__header {
-		background-color: $menuFgColor;
-		@include prem(padding, 16);
-		font-weight: 600;
-	}
 	@include depth(1) {
-		color: $menuFontColor;
-		@include font-size(14);
-		text-transform: uppercase;
 		@media screen and (max-width: 700px) {
 			@include font-size(20);
 		}
 	}
 	@include depth(2) {
-		text-transform: none;
 		> ul {
+			@include md-depth(1);
 			@include prem(margin-bottom, 16);
-			@include prem(margin-top, 16);
+			@include prem(padding-bottom, 16);
+			@include prem(padding-top, 16);
 		}
 	}
 	@include depth(3) {
 		@include prem(padding-left, 30);
 		@include prem(padding-right, 20);
 		a {
-			color: #969696;
+			color: $font-color;
 			@include prem(padding-bottom, 4);
 			@include prem(padding-left, 10);
 			@include prem(padding-top, 4);
 			&:hover {
-				border-left: 1px solid $menuFontColor;
-				color: $menuFontColor;
+				border-left: 1px solid $primary-color;
+				color: $primary-color;
 				@include prem(padding-left, 9);
 			}
 		}
 		&.active {
 			> a {
-				border-left: 2px solid $menuFontColor;
-				color: $menuFontColor;
+				border-left: 2px solid $primary-color;
+				color: $primary-color;
 				cursor: default;
 				@include prem(padding-left, 8);
 			}
 		}
 	}
 	@include depth(4) {
-		a {
+		> a {
 			@include prem(padding-left, 30);
 			&:hover {
 				@include prem(padding-left, 29);
@@ -132,11 +70,96 @@
 		}
 		&.active {
 			> a {
-				border-left: 2px solid $menuFontColor;
-				color: $menuFontColor;
+				border-left: 2px solid $tertiary-color;
+				color: $tertiary-color;
 				cursor: default;
 				@include prem(padding-left, 28);
 			}
 		}
+	}
+}
+
+.phytoplankton-menu__list {
+	@include font-size(14);
+}
+
+.phytoplankton-menu__list__item {
+	a {
+		display: block;
+		text-decoration: none;
+	}
+	&.has-triangle {
+		> a {
+			@include prem(padding, 16);
+			@include prem(padding-left, 40);
+			position: relative;
+			&:before { // triangle
+				@include triangle(right, $font-color, 6);
+				left: 15px;
+				@include prem(margin-top, -6);
+				top: 50%;
+				transition: all .25s ease-in-out;
+			}
+			&:hover {
+				background-color: $primary-color;
+				color: $menu-header-color;
+				&:before {
+					border-left-color: $menu-header-color;
+					transform: rotate(90deg);
+					-webkit-transform: rotate(90deg);
+				}
+			}
+			&.active,
+			&:active {
+				cursor: default;
+				&:before { // triangle
+					@include triangle(down, $menu-header-color, 6);
+					left: 12px;
+					@include prem(margin-top, -3);
+					transition: none;
+				}
+				&:hover {
+					&:before { // triangle
+						transform: rotate(0deg);
+						-webkit-transform: rotate(0deg);
+					}
+				}
+			}
+		}
+	}
+}
+
+.phytoplankton-menu__list__item__header {
+	@include prem(padding, 16);
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.phytoplankton-menu__list__item__subheader {
+	background-color: $bg-color;
+	color: $font-color;
+	&.active {
+		background-color: $primary-color;
+		@include md-depth(2);
+		color: $bg-color;
+		@include prem(margin-left, -4);
+		@include prem(margin-right, -4);
+		&:hover {
+			@include md-depth(2);
+		}
+		&:active {
+			@include md-depth(2);
+		}
+	}
+	&:hover {
+		@include md-depth(1);
+		z-index: 1;
+	}
+	&:active {
+		@include md-depth(2);
+		@include prem(margin-left, -4);
+		@include prem(margin-right, -4);
+		transition: box-shadow .25s ease-in-out;
+		transition: margin .25s ease-in-out;
 	}
 }

@@ -1,14 +1,14 @@
 <!-- <img src="img/phytoplankton-logo.png" /> -->
-<ul class="phytoplankton-menu__list phytoplankton-menu__list--first">
+<ul class="phytoplankton-menu__list">
 	<% _.each(menus, function (menu) { %>
 		<li class="phytoplankton-menu__list__item">
-			<div class="phytoplankton-menu__header">
+			<div class="phytoplankton-menu__list__item__header">
 				<%= menu.title %>
 			</div>
 			<ul class="phytoplankton-menu__list">
 				<% _.each(menu.sheets, function (sheet) { %>
 					<li class="phytoplankton-menu__list__item has-triangle" data-sheet="<%= sheet %>">
-						<a class="phytoplankton-menu__list__item__link" href="#/<%= sheet %>">
+						<a class="phytoplankton-menu__list__item__subheader" href="#/<%= sheet %>">
 							<%= _.str.strRightBack(sheet, '/') %>
 						</a>
 					</li>
