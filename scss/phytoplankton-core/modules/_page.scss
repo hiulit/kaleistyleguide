@@ -27,13 +27,13 @@
 	ol,
 	ul { // So it doesn't mess with PrismJs styles on <pre> and <code> blocks
 		a {
-			color: $linkColor;
+			color: $primary-color;
 			text-decoration: none;
 			white-space: normal;
 			@include hyphenation;
 			transition: color, .25s, ease-in-out;
 			&:hover {
-				color: $linkColorActive;
+				// color: $primary-colorActive;
 				text-decoration: underline;
 			}
 		}
@@ -55,6 +55,7 @@
 		font-size: 14px;
 		@include md-depth(2);
 		@include prem(padding-top, 35);
+		// @include prem(margin, 0 -24);
 		&[data-language] {
 			&:before {
 				@extend .code-lang;
@@ -116,6 +117,7 @@
 }
 
 .phytoplankton-page__item {
+	border-radius: 2px;
 	@include md-depth(1);
 	@include prem(padding, 24);
 	position: relative;
