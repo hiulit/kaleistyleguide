@@ -47,11 +47,10 @@
 			list-style-type: disc;
 		}
 	}
-	pre,
-	pre[class*="language-"] {
+	pre {
 		border: 1px solid $divider-color;
 		font-size: 14px;
-		@include prem(padding-top, $padding-tabs-margin);
+		@include prem(padding-top, 16);
 		&[data-language] {
 			&:before {
 				@extend .code-lang;
@@ -66,8 +65,8 @@
 			@include prem(padding, 16);
 		}
 	}
-	pre {
-		@include prem(padding-top, 16);
+	pre[class*="language-"] {
+		@include prem(padding-top, $padding-tabs-margin);
 	}
 	table {
 		@include md-depth(1);

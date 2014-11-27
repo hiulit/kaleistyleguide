@@ -1049,14 +1049,12 @@ img {
   .phytoplankton-page ol ul,
   .phytoplankton-page ul ul {
     list-style-type: disc; }
-  .phytoplankton-page pre,
-  .phytoplankton-page pre[class*="language-"] {
+  .phytoplankton-page pre {
     border: 1px solid rgba(0, 0, 0, 0.12);
     font-size: 14px;
-    padding-top: 40px;
-    padding-top: 2.5rem; }
-    .phytoplankton-page pre[data-language]:before,
-    .phytoplankton-page pre[class*="language-"][data-language]:before {
+    padding-top: 16px;
+    padding-top: 1rem; }
+    .phytoplankton-page pre[data-language]:before {
       content: attr(data-language);
       font-size: 16px;
       line-height: 19.2px;
@@ -1065,13 +1063,12 @@ img {
       left: 16px;
       position: absolute;
       top: 0; }
-    .phytoplankton-page pre:not([data-language]),
-    .phytoplankton-page pre[class*="language-"]:not([data-language]) {
+    .phytoplankton-page pre:not([data-language]) {
       padding: 16px;
       padding: 1rem; }
-  .phytoplankton-page pre {
-    padding-top: 16px;
-    padding-top: 1rem; }
+  .phytoplankton-page pre[class*="language-"] {
+    padding-top: 40px;
+    padding-top: 2.5rem; }
   .phytoplankton-page table {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
     position: relative;
@@ -1091,8 +1088,7 @@ img {
     margin-top: 32px;
     margin-top: 2rem; }
 
-.code-lang, .phytoplankton-page pre[data-language]:before,
-.phytoplankton-page pre[class*="language-"][data-language]:before, .code-render:before, .copy-to-clipboard, .phytoplankton-tabs__item {
+.code-lang, .phytoplankton-page pre[data-language]:before, .code-render:before, .copy-to-clipboard, .phytoplankton-tabs__item {
   background-color: #f5f2f0;
   color: rgba(0, 0, 0, 0.54);
   font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
