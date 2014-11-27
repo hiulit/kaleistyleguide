@@ -10,6 +10,7 @@ html {
 	background-color: $bg-color;
 	color: $font-color;
 	font-family: $baseFontFamily;
+	overflow-x: hidden;
 	@media (max-width: 400px) {
 		@include font-size(14);
 	}
