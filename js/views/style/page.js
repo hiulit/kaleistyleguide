@@ -300,30 +300,20 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				renameHeadingID('href', that, headingArrayMenu, i);
 			});
 
-			$('.phytoplankton-tabs li').click(function() {
-				var tabID = $(this).attr('data-tab');
-				if(tabID === 'tab-1') {
-					$(this).next().removeClass('is-active');
-					$(this).next().next().removeClass('is-active');
-					$(this).addClass('is-active');
-					$('.phytoplankton-tabs + pre + pre').hide();
-					$('.phytoplankton-tabs + pre + pre + pre').hide();
-					$('.phytoplankton-tabs + pre').show();
-				} else if (tabID === 'tab-2') {
-					$(this).prev().removeClass('is-active');
-					$(this).next().removeClass('is-active');
-					$(this).addClass('is-active');
-					$('.phytoplankton-tabs + pre').hide();
-					$('.phytoplankton-tabs + pre + pre + pre').hide();
-					$('.phytoplankton-tabs + pre + pre').show();
-				} else if (tabID === 'tab-3') {
-					$(this).prev().removeClass('is-active');
-					$(this).prev().prev().removeClass('is-active');
-					$(this).addClass('is-active');
-					$('.phytoplankton-tabs + pre').hide();
-					$('.phytoplankton-tabs + pre + pre').hide();
-					$('.phytoplankton-tabs + pre + pre + pre').show();
-				}
+			$('.phytoplankton-tabs ~ pre').each(function(i) {
+				$(this).attr('id', 'tab-' + (i+1));
+			});
+
+			$('.phytoplankton-tabs + pre').addClass('is-active');
+
+			$('.phytoplankton-tabs__item').click(function() {
+				var tab_id = $(this).attr('data-tab');
+
+				$('.phytoplankton-tabs li').removeClass('is-active');
+				$('.phytoplankton-tabs ~ pre').removeClass('is-active');
+
+				$(this).addClass('is-active');
+				$("#"+tab_id).addClass('is-active');
 			});
 
 			$(window).scroll(function () {

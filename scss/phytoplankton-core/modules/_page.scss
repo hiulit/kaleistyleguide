@@ -28,7 +28,6 @@
 			@include hyphenation;
 			transition: color, .25s, ease-in-out;
 			&:hover {
-				// color: $primary-colorActive;
 				text-decoration: underline;
 			}
 		}
@@ -143,18 +142,14 @@
 	padding: 0;
 	position: relative;
 	z-index: 6;
-	+ pre {
-		+ pre {
-			display: none;
-			+ pre {
-				display: none;
-			}
-		}
-	}
 	~ pre {
+		display: none;
 		margin-top: 0;
-		&:before {
+		&:before { // Removes extra code-lang tab.
 			display: none;
+		}
+		&.is-active {
+			display: block;
 		}
 	}
 }
