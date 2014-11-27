@@ -6,22 +6,30 @@
 
 [Handlebars.js](http://handlebarsjs.com/) is bundled with Phytoplankton.
 
+*/
+/*
 # Templates
 
 Templates are placed in `templates/hbs/`.
 
+*/
+/*
 # Context
 
 Context objects are placed in `js/hbs/context.js`.
 
 <pre data-src="js/hbs/context.js"></pre>
 
+*/
+/*
 # Helpers
 
 Helpers are placed in `js/hbs/helpers.js`.
 
 <pre data-src="js/hbs/helpers.js"></pre>
 
+*/
+/*
 # Example usage
 
 Wrap your code with
