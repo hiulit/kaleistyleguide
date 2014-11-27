@@ -146,14 +146,13 @@
 	}
 	&:active {
 		@include md-depth(2);
-		transition: box-shadow .25s ease-in-out;
 	}
 	&.active {
 		background-color: $primary-color;
-		@include md-depth(2);
+		@include md-depth(1);
 		color: $bg-color;
 		&:hover {
-			@include md-depth(2);
+			@include md-depth(1);
 		}
 	}
 }
