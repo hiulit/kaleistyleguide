@@ -34,6 +34,8 @@
 		> ul {
 			@include md-depth(1);
 			@include prem(margin-bottom, 16);
+			@include prem(margin-left, 2);
+			@include prem(margin-right, 2);
 			@include prem(padding-bottom, 16);
 			@include prem(padding-top, 16);
 		}
@@ -70,8 +72,8 @@
 		}
 		&.active {
 			> a {
-				border-left: 2px solid $tertiary-color;
-				color: $tertiary-color;
+				border-left: 2px solid $primary-color;
+				color: $primary-color;
 				cursor: default;
 				@include prem(padding-left, 28);
 			}
@@ -138,28 +140,20 @@
 .phytoplankton-menu__list__item__subheader {
 	background-color: $bg-color;
 	color: $font-color;
+	&:hover {
+		@include md-depth(1);
+		z-index: 3;
+	}
+	&:active {
+		@include md-depth(2);
+		transition: box-shadow .25s ease-in-out;
+	}
 	&.active {
 		background-color: $primary-color;
 		@include md-depth(2);
 		color: $bg-color;
-		@include prem(margin-left, -4);
-		@include prem(margin-right, -4);
 		&:hover {
 			@include md-depth(2);
 		}
-		&:active {
-			@include md-depth(2);
-		}
-	}
-	&:hover {
-		@include md-depth(1);
-		z-index: 1;
-	}
-	&:active {
-		@include md-depth(2);
-		@include prem(margin-left, -4);
-		@include prem(margin-right, -4);
-		transition: box-shadow .25s ease-in-out;
-		transition: margin .25s ease-in-out;
 	}
 }
