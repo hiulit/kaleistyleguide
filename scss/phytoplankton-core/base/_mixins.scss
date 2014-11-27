@@ -13,7 +13,7 @@
 	@return #{$pxval / $base}rem;
 }
 
-@mixin prem($property, $values, $base-font-size: $baseFontSize) {
+@mixin prem($property, $values, $important: false, $base-font-size: $baseFontSize) {
 	$px-values: ();
 	$rem-values: ();
 
@@ -24,8 +24,13 @@
 		}
 	}
 
-	#{$property}: $px-values;
-	#{$property}: $rem-values;
+	@if $important == "!important" {
+		#{$property}: $px-values $important;
+		#{$property}: $rem-values $important;
+	} @else {
+		#{$property}: $px-values;
+		#{$property}: $rem-values;
+	}
 }
 
 @mixin triangle($direction, $color, $height, $width: $height) {
