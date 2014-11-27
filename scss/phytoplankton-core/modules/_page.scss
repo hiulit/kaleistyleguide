@@ -15,11 +15,6 @@
 			}
 		}
 	}
-	ul {
-		ul {
-			list-style-type: disc;
-		}
-	}
 	p, ul, ol, pre, table, blockquote {
 		@include sassy-gridlover-margins(true);
 	}
@@ -49,13 +44,15 @@
 			white-space: normal;
 			@include hyphenation;
 		}
+		ul {
+			list-style-type: disc;
+		}
 	}
 	pre,
 	pre[class*="language-"] {
 		font-size: 14px;
 		@include md-depth(2);
 		@include prem(padding-top, 35);
-		// @include prem(margin, 0 -24);
 		&[data-language] {
 			&:before {
 				@extend .code-lang;
@@ -75,44 +72,6 @@
 	}
 	table {
 		@include md-depth(2);
-	}
-	.tabs {
-		margin: 0;
-		@include prem(margin-bottom, -35);
-		padding: 0;
-		position: relative;
-		z-index: 1;
-		+ pre {
-			+ pre {
-				display: none;
-				+ pre {
-					display: none;
-				}
-			}
-		}
-		~ pre {
-			margin-top: 0;
-			&:before {
-				display: none;
-			}
-		}
-	}
-	.tabs__item {
-		@extend .code-lang;
-		cursor: pointer;
-		@include inline-block;
-		@include opacity(.5);
-		transition: opacity, .25s, ease-in-out;
-		&.is-active {
-			cursor: default;
-			@include opacity(1);
-			&:hover {
-				@include opacity(1);
-			}
-		}
-		&:hover {
-			@include opacity(1);
-		}
 	}
 }
 
@@ -174,6 +133,46 @@
 	right: 0;
 	z-index: 1;
 	&.zeroclipboard-is-hover {
+		@include opacity(1);
+	}
+}
+
+.phytoplankton-tabs {
+	margin: 0 !important;
+	@include prem(margin-bottom, -35, !important);
+	padding: 0;
+	position: relative;
+	z-index: 6;
+	+ pre {
+		+ pre {
+			display: none;
+			+ pre {
+				display: none;
+			}
+		}
+	}
+	~ pre {
+		margin-top: 0;
+		&:before {
+			display: none;
+		}
+	}
+}
+
+.phytoplankton-tabs__item {
+	@extend .code-lang;
+	cursor: pointer;
+	@include inline-block;
+	@include opacity(.5);
+	transition: opacity, .25s, ease-in-out;
+	&.is-active {
+		cursor: default;
+		@include opacity(1);
+		&:hover {
+			@include opacity(1);
+		}
+	}
+	&:hover {
 		@include opacity(1);
 	}
 }

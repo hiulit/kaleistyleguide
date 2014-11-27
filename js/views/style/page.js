@@ -300,29 +300,29 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				renameHeadingID('href', that, headingArrayMenu, i);
 			});
 
-			$('.tabs li').click(function() {
+			$('.phytoplankton-tabs li').click(function() {
 				var tabID = $(this).attr('data-tab');
 				if(tabID === 'tab-1') {
 					$(this).next().removeClass('is-active');
 					$(this).next().next().removeClass('is-active');
 					$(this).addClass('is-active');
-					$('.tabs + pre + pre').hide();
-					$('.tabs + pre + pre + pre').hide();
-					$('.tabs + pre').show();
+					$('.phytoplankton-tabs + pre + pre').hide();
+					$('.phytoplankton-tabs + pre + pre + pre').hide();
+					$('.phytoplankton-tabs + pre').show();
 				} else if (tabID === 'tab-2') {
 					$(this).prev().removeClass('is-active');
 					$(this).next().removeClass('is-active');
 					$(this).addClass('is-active');
-					$('.tabs + pre').hide();
-					$('.tabs + pre + pre + pre').hide();
-					$('.tabs + pre + pre').show();
+					$('.phytoplankton-tabs + pre').hide();
+					$('.phytoplankton-tabs + pre + pre + pre').hide();
+					$('.phytoplankton-tabs + pre + pre').show();
 				} else if (tabID === 'tab-3') {
 					$(this).prev().removeClass('is-active');
 					$(this).prev().prev().removeClass('is-active');
 					$(this).addClass('is-active');
-					$('.tabs + pre').hide();
-					$('.tabs + pre + pre').hide();
-					$('.tabs + pre + pre + pre').show();
+					$('.phytoplankton-tabs + pre').hide();
+					$('.phytoplankton-tabs + pre + pre').hide();
+					$('.phytoplankton-tabs + pre + pre + pre').show();
 				}
 			});
 
@@ -553,19 +553,19 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 									// Pushes the tabs
 									block.content.push({
 										type: 	'html',
-										text: 	'<ul class="tabs">' +
-													'<li class="tabs__item is-active" data-tab="tab-1">HTML</li>' +
-													'<li class="tabs__item" data-tab="tab-2">' + styleExt + '</li>' +
-													'<li class="tabs__item" data-tab="tab-3">CSS</li>' +
+										text: 	'<ul class="phytoplankton-tabs">' +
+													'<li class="phytoplankton-tabs__item is-active" data-tab="tab-1">HTML</li>' +
+													'<li class="phytoplankton-tabs__item" data-tab="tab-2">' + styleExt + '</li>' +
+													'<li class="phytoplankton-tabs__item" data-tab="tab-3">CSS</li>' +
 												'</ul>'
 									});
 								} else {
 									// Pushes the tabs
 									block.content.push({
 										type: 	'html',
-										text: 	'<ul class="tabs">' +
-													'<li class="tabs__item is-active" data-tab="tab-1">HTML</li>' +
-													'<li class="tabs__item" data-tab="tab-2">' + styleExt + '</li>' +
+										text: 	'<ul class="phytoplankton-tabs">' +
+													'<li class="phytoplankton-tabs__item is-active" data-tab="tab-1">HTML</li>' +
+													'<li class="phytoplankton-tabs__item" data-tab="tab-2">' + styleExt + '</li>' +
 												'</ul>'
 									});
 								}
@@ -602,9 +602,9 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 								type: 'html',
 								lang: 'markup',
 								text: '<div class="code-render clearfix">' + comment.text + '</div>' +
-										'<ul class="tabs">' +
-										'<li class="tabs__item is-active" data-tab="tab-1">Handlebars</li>' +
-										'<li class="tabs__item" data-tab="tab-2">HTML</li>' +
+										'<ul class="phytoplankton-tabs">' +
+										'<li class="phytoplankton-tabs__item is-active" data-tab="tab-1">Handlebars</li>' +
+										'<li class="phytoplankton-tabs__item" data-tab="tab-2">HTML</li>' +
 										'</ul>'
 							});
 							block.content.push({
