@@ -49,15 +49,15 @@
 	}
 	pre,
 	pre[class*="language-"] {
+		border: 1px solid $divider-color;
 		font-size: 14px;
-		@include md-depth(1);
-		@include prem(padding-top, 35);
+		@include prem(padding-top, $padding-tabs-margin);
 		&[data-language] {
 			&:before {
 				@extend .code-lang;
 				content: attr(data-language);
 				@include font-size(16);
-				left: 0;
+				left: 16px;
 				position: absolute;
 				top: 0;
 			}
@@ -100,17 +100,21 @@
 
 .code-lang {
 	background-color: #f5f2f0;
-	color: #999;
+	color: $blockquote-color;
 	font-family: $headerFontFamilyBold;
-	@include prem(padding, 8 20);
+	@include prem(padding, $padding-tabs);
 	text-transform: uppercase;
+	text-shadow: none;
 }
 
 .code-render {
-	@include md-depth(1);
+	border: 1px solid $divider-color;
+	border-bottom: 0;
 	@include prem(padding, 75 40 40 40);
 	position: relative;
 	~ pre {
+		border: 1px solid $divider-color;
+		border-top: 0;
 		margin-top: 0;
 	}
 	&:before {
@@ -125,20 +129,21 @@
 .copy-to-clipboard {
 	@extend .code-lang;
 	cursor: pointer;
-	@include opacity(.5);
+	color: $disabled-color;
 	position: absolute;
 	top: 0;
-	transition: opacity, .25s, ease-in-out;
-	right: 0;
-	z-index: 1;
+	transition: color, .25s, ease-in-out;
+	right: 16px;
+	z-index: 6;
 	&.zeroclipboard-is-hover {
-		@include opacity(1);
+		color: $blockquote-color;
 	}
 }
 
 .phytoplankton-tabs {
-	margin: 0 !important;
-	@include prem(margin-bottom, -35, !important);
+	@include prem(margin-left, 16);
+	@include prem(margin-bottom, -$padding-tabs-margin, !important);
+	margin-top: 0 !important;
 	padding: 0;
 	position: relative;
 	z-index: 6;
@@ -157,17 +162,17 @@
 .phytoplankton-tabs__item {
 	@extend .code-lang;
 	cursor: pointer;
+	color: $disabled-color;
 	@include inline-block;
-	@include opacity(.5);
-	transition: opacity, .25s, ease-in-out;
+	transition: color, .25s, ease-in-out;
 	&.is-active {
 		cursor: default;
-		@include opacity(1);
+		color: $blockquote-color;
 		&:hover {
-			@include opacity(1);
+			color: $blockquote-color;
 		}
 	}
 	&:hover {
-		@include opacity(1);
+		color: $blockquote-color;
 	}
 }
