@@ -51,7 +51,7 @@
 	pre,
 	pre[class*="language-"] {
 		font-size: 14px;
-		@include md-depth(2);
+		@include md-depth(1);
 		@include prem(padding-top, 35);
 		&[data-language] {
 			&:before {
@@ -71,7 +71,7 @@
 		@include prem(padding-top, 16);
 	}
 	table {
-		@include md-depth(2);
+		@include md-depth(1);
 	}
 }
 
@@ -108,7 +108,7 @@
 }
 
 .code-render {
-	@include md-depth(2);
+	@include md-depth(1);
 	@include prem(padding, 75 40 40 40);
 	position: relative;
 	~ pre {
