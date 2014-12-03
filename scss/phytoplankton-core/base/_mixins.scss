@@ -182,21 +182,30 @@
 	}
 }
 
-@mixin md-depth($level) {
+@mixin md-depth($level, $border-radius: 0) {
+
+	@if $border-radius >= 1 {
+		border-radius: $border-radius * 1px;
+	}
+
+	@if $level == 0 {
+		box-shadow: none;
+	}
+
 	@if $level == 1 {
-		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
+		box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .16), 0 2px 5px 0 rgba(0, 0, 0, .26);
 	}
 	@else if $level == 2 {
-		box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		box-shadow: 0 6px 20px 0 rgba(0, 0, 0, .19), 0 8px 17px 0 rgba(0, 0, 0, .2);
 	}
 	@else if $level == 3 {
-		box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+		box-shadow: 0 17px 50px 0 rgba(0, 0, 0, .19), 0 12px 15px 0 rgba(0, 0, 0, .24);
 	}
 	@else if $level == 4 {
-		box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+		box-shadow: 0 25px 55px 0 rgba(0, 0, 0, .21), 0 16px 28px 0 rgba(0, 0, 0, .22);
 	}
 	@else if $level == 5 {
-		box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+		box-shadow: 0 40px 77px 0 rgba(0, 0, 0, .22), 0 27px 24px 0 rgba(0, 0, 0, .2);
 	}
 
 	position: relative;
