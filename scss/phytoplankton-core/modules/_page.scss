@@ -26,12 +26,14 @@
 			text-decoration: none;
 			white-space: normal;
 			@include hyphenation;
-			transition: color, .25s, ease-in-out;
+			transition: color .25s ease-in-out;
 			&:hover {
+				color: $secondary-color;
 				text-decoration: underline;
 			}
 		}
 		code { // Inline <code> blocks
+			@include md-depth(1, 2);
 			@include inline-block;
 			@include sassy-gridlover-body(14, true);
 			@include prem(margin-left, 2);
@@ -49,6 +51,7 @@
 	}
 	pre {
 		border: 1px solid $divider-color;
+		@include md-depth(1, 2);
 		font-size: 14px;
 		@include prem(padding-top, 16);
 		&[data-language] {
@@ -75,7 +78,6 @@
 
 .phytoplankton-page__item {
 	border-radius: 2px;
-	@include md-depth(1);
 	@include prem(padding, 24);
 	position: relative;
 	> h1 {
@@ -109,6 +111,7 @@
 .code-render {
 	border: 1px solid $divider-color;
 	border-bottom: 0;
+	@include md-depth(1);
 	@include prem(padding, 75 40 40 40);
 	position: relative;
 	~ pre {
@@ -131,9 +134,9 @@
 	color: $disabled-color;
 	position: absolute;
 	top: 0;
-	transition: color, .25s, ease-in-out;
+	transition: color .25s ease-in-out;
 	right: 16px;
-	z-index: 6;
+	z-index: 10;
 	&.zeroclipboard-is-hover {
 		color: $blockquote-color;
 	}
@@ -163,7 +166,7 @@
 	cursor: pointer;
 	color: $disabled-color;
 	@include inline-block;
-	transition: color, .25s, ease-in-out;
+	transition: color .25s ease-in-out;
 	&.is-active {
 		cursor: default;
 		color: $blockquote-color;
