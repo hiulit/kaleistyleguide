@@ -1,4 +1,5 @@
 .phytoplankton-menu {
+	background-color: #fafafa;
 	@include md-depth(1);
 	bottom: 0;
 	overflow-x: hidden;
@@ -8,6 +9,19 @@
 	position: fixed;
 	top: 0;
 	width: 25%;
+	&::-webkit-scrollbar {
+		@include prem(width, 6);
+	}
+	&::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 3px;
+		background-color: $divider-color;
+		&:hover {
+			background-color: $disabled-color;
+		}
+	}
 	@media screen and (max-width: 700px) {
 		transform: translate3d(-100%, 0, 0);
 		transition: all .25s ease-in-out;
@@ -32,10 +46,11 @@
 	}
 	@include depth(2) {
 		> ul {
+			background-color: $bg-color;
 			@include md-depth(1);
 			@include prem(margin-bottom, 16);
-			@include prem(margin-left, 2);
-			@include prem(margin-right, 2);
+			@include prem(margin-left, 1);
+			@include prem(margin-right, 1);
 			@include prem(padding-bottom, 16);
 			@include prem(padding-top, 16);
 		}
@@ -138,7 +153,6 @@
 }
 
 .phytoplankton-menu__list__item__subheader {
-	background-color: $bg-color;
 	color: $font-color;
 	&:hover {
 		@include md-depth(1);
