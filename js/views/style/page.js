@@ -583,8 +583,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 								});
 								block.content.push(comment);
 							}
-						// If it's "hbs":
-						} else if(comment.lang === 'hbs') {
+						// If it's "handlebars":
+						} else if(comment.lang === 'handlebars') {
 							var lala = that.parse_hbs(comment.text);
 							comment.text = lala[0];
 							comment.hbsTemplateUncompiled = lala[1];
@@ -599,7 +599,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 							});
 							block.content.push({
 								type: 'code',
-								lang: 'hbs',
+								lang: 'handlebars',
 								text: comment.hbsTemplateUncompiled
 							});
 							block.content.push(comment);
