@@ -300,6 +300,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				renameHeadingID('href', that, headingArrayMenu, i);
 			});
 
+			// Tabs
+			$('.phytoplankton-tabs > li').each(function(i) {
+				$(this).attr('data-tab', 'tab-' + (i+1));
+			});
+
 			$('.phytoplankton-tabs ~ pre').each(function(i) {
 				$(this).attr('id', 'tab-' + (i+1));
 			});
@@ -544,9 +549,9 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 									block.content.push({
 										type: 	'html',
 										text: 	'<ul class="phytoplankton-tabs">' +
-													'<li class="phytoplankton-tabs__item is-active" data-tab="tab-1">HTML</li>' +
-													'<li class="phytoplankton-tabs__item" data-tab="tab-2">' + styleExt + '</li>' +
-													'<li class="phytoplankton-tabs__item" data-tab="tab-3">CSS</li>' +
+													'<li class="phytoplankton-tabs__item is-active">HTML</li>' +
+													'<li class="phytoplankton-tabs__item">' + styleExt + '</li>' +
+													'<li class="phytoplankton-tabs__item">CSS</li>' +
 												'</ul>'
 									});
 								} else {
@@ -554,8 +559,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 									block.content.push({
 										type: 	'html',
 										text: 	'<ul class="phytoplankton-tabs">' +
-													'<li class="phytoplankton-tabs__item is-active" data-tab="tab-1">HTML</li>' +
-													'<li class="phytoplankton-tabs__item" data-tab="tab-2">' + styleExt + '</li>' +
+													'<li class="phytoplankton-tabs__item is-active">HTML</li>' +
+													'<li class="phytoplankton-tabs__item">' + styleExt + '</li>' +
 												'</ul>'
 									});
 								}
