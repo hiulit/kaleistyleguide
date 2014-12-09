@@ -265,7 +265,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 						} );
 
 						clip.on( 'aftercopy', function(event) {
-							console.log('Copied text to clipboard: ' + event.data['text/plain']);
+							console.log('Copied text to clipboard:\n\n' + event.data['text/plain']);
 						} );
 					} );
 
