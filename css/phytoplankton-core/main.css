@@ -452,6 +452,19 @@ pre[class*="language-"] {
 .token.entity {
   cursor: help; }
 
+.token.handlebars .delimiter {
+  color: #66d9ef; }
+
+.token.variable {
+  color: #fd971f; }
+
+.token.function {
+  color: #66d9ef; }
+
+.language-javascript .token.keyword,
+.language-javascript .token.operator {
+  color: #f92672; }
+
 pre.line-numbers {
   position: relative;
   padding-left: 3.8em;
@@ -486,19 +499,6 @@ pre.line-numbers > code {
   display: block;
   padding-right: 0.8em;
   text-align: right; }
-
-.token a {
-  color: inherit; }
-
-code[class*="language-"] a[href],
-pre[class*="language-"] a[href] {
-  cursor: help;
-  text-decoration: none; }
-
-code[class*="language-"] a[href]:hover,
-pre[class*="language-"] a[href]:hover {
-  cursor: help;
-  text-decoration: underline; }
 
 code[class*="language-"] a[href],
 pre[class*="language-"] a[href] {
@@ -1171,6 +1171,8 @@ img {
     border-radius: 0 0 2px 2px;
     display: none;
     margin-top: 0; }
+    .phytoplankton-tabs ~ pre code:before {
+      display: none; }
     .phytoplankton-tabs ~ pre:before {
       display: none; }
     .phytoplankton-tabs ~ pre.is-active {

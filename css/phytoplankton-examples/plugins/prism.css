@@ -10,7 +10,7 @@ It comes with:
 * Development version
 * Core
 * Theme
-	* Default *(modified version)*
+	* Okaidia *(modified version)*
 * Languages
 	* All
 * Plugins
@@ -18,6 +18,7 @@ It comes with:
 	* Autolinker
 	* WebPlatform Docs
 	* File Highlight *(modified version)*
+	* Show Language
 
 But you can use any theme or add any plugin you want.
 
@@ -62,6 +63,7 @@ Prism comes with a bunch of languages, such as:
 * CSS
 * SCSS
 * JavaScript
+* Handlebars
 * PHP
 * Python
 * Ruby
@@ -119,10 +121,11 @@ Prism comes with:
 * [Autolinker](http://prismjs.com/plugins/autolinker/)
 * [WebPlatform Docs](http://prismjs.com/plugins/wpd/)
 * [File Highlight](http://prismjs.com/plugins/file-highlight/)
+* [Show Language](http://prismjs.com/plugins/show-language/)
 
 ## Line Numbers
 
-Line number at the beginning of code lines.
+It adds line number at the beginning of code lines.
 
 It will only add the numbers when using [fenced code blocks](https://help.github.com/articles/github-flavored-markdown#fenced-code-blocks) `` ``` `` +
 `language code`. Not when using inline code.
@@ -140,6 +143,7 @@ backbone: 'libs/backbone/backbone-min', // https://github.com/amdjs
 
 Makes tokens link to [WebPlatform.org documentation](http://docs.webplatform.org/).
 
+*Tip: Hover over the CSS properties.*
 
 ```css
 div {
@@ -174,6 +178,12 @@ And if something goes wrong...
 
 <pre data-src="wtf.html"></pre>
 
+## Show Language
+
+As you should have been already realized, it displays the highlighted language in code blocks (inline code does not show the label).
+
+No need for more examples, right? Just sit back, relax and enjoy ;)
+
 */
 /*
 # Caution!
@@ -182,7 +192,7 @@ Phytoplankton is bundled with a modified version of Prism due to **plugins** add
 
 The modifications are mostly just comments to clarify stuff but some are **features** added on it.
 
-If you want to add or remove some of Prism's plugins, look for...
+If you want to add/remove some of Prism's plugins or change the highlighting syntax theme, look for...
 
 	// This is a "feature" that doesn't
 	// come with the default plugin.
