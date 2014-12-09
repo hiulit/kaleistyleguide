@@ -19,6 +19,10 @@ body {
 	}
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-family: $headingFontFamily;
+}
+
 h1 {
 	@include sassy-gridlover-heading(3, true);
 	font-weight: 600;

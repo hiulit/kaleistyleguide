@@ -147,13 +147,15 @@
 }
 
 .phytoplankton-menu__list__item__header {
-	@include prem(padding, 16);
+	font-family: $headingFontFamily;
 	font-weight: 600;
+	@include prem(padding, 16);
 	text-transform: uppercase;
 }
 
 .phytoplankton-menu__list__item__subheader {
 	color: $font-color;
+	font-family: $headingFontFamily;
 	&:hover {
 		@include md-depth(1);
 		z-index: 3;

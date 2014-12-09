@@ -352,12 +352,16 @@ td,
 th {
   padding: 0; }
 
-code,
-pre,
+/* http://prismjs.com/download.html?themes=prism-okaidia&languages=markup+twig+css+css-extras+clike+javascript+java+php+php-extras+coffeescript+scss+bash+c+cpp+python+sql+groovy+http+ruby+rip+gherkin+csharp+go+nsis+aspnet+scala+haskell+swift+objectivec+autohotkey+ini+latex+apacheconf+git+scheme+nasm+perl+handlebars&plugins=line-numbers+autolinker+wpd+file-highlight+show-language */
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
 code[class*="language-"],
 pre[class*="language-"] {
-  color: black;
-  text-shadow: 0 1px white;
+  color: #f8f8f2;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   font-family: Consolas, Monaco, 'Andale Mono', monospace;
   direction: ltr;
   text-align: left;
@@ -373,20 +377,6 @@ pre[class*="language-"] {
   -ms-hyphens: none;
   hyphens: none; }
 
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-  text-shadow: none;
-  background: #b3d4fc; }
-
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-  text-shadow: none;
-  background: #b3d4fc; }
-
-@media print {
-  code[class*="language-"],
-  pre[class*="language-"] {
-    text-shadow: none; } }
 /* Code blocks */
 pre,
 pre[class*="language-"] {
@@ -398,12 +388,13 @@ pre[class*="language-"] {
 pre,
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #f5f2f0; }
+  background: #272822;
+  color: #f8f8f2;
+  /* This is a "feature that doesn't  come with the default plugin. */ }
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
-  padding: .1em;
-  border-radius: .3em; }
+  padding: .1em; }
 
 .token.comment,
 .token.prolog,
@@ -412,19 +403,21 @@ pre[class*="language-"] {
   color: slategray; }
 
 .token.punctuation {
-  color: #999; }
+  color: #f8f8f2; }
 
 .namespace {
   opacity: .7; }
 
 .token.property,
 .token.tag,
-.token.boolean,
-.token.number,
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #905; }
+  color: #f92672; }
+
+.token.boolean,
+.token.number {
+  color: #ae81ff; }
 
 .token.selector,
 .token.attr-name,
@@ -432,28 +425,26 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #690; }
+  color: #a6e22e; }
 
 .token.operator,
 .token.entity,
 .token.url,
 .language-css .token.string,
-.style .token.string {
-  color: #a67f59;
-  background: rgba(255, 255, 255, 0.5); }
+.style .token.string,
+.token.variable {
+  color: #f8f8f2; }
 
 .token.atrule,
-.token.attr-value,
-.token.keyword {
-  color: #07a; }
+.token.attr-value {
+  color: #e6db74; }
 
-.token.function {
-  color: #DD4A68; }
+.token.keyword {
+  color: #66d9ef; }
 
 .token.regex,
-.token.important,
-.token.variable {
-  color: #e90; }
+.token.important {
+  color: #fd971f; }
 
 .token.important {
   font-weight: bold; }
@@ -509,12 +500,6 @@ pre[class*="language-"] a[href]:hover {
   cursor: help;
   text-decoration: underline; }
 
-.token.handlebars {
-  color: #fd9720; }
-  .token.handlebars .curly-bracket,
-  .token.handlebars .helper {
-    color: #66d9ef; }
-
 code[class*="language-"] a[href],
 pre[class*="language-"] a[href] {
   cursor: help;
@@ -558,7 +543,7 @@ html {
 body {
   background-color: #fff;
   color: rgba(0, 0, 0, 0.87);
-  font-family: "Open sans", "Helvetica Neure", Helvetica, Arial, sans-serif;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 19px;
   font-size: 1rem;
@@ -570,6 +555,9 @@ body {
       line-height: 16.8px;
       font-size: 0.875rem;
       line-height: 1.05rem; } }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 h1 {
   font-size: 38px;
@@ -815,16 +803,6 @@ img {
   position: fixed;
   top: 0;
   width: 25%; }
-  .phytoplankton-menu::-webkit-scrollbar {
-    width: 6px;
-    width: 0.375rem; }
-  .phytoplankton-menu::-webkit-scrollbar-track {
-    background-color: transparent; }
-  .phytoplankton-menu::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    background-color: rgba(0, 0, 0, 0.12); }
-    .phytoplankton-menu::-webkit-scrollbar-thumb:hover {
-      background-color: rgba(0, 0, 0, 0.26); }
   @media screen and (max-width: 700px) {
     .phytoplankton-menu {
       transform: translate3d(-100%, 0, 0);
@@ -953,13 +931,15 @@ img {
       -webkit-transform: rotate(0deg); }
 
 .phytoplankton-menu__list__item__header {
+  font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
   padding: 16px;
   padding: 1rem;
-  font-weight: 600;
   text-transform: uppercase; }
 
 .phytoplankton-menu__list__item__subheader {
-  color: rgba(0, 0, 0, 0.87); }
+  color: rgba(0, 0, 0, 0.87);
+  font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
   .phytoplankton-menu__list__item__subheader:hover {
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     position: relative;
@@ -981,9 +961,14 @@ img {
       z-index: 1; }
 
 .phytoplankton-page {
+  background-color: #f9f9f9;
   float: right;
-  padding: 24px;
-  padding: 1.5rem;
+  padding-bottom: 24px;
+  padding-bottom: 1.5rem;
+  padding-left: 10%;
+  padding-top: 24px;
+  padding-top: 1.5rem;
+  padding-right: 10%;
   width: 75%; }
   @media screen and (max-width: 700px) {
     .phytoplankton-page {
@@ -1007,7 +992,7 @@ img {
   .phytoplankton-page p a,
   .phytoplankton-page ol a,
   .phytoplankton-page ul a {
-    color: #3f51b5;
+    color: #ff80ab;
     text-decoration: none;
     white-space: normal;
     -ms-word-break: break-all;
@@ -1022,7 +1007,7 @@ img {
     .phytoplankton-page p a:hover,
     .phytoplankton-page ol a:hover,
     .phytoplankton-page ul a:hover {
-      color: #303f9f;
+      color: #f50057;
       text-decoration: underline; }
   .phytoplankton-page p code,
   .phytoplankton-page ol code,
@@ -1066,48 +1051,60 @@ img {
   .phytoplankton-page ul ul {
     list-style-type: disc; }
   .phytoplankton-page pre {
-    border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 2px;
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     position: relative;
     z-index: 1;
     font-size: 14px;
+    line-height: 16.8px;
+    font-size: 0.875rem;
+    line-height: 1.05rem;
     padding-top: 16px;
     padding-top: 1rem; }
-    .phytoplankton-page pre[data-language]:before {
-      content: attr(data-language);
-      font-size: 16px;
-      line-height: 19.2px;
-      font-size: 1rem;
-      line-height: 1.2rem;
-      left: 16px;
-      position: absolute;
-      top: 0; }
-    .phytoplankton-page pre:not([data-language]) {
+    .phytoplankton-page pre:not([class*="language-"]) {
       padding: 16px;
       padding: 1rem; }
   .phytoplankton-page pre[class*="language-"] {
     padding-top: 40px;
     padding-top: 2.5rem; }
+  .phytoplankton-page code[data-language]:before {
+    content: attr(data-language);
+    font-size: 16px;
+    line-height: 19.2px;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    left: -42px;
+    left: -2.625rem;
+    position: absolute;
+    top: -42px;
+    top: -2.625rem; }
   .phytoplankton-page table {
+    border-radius: 2px;
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     position: relative;
     z-index: 1; }
 
 .phytoplankton-page__item {
+  background-color: #fff;
   border-radius: 2px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  position: relative;
+  z-index: 1;
   padding: 24px;
   padding: 1.5rem;
   position: relative; }
   .phytoplankton-page__item > h1 {
+    color: #ff4081;
     margin-top: 0; }
+  .phytoplankton-page__item > h2 {
+    color: #ff4081; }
   .phytoplankton-page__item + .phytoplankton-page__item {
     margin-top: 32px;
     margin-top: 2rem; }
 
-.code-lang, .phytoplankton-page pre[data-language]:before, .code-render:before, .copy-to-clipboard, .phytoplankton-tabs__item {
-  background-color: #f5f2f0;
-  color: rgba(0, 0, 0, 0.54);
+.code-lang, .phytoplankton-page code[data-language]:before, .code-render:before, .copy-to-clipboard, .phytoplankton-tabs__item {
+  background-color: #272822;
+  color: #f8f8f2;
   font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 10px;
   padding: 0.625rem;
@@ -1115,19 +1112,22 @@ img {
   text-shadow: none; }
 
 .code-render {
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-bottom: 0;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   position: relative;
   z-index: 1;
+  border-radius: 2px 2px 0 0;
+  margin-left: 1px;
+  margin-left: 0.0625rem;
+  margin-right: 1px;
+  margin-right: 0.0625rem;
   padding: 75px 40px 40px 40px;
   padding: 4.6875rem 2.5rem 2.5rem 2.5rem;
   position: relative; }
-  .code-render ~ pre {
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-top: 0;
+  .code-render + pre {
+    border-radius: 0 0 2px 2px;
     margin-top: 0; }
   .code-render:before {
+    border-radius: 2px 0 0 0;
     content: "Example";
     left: 0;
     position: absolute;
@@ -1135,25 +1135,28 @@ img {
 
 .copy-to-clipboard {
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.26);
+  color: rgba(255, 255, 255, 0.5);
   position: absolute;
   top: 0;
   transition: color .25s ease-in-out;
   right: 16px;
   z-index: 10; }
   .copy-to-clipboard.zeroclipboard-is-hover {
-    color: rgba(0, 0, 0, 0.54); }
+    color: white; }
 
 .phytoplankton-tabs {
   margin-left: 16px;
   margin-left: 1rem;
   margin-bottom: -40px !important;
   margin-bottom: -2.5rem !important;
+  margin-right: 200px;
+  margin-right: 12.5rem;
   margin-top: 0 !important;
   padding: 0;
   position: relative;
   z-index: 6; }
   .phytoplankton-tabs ~ pre {
+    border-radius: 0 0 2px 2px;
     display: none;
     margin-top: 0; }
     .phytoplankton-tabs ~ pre:before {
@@ -1163,7 +1166,7 @@ img {
 
 .phytoplankton-tabs__item {
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.26);
+  color: rgba(255, 255, 255, 0.5);
   display: inline-block;
   vertical-align: baseline;
   zoom: 1;
@@ -1172,10 +1175,10 @@ img {
   transition: color .25s ease-in-out; }
   .phytoplankton-tabs__item.is-active {
     cursor: default;
-    color: rgba(0, 0, 0, 0.54); }
+    color: white; }
     .phytoplankton-tabs__item.is-active:hover {
-      color: rgba(0, 0, 0, 0.54); }
+      color: white; }
   .phytoplankton-tabs__item:hover {
-    color: rgba(0, 0, 0, 0.54); }
+    color: white; }
 
 /*# sourceMappingURL=main.css.map */

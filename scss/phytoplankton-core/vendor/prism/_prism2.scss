@@ -1,10 +1,14 @@
-code,	/* So <code> and <pre> get highlighted*/
-		/* without any class. */
-pre,	/* This is a "feature that doesn't */
-		/* come with the default plugin. */
+/* http://prismjs.com/download.html?themes=prism&languages=markup+twig+css+css-extras+clike+javascript+java+php+php-extras+coffeescript+scss+bash+c+cpp+python+sql+groovy+http+ruby+rip+gherkin+csharp+go+nsis+aspnet+scala+haskell+swift+objectivec+autohotkey+ini+latex+apacheconf+git+scheme+nasm+perl+handlebars&plugins=line-numbers+autolinker+wpd+file-highlight+show-language */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
 code[class*="language-"],
 pre[class*="language-"] {
-	color: #fff;
+	color: black;
+	text-shadow: 0 1px white;
 	font-family: Consolas, Monaco, 'Andale Mono', monospace;
 	direction: ltr;
 	text-align: left;
@@ -25,11 +29,13 @@ pre[class*="language-"] {
 
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
 	background: #b3d4fc;
 }
 
 pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
 	background: #b3d4fc;
 }
 
@@ -45,6 +51,7 @@ pre,	/* So <pre> gets highlighted*/
 		/* without any class. */
 		/* This is a "feature that doesn't */
 		/* come with the default plugin. */
+
 pre[class*="language-"] {
 	padding: 1em;
 	margin: .5em 0;
@@ -55,9 +62,10 @@ pre[class*="language-"] {
 					/* without any class. */
 pre,				/* This is a "feature that doesn't */
 					/* come with the default plugin. */
+
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	background: #3D3F52;
+	background: #f5f2f0;
 }
 
 /* Inline code */
@@ -74,7 +82,7 @@ pre[class*="language-"] {
 }
 
 .token.punctuation {
-	color: #fff;
+	color: #999;
 }
 
 .namespace {
@@ -88,7 +96,7 @@ pre[class*="language-"] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-	color: #f72378;
+	color: #905;
 }
 
 .token.selector,
@@ -97,7 +105,7 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-	color: #9bfb54;
+	color: #690;
 }
 
 .token.operator,
@@ -106,13 +114,13 @@ pre[class*="language-"] {
 .language-css .token.string,
 .style .token.string {
 	color: #a67f59;
-	// background: hsla(0, 0%, 100%, .5);
+	background: hsla(0, 0%, 100%, .5);
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-	color: #fbf935;
+	color: #07a;
 }
 
 .token.function {
@@ -133,24 +141,8 @@ pre[class*="language-"] {
 	cursor: help;
 }
 
-// Adds support for Handlebars.
-
-// This is a "feature" that doesn't
-// come with the default plugin.
-.token {
-	&.handlebars {
-		color: #fd9720;
-		.curly-bracket,
-		.helper {
-			color: #66d9ef;
-		}
-	}
-}
-
 pre.line-numbers {
 	position: relative;
-	padding-top: 1em;
-	padding-bottom: 1em;
 	padding-left: 3.8em;
 	counter-reset: linenumber;
 }
@@ -162,15 +154,12 @@ pre.line-numbers > code {
 .line-numbers .line-numbers-rows {
 	position: absolute;
 	pointer-events: none;
-	top: -1.2em; // 0
-	bottom: -1.2em;
-	background-color: #343545;
+	top: 0;
 	font-size: 100%;
 	left: -3.8em;
-	padding-top: 1em;
-	padding-bottom: 1em;
 	width: 3em; /* works for line-numbers below 1000 lines */
 	letter-spacing: -1px;
+	border-right: 1px solid #999;
 
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -179,19 +168,57 @@ pre.line-numbers > code {
 
 }
 
-.line-numbers-rows > span {
-	pointer-events: none;
-	display: block;
-	counter-increment: linenumber;
+	.line-numbers-rows > span {
+		pointer-events: none;
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+.token a {
+	color: inherit;
+}
+code[class*="language-"] a[href],
+pre[class*="language-"] a[href] {
+	cursor: help;
+	text-decoration: none;
 }
 
-.line-numbers-rows > span:before {
-	content: counter(linenumber);
-	color: #999;
-	display: block;
-	padding-right: 0.8em;
-	text-align: right;
+code[class*="language-"] a[href]:hover,
+pre[class*="language-"] a[href]:hover {
+	cursor: help;
+	text-decoration: underline;
 }
+
+// Phytoplankton doesn't need this
+//
+// pre[class*='language-'] {
+// 	position: relative;
+// }
+// pre[class*='language-'] > code[data-language] {
+// 	overflow: scroll;
+// 	max-height: 28em;
+// 	display: block;
+// }
+// pre[class*='language-'] > code[data-language]::before {
+// 	content: attr(data-language);
+// 	color: black;
+// 	background-color: #CFCFCF;
+// 	display: inline-block;
+// 	position: absolute;
+// 	top: 0;
+// 	right: 0;
+// 	font-size: 0.9em;
+// 	border-radius: 0 0 0 5px;
+// 	padding: 0 0.5em;
+// 	text-shadow: none;
+// }
 
 // Styles for WebPlatform Docs plugin - start
 

@@ -1,11 +1,14 @@
-code,	/* So <code> and <pre> get highlighted*/
-		/* without any class. */
-pre,	/* This is a "feature that doesn't */
-		/* come with the default plugin. */
+/* http://prismjs.com/download.html?themes=prism-okaidia&languages=markup+twig+css+css-extras+clike+javascript+java+php+php-extras+coffeescript+scss+bash+c+cpp+python+sql+groovy+http+ruby+rip+gherkin+csharp+go+nsis+aspnet+scala+haskell+swift+objectivec+autohotkey+ini+latex+apacheconf+git+scheme+nasm+perl+handlebars&plugins=line-numbers+autolinker+wpd+file-highlight+show-language */
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
 code[class*="language-"],
 pre[class*="language-"] {
-	color: black;
-	text-shadow: 0 1px white;
+	color: #f8f8f2;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
 	font-family: Consolas, Monaco, 'Andale Mono', monospace;
 	direction: ltr;
 	text-align: left;
@@ -24,25 +27,6 @@ pre[class*="language-"] {
 	hyphens: none;
 }
 
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-	text-shadow: none;
-	background: #b3d4fc;
-}
-
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-	text-shadow: none;
-	background: #b3d4fc;
-}
-
-@media print {
-	code[class*="language-"],
-	pre[class*="language-"] {
-		text-shadow: none;
-	}
-}
-
 /* Code blocks */
 pre,	/* So <pre> gets highlighted*/
 		/* without any class. */
@@ -52,6 +36,7 @@ pre[class*="language-"] {
 	padding: 1em;
 	margin: .5em 0;
 	overflow: auto;
+	// border-radius: 0.3em;
 }
 
 :not(pre) > code,	/* So <code> and <pre> get highlighted*/
@@ -60,13 +45,14 @@ pre,				/* This is a "feature that doesn't */
 					/* come with the default plugin. */
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	background: #f5f2f0;
+	background: #272822;
+	color: #f8f8f2; /* This is a "feature that doesn't  come with the default plugin. */
 }
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
 	padding: .1em;
-	border-radius: .3em;
+	// border-radius: .3em;
 }
 
 .token.comment,
@@ -77,7 +63,7 @@ pre[class*="language-"] {
 }
 
 .token.punctuation {
-	color: #999;
+	color: #f8f8f2;
 }
 
 .namespace {
@@ -86,12 +72,15 @@ pre[class*="language-"] {
 
 .token.property,
 .token.tag,
-.token.boolean,
-.token.number,
 .token.constant,
 .token.symbol,
 .token.deleted {
-	color: #905;
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
 }
 
 .token.selector,
@@ -100,32 +89,30 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-	color: #690;
+	color: #a6e22e;
 }
 
 .token.operator,
 .token.entity,
 .token.url,
 .language-css .token.string,
-.style .token.string {
-	color: #a67f59;
-	background: hsla(0, 0%, 100%, .5);
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
 }
 
 .token.atrule,
-.token.attr-value,
-.token.keyword {
-	color: #07a;
+.token.attr-value {
+	color: #e6db74;
 }
 
-.token.function {
-	color: #DD4A68;
+.token.keyword {
+	color: #66d9ef;
 }
 
 .token.regex,
-.token.important,
-.token.variable {
-	color: #e90;
+.token.important {
+	color: #fd971f;
 }
 
 .token.important {
@@ -191,20 +178,29 @@ pre[class*="language-"] a[href]:hover {
 	text-decoration: underline;
 }
 
-
-// Adds support for Handlebars.
-
-// This is a "feature" that doesn't
-// come with the default plugin.
-.token {
-	&.handlebars {
-		color: #fd9720;
-		.curly-bracket,
-		.helper {
-			color: #66d9ef;
-		}
-	}
-}
+// Phytoplankton doesn't need this
+//
+// pre[class*='language-'] {
+// 	position: relative;
+// }
+// pre[class*='language-'] > code[data-language] {
+// 	overflow: scroll;
+// 	max-height: 28em;
+// 	display: block;
+// }
+// pre[class*='language-'] > code[data-language]::before {
+// 	content: attr(data-language);
+// 	color: black;
+// 	background-color: #CFCFCF;
+// 	display: inline-block;
+// 	position: absolute;
+// 	top: 0;
+// 	right: 0;
+// 	font-size: 0.9em;
+// 	border-radius: 0 0 0 5px;
+// 	padding: 0 0.5em;
+// 	text-shadow: none;
+// }
 
 // Styles for WebPlatform Docs plugin - start
 
@@ -253,3 +249,4 @@ pre[class*="language-"] a[href].md-link:hover {
 }
 
 // Styles for Autolinker plugin - end
+

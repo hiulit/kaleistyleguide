@@ -1,6 +1,10 @@
 .phytoplankton-page {
+	background-color: #f9f9f9;
 	float: right;
-	@include prem(padding, 24);
+	@include prem(padding-bottom, 24);
+	padding-left: 10%;
+	@include prem(padding-top, 24);
+	padding-right: 10%;
 	width: 75%;
 	@media screen and (max-width: 700px) {
 		@include prem(margin-top, 60);
@@ -22,13 +26,13 @@
 	ol,
 	ul { // So it doesn't mess with PrismJs styles on <pre> and <code> blocks
 		a {
-			color: $primary-color;
+			color: $accent-tertiary-color;
 			text-decoration: none;
 			white-space: normal;
 			@include hyphenation;
 			transition: color .25s ease-in-out;
 			&:hover {
-				color: $secondary-color;
+				color: $accent-secondary-color;
 				text-decoration: underline;
 			}
 		}
@@ -50,37 +54,40 @@
 		}
 	}
 	pre {
-		border: 1px solid $divider-color;
 		@include md-depth(1, 2);
-		font-size: 14px;
+		@include font-size(14);
 		@include prem(padding-top, 16);
-		&[data-language] {
-			&:before {
-				@extend .code-lang;
-				content: attr(data-language);
-				@include font-size(16);
-				left: 16px;
-				position: absolute;
-				top: 0;
-			}
-		}
-		&:not([data-language]) {
+		&:not([class*="language-"]) {
 			@include prem(padding, 16);
 		}
 	}
 	pre[class*="language-"] {
 		@include prem(padding-top, $padding-tabs-margin);
 	}
+	code {
+		&[data-language] {
+			&:before {
+				@extend .code-lang;
+				content: attr(data-language);
+				@include font-size(16);
+				@include prem(left, -42);
+				position: absolute;
+				@include prem(top, -42);
+			}
+		}
+	}
 	table {
-		@include md-depth(1);
+		@include md-depth(1, 2);
 	}
 }
 
 .phytoplankton-page__item {
-	border-radius: 2px;
+	background-color: #fff;
+	@include md-depth(1, 2);
 	@include prem(padding, 24);
 	position: relative;
 	> h1 {
+		color: $accent-primary-color;
 		// counter-increment: heading1;
 		margin-top: 0;
 		// &:before {
@@ -88,6 +95,7 @@
 		// }
 	}
 	> h2 {
+		color: $accent-primary-color;
 		// counter-increment: heading2;
 		// &:before {
 		// 	content: counter(heading1) "." counter(heading2) ". " ;
@@ -100,27 +108,28 @@
 
 
 .code-lang {
-	background-color: #f5f2f0;
-	color: $blockquote-color;
-	font-family: $headerFontFamilyBold;
+	background-color: #272822;
+	color: #f8f8f2;
+	font-family: $headingFontFamily;
 	@include prem(padding, $padding-tabs);
 	text-transform: uppercase;
 	text-shadow: none;
 }
 
 .code-render {
-	border: 1px solid $divider-color;
-	border-bottom: 0;
 	@include md-depth(1);
+	border-radius: 2px 2px 0 0;
+	@include prem(margin-left, 1);
+	@include prem(margin-right, 1);
 	@include prem(padding, 75 40 40 40);
 	position: relative;
-	~ pre {
-		border: 1px solid $divider-color;
-		border-top: 0;
+	+ pre {
+		border-radius: 0 0 2px 2px;
 		margin-top: 0;
 	}
 	&:before {
 		@extend .code-lang;
+		border-radius: 2px 0 0 0;
 		content: "Example";
 		left: 0;
 		position: absolute;
@@ -131,25 +140,27 @@
 .copy-to-clipboard {
 	@extend .code-lang;
 	cursor: pointer;
-	color: $disabled-color;
+	color: rgba(255,255,255,.5);
 	position: absolute;
 	top: 0;
 	transition: color .25s ease-in-out;
 	right: 16px;
 	z-index: 10;
 	&.zeroclipboard-is-hover {
-		color: $blockquote-color;
+		color: rgba(255,255,255, 1);
 	}
 }
 
 .phytoplankton-tabs {
 	@include prem(margin-left, 16);
 	@include prem(margin-bottom, -$padding-tabs-margin, !important);
+	@include prem(margin-right, 200);
 	margin-top: 0 !important;
 	padding: 0;
 	position: relative;
 	z-index: 6;
 	~ pre {
+		border-radius: 0 0 2px 2px;
 		display: none;
 		margin-top: 0;
 		&:before { // Removes extra code-lang tab.
@@ -164,17 +175,17 @@
 .phytoplankton-tabs__item {
 	@extend .code-lang;
 	cursor: pointer;
-	color: $disabled-color;
+	color: rgba(255,255,255,.5);
 	@include inline-block;
 	transition: color .25s ease-in-out;
 	&.is-active {
 		cursor: default;
-		color: $blockquote-color;
+		color: rgba(255,255,255, 1);
 		&:hover {
-			color: $blockquote-color;
+			color: rgba(255,255,255, 1);
 		}
 	}
 	&:hover {
-		color: $blockquote-color;
+		color: rgba(255,255,255, 1);
 	}
 }
