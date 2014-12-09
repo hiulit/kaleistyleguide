@@ -123,6 +123,34 @@ pre[class*="language-"] {
 	cursor: help;
 }
 
+// This is a "feature" that doesn't
+// come with the default plugin.
+
+// New colors for Handlebars, JavaScript and default ones.
+
+.token.handlebars {
+	.delimiter {
+		color: #66d9ef;
+	}
+}
+
+.token.variable {
+	color: #fd971f;
+}
+
+.token.function {
+	color: #66d9ef;
+}
+
+.language-javascript {
+	.token.keyword,
+	.token.operator {
+		color: #f92672;
+	}
+}
+
+// Styles for Line Numbers plugin - start
+
 pre.line-numbers {
 	position: relative;
 	padding-left: 3.8em;
@@ -150,32 +178,18 @@ pre.line-numbers > code {
 
 }
 
-	.line-numbers-rows > span {
-		pointer-events: none;
-		display: block;
-		counter-increment: linenumber;
-	}
-
-		.line-numbers-rows > span:before {
-			content: counter(linenumber);
-			color: #999;
-			display: block;
-			padding-right: 0.8em;
-			text-align: right;
-		}
-.token a {
-	color: inherit;
-}
-code[class*="language-"] a[href],
-pre[class*="language-"] a[href] {
-	cursor: help;
-	text-decoration: none;
+.line-numbers-rows > span {
+	pointer-events: none;
+	display: block;
+	counter-increment: linenumber;
 }
 
-code[class*="language-"] a[href]:hover,
-pre[class*="language-"] a[href]:hover {
-	cursor: help;
-	text-decoration: underline;
+.line-numbers-rows > span:before {
+	content: counter(linenumber);
+	color: #999;
+	display: block;
+	padding-right: 0.8em;
+	text-align: right;
 }
 
 // Phytoplankton doesn't need this
