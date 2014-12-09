@@ -10,6 +10,7 @@ define([
 	'libs/prism/prism',
 	'libs/parseuri/parseuri',
 	'libs/less/less-1.7.5.min',
+	'libs/stacktable/stacktable',
 	'hbs/context',
 	'hbs/helpers'
 ],
@@ -238,6 +239,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			fileHighlight();
 			// Call for Fixie.
 			fixie.init();
+			// Call for Stacktable.
+			$('table').stacktable();
 
 			require(['libs/zeroclipboard/dist/ZeroClipboard'], function(ZeroClipboard) {
 

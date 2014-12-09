@@ -606,6 +606,18 @@ blockquote {
 
 table {
   width: 100%; }
+  table.stacktable.small-only {
+    display: none; }
+    table.stacktable.small-only tbody tr:first-child {
+      display: none; }
+    @media screen and (max-width: 700px) {
+      table.stacktable.small-only {
+        display: table; } }
+  table.stacktable.large-only {
+    display: table; }
+    @media screen and (max-width: 700px) {
+      table.stacktable.large-only {
+        display: none; } }
 
 td, th {
   border: 1px solid #ccc;

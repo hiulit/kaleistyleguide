@@ -43,7 +43,7 @@ So you don't have to ever use again a preprocessor tool ;)
 
 ## Notes
 
-Why don't you use the latest version of Sass (v3.4.5)?
+Why don't you use the [latest version of Sass](http://sass-lang.com/documentation/file.SASS_CHANGELOG.html)?
 
 Phytoplankton uses [sass.js](https://github.com/medialize/sass.js) for having Sass in the browser
 ([not a trivial task](http://blog.rodneyrehm.de/archives/33-libsass.js-An-Emscripten-Experiment.html), btw)
@@ -60,11 +60,11 @@ which in turn uses [libsass](https://github.com/hcatlin/libsass).
 /*
 # Browser support
 
-| 				| IE9 			| IE10+ 		| Firefox 		| Chrome		|
-| -				| :-: 			| :-: 			| :-: 			| :-: 			|
+| 				| IE9 		| IE10+ 	| Firefox 	| Chrome	|
+| -				| :-: 		| :-: 		| :-: 		| :-: 		|
 | CSS	 		| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
-| Sass 		|				| &#x2713; 	| &#x2713; 	| &#x2713; 	|
-| Less 		| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
+| Sass 			| &#x2717;	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
+| Less 		|	 &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
 | Handlebars 	| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
 | Prism 		| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
 
@@ -121,6 +121,8 @@ Extras:
 
 * [Sassy-Gridlover](https://github.com/hiulit/Sassy-Gridlover) - Super easy to use Sass mixins to establish a typographic system with modular scale and vertical rhythm.
 * [Vegan Sass Burger](http://joren.co/sass-burger/) - A Sass mixin for creating (100% vegan) hamburger icons.
+* [Stacktable](https://github.com/johnpolacek/stacktable.js/) - jQuery plugin for stacking tables on small screens.
+* [ZerpClipboard](https://github.com/zeroclipboard/zeroclipboard) - A library that provides an easy way to copy text to the clipboard.
 
 */
 

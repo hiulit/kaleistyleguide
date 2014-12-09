@@ -61,6 +61,27 @@ blockquote {
 
 table {
 	width: 100%;
+	&.stacktable {
+		&.small-only {
+			display: none;
+			tbody {
+				tr {
+					&:first-child {
+						display: none;
+					}
+				}
+			}
+			@media screen and (max-width: 700px) {
+				display: table;
+			}
+		}
+		&.large-only {
+			display: table;
+			@media screen and (max-width: 700px) {
+				display: none;
+			}
+		}
+	}
 }
 
 td, th {
