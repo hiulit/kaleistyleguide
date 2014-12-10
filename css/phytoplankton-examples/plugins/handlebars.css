@@ -12,6 +12,8 @@
 
 Templates are placed in `templates/hbs/`.
 
+You can configure it though. Just change the path in the `config.js`.
+
 */
 /*
 # Context

@@ -541,7 +541,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  background-color: #fff;
+  background-color: #f9f9f9;
   color: rgba(0, 0, 0, 0.87);
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -973,7 +973,6 @@ img {
       z-index: 1; }
 
 .phytoplankton-page {
-  background-color: #f9f9f9;
   float: right;
   padding-bottom: 24px;
   padding-bottom: 1.5rem;
