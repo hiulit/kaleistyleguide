@@ -1,5 +1,4 @@
 .phytoplankton-page {
-	background-color: #f9f9f9;
 	float: right;
 	@include prem(padding-bottom, 24);
 	padding-left: 10%;
@@ -166,7 +165,7 @@
 		code {
 			&:before { // Removes extra code-lang tab.
 				display: none;
-			}	
+			}
 		}
 		&:before { // Removes extra code-lang tab.
 			display: none;
