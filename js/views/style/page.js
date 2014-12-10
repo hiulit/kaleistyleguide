@@ -482,7 +482,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			var source;
 			var template;
 			$.ajax({
-				url: 'templates/hbs/'+ properties.template +'.hbs',
+				url: config.hbs_template_path + properties.template +'.hbs',
 				async: false,
 				cache: true,
 				success: function(data) {
