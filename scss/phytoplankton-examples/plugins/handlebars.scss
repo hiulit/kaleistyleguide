@@ -24,6 +24,8 @@ You can configure it though. Just change the path in the `config.js`.
 
 Context objects are placed in `js/hbs/context.js`.
 
+~~Also configurable via `config.js`.~~
+
 <pre data-src="js/hbs/context.js"></pre>
 
 */
@@ -31,6 +33,10 @@ Context objects are placed in `js/hbs/context.js`.
 # Helpers
 
 Helpers are placed in `js/hbs/helpers.js`.
+
+~~Guess what?~~
+
+~~*Tip: `config.js` ;)*~~
 
 <pre data-src="js/hbs/helpers.js"></pre>
 
