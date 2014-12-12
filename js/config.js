@@ -41,8 +41,6 @@ define({
 
 	// Handlebars configurable paths.
 	hbs_template_path: "templates/hbs/",
-	hbs_context_path: "hbs/context",
-	hbs_helpers_path: "hbs/helpers",
 
 	// Enter URLs of any external stylesheets you wish to include with this demo.
 	// These will not be parsed as part of the documentation and are simply loaded into the page header.

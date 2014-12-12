@@ -7,14 +7,14 @@ define([
 	'text!templates/style/page.html',
 	'config',
 	'jscssp',
+	'hbs_context',
+	'hbs_helpers',
 	'libs/prism/prism',
 	'libs/parseuri/parseuri',
 	'libs/less/less-1.7.5.min',
-	'libs/stacktable/stacktable',
-	'hbs/context',
-	'hbs/helpers'
+	'libs/stacktable/stacktable'
 ],
-function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, parseuri){
+function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, mockupObjects){
 
 	var that = null;
 
