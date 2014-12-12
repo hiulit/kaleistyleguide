@@ -593,9 +593,9 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 							}
 						// If it's "handlebars":
 						} else if(comment.lang === 'handlebars') {
-							var lala = that.parse_hbs(comment.text);
-							comment.text = lala[0];
-							comment.hbsTemplateUncompiled = lala[1];
+							var parsedHbs = that.parse_hbs(comment.text);
+							comment.text = parsedHbs[0];
+							comment.hbsTemplateUncompiled = parsedHbs[1];
 							block.content.push({
 								type: 'html',
 								lang: 'markup',
