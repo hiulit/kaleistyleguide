@@ -39,8 +39,11 @@ define({
 		langPrefix: 'language-'
 	},
 
-	// Handlebars configurable paths.
+	// Handlebars templates path.
 	hbs_template_path: "templates/hbs/",
+
+	// External scripts you may need to use.
+	external_scripts_path: 'js/external-scripts/',
 
 	// Enter URLs of any external stylesheets you wish to include with this demo.
 	// These will not be parsed as part of the documentation and are simply loaded into the page header.

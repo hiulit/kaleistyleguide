@@ -526,7 +526,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 							match[1] = match[1].replace(/\"/g, '');
 							var script = document.createElement('script');
 							script.type = 'text/javascript';
-							script.src = 'js/external-scripts/' + match[1] +'';
+							script.src = config.external_scripts_path + match[1] +'';
 							block.scriptsArray.push(script);
 						}
 						block.content.push(comment);
