@@ -9,7 +9,7 @@ define([
 	'jscssp',
 	'hbs_context',
 	'hbs_helpers',
-	'libs/less/less-1.7.5.min',
+	// 'libs/less/less',
 	'libs/prism/prism',
 	'libs/stacktable/stacktable'
 ],
@@ -30,7 +30,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			var styleExt;
 			var styleDir = window.location.hash;
 			styleDir = styleDir.substr(styleDir.lastIndexOf('#') + 2);
-				console.log(styleDir);
 
 			configDir =	window.location.protocol + '//' +
 							window.location.hostname +
@@ -82,26 +81,12 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 									var s = stylesheet;
 									if (!e) {
 										console.log(result.css);
-									}
-									else {
-										showError(e);
-									}
-								});
-							}
-							else { // Less v1.7.5 and below.
-								console.log('below');
-								var parser = new(less.Parser);
-								parser.parse(stylesheet, function (e, tree) {
-									if (!e) {
-										try {
-											var cssCompiled = tree.toCSS({ compress: false});
-											cssCompiled = that.remove_comments(cssCompiled);
-											page = that.compute_less(tree, cssUncompiled, cssCompiled, styleExt);
-											that.render_page(page);
-										}
-										catch (e) {
-											console.log(e);
-										}
+
+										parser = new jscssp();
+										parsedStylesheet = parser.parse(result.css, false, true);
+										var cssCompiled = that.remove_comments(result.css);
+										page = that.compute_css(parsedStylesheet, cssUncompiled, cssCompiled, styleExt);
+										that.render_page(page);
 									}
 									else {
 										showError(e);
@@ -416,59 +401,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			});
 
 			page.css = cssArray.join('');
-
-			return page;
-		},
-
-		compute_less: function(stylesheet, cssUncompiled, cssCompiled, styleExt) {
-			var page = {
-				blocks: [],
-				css: ''
-			};
-
-			_.each(stylesheet.rules, function(rule) {
-				// Comment block.
-				if (rule.silent === false) {
-					page.blocks = page.blocks.concat(that.parse_commentblock(rule.value, cssUncompiled, cssCompiled, styleExt));
-				// Standard Rule.
-				} else if (rule.rules !== null) {
-				//Import Rule
-				} else if (rule.path !== null) {
-				}
-			});
-
-			page.css = cssUncompiled;
-			page.css = '.code-render { ' + page.css + ' }';
-			var src = page.css;
-
-			// Remove CSS comments.
-			if (less.render) { // Less v2.0.0 and above (not working actually).
-				less.render(src, function (e, result) {
-					var s = src;
-					if (!e) {
-						console.log(result.css);
-					}
-					else {
-						showError(e);
-					}
-				});
-			}
-			else { // Less v1.7.5 and below.
-				var parser = new(less.Parser);
-				parser.parse(src, function (e, tree) {
-					if (!e) {
-						try {
-							page.css = tree.toCSS({ compress: true });
-						}
-						catch (e) {
-							showError(e);
-						}
-					}
-					else {
-						showError(e);
-					}
-				});
-			}
 
 			return page;
 		},
