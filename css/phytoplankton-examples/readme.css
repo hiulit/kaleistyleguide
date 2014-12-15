@@ -79,13 +79,13 @@ Not tested on Opera nor on Safari.
 # To do
 
 * ~~Handlebars temaplates path configurable.~~
-* Handlebars context and helpers paths configurable.
+* ~~Handlebars context and helpers paths configurable.~~
 * Upgrade to Less 2.0.0 and above.
 * Improve tabs system
 * ~~Add styles tab name dynamically (scss, less, etc).~~
 * Fix ZeroClipboard on dynamic content (e.g. <pre data-src="")
-* Create tooltips for ZeroClipboard
-* Fix tabs scroll
+* Create tooltips (for ZeroClipboard).
+* Fix tabs scroll.
 
  */
 /*
