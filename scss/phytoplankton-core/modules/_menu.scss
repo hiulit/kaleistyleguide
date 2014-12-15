@@ -5,7 +5,7 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
-	@include prem(padding, 16);
+	// @include prem(padding, 16);
 	position: fixed;
 	top: 0;
 	width: 25%;
@@ -46,8 +46,8 @@
 	}
 	@include depth(2) {
 		> ul {
-			background-color: $bg-color;
-			@include md-depth(1);
+			// background-color: $bg-color;
+			// @include md-depth(1);
 			@include prem(margin-bottom, 16);
 			@include prem(margin-left, 1);
 			@include prem(margin-right, 1);
@@ -157,18 +157,18 @@
 	color: $font-color;
 	font-family: $headingFontFamily;
 	&:hover {
-		@include md-depth(1);
-		z-index: 3;
+		// @include md-depth(1);
+		// z-index: 3;
 	}
 	&:active {
-		@include md-depth(2);
+		// @include md-depth(2);
 	}
 	&.active {
 		background-color: $primary-color;
-		@include md-depth(1);
+		// @include md-depth(1);
 		color: $bg-color;
 		&:hover {
-			@include md-depth(1);
+			// @include md-depth(1);
 		}
 	}
 }
