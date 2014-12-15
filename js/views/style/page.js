@@ -57,7 +57,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 					// result[2] Extension.
 
 				if(result === null) {
-					return alert('Yo\'re missing the extension (.css, .sass, .scss, .less) in the URL.');
+					return alert('You\'re missing the extension (.css, .sass, .scss, .less) in the URL.');
 				}
 
 				var page = {
