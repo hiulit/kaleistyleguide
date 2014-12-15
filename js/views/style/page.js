@@ -10,7 +10,6 @@ define([
 	'hbs_context',
 	'hbs_helpers',
 	'libs/prism/prism',
-	'libs/parseuri/parseuri',
 	'libs/less/less-1.7.5.min',
 	'libs/stacktable/stacktable'
 ],
