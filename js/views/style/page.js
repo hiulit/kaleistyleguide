@@ -529,24 +529,50 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 							}
 						// If it's "handlebars":
 						} else if(comment.lang === 'handlebars') {
+							cssCompiled = that.remove_comments(cssCompiled);
+							console.log(cssCompiled);
 							var parsedHbs = that.parse_hbs(comment.text);
 							comment.text = parsedHbs[0];
 							comment.hbsTemplateUncompiled = parsedHbs[1];
-							block.content.push({
-								type: 'html',
-								lang: 'markup',
-								text: '<div class="code-render clearfix">' + comment.text + '</div>' +
-										'<ul class="phytoplankton-tabs">' +
-										'<li class="phytoplankton-tabs__item is-active" data-tab="tab-1">Handlebars</li>' +
-										'<li class="phytoplankton-tabs__item" data-tab="tab-2">HTML</li>' +
-										'</ul>'
-							});
+							if(cssCompiled !== '') { // If it has styles
+								block.content.push({
+									type: 'html',
+									lang: 'markup',
+									text: '<div class="code-render clearfix">' + comment.text + '</div>' +
+											'<ul class="phytoplankton-tabs">' +
+											'<li class="phytoplankton-tabs__item is-active" data-tab="tab-1">Handlebars</li>' +
+											'<li class="phytoplankton-tabs__item" data-tab="tab-2">HTML</li>' +
+											'<li class="phytoplankton-tabs__item" data-tab="tab-3">CSS</li>' +
+											'</ul>'
+								});
+							} else {
+								block.content.push({
+									type: 'html',
+									lang: 'markup',
+									text: '<div class="code-render clearfix">' + comment.text + '</div>' +
+											'<ul class="phytoplankton-tabs">' +
+											'<li class="phytoplankton-tabs__item is-active" data-tab="tab-1">Handlebars</li>' +
+											'<li class="phytoplankton-tabs__item" data-tab="tab-2">HTML</li>' +
+											'</ul>'
+								});
+							}
 							block.content.push({
 								type: 'code',
 								lang: 'handlebars',
 								text: comment.hbsTemplateUncompiled
 							});
+
 							block.content.push(comment);
+							
+							if(cssCompiled !== '') { // If it has styles
+								//Pushes the compiled styles
+								block.content.push({
+									type: 'code',
+									lang: 'css',
+									text: cssCompiled
+								});
+							}
+							
 						// If the code is not "markup" (html):
 						// Push the code without example but with language header.
 						} else {
