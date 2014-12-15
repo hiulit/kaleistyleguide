@@ -193,11 +193,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				_.each(block.heading, function(val, i) {
 					if(i >= 1) {
 						var li = $('<li>');
-						li.append($('<a href="#' + block.headingID[i] + '">').text(val));
+						li.append($('<a href="#' + block.headingID[i] + '">').html(val));
 						ul.append(li);
 					} else {
 						var li = $('<li>');
-						li.append($('<a href="#' + block.headingID[i] + '">').text(val));
+						li.append($('<a href="#' + block.headingID[i] + '">').html(val));
 						submenu.append(li);
 					}
 				});
@@ -563,7 +563,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 							});
 
 							block.content.push(comment);
-							
+
 							if(cssCompiled !== '') { // If it has styles
 								//Pushes the compiled styles
 								block.content.push({
@@ -572,7 +572,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 									text: cssCompiled
 								});
 							}
-							
 						// If the code is not "markup" (html):
 						// Push the code without example but with language header.
 						} else {
