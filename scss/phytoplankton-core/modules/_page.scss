@@ -85,8 +85,13 @@
 	@include md-depth(1, 2);
 	@include prem(padding, 24);
 	position: relative;
+	> h1,
+	> h2 {
+		border-bottom: 1px solid $divider-color;
+		color: $font-color;
+		@include prem(padding-bottom, round(($sgl-base-font-size*$sgl-base-line-height)-($sgl-base-font-size/2)));
+	}
 	> h1 {
-		color: $accent-primary-color;
 		// counter-increment: heading1;
 		margin-top: 0;
 		// &:before {
@@ -94,7 +99,6 @@
 		// }
 	}
 	> h2 {
-		color: $accent-primary-color;
 		// counter-increment: heading2;
 		// &:before {
 		// 	content: counter(heading1) "." counter(heading2) ". " ;
