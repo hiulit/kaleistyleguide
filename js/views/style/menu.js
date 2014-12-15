@@ -60,7 +60,7 @@ function($, _, str, Backbone, marked, dashboardPageTemplate, config, jscssp) {
 				menus.push(_.extend({}, currentMenu));
 			});
 
-			$(that.el).html(_.template(dashboardPageTemplate, {_:_, menus: menus}));
+			this.$el.html(_.template(dashboardPageTemplate)({menus:menus}));
 
 			// Adds .active class to the actual page's menu.
 			$('[href="' + window.location.hash + '"]').addClass('active');

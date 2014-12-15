@@ -9,8 +9,8 @@ define([
 	'jscssp',
 	'hbs_context',
 	'hbs_helpers',
-	'libs/prism/prism',
 	'libs/less/less-1.7.5.min',
+	'libs/prism/prism',
 	'libs/stacktable/stacktable'
 ],
 function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, mockupObjects){
@@ -28,7 +28,9 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 			var configPath;
 			var styleUrl;
 			var styleExt;
-			var styleDir = this.options.style;
+			var styleDir = window.location.hash;
+			styleDir = styleDir.substr(styleDir.lastIndexOf('#') + 2);
+				console.log(styleDir);
 
 			configDir =	window.location.protocol + '//' +
 							window.location.hostname +
@@ -37,8 +39,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 
 			configPath = config.menu[0].url[0];
 
-			if(styleDir === null) {
-				styleExt = configPath.substr(configPath.lastIndexOf('.')+1);
+			if(styleDir === '') {
+				styleExt = configPath.substr(configPath.lastIndexOf('.') +1);
 				styleUrl = configDir + styleExt + '/' + configPath;
 				window.location.href =	configDir + '#/' + configPath;
 			} else {
@@ -217,12 +219,15 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				submenu.find('li:last').append(ul);
 			});
 
+			var styleDir = window.location.hash;
+			styleDir = styleDir.substr(styleDir.lastIndexOf('#') + 2);
+
 			$('.phytoplankton-menu > ul > li > ul > li > ul').remove();
-			$('[data-sheet="' + that.options.style + '"]').append(submenu);
+			$('[data-sheet="' + styleDir + '"]').append(submenu);
 			$('.phytoplankton-menu > ul > li > ul > li > ul > li:first-child').addClass('active');
 			////////////NEEDS TO BE EXPORTED TO Menu.js
 
-			$(that.el).html(_.template(stylePageTemplate, {_:_, page: page, config: config, externalStyles: config.external_stylesheets}));
+			this.$el.html(_.template(stylePageTemplate)({page: page, config: config, externalStyles: config.external_stylesheets}));
 
 			_.each(externalScripts, function (val, i) {
 				$('head').append(externalScripts[i]);
