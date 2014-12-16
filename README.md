@@ -50,7 +50,7 @@ which in turn uses [libsass](https://github.com/hcatlin/libsass).
 ## Browser support
 
 | 				| IE9 		| IE10+ 	| Firefox 	| Chrome	|
-| -				| :-: 		| :-: 		| :-: 		| :-: 		|
+| :--			| :-: 		| :-: 		| :-: 		| :-: 		|
 | CSS	 		| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
 | Sass 			| &#x2717;	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
 | Less 			| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
