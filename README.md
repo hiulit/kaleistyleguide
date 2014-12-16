@@ -17,19 +17,68 @@ To do this, it actually uses your style sheets so that, at anytime, you can revi
 
 ## Installation
 
-1. Download the repository `git clone https://github.com/hiulit/kaleistyleguide.git`.
+**No** Node.js, **no** Grunt, **no** Gulp, **no** nothing...
+
+Just:
+
+1. [Download](https://github.com/hiulit/kaleistyleguide) the repository or `git clone https://github.com/hiulit/kaleistyleguide.git`
 2. Serve it on a HTTP server (or a local environment using [MAMP](http://www.mamp.info/),
- [XAMPP](http://www.apachefriends.org/), etc.) and it should work!
+ [XAMPP](http://www.apachefriends.org/), etc.)
+3. And it should work! :D
+
+# Prepocessors support
+
+* [Sass](http://sass-lang.com/) ([libsass v2.0](https://github.com/sass/libsass/releases/tag/v2.0))
+* [Less](http://lesscss.org/) (v1.7.5)
+
+So you don't have to ever use again a preprocessor tool ;)
+
+## Notes
+
+Why don't you use the [latest version of Sass](http://sass-lang.com/documentation/file.SASS_CHANGELOG.html)?
+
+Phytoplankton uses [sass.js](https://github.com/medialize/sass.js) for having Sass in the browser
+([not a trivial task](http://blog.rodneyrehm.de/archives/33-libsass.js-An-Emscripten-Experiment.html), btw)
+which in turn uses [libsass](https://github.com/hcatlin/libsass).
+
+**Update 1**: Here it is the the [State of Libsass (versus Ruby Sass)](http://www.solitr.com/blog/2014/01/state-of-libsass/).
+
+**Update 2**: Here it is [The LibSass Compatibility Plan](https://github.com/sass/libsass/wiki/The-LibSass-Compatibility-Plan).
+
+*It seems that finally, thanks to the effort of a lot of people,  libsass will reach parity with Ruby Sass*.
+
+## Browser support
+
+| 				| IE9 		| IE10+ 	| Firefox 	| Chrome	|
+| -				| :-: 		| :-: 		| :-: 		| :-: 		|
+| CSS	 		| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
+| Sass 			| &#x2717;	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
+| Less 		|	 &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
+| Handlebars 	| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
+| Prism 		| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
+
+Not tested on Opera nor on Safari.
+
+## Changelog
+
+## 0.1.0 (December 3rd 2014)
+
+* Not officially released.
+
+## To do
+
+* ~~Handlebars temaplates path configurable.~~
+* ~~Handlebars context and helpers paths configurable.~~
+* Upgrade to Less 2.0.0 and above.
+* Improve tabs system
+* ~~Add styles tab name dynamically (scss, less, etc).~~
+* Fix ZeroClipboard on dynamic content (e.g. <pre data-src="")
+* Create tooltips (for ZeroClipboard).
+* Fix tabs scroll.
 
 ## Inspiration and alternatives
 
-Phytoplankton is heavily influenced by the following projects and blog posts:
-
-* [Pea.rs](http://pea.rs/)
-* [KSS](http://warpspire.com/posts/kss/)
-* [StyleDocco](http://jacobrask.github.com/styledocco/)
-* [Anchoring Your Design Language in a Live Style Guide](http://uxmag.com/articles/anchoring-your-design-language-in-a-live-style-guide)
-* [Nadarei KSS](http://nadarei.co/nkss-rails/) - rails
+Phytoplankton is heavily influenced by the projects found in [the Style Guide guide](http://vinspee.me/style-guide-guide/).
 
 ## Technologies
 
@@ -41,50 +90,22 @@ Mad propz to all the great people behind the software listed below.
 * [sass.js](https://github.com/medialize/sass.js) - API for emscripted libsass to run in the browser.
 * [Fixie.js](https://github.com/ryhan/fixie) - Automatically add filler content to HTML documents.
 * [Prism](http://prismjs.com/) - Lightweight, robust, elegant syntax highlighting.
-* [Backbone.js](http://backbonejs.org/)
-* [Underscore.js](http://underscorejs.org/)
-* [jQuery](http://jquery.com)
+* [RequireJS](http://requirejs.org/) - JavaScript file and module loader.
+* [Backbone.js](http://backbonejs.org/) - Gives structure to web applications by providing models, collections and views.
+* [Underscore.js](http://underscorejs.org/) - JavaScript library that provides a whole mess of useful functional programming helpers without extending any built-in objects.
+* [Handlebars.js](http://handlebarsjs.com/) - Minimal templating on steroids.
+* [jQuery](http://jquery.com) - Fast, small, and feature-rich JavaScript library.
 
-## Pre-pocessors support
+Extras:
 
-* [Sass](http://sass-lang.com/) ([libsass v2.0](https://github.com/sass/libsass/releases/tag/v2.0))
-* [Less](http://lesscss.org/) (v1.7.5)
-
-## Notes
-
-Why don't you use the latest version of Sass (v3.4.4)?
-
-Phytoplankton uses [sass.js](https://github.com/medialize/sass.js) for having Sass in the browser
-([not a trivial task](http://blog.rodneyrehm.de/archives/33-libsass.js-An-Emscripten-Experiment.html), btw)
-which in turn uses [libsass](https://github.com/hcatlin/libsass).
-
-**Update:** Here it is the the [State of Libsass (versus Ruby Sass)](http://www.solitr.com/blog/2014/01/state-of-libsass/).
-
-## Browser support
-
-* Chrome
-* Firefox
-* IE 8+
-
-### Notes
-
-Say whaaaa...?!! Did I just see that you support IE 8+?
-
-Well... If you want to pimp your experience and leverage [sass.js](https://github.com/medialize/sass.js) and [Prism](http://prismjs.com/),
-please ensure you use a real browser **IE 10+**.
-If not, you can still use plain, old boring CSS. Or try using [Less](http://lesscss.org/).
-
-Not tested on Opera.
-
-## Changelog
-
-### 0.1.0 (September 16th 2014)
-
-* Not officially released.
+* [Sassy-Gridlover](https://github.com/hiulit/Sassy-Gridlover) - Super easy to use Sass mixins to establish a typographic system with modular scale and vertical rhythm.
+* [Vegan Sass Burger](http://joren.co/sass-burger/) - A Sass mixin for creating (100% vegan) hamburger icons.
+* [Stacktable](https://github.com/johnpolacek/stacktable.js/) - jQuery plugin for stacking tables on small screens.
+* [ZeroClipboard](https://github.com/zeroclipboard/zeroclipboard) - A library that provides an easy way to copy text to the clipboard.
 
 ## Author
 
-* Me, [Xavier Gómez](https://github.com/hiulit) ([@hiulit](https://twitter.com/hiulit)).
+* [Xavier Gomez](https://github.com/hiulit) ([@hiulit](https://twitter.com/hiulit)).
 
 ## Contributors
 
