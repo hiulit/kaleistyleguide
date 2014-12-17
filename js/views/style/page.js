@@ -96,72 +96,72 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 						break;
 					case 'sass':
 					case 'scss':
-					if('querySelector' in document
-						&& document.documentMode >= 10 // Checks if it's IE10+.
-						|| document.documentMode === undefined // Checks if it's not IE.
-						&& 'localStorage' in window
-						&& 'addEventListener' in window) {
-						// Loads sass.js
-						require(['libs/sassjs/dist/sass.min'], function(Sass) {
-							// Thanks, so many thanks to Oriol Torras @uriusfurius.
-							function findImports(str, basepath) {
-								var url = configDir + styleExt + '/';
-								var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
-								var match, matches = [];
-								while ((match = regex.exec(str)) !== null) {
-									matches.push(match[1]);
-								}
-								_.each(matches, function(match) {
-									// Check if it's a filename
-									var path = match.split('/');
-									var filename, fullpath, _basepath = basepath;
-									if (path.length > 1) {
-										filename = path.pop();
-										var something, basepathParts;
-										if (_basepath) {
-											basepathParts = _basepath.split('/');
-										}
-										while ((something = path.shift()) === '..') {
-											basepathParts.pop();
-										}
-										if (something) {
-											path.unshift(something);
-										}
-										_basepath = (basepathParts ? basepathParts.join('/') + '/' : '') + path.join('/');
-									} else {
-										filename = path.join('');
+						if('querySelector' in document
+							&& document.documentMode >= 10 // Checks if it's IE10+.
+							|| document.documentMode === undefined // Checks if it's not IE.
+							&& 'localStorage' in window
+							&& 'addEventListener' in window) {
+							// Loads sass.js
+							require(['libs/sassjs/dist/sass.min'], function(Sass) {
+								// Thanks, so many thanks to Oriol Torras @uriusfurius.
+								function findImports(str, basepath) {
+									var url = configDir + styleExt + '/';
+									var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
+									var match, matches = [];
+									while ((match = regex.exec(str)) !== null) {
+										matches.push(match[1]);
 									}
-									filename = '_' + filename + '.' + styleExt;
-									fullpath = _basepath + '/' + filename;
+									_.each(matches, function(match) {
+										// Check if it's a filename
+										var path = match.split('/');
+										var filename, fullpath, _basepath = basepath;
+										if (path.length > 1) {
+											filename = path.pop();
+											var something, basepathParts;
+											if (_basepath) {
+												basepathParts = _basepath.split('/');
+											}
+											while ((something = path.shift()) === '..') {
+												basepathParts.pop();
+											}
+											if (something) {
+												path.unshift(something);
+											}
+											_basepath = (basepathParts ? basepathParts.join('/') + '/' : '') + path.join('/');
+										} else {
+											filename = path.join('');
+										}
+										filename = '_' + filename + '.' + styleExt;
+										fullpath = _basepath + '/' + filename;
 
-									var importContent = Module.read(url + fullpath);
-									Sass.writeFile(match, importContent);
+										var importContent = Module.read(url + fullpath);
+										Sass.writeFile(match, importContent);
 
-									findImports(importContent, _basepath);
+										findImports(importContent, _basepath);
+									});
+								}
+
+								configPath = configPath.substr(0, configPath.lastIndexOf('/'));
+								// Recursive function to find all @imports.
+								findImports(stylesheet, configPath);
+								// Writes style sheet so sass.js can compile it.
+								Sass.writeFile(styleUrl, stylesheet);
+								Sass.options({
+									style: Sass.style.expanded
 								});
-							}
-
-							configPath = configPath.substr(0, configPath.lastIndexOf('/'));
-							// Recursive function to find all @imports.
-							findImports(stylesheet, configPath);
-							// Writes style sheet so sass.js can compile it.
-							Sass.writeFile(styleUrl, stylesheet);
-							Sass.options({
-								style: Sass.style.expanded
+								// Compiles Sass stylesheet into CSS.
+								var cssCompiled = Sass.compile(stylesheet);
+								var cssUncompiled = that.remove_comments(stylesheet);
+								// Parses the CSS.
+								parser = new jscssp();
+								parsedStylesheet = parser.parse(cssCompiled, false, true);
+								page = that.compute_css(parsedStylesheet, cssUncompiled, cssCompiled, styleExt);
+								that.render_page(page);
 							});
-							// Compiles Sass stylesheet into CSS.
-							var cssCompiled = Sass.compile(stylesheet);
-							var cssUncompiled = that.remove_comments(stylesheet);
-							// Parses the CSS.
-							parser = new jscssp();
-							parsedStylesheet = parser.parse(cssCompiled, false, true);
-							page = that.compute_css(parsedStylesheet, cssUncompiled, cssCompiled, styleExt);
-							that.render_page(page);
-						});
-					} else {
-						alert('Your browser doesn\'t support Sass.js.\nUpdate it to a newer version or use a modern browser ;)');
-					}
-						break;
+						} else {
+							alert('Your browser doesn\'t support Sass.js.\nUpdate it to a newer version or use a modern browser ;)');
+						}
+					break;
 				}
 			});
 		},
@@ -278,21 +278,21 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				}
 			}
 
-			// Rename Page Heading's ID
+			// Renames Page Heading's ID.
 			headingArray = [];
 			$('.phytoplankton-page__item').find('*').filter(':header').each(function(i) {
 				var that = $(this);
 				renameHeadingID('id', that, headingArray, i);
 			});
 
-			// Rename Menu Heading's ID
+			// Renames Menu Heading's ID.
 			headingArrayMenu = [];
 			$('.phytoplankton-menu > ul > li > ul > li > ul > li a').each(function(i) {
 				var that = $(this);
 				renameHeadingID('href', that, headingArrayMenu, i);
 			});
 
-			// Tabs
+			// Creates tabs.
 			$('.phytoplankton-tabs > li').each(function(i) {
 				$(this).attr('data-tab', 'tab-' + (i+1));
 			});
@@ -312,6 +312,13 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				$(this).addClass('is-active');
 				$("#"+tab_id).addClass('is-active');
 			});
+
+			// Adds page headers's title and URL.
+			var menuUrl = $('.phytoplankton-menu__list__item__subheader.active').attr('href');
+			menuUrl = menuUrl.substr(menuUrl.lastIndexOf('#') + 1);
+			var menuTitle = $('.phytoplankton-menu__list__item__subheader.active').parent().parent().parent().find('.phytoplankton-menu__list__item__header').text().trim();
+			$('.phytoplankton-page__header-title').html(menuTitle);
+			$('.phytoplankton-page__header-url').html(menuUrl);
 
 			$(window).scroll(function () {
 				var k = 0;
