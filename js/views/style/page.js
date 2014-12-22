@@ -9,7 +9,6 @@ define([
 	'jscssp',
 	'hbs_context',
 	'hbs_helpers',
-	// 'libs/less/less',
 	'libs/prism/prism',
 	'libs/stacktable/stacktable'
 ],
@@ -21,6 +20,10 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 		el: '.phytoplankton-page',
 
 		render: function () {
+
+			require(['views/style/tabs'], function() {
+
+			});
 
 			that = this;
 
@@ -75,24 +78,23 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 							that.render_page(page);
 						break;
 					case 'less':
-							if (less.render) { // Less v2.0.0 and above (not working actually).
-								console.log('render');
-								less.render(stylesheet, function (e, result) {
-									var s = stylesheet;
-									if (!e) {
-										console.log(result.css);
-
-										parser = new jscssp();
-										parsedStylesheet = parser.parse(result.css, false, true);
-										var cssCompiled = that.remove_comments(result.css);
-										page = that.compute_css(parsedStylesheet, cssUncompiled, cssCompiled, styleExt);
-										that.render_page(page);
-									}
-									else {
-										showError(e);
-									}
-								});
-							}
+							require(['libs/less/less'], function(less) {
+								if (less.render) { // Less v2.0.0 and above (not working actually).
+									less.render(stylesheet, function (e, result) {
+										var s = stylesheet;
+										if (!e) {
+											parser = new jscssp();
+											parsedStylesheet = parser.parse(result.css, false, true);
+											var cssCompiled = that.remove_comments(result.css);
+											page = that.compute_css(parsedStylesheet, cssUncompiled, cssCompiled, styleExt);
+											that.render_page(page);
+										}
+										else {
+											showError(e);
+										}
+									});
+								}
+							});
 						break;
 					case 'sass':
 					case 'scss':
@@ -247,7 +249,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 					});
 
 					clip.on( 'ready', function(event) {
-						console.log( 'movie is loaded' );
+						// console.log( 'movie is loaded' );
 
 						clip.on( 'copy', function(event) {
 							event.clipboardData.setData('text/plain', code);
@@ -537,7 +539,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 						// If it's "handlebars":
 						} else if(comment.lang === 'handlebars') {
 							cssCompiled = that.remove_comments(cssCompiled);
-							console.log(cssCompiled);
 							var parsedHbs = that.parse_hbs(comment.text);
 							comment.text = parsedHbs[0];
 							comment.hbsTemplateUncompiled = parsedHbs[1];
