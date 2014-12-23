@@ -5,10 +5,9 @@ define([
 	'backbone',
 	'marked',
 	'text!templates/style/menu.html',
-	'config',
-	'jscssp'
+	'config'
 ],
-function($, _, str, Backbone, marked, dashboardPageTemplate, config, jscssp) {
+function($, _, str, Backbone, marked, dashboardPageTemplate, config) {
 	var DashboardPage = Backbone.View.extend({
 		el: '.js-phytoplankton-menu',
 		events: {

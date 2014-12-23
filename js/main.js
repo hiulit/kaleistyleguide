@@ -7,7 +7,7 @@ require.config({
 		underscore: 'libs/underscore/underscore-min',
 		backbone: 'libs/backbone/backbone-min',
 		handlebars: 'libs/handlebars/handlebars.min',
-		jscssp: 'libs/jscssp/jscssp.min',
+		gonzales: 'libs/gonzales/gonzales',
 		marked: 'libs/marked/marked.min',
 		fixie: 'libs/fixie/fixie.min',
 		// Require.js plugins

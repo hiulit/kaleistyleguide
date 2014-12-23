@@ -6,14 +6,13 @@ define([
 	'marked',
 	'text!templates/style/page.html',
 	'config',
-	'jscssp',
 	'hbs_context',
 	'hbs_helpers',
+	'gonzales',
 	'libs/prism/prism',
-	'libs/stacktable/stacktable',
-	'libs/css-master/reworkcss'
+	'libs/stacktable/stacktable'
 ],
-function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, mockupObjects){
+function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupObjects){
 
 	var that = null;
 
@@ -22,9 +21,9 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 
 		render: function () {
 
-			require(['views/style/tabs'], function() {
+			// require(['views/style/tabs'], function() {
 
-			});
+			// });
 
 			that = this;
 
@@ -72,23 +71,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 
 				switch (result[2]) {
 					case 'css':
-							// var css = reworkcss.parse(stylesheet);
-							// console.log(css);
-							// _.each(css.stylesheet.rules, function(rule) {
-							// 	switch(rule.type) {
-							// 		case 'comment':
-							// 				console.log(rule);
-							// 			break;
-							// 		case 'rule':
-							// 				console.log(rule);
-							// 	}
-							// });
-							// css = reworkcss.stringify(css, {compress: true});
-							// console.log(css);
-							parser = new jscssp();
-							parsedStylesheet = parser.parse(stylesheet, false, true);
 							var cssCompiled = that.remove_comments(cssUncompiled);
-							page = that.compute_css(parsedStylesheet, cssUncompiled, cssCompiled, styleExt);
+							page = that.compute_css(stylesheet, cssUncompiled, cssCompiled, styleExt);
 							that.render_page(page);
 						break;
 					case 'less':
@@ -97,10 +81,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 									less.render(stylesheet, function (e, result) {
 										var s = stylesheet;
 										if (!e) {
-											parser = new jscssp();
-											parsedStylesheet = parser.parse(result.css, false, true);
 											var cssCompiled = that.remove_comments(result.css);
-											page = that.compute_css(parsedStylesheet, cssUncompiled, cssCompiled, styleExt);
+											page = that.compute_css(result.css, cssUncompiled, cssCompiled, styleExt);
 											that.render_page(page);
 										}
 										else {
@@ -169,9 +151,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 								var cssCompiled = Sass.compile(stylesheet);
 								var cssUncompiled = that.remove_comments(stylesheet);
 								// Parses the CSS.
-								parser = new jscssp();
-								parsedStylesheet = parser.parse(cssCompiled, false, true);
-								page = that.compute_css(parsedStylesheet, cssUncompiled, cssCompiled, styleExt);
+								page = that.compute_css(cssCompiled, cssUncompiled, cssCompiled, styleExt);
 								that.render_page(page);
 							});
 						} else {
@@ -364,7 +344,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 					lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2), 10); // Removes 'px' from string and converts string to number.
 					lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2), 10); // Removes 'px' from string and converts string to number.
 					lastElPaddingTotal = lastElPaddingTop+lastElPaddingBottom;
-					console.log(lastElPaddingTotal);
 					if(lastElHeight >= pageHeight) {
 						// $(that.el).css({ 'padding-bottom' : 0 });
 					} else {
@@ -396,7 +375,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 
 		},
 
-		compute_css: function(parsedStylesheet, cssUncompiled, cssCompiled, styleExt) {
+		compute_css: function(stylesheet, cssUncompiled, cssCompiled, styleExt) {
 			var page = {
 				blocks: [],
 				css: ''
@@ -404,24 +383,17 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 
 			var cssArray = [];
 
-			_.each(parsedStylesheet.cssRules, function(rule) {
-				switch (rule.type) {
-					// Standard rule.
-					case 1:
-						cssArray.push('.code-render ' + rule.parsedCssText);
-						console.log(rule);
-						break;
-					// Import Rule (@import).
-					case 3:
-						// Remove all the @import.
-						parsedStylesheet.deleteRule(rule);
-						break;
-					// Comment Block.
-					case 101:
-						if(window.location.hash !== '') {
-							page.blocks = page.blocks.concat(that.parse_commentblock(rule.parsedCssText, cssUncompiled, cssCompiled, styleExt));
-						}
-						break;
+			var parsedStylesheet = gonzales.srcToCSSP(stylesheet);
+
+			_.each(parsedStylesheet, function(rule) {
+				if(rule[0] === 'ruleset') {
+					rule = gonzales.csspToSrc(rule);
+					cssArray.push('.code-render ' + rule);
+				} else if (rule[0] === 'comment') {
+					if(window.location.hash !== '') {
+						rule = gonzales.csspToSrc(rule);
+						page.blocks = page.blocks.concat(that.parse_commentblock(rule, cssUncompiled, cssCompiled, styleExt));
+					}
 				}
 			});
 
