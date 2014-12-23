@@ -10,7 +10,8 @@ define([
 	'hbs_context',
 	'hbs_helpers',
 	'libs/prism/prism',
-	'libs/stacktable/stacktable'
+	'libs/stacktable/stacktable',
+	'libs/css-master/reworkcss'
 ],
 function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, mockupObjects){
 
@@ -71,6 +72,19 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 
 				switch (result[2]) {
 					case 'css':
+							// var css = reworkcss.parse(stylesheet);
+							// console.log(css);
+							// _.each(css.stylesheet.rules, function(rule) {
+							// 	switch(rule.type) {
+							// 		case 'comment':
+							// 				console.log(rule);
+							// 			break;
+							// 		case 'rule':
+							// 				console.log(rule);
+							// 	}
+							// });
+							// css = reworkcss.stringify(css, {compress: true});
+							// console.log(css);
 							parser = new jscssp();
 							parsedStylesheet = parser.parse(stylesheet, false, true);
 							var cssCompiled = that.remove_comments(cssUncompiled);
@@ -394,6 +408,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 					// Standard rule.
 					case 1:
 						cssArray.push('.code-render ' + rule.parsedCssText);
+						console.log(rule);
 						break;
 					// Import Rule (@import).
 					case 3:

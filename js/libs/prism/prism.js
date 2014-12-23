@@ -1568,7 +1568,6 @@ if (Prism.languages.markup) {
 	// Tokenize all inline Handlebars expressions that are wrapped in {{ }} or {{{ }}}
 	// This allows for easy Handlebars + markup highlighting
 	Prism.hooks.add('before-highlight', function(env) {
-		console.log(env.language);
 		if (env.language !== 'handlebars') {
 			return;
 		}
@@ -1577,7 +1576,6 @@ if (Prism.languages.markup) {
 
 		env.backupCode = env.code;
 		env.code = env.code.replace(/\{\{\{[\w\W]+?\}\}\}|\{\{[\w\W]+?\}\}/ig, function(match) {
-			console.log(match);
 			env.tokenStack.push(match);
 
 			return '___HANDLEBARS' + env.tokenStack.length + '___';
