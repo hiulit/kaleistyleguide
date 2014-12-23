@@ -112,11 +112,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 						break;
 					case 'sass':
 					case 'scss':
-						if('querySelector' in document
-							&& document.documentMode >= 10 // Checks if it's IE10+.
-							|| document.documentMode === undefined // Checks if it's not IE.
-							&& 'localStorage' in window
-							&& 'addEventListener' in window) {
+						if('querySelector' in document &&
+							document.documentMode >= 10 || // Checks if it's IE10+.
+							document.documentMode === undefined && // Checks if it's not IE.
+							'localStorage' in window &&
+							'addEventListener' in window) {
 							// Loads sass.js
 							require(['libs/sassjs/dist/sass.min'], function(Sass) {
 								// Thanks, so many thanks to Oriol Torras @uriusfurius.
@@ -207,12 +207,12 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 				}
 				var ul = $('<ul>');
 				_.each(block.heading, function(val, i) {
+					var li = $('<li>');
 					if(i >= 1) {
-						var li = $('<li>');
 						li.append($('<a href="#' + block.headingID[i] + '">').html(val));
 						ul.append(li);
 					} else {
-						var li = $('<li>');
+						// var li = $('<li>');
 						li.append($('<a href="#' + block.headingID[i] + '">').html(val));
 						submenu.append(li);
 					}
@@ -361,9 +361,10 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 					var lastElHeight = $('.phytoplankton-page__item:last').outerHeight();
 					var lastElPaddingTop = $('.phytoplankton-page__item:last').css('padding-top');
 					var lastElPaddingBottom = $('.phytoplankton-page__item:last').css('padding-bottom');
-					lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2)); // Removes 'px' from string and converts string to number.
-					lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2)); // Removes 'px' from string and converts string to number.
+					lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2), 10); // Removes 'px' from string and converts string to number.
+					lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2), 10); // Removes 'px' from string and converts string to number.
 					lastElPaddingTotal = lastElPaddingTop+lastElPaddingBottom;
+					console.log(lastElPaddingTotal);
 					if(lastElHeight >= pageHeight) {
 						// $(that.el).css({ 'padding-bottom' : 0 });
 					} else {
@@ -418,7 +419,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, jscssp, 
 					// Comment Block.
 					case 101:
 						if(window.location.hash !== '') {
-							page.blocks = page.blocks.concat(that.parse_commentblock(rule.parsedCssText, cssUncompiled, cssCompiled, styleExt))
+							page.blocks = page.blocks.concat(that.parse_commentblock(rule.parsedCssText, cssUncompiled, cssCompiled, styleExt));
 						}
 						break;
 				}
