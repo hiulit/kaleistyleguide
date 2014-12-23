@@ -99,17 +99,17 @@ Phytoplankton is heavily influenced by the projects found in [the Style Guide gu
 
 Mad propz to all the great people behind the software listed below.
 
-* [marked.js](https://github.com/chjj/marked) - Full-featured markdown parser and compiler in Javascript.
-* [jscssp](http://www.glazman.org/JSCSSP/) - CSS parser in JavaScript.
-* [Less](http://lesscss.org/) - CSS pre-prepocessor.
-* [sass.js](https://github.com/medialize/sass.js) - API for emscripted libsass to run in the browser.
-* [Fixie.js](https://github.com/ryhan/fixie) - Automatically add filler content to HTML documents.
-* [Prism](http://prismjs.com/) - Lightweight, robust, elegant syntax highlighting.
 * [RequireJS](http://requirejs.org/) - JavaScript file and module loader.
 * [Backbone.js](http://backbonejs.org/) - Gives structure to web applications by providing models, collections and views.
 * [Underscore.js](http://underscorejs.org/) - JavaScript library that provides a whole mess of useful functional programming helpers without extending any built-in objects.
 * [Handlebars.js](http://handlebarsjs.com/) - Minimal templating on steroids.
 * [jQuery](http://jquery.com) - Fast, small, and feature-rich JavaScript library.
+* [marked.js](https://github.com/chjj/marked) - Full-featured markdown parser and compiler in Javascript.
+* [gonzales](https://github.com/css/gonzales) - Fas CSS parser.
+* [sass.js](https://github.com/medialize/sass.js) - API for emscripted libsass to run in the browser.
+* [Less](http://lesscss.org/) - CSS pre-prepocessor.
+* [Prism](http://prismjs.com/) - Lightweight, robust, elegant syntax highlighting.
+* [Fixie.js](https://github.com/ryhan/fixie) - Automatically add filler content to HTML documents.
 
 Extras:
 
