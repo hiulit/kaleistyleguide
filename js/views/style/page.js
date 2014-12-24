@@ -12,7 +12,7 @@ define([
 	'libs/prism/prism',
 	'libs/stacktable/stacktable'
 ],
-function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupObjects){
+function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupObjects) {
 
 	var that = null;
 
@@ -148,7 +148,9 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 									style: Sass.style.expanded
 								});
 								// Compiles Sass stylesheet into CSS.
-								var cssCompiled = Sass.compile(stylesheet);
+								var cssCompiled = Sass.compile(stylesheet, function(result) {
+									console.log(result);
+								});
 								var cssUncompiled = that.remove_comments(stylesheet);
 								// Parses the CSS.
 								page = that.compute_css(cssCompiled, cssUncompiled, cssCompiled, styleExt);
@@ -405,7 +407,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 		remove_comments: function(stylesheet) {
 			// Remove (and trim) CSS comments.
 			stylesheet = stylesheet.replace(/(\/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*?\*\/)/g, ''); // Remove comments.
-			stylesheet = stylesheet.replace(/(^\s+|\s+$)/g,''); // Trim leading and trailing.
+			stylesheet = stylesheet.replace(/((^\s+|\s+$))/g,''); // Trim leading and trailing.
+			stylesheet = stylesheet.replace(/(\n\s*\n)/g, '\n\n'); // Remove extra line breaks.
 			return stylesheet;
 		},
 

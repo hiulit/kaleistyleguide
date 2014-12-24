@@ -13,7 +13,7 @@ function($, _, Backbone, template){
 				$('.js-phytoplankton-menu').toggleClass('is-active');
 				$('.js-phytoplankton-menu-icon').toggleClass('is-active');
 				$('.js-phytoplankton-header').toggleClass('is-active');
-				$('.js-phytoplankton-page').toggleClass('is-active');
+				$('.js-phytoplankton-page').toggleClass('is-active is-opaque');
 			}
 		},
 		render: function () {
