@@ -1,7 +1,7 @@
 .phytoplankton-header {
 	background-color: $secondary-color;
 	border-bottom: 1px solid $primary-color;
-	color: $bg-color;
+	color: #fff;
 	display: none;
 	font-family: $headingFontFamily;
 	@include font-size(20);
