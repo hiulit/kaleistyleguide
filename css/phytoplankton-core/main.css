@@ -10,13 +10,15 @@ html {
   -ms-text-size-adjust: 100%;
   /* 2 */
   -webkit-text-size-adjust: 100%;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Remove default margin.
  */
 body {
-  margin: 0; }
+  margin: 0;
+}
 
 /* HTML5 display definitions
 	 ========================================================================== */
@@ -35,7 +37,8 @@ main,
 nav,
 section,
 summary {
-  display: block; }
+  display: block;
+}
 
 /**
  * 1. Correct `inline-block` display not defined in IE 8/9.
@@ -48,7 +51,8 @@ video {
   display: inline-block;
   /* 1 */
   vertical-align: baseline;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Prevent modern browsers from displaying `audio` without controls.
@@ -56,7 +60,8 @@ video {
  */
 audio:not([controls]) {
   display: none;
-  height: 0; }
+  height: 0;
+}
 
 /**
  * Address `[hidden]` styling not present in IE 8/9.
@@ -64,7 +69,8 @@ audio:not([controls]) {
  */
 [hidden],
 template {
-  display: none; }
+  display: none;
+}
 
 /* Links
 	 ========================================================================== */
@@ -72,14 +78,16 @@ template {
  * Remove the gray background color from active links in IE 10.
  */
 a {
-  background: transparent; }
+  background: transparent;
+}
 
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
  */
 a:active,
 a:hover {
-  outline: 0; }
+  outline: 0;
+}
 
 /* Text-level semantics
 	 ========================================================================== */
@@ -87,20 +95,23 @@ a:hover {
  * Address styling not present in IE 8/9, Safari 5, and Chrome.
  */
 abbr[title] {
-  border-bottom: 1px dotted; }
+  border-bottom: 1px dotted;
+}
 
 /**
  * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
  */
 b,
 strong {
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 /**
  * Address styling not present in Safari 5 and Chrome.
  */
 dfn {
-  font-style: italic; }
+  font-style: italic;
+}
 
 /**
  * Address variable `h1` font-size and margin within `section` and `article`
@@ -108,20 +119,23 @@ dfn {
  */
 h1 {
   font-size: 2em;
-  margin: 0.67em 0; }
+  margin: 0.67em 0;
+}
 
 /**
  * Address styling not present in IE 8/9.
  */
 mark {
   background: #ff0;
-  color: #000; }
+  color: #000;
+}
 
 /**
  * Address inconsistent and variable font size in all browsers.
  */
 small {
-  font-size: 80%; }
+  font-size: 80%;
+}
 
 /**
  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
@@ -131,13 +145,16 @@ sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+}
 
 sup {
-  top: -0.5em; }
+  top: -0.5em;
+}
 
 sub {
-  bottom: -0.25em; }
+  bottom: -0.25em;
+}
 
 /* Embedded content
 	 ========================================================================== */
@@ -145,13 +162,15 @@ sub {
  * Remove border when inside `a` element in IE 8/9.
  */
 img {
-  border: 0; }
+  border: 0;
+}
 
 /**
  * Correct overflow displayed oddly in IE 9.
  */
 svg:not(:root) {
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 /* Grouping content
 	 ========================================================================== */
@@ -159,7 +178,8 @@ svg:not(:root) {
  * Address margin not present in IE 8/9 and Safari 5.
  */
 figure {
-  margin: 1em 40px; }
+  margin: 1em 40px;
+}
 
 /**
  * Address differences between Firefox and other browsers.
@@ -167,13 +187,15 @@ figure {
 hr {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  height: 0; }
+  height: 0;
+}
 
 /**
  * Contain overflow in all browsers.
  */
 pre {
-  overflow: auto; }
+  overflow: auto;
+}
 
 /**
  * Address odd `em`-unit font size rendering in all browsers.
@@ -183,7 +205,8 @@ kbd,
 pre,
 samp {
   font-family: monospace, monospace;
-  font-size: 1em; }
+  font-size: 1em;
+}
 
 /* Forms
 	 ========================================================================== */
@@ -207,13 +230,15 @@ textarea {
   font: inherit;
   /* 2 */
   margin: 0;
-  /* 3 */ }
+  /* 3 */
+}
 
 /**
  * Address `overflow` set to `hidden` in IE 8/9/10.
  */
 button {
-  overflow: visible; }
+  overflow: visible;
+}
 
 /**
  * Address inconsistent `text-transform` inheritance for `button` and `select`.
@@ -223,7 +248,8 @@ button {
  */
 button,
 select {
-  text-transform: none; }
+  text-transform: none;
+}
 
 /**
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
@@ -239,14 +265,16 @@ input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
   cursor: pointer;
-  /* 3 */ }
+  /* 3 */
+}
 
 /**
  * Re-set default cursor for disabled elements.
  */
 button[disabled],
 html input[disabled] {
-  cursor: default; }
+  cursor: default;
+}
 
 /**
  * Remove inner padding and border in Firefox 4+.
@@ -254,14 +282,16 @@ html input[disabled] {
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 /**
  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
 input {
-  line-height: normal; }
+  line-height: normal;
+}
 
 /**
  * It's recommended that you don't attempt to style these elements.
@@ -275,7 +305,8 @@ input[type="radio"] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Fix the cursor style for Chrome's increment/decrement buttons. For certain
@@ -284,7 +315,8 @@ input[type="radio"] {
  */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  height: auto; }
+  height: auto;
+}
 
 /**
  * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
@@ -297,7 +329,8 @@ input[type="search"] {
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   /* 2 */
-  box-sizing: content-box; }
+  box-sizing: content-box;
+}
 
 /**
  * Remove inner padding and search cancel button in Safari and Chrome on OS X.
@@ -306,7 +339,8 @@ input[type="search"] {
  */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none; }
+  -webkit-appearance: none;
+}
 
 /**
  * Define consistent border, margin, and padding.
@@ -314,7 +348,8 @@ input[type="search"]::-webkit-search-decoration {
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em; }
+  padding: 0.35em 0.625em 0.75em;
+}
 
 /**
  * 1. Correct `color` not being inherited in IE 8/9.
@@ -324,20 +359,23 @@ legend {
   border: 0;
   /* 1 */
   padding: 0;
-  /* 2 */ }
+  /* 2 */
+}
 
 /**
  * Remove default vertical scrollbar in IE 8/9.
  */
 textarea {
-  overflow: auto; }
+  overflow: auto;
+}
 
 /**
  * Don't inherit the `font-weight` (applied by a rule above).
  * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
  */
 optgroup {
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 /* Tables
 	 ========================================================================== */
@@ -346,11 +384,13 @@ optgroup {
  */
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+}
 
 td,
 th {
-  padding: 0; }
+  padding: 0;
+}
 
 /* http://prismjs.com/download.html?themes=prism-okaidia&languages=markup+twig+css+css-extras+clike+javascript+java+php+php-extras+coffeescript+scss+bash+c+cpp+python+sql+groovy+http+ruby+rip+gherkin+csharp+go+nsis+aspnet+scala+haskell+swift+objectivec+autohotkey+ini+latex+apacheconf+git+scheme+nasm+perl+handlebars&plugins=line-numbers+autolinker+wpd+file-highlight+show-language */
 /**
@@ -375,14 +415,16 @@ pre[class*="language-"] {
   -webkit-hyphens: none;
   -moz-hyphens: none;
   -ms-hyphens: none;
-  hyphens: none; }
+  hyphens: none;
+}
 
 /* Code blocks */
 pre,
 pre[class*="language-"] {
   padding: 1em;
   margin: .5em 0;
-  overflow: auto; }
+  overflow: auto;
+}
 
 :not(pre) > code,
 pre,
@@ -390,34 +432,41 @@ pre,
 pre[class*="language-"] {
   background: #272822;
   color: #f8f8f2;
-  /* This is a "feature that doesn't  come with the default plugin. */ }
+  /* This is a "feature that doesn't  come with the default plugin. */
+}
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
-  padding: .1em; }
+  padding: .1em;
+}
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: slategray; }
+  color: slategray;
+}
 
 .token.punctuation {
-  color: #f8f8f2; }
+  color: #f8f8f2;
+}
 
 .namespace {
-  opacity: .7; }
+  opacity: .7;
+}
 
 .token.property,
 .token.tag,
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #f92672; }
+  color: #f92672;
+}
 
 .token.boolean,
 .token.number {
-  color: #ae81ff; }
+  color: #ae81ff;
+}
 
 .token.selector,
 .token.attr-name,
@@ -425,7 +474,8 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #a6e22e; }
+  color: #a6e22e;
+}
 
 .token.operator,
 .token.entity,
@@ -433,45 +483,57 @@ pre[class*="language-"] {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-  color: #f8f8f2; }
+  color: #f8f8f2;
+}
 
 .token.atrule,
 .token.attr-value {
-  color: #e6db74; }
+  color: #e6db74;
+}
 
 .token.keyword {
-  color: #66d9ef; }
+  color: #66d9ef;
+}
 
 .token.regex,
 .token.important {
-  color: #fd971f; }
+  color: #fd971f;
+}
 
 .token.important {
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 .token.entity {
-  cursor: help; }
+  cursor: help;
+}
 
 .token.handlebars .delimiter {
-  color: #66d9ef; }
+  color: #66d9ef;
+}
 
 .token.variable {
-  color: #fd971f; }
+  color: #fd971f;
+}
 
 .token.function {
-  color: #66d9ef; }
+  color: #66d9ef;
+}
 
 .language-javascript .token.keyword,
 .language-javascript .token.operator {
-  color: #f92672; }
+  color: #f92672;
+}
 
 pre.line-numbers {
   position: relative;
   padding-left: 3.8em;
-  counter-reset: linenumber; }
+  counter-reset: linenumber;
+}
 
 pre.line-numbers > code {
-  position: relative; }
+  position: relative;
+}
 
 .line-numbers .line-numbers-rows {
   position: absolute;
@@ -486,32 +548,38 @@ pre.line-numbers > code {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none; }
+  user-select: none;
+}
 
 .line-numbers-rows > span {
   pointer-events: none;
   display: block;
-  counter-increment: linenumber; }
+  counter-increment: linenumber;
+}
 
 .line-numbers-rows > span:before {
   content: counter(linenumber);
   color: #999;
   display: block;
   padding-right: 0.8em;
-  text-align: right; }
+  text-align: right;
+}
 
 code[class*="language-"] a[href],
 pre[class*="language-"] a[href] {
   cursor: help;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 code[class*="language-"] a[href]:hover,
 pre[class*="language-"] a[href]:hover {
   cursor: help;
-  text-decoration: underline; }
+  text-decoration: underline;
+}
 
 .token a {
-  color: inherit; }
+  color: inherit;
+}
 
 code[class*="language-"] a[href].url-link,
 pre[class*="language-"] a[href].url-link,
@@ -519,7 +587,8 @@ code[class*="language-"] a[href].email-link,
 pre[class*="language-"] a[href].email-link,
 code[class*="language-"] a[href].md-link,
 pre[class*="language-"] a[href].md-link {
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 code[class*="language-"] a[href].url-link:hover,
 pre[class*="language-"] a[href].url-link:hover,
@@ -527,7 +596,8 @@ code[class*="language-"] a[href].email-link:hover,
 pre[class*="language-"] a[href].email-link:hover,
 code[class*="language-"] a[href].md-link:hover,
 pre[class*="language-"] a[href].md-link:hover {
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 /**
  * Base font size
@@ -640,7 +710,7 @@ pre[class*="language-"] a[href].md-link:hover {
  */
 /**
  * To use in `<p>`, `<ul>`, `<ol>`, `<pre>`, `<table>`, `<blockquote>`, etc.
- * 
+ *
  * Outputs `margin-bottom` and `margin-top`.
  *
  * @param {Boolean} $rem (false) - Outputs rem units if `true`
@@ -661,12 +731,14 @@ html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+}
 
 *, *:before, *:after {
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 body {
   background-color: #eee;
@@ -676,16 +748,20 @@ body {
   line-height: 19px;
   font-size: 1rem;
   line-height: 1.1875rem;
-  overflow-x: hidden; }
-  @media (max-width: 400px) {
-    body {
-      font-size: 14px;
-      line-height: 16.8px;
-      font-size: 0.875rem;
-      line-height: 1.05rem; } }
+  overflow-x: hidden;
+}
+@media (max-width: 400px) {
+  body {
+    font-size: 14px;
+    line-height: 16.8px;
+    font-size: 0.875rem;
+    line-height: 1.05rem;
+  }
+}
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
 h1 {
   font-size: 38px;
@@ -696,7 +772,8 @@ h1 {
   line-height: 2.375rem;
   margin-bottom: 1.1875rem;
   margin-top: 2.375rem;
-  font-weight: 600; }
+  font-weight: 600;
+}
 
 h2 {
   font-size: 28px;
@@ -707,16 +784,19 @@ h2 {
   line-height: 2.375rem;
   margin-bottom: 1.1875rem;
   margin-top: 2.375rem;
-  font-weight: 600; }
+  font-weight: 600;
+}
 
 code,
 kbd,
 pre,
 samp {
-  font-family: Consolas, Monaco, "Andale Mono", monospace; }
+  font-family: Consolas, Monaco, "Andale Mono", monospace;
+}
 
 pre {
-  position: relative; }
+  position: relative;
+}
 
 blockquote {
   border-left: 4px solid rgba(0, 0, 0, 0.54);
@@ -724,78 +804,106 @@ blockquote {
   margin: 40px;
   margin: 2.5rem;
   padding-left: 12px;
-  padding-left: 0.75rem; }
-  blockquote p {
-    display: inline; }
-  blockquote:before {
-    content: open-quote; }
-  blockquote:after {
-    content: close-quote; }
+  padding-left: 0.75rem;
+}
+blockquote p {
+  display: inline;
+}
+blockquote:before {
+  content: open-quote;
+}
+blockquote:after {
+  content: close-quote;
+}
 
 table {
-  width: 100%; }
+  width: 100%;
+}
+table.stacktable.small-only {
+  display: none;
+}
+table.stacktable.small-only tbody tr:first-child {
+  display: none;
+}
+@media screen and (max-width: 700px) {
   table.stacktable.small-only {
-    display: none; }
-    table.stacktable.small-only tbody tr:first-child {
-      display: none; }
-    @media screen and (max-width: 700px) {
-      table.stacktable.small-only {
-        display: table; } }
+    display: table;
+  }
+}
+table.stacktable.large-only {
+  display: table;
+}
+@media screen and (max-width: 700px) {
   table.stacktable.large-only {
-    display: table; }
-    @media screen and (max-width: 700px) {
-      table.stacktable.large-only {
-        display: none; } }
+    display: none;
+  }
+}
 
 td, th {
   border: 1px solid #ccc;
   padding: 8px;
-  padding: 0.5rem; }
+  padding: 0.5rem;
+}
 
 .pull-left {
-  float: left !important; }
-  .pull-left:before, .pull-left:after {
-    content: "";
-    display: table; }
-  .pull-left:after {
-    clear: both; }
+  float: left !important;
+}
+.pull-left:before, .pull-left:after {
+  content: "";
+  display: table;
+}
+.pull-left:after {
+  clear: both;
+}
 
 .pull-right {
-  float: right !important; }
-  .pull-right:before, .pull-right:after {
-    content: "";
-    display: table; }
-  .pull-right:after {
-    clear: both; }
+  float: right !important;
+}
+.pull-right:before, .pull-right:after {
+  content: "";
+  display: table;
+}
+.pull-right:after {
+  clear: both;
+}
 
 .inline-list {
   margin: 0;
-  padding: 0; }
-  .inline-list li {
-    float: left; }
+  padding: 0;
+}
+.inline-list li {
+  float: left;
+}
 
 .text-left {
-  text-align: left; }
+  text-align: left;
+}
 
 .text-center {
-  text-align: center; }
+  text-align: center;
+}
 
 .text-right {
-  text-align: right; }
+  text-align: right;
+}
 
 img {
-  max-width: 100%; }
+  max-width: 100%;
+}
 
 .clearfix:before, .clearfix:after {
   content: "";
-  display: table; }
+  display: table;
+}
 .clearfix:after {
-  clear: both; }
+  clear: both;
+}
 
 .is-disabled {
   cursor: default;
   opacity: 0.5;
-  filter: alpha(opacity=50); }
+  filter: alpha(opacity=50);
+}
 
 .video-container {
   height: 0;
@@ -803,43 +911,71 @@ img {
   margin: 0.625rem 0rem;
   padding-bottom: 56.25%;
   padding-top: 25px;
-  position: relative; }
-  .video-container iframe,
-  .video-container object {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%; }
+  position: relative;
+}
+.video-container iframe,
+.video-container object {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.is-opaque:before {
+  background-color: rgba(0, 0, 0, 0.25);
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+@media screen and (min-width: 700px) {
+  .is-opaque:before {
+    display: none;
+  }
+}
 
 .is-locked {
-  position: absolute; }
+  position: absolute;
+}
 
 .fork-me {
-  display: block; }
-  @media screen and (max-width: 700px) {
-    .fork-me {
-      display: none; } }
+  display: block;
+}
+@media screen and (max-width: 700px) {
+  .fork-me {
+    display: none;
+  }
+}
 
 .grid-1-4 {
-  width: 25%; }
+  width: 25%;
+}
 
 .grid-1-2 {
-  width: 50%; }
+  width: 50%;
+}
 
 .grid-1-3 {
-  width: 33.33333%; }
+  width: 33.33333%;
+}
 
 .grid-3-4 {
-  width: 75%; }
+  width: 75%;
+}
 
 .grid-full {
-  width: 100%; }
+  width: 100%;
+}
 
 .phytoplankton-header {
   background-color: #303f9f;
   border-bottom: 1px solid #3f51b5;
-  color: #eee;
+  color: #fff;
   display: none;
   font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
@@ -852,25 +988,32 @@ img {
   right: 0;
   top: 0;
   width: 75%;
-  z-index: 1; }
-  @media screen and (max-width: 700px) {
-    .phytoplankton-header {
-      display: block;
-      transform: translate3d(0, 0, 0);
-      transition: all .25s ease-in-out;
-      width: 100%; }
-      .phytoplankton-header.is-active {
-        transform: translate3d(75%, 0, 0); } }
-    @media screen and (max-width: 700px) and (orientation: landscape) {
-      .phytoplankton-header.is-active {
-        transform: translate3d(50%, 0, 0); } }
+  z-index: 1;
+}
+@media screen and (max-width: 700px) {
+  .phytoplankton-header {
+    display: block;
+    transform: translate3d(0, 0, 0);
+    transition: all .25s ease-in-out;
+    width: 100%;
+  }
+  .phytoplankton-header.is-active {
+    transform: translate3d(75%, 0, 0);
+  }
+}
+@media screen and (max-width: 700px) and (orientation: landscape) {
+  .phytoplankton-header.is-active {
+    transform: translate3d(50%, 0, 0);
+  }
+}
 
-  .phytoplankton-header .phytoplankton-menu-icon .phytoplankton-vegan-burger {
-    display: inline-block;
-    vertical-align: baseline;
-    zoom: 1;
-    *display: inline;
-    *vertical-align: auto; }
+.phytoplankton-header .phytoplankton-menu-icon .phytoplankton-vegan-burger {
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+}
 
 .phytoplankton-menu-icon {
   cursor: pointer;
@@ -882,52 +1025,62 @@ img {
   line-height: 60px;
   line-height: 3.75rem;
   padding-left: 10px;
-  padding-left: 0.625rem; }
-  .phytoplankton-menu-icon .phytoplankton-vegan-burger {
-    position: relative;
-    margin-top: 8px;
-    margin-bottom: 8px; }
-    .phytoplankton-menu-icon .phytoplankton-vegan-burger, .phytoplankton-menu-icon .phytoplankton-vegan-burger:before, .phytoplankton-menu-icon .phytoplankton-vegan-burger:after {
-      display: block;
-      width: 25px;
-      height: 3px;
-      background-color: #fff;
-      -webkit-transition-property: background-color, -webkit-transform;
-      -moz-transition-property: background-color, -moz-transform;
-      -o-transition-property: background-color, -o-transform;
-      transition-property: background-color, transform;
-      -webkit-transition-duration: 0.3s;
-      -moz-transition-duration: 0.3s;
-      -o-transition-duration: 0.3s;
-      transition-duration: 0.3s; }
-    .phytoplankton-menu-icon .phytoplankton-vegan-burger:before, .phytoplankton-menu-icon .phytoplankton-vegan-burger:after {
-      position: absolute;
-      content: ""; }
-    .phytoplankton-menu-icon .phytoplankton-vegan-burger:before {
-      top: -8px; }
-    .phytoplankton-menu-icon .phytoplankton-vegan-burger:after {
-      top: 8px; }
-  .phytoplankton-menu-icon.is-active .phytoplankton-vegan-burger {
-    background-color: transparent; }
-  .phytoplankton-menu-icon.is-active .phytoplankton-vegan-burger:before {
-    -webkit-transform: translateY(8px) rotate(45deg);
-    -moz-transform: translateY(8px) rotate(45deg);
-    -ms-transform: translateY(8px) rotate(45deg);
-    -o-transform: translateY(8px) rotate(45deg);
-    transform: translateY(8px) rotate(45deg); }
-  .phytoplankton-menu-icon.is-active .phytoplankton-vegan-burger:after {
-    -webkit-transform: translateY(-8px) rotate(-45deg);
-    -moz-transform: translateY(-8px) rotate(-45deg);
-    -ms-transform: translateY(-8px) rotate(-45deg);
-    -o-transform: translateY(-8px) rotate(-45deg);
-    transform: translateY(-8px) rotate(-45deg); }
+  padding-left: 0.625rem;
+}
+.phytoplankton-menu-icon .phytoplankton-vegan-burger {
+  position: relative;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.phytoplankton-menu-icon .phytoplankton-vegan-burger, .phytoplankton-menu-icon .phytoplankton-vegan-burger:before, .phytoplankton-menu-icon .phytoplankton-vegan-burger:after {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  -webkit-transition-property: background-color, -webkit-transform;
+  -moz-transition-property: background-color, -moz-transform;
+  -o-transition-property: background-color, -o-transform;
+  transition-property: background-color, transform;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.phytoplankton-menu-icon .phytoplankton-vegan-burger:before, .phytoplankton-menu-icon .phytoplankton-vegan-burger:after {
+  position: absolute;
+  content: "";
+}
+.phytoplankton-menu-icon .phytoplankton-vegan-burger:before {
+  top: -8px;
+}
+.phytoplankton-menu-icon .phytoplankton-vegan-burger:after {
+  top: 8px;
+}
+.phytoplankton-menu-icon.is-active .phytoplankton-vegan-burger {
+  background-color: transparent;
+}
+.phytoplankton-menu-icon.is-active .phytoplankton-vegan-burger:before {
+  -webkit-transform: translateY(8px) rotate(45deg);
+  -moz-transform: translateY(8px) rotate(45deg);
+  -ms-transform: translateY(8px) rotate(45deg);
+  -o-transform: translateY(8px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
+}
+.phytoplankton-menu-icon.is-active .phytoplankton-vegan-burger:after {
+  -webkit-transform: translateY(-8px) rotate(-45deg);
+  -moz-transform: translateY(-8px) rotate(-45deg);
+  -ms-transform: translateY(-8px) rotate(-45deg);
+  -o-transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
+}
 
 .phytoplankton-menu-icon__text {
   display: inline-block;
   vertical-align: baseline;
   zoom: 1;
   *display: inline;
-  *vertical-align: auto; }
+  *vertical-align: auto;
+}
 
 .phytoplankton-menu {
   background-color: #fafafa;
@@ -943,68 +1096,85 @@ img {
   position: fixed;
   top: 0;
   width: 25%;
-  z-index: 6; }
-  @media screen and (max-width: 700px) {
-    .phytoplankton-menu {
-      transform: translate3d(-100%, 0, 0);
-      transition: all .25s ease-in-out;
-      width: 75%; }
-      .phytoplankton-menu.is-active {
-        transform: translate3d(0, 0, 0); } }
-  @media screen and (max-width: 700px) and (orientation: landscape) {
-    .phytoplankton-menu {
-      width: 50%; } }
+  z-index: 6;
+}
+@media screen and (max-width: 700px) {
+  .phytoplankton-menu {
+    transform: translate3d(-100%, 0, 0);
+    transition: all .25s ease-in-out;
+    width: 75%;
+  }
+  .phytoplankton-menu.is-active {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@media screen and (max-width: 700px) and (orientation: landscape) {
+  .phytoplankton-menu {
+    width: 50%;
+  }
+}
 
-  .phytoplankton-menu ul,
-  .phytoplankton-menu li {
-    list-style-type: none;
-    margin: 0;
-    padding: 0; }
-  @media screen and (max-width: 700px) {
-    .phytoplankton-menu > ul > li {
-      font-size: 20px;
-      line-height: 24px;
-      font-size: 1.25rem;
-      line-height: 1.5rem; } }
-  .phytoplankton-menu > ul > li > ul > li > ul {
-    margin-bottom: 24px;
-    margin-bottom: 1.5rem;
-    margin-top: 12px;
-    margin-top: 0.75rem; }
-  .phytoplankton-menu > ul > li > ul > li > ul > li {
-    padding-left: 12px;
-    padding-left: 0.75rem; }
-    .phytoplankton-menu > ul > li > ul > li > ul > li a {
-      color: rgba(0, 0, 0, 0.87);
-      padding-bottom: 4px;
-      padding-bottom: 0.25rem;
-      padding-left: 10px;
-      padding-left: 0.625rem;
-      padding-top: 4px;
-      padding-top: 0.25rem; }
-      .phytoplankton-menu > ul > li > ul > li > ul > li a:hover {
-        border-left: 1px solid #3f51b5;
-        color: #3f51b5;
-        padding-left: 9px;
-        padding-left: 0.5625rem; }
-    .phytoplankton-menu > ul > li > ul > li > ul > li.active > a {
-      border-left: 2px solid #3f51b5;
-      color: #3f51b5;
-      cursor: default;
-      padding-left: 8px;
-      padding-left: 0.5rem; }
-  .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li > a {
-    padding-left: 30px;
-    padding-left: 1.875rem; }
-    .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li > a:hover {
-      padding-left: 29px;
-      padding-left: 1.8125rem; }
-  .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li.active > a {
-    border-left: 2px solid #3f51b5;
-    color: #3f51b5;
-    cursor: default;
-    padding-left: 28px;
-    padding-left: 1.75rem; }
+.phytoplankton-menu ul,
+.phytoplankton-menu li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+@media screen and (max-width: 700px) {
+  .phytoplankton-menu > ul > li {
+    font-size: 20px;
+    line-height: 24px;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
+}
+.phytoplankton-menu > ul > li > ul > li > ul {
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+  margin-top: 12px;
+  margin-top: 0.75rem;
+}
+.phytoplankton-menu > ul > li > ul > li > ul > li {
+  padding-left: 12px;
+  padding-left: 0.75rem;
+}
+.phytoplankton-menu > ul > li > ul > li > ul > li a {
+  color: rgba(0, 0, 0, 0.87);
+  padding-bottom: 4px;
+  padding-bottom: 0.25rem;
+  padding-left: 10px;
+  padding-left: 0.625rem;
+  padding-top: 4px;
+  padding-top: 0.25rem;
+}
+.phytoplankton-menu > ul > li > ul > li > ul > li a:hover {
+  border-left: 1px solid #3f51b5;
+  color: #3f51b5;
+  padding-left: 9px;
+  padding-left: 0.5625rem;
+}
+.phytoplankton-menu > ul > li > ul > li > ul > li.active > a {
+  border-left: 2px solid #3f51b5;
+  color: #3f51b5;
+  cursor: default;
+  padding-left: 8px;
+  padding-left: 0.5rem;
+}
+.phytoplankton-menu > ul > li > ul > li > ul > li > ul > li > a {
+  padding-left: 30px;
+  padding-left: 1.875rem;
+}
+.phytoplankton-menu > ul > li > ul > li > ul > li > ul > li > a:hover {
+  padding-left: 29px;
+  padding-left: 1.8125rem;
+}
+.phytoplankton-menu > ul > li > ul > li > ul > li > ul > li.active > a {
+  border-left: 2px solid #3f51b5;
+  color: #3f51b5;
+  cursor: default;
+  padding-left: 28px;
+  padding-left: 1.75rem;
+}
 
 .phytoplankton-menu__list {
   font-size: 14px;
@@ -1014,146 +1184,168 @@ img {
   margin: 24px 0px !important;
   margin: 1.5rem 0rem !important;
   margin-left: 12px !important;
-  margin-left: 0.75rem !important; }
+  margin-left: 0.75rem !important;
+}
 
 .phytoplankton-menu__list__item a {
   display: block;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 .phytoplankton-menu__list__item__header {
   font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 
 .phytoplankton-menu__list__item__subheader {
   color: rgba(0, 0, 0, 0.87);
   font-family: "Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-bottom: 12px;
   margin-bottom: 0.75rem;
-  position: relative; }
-  .phytoplankton-menu__list__item__subheader:hover {
-    color: #3f51b5; }
-  .phytoplankton-menu__list__item__subheader.active, .phytoplankton-menu__list__item__subheader:active {
-    color: #3f51b5;
-    cursor: default; }
+  position: relative;
+}
+.phytoplankton-menu__list__item__subheader:hover {
+  color: #3f51b5;
+}
+.phytoplankton-menu__list__item__subheader.active, .phytoplankton-menu__list__item__subheader:active {
+  color: #3f51b5;
+  cursor: default;
+}
 
 .phytoplankton-page {
   background-color: #fff;
   float: right;
-  width: 75%; }
-  @media screen and (max-width: 700px) {
-    .phytoplankton-page {
-      margin-top: 60px;
-      margin-top: 3.75rem;
-      padding: 0 4%;
-      transform: translate3d(0, 0, 0);
-      transition: all .25s ease-in-out;
-      width: 100%; }
-      .phytoplankton-page.is-active {
-        transform: translate3d(75%, 0, 0); } }
-    @media screen and (max-width: 700px) and (orientation: landscape) {
-      .phytoplankton-page.is-active {
-        transform: translate3d(50%, 0, 0); } }
+  width: 75%;
+}
+@media screen and (max-width: 700px) {
+  .phytoplankton-page {
+    margin-top: 60px;
+    margin-top: 3.75rem;
+    padding: 0 4%;
+    transform: translate3d(0, 0, 0);
+    transition: all .25s ease-in-out;
+    width: 100%;
+  }
+  .phytoplankton-page.is-active {
+    transform: translate3d(75%, 0, 0);
+  }
+}
+@media screen and (max-width: 700px) and (orientation: landscape) {
+  .phytoplankton-page.is-active {
+    transform: translate3d(50%, 0, 0);
+  }
+}
 
-  .phytoplankton-page p, .phytoplankton-page ul, .phytoplankton-page ol, .phytoplankton-page pre, .phytoplankton-page table, .phytoplankton-page blockquote {
-    margin-bottom: 19px;
-    margin-top: 19px;
-    margin-bottom: 1.1875rem;
-    margin-top: 1.1875rem; }
-  .phytoplankton-page p a,
-  .phytoplankton-page ol a,
-  .phytoplankton-page ul a {
-    color: #ff80ab;
-    text-decoration: none;
-    white-space: normal;
-    -ms-word-break: break-all;
-    word-break: break-all;
-    /* Non standard for webkit */
-    word-break: break-word;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
-    transition: color .25s ease-in-out; }
-    .phytoplankton-page p a:hover,
-    .phytoplankton-page ol a:hover,
-    .phytoplankton-page ul a:hover {
-      color: #f50057;
-      text-decoration: underline; }
-  .phytoplankton-page p code,
-  .phytoplankton-page ol code,
-  .phytoplankton-page ul code {
-    border-radius: 2px;
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    position: relative;
-    z-index: 1;
-    display: inline-block;
-    vertical-align: baseline;
-    zoom: 1;
-    *display: inline;
-    *vertical-align: auto;
-    font-size: 14px;
-    line-height: 17px;
-    font-size: 0.875rem;
-    line-height: 1.0625rem;
-    margin-left: 2px;
-    margin-left: 0.125rem;
-    margin-right: 2px;
-    margin-right: 0.125rem;
-    padding-bottom: 2px;
-    padding-bottom: 0.125rem;
-    padding-left: 4px;
-    padding-left: 0.25rem;
-    padding-top: 2px;
-    padding-top: 0.125rem;
-    padding-right: 4px;
-    padding-right: 0.25rem;
-    white-space: normal;
-    -ms-word-break: break-all;
-    word-break: break-all;
-    /* Non standard for webkit */
-    word-break: break-word;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto; }
-  .phytoplankton-page p ul,
-  .phytoplankton-page ol ul,
-  .phytoplankton-page ul ul {
-    list-style-type: disc; }
-  .phytoplankton-page pre {
-    border-radius: 2px;
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    position: relative;
-    z-index: 1;
-    font-size: 14px;
-    line-height: 16.8px;
-    font-size: 0.875rem;
-    line-height: 1.05rem;
-    padding-top: 16px;
-    padding-top: 1rem; }
-    .phytoplankton-page pre:not([class*="language-"]) {
-      padding: 16px;
-      padding: 1rem; }
-  .phytoplankton-page pre[class*="language-"] {
-    padding-top: 40px;
-    padding-top: 2.5rem; }
-  .phytoplankton-page code[data-language]:before {
-    content: attr(data-language);
-    font-size: 16px;
-    line-height: 19.2px;
-    font-size: 1rem;
-    line-height: 1.2rem;
-    left: -42px;
-    left: -2.625rem;
-    position: absolute;
-    top: -42px;
-    top: -2.625rem; }
-  .phytoplankton-page table {
-    border-radius: 2px;
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    position: relative;
-    z-index: 1; }
+.phytoplankton-page p, .phytoplankton-page ul, .phytoplankton-page ol, .phytoplankton-page pre, .phytoplankton-page table, .phytoplankton-page blockquote {
+  margin-bottom: 19px;
+  margin-top: 19px;
+  margin-bottom: 1.1875rem;
+  margin-top: 1.1875rem;
+}
+.phytoplankton-page p a,
+.phytoplankton-page ol a,
+.phytoplankton-page ul a {
+  color: #ff80ab;
+  text-decoration: none;
+  white-space: normal;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  /* Non standard for webkit */
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  transition: color .25s ease-in-out;
+}
+.phytoplankton-page p a:hover,
+.phytoplankton-page ol a:hover,
+.phytoplankton-page ul a:hover {
+  color: #f50057;
+  text-decoration: underline;
+}
+.phytoplankton-page p code,
+.phytoplankton-page ol code,
+.phytoplankton-page ul code {
+  border-radius: 2px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+  font-size: 14px;
+  line-height: 17px;
+  font-size: 0.875rem;
+  line-height: 1.0625rem;
+  margin-left: 2px;
+  margin-left: 0.125rem;
+  margin-right: 2px;
+  margin-right: 0.125rem;
+  padding-bottom: 2px;
+  padding-bottom: 0.125rem;
+  padding-left: 4px;
+  padding-left: 0.25rem;
+  padding-top: 2px;
+  padding-top: 0.125rem;
+  padding-right: 4px;
+  padding-right: 0.25rem;
+  white-space: normal;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  /* Non standard for webkit */
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+.phytoplankton-page p ul,
+.phytoplankton-page ol ul,
+.phytoplankton-page ul ul {
+  list-style-type: disc;
+}
+.phytoplankton-page pre {
+  border-radius: 2px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  line-height: 16.8px;
+  font-size: 0.875rem;
+  line-height: 1.05rem;
+  padding-top: 16px;
+  padding-top: 1rem;
+}
+.phytoplankton-page pre:not([class*="language-"]) {
+  padding: 16px;
+  padding: 1rem;
+}
+.phytoplankton-page pre[class*="language-"] {
+  padding-top: 40px;
+  padding-top: 2.5rem;
+}
+.phytoplankton-page code[data-language]:before {
+  content: attr(data-language);
+  font-size: 16px;
+  line-height: 19.2px;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  left: -42px;
+  left: -2.625rem;
+  position: absolute;
+  top: -42px;
+  top: -2.625rem;
+}
+.phytoplankton-page table {
+  border-radius: 2px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  position: relative;
+  z-index: 1;
+}
 
 .phytoplankton-page__header {
   background-color: #3f51b5;
@@ -1162,28 +1354,34 @@ img {
   position: relative;
   z-index: 1;
   padding: 64px 64px 32px;
-  padding: 4rem 4rem 2rem; }
-  .phytoplankton-page__header > h1 {
-    margin-top: 0; }
-  .phytoplankton-page__header > h2 {
-    margin: 0;
-    font-size: 16px;
-    line-height: 19.2px;
-    font-size: 1rem;
-    line-height: 1.2rem; }
+  padding: 4rem 4rem 2rem;
+}
+.phytoplankton-page__header > h1 {
+  margin-top: 0;
+}
+.phytoplankton-page__header > h2 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 19.2px;
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
 
 .phytoplankton-page__item {
   background-color: #fff;
   padding: 24px 64px;
   padding: 1.5rem 4rem;
-  position: relative; }
-  .phytoplankton-page__item > h1,
-  .phytoplankton-page__item > h2 {
-    color: rgba(0, 0, 0, 0.87);
-    padding-bottom: 11px;
-    padding-bottom: 0.6875rem; }
-  .phytoplankton-page__item > h1 {
-    margin-top: 0; }
+  position: relative;
+}
+.phytoplankton-page__item > h1,
+.phytoplankton-page__item > h2 {
+  color: rgba(0, 0, 0, 0.87);
+  padding-bottom: 11px;
+  padding-bottom: 0.6875rem;
+}
+.phytoplankton-page__item > h1 {
+  margin-top: 0;
+}
 
 .code-lang, .phytoplankton-page code[data-language]:before, .code-render:before, .copy-to-clipboard, .phytoplankton-tabs__item {
   background-color: #272822;
@@ -1192,7 +1390,8 @@ img {
   padding: 10px;
   padding: 0.625rem;
   text-transform: uppercase;
-  text-shadow: none; }
+  text-shadow: none;
+}
 
 .code-render {
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -1205,16 +1404,19 @@ img {
   margin-right: 0.0625rem;
   padding: 75px 40px 40px 40px;
   padding: 4.6875rem 2.5rem 2.5rem 2.5rem;
-  position: relative; }
-  .code-render + pre {
-    border-radius: 0 0 2px 2px;
-    margin-top: 0; }
-  .code-render:before {
-    border-radius: 2px 0 0 0;
-    content: "Example";
-    left: 0;
-    position: absolute;
-    top: 0; }
+  position: relative;
+}
+.code-render + pre {
+  border-radius: 0 0 2px 2px;
+  margin-top: 0;
+}
+.code-render:before {
+  border-radius: 2px 0 0 0;
+  content: "Example";
+  left: 0;
+  position: absolute;
+  top: 0;
+}
 
 .copy-to-clipboard {
   cursor: pointer;
@@ -1223,9 +1425,11 @@ img {
   top: 0;
   transition: color .25s ease-in-out;
   right: 16px;
-  z-index: 10; }
-  .copy-to-clipboard.zeroclipboard-is-hover {
-    color: white; }
+  z-index: 10;
+}
+.copy-to-clipboard.zeroclipboard-is-hover {
+  color: white;
+}
 
 .phytoplankton-tabs {
   margin-left: 16px;
@@ -1237,17 +1441,22 @@ img {
   margin-top: 0 !important;
   padding: 0;
   position: relative;
-  z-index: 6; }
-  .phytoplankton-tabs ~ pre {
-    border-radius: 0 0 2px 2px;
-    display: none;
-    margin-top: 0; }
-    .phytoplankton-tabs ~ pre code:before {
-      display: none; }
-    .phytoplankton-tabs ~ pre:before {
-      display: none; }
-    .phytoplankton-tabs ~ pre.is-active {
-      display: block; }
+  z-index: 6;
+}
+.phytoplankton-tabs ~ pre {
+  border-radius: 0 0 2px 2px;
+  display: none;
+  margin-top: 0;
+}
+.phytoplankton-tabs ~ pre code:before {
+  display: none;
+}
+.phytoplankton-tabs ~ pre:before {
+  display: none;
+}
+.phytoplankton-tabs ~ pre.is-active {
+  display: block;
+}
 
 .phytoplankton-tabs__item {
   cursor: pointer;
@@ -1257,13 +1466,17 @@ img {
   zoom: 1;
   *display: inline;
   *vertical-align: auto;
-  transition: color .25s ease-in-out; }
-  .phytoplankton-tabs__item.is-active {
-    cursor: default;
-    color: white; }
-    .phytoplankton-tabs__item.is-active:hover {
-      color: white; }
-  .phytoplankton-tabs__item:hover {
-    color: white; }
+  transition: color .25s ease-in-out;
+}
+.phytoplankton-tabs__item.is-active {
+  cursor: default;
+  color: white;
+}
+.phytoplankton-tabs__item.is-active:hover {
+  color: white;
+}
+.phytoplankton-tabs__item:hover {
+  color: white;
+}
 
 /*# sourceMappingURL=main.css.map */
