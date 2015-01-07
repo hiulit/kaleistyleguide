@@ -318,12 +318,16 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			$('.phytoplankton-page__header-title').html(menuTitle);
 			$('.phytoplankton-page__header-url').html(menuUrl);
 
+			// Sets page's padding-top to be the same as pageheading's height.
+			var pageHeadingHeight = $('.phytoplankton-page__header').outerHeight();
+			$('.phytoplankton-page').css('padding-top', pageHeadingHeight + 24);
+
 			$(window).scroll(function () {
 				var k = 0;
 				$('.phytoplankton-page__item').find(':header').each(function(i) {
 					if(!$(this).offsetParent().hasClass('code-render')) {
-						if(that.is_on_screen($(this), (80 + 20))) {
-							hash = window.location.hash;
+						if(that.is_on_screen($(this), (pageHeadingHeight + 48))) {
+							var hash = window.location.hash;
 							hash = hash.substr(hash.lastIndexOf('#') + 2);
 							$('.phytoplankton-menu__list__item li').removeClass('active');
 							$('.phytoplankton-menu__list__item[data-sheet="' + hash + '"]').find('li').eq(k).addClass('active');
@@ -339,17 +343,17 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			// But we can think of something smarter.
 			function paddingBottom() {
 				if($('.phytoplankton-page__item').length !== 0) {
-					var pageHeight = $(window).height() - 70;
+					var pageHeight = $(window).height() - pageHeadingHeight;
 					var lastElHeight = $('.phytoplankton-page__item:last').outerHeight();
 					var lastElPaddingTop = $('.phytoplankton-page__item:last').css('padding-top');
 					var lastElPaddingBottom = $('.phytoplankton-page__item:last').css('padding-bottom');
 					lastElPaddingTop = parseInt(lastElPaddingTop.substr(0, lastElPaddingTop.length - 2), 10); // Removes 'px' from string and converts string to number.
 					lastElPaddingBottom = parseInt(lastElPaddingBottom.substr(0, lastElPaddingBottom.length - 2), 10); // Removes 'px' from string and converts string to number.
-					lastElPaddingTotal = lastElPaddingTop+lastElPaddingBottom;
+					lastElPaddingTotal = lastElPaddingTop + lastElPaddingBottom;
 					if(lastElHeight >= pageHeight) {
 						// $(that.el).css({ 'padding-bottom' : 0 });
 					} else {
-						$(that.el).css({ 'padding-bottom' : (pageHeight-lastElHeight) });
+						$(that.el).css({ 'padding-bottom' : (pageHeight - lastElHeight - lastElPaddingTop) });
 					}
 				}
 			}

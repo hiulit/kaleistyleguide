@@ -79,15 +79,22 @@
 
 .phytoplankton-page__header {
 	background-color: $primary-color;
-	color: #fff;
 	@include md-depth(1);
-	@include prem(padding, 64 64 32);
+	color: #fff;
+	@include prem(padding, 32 64);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10;
 	> h1 {
 		margin-top: 0;
 	}
 	> h2 {
 		margin: 0;
 		@include font-size(16);
+	}
+	@media screen and (max-width: 700px) {
+		display: none;
 	}
 }
 

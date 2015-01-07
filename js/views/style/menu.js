@@ -28,9 +28,10 @@ function($, _, str, Backbone, marked, dashboardPageTemplate, config) {
 			},
 			'click .phytoplankton-menu__list__item ul li ul li a': function(ev) {
 				ev.preventDefault();
+				var pageHeadingHeight = $('.phytoplankton-page__header').outerHeight();
 				var scrollAnchor = $(ev.currentTarget).attr('href');
-				var scrollAnchor = scrollAnchor.substr(scrollAnchor.lastIndexOf('#') + 1);
-				var scrollPoint = $('.phytoplankton-page__item *[id="' + scrollAnchor + '"]').offset().top - (50 + 40);
+				scrollAnchor = scrollAnchor.substr(scrollAnchor.lastIndexOf('#') + 1);
+				var scrollPoint = $('.phytoplankton-page__item *[id="' + scrollAnchor + '"]').offset().top - (pageHeadingHeight + 48);
 				$('html, body').animate({
 					scrollTop: scrollPoint
 				}, '200');

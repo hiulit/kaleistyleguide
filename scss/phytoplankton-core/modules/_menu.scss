@@ -78,10 +78,15 @@
 	}
 }
 
+
 .phytoplankton-menu__list {
 	@include font-size(14);
 	@include prem(margin, 24 0, !important);
 	@include prem(margin-left, 12, !important);
+}
+
+.phytoplankton-menu__list--first {
+	margin: 0 !important;
 }
 
 .phytoplankton-menu__list__item {
