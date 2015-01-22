@@ -179,7 +179,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 				$('[href="' + window.location.hash + '"]').addClass('active');
 			}
 
-			var submenu = $('<ul>');
+			var submenu = $('<ul data-gumshoe>');
 			var externalScripts = [];
 			////////////NEEDS TO BE EXPORTED TO Menu.js
 			// Creates the menu.
@@ -191,11 +191,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 				_.each(block.heading, function(val, i) {
 					var li = $('<li>');
 					if(i >= 1) {
-						li.append($('<a href="#' + block.headingID[i] + '">').html(val));
+						li.append($('<a href="#' + block.headingID[i] + '" data-scroll>').html(val));
 						ul.append(li);
 					} else {
 						// var li = $('<li>');
-						li.append($('<a href="#' + block.headingID[i] + '">').html(val));
+						li.append($('<a href="#' + block.headingID[i] + '" data-scroll>').html(val));
 						submenu.append(li);
 					}
 				});
@@ -207,7 +207,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 			$('.phytoplankton-menu > ul > li > ul > li > ul').remove();
 			$('[data-sheet="' + styleDir + '"]').append(submenu);
-			$('.phytoplankton-menu > ul > li > ul > li > ul > li:first-child').addClass('active');
+			// $('.phytoplankton-menu > ul > li > ul > li > ul > li:first-child').addClass('active');
 			////////////NEEDS TO BE EXPORTED TO Menu.js
 
 			this.$el.html(_.template(stylePageTemplate)({page: page, config: config, externalStyles: config.external_stylesheets}));
@@ -228,6 +228,18 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			fixie.init();
 			// Call for Stacktable.
 			$('table').stacktable();
+
+			require(['libs/gumshoe/dist/js/gumshoe'], function(gumshoe) {
+				gumshoe.init({
+					offset: 40
+				});
+			});
+
+			require(['libs/smooth-scroll/dist/js/smooth-scroll'], function(smoothScroll) {
+				smoothScroll.init({
+					offset: 40
+				});
+			});
 
 			require(['libs/zeroclipboard/dist/ZeroClipboard'], function(ZeroClipboard) {
 
@@ -322,20 +334,20 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			var pageHeadingHeight = $('.phytoplankton-page__header').outerHeight();
 			$('.phytoplankton-page').css('padding-top', pageHeadingHeight + 24);
 
-			$(window).scroll(function () {
-				var k = 0;
-				$('.phytoplankton-page__item').find(':header').each(function(i) {
-					if(!$(this).offsetParent().hasClass('code-render')) {
-						if(that.is_on_screen($(this), (pageHeadingHeight + 48))) {
-							var hash = window.location.hash;
-							hash = hash.substr(hash.lastIndexOf('#') + 2);
-							$('.phytoplankton-menu__list__item li').removeClass('active');
-							$('.phytoplankton-menu__list__item[data-sheet="' + hash + '"]').find('li').eq(k).addClass('active');
-							k++;
-						}
-					}
-				});
-			});
+			// $(window).scroll(function () {
+			// 	var k = 0;
+			// 	$('.phytoplankton-page__item').find(':header').each(function(i) {
+			// 		if(!$(this).offsetParent().hasClass('code-render')) {
+			// 			if(that.is_on_screen($(this), (pageHeadingHeight + 48))) {
+			// 				var hash = window.location.hash;
+			// 				hash = hash.substr(hash.lastIndexOf('#') + 2);
+			// 				$('.phytoplankton-menu__list__item li').removeClass('active');
+			// 				$('.phytoplankton-menu__list__item[data-sheet="' + hash + '"]').find('li').eq(k).addClass('active');
+			// 				k++;
+			// 			}
+			// 		}
+			// 	});
+			// });
 
 			// If the last element of the page is higher than window.height(),
 			// some additional padding-bottom is added so it stops at the top of the page.

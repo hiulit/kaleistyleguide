@@ -25,17 +25,17 @@ function($, _, str, Backbone, marked, dashboardPageTemplate, config) {
 				$('.js-phytoplankton-menu-icon').removeClass('is-active');
 				$('.js-phytoplankton-header').removeClass('is-active');
 				$('.js-phytoplankton-page').removeClass('is-active');
-			},
-			'click .phytoplankton-menu__list__item ul li ul li a': function(ev) {
-				ev.preventDefault();
-				var pageHeadingHeight = $('.phytoplankton-page__header').outerHeight();
-				var scrollAnchor = $(ev.currentTarget).attr('href');
-				scrollAnchor = scrollAnchor.substr(scrollAnchor.lastIndexOf('#') + 1);
-				var scrollPoint = $('.phytoplankton-page__item *[id="' + scrollAnchor + '"]').offset().top - (pageHeadingHeight + 48);
-				$('html, body').animate({
-					scrollTop: scrollPoint
-				}, '200');
 			}
+			// 'click .phytoplankton-menu__list__item ul li ul li a': function(ev) {
+			// 	ev.preventDefault();
+			// 	var pageHeadingHeight = $('.phytoplankton-page__header').outerHeight();
+			// 	var scrollAnchor = $(ev.currentTarget).attr('href');
+			// 	scrollAnchor = scrollAnchor.substr(scrollAnchor.lastIndexOf('#') + 1);
+			// 	var scrollPoint = $('.phytoplankton-page__item *[id="' + scrollAnchor + '"]').offset().top - (pageHeadingHeight + 48);
+			// 	$('html, body').animate({
+			// 		scrollTop: scrollPoint
+			// 	}, '200');
+			// }
 		},
 		render: function () {
 
