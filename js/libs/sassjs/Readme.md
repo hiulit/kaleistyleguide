@@ -175,6 +175,15 @@ grunt build:libsass
 
 ## Changelog
 
+### 0.6.2 (January 22nd 2015) ###
+
+* fixing `Makefile.patch` for "memory file" to work with emscripten 1.29
+
+### 0.6.1 (January 5th 2015) ###
+
+* fixing `Makefile.patch` to work with libsass 3.1.0
+* upgrading to [libsass 3.1.0](https://github.com/sass/libsass/releases/tag/3.1.0)
+
 ### 0.6.0 (December 23rd 2014) ###
 
 * adding `grunt build:libsass` to make libsass.js ([#15](https://github.com/medialize/sass.js/issues/15))
