@@ -1,6 +1,7 @@
 .phytoplankton-page {
 	background-color: #fff;
 	float: right;
+	@include prem(padding-top, 24);
 	width: 75%;
 	@media screen and (max-width: 700px) {
 		@include prem(margin-top, 60);
@@ -22,13 +23,13 @@
 	ol,
 	ul { // So it doesn't mess with PrismJs styles on <pre> and <code> blocks
 		a {
-			color: $accent-tertiary-color;
+			color: $accent-color;
 			text-decoration: none;
 			white-space: normal;
 			@include hyphenation;
 			transition: color .25s ease-in-out;
 			&:hover {
-				color: $accent-secondary-color;
+				color: $dark-primary-color;
 				text-decoration: underline;
 			}
 		}
@@ -77,51 +78,30 @@
 	}
 }
 
-.phytoplankton-page__header {
-	background-color: $primary-color;
-	@include md-depth(1);
-	color: #fff;
-	@include prem(padding, 32 64);
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 10;
-	> h1 {
-		margin-top: 0;
-	}
-	> h2 {
-		margin: 0;
-		@include font-size(16);
-	}
-	@media screen and (max-width: 700px) {
-		display: none;
-	}
-}
-
 .phytoplankton-page__item {
 	background-color: #fff;
 	@include prem(padding, 24 64);
 	position: relative;
 	> h1,
 	> h2 {
-		color: $font-color;
 		@include prem(padding-bottom, round(($sgl-base-font-size*$sgl-base-line-height)-($sgl-base-font-size/2)));
 	}
 	> h1 {
-		// counter-increment: heading1;
+		counter-increment: heading1;
 		margin-top: 0;
-		// &:before {
-		// 	content: counter(heading1) ". ";
-		// }
+		&:before {
+			color: $primary-color;
+			content: counter(heading1) ". ";
+		}
 	}
 	> h2 {
-		// counter-increment: heading2;
-		// &:before {
-		// 	content: counter(heading1) "." counter(heading2) ". " ;
-		// }
+		counter-increment: heading2;
+		&:before {
+			color: $primary-color;
+			content: counter(heading1) "." counter(heading2) ". " ;
+		}
 	}
 }
-
 
 .code-lang {
 	background-color: #272822;
