@@ -260,8 +260,8 @@
 		if ( !settings ) return;
 
 		// Remove event listeners
-		document.removeEventListener('resize', eventHandler, false);
-		document.removeEventListener('scroll', eventHandler, false);
+		// document.removeEventListener('resize', eventHandler, false);
+		// document.removeEventListener('scroll', eventHandler, false);
 
 		// Reset variables
 		navs = [];
