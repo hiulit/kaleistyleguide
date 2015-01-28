@@ -10,7 +10,8 @@ define([
 	'hbs_helpers',
 	'gonzales',
 	'libs/prism/prism',
-	'libs/stacktable/stacktable'
+	'libs/stacktable/stacktable',
+	'libs/gumshoe/dist/js/classList'
 ],
 function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupObjects) {
 
@@ -179,10 +180,12 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 				$('[href="' + window.location.hash + '"]').addClass('active');
 			}
 
+			// NEEDS TO BE EXPORTED TO menu.js - START
+
+			// Creates the menu.
 			var submenu = $('<ul data-gumshoe>');
 			var externalScripts = [];
-			////////////NEEDS TO BE EXPORTED TO Menu.js
-			// Creates the menu.
+
 			_.each(page.blocks, function (block) {
 				if(block.scriptsArray.length > 0) {
 					externalScripts.push(block.scriptsArray[0]);
@@ -193,13 +196,12 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 					if(i >= 1) {
 						li.append($('<a href="#' + block.headingID[i] + '" data-scroll>').html(val));
 						ul.append(li);
+						submenu.find('li:last').append(ul);
 					} else {
-						// var li = $('<li>');
 						li.append($('<a href="#' + block.headingID[i] + '" data-scroll>').html(val));
 						submenu.append(li);
 					}
 				});
-				submenu.find('li:last').append(ul);
 			});
 
 			var styleDir = window.location.hash;
@@ -207,8 +209,9 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 			$('.phytoplankton-menu > ul > li > ul > li > ul').remove();
 			$('[data-sheet="' + styleDir + '"]').append(submenu);
-			// $('.phytoplankton-menu > ul > li > ul > li > ul > li:first-child').addClass('active');
-			////////////NEEDS TO BE EXPORTED TO Menu.js
+			$('.phytoplankton-menu > ul > li > ul > li > ul > li:first-child').addClass('active');
+
+			// NEEDS TO BE EXPORTED TO menu.js - END
 
 			this.$el.html(_.template(stylePageTemplate)({page: page, config: config, externalStyles: config.external_stylesheets}));
 
@@ -220,24 +223,22 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			$('p:contains("@javascript")').remove();
 			// Adds class so Prism's Line Number plugin can work.
 			$('pre').addClass('line-numbers');
-			// Prism's colour coding in <code> blocks.
-			Prism.highlightAll();
-			// Prism's File Highlight plugin function.
-			fileHighlight();
-			// Call for Fixie.
-			fixie.init();
-			// Call for Stacktable.
-			$('table').stacktable();
 
-			require(['libs/gumshoe/dist/js/gumshoe'], function(gumshoe) {
-				gumshoe.init({
-					offset: 40
-				});
-			});
+			Prism.highlightAll();
+			fileHighlight();
+			fixie.init();
+			$('table').stacktable();
 
 			require(['libs/smooth-scroll/dist/js/smooth-scroll'], function(smoothScroll) {
 				smoothScroll.init({
-					offset: 40
+					offset: 47,
+					updateURL: false
+				});
+			});
+
+			require(['libs/gumshoe/dist/js/gumshoe'], function(gumshoe) {
+				gumshoe.init({
+					offset: 48
 				});
 			});
 
@@ -274,7 +275,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 					} );
 					$(this).parent().append(copy);
 				});
-
 
 			});
 
@@ -323,31 +323,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 				$("#"+tab_id).addClass('is-active');
 			});
 
-			// Adds page headers's title and URL.
-			var menuUrl = $('.phytoplankton-menu__list__item__subheader.active').attr('href');
-			menuUrl = menuUrl.substr(menuUrl.lastIndexOf('#') + 1);
-			var menuTitle = $('.phytoplankton-menu__list__item__subheader.active').parent().parent().parent().find('.phytoplankton-menu__list__item__header').text().trim();
-			$('.phytoplankton-page__header-title').html(menuTitle);
-			$('.phytoplankton-page__header-url').html(menuUrl);
-
-			// Sets page's padding-top to be the same as pageheading's height.
-			var pageHeadingHeight = $('.phytoplankton-page__header').outerHeight();
-			$('.phytoplankton-page').css('padding-top', pageHeadingHeight + 24);
-
-			// $(window).scroll(function () {
-			// 	var k = 0;
-			// 	$('.phytoplankton-page__item').find(':header').each(function(i) {
-			// 		if(!$(this).offsetParent().hasClass('code-render')) {
-			// 			if(that.is_on_screen($(this), (pageHeadingHeight + 48))) {
-			// 				var hash = window.location.hash;
-			// 				hash = hash.substr(hash.lastIndexOf('#') + 2);
-			// 				$('.phytoplankton-menu__list__item li').removeClass('active');
-			// 				$('.phytoplankton-menu__list__item[data-sheet="' + hash + '"]').find('li').eq(k).addClass('active');
-			// 				k++;
-			// 			}
-			// 		}
-			// 	});
-			// });
+			var pageHeadingHeight = 0;
 
 			// If the last element of the page is higher than window.height(),
 			// some additional padding-bottom is added so it stops at the top of the page.
@@ -377,22 +353,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			});
 		},
 
-		is_on_screen: function(el, offset) {
-
-			var win = $(window);
-
-			var viewport = {
-				top : win.scrollTop()
-			};
-
-			viewport.bottom = viewport.top + win.height();
-
-			var bounds = el.offset();
-
-			return (!(viewport.top + offset < bounds.top || viewport.top > bounds.bottom));
-
-		},
-
 		compute_css: function(stylesheet, cssUncompiled, cssCompiled, styleExt) {
 			var page = {
 				blocks: [],
@@ -420,11 +380,14 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			return page;
 		},
 
+		// Remove (and trim) CSS comments.
 		remove_comments: function(stylesheet) {
-			// Remove (and trim) CSS comments.
-			stylesheet = stylesheet.replace(/(\/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*?\*\/)/g, ''); // Remove comments.
-			stylesheet = stylesheet.replace(/((^\s+|\s+$))/g,''); // Trim leading and trailing.
-			stylesheet = stylesheet.replace(/(\n\s*\n)/g, '\n\n'); // Remove extra line breaks.
+			// Remove comments.
+			stylesheet = stylesheet.replace(/(\/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*?\*\/)/g, '');
+			// Trim leading and trailing.
+			stylesheet = stylesheet.replace(/((^\s+|\s+$))/g,'');
+			// Remove extra line breaks.
+			stylesheet = stylesheet.replace(/(\n\s*\n)/g, '\n\n');
 			return stylesheet;
 		},
 
