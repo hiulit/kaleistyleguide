@@ -3,11 +3,11 @@
 require.config({
 	paths: {
 		// Major libraries
-		jquery: 'libs/jquery/jquery-min',
+		jquery: 'libs/jquery/jquery-1.11.2.min',
 		underscore: 'libs/underscore/underscore-min',
 		backbone: 'libs/backbone/backbone-min',
 		handlebars: 'libs/handlebars/handlebars.min',
-		gonzales: 'libs/gonzales/gonzales',
+		gonzales: 'libs/gonzales/gonzales.min',
 		marked: 'libs/marked/marked.min',
 		fixie: 'libs/fixie/fixie.min',
 		// Require.js plugins

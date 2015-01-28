@@ -196,12 +196,12 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 					if(i >= 1) {
 						li.append($('<a href="#' + block.headingID[i] + '" data-scroll>').html(val));
 						ul.append(li);
-						submenu.find('li:last').append(ul);
 					} else {
 						li.append($('<a href="#' + block.headingID[i] + '" data-scroll>').html(val));
 						submenu.append(li);
 					}
 				});
+				submenu.find('li:last').append(ul);
 			});
 
 			var styleDir = window.location.hash;
@@ -209,7 +209,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 			$('.phytoplankton-menu > ul > li > ul > li > ul').remove();
 			$('[data-sheet="' + styleDir + '"]').append(submenu);
-			$('.phytoplankton-menu > ul > li > ul > li > ul > li:first-child').addClass('active');
+			// $('.phytoplankton-menu > ul > li > ul > li > ul > li:first-child').addClass('active');
 
 			// NEEDS TO BE EXPORTED TO menu.js - END
 
@@ -229,20 +229,20 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			fixie.init();
 			$('table').stacktable();
 
-			require(['libs/smooth-scroll/dist/js/smooth-scroll'], function(smoothScroll) {
+			require(['libs/smooth-scroll/dist/js/smooth-scroll.min'], function(smoothScroll) {
 				smoothScroll.init({
 					offset: 47,
 					updateURL: false
 				});
 			});
 
-			require(['libs/gumshoe/dist/js/gumshoe'], function(gumshoe) {
+			require(['libs/gumshoe/dist/js/gumshoe.min'], function(gumshoe) {
 				gumshoe.init({
 					offset: 48
 				});
 			});
 
-			require(['libs/zeroclipboard/dist/ZeroClipboard'], function(ZeroClipboard) {
+			require(['libs/zeroclipboard/dist/ZeroClipboard.min'], function(ZeroClipboard) {
 
 				$('pre[class*="language-"] code').each(function() {
 
