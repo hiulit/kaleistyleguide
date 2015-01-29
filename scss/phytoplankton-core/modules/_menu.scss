@@ -3,6 +3,7 @@
 	@include md-depth(1);
 	bottom: 0;
 	color: $text-color;
+	@include font-size(16);
 	overflow-x: hidden;
 	overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
