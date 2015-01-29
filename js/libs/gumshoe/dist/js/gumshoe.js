@@ -248,6 +248,8 @@
 				};
 			}
 		});
+		activateNav(navs[0]); 	// This is a feature that
+								// doesn't come with the plugin
 	};
 
 	/**

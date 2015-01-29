@@ -9,9 +9,9 @@ define([
 	'hbs_context',
 	'hbs_helpers',
 	'gonzales',
-	'libs/prism/prism',
-	'libs/stacktable/stacktable',
-	'libs/gumshoe/dist/js/classList'
+	'libs/prism/prism.min',
+	'libs/stacktable/stacktable.min',
+	'libs/gumshoe/dist/js/classList.min'
 ],
 function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupObjects) {
 
@@ -225,7 +225,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			$('pre').addClass('line-numbers');
 
 			Prism.highlightAll();
-			fileHighlight();
+			fileHighlight(false);
 			fixie.init();
 			$('table').stacktable();
 

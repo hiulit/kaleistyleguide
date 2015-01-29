@@ -1879,7 +1879,7 @@ function getLanguage(tag) {
 
 // File Highlight Plugin - start
 
-var fileHighlight = (function fileHighlight(){	// Reference to fileHighlight function.
+var fileHighlight = (function fileHighlight(async){	// Reference to fileHighlight function.
 												// This is a "feature" that doesn't
 												// come with the default plugin.
 
@@ -1912,7 +1912,7 @@ var fileHighlight = (function fileHighlight(){	// Reference to fileHighlight fun
 
 		var xhr = new XMLHttpRequest();
 
-		xhr.open('GET', src, true);
+		xhr.open('GET', src, async);
 
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4) {
