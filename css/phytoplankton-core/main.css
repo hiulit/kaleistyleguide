@@ -763,10 +763,10 @@ body {
   color: #212121;
   counter-reset: heading1;
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 19px;
-  font-size: 1rem;
-  line-height: 1.1875rem;
+  font-size: 18px;
+  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
   overflow-x: hidden;
 }
 @media (max-width: 400px) {
@@ -783,26 +783,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 38px;
-  line-height: 38px;
-  margin-bottom: 19px;
-  margin-top: 38px;
-  font-size: 2.375rem;
-  line-height: 2.375rem;
-  margin-bottom: 1.1875rem;
-  margin-top: 2.375rem;
+  font-size: 43px;
+  line-height: 44px;
+  margin-bottom: 22px;
+  margin-top: 44px;
+  font-size: 2.6875rem;
+  line-height: 2.75rem;
+  margin-bottom: 1.375rem;
+  margin-top: 2.75rem;
   font-weight: 600;
 }
 
 h2 {
-  font-size: 28px;
-  line-height: 38px;
-  margin-bottom: 19px;
-  margin-top: 38px;
-  font-size: 1.75rem;
-  line-height: 2.375rem;
-  margin-bottom: 1.1875rem;
-  margin-top: 2.375rem;
+  font-size: 32px;
+  line-height: 44px;
+  margin-bottom: 22px;
+  margin-top: 44px;
+  font-size: 2rem;
+  line-height: 2.75rem;
+  margin-bottom: 1.375rem;
+  margin-top: 2.75rem;
   font-weight: 600;
 }
 
@@ -1107,6 +1107,10 @@ img {
   z-index: 1;
   bottom: 0;
   color: #fff;
+  font-size: 16px;
+  line-height: 19.2px;
+  font-size: 1rem;
+  line-height: 1.2rem;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1268,10 +1272,10 @@ img {
 }
 
 .phytoplankton-page p, .phytoplankton-page ul, .phytoplankton-page ol, .phytoplankton-page pre, .phytoplankton-page table, .phytoplankton-page blockquote {
-  margin-bottom: 19px;
-  margin-top: 19px;
-  margin-bottom: 1.1875rem;
-  margin-top: 1.1875rem;
+  margin-bottom: 22px;
+  margin-top: 22px;
+  margin-bottom: 1.375rem;
+  margin-top: 1.375rem;
 }
 .phytoplankton-page p a,
 .phytoplankton-page ol a,
@@ -1383,24 +1387,22 @@ img {
   padding: 1.5rem 4rem;
   position: relative;
 }
-.phytoplankton-page__item > h1,
-.phytoplankton-page__item > h2 {
-  padding-bottom: 11px;
-  padding-bottom: 0.6875rem;
+.phytoplankton-page__item > h1:before,
+.phytoplankton-page__item > h2:before {
+  color: #009688;
+  font-size: 75%;
 }
 .phytoplankton-page__item > h1 {
   counter-increment: heading1;
   margin-top: 0;
 }
 .phytoplankton-page__item > h1:before {
-  color: #009688;
   content: counter(heading1) ". ";
 }
 .phytoplankton-page__item > h2 {
   counter-increment: heading2;
 }
 .phytoplankton-page__item > h2:before {
-  color: #009688;
   content: counter(heading1) "." counter(heading2) ". ";
 }
 
