@@ -231,14 +231,14 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 			require(['libs/smooth-scroll/dist/js/smooth-scroll.min'], function(smoothScroll) {
 				smoothScroll.init({
-					offset: 47,
+					offset: 48,
 					updateURL: false
 				});
 			});
 
 			require(['libs/gumshoe/dist/js/gumshoe.min'], function(gumshoe) {
 				gumshoe.init({
-					offset: 48
+					offset: 49
 				});
 			});
 
