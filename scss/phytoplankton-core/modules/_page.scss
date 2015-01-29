@@ -84,20 +84,22 @@
 	position: relative;
 	> h1,
 	> h2 {
-		@include prem(padding-bottom, round(($sgl-base-font-size*$sgl-base-line-height)-($sgl-base-font-size/2)));
+		// @include prem(padding-bottom, round(($sgl-base-font-size*$sgl-base-line-height)-($sgl-base-font-size/2)));
+		&:before {
+			color: $primary-color;
+			font-size: 75%;
+		}
 	}
 	> h1 {
 		counter-increment: heading1;
 		margin-top: 0;
 		&:before {
-			color: $primary-color;
 			content: counter(heading1) ". ";
 		}
 	}
 	> h2 {
 		counter-increment: heading2;
 		&:before {
-			color: $primary-color;
 			content: counter(heading1) "." counter(heading2) ". " ;
 		}
 	}
