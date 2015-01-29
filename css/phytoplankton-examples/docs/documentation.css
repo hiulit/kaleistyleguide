@@ -19,25 +19,15 @@ So go ahead and [master your Markdown](http://guides.github.com/overviews/master
 /*
 # Getting Started
 
-By default, Phytoplankton uses `imports.css` as a base style sheet to point at all the style sheets that you want to document.
+Phytoplankton uses `js/config.js` as a base to point at all the style sheets that you want to document.
 
-This is how this particular `imports.css` looks like:
+Here you can set the menu based on your style sheets and some configurations.
 
-<pre data-src="css/imports.css"></pre>
+Phytoplankton will **automatically creates a menu** out of your style sheets.
 
-## Config.js
-
-There are 3 ways (well, actually 2) to point at your style sheets:
-
-1. `css_path` - This is, by far, the best way to go and the one that Phytoplankton uses by default.
-2. `css_path_url` - **Not supported yet!!!**
-3. `css_paths` - Manually enter an array of files.
-
-Just comment and uncomment the appropiate lines to make it work.
+This is how this particular `js/config.js` looks like:
 
 <pre data-src="js/config.js"></pre>
-
-Either way, Phytoplankton **automatically creates a menu** out of your style sheets.
 
 */
 /*
