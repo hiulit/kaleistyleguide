@@ -2,6 +2,7 @@
 	background-color: #fff;
 	float: right;
 	@include prem(padding-top, 24);
+	margin-left: 1.5em;
 	width: 75%;
 	@media screen and (max-width: 700px) {
 		@include prem(margin-top, 60);
@@ -87,6 +88,7 @@
 		// @include prem(padding-bottom, round(($sgl-base-font-size*$sgl-base-line-height)-($sgl-base-font-size/2)));
 		&:before {
 			color: $primary-color;
+			@include inline-block;
 			font-size: 75%;
 		}
 	}
@@ -94,13 +96,17 @@
 		counter-increment: heading1;
 		margin-top: 0;
 		&:before {
-			content: counter(heading1) ". ";
+			content: counter(heading1) ".\00a0";
+			margin-left:  -1.5em;
+			width: 1.5em;
 		}
 	}
 	> h2 {
 		counter-increment: heading2;
 		&:before {
-			content: counter(heading1) "." counter(heading2) ". " ;
+			content: counter(heading1) "." counter(heading2) ".\00a0" ;
+			margin-left:  -2em;
+			width: 2em;
 		}
 	}
 }
