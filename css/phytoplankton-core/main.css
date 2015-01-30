@@ -1251,7 +1251,6 @@ img {
   float: right;
   padding-top: 24px;
   padding-top: 1.5rem;
-  margin-left: 1.5em;
   width: 75%;
 }
 @media screen and (max-width: 700px) {
@@ -1385,6 +1384,7 @@ img {
 
 .phytoplankton-page__item {
   background-color: #fff;
+  margin-left: 1.5em;
   padding: 24px 64px;
   padding: 1.5rem 4rem;
   position: relative;

@@ -2,7 +2,6 @@
 	background-color: #fff;
 	float: right;
 	@include prem(padding-top, 24);
-	margin-left: 1.5em;
 	width: 75%;
 	@media screen and (max-width: 700px) {
 		@include prem(margin-top, 60);
@@ -81,6 +80,7 @@
 
 .phytoplankton-page__item {
 	background-color: #fff;
+	margin-left: 1.5em;
 	@include prem(padding, 24 64);
 	position: relative;
 	> h1,
