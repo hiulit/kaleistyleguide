@@ -86,8 +86,9 @@ Not tested on Opera nor on Safari.
 * Fix ZeroClipboard on dynamic content (e.g. <pre data-src="")
 * Create tooltips (for ZeroClipboard).
 * Fix tabs scroll.
-* Fix issue with Prism's File Hihglight plugin async loading causing Gumshoe and ZeroClipboard not to work properly.
+* Fix issue with Prism's File Highlight plugin async loading causing Gumshoe and ZeroClipboard not to work properly.
 * RequireJS & Backbone optimization (separate modules, create components, etc.)
+* Add a view for showing colors
 
  */
 /*
