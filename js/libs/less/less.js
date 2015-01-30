@@ -1,5 +1,5 @@
 /*!
- * Less - Leaner CSS v2.2.0
+ * Less - Leaner CSS v2.3.1
  * http://lesscss.org
  *
  * Copyright (c) 2009-2015, Alexis Sellier <self@cloudhead.net>
@@ -52,9 +52,9 @@ module.exports = function(window, options) {
         options.useFileCache = true;
     }
 
-	if (options.onReady === undefined) {
-		options.onReady = true;
-	}
+    if (options.onReady === undefined) {
+        options.onReady = true;
+    }
 
 };
 
@@ -75,15 +75,15 @@ require("./add-default-options")(window, options);
 var less = module.exports = require("./index")(window, options);
 
 if (options.onReady) {
-	if (/!watch/.test(window.location.hash)) {
-		less.watch();
-	}
-	
-	less.pageLoadFinished = less.registerStylesheets().then(
-		function () {
-			return less.refresh(less.env === 'development');
-		}
-	);
+    if (/!watch/.test(window.location.hash)) {
+        less.watch();
+    }
+
+    less.pageLoadFinished = less.registerStylesheets().then(
+        function () {
+            return less.refresh(less.env === 'development');
+        }
+    );
 }
 },{"./add-default-options":1,"./index":7,"promise/polyfill.js":undefined}],3:[function(require,module,exports){
 var utils = require("./utils");
@@ -596,14 +596,14 @@ function loadStyleSheet(sheet, callback, reload, remaining, modifyVars) {
         if (webInfo) {
             webInfo.remaining = remaining;
 
-	        if (!instanceOptions.modifyVars) {
-	            var css = cache.getCSS(path, webInfo);
-	            if (!reload && css) {
-	                webInfo.local = true;
-	                callback(null, null, data, sheet, webInfo, path);
-	                return;
-	            }
-	        }
+            if (!instanceOptions.modifyVars) {
+                var css = cache.getCSS(path, webInfo);
+                if (!reload && css) {
+                    webInfo.local = true;
+                    callback(null, css, data, sheet, webInfo, path);
+                    return;
+                }
+            }
         }
 
         //TODO add tests around how this behaves when reloading
@@ -615,11 +615,11 @@ function loadStyleSheet(sheet, callback, reload, remaining, modifyVars) {
                 e.href = path;
                 callback(e);
             } else {
-	            result.css = postProcessCSS(result.css);
-	            if (!instanceOptions.modifyVars) {
-	                cache.setCSS(sheet.href, webInfo.lastModified, result.css);
-	            }
-	            callback(null, result.css, data, sheet, webInfo, path);
+                result.css = postProcessCSS(result.css);
+                if (!instanceOptions.modifyVars) {
+                    cache.setCSS(sheet.href, webInfo.lastModified, result.css);
+                }
+                callback(null, result.css, data, sheet, webInfo, path);
             }
         });
     }
@@ -716,7 +716,7 @@ less.refresh = function (reload, modifyVars, clearFileCache) {
             } else {
                 less.logger.info("rendered " + sheet.href + " successfully.");
             }
-	        browser.createCSS(window.document, css, sheet);
+            browser.createCSS(window.document, css, sheet);
             less.logger.info("css for " + sheet.href + " generated in " + (new Date() - endTime) + 'ms');
             if (webInfo.remaining === 0) {
                 totalMilliseconds = new Date() - startTime;
@@ -788,11 +788,11 @@ module.exports = function(less, options) {
 module.exports = {
     extractId: function(href) {
         return href.replace(/^[a-z-]+:\/+?[^\/]+/, '' )  // Remove protocol & domain
-            .replace(/[\?\&]livereload=\w+/,'' )  // Remove LiveReload cachebuster
-            .replace(/^\//,                 '' )  // Remove root /
-            .replace(/\.[a-zA-Z]+$/,        '' )  // Remove simple extension
-            .replace(/[^\.\w-]+/g,          '-')  // Replace illegal characters
-            .replace(/\./g,                 ':'); // Replace dots with colons(for valid id)
+            .replace(/[\?\&]livereload=\w+/, '' )  // Remove LiveReload cachebuster
+            .replace(/^\//,                  '' )  // Remove root /
+            .replace(/\.[a-zA-Z]+$/,         '' )  // Remove simple extension
+            .replace(/[^\.\w-]+/g,           '-')  // Replace illegal characters
+            .replace(/\./g,                  ':'); // Replace dots with colons(for valid id)
     },
     addDataAttr: function(options, tag) {
         for (var opt in tag.dataset) {
@@ -854,6 +854,7 @@ contexts.Parse = function(options) {
 };
 
 var evalCopyProperties = [
+    'paths',          // additional include paths
     'compress',       // whether to compress
     'ieCompat',       // whether to enforce IE compatibility (IE8 data-uri)
     'strictMath',     // whether math has to be within parenthesis
@@ -920,7 +921,6 @@ contexts.Eval.prototype.normalizePath = function( path ) {
 };
 
 //todo - do the same for the toCSS ?
-
 
 },{}],11:[function(require,module,exports){
 module.exports = {
@@ -1095,9 +1095,9 @@ module.exports = {
         'ms': 0.001
     },
     angle: {
-        'rad': 1/(2*Math.PI),
-        'deg': 1/360,
-        'grad': 1/400,
+        'rad': 1 / (2 * Math.PI),
+        'deg': 1 / 360,
+        'grad': 1 / 400,
         'turn': 1
     }
 };
@@ -1157,10 +1157,10 @@ abstractFileManager.prototype.pathDiff = function pathDiff(url, baseUrl) {
     }
     baseUrlDirectories = baseUrlParts.directories.slice(i);
     urlDirectories = urlParts.directories.slice(i);
-    for(i = 0; i < baseUrlDirectories.length-1; i++) {
+    for(i = 0; i < baseUrlDirectories.length - 1; i++) {
         diff += "../";
     }
-    for(i = 0; i < urlDirectories.length-1; i++) {
+    for(i = 0; i < urlDirectories.length - 1; i++) {
         diff += urlDirectories[i] + "/";
     }
     return diff;
@@ -1185,7 +1185,7 @@ abstractFileManager.prototype.extractUrlParts = function extractUrlParts(url, ba
     if (baseUrl && (!urlParts[1] || urlParts[2])) {
         baseUrlParts = baseUrl.match(urlPartsRegex);
         if (!baseUrlParts) {
-            throw new Error("Could not parse page url - '"+baseUrl+"'");
+            throw new Error("Could not parse page url - '" + baseUrl + "'");
         }
         urlParts[1] = urlParts[1] || baseUrlParts[1] || "";
         if (!urlParts[2]) {
@@ -1206,7 +1206,7 @@ abstractFileManager.prototype.extractUrlParts = function extractUrlParts(url, ba
 
         for(i = 0; i < directories.length; i++) {
             if (directories[i] === ".." && i > 0) {
-                directories.splice(i-1, 2);
+                directories.splice(i - 1, 2);
                 i -= 2;
             }
         }
@@ -1311,9 +1311,9 @@ var colorBlendModeFunctions = {
     },
     overlay: function(cb, cs) {
         cb *= 2;
-        return (cb <= 1)
-            ? colorBlendModeFunctions.multiply(cb, cs)
-            : colorBlendModeFunctions.screen(cb - 1, cs);
+        return (cb <= 1) ?
+            colorBlendModeFunctions.multiply(cb, cs) :
+            colorBlendModeFunctions.screen(cb - 1, cs);
     },
     softlight: function(cb, cs) {
         var d = 1, e = cb;
@@ -1401,7 +1401,7 @@ colorFunctions = {
             h = h < 0 ? h + 1 : (h > 1 ? h - 1 : h);
             if      (h * 6 < 1) { return m1 + (m2 - m1) * h * 6; }
             else if (h * 2 < 1) { return m2; }
-            else if (h * 3 < 2) { return m1 + (m2 - m1) * (2/3 - h) * 6; }
+            else if (h * 3 < 2) { return m1 + (m2 - m1) * (2 / 3 - h) * 6; }
             else                { return m1; }
         }
 
@@ -1411,9 +1411,9 @@ colorFunctions = {
         var m2 = l <= 0.5 ? l * (s + 1) : l + s - l * s;
         var m1 = l * 2 - m2;
 
-        return colorFunctions.rgba(hue(h + 1/3) * 255,
+        return colorFunctions.rgba(hue(h + 1 / 3) * 255,
             hue(h)       * 255,
-            hue(h - 1/3) * 255,
+            hue(h - 1 / 3) * 255,
             a);
     },
 
@@ -1481,9 +1481,9 @@ colorFunctions = {
     },
     luminance: function (color) {
         var luminance =
-            (0.2126 * color.rgb[0] / 255)
-                + (0.7152 * color.rgb[1] / 255)
-                + (0.0722 * color.rgb[2] / 255);
+            (0.2126 * color.rgb[0] / 255) +
+                (0.7152 * color.rgb[1] / 255) +
+                (0.0722 * color.rgb[2] / 255);
 
         return new Dimension(luminance * color.alpha * 100, '%');
     },
@@ -1613,7 +1613,7 @@ colorFunctions = {
             return new Color(c.value.slice(1));
         }
         if ((c instanceof Color) || (c = Color.fromKeyword(c.value))) {
-            c.keyword = undefined;
+            c.value = undefined;
             return c;
         }
         throw {
@@ -1622,7 +1622,7 @@ colorFunctions = {
         };
     },
     tint: function(color, amount) {
-        return colorFunctions.mix(colorFunctions.rgb(255,255,255), color, amount);
+        return colorFunctions.mix(colorFunctions.rgb(255, 255, 255), color, amount);
     },
     shade: function(color, amount) {
         return colorFunctions.mix(colorFunctions.rgb(0, 0, 0), color, amount);
@@ -1649,12 +1649,13 @@ module.exports = function(environment) {
 
         var mimetype = mimetypeNode && mimetypeNode.value;
         var filePath = filePathNode.value;
-        var currentDirectory = filePathNode.currentFileInfo.relativeUrls ?
-            filePathNode.currentFileInfo.currentDirectory : filePathNode.currentFileInfo.entryPath;
+        var currentFileInfo = this.currentFileInfo;
+        var currentDirectory = currentFileInfo.relativeUrls ?
+            currentFileInfo.currentDirectory : currentFileInfo.entryPath;
 
         var fragmentStart = filePath.indexOf('#');
         var fragment = '';
-        if (fragmentStart!==-1) {
+        if (fragmentStart !== -1) {
             fragment = filePath.slice(fragmentStart);
             filePath = filePath.slice(0, fragmentStart);
         }
@@ -1672,7 +1673,7 @@ module.exports = function(environment) {
 
             mimetype = environment.mimeLookup(filePath);
 
-			if (mimetype === "image/svg+xml") {
+            if (mimetype === "image/svg+xml") {
                 useBase64 = false;
             } else {
                 // use base 64 unless it's an ASCII or UTF-8 format
@@ -1687,29 +1688,30 @@ module.exports = function(environment) {
 
         var fileSync = fileManager.loadFileSync(filePath, currentDirectory, this.context, environment);
         if (!fileSync.contents) {
-            logger.warn("Skipped data-uri embedding because file not found");
+            logger.warn("Skipped data-uri embedding of " + filePath + " because file not found");
             return fallback(this, filePathNode || mimetypeNode);
         }
         var buf = fileSync.contents;
-		if (useBase64 && !environment.encodeBase64) {
-			return fallback(this, filePathNode);
-		}
+        if (useBase64 && !environment.encodeBase64) {
+            return fallback(this, filePathNode);
+        }
 
         buf = useBase64 ? environment.encodeBase64(buf) : encodeURIComponent(buf);
 
         var uri = "data:" + mimetype + ',' + buf + fragment;
 
-		// IE8 cannot handle a data-uri larger than 32,768 characters. If this is exceeded
-		// and the --ieCompat flag is enabled, return a normal url() instead.
-		var DATA_URI_MAX = 32768;
-		if (uri.length >= DATA_URI_MAX) {
+        // IE8 cannot handle a data-uri larger than 32,768 characters. If this is exceeded
+        // and the --ieCompat flag is enabled, return a normal url() instead.
+        var DATA_URI_MAX = 32768;
+        if (uri.length >= DATA_URI_MAX) {
 
-			if (this.context.ieCompat !== false) {
-				logger.warn("Skipped data-uri embedding of " + filePath + " because its size (" + uri.length + " characters) exceeds IE8-safe " + DATA_URI_MAX + " characters!");
+            if (this.context.ieCompat !== false) {
+                logger.warn("Skipped data-uri embedding of " + filePath + " because its size (" + uri.length +
+                    " characters) exceeds IE8-safe " + DATA_URI_MAX + " characters!");
 
-				return fallback(this, filePathNode || mimetypeNode);
-			}
-		}
+                return fallback(this, filePathNode || mimetypeNode);
+            }
+        }
 
         return new URL(new Quoted('"' + uri + '"', uri, false, this.index, this.currentFileInfo), this.index, this.currentFileInfo);
     });
@@ -1936,7 +1938,9 @@ functionRegistry.addMultiple({
         return new Anonymous(str instanceof JavaScript ? str.evaluated : str.value);
     },
     escape: function (str) {
-        return new Anonymous(encodeURI(str.value).replace(/=/g, "%3D").replace(/:/g, "%3A").replace(/#/g, "%23").replace(/;/g, "%3B").replace(/\(/g, "%28").replace(/\)/g, "%29"));
+        return new Anonymous(
+            encodeURI(str.value).replace(/=/g, "%3D").replace(/:/g, "%3A").replace(/#/g, "%23").replace(/;/g, "%3B")
+                .replace(/\(/g, "%28").replace(/\)/g, "%29"));
     },
     replace: function (string, pattern, replacement, flags) {
         var result = string.value;
@@ -1964,6 +1968,7 @@ functionRegistry.addMultiple({
 module.exports = function(environment) {
     var Dimension = require("../tree/dimension"),
         Color = require("../tree/color"),
+        Expression = require("../tree/expression"),
         Quoted = require("../tree/quoted"),
         URL = require("../tree/url"),
         functionRegistry = require("./function-registry");
@@ -1971,7 +1976,9 @@ module.exports = function(environment) {
     functionRegistry.add("svg-gradient", function(direction) {
 
         function throwArgumentDescriptor() {
-            throw { type: "Argument", message: "svg-gradient expects direction, start_color [start_position], [color position,]..., end_color [end_position]" };
+            throw { type: "Argument",
+                message: "svg-gradient expects direction, start_color [start_position], [color position,]...," +
+                    " end_color [end_position]" };
         }
 
         if (arguments.length < 3) {
@@ -2006,14 +2013,15 @@ module.exports = function(environment) {
                 rectangleDimension = 'x="-50" y="-50" width="101" height="101"';
                 break;
             default:
-                throw { type: "Argument", message: "svg-gradient direction must be 'to bottom', 'to right', 'to bottom right', 'to top right' or 'ellipse at center'" };
+                throw { type: "Argument", message: "svg-gradient direction must be 'to bottom', 'to right'," +
+                    " 'to bottom right', 'to top right' or 'ellipse at center'" };
         }
         returner = '<?xml version="1.0" ?>' +
             '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" viewBox="0 0 1 1" preserveAspectRatio="none">' +
             '<' + gradientType + 'Gradient id="gradient" gradientUnits="userSpaceOnUse" ' + gradientDirectionSvg + '>';
 
         for (i = 0; i < stops.length; i+= 1) {
-            if (stops[i].value) {
+            if (stops[i] instanceof Expression) {
                 color = stops[i].value[0];
                 position = stops[i].value[1];
             } else {
@@ -2021,7 +2029,7 @@ module.exports = function(environment) {
                 position = undefined;
             }
 
-            if (!(color instanceof Color) || (!((i === 0 || i+1 === stops.length) && position === undefined) && !(position instanceof Dimension))) {
+            if (!(color instanceof Color) || (!((i === 0 || i + 1 === stops.length) && position === undefined) && !(position instanceof Dimension))) {
                 throwArgumentDescriptor();
             }
             positionValue = position ? position.toCSS(renderEnv) : i === 0 ? "0%" : "100%";
@@ -2038,8 +2046,9 @@ module.exports = function(environment) {
     });
 };
 
-},{"../tree/color":47,"../tree/dimension":53,"../tree/quoted":70,"../tree/url":77,"./function-registry":21}],27:[function(require,module,exports){
+},{"../tree/color":47,"../tree/dimension":53,"../tree/expression":56,"../tree/quoted":70,"../tree/url":77,"./function-registry":21}],27:[function(require,module,exports){
 var Keyword = require("../tree/keyword"),
+    DetachedRuleset = require("../tree/detached-ruleset"),
     Dimension = require("../tree/dimension"),
     Color = require("../tree/color"),
     Quoted = require("../tree/quoted"),
@@ -2062,6 +2071,9 @@ var isa = function (n, Type) {
         return (n instanceof Dimension) && n.unit.is(unit) ? Keyword.True : Keyword.False;
     };
 functionRegistry.addMultiple({
+    isruleset: function (n) {
+        return isa(n, DetachedRuleset);
+    },
     iscolor: function (n) {
         return isa(n, Color);
     },
@@ -2089,7 +2101,9 @@ functionRegistry.addMultiple({
     isunit: isunit,
     unit: function (val, unit) {
         if(!(val instanceof Dimension)) {
-            throw { type: "Argument", message: "the first argument to unit must be a number" + (val instanceof Operation ? ". Have you forgotten parenthesis?" : "") };
+            throw { type: "Argument",
+                message: "the first argument to unit must be a number" +
+                    (val instanceof Operation ? ". Have you forgotten parenthesis?" : "") };
         }
         if (unit) {
             if (unit instanceof Keyword) {
@@ -2118,7 +2132,7 @@ functionRegistry.addMultiple({
     }
 });
 
-},{"../tree/anonymous":43,"../tree/color":47,"../tree/dimension":53,"../tree/keyword":62,"../tree/operation":68,"../tree/quoted":70,"../tree/url":77,"./function-registry":21}],28:[function(require,module,exports){
+},{"../tree/anonymous":43,"../tree/color":47,"../tree/detached-ruleset":52,"../tree/dimension":53,"../tree/keyword":62,"../tree/operation":68,"../tree/quoted":70,"../tree/url":77,"./function-registry":21}],28:[function(require,module,exports){
 var contexts = require("./contexts"),
     Parser = require('./parser/parser');
 
@@ -2161,12 +2175,14 @@ module.exports = function(environment) {
             importManager.queue.splice(importManager.queue.indexOf(path), 1); // Remove the path from the queue
 
             var importedEqualsRoot = fullPath === importManager.rootFilename;
-
+            if (importOptions.optional && e) {
+            callback(null, {rules:[]}, false, null);
+            }
+            else {
             importManager.files[fullPath] = root;
-
             if (e && !importManager.error) { importManager.error = e; }
-
             callback(e, root, importedEqualsRoot, fullPath);
+            }
         };
 
         var newFileInfo = {
@@ -2189,7 +2205,7 @@ module.exports = function(environment) {
 
         var loadFileCallback = function(loadedFile) {
             var resolvedFilename = loadedFile.filename,
-                contents = loadedFile.contents;
+                contents = loadedFile.contents.replace(/^\uFEFF/, '');
 
             // Pass on an updated rootpath if path of imported file is relative and file
             // is in a (sub|sup) directory
@@ -2201,7 +2217,10 @@ module.exports = function(environment) {
             //   then rootpath should become 'less/../'
             newFileInfo.currentDirectory = fileManager.getPath(resolvedFilename);
             if(newFileInfo.relativeUrls) {
-                newFileInfo.rootpath = fileManager.join((importManager.context.rootpath || ""), fileManager.pathDiff(newFileInfo.currentDirectory, newFileInfo.entryPath));
+                newFileInfo.rootpath = fileManager.join(
+                    (importManager.context.rootpath || ""),
+                    fileManager.pathDiff(newFileInfo.currentDirectory, newFileInfo.entryPath));
+
                 if (!fileManager.isPathAbsolute(newFileInfo.rootpath) && fileManager.alwaysMakePathsAbsolute()) {
                     newFileInfo.rootpath = fileManager.join(newFileInfo.entryPath, newFileInfo.rootpath);
                 }
@@ -2246,7 +2265,7 @@ module.exports = function(environment, fileManagers) {
     var SourceMapOutput, SourceMapBuilder, ParseTree, ImportManager, Environment;
 
     var less = {
-        version: [2, 2, 0],
+        version: [2, 3, 1],
         data: require('./data'),
         tree: require('./tree'),
         Environment: (Environment = require("./environment/environment")),
@@ -2355,7 +2374,7 @@ module.exports = {
 },{}],32:[function(require,module,exports){
 var LessError = require('./less-error'),
     transformTree = require("./transform-tree"),
-	logger = require("./logger");
+    logger = require("./logger");
 
 module.exports = function(SourceMapBuilder) {
 var ParseTree = function(root, imports) {
@@ -2372,11 +2391,11 @@ ParseTree.prototype.toCSS = function(options) {
     }
 
     try {
-	    var compress = Boolean(options.compress);
-	    if (compress) {
-		    logger.warn("The compress option has been deprecated. We recommend you use a dedicated css minifier, for instance see less-plugin-clean-css.");
-	    }
-	    
+        var compress = Boolean(options.compress);
+        if (compress) {
+            logger.warn("The compress option has been deprecated. We recommend you use a dedicated css minifier, for instance see less-plugin-clean-css.");
+        }
+
         var toCSSOptions = {
             compress: compress,
             dumpLineNumbers: options.dumpLineNumbers,
@@ -2463,6 +2482,10 @@ module.exports = function(environment, ParseTree, ImportManager) {
                     entryPath: entryPath,
                     rootFilename: filename
                 };
+                // add in a missing trailing slash
+                if (rootFileInfo.rootpath && rootFileInfo.rootpath.slice(-1) !== "/") {
+                    rootFileInfo.rootpath += "/";
+                }
             }
 
             var imports = new ImportManager(context, rootFileInfo);
@@ -3058,7 +3081,7 @@ var Parser = function Parser(context, imports, fileInfo) {
         //     Ruleset (Selector '.class', [
         //         Rule ("color",  Value ([Expression [Color #fff]]))
         //         Rule ("border", Value ([Expression [Dimension 1px][Keyword "solid"][Color #000]]))
-        //         Rule ("width",  Value ([Expression [Operation "+" [Variable "@w"][Dimension 4px]]]))
+        //         Rule ("width",  Value ([Expression [Operation " + " [Variable "@w"][Dimension 4px]]]))
         //         Ruleset (Selector [Element '>', '.child'], [...])
         //     ])
         //
@@ -3085,12 +3108,16 @@ var Parser = function Parser(context, imports, fileInfo) {
             primary: function () {
                 var mixin = this.mixin, root = [], node;
 
-                while (!parserInput.finished)
+                while (true)
                 {
                     while(true) {
                         node = this.comment();
                         if (!node) { break; }
                         root.push(node);
+                    }
+                    // always process comments before deciding if finished
+                    if (parserInput.finished) {
+                        break;
                     }
                     if (parserInput.peek('}')) {
                         break;
@@ -3304,7 +3331,9 @@ var Parser = function Parser(context, imports, fileInfo) {
                     var rgb;
 
                     if (parserInput.currentChar() === '#' && (rgb = parserInput.$re(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})/))) {
-                        var colorCandidateString = rgb.input.match(/^#([\w]+).*/); // strip colons, brackets, whitespaces and other characters that should not definitely be part of color string
+                        // strip colons, brackets, whitespaces and other characters that should not
+                        // definitely be part of color string
+                        var colorCandidateString = rgb.input.match(/^#([\w]+).*/);
                         colorCandidateString = colorCandidateString[1];
                         if (!colorCandidateString.match(/^[A-Fa-f0-9]+$/)) { // verify if candidate consists only of allowed HEX characters
                             error("Invalid HEX color code");
@@ -3400,8 +3429,9 @@ var Parser = function Parser(context, imports, fileInfo) {
                     }
 
                     option = option && option[1];
-                    if (!elements)
+                    if (!elements) {
                         error("Missing target selector for :extend().");
+                    }
                     extend = new(tree.Extend)(new(tree.Selector)(elements), option, index);
                     if (extendList) { extendList.push(extend); } else { extendList = [ extend ]; }
 
@@ -3711,8 +3741,10 @@ var Parser = function Parser(context, imports, fileInfo) {
 
                 c = this.combinator();
 
-                e = parserInput.$re(/^(?:\d+\.\d+|\d+)%/) || parserInput.$re(/^(?:[.#]?|:*)(?:[\w-]|[^\x00-\x9f]|\\(?:[A-Fa-f0-9]{1,6} ?|[^A-Fa-f0-9]))+/) ||
-                    parserInput.$char('*') || parserInput.$char('&') || this.attribute() || parserInput.$re(/^\([^()@]+\)/) || parserInput.$re(/^[\.#](?=@)/) ||
+                e = parserInput.$re(/^(?:\d+\.\d+|\d+)%/) ||
+                    parserInput.$re(/^(?:[.#]?|:*)(?:[\w-]|[^\x00-\x9f]|\\(?:[A-Fa-f0-9]{1,6} ?|[^A-Fa-f0-9]))+/) ||
+                    parserInput.$char('*') || parserInput.$char('&') || this.attribute() ||
+                    parserInput.$re(/^\([^&()@]+\)/) ||  parserInput.$re(/^[\.#:](?=@)/) ||
                     this.entities.variableCurly();
 
                 if (! e) {
@@ -4023,7 +4055,7 @@ var Parser = function Parser(context, imports, fileInfo) {
             },
 
             importOption: function() {
-                var opt = parserInput.$re(/^(less|css|multiple|once|inline|reference)/);
+                var opt = parserInput.$re(/^(less|css|multiple|once|inline|reference|optional)/);
                 if (opt) {
                     return opt[1];
                 }
@@ -4237,19 +4269,19 @@ var Parser = function Parser(context, imports, fileInfo) {
             sub: function () {
                 var a, e;
 
-	            parserInput.save();
+                parserInput.save();
                 if (parserInput.$char('(')) {
                     a = this.addition();
                     if (a && parserInput.$char(')')) {
-	                    parserInput.forget();
-	                    e = new(tree.Expression)([a]);
-	                    e.parens = true;
+                        parserInput.forget();
+                        e = new(tree.Expression)([a]);
+                        e.parens = true;
                         return e;
                     }
-	                parserInput.restore("Expected ')'");
-	                return;
+                    parserInput.restore("Expected ')'");
+                    return;
                 }
-	            parserInput.restore();
+                parserInput.restore();
             },
             multiplication: function () {
                 var m, a, op, operation, isSpaced;
@@ -4456,8 +4488,8 @@ Parser.serializeVars = function(vars) {
     for (var name in vars) {
         if (Object.hasOwnProperty.call(vars, name)) {
             var value = vars[name];
-            s += ((name[0] === '@') ? '' : '@') + name +': '+ value +
-                ((('' + value).slice(-1) === ';') ? '' : ';');
+            s += ((name[0] === '@') ? '' : '@') + name + ': ' + value +
+                ((String(value).slice(-1) === ';') ? '' : ';');
         }
     }
 
@@ -4680,7 +4712,7 @@ module.exports = function (environment) {
         }
         if (options.sourceMapRootpath) {
             this._sourceMapRootpath = options.sourceMapRootpath.replace(/\\/g, '/');
-            if (this._sourceMapRootpath.charAt(this._sourceMapRootpath.length-1) !== '/') {
+            if (this._sourceMapRootpath.charAt(this._sourceMapRootpath.length - 1) !== '/') {
                 this._sourceMapRootpath += '/';
             }
         } else {
@@ -4731,11 +4763,11 @@ module.exports = function (environment) {
             }
             inputSource = inputSource.substring(0, index);
             sourceLines = inputSource.split("\n");
-            sourceColumns = sourceLines[sourceLines.length-1];
+            sourceColumns = sourceLines[sourceLines.length - 1];
         }
 
         lines = chunk.split("\n");
-        columns = lines[lines.length-1];
+        columns = lines[lines.length - 1];
 
         if (fileInfo) {
             if (!mapLines) {
@@ -4851,7 +4883,7 @@ module.exports = function(root, options) {
 
     if (options.pluginManager) {
         var pluginVisitors = options.pluginManager.getVisitors();
-        for(i =0; i < pluginVisitors.length; i++) {
+        for(i = 0; i < pluginVisitors.length; i++) {
             var pluginVisitor = pluginVisitors[i];
             if (pluginVisitor.isPreEvalVisitor) {
                 preEvalVisitors.push(pluginVisitor);
@@ -4962,7 +4994,6 @@ Assignment.prototype.genCSS = function (context, output) {
     }
 };
 module.exports = Assignment;
-
 
 },{"./node":67}],45:[function(require,module,exports){
 var Node = require("./node");
@@ -5116,11 +5147,11 @@ Color.prototype.genCSS = function (context, output) {
 Color.prototype.toCSS = function (context, doNotCompress) {
     var compress = context && context.compress && !doNotCompress, color, alpha;
 
-    // `keyword` is set if this color was originally
+    // `value` is set if this color was originally
     // converted from a named color string so we need
     // to respect this and try to output named color too.
-    if (this.keyword) {
-        return this.keyword;
+    if (this.value) {
+        return this.value;
     }
 
     // If we have some transparency, the only way to represent it
@@ -5239,7 +5270,7 @@ Color.fromKeyword = function(keyword) {
     }
 
     if (c) {
-        c.keyword = keyword;
+        c.value = keyword;
         return c;
     }
 };
@@ -5329,7 +5360,7 @@ Condition.prototype.eval = function (context) {
                         default: return false;
                 }
         }
-    }) (this.op, this.lvalue.eval(context), this.rvalue.eval(context));
+    })(this.op, this.lvalue.eval(context), this.rvalue.eval(context));
 
     return this.negate ? !result : result;
 };
@@ -5337,7 +5368,7 @@ module.exports = Condition;
 
 },{"./node":67}],51:[function(require,module,exports){
 var debugInfo = function(context, ctx, lineSeparator) {
-    var result="";
+    var result = "";
     if (context.dumpLineNumbers && !context.compress) {
         switch(context.dumpLineNumbers) {
             case 'comments':
@@ -5359,8 +5390,12 @@ debugInfo.asComment = function(ctx) {
 };
 
 debugInfo.asMediaQuery = function(ctx) {
+    var filenameWithProtocol = ctx.debugInfo.fileName;
+    if (!/^[a-z]+:\/\//i.test(filenameWithProtocol)) {
+        filenameWithProtocol = 'file://' + filenameWithProtocol;
+    }
     return '@media -sass-debug-info{filename{font-family:' +
-        ('file://' + ctx.debugInfo.fileName).replace(/([.:\/\\])/g, function (a) {
+        filenameWithProtocol.replace(/([.:\/\\])/g, function (a) {
             if (a == '\\') {
                 a = '\/';
             }
@@ -5422,7 +5457,7 @@ Dimension.prototype.toColor = function () {
 };
 Dimension.prototype.genCSS = function (context, output) {
     if ((context && context.strictUnits) && !this.unit.isSingular()) {
-        throw new Error("Multiple units in dimension. Correct the units or use the unit function. Bad unit: "+this.unit.toString());
+        throw new Error("Multiple units in dimension. Correct the units or use the unit function. Bad unit: " + this.unit.toString());
     }
 
     var value = this.fround(context, this.value),
@@ -5555,7 +5590,7 @@ module.exports = Dimension;
 var Node = require("./node"),
     Ruleset = require("./ruleset");
 
-var Directive = function (name, value, rules, index, currentFileInfo, debugInfo) {
+var Directive = function (name, value, rules, index, currentFileInfo, debugInfo, isReferenced) {
     this.name  = name;
     this.value = value;
     if (rules) {
@@ -5565,6 +5600,7 @@ var Directive = function (name, value, rules, index, currentFileInfo, debugInfo)
     this.index = index;
     this.currentFileInfo = currentFileInfo;
     this.debugInfo = debugInfo;
+    this.isReferenced = isReferenced;
 };
 
 Directive.prototype = new Node();
@@ -5592,7 +5628,10 @@ Directive.prototype.genCSS = function (context, output) {
         value.genCSS(context, output);
     }
     if (rules) {
-        this.outputRuleset(context, output, [rules]);
+        if (rules.type === "Ruleset") {
+            rules = [rules];
+        }
+        this.outputRuleset(context, output, rules);
     } else {
         output.add(';');
     }
@@ -5607,11 +5646,23 @@ Directive.prototype.eval = function (context) {
         rules.root = true;
     }
     return new Directive(this.name, value, rules,
-        this.index, this.currentFileInfo, this.debugInfo);
+        this.index, this.currentFileInfo, this.debugInfo, this.isReferenced);
 };
-Directive.prototype.variable = function (name) { if (this.rules) return Ruleset.prototype.variable.call(this.rules, name); };
-Directive.prototype.find = function () { if (this.rules) return Ruleset.prototype.find.apply(this.rules, arguments); };
-Directive.prototype.rulesets = function () { if (this.rules) return Ruleset.prototype.rulesets.apply(this.rules); };
+Directive.prototype.variable = function (name) {
+    if (this.rules) {
+        return Ruleset.prototype.variable.call(this.rules, name);
+    }
+};
+Directive.prototype.find = function () {
+    if (this.rules) {
+        return Ruleset.prototype.find.apply(this.rules, arguments);
+    }
+};
+Directive.prototype.rulesets = function () {
+    if (this.rules) {
+        return Ruleset.prototype.rulesets.apply(this.rules);
+    }
+};
 Directive.prototype.markReferenced = function () {
     var i, rules;
     this.isReferenced = true;
@@ -5623,6 +5674,9 @@ Directive.prototype.markReferenced = function () {
             }
         }
     }
+};
+Directive.prototype.getIsReferenced = function () {
+    return !this.currentFileInfo || !this.currentFileInfo.reference || this.isReferenced;
 };
 Directive.prototype.outputRuleset = function (context, output, rules) {
     var ruleCnt = rules.length, i;
@@ -5720,7 +5774,7 @@ var Node = require("./node"),
 var Expression = function (value) {
     this.value = value;
     if (!value) {
-        throw new Error("Expression requires a array parameter");
+        throw new Error("Expression requires an array parameter");
     }
 };
 Expression.prototype = new Node();
@@ -5926,7 +5980,7 @@ Import.prototype.evalPath = function (context) {
             var pathValue = path.value;
             // Add the base path if the import is relative
             if (pathValue && context.isPathRelative(pathValue)) {
-                path.value = rootpath +pathValue;
+                path.value = rootpath + pathValue;
             }
         }
         path.value = context.normalizePath(path.value);
@@ -5968,6 +6022,7 @@ module.exports = Import;
 },{"./anonymous":43,"./media":63,"./node":67,"./quoted":70,"./ruleset":73,"./url":77}],59:[function(require,module,exports){
 var tree = {};
 
+tree.Node = require('./node');
 tree.Alpha = require('./alpha');
 tree.Color = require('./color');
 tree.Directive = require('./directive');
@@ -6007,7 +6062,7 @@ tree.RulesetCall = require('./ruleset-call');
 
 module.exports = tree;
 
-},{"./alpha":42,"./anonymous":43,"./assignment":44,"./attribute":45,"./call":46,"./color":47,"./combinator":48,"./comment":49,"./condition":50,"./detached-ruleset":52,"./dimension":53,"./directive":54,"./element":55,"./expression":56,"./extend":57,"./import":58,"./javascript":60,"./keyword":62,"./media":63,"./mixin-call":64,"./mixin-definition":65,"./negative":66,"./operation":68,"./paren":69,"./quoted":70,"./rule":71,"./ruleset":73,"./ruleset-call":72,"./selector":74,"./unicode-descriptor":75,"./unit":76,"./url":77,"./value":78,"./variable":79}],60:[function(require,module,exports){
+},{"./alpha":42,"./anonymous":43,"./assignment":44,"./attribute":45,"./call":46,"./color":47,"./combinator":48,"./comment":49,"./condition":50,"./detached-ruleset":52,"./dimension":53,"./directive":54,"./element":55,"./expression":56,"./extend":57,"./import":58,"./javascript":60,"./keyword":62,"./media":63,"./mixin-call":64,"./mixin-definition":65,"./negative":66,"./node":67,"./operation":68,"./paren":69,"./quoted":70,"./rule":71,"./ruleset":73,"./ruleset-call":72,"./selector":74,"./unicode-descriptor":75,"./unit":76,"./url":77,"./value":78,"./variable":79}],60:[function(require,module,exports){
 var JsEvalNode = require("./js-eval-node"),
     Dimension = require("./dimension"),
     Quoted = require("./quoted"),
@@ -6273,8 +6328,9 @@ Media.prototype.permute = function (arr) {
   }
 };
 Media.prototype.bubbleSelectors = function (selectors) {
-  if (!selectors)
-    return;
+  if (!selectors) {
+      return;
+  }
   this.rules = [new Ruleset(selectors.slice(0), [this.rules[0]])];
 };
 module.exports = Media;
@@ -6304,7 +6360,7 @@ MixinCall.prototype.accept = function (visitor) {
 };
 MixinCall.prototype.eval = function (context) {
     var mixins, mixin, mixinPath, args, rules = [], match = false, i, m, f, isRecursive, isOneFound, rule,
-        candidates = [], candidate, conditionResult = [], defaultResult, defFalseEitherCase=-1,
+        candidates = [], candidate, conditionResult = [], defaultResult, defFalseEitherCase = -1,
         defNone = 0, defTrue = 1, defFalse = 2, count, originalRuleset, noArgumentsFilter;
 
     function calcDefGroup(mixin, mixinPath) {
@@ -6366,7 +6422,7 @@ MixinCall.prototype.eval = function (context) {
                 if (mixin.matchArgs(args, context)) {
                     candidate = {mixin: mixin, group: calcDefGroup(mixin, mixinPath)};
 
-                    if (candidate.group!==defFalseEitherCase) {
+                    if (candidate.group !== defFalseEitherCase) {
                         candidates.push(candidate);
                     }
 
@@ -6387,8 +6443,7 @@ MixinCall.prototype.eval = function (context) {
                 defaultResult = defTrue;
                 if ((count[defTrue] + count[defFalse]) > 1) {
                     throw { type: 'Runtime',
-                        message: 'Ambiguous use of `default()` found when matching for `'
-                            + this.format(args) + '`',
+                        message: 'Ambiguous use of `default()` found when matching for `' + this.format(args) + '`',
                         index: this.index, filename: this.currentFileInfo.filename };
                 }
             }
@@ -6586,9 +6641,10 @@ Definition.prototype.evalCall = function (context, args, important) {
 Definition.prototype.matchCondition = function (args, context) {
     if (this.condition && !this.condition.eval(
         new contexts.Eval(context,
-            [this.evalParams(context, new contexts.Eval(context, this.frames ? this.frames.concat(context.frames) : context.frames), args, [])] // the parameter variables
-                .concat(this.frames) // the parent namespace/mixin frames
-                .concat(context.frames)))) { // the current environment frames
+            [this.evalParams(context, /* the parameter variables*/
+                new contexts.Eval(context, this.frames ? this.frames.concat(context.frames) : context.frames), args, [])]
+            .concat(this.frames) // the parent namespace/mixin frames
+            .concat(context.frames)))) { // the current environment frames
         return false;
     }
     return true;
@@ -6822,7 +6878,7 @@ Quoted.prototype.eval = function (context) {
         do {
           value = evaluatedValue;
           evaluatedValue = value.replace(regexp, replacementFnc);
-        } while  (value!==evaluatedValue);
+        } while  (value !== evaluatedValue);
         return evaluatedValue;
     }
     value = iterativeReplace(value, /`([^`]+)`/g, javascriptReplacement);
@@ -6884,9 +6940,8 @@ Rule.prototype.eval = function (context) {
     if (typeof name !== "string") {
         // expand 'primitive' name directly to get
         // things faster (~10% for benchmark.less):
-        name = (name.length === 1)
-            && (name[0] instanceof Keyword)
-                ? name[0].value : evalName(context, name);
+        name = (name.length === 1) && (name[0] instanceof Keyword) ?
+                name[0].value : evalName(context, name);
             variable = false; // never treat expanded interpolation as new variable name
     }
     if (name === "font" && !context.strictMath) {
@@ -6957,6 +7012,7 @@ var Node = require("./node"),
     Rule = require("./rule"),
     Selector = require("./selector"),
     Element = require("./element"),
+    Paren = require("./paren"),
     contexts = require("../contexts"),
     defaultFunc = require("../functions/default"),
     getDebugInfo = require("./debug-info");
@@ -7062,7 +7118,7 @@ Ruleset.prototype.eval = function (context) {
             });
             rsRules.splice.apply(rsRules, [i, 1].concat(rules));
             rsRuleCnt += rules.length - 1;
-            i += rules.length-1;
+            i += rules.length - 1;
             ruleset.resetCache();
         } else if (rsRules[i].type === "RulesetCall") {
             /*jshint loopfunc:true */
@@ -7075,7 +7131,7 @@ Ruleset.prototype.eval = function (context) {
             });
             rsRules.splice.apply(rsRules, [i, 1].concat(rules));
             rsRuleCnt += rules.length - 1;
-            i += rules.length-1;
+            i += rules.length - 1;
             ruleset.resetCache();
         }
     }
@@ -7128,7 +7184,7 @@ Ruleset.prototype.evalImports = function(context) {
             importRules = rules[i].eval(context);
             if (importRules && importRules.length) {
                 rules.splice.apply(rules, [i, 1].concat(importRules));
-                i+= importRules.length-1;
+                i+= importRules.length - 1;
             } else {
                 rules.splice(i, 1, importRules);
             }
@@ -7137,20 +7193,20 @@ Ruleset.prototype.evalImports = function(context) {
     }
 };
 Ruleset.prototype.makeImportant = function() {
-    return new Ruleset(this.selectors, this.rules.map(function (r) {
-                if (r.makeImportant) {
-                    return r.makeImportant();
-                } else {
-                    return r;
-                }
-            }), this.strictImports);
-};
-Ruleset.prototype.matchArgs = function (args) {
+    this.rules = this.rules.map(function (r) {
+        if (r.makeImportant) {
+            return r.makeImportant();
+        } else {
+            return r;
+        }
+    });
+    return this;
+};Ruleset.prototype.matchArgs = function (args) {
     return !args || args.length === 0;
 };
 // lets you call a css selector with a guard
 Ruleset.prototype.matchCondition = function (args, context) {
-    var lastSelector = this.selectors[this.selectors.length-1];
+    var lastSelector = this.selectors[this.selectors.length - 1];
     if (!lastSelector.evaldCondition) {
         return false;
     }
@@ -7175,7 +7231,7 @@ Ruleset.prototype.variables = function () {
             }
             // when evaluating variables in an import statement, imports have not been eval'd
             // so we need to go inside import statements.
-	        // guard against root being a string (in the case of inlined less)
+            // guard against root being a string (in the case of inlined less)
             if (r.type === "Import" && r.root && r.root.variables) {
                 var vars = r.root.variables();
                 for(var name in vars) {
@@ -7369,194 +7425,298 @@ Ruleset.prototype.genCSS = function (context, output) {
     }
 };
 Ruleset.prototype.markReferenced = function () {
-    if (!this.selectors) {
-        return;
+    var s;
+    if (this.selectors) {
+        for (s = 0; s < this.selectors.length; s++) {
+            this.selectors[s].markReferenced();
+        }
     }
-    for (var s = 0; s < this.selectors.length; s++) {
-        this.selectors[s].markReferenced();
+
+    if (this.rules) {
+        for (s = 0; s < this.rules.length; s++) {
+            if (this.rules[s].markReferenced) {
+                this.rules[s].markReferenced();
+            }
+        }
     }
 };
+Ruleset.prototype.getIsReferenced = function() {
+    var i, j, path, selector;
+
+    if (this.paths) {
+        for (i = 0; i < this.paths.length; i++) {
+            path = this.paths[i];
+            for (j = 0; j < path.length; j++) {
+                if (path[j].getIsReferenced && path[j].getIsReferenced()) {
+                    return true;
+                }
+            }
+        }
+    }
+
+    if (this.selectors) {
+        for (i = 0; i < this.selectors.length; i++) {
+            selector = this.selectors[i];
+            if (selector.getIsReferenced && selector.getIsReferenced()) {
+                return true;
+            }
+        }
+    }
+    return false;
+};
+
 Ruleset.prototype.joinSelectors = function (paths, context, selectors) {
     for (var s = 0; s < selectors.length; s++) {
         this.joinSelector(paths, context, selectors[s]);
     }
 };
+
 Ruleset.prototype.joinSelector = function (paths, context, selector) {
 
-    var i, j, k,
-        hasParentSelector, newSelectors, el, sel, parentSel,
-        newSelectorPath, afterParentJoin, newJoinedSelector,
-        newJoinedSelectorEmpty, lastSelector, currentElements,
-        selectorsMultiplied;
-
-    for (i = 0; i < selector.elements.length; i++) {
-        el = selector.elements[i];
-        if (el.value === '&') {
-            hasParentSelector = true;
-        }
-    }
-
-    if (!hasParentSelector) {
-        if (context.length > 0) {
-            for (i = 0; i < context.length; i++) {
-                paths.push(context[i].concat(selector));
-            }
-        }
-        else {
-            paths.push([selector]);
-        }
-        return;
-    }
-
-    // The paths are [[Selector]]
-    // The first list is a list of comma separated selectors
-    // The inner list is a list of inheritance separated selectors
-    // e.g.
-    // .a, .b {
-    //   .c {
-    //   }
-    // }
-    // == [[.a] [.c]] [[.b] [.c]]
-    //
-
-    // the elements from the current selector so far
-    currentElements = [];
-    // the current list of new selectors to add to the path.
-    // We will build it up. We initiate it with one empty selector as we "multiply" the new selectors
-    // by the parents
-    newSelectors = [[]];
-
-    for (i = 0; i < selector.elements.length; i++) {
-        el = selector.elements[i];
-        // non parent reference elements just get added
-        if (el.value !== "&") {
-            currentElements.push(el);
+    function createParenthesis(elementsToPak, originalElement) {
+        var replacementParen, j;
+        if (elementsToPak.length === 0) {
+            replacementParen = new Paren(elementsToPak[0]);
         } else {
-            // the new list of selectors to add
-            selectorsMultiplied = [];
+            var insideParent = [];
+            for (j = 0; j < elementsToPak.length; j++) {
+                insideParent.push(new Element(null, elementsToPak[j], originalElement.index, originalElement.currentFileInfo));
+            }
+            replacementParen = new Paren(new Selector(insideParent));
+        }
+        return replacementParen;
+    }
 
-            // merge the current list of non parent selector elements
-            // on to the current list of selectors to add
-            if (currentElements.length > 0) {
-                this.mergeElementsOnToSelectors(currentElements, newSelectors);
+    function createSelector(containedElement, originalElement) {
+        var element, selector;
+        element = new Element(null, containedElement, originalElement.index, originalElement.currentFileInfo);
+        selector = new Selector([element]);
+        return selector;
+    }
+
+    // replace all parent selectors inside `inSelector` by content of `context` array
+    // resulting selectors are returned inside `paths` array
+    // returns true if `inSelector` contained at least one parent selector
+    function replaceParentSelector(paths, context, inSelector) {
+        // The paths are [[Selector]]
+        // The first list is a list of comma separated selectors
+        // The inner list is a list of inheritance separated selectors
+        // e.g.
+        // .a, .b {
+        //   .c {
+        //   }
+        // }
+        // == [[.a] [.c]] [[.b] [.c]]
+        //
+        var i, j, k, currentElements, newSelectors, selectorsMultiplied, sel, el, hadParentSelector = false;
+        function findNestedSelector(element) {
+            var maybeSelector;
+            if (element.value.type !== 'Paren') {
+                return null;
             }
 
-            // loop through our current selectors
-            for (j = 0; j < newSelectors.length; j++) {
-                sel = newSelectors[j];
-                // if we don't have any parent paths, the & might be in a mixin so that it can be used
-                // whether there are parents or not
-                if (context.length === 0) {
-                    // the combinator used on el should now be applied to the next element instead so that
-                    // it is not lost
-                    if (sel.length > 0) {
-                        sel[0].elements = sel[0].elements.slice(0);
-                        sel[0].elements.push(new Element(el.combinator, '', el.index, el.currentFileInfo));
+            maybeSelector = element.value.value;
+            if (maybeSelector.type !== 'Selector') {
+                return null;
+            }
+
+            return maybeSelector;
+        }
+
+        // the elements from the current selector so far
+        currentElements = [];
+        // the current list of new selectors to add to the path.
+        // We will build it up. We initiate it with one empty selector as we "multiply" the new selectors
+        // by the parents
+        newSelectors = [
+            []
+        ];
+
+        for (i = 0; i < inSelector.elements.length; i++) {
+            el = inSelector.elements[i];
+            // non parent reference elements just get added
+            if (el.value !== "&") {
+                var nestedSelector = findNestedSelector(el);
+                if (nestedSelector != null) {
+                    // merge the current list of non parent selector elements
+                    // on to the current list of selectors to add
+                    mergeElementsOnToSelectors(currentElements, newSelectors);
+
+                    var nestedPaths = [], replaced, replacedNewSelectors = [];
+                    replaced = replaceParentSelector(nestedPaths, context, nestedSelector);
+                    hadParentSelector = hadParentSelector || replaced;
+                    //the nestedPaths array should have only one member - replaceParentSelector does not multiply selectors
+                    for (k = 0; k < nestedPaths.length; k++) {
+                        var replacementSelector = createSelector(createParenthesis(nestedPaths[k], el), el);
+                        addAllReplacementsIntoPath(newSelectors, [replacementSelector], el, inSelector, replacedNewSelectors);
                     }
-                    selectorsMultiplied.push(sel);
+                    newSelectors = replacedNewSelectors;
+                    currentElements = [];
+
+                } else {
+                    currentElements.push(el);
                 }
-                else {
-                    // and the parent selectors
-                    for (k = 0; k < context.length; k++) {
-                        parentSel = context[k];
-                        // We need to put the current selectors
-                        // then join the last selector's elements on to the parents selectors
 
-                        // our new selector path
-                        newSelectorPath = [];
-                        // selectors from the parent after the join
-                        afterParentJoin = [];
-                        newJoinedSelectorEmpty = true;
+            } else {
+                hadParentSelector = true;
+                // the new list of selectors to add
+                selectorsMultiplied = [];
 
-                        //construct the joined selector - if & is the first thing this will be empty,
-                        // if not newJoinedSelector will be the last set of elements in the selector
+                // merge the current list of non parent selector elements
+                // on to the current list of selectors to add
+                mergeElementsOnToSelectors(currentElements, newSelectors);
+
+                // loop through our current selectors
+                for (j = 0; j < newSelectors.length; j++) {
+                    sel = newSelectors[j];
+                    // if we don't have any parent paths, the & might be in a mixin so that it can be used
+                    // whether there are parents or not
+                    if (context.length === 0) {
+                        // the combinator used on el should now be applied to the next element instead so that
+                        // it is not lost
                         if (sel.length > 0) {
-                            newSelectorPath = sel.slice(0);
-                            lastSelector = newSelectorPath.pop();
-                            newJoinedSelector = selector.createDerived(lastSelector.elements.slice(0));
-                            newJoinedSelectorEmpty = false;
+                            sel[0].elements.push(new Element(el.combinator, '', el.index, el.currentFileInfo));
                         }
-                        else {
-                            newJoinedSelector = selector.createDerived([]);
+                        selectorsMultiplied.push(sel);
+                    }
+                    else {
+                        // and the parent selectors
+                        for (k = 0; k < context.length; k++) {
+                            // We need to put the current selectors
+                            // then join the last selector's elements on to the parents selectors
+                            var newSelectorPath = addReplacementIntoPath(sel, context[k], el, inSelector);
+                            // add that to our new set of selectors
+                            selectorsMultiplied.push(newSelectorPath);
                         }
-
-                        //put together the parent selectors after the join
-                        if (parentSel.length > 1) {
-                            afterParentJoin = afterParentJoin.concat(parentSel.slice(1));
-                        }
-
-                        if (parentSel.length > 0) {
-                            newJoinedSelectorEmpty = false;
-
-                            // /deep/ is a combinator that is valid without anything in front of it
-                            // so if the & does not have a combinator that is "" or " " then
-                            // and there is a combinator on the parent, then grab that.
-                            // this also allows + a { & .b { .a & { ... though not sure why you would want to do that
-                            var combinator = el.combinator,
-                                parentEl = parentSel[0].elements[0];
-                            if (combinator.emptyOrWhitespace && !parentEl.combinator.emptyOrWhitespace) {
-                                combinator = parentEl.combinator;
-                            }
-                            // join the elements so far with the first part of the parent
-                            newJoinedSelector.elements.push(new Element(combinator, parentEl.value, el.index, el.currentFileInfo));
-                            newJoinedSelector.elements = newJoinedSelector.elements.concat(parentSel[0].elements.slice(1));
-                        }
-
-                        if (!newJoinedSelectorEmpty) {
-                            // now add the joined selector
-                            newSelectorPath.push(newJoinedSelector);
-                        }
-
-                        // and the rest of the parent
-                        newSelectorPath = newSelectorPath.concat(afterParentJoin);
-
-                        // add that to our new set of selectors
-                        selectorsMultiplied.push(newSelectorPath);
                     }
                 }
+
+                // our new selectors has been multiplied, so reset the state
+                newSelectors = selectorsMultiplied;
+                currentElements = [];
             }
-
-            // our new selectors has been multiplied, so reset the state
-            newSelectors = selectorsMultiplied;
-            currentElements = [];
         }
-    }
 
-    // if we have any elements left over (e.g. .a& .b == .b)
-    // add them on to all the current selectors
-    if (currentElements.length > 0) {
-        this.mergeElementsOnToSelectors(currentElements, newSelectors);
-    }
+        // if we have any elements left over (e.g. .a& .b == .b)
+        // add them on to all the current selectors
+        mergeElementsOnToSelectors(currentElements, newSelectors);
 
-    for (i = 0; i < newSelectors.length; i++) {
-        if (newSelectors[i].length > 0) {
-            paths.push(newSelectors[i]);
+        for (i = 0; i < newSelectors.length; i++) {
+            if (newSelectors[i].length > 0) {
+                paths.push(newSelectors[i]);
+            }
         }
-    }
-};
-Ruleset.prototype.mergeElementsOnToSelectors = function(elements, selectors) {
-    var i, sel;
 
-    if (selectors.length === 0) {
-        selectors.push([ new Selector(elements) ]);
-        return;
+        return hadParentSelector;
     }
 
-    for (i = 0; i < selectors.length; i++) {
-        sel = selectors[i];
+    // joins selector path from `beginningPath` with selector path in `addPath`
+    // `replacedElement` contains element that is being replaced by `addPath`
+    // returns concatenated path
+    function addReplacementIntoPath(beginningPath, addPath, replacedElement, originalSelector) {
+        var newSelectorPath, lastSelector, newJoinedSelector;
+        // our new selector path
+        newSelectorPath = [];
 
-        // if the previous thing in sel is a parent this needs to join on to it
-        if (sel.length > 0) {
-            sel[sel.length - 1] = sel[sel.length - 1].createDerived(sel[sel.length - 1].elements.concat(elements));
+        //construct the joined selector - if & is the first thing this will be empty,
+        // if not newJoinedSelector will be the last set of elements in the selector
+        if (beginningPath.length > 0) {
+            newSelectorPath = beginningPath.slice(0);
+            lastSelector = newSelectorPath.pop();
+            newJoinedSelector = originalSelector.createDerived(lastSelector.elements.slice(0));
         }
         else {
-            sel.push(new Selector(elements));
+            newJoinedSelector = originalSelector.createDerived([]);
+        }
+
+        if (addPath.length > 0) {
+            // /deep/ is a combinator that is valid without anything in front of it
+            // so if the & does not have a combinator that is "" or " " then
+            // and there is a combinator on the parent, then grab that.
+            // this also allows + a { & .b { .a & { ... though not sure why you would want to do that
+            var combinator = replacedElement.combinator, parentEl = addPath[0].elements[0];
+            if (combinator.emptyOrWhitespace && !parentEl.combinator.emptyOrWhitespace) {
+                combinator = parentEl.combinator;
+            }
+            // join the elements so far with the first part of the parent
+            newJoinedSelector.elements.push(new Element(combinator, parentEl.value, replacedElement.index, replacedElement.currentFileInfo));
+            newJoinedSelector.elements = newJoinedSelector.elements.concat(addPath[0].elements.slice(1));
+        }
+
+        // now add the joined selector - but only if it is not empty
+        if (newJoinedSelector.elements.length !== 0) {
+            newSelectorPath.push(newJoinedSelector);
+        }
+
+        //put together the parent selectors after the join (e.g. the rest of the parent)
+        if (addPath.length > 1) {
+            newSelectorPath = newSelectorPath.concat(addPath.slice(1));
+        }
+        return newSelectorPath;
+    }
+
+    // joins selector path from `beginningPath` with every selector path in `addPaths` array
+    // `replacedElement` contains element that is being replaced by `addPath`
+    // returns array with all concatenated paths
+    function addAllReplacementsIntoPath( beginningPath, addPaths, replacedElement, originalSelector, result) {
+        var j;
+        for (j = 0; j < beginningPath.length; j++) {
+            var newSelectorPath = addReplacementIntoPath(beginningPath[j], addPaths, replacedElement, originalSelector);
+            result.push(newSelectorPath);
+        }
+        return result;
+    }
+
+    function mergeElementsOnToSelectors(elements, selectors) {
+        var i, sel;
+
+        if (elements.length === 0) {
+            return ;
+        }
+        if (selectors.length === 0) {
+            selectors.push([ new Selector(elements) ]);
+            return;
+        }
+
+        for (i = 0; i < selectors.length; i++) {
+            sel = selectors[i];
+
+            // if the previous thing in sel is a parent this needs to join on to it
+            if (sel.length > 0) {
+                sel[sel.length - 1] = sel[sel.length - 1].createDerived(sel[sel.length - 1].elements.concat(elements));
+            }
+            else {
+                sel.push(new Selector(elements));
+            }
         }
     }
+
+    // joinSelector code follows
+    var i, newPaths, hadParentSelector;
+
+    newPaths = [];
+    hadParentSelector = replaceParentSelector(newPaths, context, selector);
+
+    if (!hadParentSelector) {
+        if (context.length > 0) {
+            newPaths = [];
+            for (i = 0; i < context.length; i++) {
+                newPaths.push(context[i].concat(selector));
+            }
+        }
+        else {
+            newPaths = [[selector]];
+        }
+    }
+
+    for (i = 0; i < newPaths.length; i++) {
+        paths.push(newPaths[i]);
+    }
+
 };
 module.exports = Ruleset;
 
-},{"../contexts":10,"../functions/default":19,"./debug-info":51,"./element":55,"./node":67,"./rule":71,"./selector":74}],74:[function(require,module,exports){
+},{"../contexts":10,"../functions/default":19,"./debug-info":51,"./element":55,"./node":67,"./paren":69,"./rule":71,"./selector":74}],74:[function(require,module,exports){
 var Node = require("./node");
 
 var Selector = function (elements, extendList, condition, index, currentFileInfo, isReferenced) {
@@ -7610,8 +7770,9 @@ Selector.prototype.match = function (other) {
     return olen; // return number of matched elements
 };
 Selector.prototype.CacheElements = function() {
-    if (this._elements)
+    if (this._elements) {
         return;
+    }
 
     var elements = this.elements.map( function(v) {
         return v.combinator.value + (v.value.value || v.value);
@@ -7828,7 +7989,7 @@ URL.prototype.eval = function (context) {
             context.isPathRelative(val.value)) {
 
             if (!val.quote) {
-                rootpath = rootpath.replace(/[\(\)'"\s]/g, function(match) { return "\\"+match; });
+                rootpath = rootpath.replace(/[\(\)'"\s]/g, function(match) { return "\\" + match; });
             }
             val.value = rootpath + val.value;
         }
@@ -7882,7 +8043,7 @@ Value.prototype.genCSS = function (context, output) {
     var i;
     for(i = 0; i < this.value.length; i++) {
         this.value[i].genCSS(context, output);
-        if (i+1 < this.value.length) {
+        if (i + 1 < this.value.length) {
             output.add((context && context.compress) ? ',' : ', ');
         }
     }
@@ -7919,7 +8080,7 @@ Variable.prototype.eval = function (context) {
         var v = frame.variable(name);
         if (v) {
             if (v.important) {
-                var importantScope = context.importantScope[context.importantScope.length-1];
+                var importantScope = context.importantScope[context.importantScope.length - 1];
                 importantScope.important = v.important;
             }
             return v.value.eval(context);
@@ -7968,7 +8129,8 @@ module.exports = {
 
 },{}],81:[function(require,module,exports){
 var tree = require("../tree"),
-    Visitor = require("./visitor");
+    Visitor = require("./visitor"),
+    logger = require("../logger");
 
 /*jshint loopfunc:true */
 
@@ -8029,7 +8191,7 @@ ExtendFinderVisitor.prototype = {
                 extend.findSelfSelectors(selectorPath);
                 extend.ruleset = rulesetNode;
                 if (j === 0) { extend.firstExtendOnThisSelectorPath = true; }
-                this.allExtendsStack[this.allExtendsStack.length-1].push(extend);
+                this.allExtendsStack[this.allExtendsStack.length - 1].push(extend);
             }
         }
 
@@ -8063,23 +8225,43 @@ var ProcessExtendsVisitor = function() {
 ProcessExtendsVisitor.prototype = {
     run: function(root) {
         var extendFinder = new ExtendFinderVisitor();
+        this.extendIndicies = {};
         extendFinder.run(root);
         if (!extendFinder.foundExtends) { return root; }
         root.allExtends = root.allExtends.concat(this.doExtendChaining(root.allExtends, root.allExtends));
         this.allExtendsStack = [root.allExtends];
-        return this._visitor.visit(root);
+        var newRoot = this._visitor.visit(root);
+        this.checkExtendsForNonMatched(root.allExtends);
+        return newRoot;
+    },
+    checkExtendsForNonMatched: function(extendList) {
+        var indicies = this.extendIndicies;
+        extendList.filter(function(extend) {
+            return !extend.hasFoundMatches && extend.parent_ids.length == 1;
+        }).forEach(function(extend) {
+                var selector = "_unknown_";
+                try {
+                    selector = extend.selector.toCSS({});
+                }catch(_){}
+
+                if(!indicies[extend.index + ' ' + selector]) {
+                    indicies[extend.index + ' ' + selector] = true;
+                    logger.warn("extend '" + selector + "' has no matches");
+                }
+            });
     },
     doExtendChaining: function (extendsList, extendsListTarget, iterationCount) {
         //
-        // chaining is different from normal extension.. if we extend an extend then we are not just copying, altering and pasting
-        // the selector we would do normally, but we are also adding an extend with the same target selector
+        // chaining is different from normal extension.. if we extend an extend then we are not just copying, altering
+        // and pasting the selector we would do normally, but we are also adding an extend with the same target selector
         // this means this new extend can then go and alter other extends
         //
         // this method deals with all the chaining work - without it, extend is flat and doesn't work on other extend selectors
-        // this is also the most expensive.. and a match on one selector can cause an extension of a selector we had already processed if
-        // we look at each selector at a time, as is done in visitRuleset
+        // this is also the most expensive.. and a match on one selector can cause an extension of a selector we had already
+        // processed if we look at each selector at a time, as is done in visitRuleset
 
-        var extendIndex, targetExtendIndex, matches, extendsToAdd = [], newSelector, extendVisitor = this, selectorPath, extend, targetExtend, newExtend;
+        var extendIndex, targetExtendIndex, matches, extendsToAdd = [], newSelector, extendVisitor = this, selectorPath,
+            extend, targetExtend, newExtend;
 
         iterationCount = iterationCount || 0;
 
@@ -8104,6 +8286,8 @@ ProcessExtendsVisitor.prototype = {
 
                 if (matches.length) {
 
+                    extend.hasFoundMatches = true;
+
                     // we found a match, so for each self selector..
                     extend.selfSelectors.forEach(function(selfSelector) {
 
@@ -8115,7 +8299,7 @@ ProcessExtendsVisitor.prototype = {
                         newExtend.selfSelectors = newSelector;
 
                         // add the extend onto the list of extends for that selector
-                        newSelector[newSelector.length-1].extendList = [newExtend];
+                        newSelector[newSelector.length - 1].extendList = [newExtend];
 
                         // record that we need to add it.
                         extendsToAdd.push(newExtend);
@@ -8149,11 +8333,13 @@ ProcessExtendsVisitor.prototype = {
                     selectorTwo = extendsToAdd[0].selector.toCSS();
                 }
                 catch(e) {}
-                throw {message: "extend circular reference detected. One of the circular extends is currently:"+selectorOne+":extend(" + selectorTwo+")"};
+                throw { message: "extend circular reference detected. One of the circular extends is currently:" +
+                    selectorOne + ":extend(" + selectorTwo + ")"};
             }
 
-            // now process the new extends on the existing rules so that we can handle a extending b extending c ectending d extending e...
-            return extendsToAdd.concat(extendVisitor.doExtendChaining(extendsToAdd, extendsListTarget, iterationCount+1));
+            // now process the new extends on the existing rules so that we can handle a extending b extending c extending
+            // d extending e...
+            return extendsToAdd.concat(extendVisitor.doExtendChaining(extendsToAdd, extendsListTarget, iterationCount + 1));
         } else {
             return extendsToAdd;
         }
@@ -8171,7 +8357,8 @@ ProcessExtendsVisitor.prototype = {
         if (rulesetNode.root) {
             return;
         }
-        var matches, pathIndex, extendIndex, allExtends = this.allExtendsStack[this.allExtendsStack.length-1], selectorsToAdd = [], extendVisitor = this, selectorPath;
+        var matches, pathIndex, extendIndex, allExtends = this.allExtendsStack[this.allExtendsStack.length - 1],
+            selectorsToAdd = [], extendVisitor = this, selectorPath;
 
         // look at each selector path in the ruleset, find any extend matches and then copy, find and replace
 
@@ -8181,12 +8368,13 @@ ProcessExtendsVisitor.prototype = {
 
                 // extending extends happens initially, before the main pass
                 if (rulesetNode.extendOnEveryPath) { continue; }
-                var extendList = selectorPath[selectorPath.length-1].extendList;
+                var extendList = selectorPath[selectorPath.length - 1].extendList;
                 if (extendList && extendList.length) { continue; }
 
                 matches = this.findMatch(allExtends[extendIndex], selectorPath);
 
                 if (matches.length) {
+                    allExtends[extendIndex].hasFoundMatches = true;
 
                     allExtends[extendIndex].selfSelectors.forEach(function(selfSelector) {
                         selectorsToAdd.push(extendVisitor.extendSelector(matches, selectorPath, selfSelector));
@@ -8217,15 +8405,16 @@ ProcessExtendsVisitor.prototype = {
 
                 // if we allow elements before our match we can add a potential match every time. otherwise only at the first element.
                 if (extend.allowBefore || (haystackSelectorIndex === 0 && hackstackElementIndex === 0)) {
-                    potentialMatches.push({pathIndex: haystackSelectorIndex, index: hackstackElementIndex, matched: 0, initialCombinator: haystackElement.combinator});
+                    potentialMatches.push({pathIndex: haystackSelectorIndex, index: hackstackElementIndex, matched: 0,
+                        initialCombinator: haystackElement.combinator});
                 }
 
                 for(i = 0; i < potentialMatches.length; i++) {
                     potentialMatch = potentialMatches[i];
 
                     // selectors add " " onto the first element. When we use & it joins the selectors together, but if we don't
-                    // then each selector in haystackSelectorPath has a space before it added in the toCSS phase. so we need to work out
-                    // what the resulting combinator will be
+                    // then each selector in haystackSelectorPath has a space before it added in the toCSS phase. so we need to
+                    // work out what the resulting combinator will be
                     targetCombinator = haystackElement.combinator.value;
                     if (targetCombinator === '' && hackstackElementIndex === 0) {
                         targetCombinator = ' ';
@@ -8243,7 +8432,8 @@ ProcessExtendsVisitor.prototype = {
                     if (potentialMatch) {
                         potentialMatch.finished = potentialMatch.matched === needleElements.length;
                         if (potentialMatch.finished &&
-                            (!extend.allowAfter && (hackstackElementIndex+1 < hackstackSelector.elements.length || haystackSelectorIndex+1 < haystackSelectorPath.length))) {
+                            (!extend.allowAfter &&
+                                (hackstackElementIndex + 1 < hackstackSelector.elements.length || haystackSelectorIndex + 1 < haystackSelectorPath.length))) {
                             potentialMatch = null;
                         }
                     }
@@ -8289,7 +8479,7 @@ ProcessExtendsVisitor.prototype = {
             if (!(elementValue2 instanceof tree.Selector) || elementValue1.elements.length !== elementValue2.elements.length) {
                 return false;
             }
-            for(var i = 0; i <elementValue1.elements.length; i++) {
+            for(var i = 0; i  < elementValue1.elements.length; i++) {
                 if (elementValue1.elements[i].combinator.value !== elementValue2.elements[i].combinator.value) {
                     if (i !== 0 || (elementValue1.elements[i].combinator.value || ' ') !== (elementValue2.elements[i].combinator.value || ' ')) {
                         return false;
@@ -8327,7 +8517,8 @@ ProcessExtendsVisitor.prototype = {
             );
 
             if (match.pathIndex > currentSelectorPathIndex && currentSelectorPathElementIndex > 0) {
-                path[path.length - 1].elements = path[path.length - 1].elements.concat(selectorPath[currentSelectorPathIndex].elements.slice(currentSelectorPathElementIndex));
+                path[path.length - 1].elements = path[path.length - 1]
+                    .elements.concat(selectorPath[currentSelectorPathIndex].elements.slice(currentSelectorPathElementIndex));
                 currentSelectorPathElementIndex = 0;
                 currentSelectorPathIndex++;
             }
@@ -8356,7 +8547,8 @@ ProcessExtendsVisitor.prototype = {
         }
 
         if (currentSelectorPathIndex < selectorPath.length && currentSelectorPathElementIndex > 0) {
-            path[path.length - 1].elements = path[path.length - 1].elements.concat(selectorPath[currentSelectorPathIndex].elements.slice(currentSelectorPathElementIndex));
+            path[path.length - 1].elements = path[path.length - 1]
+                .elements.concat(selectorPath[currentSelectorPathIndex].elements.slice(currentSelectorPathElementIndex));
             currentSelectorPathIndex++;
         }
 
@@ -8367,31 +8559,35 @@ ProcessExtendsVisitor.prototype = {
     visitRulesetOut: function (rulesetNode) {
     },
     visitMedia: function (mediaNode, visitArgs) {
-        var newAllExtends = mediaNode.allExtends.concat(this.allExtendsStack[this.allExtendsStack.length-1]);
+        var newAllExtends = mediaNode.allExtends.concat(this.allExtendsStack[this.allExtendsStack.length - 1]);
         newAllExtends = newAllExtends.concat(this.doExtendChaining(newAllExtends, mediaNode.allExtends));
         this.allExtendsStack.push(newAllExtends);
     },
     visitMediaOut: function (mediaNode) {
-        this.allExtendsStack.length = this.allExtendsStack.length - 1;
+        var lastIndex = this.allExtendsStack.length - 1;
+        this.checkExtendsForNonMatched(this.allExtendsStack[lastIndex]);
+        this.allExtendsStack.length = lastIndex;
     },
     visitDirective: function (directiveNode, visitArgs) {
-        var newAllExtends = directiveNode.allExtends.concat(this.allExtendsStack[this.allExtendsStack.length-1]);
+        var newAllExtends = directiveNode.allExtends.concat(this.allExtendsStack[this.allExtendsStack.length - 1]);
         newAllExtends = newAllExtends.concat(this.doExtendChaining(newAllExtends, directiveNode.allExtends));
         this.allExtendsStack.push(newAllExtends);
     },
     visitDirectiveOut: function (directiveNode) {
-        this.allExtendsStack.length = this.allExtendsStack.length - 1;
+        var lastIndex = this.allExtendsStack.length - 1;
+        this.checkExtendsForNonMatched(this.allExtendsStack[lastIndex]);
+        this.allExtendsStack.length = lastIndex;
     }
 };
 
 module.exports = ProcessExtendsVisitor;
 
-},{"../tree":59,"./visitor":87}],82:[function(require,module,exports){
+},{"../logger":31,"../tree":59,"./visitor":87}],82:[function(require,module,exports){
 function ImportSequencer(onSequencerEmpty) {
     this.imports = [];
     this.variableImports = [];
     this._onSequencerEmpty = onSequencerEmpty;
-	this._currentDepth = 0;
+    this._currentDepth = 0;
 }
 
 ImportSequencer.prototype.addImport = function(callback) {
@@ -8414,27 +8610,27 @@ ImportSequencer.prototype.addVariableImport = function(callback) {
 };
 
 ImportSequencer.prototype.tryRun = function() {
-	this._currentDepth++;
-	try {
-	    while(true) {
-	        while(this.imports.length > 0) {
-	            var importItem = this.imports[0];
-	            if (!importItem.isReady) {
-	                return;
-	            }
-	            this.imports = this.imports.slice(1);
-	            importItem.callback.apply(null, importItem.args);
-	        }
-	        if (this.variableImports.length === 0) {
-	            break;
-	        }
-	        var variableImport = this.variableImports[0];
-	        this.variableImports = this.variableImports.slice(1);
-	        variableImport();
-	    }
-	} finally {
-		this._currentDepth--;
-	}
+    this._currentDepth++;
+    try {
+        while(true) {
+            while(this.imports.length > 0) {
+                var importItem = this.imports[0];
+                if (!importItem.isReady) {
+                    return;
+                }
+                this.imports = this.imports.slice(1);
+                importItem.callback.apply(null, importItem.args);
+            }
+            if (this.variableImports.length === 0) {
+                break;
+            }
+            var variableImport = this.variableImports[0];
+            this.variableImports = this.variableImports.slice(1);
+            variableImport();
+        }
+    } finally {
+        this._currentDepth--;
+    }
     if (this._currentDepth === 0 && this._onSequencerEmpty) {
         this._onSequencerEmpty();
     }
@@ -8473,12 +8669,12 @@ ImportVisitor.prototype = {
         this.isFinished = true;
         this._sequencer.tryRun();
     },
-	_onSequencerEmpty: function() {
-		if (!this.isFinished) {
-			return;
-		}
-		this._finish(this.error);
-	},
+    _onSequencerEmpty: function() {
+        if (!this.isFinished) {
+            return;
+        }
+        this._finish(this.error);
+    },
     visitImport: function (importNode, visitArgs) {
         var inlineCSS = importNode.options.inline;
 
@@ -8529,12 +8725,13 @@ ImportVisitor.prototype = {
             var onImported = this.onImported.bind(this, evaldImportNode, context),
                 sequencedOnImported = this._sequencer.addImport(onImported);
 
-            this._importer.push(evaldImportNode.getPath(), tryAppendLessExtension, evaldImportNode.currentFileInfo, evaldImportNode.options, sequencedOnImported);
+            this._importer.push(evaldImportNode.getPath(), tryAppendLessExtension, evaldImportNode.currentFileInfo,
+                evaldImportNode.options, sequencedOnImported);
         } else {
             this.importCount--;
-	        if (this.isFinished) {
-		        this._sequencer.tryRun();
-	        }
+            if (this.isFinished) {
+                this._sequencer.tryRun();
+            }
         }
     },
     onImported: function (importNode, context, e, root, importedAtRoot, fullPath) {
@@ -8584,7 +8781,7 @@ ImportVisitor.prototype = {
         importVisitor.importCount--;
 
         if (importVisitor.isFinished) {
-	        importVisitor._sequencer.tryRun();
+            importVisitor._sequencer.tryRun();
         }
     },
     visitRule: function (ruleNode, visitArgs) {
@@ -8724,16 +8921,16 @@ ToCSSVisitor.prototype = {
     },
 
     visitDirective: function(directiveNode, visitArgs) {
-        if (directiveNode.currentFileInfo.reference && !directiveNode.isReferenced) {
-            return;
-        }
         if (directiveNode.name === "@charset") {
+            if (!directiveNode.getIsReferenced()) {
+                return;
+            }
             // Only output the debug info together with subsequent @charset definitions
             // a comment (or @media statement) before the actual @charset directive would
             // be considered illegal css as it has to be on the first line
             if (this.charset) {
                 if (directiveNode.debugInfo) {
-                    var comment = new tree.Comment("/* " + directiveNode.toCSS(this._context).replace(/\n/g, "")+" */\n");
+                    var comment = new tree.Comment("/* " + directiveNode.toCSS(this._context).replace(/\n/g, "") + " */\n");
                     comment.debugInfo = directiveNode.debugInfo;
                     return this._visitor.visit(comment);
                 }
@@ -8743,6 +8940,38 @@ ToCSSVisitor.prototype = {
         }
         if (directiveNode.rules && directiveNode.rules.rules) {
             this._mergeRules(directiveNode.rules.rules);
+            //process childs
+            directiveNode.accept(this._visitor);
+            visitArgs.visitDeeper = false;
+
+            // the directive was directly referenced and therefore needs to be shown in the output
+            if (directiveNode.getIsReferenced()) {
+                return directiveNode;
+            }
+
+            if (!directiveNode.rules.rules) {
+                return ;
+            }
+
+            //the directive was not directly referenced
+            for (var r = 0; r < directiveNode.rules.rules.length; r++) {
+                var rule = directiveNode.rules.rules[r];
+                if (rule.getIsReferenced && rule.getIsReferenced()) {
+                    //the directive contains something that was referenced (likely by extend)
+                    //therefore it needs to be shown in output too
+
+                    //marking as referenced in case the directive is stored inside another directive
+                    directiveNode.markReferenced();
+                    return directiveNode;
+                }
+            }
+            //The directive was not directly referenced and does not contain anything that
+            //was referenced. Therefore it must not be shown in output.
+            return ;
+        } else {
+            if (!directiveNode.getIsReferenced()) {
+                return;
+            }
         }
         return directiveNode;
     },
@@ -8903,7 +9132,7 @@ ToCSSVisitor.prototype = {
                 var spacedGroups = [];
                 var lastSpacedGroup = [];
                 parts.map(function (p) {
-                if (p.merge==="+") {
+                if (p.merge === "+") {
                     if (lastSpacedGroup.length > 0) {
                             spacedGroups.push(toExpression(lastSpacedGroup));
                         }
