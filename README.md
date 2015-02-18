@@ -61,7 +61,7 @@ Not tested on Opera nor on Safari.
 
 ## Changelog
 
-## v0.1.0 (February 18th 2014).
+### v0.1.0 (February 18th 2014).
 
 * Not officially released.
 
