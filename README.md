@@ -94,7 +94,7 @@ Mad propz to all the great people behind the software listed below.
 * [Handlebars.js](http://handlebarsjs.com/) - Minimal templating on steroids.
 * [jQuery](http://jquery.com) - Fast, small, and feature-rich JavaScript library.
 * [marked.js](https://github.com/chjj/marked) - Full-featured markdown parser and compiler in Javascript.
-* [gonzales](https://github.com/css/gonzales) - Fas CSS parser.
+* [gonzales](https://github.com/css/gonzales) - Fast CSS parser.
 * [sass.js](https://github.com/medialize/sass.js) - API for emscripted libsass to run in the browser.
 * [Less](http://lesscss.org/) - CSS pre-prepocessor.
 * [Prism](http://prismjs.com/) - Lightweight, robust, elegant syntax highlighting.
