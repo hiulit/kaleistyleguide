@@ -3,7 +3,6 @@
 @import "../../phytoplankton-core/base/mixins";
 
 /*
-
 # Handlebars.js
 
 > Minimal templating on steroids.
@@ -24,9 +23,9 @@ You can configure it though. Just change the path in the `config.js`.
 
 Context objects are placed in `js/hbs/context.js`.
 
-Also configurable via `main.js`.
-
 <pre data-src="js/hbs/context.js"></pre>
+
+Path also configurable via `js/main.js`.
 
 */
 /*
@@ -34,11 +33,11 @@ Also configurable via `main.js`.
 
 Helpers are placed in `js/hbs/helpers.js`.
 
+<pre data-src="js/hbs/helpers.js"></pre>
+
 Guess what?
 
-*Tip: `main.js` ;)*
-
-<pre data-src="js/hbs/helpers.js"></pre>
+*Tip: Change the path in `js/main.js` ;)*
 
 */
 /*
