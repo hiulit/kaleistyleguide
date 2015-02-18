@@ -1,6 +1,6 @@
 # Phytoplankton - Living Style Guide
 
-## Generate bootstrap-like documentation for your own CSS!
+## Generate a living style guide with your own CSS!
 
 This project aims at making sure your style sheets are fully documented whilst being synchronized with your project styles.
 
@@ -26,14 +26,14 @@ Just:
  [XAMPP](http://www.apachefriends.org/), etc.)
 3. And it should work! :D
 
-# Prepocessors support
+## Prepocessors support
 
-* [Sass](http://sass-lang.com/) ([libsass v2.0](https://github.com/sass/libsass/releases/tag/v2.0))
-* [Less](http://lesscss.org/) (v1.7.5)
+* [Sass](http://sass-lang.com/) ([libsass v3.1.0](https://github.com/sass/libsass/releases/tag/3.1.0))
+* [Less](http://lesscss.org/) ([v2.3.0](https://github.com/less/less.js/releases/tag/v2.3.0))
 
 So you don't have to ever use again a preprocessor tool ;)
 
-## Notes
+### Notes
 
 Why don't you use the [latest version of Sass](http://sass-lang.com/documentation/file.SASS_CHANGELOG.html)?
 
@@ -82,7 +82,7 @@ Not tested on Opera nor on Safari.
 
 ## Inspiration and alternatives
 
-Phytoplankton is heavily influenced by the projects found in [the Style Guide guide](http://vinspee.me/style-guide-guide/).
+Phytoplankton is heavily influenced by the projects found in [http://styleguides.io/](http://styleguides.io/) and [the Style Guide guide](http://vinspee.me/style-guide-guide/).
 
 ## Technologies
 
@@ -99,13 +99,16 @@ Mad propz to all the great people behind the software listed below.
 * [Less](http://lesscss.org/) - CSS pre-prepocessor.
 * [Prism](http://prismjs.com/) - Lightweight, robust, elegant syntax highlighting.
 * [Fixie.js](https://github.com/ryhan/fixie) - Automatically add filler content to HTML documents.
+* [Gumshoe](https://github.com/cferdinandi/gumshoe) - A simple, framework-agnostic scrollspy script.
+* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll) - A simple vanilla JS script to animate scrolling to anchor links.
 
-Extras:
+### Extras:
 
 * [Sassy-Gridlover](https://github.com/hiulit/Sassy-Gridlover) - Super easy to use Sass mixins to establish a typographic system with modular scale and vertical rhythm.
 * [Vegan Sass Burger](http://joren.co/sass-burger/) - A Sass mixin for creating (100% vegan) hamburger icons.
 * [Stacktable](https://github.com/johnpolacek/stacktable.js/) - jQuery plugin for stacking tables on small screens.
 * [ZeroClipboard](https://github.com/zeroclipboard/zeroclipboard) - A library that provides an easy way to copy text to the clipboard.
+* [Material Palette](http://www.materialpalette.com/teal/green) - Material design color palette generator.
 
 ## Author
 
@@ -113,7 +116,7 @@ Extras:
 
 ## Contributors
 
-Mad propz again to this guy:
+Mad propz to this guy:
 
 * [Oriol Torras](https://github.com/otorras) ([@uriusfurius](https://twitter.com/uriusfurius)).
 
