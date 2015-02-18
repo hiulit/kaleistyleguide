@@ -83,6 +83,12 @@ table {
 	}
 }
 
+tr {
+	&:nth-child(2n) {
+		background-color: #f8f8f8;
+	}
+}
+
 td, th {
 	border: 1px solid #ccc;
 	@include prem(padding, 8);
