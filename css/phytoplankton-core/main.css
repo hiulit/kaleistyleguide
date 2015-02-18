@@ -857,6 +857,10 @@ table.stacktable.large-only {
   }
 }
 
+tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
 td, th {
   border: 1px solid #ccc;
   padding: 8px;
@@ -1149,26 +1153,26 @@ img {
   }
 }
 .phytoplankton-menu > ul > li > ul > li > ul > li a {
-  color: #b2dfdb;
+  color: #009688;
   padding: 12px 24px;
   padding: 0.75rem 1.5rem;
 }
 .phytoplankton-menu > ul > li > ul > li > ul > li a:hover {
-  color: #fff;
+  color: #00796b;
 }
 .phytoplankton-menu > ul > li > ul > li > ul > li.active > a {
-  background-color: #00796b;
-  color: #fff;
+  color: #00796b;
   cursor: default;
+  font-weight: bold;
 }
 .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li > a {
   padding-left: 48px;
   padding-left: 3rem;
 }
 .phytoplankton-menu > ul > li > ul > li > ul > li > ul > li.active > a {
-  background-color: #00796b;
-  color: #fff;
+  color: #00796b;
   cursor: default;
+  font-weight: bold;
 }
 
 .phytoplankton-menu__list__item a {
@@ -1232,8 +1236,8 @@ img {
   fill: #fff;
 }
 .phytoplankton-menu__list__item__subheader.active, .phytoplankton-menu__list__item__subheader:active {
-  background-color: #b2dfdb;
-  color: #00796b;
+  background-color: #00796b;
+  color: #fff;
   cursor: default;
 }
 .phytoplankton-menu__list__item__subheader.active .svg-icon path,
@@ -1241,7 +1245,11 @@ img {
 .phytoplankton-menu__list__item__subheader.active .svg-icon rect, .phytoplankton-menu__list__item__subheader:active .svg-icon path,
 .phytoplankton-menu__list__item__subheader:active .svg-icon plygon,
 .phytoplankton-menu__list__item__subheader:active .svg-icon rect {
-  fill: #00796b;
+  fill: #fff;
+}
+
+ul[data-gumshoe] {
+  background-color: #b2dfdb;
 }
 
 .phytoplankton-page {
