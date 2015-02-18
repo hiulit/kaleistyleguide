@@ -70,7 +70,7 @@ Not tested on Opera nor on Safari.
 /*
 # Changelog
 
-## v0.1.0 (January 26th 2014)
+## v0.1.0 (February 18th 2014).
 
 * Not officially released.
 
@@ -87,8 +87,9 @@ Not tested on Opera nor on Safari.
 * Create tooltips (for ZeroClipboard).
 * Fix tabs scroll.
 * Fix issue with Prism's File Highlight plugin async loading causing Gumshoe and ZeroClipboard not to work properly.
-* RequireJS & Backbone optimization (separate modules, create components, etc.)
-* Add a view for showing colors
+* RequireJS & Backbone optimization (separate modules, create components, etc.).
+* Add a view for showing colors, images (galleries, etc.).
+* Add loading state in pages.
 
  */
 /*

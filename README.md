@@ -61,7 +61,7 @@ Not tested on Opera nor on Safari.
 
 ## Changelog
 
-## 0.1.0 (December 3rd 2014)
+## v0.1.0 (February 18th 2014).
 
 * Not officially released.
 
@@ -69,12 +69,16 @@ Not tested on Opera nor on Safari.
 
 * ~~Handlebars temaplates path configurable.~~
 * ~~Handlebars context and helpers paths configurable.~~
-* Upgrade to Less 2.0.0 and above.
+* ~~Upgrade to Less 2.0.0 and above.~~
 * Improve tabs system
 * ~~Add styles tab name dynamically (scss, less, etc).~~
 * Fix ZeroClipboard on dynamic content (e.g. <pre data-src="")
 * Create tooltips (for ZeroClipboard).
 * Fix tabs scroll.
+* Fix issue with Prism's File Highlight plugin async loading causing Gumshoe and ZeroClipboard not to work properly.
+* RequireJS & Backbone optimization (separate modules, create components, etc.).
+* Add a view for showing colors, images (galleries, etc.).
+* Add loading state in pages.
 
 ## Inspiration and alternatives
 
