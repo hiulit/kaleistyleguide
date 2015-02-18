@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -762,7 +761,6 @@ html {
 
 body {
   color: #212121;
-  counter-reset: heading1;
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 22px;
@@ -1400,21 +1398,7 @@ img {
   font-size: 75%;
 }
 .phytoplankton-page__item > h1 {
-  counter-increment: heading1;
   margin-top: 0;
-}
-.phytoplankton-page__item > h1:before {
-  content: counter(heading1) ". ";
-  margin-left: -1.5em;
-  width: 1.5em;
-}
-.phytoplankton-page__item > h2 {
-  counter-increment: heading2;
-}
-.phytoplankton-page__item > h2:before {
-  content: counter(heading1) "." counter(heading2) ". ";
-  margin-left: -2em;
-  width: 2em;
 }
 
 .code-lang, .phytoplankton-page code[data-language]:before, .code-render:before, .copy-to-clipboard, .phytoplankton-tabs__item {

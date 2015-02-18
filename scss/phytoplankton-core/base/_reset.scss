@@ -9,7 +9,7 @@ html {
 
 body {
 	color: $primary-text-color;
-	counter-reset: heading1;
+	// counter-reset: heading1;
 	font-family: $baseFontFamily;
 	@include sassy-gridlover-body($sgl-base-font-size, true);
 	overflow-x: hidden;

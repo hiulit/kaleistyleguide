@@ -93,22 +93,22 @@
 		}
 	}
 	> h1 {
-		counter-increment: heading1;
+		// counter-increment: heading1;
 		margin-top: 0;
-		&:before {
-			content: counter(heading1) ".\00a0";
-			margin-left:  -1.5em;
-			width: 1.5em;
-		}
+		// &:before {
+		// 	content: counter(heading1) ".\00a0";
+		// 	margin-left:  -1.5em;
+		// 	width: 1.5em;
+		// }
 	}
-	> h2 {
-		counter-increment: heading2;
-		&:before {
-			content: counter(heading1) "." counter(heading2) ".\00a0" ;
-			margin-left:  -2em;
-			width: 2em;
-		}
-	}
+	// > h2 {
+	// 	counter-increment: heading2;
+	// 	&:before {
+	// 		content: counter(heading1) "." counter(heading2) ".\00a0" ;
+	// 		margin-left:  -2em;
+	// 		width: 2em;
+	// 	}
+	// }
 }
 
 .code-lang {
