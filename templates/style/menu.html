@@ -4,7 +4,7 @@
 			<div class="phytoplankton-menu__list__item__header">
 				<%= menu.title %>
 			</div>
-			<ul class="phytoplankton-menu__list">
+			<ul class="phytoplankton-menu__list phytoplankton-menu__list--inner">
 				<% _.each(menu.sheets, function (sheet) { %>
 					<li class="phytoplankton-menu__list__item" data-sheet="<%= sheet %>">
 						<a class="phytoplankton-menu__list__item__subheader" href="#/<%= sheet %>">

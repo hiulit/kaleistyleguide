@@ -35,17 +35,17 @@
 	}
 	@include depth(3) {
 		a {
-			color: $light-primary-color;
+			color: $primary-color;
 			@include prem(padding, 12 24);
 			&:hover {
-				color: $text-color;
+				color: $dark-primary-color;
 			}
 		}
 		&.active {
 			> a {
-				background-color: $dark-primary-color;
-				color: $text-color;
+				color: $dark-primary-color;
 				cursor: default;
+				font-weight: bold;
 			}
 		}
 	}
@@ -55,12 +55,24 @@
 		}
 		&.active {
 			> a {
-				background-color: $dark-primary-color;
-				color: $text-color;
+				color: $dark-primary-color;
 				cursor: default;
+				font-weight: bold;
 			}
 		}
 	}
+}
+
+.phytoplankton-menu__list {
+
+}
+
+.phytoplankton-menu__list--first {
+
+}
+
+.phytoplankton-menu__list--inner {
+
 }
 
 .phytoplankton-menu__list__item {
@@ -113,15 +125,19 @@
 	}
 	&.active,
 	&:active {
-		background-color: $light-primary-color;
-		color: $dark-primary-color;
+		background-color: $dark-primary-color;
+		color: $text-color;
 		cursor: default;
 		.svg-icon {
 			path,
 			plygon,
 			rect {
-				fill: $dark-primary-color;
+				fill: $text-color;
 			}
 		}
 	}
+}
+
+ul[data-gumshoe] {
+	background-color: $light-primary-color;
 }
