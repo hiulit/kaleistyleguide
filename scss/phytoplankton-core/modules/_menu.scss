@@ -35,15 +35,14 @@
 	}
 	@include depth(3) {
 		a {
-			color: $primary-color;
+			color: $dark-primary-color;
 			@include prem(padding, 12 24);
 			&:hover {
-				color: $dark-primary-color;
+				font-weight: bold;
 			}
 		}
 		&.active {
 			> a {
-				color: $dark-primary-color;
 				cursor: default;
 				font-weight: bold;
 			}
@@ -128,6 +127,7 @@
 		background-color: $dark-primary-color;
 		color: $text-color;
 		cursor: default;
+		@include md-depth(1);
 		.svg-icon {
 			path,
 			plygon,
@@ -139,5 +139,5 @@
 }
 
 ul[data-gumshoe] {
-	background-color: $light-primary-color;
+	background-color: $text-color;
 }
