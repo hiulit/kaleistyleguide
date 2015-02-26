@@ -1,11 +1,14 @@
 .phytoplankton-page {
 	background-color: #fff;
 	float: right;
+	@include prem(padding-left, 64);
 	@include prem(padding-top, 24);
+	@include prem(padding-right, 64);
 	width: 75%;
 	@media screen and (max-width: 700px) {
 		@include prem(margin-top, 60);
-		padding: 0 4%;
+		@include prem(padding-left, 24);
+		@include prem(padding-right, 24);
 		transform: translate3d(0, 0, 0);
 		transition: all .25s ease-in-out;
 		width: 100%;
@@ -21,7 +24,7 @@
 	}
 	p,
 	ol,
-	ul { // So it doesn't mess with PrismJs styles on <pre> and <code> blocks
+	ul { // So it doesn't mess with PrismJs styl0 on <pre> and <code> blocks
 		a {
 			color: $accent-color;
 			text-decoration: none;
@@ -81,7 +84,7 @@
 .phytoplankton-page__item {
 	background-color: #fff;
 	// margin-left: 1.5em;
-	@include prem(padding, 24 64);
+	@include prem(padding, 24 0);
 	position: relative;
 	> h1,
 	> h2 {

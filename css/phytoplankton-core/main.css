@@ -1278,15 +1278,22 @@ ul[data-gumshoe] {
 .phytoplankton-page {
   background-color: #fff;
   float: right;
+  padding-left: 64px;
+  padding-left: 4rem;
   padding-top: 24px;
   padding-top: 1.5rem;
+  padding-right: 64px;
+  padding-right: 4rem;
   width: 75%;
 }
 @media screen and (max-width: 700px) {
   .phytoplankton-page {
     margin-top: 60px;
     margin-top: 3.75rem;
-    padding: 0 4%;
+    padding-left: 24px;
+    padding-left: 1.5rem;
+    padding-right: 24px;
+    padding-right: 1.5rem;
     transform: translate3d(0, 0, 0);
     transition: all .25s ease-in-out;
     width: 100%;
@@ -1413,8 +1420,8 @@ ul[data-gumshoe] {
 
 .phytoplankton-page__item {
   background-color: #fff;
-  padding: 24px 64px;
-  padding: 1.5rem 4rem;
+  padding: 24px 0px;
+  padding: 1.5rem 0rem;
   position: relative;
 }
 .phytoplankton-page__item > h1 {
