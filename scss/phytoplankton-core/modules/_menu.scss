@@ -38,13 +38,16 @@
 			color: $dark-primary-color;
 			@include prem(padding, 12 24);
 			&:hover {
-				font-weight: bold;
+				text-decoration: underline;
 			}
 		}
 		&.active {
 			> a {
 				cursor: default;
 				font-weight: bold;
+				&:hover {
+					text-decoration: none;
+				}
 			}
 		}
 	}
@@ -57,6 +60,9 @@
 				color: $dark-primary-color;
 				cursor: default;
 				font-weight: bold;
+				&:hover {
+					text-decoration: none;
+				}
 			}
 		}
 	}
@@ -140,4 +146,5 @@
 
 ul[data-gumshoe] {
 	background-color: $text-color;
+	@include prem(padding, 12 0);
 }
