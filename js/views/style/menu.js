@@ -25,6 +25,7 @@ function($, _, str, Backbone, marked, dashboardPageTemplate, config) {
 				$('.js-phytoplankton-menu-icon').removeClass('is-active');
 				$('.js-phytoplankton-header').removeClass('is-active');
 				$('.js-phytoplankton-page').removeClass('is-active');
+				$('.js-phytoplankton-page').removeClass('is-opaque');
 			}
 			// 'click .phytoplankton-menu__list__item ul li ul li a': function(ev) {
 			// 	ev.preventDefault();
