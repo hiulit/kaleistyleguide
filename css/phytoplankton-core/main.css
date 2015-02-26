@@ -843,6 +843,10 @@ table.stacktable.small-only {
 table.stacktable.small-only tbody tr:first-child {
   display: none;
 }
+table.stacktable.small-only tbody td {
+  text-align: center;
+  width: 50%;
+}
 @media screen and (max-width: 700px) {
   table.stacktable.small-only {
     display: table;

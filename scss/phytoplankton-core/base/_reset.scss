@@ -69,6 +69,10 @@ table {
 						display: none;
 					}
 				}
+				td {
+					text-align: center;
+					width: 50%;
+				}
 			}
 			@media screen and (max-width: 700px) {
 				display: table;
