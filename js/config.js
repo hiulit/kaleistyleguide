@@ -45,7 +45,7 @@ define({
 	// External scripts you may need to use.
 	external_scripts_path: 'js/external-scripts/',
 
-	// Enter URLs of any external stylesheets you wish to include with this demo.
+	// Enter URLs of any external stylesheets you wish to include.
 	// These will not be parsed as part of the documentation and are simply loaded into the page header.
 	external_stylesheets: []
 
