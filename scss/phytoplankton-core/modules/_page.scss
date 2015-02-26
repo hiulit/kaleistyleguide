@@ -86,11 +86,11 @@
 	> h1,
 	> h2 {
 		// @include prem(padding-bottom, round(($sgl-base-font-size*$sgl-base-line-height)-($sgl-base-font-size/2)));
-		&:before {
-			color: $primary-color;
-			@include inline-block;
-			font-size: 75%;
-		}
+		// &:before {
+		// 	color: $primary-color;
+		// 	@include inline-block;
+		// 	font-size: 75%;
+		// }
 	}
 	> h1 {
 		// counter-increment: heading1;
