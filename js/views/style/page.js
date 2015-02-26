@@ -252,9 +252,20 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 						"text": "Copy to Clipboard",
 						// "title": "Copy to Clipboard"
 					}),
+					copyTooltip = $( "<div/>", {
+						"class": "tooltip",
+						// "href" : "#",
+						"text": "Copy to Clipboard",
+						// "title": "Copy to Clipboard"
+					}),
 					code = $(this).text(),
 					clip = new ZeroClipboard( copy, {
 						text: code
+					});
+
+					copy.on('hover', function() {
+						console.log('!!!!!!!!!!!!!!!!');
+						copyTooltip.html('Copy to Clipboard');
 					});
 
 					clip.on( 'ready', function(event) {
@@ -266,6 +277,10 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 						clip.on( 'aftercopy', function(event) {
 							console.log('Copied text to clipboard:\n\n' + event.data['text/plain']);
+							copyTooltip.html('Copied!');
+							setTimeout(function() {
+								copyTooltip.html('Copy to Clipboard');
+							}, 1000);
 						} );
 					} );
 
@@ -274,6 +289,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 						ZeroClipboard.destroy();
 					} );
 					$(this).parent().append(copy);
+					copy.append(copyTooltip);
 				});
 
 			});

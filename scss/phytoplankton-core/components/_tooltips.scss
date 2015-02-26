@@ -1,0 +1,20 @@
+.tooltip {
+	background-color: #000;
+	border-radius: 3px;
+	@include prem(margin-left, -75);
+	opacity: 0;
+	@include prem(padding, 6);
+	position: absolute;
+		@include prem(bottom, 36);
+		left: 50%;
+	text-align: center;
+	text-transform: capitalize;
+	transition: all .25s ease-in-out;
+	@include prem(width, 150);
+	&:after {
+		@include triangle("down", #000, 6);
+		@include prem(bottom, -6);
+		left: 50%;
+		@include prem(margin-left, -6);
+	}
+}
