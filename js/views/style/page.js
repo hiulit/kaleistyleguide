@@ -263,10 +263,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 						text: code
 					});
 
-					copy.on('hover', function() {
-						console.log('!!!!!!!!!!!!!!!!');
-						copyTooltip.html('Copy to Clipboard');
-					});
 
 					clip.on( 'ready', function(event) {
 						// console.log( 'movie is loaded' );
@@ -289,6 +285,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 						ZeroClipboard.destroy();
 					} );
 					$(this).parent().append(copy);
+					console.log(copy.offset());
 					copy.append(copyTooltip);
 				});
 
