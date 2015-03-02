@@ -284,7 +284,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 						// console.log( 'ZeroClipboard error of type "' + event.name + '": ' + event.message );
 						ZeroClipboard.destroy();
 					} );
-					$(this).parent().append(copy);
+					$(this).parent().prev('.phytoplankton-tabs').append(copy);
 					console.log(copy.offset());
 					copy.append(copyTooltip);
 				});
