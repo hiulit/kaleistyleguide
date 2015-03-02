@@ -117,19 +117,35 @@ Phytoplankton will automatically render the code as both HTML and the code block
 
 */
 /*
+# Using external scripts
+
+Phytoplankton lets you use external scripts.
+
+Just add
+
+	@javascript { "your-script.js" }
+
+anywhere in your file and it should work.
+
+This creates a `<script>` tag in the `<head>`.
+
+You can change the default path from where to load external scripts in `config.js`.
+
+ */
+/*
 # Phytoplankton styles
 
 To make sure that the rendered code of your style sheets is unaffected by Phytoplankton's styles,
 and vice versa, Phytoplankton wraps all your CSS in `.code-render`.
 
-These styles are appended at the end of `<div class="phytoplankton-page">` so they rank at the top of the
+These styles are appended at the end of `<section class="phytoplankton-page">` so they rank at the top of the
 [specificity wars](http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html).
 
 ```
-<div class="phytoplankton-page">
-	<section class="phytoplankton-page__item"></section>
-	<section class="phytoplankton-page__item"></section>
-	<section class="phytoplankton-page__item"></section>
+<section class="phytoplankton-page js-phytoplankton-page">
+	<article class="phytoplankton-page__item">...</article>
+	<article class="phytoplankton-page__item">...</article>
+	<article class="phytoplankton-page__item">...</article>
 	<style>
 		.code-render {
 			.whatever {
@@ -137,7 +153,7 @@ These styles are appended at the end of `<div class="phytoplankton-page">` so th
 			}
 		}
 	</style>
-</div>
+</section>
 ```
 
 */
