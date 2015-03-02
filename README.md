@@ -63,8 +63,6 @@ Not tested on Opera nor on Safari.
 
 ### Unreleased
 
-### v0.1.0 - 2015-02-27
-
 * Not officially released.
 
 ## To do
@@ -73,8 +71,9 @@ Not tested on Opera nor on Safari.
 * ~~Handlebars context and helpers paths configurable.~~
 * ~~Upgrade to Less 2.0.0 and above.~~
 * ~~Add styles tab name dynamically (scss, less, etc).~~
+* ~~Create tooltips (for ZeroClipboard).~~
+* Fix tooltips overflow issue.
 * Improve tabs system.
-* Create tooltips (for ZeroClipboard).
 * Fix tabs scroll.
 * Fix issue with Prism's File Highlight plugin async loading causing Gumshoe and ZeroClipboard (e.g. <pre data-src="") not to work properly.
 * RequireJS & Backbone optimization (separate modules, create components, etc.).
