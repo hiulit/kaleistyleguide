@@ -225,7 +225,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			$('pre').addClass('line-numbers');
 
 			Prism.highlightAll();
-			fileHighlight(false);
+			Prism.fileHighlight();
 			fixie.init();
 			$('table').stacktable();
 
