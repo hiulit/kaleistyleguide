@@ -61,21 +61,21 @@
 			@include prem(padding, 16);
 		}
 	}
-	pre[class*="language-"] {
-		@include prem(padding-top, $padding-tabs-margin);
-	}
-	code {
-		&[data-language] {
-			&:before {
-				@extend .code-lang;
-				content: attr(data-language);
-				@include font-size(16);
-				@include prem(left, -42);
-				position: absolute;
-				@include prem(top, -42);
-			}
-		}
-	}
+	// pre[class*="language-"] {
+	// 	@include prem(padding-top, $padding-tabs-margin + $padding-tabs);
+	// }
+	// code {
+	// 	&[data-language] {
+	// 		&:before {
+	// 			@extend .code-lang;
+	// 			content: attr(data-language);
+	// 			@include font-size(16);
+	// 			@include prem(left, -42);
+	// 			position: absolute;
+	// 			@include prem(top, -42);
+	// 		}
+	// 	}
+	// }
 	table {
 		@include md-depth(1, 2);
 	}
@@ -162,17 +162,21 @@
 }
 
 .phytoplankton-tabs {
-	@include prem(margin-left, 16);
-	@include prem(margin-bottom, -$padding-tabs-margin, !important);
-	@include prem(margin-right, 200);
-	margin-top: 0 !important;
+	// @include prem(margin-left, 16);
+	// @include prem(margin-bottom, -$padding-tabs-margin, !important);
+	// @include prem(margin-right, 16);
+	// @include prem(height, $padding-tabs*5);
+	background-color: #272822;
+	margin: 0 !important;
 	padding: 0;
+	@include prem(padding-left, 16);
 	position: relative;
-	z-index: 6;
+	z-index: 2;
 	~ pre {
 		border-radius: 0 0 2px 2px;
 		display: none;
 		margin-top: 0;
+		padding-top: 0;
 		code {
 			&:before { // Removes extra code-lang tab.
 				display: none;

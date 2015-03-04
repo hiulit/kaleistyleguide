@@ -281,11 +281,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 					} );
 
 					clip.on( 'error', function(event) {
-						// console.log( 'ZeroClipboard error of type "' + event.name + '": ' + event.message );
+						console.log( 'ZeroClipboard error of type "' + event.name + '": ' + event.message );
 						ZeroClipboard.destroy();
 					} );
 					$(this).parent().prev('.phytoplankton-tabs').append(copy);
-					console.log(copy.offset());
+					// console.log(copy.offset());
 					copy.append(copyTooltip);
 				});
 
@@ -329,11 +329,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			$('.phytoplankton-tabs__item').click(function() {
 				var tab_id = $(this).attr('data-tab');
 
-				$('.phytoplankton-tabs li').removeClass('is-active');
-				$('.phytoplankton-tabs ~ pre').removeClass('is-active');
+				$(this).parent().find('li').removeClass('is-active');
+				$(this).parent().nextUntil(':not(pre)').removeClass('is-active');
 
 				$(this).addClass('is-active');
-				$("#"+tab_id).addClass('is-active');
+				$('#' + tab_id).addClass('is-active');
 			});
 
 			var pageHeadingHeight = 0;
@@ -459,6 +459,30 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 						}
 						block.content.push(comment);
 						break;
+					case 'html':
+						preExt = $(comment.text). attr('data-src');
+						preExt = preExt.substr(preExt.lastIndexOf('.') +1);
+						console.log(preExt);
+
+						if(preExt === 'js') {
+							comment.lang = 'JavaScript';
+						} else if(preExt === 'html') {
+							comment.lang = 'HTML';
+						} else {
+							comment.lang = '';
+						}
+
+						if(comment.pre === true) {
+							// Pushes the tabs
+							block.content.push({
+								type: 	'html',
+								text: 	'<ul class="phytoplankton-tabs">' +
+											'<li class="phytoplankton-tabs__item is-active">' + comment.lang + '</li>' +
+										'</ul>'
+							});
+							block.content.push(comment);
+						}
+						break;
 					case 'code':
 						// If there's no language:
 						// Push the code without example nor language header.
@@ -517,6 +541,13 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 									type: 	'html',
 									text: 	'<div class="code-render clearfix">' + comment.text + '</div>'
 								});
+								// Pushes the tabs
+								block.content.push({
+									type: 	'html',
+									text: 	'<ul class="phytoplankton-tabs">' +
+												'<li class="phytoplankton-tabs__item is-active">' + comment.lang + '</li>' +
+											'</ul>'
+								});
 								block.content.push(comment);
 							}
 						// If it's "handlebars":
@@ -531,9 +562,9 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 									lang: 'markup',
 									text: '<div class="code-render clearfix">' + comment.text + '</div>' +
 											'<ul class="phytoplankton-tabs">' +
-											'<li class="phytoplankton-tabs__item is-active" data-tab="tab-1">Handlebars</li>' +
-											'<li class="phytoplankton-tabs__item" data-tab="tab-2">HTML</li>' +
-											'<li class="phytoplankton-tabs__item" data-tab="tab-3">CSS</li>' +
+											'<li class="phytoplankton-tabs__item is-active">Handlebars</li>' +
+											'<li class="phytoplankton-tabs__item">HTML</li>' +
+											'<li class="phytoplankton-tabs__item">CSS</li>' +
 											'</ul>'
 								});
 							} else {
@@ -542,8 +573,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 									lang: 'markup',
 									text: '<div class="code-render clearfix">' + comment.text + '</div>' +
 											'<ul class="phytoplankton-tabs">' +
-											'<li class="phytoplankton-tabs__item is-active" data-tab="tab-1">Handlebars</li>' +
-											'<li class="phytoplankton-tabs__item" data-tab="tab-2">HTML</li>' +
+											'<li class="phytoplankton-tabs__item is-active">Handlebars</li>' +
+											'<li class="phytoplankton-tabs__item">HTML</li>' +
 											'</ul>'
 								});
 							}
@@ -566,6 +597,13 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 						// If the code is not "markup" (html):
 						// Push the code without example but with language header.
 						} else {
+							// Pushes the tabs
+							block.content.push({
+								type: 	'html',
+								text: 	'<ul class="phytoplankton-tabs">' +
+											'<li class="phytoplankton-tabs__item is-active">' + comment.lang + '</li>' +
+										'</ul>'
+							});
 							block.content.push(comment);
 						}
 						break;
