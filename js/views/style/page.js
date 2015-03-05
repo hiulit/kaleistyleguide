@@ -462,7 +462,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 					case 'html':
 						preExt = $(comment.text). attr('data-src');
 						preExt = preExt.substr(preExt.lastIndexOf('.') +1);
-						console.log(preExt);
 
 						if(preExt === 'js') {
 							comment.lang = 'JavaScript';
@@ -545,7 +544,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 								block.content.push({
 									type: 	'html',
 									text: 	'<ul class="phytoplankton-tabs">' +
-												'<li class="phytoplankton-tabs__item is-active">' + comment.lang + '</li>' +
+												'<li class="phytoplankton-tabs__item is-active">HTML</li>' +
 											'</ul>'
 								});
 								block.content.push(comment);
