@@ -30,7 +30,7 @@ pre[class*="language-"] {
 /* Code blocks */
 pre,	/* So <pre> gets highlighted*/
 		/* without any class. */
-		/* This is a "feature that doesn't */
+		/* This is a "feature" that doesn't */
 		/* come with the default plugin. */
 pre[class*="language-"] {
 	padding: 1em;
@@ -41,12 +41,12 @@ pre[class*="language-"] {
 
 :not(pre) > code,	/* So <code> and <pre> get highlighted*/
 					/* without any class. */
-pre,				/* This is a "feature that doesn't */
+pre,				/* This is a "feature" that doesn't */
 					/* come with the default plugin. */
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
 	background: #272822;
-	color: #f8f8f2; /* This is a "feature that doesn't  come with the default plugin. */
+	color: #f8f8f2; /* This is a "feature" that doesn't  come with the default plugin. */
 }
 
 /* Inline code */
@@ -194,6 +194,9 @@ pre.line-numbers > code {
 
 // Phytoplankton doesn't need this
 //
+// This is a "feature" that doesn't
+// come with the default plugin.
+//
 // pre[class*='language-'] {
 // 	position: relative;
 // }
@@ -245,7 +248,7 @@ pre[class*="language-"] a[href]:hover {
 }
 
 code[class*="language-"] a[href].url-link,	/* This is a "feature" that doesn't */
-pre[class*="language-"] a[href].url-link,	/* come with the default plugin. */
+pre[class*="language-"] a[href].url-link,		/* come with the default plugin. */
 code[class*="language-"] a[href].email-link,
 pre[class*="language-"] a[href].email-link,	/* It fixes some styles for */
 code[class*="language-"] a[href].md-link,	/* the File Highlight plugin. */
