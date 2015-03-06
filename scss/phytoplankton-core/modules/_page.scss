@@ -61,21 +61,6 @@
 			@include prem(padding, 16);
 		}
 	}
-	// pre[class*="language-"] {
-	// 	@include prem(padding-top, $padding-tabs-margin + $padding-tabs);
-	// }
-	// code {
-	// 	&[data-language] {
-	// 		&:before {
-	// 			@extend .code-lang;
-	// 			content: attr(data-language);
-	// 			@include font-size(16);
-	// 			@include prem(left, -42);
-	// 			position: absolute;
-	// 			@include prem(top, -42);
-	// 		}
-	// 	}
-	// }
 	table {
 		@include md-depth(1, 2);
 	}
@@ -117,7 +102,6 @@
 .code-lang {
 	background-color: $bg-code-color;
 	color: $text-code-color;
-	font-family: $headingFontFamily;
 	@include prem(padding, $padding-tabs);
 	text-transform: uppercase;
 	text-shadow: none;
@@ -135,23 +119,25 @@
 		margin-top: 0;
 	}
 	&:before {
-		@extend .code-lang;
+		background-color: $bg-code-color;
 		border-radius: 2px 0 0 0;
+		color: $text-code-color;
 		content: "Example";
 		left: 0;
+		@include prem(padding, $padding-tabs);
 		position: absolute;
+		text-transform: uppercase;
 		top: 0;
 	}
 }
 
 .copy-to-clipboard {
-	@extend .code-lang;
+	color: $text-code-color;
 	cursor: pointer;
-	color: rgba(255,255,255,.5);
+	@include prem(padding, $padding-tabs);
 	position: absolute;
+	@include prem(right, $padding-tabs * 2);
 	top: 0;
-	transition: color .25s ease-in-out;
-	right: 16px;
 	z-index: 10;
 	+ .copy-to-clipboard {
 		display: none;
@@ -160,7 +146,6 @@
 		display: block;
 	}
 	&.zeroclipboard-is-hover {
-		color: rgba(255,255,255, 1);
 		.tooltip {
 			opacity: 1;
 		}
