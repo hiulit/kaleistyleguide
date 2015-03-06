@@ -1033,24 +1033,20 @@ img {
 
 .phytoplankton-tabs {
   background-color: #272822;
+  color: #f8f8f2;
+  list-style-type: none;
   margin: 0 !important;
-  padding: 0;
   padding-left: 16px;
   padding-left: 1rem;
   position: relative;
+  text-transform: uppercase;
   z-index: 2;
 }
 .phytoplankton-tabs ~ pre {
   border-radius: 0 0 2px 2px;
   display: none;
-  margin-top: 0;
-  padding-top: 0;
-}
-.phytoplankton-tabs ~ pre code:before {
-  display: none;
-}
-.phytoplankton-tabs ~ pre:before {
-  display: none;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 .phytoplankton-tabs ~ pre.is-active {
   display: block;
@@ -1058,23 +1054,22 @@ img {
 
 .phytoplankton-tabs__item {
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.5);
   display: inline-block;
   vertical-align: baseline;
   zoom: 1;
   *display: inline;
   *vertical-align: auto;
-  transition: color .25s ease-in-out;
+  opacity: .5;
+  transition: opacity .25s ease-in-out;
+  padding: 8px;
+  padding: 0.5rem;
 }
 .phytoplankton-tabs__item.is-active {
   cursor: default;
-  color: white;
-}
-.phytoplankton-tabs__item.is-active:hover {
-  color: white;
+  opacity: 1;
 }
 .phytoplankton-tabs__item:hover {
-  color: white;
+  opacity: 1;
 }
 
 .phytoplankton-header {
@@ -1495,10 +1490,9 @@ ul[data-gumshoe] {
   margin-top: 0;
 }
 
-.code-lang, .phytoplankton-tabs__item, .code-render:before, .copy-to-clipboard {
+.code-lang {
   background-color: #272822;
   color: #f8f8f2;
-  font-family: "Oxygen", "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 8px;
   padding: 0.5rem;
   text-transform: uppercase;
@@ -1523,20 +1517,27 @@ ul[data-gumshoe] {
   margin-top: 0;
 }
 .code-render:before {
+  background-color: #272822;
   border-radius: 2px 0 0 0;
+  color: #f8f8f2;
   content: "Example";
   left: 0;
+  padding: 8px;
+  padding: 0.5rem;
   position: absolute;
+  text-transform: uppercase;
   top: 0;
 }
 
 .copy-to-clipboard {
+  color: #f8f8f2;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.5);
+  padding: 8px;
+  padding: 0.5rem;
   position: absolute;
-  top: 0;
-  transition: color .25s ease-in-out;
   right: 16px;
+  right: 1rem;
+  top: 0;
   z-index: 10;
 }
 .copy-to-clipboard + .copy-to-clipboard {
@@ -1544,9 +1545,6 @@ ul[data-gumshoe] {
 }
 .copy-to-clipboard.is-active {
   display: block;
-}
-.copy-to-clipboard.zeroclipboard-is-hover {
-  color: white;
 }
 .copy-to-clipboard.zeroclipboard-is-hover .tooltip {
   opacity: 1;
