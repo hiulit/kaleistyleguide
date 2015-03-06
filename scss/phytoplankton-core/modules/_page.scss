@@ -116,7 +116,7 @@
 
 .code-lang {
 	background-color: $bg-code-color;
-	color: #f8f8f2;
+	color: $text-code-color;
 	font-family: $headingFontFamily;
 	@include prem(padding, $padding-tabs);
 	text-transform: uppercase;
