@@ -1493,6 +1493,12 @@ ul[data-gumshoe] {
   right: 16px;
   z-index: 10;
 }
+.copy-to-clipboard + .copy-to-clipboard {
+  display: none;
+}
+.copy-to-clipboard.is-active {
+  display: block;
+}
 .copy-to-clipboard.zeroclipboard-is-hover {
   color: white;
 }

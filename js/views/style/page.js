@@ -244,25 +244,25 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 			require(['libs/zeroclipboard/dist/ZeroClipboard.min'], function(ZeroClipboard) {
 
-				$('pre[class*="language-"] code').each(function() {
+				$('pre[class*="language-"] code').each(function(i) {
 
-					var copy = $( "<div/>", {
-						"class": "copy-to-clipboard",
-						// "href" : "#",
-						"text": "Copy to Clipboard",
-						// "title": "Copy to Clipboard"
+					var copy = $( '<li/>', {
+						'class': 'copy-to-clipboard',
+						'id': 'copy-tab-' + (i +1),
+						// 'href' : '#',
+						'text': 'Copy to Clipboard',
+						// 'title': 'Copy to Clipboard'
 					}),
-					copyTooltip = $( "<div/>", {
-						"class": "tooltip",
-						// "href" : "#",
-						"text": "Copy to Clipboard",
-						// "title": "Copy to Clipboard"
+					copyTooltip = $( '<div/>', {
+						'class': 'tooltip',
+						// 'href' : '#',
+						'text': 'Copy to Clipboard',
+						// 'title': 'Copy to Clipboard'
 					}),
 					code = $(this).text(),
 					clip = new ZeroClipboard( copy, {
 						text: code
 					});
-
 
 					clip.on( 'ready', function(event) {
 						// console.log( 'movie is loaded' );
@@ -284,9 +284,13 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 						console.log( 'ZeroClipboard error of type "' + event.name + '": ' + event.message );
 						ZeroClipboard.destroy();
 					} );
-					$(this).parent().prev('.phytoplankton-tabs').append(copy);
-					// console.log(copy.offset());
+
 					copy.append(copyTooltip);
+
+					$(this).parent().prevAll('.phytoplankton-tabs').each(function() {
+						$(this).append(copy);
+					});
+
 				});
 
 			});
@@ -334,6 +338,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 				$(this).addClass('is-active');
 				$('#' + tab_id).addClass('is-active');
+				$('#copy-' + tab_id).addClass('is-active');
 			});
 
 			var pageHeadingHeight = 0;

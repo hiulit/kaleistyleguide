@@ -153,6 +153,12 @@
 	transition: color .25s ease-in-out;
 	right: 16px;
 	z-index: 10;
+	+ .copy-to-clipboard {
+		display: none;
+	}
+	&.is-active {
+		display: block;
+	}
 	&.zeroclipboard-is-hover {
 		color: rgba(255,255,255, 1);
 		.tooltip {
@@ -162,10 +168,6 @@
 }
 
 .phytoplankton-tabs {
-	// @include prem(margin-left, 16);
-	// @include prem(margin-bottom, -$padding-tabs-margin, !important);
-	// @include prem(margin-right, 16);
-	// @include prem(height, $padding-tabs*5);
 	background-color: #272822;
 	margin: 0 !important;
 	padding: 0;
