@@ -158,12 +158,6 @@
 	*vertical-align: auto;
 }
 
-@mixin box-sizing($box-type) {
-	-webkit-box-sizing: $box-type;
-	-moz-box-sizing: $box-type;
-	box-sizing: $box-type;
-}
-
 @mixin depth($depth: 1) {
 	$chain: '';
 	@for $i from 0 to $depth {
