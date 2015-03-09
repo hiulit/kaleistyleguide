@@ -16,6 +16,13 @@
 			display: block;
 		}
 	}
+	.svg-icon {
+		path,
+		polygon,
+		rect {
+			fill: #fff;
+		}
+	}
 }
 
 .phytoplankton-tabs__item {

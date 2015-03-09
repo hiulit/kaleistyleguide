@@ -731,8 +731,9 @@ pre[class*="language-"] a[href].md-link:hover {
 SVG Icons - svgicons.sparkk.fr
 ----- */
 .svg-icon {
-  width: 1em;
   height: 1em;
+  vertical-align: middle;
+  width: 1em;
 }
 
 .svg-icon path,
@@ -1050,6 +1051,11 @@ img {
 }
 .phytoplankton-tabs ~ pre.is-active {
   display: block;
+}
+.phytoplankton-tabs .svg-icon path,
+.phytoplankton-tabs .svg-icon polygon,
+.phytoplankton-tabs .svg-icon rect {
+  fill: #fff;
 }
 
 .phytoplankton-tabs__item {
