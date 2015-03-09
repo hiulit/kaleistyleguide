@@ -131,6 +131,12 @@ This creates a `<script>` tag in the `<head>`.
 
 You can change the default path from where to load external scripts in `config.js`.
 
+@javascript { "click.js" }
+
+```markup
+<button class="js-click">Click me!</button>
+```
+
  */
 /*
 # Phytoplankton styles

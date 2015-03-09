@@ -17,7 +17,6 @@ So go ahead and [master your Markdown](http://guides.github.com/overviews/master
 
 */
 
-
 /*
 # Getting Started
 
@@ -33,7 +32,6 @@ This is how this particular `js/config.js` looks like:
 
 */
 
-
 /*
 # Comments
 
@@ -42,7 +40,6 @@ Comment your style sheets like you would normally do, starting with `/ *` and en
 Each comment will become a new section.
 
 */
-
 
 /*
 # Headings
@@ -55,7 +52,6 @@ The rest of the headings won't appear as sections of the menu.
 
 */
 
-
 /*
 # Code blocks
 
@@ -64,7 +60,6 @@ You can write your code indented with 1 tab (or 4 spaces) to show it as a code b
 	I'm a code block! Indented with 1 tab (or 4 spaces)
 
 */
-
 
 /*
 # Syntax highlighter
@@ -102,7 +97,6 @@ And you'll get this:
 Unlike code blocks, there's no need for indentation when using the syntax highlighter.
 
 */
-
 
 /*
 # Rendering HTML
@@ -144,8 +138,13 @@ This creates a `<script>` tag in the `<head>`.
 
 You can change the default path from where to load external scripts in `config.js`.
 
- */
+@javascript { "click.js" }
 
+```markup
+<button class="js-click">Click me!</button>
+```
+
+ */
 
 /*
 # Phytoplankton styles
