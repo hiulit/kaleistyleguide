@@ -5,7 +5,7 @@
 	opacity: 0;
 	@include prem(padding, 6);
 	position: absolute;
-		@include prem(bottom, 36);
+		@include prem(bottom, 40);
 		left: 50%;
 	text-align: center;
 	text-transform: capitalize;
