@@ -9,6 +9,12 @@ define({
 			]
 		},
 		{
+			title: "Hola",
+			url: [
+				"phytoplankton-examples/_hola.scss"
+			]
+		},
+		{
 			title: "Documentation",
 			url: [
 				"phytoplankton-examples/docs/documentation.css"
