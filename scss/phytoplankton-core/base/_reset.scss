@@ -60,29 +60,25 @@ blockquote {
 
 table {
 	width: 100%;
+	display: table;
+	@media screen and (max-width: 700px) {
+		display: none;
+	}
 	&.stacktable {
-		&.small-only {
-			display: none;
-			tbody {
-				tr {
-					&:first-child {
-						display: none;
-					}
-				}
-				td {
-					text-align: center;
-					width: 50%;
+		display: none;
+		tbody {
+			tr {
+				.st-head-row-main {
+					display: none;
 				}
 			}
-			@media screen and (max-width: 700px) {
-				display: table;
+			td {
+				text-align: center;
+				width: 50%;
 			}
 		}
-		&.large-only {
+		@media screen and (max-width: 700px) {
 			display: table;
-			@media screen and (max-width: 700px) {
-				display: none;
-			}
 		}
 	}
 }
