@@ -452,7 +452,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 				content: [],
 				heading: [],
 				headingID: [],
-				scriptsArray: []
+				scriptsArray: [],
+				styles: [],
 			};
 
 			_.each(lexedCommentblock, function (comment) {
