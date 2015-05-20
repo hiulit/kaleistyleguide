@@ -181,43 +181,41 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			}
 
 			// NEEDS TO BE EXPORTED TO menu.js - START
+			function createMenu() {
+				var submenu = $('<ul data-gumshoe>');
+				var externalScripts = [];
 
-			// Creates the menu.
-			var submenu = $('<ul data-gumshoe>');
-			var externalScripts = [];
-
-			_.each(page.blocks, function (block) {
-				if(block.scriptsArray.length > 0) {
-					externalScripts.push(block.scriptsArray[0]);
-				}
-				var ul = $('<ul>');
-				_.each(block.heading, function(val, i) {
-					var li = $('<li>');
-					if(i >= 1) {
-						li.append($('<a href="#' + block.headingID[i] + '" data-scroll>').html(val));
-						ul.append(li);
-					} else {
-						li.append($('<a href="#' + block.headingID[i] + '" data-scroll>').html(val));
-						submenu.append(li);
+				_.each(page.blocks, function (block) {
+					if(block.scriptsArray.length > 0) {
+						externalScripts.push(block.scriptsArray[0]);
 					}
+					var ul = $('<ul>');
+					_.each(block.heading, function(val, i) {
+						var li = $('<li>');
+						if(i >= 1) {
+							li.append($('<a href="#' + block.headingID[i] + '" data-scroll>').html(val));
+							ul.append(li);
+						} else {
+							li.append($('<a href="#' + block.headingID[i] + '" data-scroll>').html(val));
+							submenu.append(li);
+						}
+					});
+					submenu.find('li:last').append(ul);
 				});
-				submenu.find('li:last').append(ul);
-			});
 
-			var styleDir = window.location.hash;
-			styleDir = styleDir.substr(styleDir.lastIndexOf('#') + 2);
+				var styleDir = window.location.hash;
+				styleDir = styleDir.substr(styleDir.lastIndexOf('#') + 2);
 
-			$('.phytoplankton-menu > ul > li > ul > li > ul').remove();
-			$('[data-sheet="' + styleDir + '"]').append(submenu);
-			// $('.phytoplankton-menu > ul > li > ul > li > ul > li:first-child').addClass('active');
+				$('.phytoplankton-menu > ul > li > ul > li > ul').remove();
+				$('[data-sheet="' + styleDir + '"]').append(submenu);
 
+				_.each(externalScripts, function (val, i) {
+					$('head').append(externalScripts[i]);
+				});
+			}
 			// NEEDS TO BE EXPORTED TO menu.js - END
 
 			this.$el.html(_.template(stylePageTemplate)({page: page, config: config, externalStyles: config.external_stylesheets}));
-
-			_.each(externalScripts, function (val, i) {
-				$('head').append(externalScripts[i]);
-			});
 
 			// Removes all <p> that contains @javascript
 			$('p:contains("@javascript")').remove();
@@ -225,7 +223,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			$('pre').addClass('line-numbers');
 
 			Prism.highlightAll();
-			Prism.fileHighlight();
+			Prism.fileHighlight(createMenu()); // createMenu lives here because it need filehighlight to be completed.
 			fixie.init();
 			$('table').stacktable();
 
@@ -263,9 +261,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 					}),
 					copyTooltip = $( '<div/>', {
 						'class': 'tooltip',
-						// 'href' : '#',
 						'text': 'Copy to Clipboard',
-						// 'title': 'Copy to Clipboard'
 					}),
 					code = $(this).text(),
 					clip = new ZeroClipboard( copy, {
@@ -273,8 +269,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 					});
 
 					clip.on( 'ready', function(event) {
-						// console.log( 'movie is loaded' );
-
 						clip.on( 'copy', function(event) {
 							event.clipboardData.setData('text/plain', code);
 						} );
