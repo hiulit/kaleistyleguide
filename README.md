@@ -79,6 +79,7 @@ Not tested on Opera nor on Safari.
 * RequireJS & Backbone optimization (separate modules, create components, etc.).
 * Add a view for showing colors, images (galleries, etc.).
 * Add loading state in pages.
+* Need **help** updating [sass.js](https://github.com/medialize/sass.js) to the latest version.
 
 ## Inspiration and alternatives
 
