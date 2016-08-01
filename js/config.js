@@ -24,7 +24,8 @@ define({
 			title: "Prepocessors",
 			url: [
 				"phytoplankton-examples/preprocessors/less.less",
-				"phytoplankton-examples/preprocessors/scss.scss"
+				"phytoplankton-examples/preprocessors/scss.scss",
+				"phytoplankton-examples/preprocessors/stylus.styl"
 			]
 		},
 		{

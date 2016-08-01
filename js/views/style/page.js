@@ -54,14 +54,14 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 			require(['text!'+ styleUrl], function (stylesheet) {
 				var parser = null;
-				var regex = /(?:.*\/)(.*)\.(css|less|sass|scss)$/gi;
+				var regex = /(?:.*\/)(.*)\.(css|styl|stylus|less|sass|scss)$/gi;
 				var result = regex.exec(styleUrl);
 					// result[0] Original Input.
 					// result[1] Filename.
 					// result[2] Extension.
 
 				if(result === null) {
-					return alert('You\'re missing the extension (.css, .sass, .scss, .less) in the URL.');
+					return alert('You\'re missing the extension (.css, .stylus, .styl, .less, .sass, .scss) in the URL.');
 				}
 
 				var page = {
@@ -72,27 +72,38 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 				switch (result[2]) {
 					case 'css':
-							var cssCompiled = that.remove_comments(cssUncompiled);
-							page = that.compute_css(stylesheet, cssUncompiled, cssCompiled, styleExt);
-							that.render_page(page);
-						break;
-					case 'less':
-							require(['libs/less/less'], function(less) {
-								if (less.render) { // Less v2.0.0 and above (not working actually).
-									less.render(stylesheet, function (e, result) {
-										var s = stylesheet;
-										if (!e) {
-											var cssCompiled = that.remove_comments(result.css);
-											page = that.compute_css(result.css, cssUncompiled, cssCompiled, styleExt);
-											that.render_page(page);
-										}
-										else {
-											showError(e);
-										}
-									});
-								}
+						var cssCompiled = that.remove_comments(cssUncompiled);
+						page = that.compute_css(stylesheet, cssUncompiled, cssCompiled, styleExt);
+						that.render_page(page);
+					break;
+					case 'styl':
+					case 'stylus':
+						require(['libs/stylus/stylus'], function() {
+							stylus(stylesheet).render(function(err, css) {
+								if (err) throw err;
+								var cssCompiled = that.remove_comments(css);
+								page = that.compute_css(css, cssUncompiled, cssCompiled, styleExt);
+								that.render_page(page);
 							});
-						break;
+						});
+					break;
+					case 'less':
+						require(['libs/less/less'], function(less) {
+							if (less.render) { // Less v2.0.0 and above (not working actually).
+								less.render(stylesheet, function (e, result) {
+									var s = stylesheet;
+									if (!e) {
+										var cssCompiled = that.remove_comments(result.css);
+										page = that.compute_css(result.css, cssUncompiled, cssCompiled, styleExt);
+										that.render_page(page);
+									}
+									else {
+										showError(e);
+									}
+								});
+							}
+						});
+					break;
 					case 'sass':
 					case 'scss':
 						if('querySelector' in document &&

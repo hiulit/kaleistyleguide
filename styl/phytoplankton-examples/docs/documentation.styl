@@ -1,0 +1,167 @@
+/*
+# Phytoplankton ♥ Markdown
+
+One of the great things about Phytoplankton is that you can use the same style sheets you're using right now in your project.
+How cool is that, right?
+
+You just need to comment your style sheets using [Markdown](http://daringfireball.net/projects/markdown/syntax)
+and then, boom!! The magic happens!
+
+You end up with a **fully documented style sheet and a beautifully auto-generated living style guide**.
+Killing two (tofu) birds with one stone.
+What a deal!
+
+Phytoplankton uses [marked.js](https://github.com/chjj/marked) as the Markdown parser, and by default, it has
+[GFM (GitHub Flavored Markdown)](https://help.github.com/articles/github-flavored-markdown) enabled.
+So go ahead and [master your Markdown](http://guides.github.com/overviews/mastering-markdown/).
+
+*/
+
+
+/*
+# Getting Started
+
+By default, Phytoplankton uses `imports.css` as a base style sheet to point at all the style sheets that you want to document.
+
+This is how this particular `imports.css` looks like:
+
+<pre data-src="css/imports.css"></pre>
+
+## Config.js
+
+There are 3 ways (well, actually 2) to point at your style sheets:
+
+1. `css_path` - This is, by far, the best way to go and the one that Phytoplankton uses by default.
+2. `css_path_url` - **Not supported yet!!!**
+3. `css_paths` - Manually enter an array of files.
+
+Just comment and uncomment the appropiate lines to make it work.
+
+<pre data-src="js/config.js"></pre>
+
+Either way, Phytoplankton **automatically creates a menu** out of your style sheets.
+
+*/
+
+
+/*
+# Comments
+
+Comment your style sheets like you would normally do, starting with `/ *` and ending with`* /`.
+
+Each comment will become a new section.
+
+*/
+
+
+/*
+# Headings
+
+The `<h1>` (or `#` in Markdown) and the `<h2>` (or `##` in Markdown) of the comments will become the titles and subtitles of the sections.
+
+These titles and subtitles will be converted into the left menu.
+
+The rest of the headings won't appear as sections of the menu.
+
+*/
+
+
+/*
+# Code blocks
+
+You can write your code indented with 1 tab (or 4 spaces) to show it as a code block, like this one:
+
+	I'm a code block! Indented with 1 tab (or 4 spaces)
+
+*/
+
+
+/*
+# Syntax highlighter
+
+*Phytoplankton uses [Prism](http://prismjs.com/) as the syntax highlighter. See more at [plugins/prism.scss](#/phytoplankton-examples/plugins/prism.scss)*.
+
+Wrap your code with
+[fenced code blocks](https://help.github.com/articles/github-flavored-markdown#fenced-code-blocks) `` ``` `` +
+`language code`, like this:
+
+	```scss
+	@mixin silly-links {
+		a {
+			color: blue;
+			background-color: red;
+		}
+	}
+
+	@include silly-links;
+	```
+
+And you'll get this:
+
+```scss
+@mixin silly-links {
+	a {
+		color: blue;
+		background-color: red;
+	}
+}
+
+@include silly-links;
+```
+
+Unlike code blocks, there's no need for indentation using the syntax highlighter.
+
+*/
+
+
+/*
+# Rendering HTML
+
+Wrap your code with
+[fenced code blocks](https://help.github.com/articles/github-flavored-markdown#fenced-code-blocks) `` ``` `` +
+`markup`, like this:
+
+	```markup
+	<section>
+		<h1>Heading</h1>
+		<p>Bunch of awesome content</p>
+	</section>
+	```
+
+Phytoplankton will automatically render the code as both HTML and the code block with syntax highlighting.
+
+```markup
+<section>
+	<h1>Heading</h1>
+	<p>Bunch of awesome content</p>
+</section>
+```
+
+*/
+
+
+/*
+# Phytoplankton styles
+
+To make sure that the rendered code of your style sheets is unaffected by Phytoplankton's styles,
+and vice versa, Phytoplankton wraps all your CSS in `.code-render`.
+
+These styles are appended at the end of `<div class="phytoplankton-page">` so they rank at the top of the
+[specificity wars](http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html).
+
+```
+<div class="phytoplankton-page">
+	<section class="phytoplankton-page__item"></section>
+	<section class="phytoplankton-page__item"></section>
+	<section class="phytoplankton-page__item"></section>
+	<style>
+		.code-render {
+			.whatever {
+				color: red;
+			}
+		}
+	</style>
+</div>
+```
+
+*/
