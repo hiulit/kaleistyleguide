@@ -519,6 +519,10 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 								});
 								// Pushes the tabs
 								if(styleExt !== 'css') {
+									if(styleExt == 'styl') {
+										styleExt = 'stylus';
+									}
+									
 									block.content.push({
 										type: 	'html',
 										text: 	'<ul class="phytoplankton-tabs">' +
