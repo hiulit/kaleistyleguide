@@ -9,7 +9,7 @@ define([
 	'hbs_context',
 	'hbs_helpers',
 	'gonzales',
-	'libs/prism/prism.min',
+	'libs/prism/prism',
 	'libs/stacktable/stacktable.min',
 	'libs/gumshoe/dist/js/classList.min'
 ],
@@ -477,7 +477,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 							block.scriptsArray.push(script);
 						}
 						block.content.push(comment);
-						break;
+					break;
 					case 'html':
 						preExt = $(comment.text). attr('data-src');
 						preExt = preExt.substr(preExt.lastIndexOf('.') +1);
@@ -500,7 +500,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 							});
 							block.content.push(comment);
 						}
-						break;
+					break;
 					case 'code':
 						// If there's no language:
 						// Push the code without example nor language header.
@@ -517,8 +517,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 									type: 'html',
 									text: '<div class="code-render clearfix">' + comment.text + '</div>'
 								});
+								// Pushes the tabs
 								if(styleExt !== 'css') {
-									// Pushes the tabs
 									block.content.push({
 										type: 	'html',
 										text: 	'<ul class="phytoplankton-tabs">' +
@@ -528,7 +528,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 												'</ul>'
 									});
 								} else {
-									// Pushes the tabs
 									block.content.push({
 										type: 	'html',
 										text: 	'<ul class="phytoplankton-tabs">' +
@@ -540,15 +539,23 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 								block.content.push(comment);
 
+								// Pushes the uncompiled styles
 								if(styleExt !== 'css') {
-									//Pushes the uncompiled styles
-									block.content.push({
-										type: 'code',
-										lang: styleExt,
-										text: cssUncompiled
-									});
+									if(styleExt == 'styl') {
+										block.content.push({
+											type: 'code',
+											lang: 'stylus',
+											text: cssUncompiled
+										});
+									} else {
+										block.content.push({
+											type: 'code',
+											lang: styleExt,
+											text: cssUncompiled
+										});
+									}
 								}
-								//Pushes the compiled styles
+								// Pushes the compiled styles
 								block.content.push({
 									type: 'code',
 									lang: 'css',
@@ -624,7 +631,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 							});
 							block.content.push(comment);
 						}
-						break;
+					break;
 					case 'heading':
 						// Fixes the sourceMappingURL from Sass files
 						if(comment.text.indexOf("sourceMappingURL=") === -1) {
@@ -632,11 +639,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 							block.headingID.push(comment.text.toLowerCase().replace(/\W+/g, '-'));
 							block.content.push(comment);
 						}
-						break;
+					break;
 					default:
 						// Push everything else.
 						block.content.push(comment);
-						break;
+					break;
 				}
 			});
 
