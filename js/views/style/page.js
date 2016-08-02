@@ -91,7 +91,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 						require(['libs/less/less'], function(less) {
 							if (less.render) { // Less v2.0.0 and above (not working actually).
 								less.render(stylesheet, function (e, result) {
-									var s = stylesheet;
 									if (!e) {
 										var cssCompiled = that.remove_comments(result.css);
 										page = that.compute_css(result.css, cssUncompiled, cssCompiled, styleExt);
@@ -390,6 +389,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 				css: ''
 			};
 
+			console.log("stylesheet --- \n\n" + stylesheet + "--- \n\n", "cssUncompiled --- \n\n" + cssUncompiled + "--- \n\n", "cssCompiled --- \n\n" + cssCompiled + "--- \n\n", "styleExt" + styleExt)
+
 			var cssArray = [];
 
 			var parsedStylesheet = gonzales.srcToCSSP(stylesheet);
@@ -445,7 +446,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 		parse_commentblock: function (parsedCommentBlock, cssUncompiled, cssCompiled, styleExt) {
 			// Removes /* & */.
 			parsedCommentBlock = parsedCommentBlock.replace(/(?:\/\*)|(?:\*\/)/gi, '');
-
+			console.log(parsedCommentBlock)
 			marked.setOptions(config.marked_options);
 
 			var lexedCommentblock = marked.lexer(parsedCommentBlock);
