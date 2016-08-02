@@ -19,12 +19,17 @@
 			}
 		}
 	}
-	p, ul, ol, pre, table, blockquote {
+	p,
+	ul,
+	ol,
+	pre,
+	table,
+	blockquote {
 		@include sassy-gridlover-margins(true);
 	}
 	p,
 	ol,
-	ul { // So it doesn't mess with PrismJs styl0 on <pre> and <code> blocks
+	ul { // So it doesn't mess with PrismJs styles on <pre> and <code> blocks
 		a {
 			color: $accent-color;
 			text-decoration: none;
@@ -54,7 +59,7 @@
 		}
 	}
 	pre {
-		@include md-depth(1, 2);
+		@include md-depth(1);
 		@include font-size(14);
 		@include prem(padding-top, 16);
 		&:not([class*="language-"]) {
