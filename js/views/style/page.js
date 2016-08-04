@@ -68,12 +68,12 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 					blocks: []
 				};
 
-				var cssUncompiled = stylesheet;
+				var rawStylesheet = stylesheet;
 
 				switch (result[2]) {
 					case 'css':
-						var cssCompiled = that.remove_comments(cssUncompiled);
-						page = that.compute_css(stylesheet, cssUncompiled, cssCompiled, styleExt);
+						var cssCompiled = that.remove_comments(rawStylesheet);
+						page = that.compute_css(rawStylesheet, cssCompiled, styleExt);
 						that.render_page(page);
 					break;
 					case 'styl':
@@ -82,7 +82,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 							stylus(stylesheet).render(function(err, css) {
 								if (err) throw err;
 								var cssCompiled = that.remove_comments(css);
-								page = that.compute_css(css, cssUncompiled, cssCompiled, styleExt);
+								page = that.compute_css(rawStylesheet, cssCompiled, styleExt);
 								that.render_page(page);
 							});
 						});
@@ -93,7 +93,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 								less.render(stylesheet, function (e, result) {
 									if (!e) {
 										var cssCompiled = that.remove_comments(result.css);
-										page = that.compute_css(result.css, cssUncompiled, cssCompiled, styleExt);
+										page = that.compute_css(rawStylesheet, cssCompiled, styleExt);
 										that.render_page(page);
 									}
 									else {
@@ -162,10 +162,9 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 								var cssCompiled = Sass.compile(stylesheet, function(result) {
 									console.log(result);
 								});
-								var stylesheetUncompiled = stylesheet;
-								var cssUncompiled = that.remove_comments(stylesheet);
+								var cssCompiled = that.remove_comments(cssCompiled);
 								// Parses the CSS.
-								page = that.compute_css(cssCompiled, stylesheetUncompiled, cssUncompiled, cssCompiled, styleExt);
+								page = that.compute_css(rawStylesheet, cssCompiled, styleExt);
 								that.render_page(page);
 							});
 						} else {
@@ -384,7 +383,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			});
 		},
 
-		compute_css: function(stylesheet, stylesheetUncompiled, cssUncompiled, cssCompiled, styleExt) {
+		compute_css: function(rawStylesheet, cssCompiled, styleExt) {
 			var page = {
 				blocks: [],
 				css: ''
@@ -393,88 +392,92 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			// Regular expressions to match comments. We only match comments in
 			// the beginning of lines. 
 			var commentRegexs = {
-			  single: /^\/\//, // Single line comments for Sass, Less and Stylus
-			  multiStart: /^\/\*/,
-			  multiEnd: /\*\//
+				single: /^\/\//, // Single line comments for Sass, Less and Stylus
+				multiStart: /^\/\*/,
+				multiEnd: /\*\//
 			};
 
 			// Check if a string is code or a comment (and which type of comment).
 			var checkType = function(str) {
-			  // Treat multi start and end on same row as a single line comment.
-			  if (str.match(commentRegexs.multiStart) && str.match(commentRegexs.multiEnd)) {
-			    return 'single';
-			  // Checking for multi line comments first to avoid matching single line
-			  // comment symbols inside multi line blocks.
-			  } else if (str.match(commentRegexs.multiStart)) {
-			    return 'multistart';
-			  } else if (str.match(commentRegexs.multiEnd)) {
-			    return 'multiend';
-			  } else if ((commentRegexs.single != null) && str.match(commentRegexs.single)) {
-			    return 'single';
-			  } else {
-			    return 'code';
-			  }
+				// Treat multi start and end on same row as a single line comment.
+				if (str.match(commentRegexs.multiStart) && str.match(commentRegexs.multiEnd)) {
+					return 'single';
+				// Checking for multi line comments first to avoid matching single line
+				// comment symbols inside multi line blocks.
+				} else if (str.match(commentRegexs.multiStart)) {
+					return 'multistart';
+				} else if (str.match(commentRegexs.multiEnd)) {
+					return 'multiend';
+				} else if ((commentRegexs.single != null) && str.match(commentRegexs.single)) {
+					return 'single';
+				} else {
+					return 'code';
+				}
 			};
 
 			var separate = function(css) {
-			  var lines = css.split('\n');
-			  console.log(lines)
-			  var docs, code, line, blocks = [];
-			  while (lines.length) {
-			    docs = code = '';
-			    // First check for any single line comments.
-			    while (lines.length && checkType(lines[0]) === 'single') {
-			      docs += formatDocs(lines.shift());
-			    }
-			    // A multi line comment starts here, add lines until comment ends.
-			    if (lines.length && checkType(lines[0]) === 'multistart') {
-			      while (lines.length) {
-			        line = lines.shift();
-			        docs += formatDocs(line);
-			        if (checkType(line) === 'multiend') break;
-			      }
-			    }
-			    while (lines.length && (checkType(lines[0]) === 'code' || checkType(lines[0]) === 'multiend')) {
-			      code += formatCode(lines.shift());
-			    }
-			    blocks.push({ docs: docs, code: code });
-			  }
-			  console.log(blocks)
-			  return blocks;
+				var lines = css.split('\n');
+				var docs, code, line, blocks = [];
+				
+				while (lines.length) {
+					docs = code = '';
+					// First check for any single line comments.
+					while (lines.length && checkType(lines[0]) === 'single') {
+						docs += formatDocs(lines.shift());
+					}
+					// A multi line comment starts here, add lines until comment ends.
+					if (lines.length && checkType(lines[0]) === 'multistart') {
+						while (lines.length) {
+							line = lines.shift();
+							docs += formatDocs(line);
+							if (checkType(line) === 'multiend') break;
+						}
+					}
+					while (lines.length && (checkType(lines[0]) === 'code' || checkType(lines[0]) === 'multiend')) {
+						code += formatCode(lines.shift());
+					}
+					blocks.push({ docs: docs, code: code });
+					page.blocks = page.blocks.concat(that.parse_commentblock(docs, rawStylesheet, cssCompiled, styleExt));
+				}
+
+			  	console.log(blocks)
+
+			  	return blocks;
 			};
 
 			var formatDocs = function(str) {
-			  // Filter out comment symbols
-			  for (var key in commentRegexs) {
-			    str = str.replace(commentRegexs[key], '');
-			  }
-			  return str + '\n';
+				// Filter out comment symbols
+				for (var key in commentRegexs) {
+					str = str.replace(commentRegexs[key], '');
+				}
+
+				return str + '\n';
 			};
 
 			var formatCode = function(str) {
-			  // Truncate base64 encoded strings
-			  return str.replace(/(;base64,)[^\)]*/, '$1...') + '\n';
+				// Truncate base64 encoded strings
+				return str.replace(/(;base64,)[^\)]*/, '$1...') + '\n';
 			};
 
-			separate(stylesheetUncompiled)
+			separate(rawStylesheet)
 
-
-			// console.log("stylesheet --- \n\n" + stylesheet + "--- \n\n", "cssUncompiled --- \n\n" + cssUncompiled + "--- \n\n", "cssCompiled --- \n\n" + cssCompiled + "--- \n\n", "styleExt" + styleExt)
+			// console.log("rawStylesheet --- \n\n" + rawStylesheet + "--- \n\n", "cssCompiled --- \n\n" + cssCompiled + "--- \n\n", "styleExt  --- \n\n" + styleExt)
 
 			var cssArray = [];
 
-			var parsedStylesheet = gonzales.srcToCSSP(stylesheet);
+			var parsedStylesheet = gonzales.srcToCSSP(cssCompiled);
 
 			_.each(parsedStylesheet, function(rule) {
 				if(rule[0] === 'ruleset') {
 					rule = gonzales.csspToSrc(rule);
 					cssArray.push('.code-render ' + rule);
-				} else if (rule[0] === 'comment') {
-					if(window.location.hash !== '') {
-						rule = gonzales.csspToSrc(rule);
-						page.blocks = page.blocks.concat(that.parse_commentblock(rule, cssUncompiled, cssCompiled, styleExt));
-					}
 				}
+				// else if (rule[0] === 'comment') {
+				// 	if(window.location.hash !== '') {
+				// 		rule = gonzales.csspToSrc(rule);
+				// 		page.blocks = page.blocks.concat(that.parse_commentblock(rule, cssUncompiled, cssCompiled, styleExt));
+				// 	}
+				// }
 			});
 
 			page.css = cssArray.join('');
