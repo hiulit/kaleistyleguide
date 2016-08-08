@@ -163,6 +163,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 									console.log(result);
 								});
 								var cssCompiled = that.remove_comments(cssCompiled);
+
+								that.separate(rawStylesheet);
 								// Parses the CSS.
 								page = that.compute_css(rawStylesheet, cssCompiled, styleExt);
 								that.render_page(page);
@@ -383,11 +385,9 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			});
 		},
 
-		compute_css: function(rawStylesheet, cssCompiled, styleExt) {
-			var page = {
-				blocks: [],
-				css: ''
-			};
+		separate: function(css) {
+			var lines = css.split('\n');
+			var docs, code, cssCompiled, line, blocks = [];
 
 			// Regular expressions to match comments. We only match comments in
 			// the beginning of lines. 
@@ -415,36 +415,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 				}
 			};
 
-			var separate = function(css) {
-				var lines = css.split('\n');
-				var docs, code, line, blocks = [];
-				
-				while (lines.length) {
-					docs = code = '';
-					// First check for any single line comments.
-					while (lines.length && checkType(lines[0]) === 'single') {
-						docs += formatDocs(lines.shift());
-					}
-					// A multi line comment starts here, add lines until comment ends.
-					if (lines.length && checkType(lines[0]) === 'multistart') {
-						while (lines.length) {
-							line = lines.shift();
-							docs += formatDocs(line);
-							if (checkType(line) === 'multiend') break;
-						}
-					}
-					while (lines.length && (checkType(lines[0]) === 'code' || checkType(lines[0]) === 'multiend')) {
-						code += formatCode(lines.shift());
-					}
-					blocks.push({ docs: docs, code: code });
-					page.blocks = page.blocks.concat(that.parse_commentblock(docs, rawStylesheet, cssCompiled, styleExt));
-				}
-
-			  	console.log(blocks)
-
-			  	return blocks;
-			};
-
 			var formatDocs = function(str) {
 				// Filter out comment symbols
 				for (var key in commentRegexs) {
@@ -458,8 +428,44 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 				// Truncate base64 encoded strings
 				return str.replace(/(;base64,)[^\)]*/, '$1...') + '\n';
 			};
+			
+			while (lines.length) {
+				docs = code = cssCompiled = '';
+				// First check for any single line comments.
+				while (lines.length && checkType(lines[0]) === 'single') {
+					docs += formatDocs(lines.shift());
+				}
+				// A multi line comment starts here, add lines until comment ends.
+				if (lines.length && checkType(lines[0]) === 'multistart') {
+					while (lines.length) {
+						line = lines.shift();
+						docs += formatDocs(line);
+						if (checkType(line) === 'multiend') break;
+					}
+				}
+				while (lines.length && (checkType(lines[0]) === 'code' || checkType(lines[0]) === 'multiend')) {
+					code += formatCode(lines.shift());
+				}
+				
+				blocks.push({
+					docs: docs,
+					code: code,
+					cssCompiled: code
+				});
+				
+				// page.blocks = page.blocks.concat(that.parse_commentblock(docs, rawStylesheet, cssCompiled, styleExt));
+			}
 
-			separate(rawStylesheet)
+		  	console.log(blocks)
+
+		  	return blocks;
+		},
+
+		compute_css: function(rawStylesheet, cssCompiled, styleExt) {
+			var page = {
+				blocks: [],
+				css: ''
+			};
 
 			// console.log("rawStylesheet --- \n\n" + rawStylesheet + "--- \n\n", "cssCompiled --- \n\n" + cssCompiled + "--- \n\n", "styleExt  --- \n\n" + styleExt)
 
