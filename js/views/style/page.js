@@ -10,7 +10,7 @@ define([
 	'hbs_helpers',
 	'gonzales',
 	'libs/prism/prism',
-	'libs/stacktable/stacktable.min',
+	'libs/stacktable/stacktable',
 	'libs/gumshoe/dist/js/classList.min'
 ],
 function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupObjects) {
