@@ -72,34 +72,69 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 				switch (result[2]) {
 					case 'css':
-						var cssCompiled = that.remove_comments(rawStylesheet);
-						page = that.compute_css(rawStylesheet, cssCompiled, styleExt);
+						var separate = that.separate(rawStylesheet);
+
+						var page = {
+							blocks: [],
+							css: ''
+						};
+
+						_.each(separate, function(i){
+							var cssCompiled = that.remove_comments(rawStylesheet);
+							i.cssCompiled = cssCompiled;
+							page.css = that.compute_css(i.cssCompiled);
+							page.blocks = page.blocks.concat(that.parse_commentblock(i.docs, i.code, i.cssCompiled, styleExt));
+						})
+
 						that.render_page(page);
 					break;
 					case 'styl':
 					case 'stylus':
 						require(['libs/stylus/stylus'], function() {
-							stylus(stylesheet).render(function(err, css) {
-								if (err) throw err;
-								var cssCompiled = that.remove_comments(css);
-								page = that.compute_css(rawStylesheet, cssCompiled, styleExt);
-								that.render_page(page);
-							});
+							var separate = that.separate(rawStylesheet);
+
+							var page = {
+								blocks: [],
+								css: ''
+							};
+							
+							_.each(separate, function(i){
+								stylus(i.code).render(function(err, css) {
+									if (err) throw err;
+									var cssCompiled = that.remove_comments(css);
+									i.cssCompiled = cssCompiled;
+									page.css = that.compute_css(i.cssCompiled);
+									page.blocks = page.blocks.concat(that.parse_commentblock(i.docs, i.code, i.cssCompiled, styleExt));
+								});
+							})
+							
+							that.render_page(page);
 						});
 					break;
 					case 'less':
 						require(['libs/less/less'], function(less) {
 							if (less.render) { // Less v2.0.0 and above (not working actually).
-								less.render(stylesheet, function (e, result) {
-									if (!e) {
-										var cssCompiled = that.remove_comments(result.css);
-										page = that.compute_css(rawStylesheet, cssCompiled, styleExt);
-										that.render_page(page);
-									}
-									else {
-										showError(e);
-									}
-								});
+								var separate = that.separate(rawStylesheet);
+
+								var page = {
+									blocks: [],
+									css: ''
+								};
+
+								_.each(separate, function(i){
+									less.render(stylesheet, function (e, result) {
+										if (!e) {
+											var cssCompiled = that.remove_comments(result.css);
+											i.cssCompiled = cssCompiled;
+											page.css = that.compute_css(i.cssCompiled);
+											page.blocks = page.blocks.concat(that.parse_commentblock(i.docs, i.code, i.cssCompiled, styleExt));
+										} else {
+											showError(e);
+										}
+									});
+								})
+
+								that.render_page(page);
 							}
 						});
 					break;
@@ -153,20 +188,29 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 								configPath = configPath.substr(0, configPath.lastIndexOf('/'));
 								// Recursive function to find all @imports.
 								findImports(stylesheet, configPath);
-								// Writes style sheet so sass.js can compile it.
-								Sass.writeFile(styleUrl, stylesheet);
-								Sass.options({
-									style: Sass.style.expanded
-								});
-								// Compiles Sass stylesheet into CSS.
-								var cssCompiled = Sass.compile(stylesheet, function(result) {
-									console.log(result);
-								});
-								var cssCompiled = that.remove_comments(cssCompiled);
+								
+								var separate = that.separate(rawStylesheet);
 
-								that.separate(rawStylesheet);
-								// Parses the CSS.
-								page = that.compute_css(rawStylesheet, cssCompiled, styleExt);
+								var page = {
+									blocks: [],
+									css: ''
+								};
+
+								_.each(separate, function(i){
+									Sass.writeFile(styleUrl, stylesheet);
+									Sass.options({
+										style: Sass.style.expanded
+									});
+									// Compiles Sass stylesheet into CSS.
+									var cssCompiled = Sass.compile(stylesheet, function(result) {
+										console.log(result);
+									});
+									var cssCompiled = that.remove_comments(cssCompiled);
+									i.cssCompiled = cssCompiled;
+									page.css = that.compute_css(i.cssCompiled);
+									page.blocks = page.blocks.concat(that.parse_commentblock(i.docs, i.code, i.cssCompiled, styleExt));
+								})
+								
 								that.render_page(page);
 							});
 						} else {
@@ -452,23 +496,12 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 					code: code,
 					cssCompiled: code
 				});
-				
-				// page.blocks = page.blocks.concat(that.parse_commentblock(docs, rawStylesheet, cssCompiled, styleExt));
 			}
-
-		  	console.log(blocks)
 
 		  	return blocks;
 		},
 
-		compute_css: function(rawStylesheet, cssCompiled, styleExt) {
-			var page = {
-				blocks: [],
-				css: ''
-			};
-
-			// console.log("rawStylesheet --- \n\n" + rawStylesheet + "--- \n\n", "cssCompiled --- \n\n" + cssCompiled + "--- \n\n", "styleExt  --- \n\n" + styleExt)
-
+		compute_css: function(cssCompiled) {
 			var cssArray = [];
 
 			var parsedStylesheet = gonzales.srcToCSSP(cssCompiled);
@@ -478,17 +511,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 					rule = gonzales.csspToSrc(rule);
 					cssArray.push('.code-render ' + rule);
 				}
-				// else if (rule[0] === 'comment') {
-				// 	if(window.location.hash !== '') {
-				// 		rule = gonzales.csspToSrc(rule);
-				// 		page.blocks = page.blocks.concat(that.parse_commentblock(rule, cssUncompiled, cssCompiled, styleExt));
-				// 	}
-				// }
 			});
 
-			page.css = cssArray.join('');
+			cssCompiled = cssArray.join('');
 
-			return page;
+			return cssCompiled;
 		},
 
 		// Remove (and trim) CSS comments.
