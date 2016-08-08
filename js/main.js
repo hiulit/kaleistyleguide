@@ -12,7 +12,6 @@ require.config({
 		fixie: 'libs/fixie/fixie.min',
 		// Require.js plugins
 		text: 'libs/require/text',
-		order: 'libs/require/order',
 		// HTML templates
 		templates: '../templates',
 		// Handlebars paths
