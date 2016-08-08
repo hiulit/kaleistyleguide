@@ -6,7 +6,7 @@ require.config({
 		jquery: 'libs/jquery/jquery-1.11.2.min',
 		underscore: 'libs/underscore/underscore-min',
 		backbone: 'libs/backbone/backbone-min',
-		handlebars: 'libs/handlebars/handlebars.min',
+		handlebars: 'libs/handlebars/handlebars-v4.0.5',
 		gonzales: 'libs/gonzales/gonzales.min',
 		marked: 'libs/marked/marked.min',
 		fixie: 'libs/fixie/fixie.min',
