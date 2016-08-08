@@ -11,7 +11,8 @@ define({
 		{
 			title: "Hola",
 			url: [
-				"phytoplankton-examples/_hola.scss"
+				"phytoplankton-examples/_hola.scss",
+				"phytoplankton-examples/hola.styl"
 			]
 		},
 		{
