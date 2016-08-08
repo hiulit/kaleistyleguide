@@ -120,11 +120,13 @@ Mad propz to all the great people behind the software listed below.
 
 Mad propz to this guy:
 
-* [Oriol Torras](https://github.com/otorras) ([@uriusfurius](https://twitter.com/uriusfurius)).
+* [Oriol Torras](https://github.com/otorras) ([@uriusfurius](https://twitter.com/uriusfurius)) for helping with [sass.js](https://github.com/medialize/sass.js).
 
 ## Credits
 
-* [Thomas Davis](http://thomasdavis.github.com) - For creating the amazing [Kalei - Living Style Guide](https://github.com/thomasdavis/kaleistyleguide/).
+* [Thomas Davis](http://thomasdavis.github.com) - For creating the amazing [Kalei - Living Style Guide](https://github.com/thomasdavis/kaleistyleguide). Phytoplankton is a highly modified fork of this project, but a fork nonetheless.
+
+* [Jacob Rask](https://github.com/jacobrask) - For creating the amazing [StyleDocco](https://github.com/jacobrask/styledocco). And also for open sourcing the project and letting me (and surely others) be able to implement some of his ideas critical to Phytoplankton.
 
 ## Unlicense
 
