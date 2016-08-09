@@ -216,7 +216,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 									});
 									var cssCompiled = that.remove_comments(cssCompiled);
 									i.cssCompiled = cssCompiled;
-									console.log(cssCompiled)
 									page.css = that.compute_css(cssArray, i.cssCompiled);
 									page.blocks = page.blocks.concat(that.parse_commentblock(i.docs, i.code, i.cssCompiled, styleExt));
 								})
@@ -560,6 +559,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 		parse_commentblock: function (parsedCommentBlock, cssUncompiled, cssCompiled, styleExt) {
 			// Removes /* & */.
 			parsedCommentBlock = parsedCommentBlock.replace(/(?:\/\*)|(?:\*\/)/gi, '');
+			
 			marked.setOptions(config.marked_options);
 
 			var lexedCommentblock = marked.lexer(parsedCommentBlock);
@@ -567,6 +567,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			var lexerLinks = lexedCommentblock.links || {};
 
 			var return_val = [];
+
 			var block = {
 				content: [],
 				heading: [],
@@ -770,6 +771,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			block.content = marked.parser(block.content);
 
 			return_val.push(block);
+
 			return return_val;
 		},
 
