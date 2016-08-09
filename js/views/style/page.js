@@ -79,10 +79,12 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 							css: ''
 						};
 
+						var cssArray = [];
+
 						_.each(separate, function(i){
 							var cssCompiled = that.remove_comments(rawStylesheet);
 							i.cssCompiled = cssCompiled;
-							page.css = that.compute_css(i.cssCompiled);
+							page.css = that.compute_css(cssArray, i.cssCompiled);
 							page.blocks = page.blocks.concat(that.parse_commentblock(i.docs, i.code, i.cssCompiled, styleExt));
 						})
 
@@ -98,15 +100,18 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 								css: ''
 							};
 							
+							var cssArray = [];
+
 							_.each(separate, function(i){
 								stylus(i.code).render(function(err, css) {
 									if (err) throw err;
 									var cssCompiled = that.remove_comments(css);
 									i.cssCompiled = cssCompiled;
-									page.css = that.compute_css(i.cssCompiled);
+									page.css = that.compute_css(cssArray, i.cssCompiled);
 									page.blocks = page.blocks.concat(that.parse_commentblock(i.docs, i.code, i.cssCompiled, styleExt));
 								});
 							})
+
 							
 							that.render_page(page);
 						});
@@ -121,12 +126,14 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 									css: ''
 								};
 
+								var cssArray = [];
+
 								_.each(separate, function(i){
 									less.render(stylesheet, function (e, result) {
 										if (!e) {
 											var cssCompiled = that.remove_comments(result.css);
 											i.cssCompiled = cssCompiled;
-											page.css = that.compute_css(i.cssCompiled);
+											page.css = that.compute_css(cssArray, i.cssCompiled);
 											page.blocks = page.blocks.concat(that.parse_commentblock(i.docs, i.code, i.cssCompiled, styleExt));
 										} else {
 											showError(e);
@@ -196,18 +203,21 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 									css: ''
 								};
 
+								var cssArray = [];
+
 								_.each(separate, function(i){
-									Sass.writeFile(styleUrl, stylesheet);
+									Sass.writeFile(styleUrl, i.code);
 									Sass.options({
 										style: Sass.style.expanded
 									});
 									// Compiles Sass stylesheet into CSS.
-									var cssCompiled = Sass.compile(stylesheet, function(result) {
+									var cssCompiled = Sass.compile(i.code, function(result) {
 										console.log(result);
 									});
 									var cssCompiled = that.remove_comments(cssCompiled);
 									i.cssCompiled = cssCompiled;
-									page.css = that.compute_css(i.cssCompiled);
+									console.log(cssCompiled)
+									page.css = that.compute_css(cssArray, i.cssCompiled);
 									page.blocks = page.blocks.concat(that.parse_commentblock(i.docs, i.code, i.cssCompiled, styleExt));
 								})
 								
@@ -501,9 +511,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 		  	return blocks;
 		},
 
-		compute_css: function(cssCompiled) {
-			var cssArray = [];
-
+		compute_css: function(cssArray, cssCompiled) {
 			var parsedStylesheet = gonzales.srcToCSSP(cssCompiled);
 
 			_.each(parsedStylesheet, function(rule) {
