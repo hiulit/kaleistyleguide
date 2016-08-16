@@ -43,14 +43,44 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			configPath = config.menu[0].url[0];
 
 			if(styleDir === '') {
-				styleExt = configPath.substr(configPath.lastIndexOf('.') +1);
+				styleExt = configPath.substr(configPath.lastIndexOf('.') + 1);
 				styleUrl = configDir + styleExt + '/' + configPath;
 				window.location.href =	configDir + '#/' + configPath;
 			} else {
-				styleExt = styleDir.substr(styleDir.lastIndexOf('.')+1);
+				styleExt = styleDir.substr(styleDir.lastIndexOf('.') + 1);
 				styleUrl = configDir + styleExt + '/' + styleDir;
 				configPath = styleDir;
 			}
+
+			// var getFiles = function(dirPath) {
+			// 	var filesArray = filesArray || [];
+			// 	var filesArray2 = filesArray2 || [];
+
+			// 	$.ajax({
+			// 		url: dirPath,
+			// 		success: function(data){
+			// 			$(data).find("a").slice(1).each(function(index){
+			// 				dataUrl = $(this).attr("href");
+
+			// 				newDirPath = dirPath + dataUrl;
+
+			// 				if(dataUrl.slice(-1) === '/') {
+			// 					getFiles(newDirPath);
+			// 				} else {
+			// 					filesArray.push(newDirPath);
+			// 				}
+			// 			});
+
+			// 			// console.log(filesArray2)
+
+			// 			return filesArray;
+			// 		}
+			// 	});
+			// }
+
+			// var lolo = [getFiles("styl/")];
+
+			// console.log(lolo);
 
 			require(['text!'+ styleUrl], function (stylesheet) {
 				var parser = null;
@@ -111,7 +141,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 									page.blocks = page.blocks.concat(that.parse_commentblock(i.docs, i.code, i.cssCompiled, styleExt));
 								});
 							})
-
 							
 							that.render_page(page);
 						});
