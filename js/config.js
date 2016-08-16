@@ -9,13 +9,6 @@ define({
 			]
 		},
 		{
-			title: "Hola",
-			url: [
-				"phytoplankton-examples/_hola.scss",
-				"phytoplankton-examples/hola.styl"
-			]
-		},
-		{
 			title: "Documentation",
 			url: [
 				"phytoplankton-examples/docs/documentation.css"
