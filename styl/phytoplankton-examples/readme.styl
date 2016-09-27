@@ -1,5 +1,7 @@
 /*
-# Generate bootstrap-like documentation for your own CSS!
+# Phytoplankton - Living Style Guide
+
+Generate a living style guide with your own CSS!
 
 This project aims at making sure your style sheets are fully documented whilst being synchronized with your project styles.
 
@@ -29,21 +31,22 @@ Just:
 1. [Download](https://github.com/hiulit/kaleistyleguide) the repository or `git clone https://github.com/hiulit/kaleistyleguide.git`
 2. Serve it on a HTTP server (or a local environment using [MAMP](http://www.mamp.info/),
  [XAMPP](http://www.apachefriends.org/), etc.)
-3. And it should work! :D
+3. And it should work! 😀
 
 */
 
 /*
 # Prepocessors support
 
-* [Sass](http://sass-lang.com/) ([libsass v2.0](https://github.com/sass/libsass/releases/tag/v2.0))
-* [Less](http://lesscss.org/) (v1.7.5)
+* [Sass](http://sass-lang.com/) ([libsass v3.1.0](https://github.com/sass/libsass/releases/tag/3.1.0))
+* [Less](http://lesscss.org/) ([v2.3.0](https://github.com/less/less.js/releases/tag/v2.3.0))
+* [Stylus](http://stylus-lang.com/) [v0.54.5](https://github.com/stylus/stylus/releases/tag/0.54.5)
 
-So you don't have to ever use again a preprocessor tool ;)
+So you don't have to ever use again a preprocessor tool 😉
 
 ## Notes
 
-Why don't you use the latest version of Sass (v3.4.5)?
+Why don't you use the [latest version of Sass](http://sass-lang.com/documentation/file.SASS_CHANGELOG.html)?
 
 Phytoplankton uses [sass.js](https://github.com/medialize/sass.js) for having Sass in the browser
 ([not a trivial task](http://blog.rodneyrehm.de/archives/33-libsass.js-An-Emscripten-Experiment.html), btw)
@@ -53,16 +56,20 @@ which in turn uses [libsass](https://github.com/hcatlin/libsass).
 
 **Update 2**: Here it is [The LibSass Compatibility Plan](https://github.com/sass/libsass/wiki/The-LibSass-Compatibility-Plan).
 
-*It seems that finally, thanks to the effort of a lot of people,  libsass will reach parity with Ruby Sass*.
+*It seems that finally, thanks to the effort of a lot of people, libsass will reach parity with Ruby Sass*.
 
 */
 
 /*
 # Browser support
 
-* Chrome
-* Firefox
-* IE 9+
+| 				| IE9 		| IE10+ 	| Firefox 	| Chrome	|
+| :--			| :-: 		| :-: 		| :-: 		| :-: 		|
+| CSS	 		| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
+| Sass 			| &#x2717;	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
+| Less 			| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
+| Handlebars 	| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
+| Prism 		| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
 
 Not tested on Opera nor on Safari.
 
@@ -71,16 +78,35 @@ Not tested on Opera nor on Safari.
 /*
 # Changelog
 
-## 0.1.0 (October 13th 2014)
+## Unreleased
 
 * Not officially released.
 
 */
 
 /*
+# To do
+
+* ~~Handlebars temaplates path configurable.~~
+* ~~Handlebars context and helpers paths configurable.~~
+* ~~Upgrade to Less 2.0.0 and above.~~
+* ~~Add styles tab name dynamically (scss, less, etc).~~
+* ~~Create tooltips (for ZeroClipboard).~~
+* ~~Fix tooltips overflow issue.~~
+* ~~Fix tabs scroll.~~
+* Improve tabs system.
+* Fix issue with Prism's File Highlight plugin async loading causing Gumshoe and ZeroClipboard (e.g. <pre data-src="") not to work properly.
+* RequireJS & Backbone optimization (separate modules, create components, etc.).
+* Add a view for showing colors, images (galleries, etc.).
+* Add loading state in pages.
+* Need **help** updating [sass.js](https://github.com/medialize/sass.js) to the latest version.
+
+ */
+
+/*
 # Inspiration and alternatives
 
-Phytoplankton is heavily influenced by the projects found in [the Style Guide guide](http://vinspee.me/style-guide-guide/).
+Phytoplankton is heavily influenced by the projects found in [http://styleguides.io/](http://styleguides.io/) and [the Style Guide guide](http://vinspee.me/style-guide-guide/).
 
 */
 
@@ -89,21 +115,27 @@ Phytoplankton is heavily influenced by the projects found in [the Style Guide gu
 
 Mad propz to all the great people behind the software listed below.
 
-* [marked.js](https://github.com/chjj/marked) - Full-featured markdown parser and compiler in Javascript.
-* [Less](http://lesscss.org/) - CSS pre-prepocessor.
-* [sass.js](https://github.com/medialize/sass.js) - API for emscripted libsass to run in the browser.
-* [Fixie.js](https://github.com/ryhan/fixie) - Automatically add filler content to HTML documents.
-* [Prism](http://prismjs.com/) - Lightweight, robust, elegant syntax highlighting.
 * [RequireJS](http://requirejs.org/) - JavaScript file and module loader.
 * [Backbone.js](http://backbonejs.org/) - Gives structure to web applications by providing models, collections and views.
 * [Underscore.js](http://underscorejs.org/) - JavaScript library that provides a whole mess of useful functional programming helpers without extending any built-in objects.
 * [Handlebars.js](http://handlebarsjs.com/) - Minimal templating on steroids.
 * [jQuery](http://jquery.com) - Fast, small, and feature-rich JavaScript library.
+* [marked.js](https://github.com/chjj/marked) - Full-featured markdown parser and compiler in Javascript.
+* [gonzales](https://github.com/css/gonzales) - Fast CSS parser.
+* [sass.js](https://github.com/medialize/sass.js) - API for emscripted libsass to run in the browser.
+* [Less](http://lesscss.org/) - CSS pre-prepocessor.
+* [Prism](http://prismjs.com/) - Lightweight, robust, elegant syntax highlighting.
+* [Fixie.js](https://github.com/hiulit/fixie) - Automatically add filler content to HTML documents (featuring the awesome [VeganIpsum - All filler, no killer](http://bengreen.org.uk/veganipsum/)).
+* [Gumshoe](https://github.com/cferdinandi/gumshoe) - A simple, framework-agnostic scrollspy script.
+* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll) - A simple vanilla JS script to animate scrolling to anchor links.
 
-Extras:
+## Extras
 
 * [Sassy-Gridlover](https://github.com/hiulit/Sassy-Gridlover) - Super easy to use Sass mixins to establish a typographic system with modular scale and vertical rhythm.
-* [Vegan Sass Burger](http://joren.co/sass-burger/) - A Sass mixin for creating (100% vegan) hamburger icons.
+* [Sass Vegan Burger](https://github.com/hiulit/sass-burger) - A Sass mixin for creating (100% vegan) hamburger icons.
+* [Stacktable](https://github.com/johnpolacek/stacktable.js/) - jQuery plugin for stacking tables on small screens.
+* [ZeroClipboard](https://github.com/zeroclipboard/zeroclipboard) - A library that provides an easy way to copy text to the clipboard.
+* [Material Palette](http://www.materialpalette.com/teal/green) - Material design color palette generator.
 
 */
 
@@ -117,7 +149,7 @@ Extras:
 /*
 # Contributors
 
-Mad propz again to this guy:
+Mad propz to this guy:
 
 * [Oriol Torras](https://github.com/otorras) ([@uriusfurius](https://twitter.com/uriusfurius)).
 

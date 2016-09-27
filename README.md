@@ -24,15 +24,16 @@ Just:
 1. [Download](https://github.com/hiulit/kaleistyleguide) the repository or `git clone https://github.com/hiulit/kaleistyleguide.git`
 2. Serve it on a HTTP server (or a local environment using [MAMP](http://www.mamp.info/),
  [XAMPP](http://www.apachefriends.org/), etc.)
-3. And it should work! :D
+3. And it should work! 😀
 
 ## Prepocessors support
 
 * [Sass](http://sass-lang.com/) ([libsass v3.1.0](https://github.com/sass/libsass/releases/tag/3.1.0))
 * [Less](http://lesscss.org/) ([v2.3.0](https://github.com/less/less.js/releases/tag/v2.3.0))
 * [Stylus](http://stylus-lang.com/) ([v0.54.5](https://github.com/stylus/stylus/releases/tag/0.54.5))
+* [Stylus](http://stylus-lang.com/) [v0.54.5](https://github.com/stylus/stylus/releases/tag/0.54.5)
 
-So you don't have to ever use again a preprocessor tool ;)
+So you don't have to ever use again a preprocessor tool 😉
 
 ### Notes
 
