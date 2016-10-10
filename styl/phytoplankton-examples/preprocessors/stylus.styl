@@ -18,17 +18,16 @@ Here you have a little example to see [Stylus](http://stylus-lang.com/try.html) 
 
  */
 
-$nice-blue = red
-$light-blue = $nice-blue + #555
+$nice-red = red
+$light-red = $nice-red + #555
 
 $base = 5%
 $filler = $base * 2
 $other = $base + $filler
 
 #header
-	color: $nice-blue
+	color: $nice-red
 
 p
-	color: #888 / 4
-	background-color: $light-blue
-	padding: 100% / 50 + $filler
+	background-color: $light-red
+	padding: (100% / 50 + $filler)
