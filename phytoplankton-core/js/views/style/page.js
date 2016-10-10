@@ -44,11 +44,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 			if(styleDir === '') {
 				styleExt = configPath.substr(configPath.lastIndexOf('.') + 1);
-				styleUrl = configDir + styleExt + '/' + configPath;
+				styleUrl = configDir + config.styleguideFolder + '/' + styleExt + '/' + configPath;
 				window.location.href =	configDir + '#/' + configPath;
 			} else {
 				styleExt = styleDir.substr(styleDir.lastIndexOf('.') + 1);
-				styleUrl = configDir + styleExt + '/' + styleDir;
+				styleUrl = configDir + config.styleguideFolder + '/' + styleExt + '/' + styleDir;
 				configPath = styleDir;
 			}
 

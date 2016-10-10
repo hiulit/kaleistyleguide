@@ -1,7 +1,4 @@
-@import "../../../phytoplankton-core/scss/base/variables";
-@import "../../../phytoplankton-core/scss/base/colors";
-@import "../../../phytoplankton-core/scss/base/mixins";
-
+@charset "UTF-8";
 /*
 # Handlebars.js
 
@@ -13,7 +10,7 @@
 /*
 # Templates
 
-Templates are placed in `templates/hbs/`.
+Templates are placed in `phytoplankton-core/templates/hbs/`.
 
 You can configure it though. Just change the path in the `config.js`.
 
@@ -21,23 +18,23 @@ You can configure it though. Just change the path in the `config.js`.
 /*
 # Context
 
-Context objects are placed in `js/hbs/context.js`.
+Context objects are placed in `phytoplankton-core/js/hbs/context.js`.
 
-<pre data-src="js/hbs/context.js"></pre>
+<pre data-src="phytoplankton-core/js/hbs/context.js"></pre>
 
-Path also configurable via `js/main.js`.
+Path also configurable via `phytoplankton-core/js/main.js`.
 
 */
 /*
 # Helpers
 
-Helpers are placed in `js/hbs/helpers.js`.
+Helpers are placed in `phytoplankton-core/js/hbs/helpers.js`.
 
-<pre data-src="js/hbs/helpers.js"></pre>
+<pre data-src="phytoplankton-core/js/hbs/helpers.js"></pre>
 
 Guess what?
 
-*Tip: Change the path in `js/main.js`* 😉
+*Tip: Change the path in `phytoplankton-core/js/main.js`* 😉
 
 */
 /*
@@ -58,7 +55,8 @@ Phytoplankton will automatically render the code as both HTML and the code block
 ```
 
 */
-
 h1 {
-	color: purple;
+  color: purple;
 }
+
+/*# sourceMappingURL=handlebars.css.map */

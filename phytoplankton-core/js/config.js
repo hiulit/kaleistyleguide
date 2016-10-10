@@ -1,5 +1,8 @@
 define({
 
+	// Your style guide folder
+	styleguideFolder: "phytoplankton-styleguide",
+
 	// Set menu.
 	menu: [
 		{
@@ -25,7 +28,7 @@ define({
 		{
 			title: "Plugins",
 			url: [
-				"phytoplankton-examples/plugins/fixie.less",
+				"phytoplankton-examples/plugins/fixie.css",
 				"phytoplankton-examples/plugins/handlebars.css",
 				"phytoplankton-examples/plugins/prism.css"
 			]
@@ -41,10 +44,10 @@ define({
 	},
 
 	// Handlebars templates path.
-	hbs_template_path: "templates/hbs/",
+	hbs_template_path: "phytoplankton-core/templates/hbs/",
 
 	// External scripts you may need to use.
-	external_scripts_path: 'js/external-scripts/',
+	external_scripts_path: 'phytoplankton-core/js/external-scripts/',
 
 	// Enter URLs of any external stylesheets you wish to include.
 	// These will not be parsed as part of the documentation and are simply loaded into the page header.
