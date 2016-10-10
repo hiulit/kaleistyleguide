@@ -25,7 +25,7 @@ define({
 		{
 			title: "Plugins",
 			url: [
-				"phytoplankton-examples/plugins/fixie.css",
+				"phytoplankton-examples/plugins/fixie.less",
 				"phytoplankton-examples/plugins/handlebars.css",
 				"phytoplankton-examples/plugins/prism.css"
 			]
