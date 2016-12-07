@@ -52,36 +52,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 				configPath = styleDir;
 			}
 
-			// var getFiles = function(dirPath) {
-			// 	var filesArray = filesArray || [];
-			// 	var filesArray2 = filesArray2 || [];
-
-			// 	$.ajax({
-			// 		url: dirPath,
-			// 		success: function(data){
-			// 			$(data).find("a").slice(1).each(function(index){
-			// 				dataUrl = $(this).attr("href");
-
-			// 				newDirPath = dirPath + dataUrl;
-
-			// 				if(dataUrl.slice(-1) === '/') {
-			// 					getFiles(newDirPath);
-			// 				} else {
-			// 					filesArray.push(newDirPath);
-			// 				}
-			// 			});
-
-			// 			// console.log(filesArray2)
-
-			// 			return filesArray;
-			// 		}
-			// 	});
-			// }
-
-			// var lolo = [getFiles("styl/")];
-
-			// console.log(lolo);
-
 			require(['text!'+ styleUrl], function (stylesheet) {
 				var parser = null;
 				var regex = /(?:.*\/)(.*)\.(css|styl|stylus|less|sass|scss)$/gi;
@@ -123,7 +93,36 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 					case 'styl':
 					case 'stylus':
 						require(['libs/stylus/stylus'], function() {
-							var separate = that.separate(rawStylesheet);
+                            var allImports;
+                            var separate;
+
+                            if (config.mainPreprocessorStyleSheet) {
+                                $.ajax({
+                                    url: config.styleguideFolder + "/" + config.mainPreprocessorStyleSheet,
+                                    async: false,
+                                    cache: true,
+                                    success: function(data){
+                                        configPath = config.styleguideFolder + "/" + config.mainPreprocessorStyleSheet;
+                                        configPath = configPath.substr(0, configPath.lastIndexOf('/'));
+                                        // Recursive function to find all @imports.
+                                        allImports = that.find_imports(data, configPath, styleExt);
+
+                                        allImports = allImports.join('');
+                                        allImports = that.remove_comments(allImports)
+                                        allImports = that.separate(allImports + rawStylesheet)
+                                       stylus(allImports[0].cssCompiled + rawStylesheet).render(function(err, css) {
+                                            if (err) throw err;
+                                            separate = that.separate(css);
+                                            separate[1].code = that.remove_comments(rawStylesheet);
+                                            // Removes unnecessary first element of the array.
+                                            separate.shift();
+                                            console.log(separate)
+                                        });
+                                    }
+                                });
+                            } else {
+                                var separate = that.separate(rawStylesheet);
+                            }
 
 							var page = {
 								blocks: [],
@@ -133,7 +132,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 							var cssArray = [];
 
 							_.each(separate, function(i){
-								stylus(i.code).render(function(err, css) {
+								stylus(i.cssCompiled).render(function(err, css) {
 									if (err) throw err;
 									var cssCompiled = that.remove_comments(css);
 									i.cssCompiled = cssCompiled;
@@ -466,6 +465,114 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 				paddingBottom();
 			});
 		},
+        
+        find_imports: function(str, basepath, styleExt) {
+            var finalCss = finalCss || [];
+            // var url = configDir + styleExt + '/';
+            var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
+            var match, matches = [];
+            while ((match = regex.exec(str)) !== null) {
+                matches.push(match[1]);
+            }
+            _.each(matches, function(match) {
+                // Check if it's a filename
+                var path = match.split('/');
+                var filename, fullpath, _basepath = basepath;
+
+                if (path.length > 1) {
+                    filename = path.pop();
+                    var something, basepathParts;
+                    if (_basepath) {
+                        basepathParts = _basepath.split('/');
+                    }
+                    while ((something = path.shift()) === '..') {
+                        basepathParts.pop();
+                    }
+                    if (something) {
+                        path.unshift(something);
+                    }
+                    _basepath = (basepathParts ? basepathParts.join('/') + '/' : '') + path.join('/');
+                } else {
+                    filename = path.join('');
+                }
+                if (filename === "*") {
+                    filename = "";
+                    var files;
+                    files = that.get_files(_basepath + '/' + filename);
+                    _.each(files, function(file) {
+                        $.ajax({
+                            url: file,
+                            async: false,
+                            cache: true,
+                            success: function(data){
+                                var separate = that.separate(data);
+                                _.each(separate, function(css){
+                                    finalCss.push(css.code);
+                                });
+                            }
+                        });
+                        // require(["text!../../" + file], function(file) {
+                        //     var separate = that.separate(file);
+                        //     _.each(separate, function(css){
+                        //         finalCss.push(css.code);
+                        //     });
+                        // });
+                    });
+                } else {
+                    filename = filename + '.' + styleExt;
+                }
+                if (filename != "") {
+                    fullpath = _basepath + '/' + filename;
+                    var importContent = fullpath;
+                    $.ajax({
+                        url: importContent,
+                        async: false,
+                        cache: true,
+                        success: function(data){
+                            var separate = that.separate(data);
+                            _.each(separate, function(css){
+                                finalCss.push(css.code);
+                            });
+                        }
+                    });
+                    // require(["text!../../" + importContent], function(importContent) {
+                    //     var separate = that.separate(importContent);
+                    //     _.each(separate, function(css){
+                    //         finalCss.push(css.code);
+                    //     });
+                    // });
+
+                    that.find_imports(importContent, _basepath, styleExt);
+                }
+            });
+
+            return finalCss;
+        },
+
+        get_files: function(dirPath) {
+            var filesArray = filesArray || [];
+            $.ajax({
+                url: dirPath,
+                async: false,
+                cache: true,
+                success: function(data){
+                    $(data).find("a").slice(1).each(function(index){
+                        dataUrl = $(this).attr("href");
+
+                        newDirPath = dirPath + dataUrl;
+
+                        if (dataUrl.slice(-1) === '/') {
+                            that.get_files(newDirPath);
+                        } else {
+                            filesArray.push(newDirPath);
+                        }
+                    });
+                }
+            });
+            
+            // console.log(filesArray)
+            return filesArray;
+        },
 
 		separate: function(css) {
 			var lines = css.split('\n');
@@ -562,6 +669,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			stylesheet = stylesheet.replace(/((^\s+|\s+$))/g,'');
 			// Remove extra line breaks.
 			stylesheet = stylesheet.replace(/(\n\s*\n)/g, '\n\n');
+
 			return stylesheet;
 		},
 
@@ -579,6 +687,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 					template = Handlebars.compile(source);
 				}
 			});
+
 			return [
 				template(obj),
 				source
@@ -805,5 +914,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 		},
 
 	});
+
 	return StylePage;
 });
