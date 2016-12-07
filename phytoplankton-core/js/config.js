@@ -1,10 +1,20 @@
 define({
 
 	// Your style guide folder
-	styleguideFolder: "phytoplankton-styleguide",
+	styleguideFolder: "test",
+
+    // Your main.styl (or the like) where you have all your "@import"
+    mainPreprocessorStyleSheet: "styl/stylus/main.styl",
 
 	// Set menu.
 	menu: [
+		{
+			title: "TEST",
+			url: [
+                "stylus/components/buttons.styl",
+				"stylus/components/progress-bar.styl"
+			]
+		},
 		{
 			title: "Phytoplankton Style Guide",
 			url: [
