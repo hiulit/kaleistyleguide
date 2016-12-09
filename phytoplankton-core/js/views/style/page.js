@@ -116,7 +116,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                             separate[1].code = that.remove_comments(rawStylesheet);
                                             // Removes unnecessary first element of the array.
                                             separate.shift();
-                                            console.log(separate)
                                         });
                                     }
                                 });
@@ -133,7 +132,10 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 							_.each(separate, function(i){
 								stylus(i.cssCompiled).render(function(err, css) {
-									if (err) throw err;
+									if (err) {
+                                        console.log("This file might need another file to work, like a \"main.styl\" (or the like), where you have all your \"@import\". Take a look at \"phytoplankton-core/js/config.js\" to add or edit yours.")
+                                        throw err;
+                                    }
 									var cssCompiled = that.remove_comments(css);
 									i.cssCompiled = cssCompiled;
 									page.css = that.compute_css(cssArray, i.cssCompiled);
