@@ -1,20 +1,13 @@
 define({
 
 	// Your style guide folder
-	styleguideFolder: "test",
+	styleguideFolder: "phytoplankton-styleguide",
 
     // Your main.styl (or the like) where you have all your "@import"
-    mainPreprocessorStyleSheet: "styl/stylus/main.styl",
+    mainPreprocessorStyleSheet: "",
 
 	// Set menu.
 	menu: [
-		{
-			title: "TEST",
-			url: [
-                "stylus/components/buttons.styl",
-				"stylus/components/progress-bar.styl"
-			]
-		},
 		{
 			title: "Phytoplankton Style Guide",
 			url: [
@@ -60,7 +53,7 @@ define({
 	external_scripts_path: 'phytoplankton-core/js/external-scripts/',
 
 	// Enter URLs of any external stylesheets you wish to include.
-	// These will not be parsed as part of the documentation and are simply loaded into the page header.
+	// These will not be parsed as part of the documentation and are simply loaded into the page's header.
 	external_stylesheets: []
 
 });
