@@ -98,11 +98,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
                             if (config.mainPreprocessorStyleSheet) {
                                 $.ajax({
-                                    url: config.styleguideFolder + "/" + config.mainPreprocessorStyleSheet,
+                                    url: config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet,
                                     async: false,
                                     cache: true,
                                     success: function(data){
-                                        configPath = config.styleguideFolder + "/" + config.mainPreprocessorStyleSheet;
+                                        configPath = config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet;
                                         configPath = configPath.substr(0, configPath.lastIndexOf('/'));
                                         // Recursive function to find all @imports.
                                         allImports = that.find_imports(data, configPath, styleExt);
@@ -184,6 +184,40 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 							'addEventListener' in window) {
 							// Loads sass.js
 							require(['libs/sassjs/dist/sass.min'], function(Sass) {
+
+                                if (config.mainPreprocessorStyleSheet) {
+                                    $.ajax({
+                                        url: config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet,
+                                        async: false,
+                                        cache: true,
+                                        success: function(data){
+                                            configPath = config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet;
+                                            configPath = configPath.substr(0, configPath.lastIndexOf('/'));
+                                            // Recursive function to find all @imports.
+                                            allImports = that.find_imports(data, configPath, styleExt);
+                                            allImports = allImports.join('');
+                                            allImports = that.remove_comments(allImports)
+                                            allImports = that.separate(allImports + rawStylesheet)
+                                            // stylus(allImports[0].cssCompiled + rawStylesheet).render(function(err, css) {
+                                            //     if (err) throw err;
+                                            //     separate = that.separate(css);
+                                            //     separate[1].code = that.remove_comments(rawStylesheet);
+                                            //     // Removes unnecessary first element of the array.
+                                            //     separate.shift();
+                                            // });
+                                            // Sass.writeFile(styleUrl, allImports[0].cssCompiled + rawStylesheet);
+                                            // Sass.options({
+                                            //     style: Sass.style.expanded
+                                            // });
+                                            // // Compiles Sass stylesheet into CSS.
+                                            // var cssCompiled = Sass.compile(allImports[0].cssCompiled + rawStylesheet, function(result) {
+                                            //     console.log(result);
+                                            // });
+                                            // var cssCompiled = that.remove_comments(cssCompiled);
+                                        }
+                                    });
+                                }
+
 								// Thanks, so many thanks to Oriol Torras @uriusfurius.
 								function findImports(str, basepath) {
 									var url = configDir + styleExt + '/';
@@ -501,27 +535,49 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                     filename = "";
                     var files;
                     files = that.get_files(_basepath + '/' + filename);
-                    _.each(files, function(file) {
-                        $.ajax({
-                            url: file,
-                            async: false,
-                            cache: true,
-                            success: function(data){
-                                var separate = that.separate(data);
-                                _.each(separate, function(css){
-                                    finalCss.push(css.code);
+                    if (files.length) {
+                        _.each(files, function(file) {
+                            $.ajax({
+                                url: file,
+                                async: false,
+                                cache: true,
+                                success: function(data){
+                                    var separate = that.separate(data);
+                                    _.each(separate, function(css){
+                                        finalCss.push(css.code);
+                                    });
+                                }
+                            });
+                        });
+                    }
+                } else {
+                    if (styleExt == "scss" || styleExt == "sass") {
+                        filename = "_" + filename + '.' + styleExt;
+                    } else {
+                        filename = filename + '.' + styleExt;
+                    }
+
+                    fullpath = _basepath + '/' + filename;
+                    var importContent = fullpath;
+                    var files;
+
+                    $.ajax({
+                        url: importContent,
+                        async: false,
+                        cache: true,
+                        success: function(data){
+                            files = that.find_imports(data, _basepath, styleExt);
+                            if (files.length) {
+                                console.log(files)
+                                _.each(files, function(file) {
+                                    var separate = that.separate(file);
+                                    _.each(separate, function(css){
+                                        finalCss.push(css.code);
+                                    });
                                 });
                             }
-                        });
-                        // require(["text!../../" + file], function(file) {
-                        //     var separate = that.separate(file);
-                        //     _.each(separate, function(css){
-                        //         finalCss.push(css.code);
-                        //     });
-                        // });
+                        }
                     });
-                } else {
-                    filename = filename + '.' + styleExt;
                 }
                 if (filename != "") {
                     fullpath = _basepath + '/' + filename;
@@ -537,17 +593,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                             });
                         }
                     });
-                    // require(["text!../../" + importContent], function(importContent) {
-                    //     var separate = that.separate(importContent);
-                    //     _.each(separate, function(css){
-                    //         finalCss.push(css.code);
-                    //     });
-                    // });
-
                     that.find_imports(importContent, _basepath, styleExt);
                 }
             });
 
+            console.log(finalCss);
             return finalCss;
         },
 

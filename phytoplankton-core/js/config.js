@@ -1,13 +1,19 @@
 define({
 
-	// Your style guide folder
-	styleguideFolder: "phytoplankton-styleguide",
+	// Your style guide folder.
+	styleguideFolder: "test-scss",
 
-    // Your main.styl (or the like) where you have all your "@import"
-    mainPreprocessorStyleSheet: "",
+    // Your main.styl (or the like) where you have all your "@import".
+    mainPreprocessorStyleSheet: "beezy.default.scss",
 
 	// Set menu.
 	menu: [
+        {
+            title: "test",
+            url: [
+                "components/_accordion.scss"
+            ]
+        },
 		{
 			title: "Phytoplankton Style Guide",
 			url: [
