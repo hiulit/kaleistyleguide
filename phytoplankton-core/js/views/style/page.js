@@ -110,7 +110,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                         allImports = allImports.join('');
                                         allImports = that.remove_comments(allImports)
                                         allImports = that.separate(allImports + rawStylesheet)
-                                       stylus(allImports[0].cssCompiled + rawStylesheet).render(function(err, css) {
+                                       	stylus(allImports[0].cssCompiled + rawStylesheet).render(function(err, css) {
                                             if (err) throw err;
                                             separate = that.separate(css);
                                             separate[1].code = that.remove_comments(rawStylesheet);
@@ -195,72 +195,71 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                             configPath = configPath.substr(0, configPath.lastIndexOf('/'));
                                             // Recursive function to find all @imports.
                                             allImports = that.find_imports(data, configPath, styleExt);
+                                            
                                             allImports = allImports.join('');
                                             allImports = that.remove_comments(allImports)
                                             allImports = that.separate(allImports + rawStylesheet)
-                                            // stylus(allImports[0].cssCompiled + rawStylesheet).render(function(err, css) {
-                                            //     if (err) throw err;
-                                            //     separate = that.separate(css);
-                                            //     separate[1].code = that.remove_comments(rawStylesheet);
-                                            //     // Removes unnecessary first element of the array.
-                                            //     separate.shift();
-                                            // });
-                                            // Sass.writeFile(styleUrl, allImports[0].cssCompiled + rawStylesheet);
-                                            // Sass.options({
-                                            //     style: Sass.style.expanded
-                                            // });
-                                            // // Compiles Sass stylesheet into CSS.
-                                            // var cssCompiled = Sass.compile(allImports[0].cssCompiled + rawStylesheet, function(result) {
-                                            //     console.log(result);
-                                            // });
-                                            // var cssCompiled = that.remove_comments(cssCompiled);
+             
+											Sass.writeFile(styleUrl, allImports[0].cssCompiled + rawStylesheet);
+											Sass.options({
+											    style: Sass.style.expanded
+											});
+											// Compiles Sass stylesheet into CSS.
+											var cssCompiled = Sass.compile(allImports[0].cssCompiled + rawStylesheet, function(result) {
+												console.log(result);
+											});
+											separate = that.separate(cssCompiled);
+											separate[1].code = that.remove_comments(rawStylesheet);
+											// Removes unnecessary first element of the array.
+											separate.shift();
                                         }
                                     });
-                                }
+                                } else {
 
-								// Thanks, so many thanks to Oriol Torras @uriusfurius.
-								function findImports(str, basepath) {
-									var url = configDir + styleExt + '/';
-									var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
-									var match, matches = [];
-									while ((match = regex.exec(str)) !== null) {
-										matches.push(match[1]);
-									}
-									_.each(matches, function(match) {
-										// Check if it's a filename
-										var path = match.split('/');
-										var filename, fullpath, _basepath = basepath;
-										if (path.length > 1) {
-											filename = path.pop();
-											var something, basepathParts;
-											if (_basepath) {
-												basepathParts = _basepath.split('/');
-											}
-											while ((something = path.shift()) === '..') {
-												basepathParts.pop();
-											}
-											if (something) {
-												path.unshift(something);
-											}
-											_basepath = (basepathParts ? basepathParts.join('/') + '/' : '') + path.join('/');
-										} else {
-											filename = path.join('');
-										}
-										filename = '_' + filename + '.' + styleExt;
-										fullpath = _basepath + '/' + filename;
+								// // Thanks, so many thanks to Oriol Torras @uriusfurius.
+								// function findImports(str, basepath) {
+								// 	var url = configDir + styleExt + '/';
+								// 	var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
+								// 	var match, matches = [];
+								// 	while ((match = regex.exec(str)) !== null) {
+								// 		matches.push(match[1]);
+								// 	}
+								// 	_.each(matches, function(match) {
+								// 		// Check if it's a filename
+								// 		var path = match.split('/');
+								// 		var filename, fullpath, _basepath = basepath;
+								// 		if (path.length > 1) {
+								// 			filename = path.pop();
+								// 			var something, basepathParts;
+								// 			if (_basepath) {
+								// 				basepathParts = _basepath.split('/');
+								// 			}
+								// 			while ((something = path.shift()) === '..') {
+								// 				basepathParts.pop();
+								// 			}
+								// 			if (something) {
+								// 				path.unshift(something);
+								// 			}
+								// 			_basepath = (basepathParts ? basepathParts.join('/') + '/' : '') + path.join('/');
+								// 		} else {
+								// 			filename = path.join('');
+								// 		}
+								// 		filename = '_' + filename + '.' + styleExt;
+								// 		fullpath = _basepath + '/' + filename;
 
-										var importContent = Module.read(url + fullpath);
-										Sass.writeFile(match, importContent);
+								// 		var importContent = Module.read(url + fullpath);
+								// 		Sass.writeFile(match, importContent);
 
-										findImports(importContent, _basepath);
-									});
-								}
+								// 		findImports(importContent, _basepath);
+								// 	});
+								// }
 
-								configPath = configPath.substr(0, configPath.lastIndexOf('/'));
-								// Recursive function to find all @imports.
-								findImports(stylesheet, configPath);
+								// configPath = configPath.substr(0, configPath.lastIndexOf('/'));
+								// // Recursive function to find all @imports.
+								// findImports(stylesheet, configPath);
 								
-								var separate = that.separate(rawStylesheet);
+									var separate = that.separate(rawStylesheet);
+								}
 
 								var page = {
 									blocks: [],
@@ -270,12 +269,12 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 								var cssArray = [];
 
 								_.each(separate, function(i){
-									Sass.writeFile(styleUrl, i.code);
+									Sass.writeFile(styleUrl, i.cssCompiled);
 									Sass.options({
 										style: Sass.style.expanded
 									});
 									// Compiles Sass stylesheet into CSS.
-									var cssCompiled = Sass.compile(i.code, function(result) {
+									var cssCompiled = Sass.compile(i.cssCompiled, function(result) {
 										console.log(result);
 									});
 									var cssCompiled = that.remove_comments(cssCompiled);
@@ -507,9 +506,21 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
             // var url = configDir + styleExt + '/';
             var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
             var match, matches = [];
+            
+            var noMatch = "";
+            var matchesFileImport = [];
+
             while ((match = regex.exec(str)) !== null) {
-                matches.push(match[1]);
+				noMatch = match["input"];
+				matchesFileImport.push(match[0]);
+				matches.push(match[1]);
             }
+            
+            _.each(matchesFileImport, function(match) {
+	            // Code other than "@import" goes here.
+            	noMatch = noMatch.replace(match + ";", "");
+            });
+
             _.each(matches, function(match) {
                 // Check if it's a filename
                 var path = match.split('/');
@@ -532,6 +543,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                     filename = path.join('');
                 }
                 if (filename === "*") {
+                	// Removes "*" from filename.
                     filename = "";
                     var files;
                     files = that.get_files(_basepath + '/' + filename);
@@ -551,16 +563,39 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                         });
                     }
                 } else {
+                	// Adds filename.
                     if (styleExt == "scss" || styleExt == "sass") {
                         filename = "_" + filename + '.' + styleExt;
                     } else {
                         filename = filename + '.' + styleExt;
                     }
 
+                    // fullpath = _basepath + '/' + filename;
+                    // var importContent = fullpath;
+                    // var files;
+
+                    // $.ajax({
+                    //     url: importContent,
+                    //     async: false,
+                    //     cache: true,
+                    //     success: function(data){
+                    //     	console.log(match, data)
+                    //         files = that.find_imports(data, _basepath, styleExt);
+                    //         if (files.length) {
+                    //             _.each(files, function(file) {
+                    //                 var separate = that.separate(file);
+                    //                 _.each(separate, function(css){
+                    //                     finalCss.push(css.code);
+                    //                 });
+                    //             });
+                    //         }
+                    //     }
+                    // });
+                }
+                if (filename != "") {
                     fullpath = _basepath + '/' + filename;
                     var importContent = fullpath;
                     var files;
-
                     $.ajax({
                         url: importContent,
                         async: false,
@@ -568,7 +603,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                         success: function(data){
                             files = that.find_imports(data, _basepath, styleExt);
                             if (files.length) {
-                                console.log(files)
                                 _.each(files, function(file) {
                                     var separate = that.separate(file);
                                     _.each(separate, function(css){
@@ -576,29 +610,33 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                     });
                                 });
                             }
-                        }
-                    });
-                }
-                if (filename != "") {
-                    fullpath = _basepath + '/' + filename;
-                    var importContent = fullpath;
-                    $.ajax({
-                        url: importContent,
-                        async: false,
-                        cache: true,
-                        success: function(data){
+
+                            var noMatchChild = "";
+                            var matchesFileImportChild = [];
+
+                            while ((match = regex.exec(data)) !== null) {
+                            	noMatchChild = match["input"];
+                                matchesFileImportChild.push(match[0]);
+                            }
+                            _.each(matchesFileImportChild, function(match) {
+                	            // Removes "@import" from file itself.
+                            	data = data.replace(match + ";", "");
+                            });
+
                             var separate = that.separate(data);
                             _.each(separate, function(css){
                                 finalCss.push(css.code);
                             });
+                            // Adds code other than "@import"
+            				finalCss.unshift(noMatch);
                         }
                     });
-                    that.find_imports(importContent, _basepath, styleExt);
+                    // that.find_imports(importContent, _basepath, styleExt);
                 }
             });
 
-            console.log(finalCss);
-            return finalCss;
+			// console.log(finalCss);
+        	return finalCss;
         },
 
         get_files: function(dirPath) {
