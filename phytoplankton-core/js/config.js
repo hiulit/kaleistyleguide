@@ -1,17 +1,18 @@
 define({
 
 	// Your style guide folder.
-	styleguideFolder: "test-scss",
+	styleguideFolder: "test",
 
     // Your main.styl (or the like) where you have all your "@import".
-    mainPreprocessorStyleSheet: "beezy.default.scss",
+    mainPreprocessorStyleSheet: "main.styl",
 
 	// Set menu.
 	menu: [
         {
             title: "test",
             url: [
-                "components/_accordion.scss"
+                // "_prova.scss"
+                "prova.styl"
             ]
         },
 		{
