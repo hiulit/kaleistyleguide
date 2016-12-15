@@ -94,7 +94,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 					case 'stylus':
 						require(['libs/stylus/stylus'], function() {
                             var allImports;
-                            var separate;
+                            var separate = [];
+
                             if (config.mainPreprocessorStyleSheet) {
                                 $.ajax({
                                     url: config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet,
@@ -106,14 +107,20 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                         // Recursive function to find all @imports.
                                         allImports = that.find_imports(data, configPath, styleExt);
                                         allImports = allImports.join('');
-                                        allImports = that.remove_comments(allImports)
-                                        allImports = that.separate(allImports + rawStylesheet)
-                                       	stylus(allImports[0].cssCompiled + rawStylesheet).render(function(err, css) {
-                                            if (err) throw err;
-                                            separate = that.separate(css);
-                                            separate[1].code = that.remove_comments(rawStylesheet);
-                                            // Removes unnecessary first element of the array.
-                                            separate.shift();
+                                        allImports = that.remove_comments(allImports);
+
+                                        separateRawStylesheet = that.separate(rawStylesheet);
+
+                                        _.each(separateRawStylesheet, function(rawStylesheet){
+                                            rawStylesheet.cssCompiled = allImports + "\n\n" + "/*" + rawStylesheet.docs + "*/" + "\n\n" + rawStylesheet.cssCompiled;
+
+											stylus(rawStylesheet.cssCompiled).render(function(err, cssCompiled) {
+												if (err) throw err;
+												newSeparateRawStylesheet = that.separate(cssCompiled);
+												newSeparateRawStylesheet.shift();
+												newSeparateRawStylesheet[0].code = rawStylesheet.code;
+												separate.push(newSeparateRawStylesheet[0]);
+											});
                                         });
                                     }
                                 });
