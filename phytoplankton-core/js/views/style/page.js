@@ -95,7 +95,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 						require(['libs/stylus/stylus'], function() {
                             var allImports;
                             var separate;
-
                             if (config.mainPreprocessorStyleSheet) {
                                 $.ajax({
                                     url: config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet,
@@ -106,7 +105,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                         configPath = configPath.substr(0, configPath.lastIndexOf('/'));
                                         // Recursive function to find all @imports.
                                         allImports = that.find_imports(data, configPath, styleExt);
-
                                         allImports = allImports.join('');
                                         allImports = that.remove_comments(allImports)
                                         allImports = that.separate(allImports + rawStylesheet)
@@ -169,7 +167,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 											showError(e);
 										}
 									});
-								})
+								});
 
 								that.render_page(page);
 							}
@@ -184,7 +182,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 							'addEventListener' in window) {
 							// Loads sass.js
 							require(['libs/sassjs/dist/sass.min'], function(Sass) {
-
+                                var allImports;
+                                var separate;
                                 if (config.mainPreprocessorStyleSheet) {
                                     $.ajax({
                                         url: config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet,
@@ -195,71 +194,54 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                             configPath = configPath.substr(0, configPath.lastIndexOf('/'));
                                             // Recursive function to find all @imports.
                                             allImports = that.find_imports(data, configPath, styleExt);
-                                            
                                             allImports = allImports.join('');
-                                            allImports = that.remove_comments(allImports)
-                                            allImports = that.separate(allImports + rawStylesheet)
+                                            allImports = that.remove_comments(allImports);
+
+                                            separateRawStylesheet = that.separate(rawStylesheet);
+                                            _.each(separateRawStylesheet, function(rawStylesheet){
+                                                rawStylesheet.cssCompiled = allImports + "/*" + rawStylesheet.docs + "*/" + rawStylesheet.cssCompiled;
+
+                                                console.log(rawStylesheet);
+
+                                                Sass.writeFile(styleUrl, rawStylesheet.cssCompiled);
+                                                Sass.options({
+                                                    style: Sass.style.expanded
+                                                });
+                                                // Compiles Sass stylesheet into CSS.
+                                                var cssCompiled = Sass.compile(rawStylesheet.cssCompiled, function(result) {
+                                                    console.log(result);
+                                                });
+                                                separateRawStylesheet = that.separate(cssCompiled);
+                                                // console.log(separate);
+                                                // separate[1].code = that.remove_comments(rawStylesheet);
+                                                // Removes unnecessary first element of the array.
+                                                separateRawStylesheet.shift();
+                                                console.log(separateRawStylesheet);
+                                            });
+                                            // console.log(that.separate(allImports + rawStylesheet));
+                                            // allImports = that.separate(allImports + rawStylesheet)
              
-											Sass.writeFile(styleUrl, allImports[0].cssCompiled + rawStylesheet);
-											Sass.options({
-											    style: Sass.style.expanded
-											});
-											// Compiles Sass stylesheet into CSS.
-											var cssCompiled = Sass.compile(allImports[0].cssCompiled + rawStylesheet, function(result) {
-												console.log(result);
-											});
-											separate = that.separate(cssCompiled);
-											separate[1].code = that.remove_comments(rawStylesheet);
-											// Removes unnecessary first element of the array.
-											separate.shift();
+                                            // Sass.writeFile(styleUrl, allImports[0].cssCompiled);
+                                            // Sass.options({
+                                            //     style: Sass.style.expanded
+                                            // });
+                                            // // Compiles Sass stylesheet into CSS.
+                                            // var cssCompiled = Sass.compile(allImports[0].cssCompiled, function(result) {
+                                            //     console.log(result);
+                                            // });
+                                            // separate = that.separate(cssCompiled);
+                                            // separate[1].code = that.remove_comments(rawStylesheet);
+                                            // // Removes unnecessary first element of the array.
+                                            // separate.shift();
                                         }
                                     });
                                 } else {
-
-								// // Thanks, so many thanks to Oriol Torras @uriusfurius.
-								// function findImports(str, basepath) {
-								// 	var url = configDir + styleExt + '/';
-								// 	var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
-								// 	var match, matches = [];
-								// 	while ((match = regex.exec(str)) !== null) {
-								// 		matches.push(match[1]);
-								// 	}
-								// 	_.each(matches, function(match) {
-								// 		// Check if it's a filename
-								// 		var path = match.split('/');
-								// 		var filename, fullpath, _basepath = basepath;
-								// 		if (path.length > 1) {
-								// 			filename = path.pop();
-								// 			var something, basepathParts;
-								// 			if (_basepath) {
-								// 				basepathParts = _basepath.split('/');
-								// 			}
-								// 			while ((something = path.shift()) === '..') {
-								// 				basepathParts.pop();
-								// 			}
-								// 			if (something) {
-								// 				path.unshift(something);
-								// 			}
-								// 			_basepath = (basepathParts ? basepathParts.join('/') + '/' : '') + path.join('/');
-								// 		} else {
-								// 			filename = path.join('');
-								// 		}
-								// 		filename = '_' + filename + '.' + styleExt;
-								// 		fullpath = _basepath + '/' + filename;
-
-								// 		var importContent = Module.read(url + fullpath);
-								// 		Sass.writeFile(match, importContent);
-
-								// 		findImports(importContent, _basepath);
-								// 	});
-								// }
-
-								// configPath = configPath.substr(0, configPath.lastIndexOf('/'));
-								// // Recursive function to find all @imports.
-								// findImports(stylesheet, configPath);
+    								// Thanks, so many thanks to Oriol Torras @uriusfurius.
+    								// Old findImports() function was here. See js/components/old-find-imports.js
 								
 									var separate = that.separate(rawStylesheet);
 								}
+                                console.log(separate);
 
 								var page = {
 									blocks: [],
@@ -281,7 +263,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 									i.cssCompiled = cssCompiled;
 									page.css = that.compute_css(cssArray, i.cssCompiled);
 									page.blocks = page.blocks.concat(that.parse_commentblock(i.docs, i.code, i.cssCompiled, styleExt));
-								})
+								});
 								
 								that.render_page(page);
 							});
@@ -503,22 +485,26 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
         
         find_imports: function(str, basepath, styleExt) {
             var finalCss = finalCss || [];
-            // var url = configDir + styleExt + '/';
             var regex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
             var match, matches = [];
-            
-            var noMatch = "";
+            var matchFileImport = "";
             var matchesFileImport = [];
 
+            str = that.remove_comments(str);
+
             while ((match = regex.exec(str)) !== null) {
-				noMatch = match["input"];
+				matchFileImport = match["input"];
 				matchesFileImport.push(match[0]);
 				matches.push(match[1]);
             }
             
             _.each(matchesFileImport, function(match) {
-	            // Code other than "@import" goes here.
-            	noMatch = noMatch.replace(match + ";", "");
+                // Code other than "@import" goes here.
+                if (styleExt == "scss" || styleExt == "sass") {
+                    matchFileImport = matchFileImport.replace(match + ";", "");
+                } else if (styleExt == "styl" || styleExt == "stylus") {
+                    matchFileImport = matchFileImport.replace(match, "");
+                }
             });
 
             _.each(matches, function(match) {
@@ -556,7 +542,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                 success: function(data){
                                     var separate = that.separate(data);
                                     _.each(separate, function(css){
-                                        finalCss.push(css.code);
+                                        css.code = that.remove_comments(css.code);
+                                        finalCss.push(css.code + "\n\n");
                                     });
                                 }
                             });
@@ -569,28 +556,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                     } else {
                         filename = filename + '.' + styleExt;
                     }
-
-                    // fullpath = _basepath + '/' + filename;
-                    // var importContent = fullpath;
-                    // var files;
-
-                    // $.ajax({
-                    //     url: importContent,
-                    //     async: false,
-                    //     cache: true,
-                    //     success: function(data){
-                    //     	console.log(match, data)
-                    //         files = that.find_imports(data, _basepath, styleExt);
-                    //         if (files.length) {
-                    //             _.each(files, function(file) {
-                    //                 var separate = that.separate(file);
-                    //                 _.each(separate, function(css){
-                    //                     finalCss.push(css.code);
-                    //                 });
-                    //             });
-                    //         }
-                    //     }
-                    // });
                 }
                 if (filename != "") {
                     fullpath = _basepath + '/' + filename;
@@ -606,16 +571,17 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                 _.each(files, function(file) {
                                     var separate = that.separate(file);
                                     _.each(separate, function(css){
-                                        finalCss.push(css.code);
+                                        css.code = that.remove_comments(css.code);
+                                        finalCss.push(css.code + "\n\n");
                                     });
                                 });
                             }
 
-                            var noMatchChild = "";
+                            var matchFileImportChild = "";
                             var matchesFileImportChild = [];
 
                             while ((match = regex.exec(data)) !== null) {
-                            	noMatchChild = match["input"];
+                            	matchFileImportChild = match["input"];
                                 matchesFileImportChild.push(match[0]);
                             }
                             _.each(matchesFileImportChild, function(match) {
@@ -625,17 +591,21 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
                             var separate = that.separate(data);
                             _.each(separate, function(css){
-                                finalCss.push(css.code);
+                                css.code = that.remove_comments(css.code);
+                                finalCss.push(css.code + "\n\n");
                             });
                             // Adds code other than "@import"
-            				finalCss.unshift(noMatch);
+            				// finalCss.unshift(matchFileImport);
                         }
                     });
                     // that.find_imports(importContent, _basepath, styleExt);
                 }
             });
 
-			// console.log(finalCss);
+            // Adds code other than "@import"
+            matchFileImport = that.remove_comments(matchFileImport);
+            finalCss.unshift(matchFileImport);
+
         	return finalCss;
         },
 
@@ -660,7 +630,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                 }
             });
             
-            // console.log(filesArray)
             return filesArray;
         },
 
@@ -754,7 +723,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 		// Remove (and trim) CSS comments.
 		remove_comments: function(stylesheet) {
 			// Remove comments.
-			stylesheet = stylesheet.replace(/(\/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*?\*\/)/g, '');
+            // stylesheet = stylesheet.replace(/(\/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*?\*\/)/g, '');
+            stylesheet = stylesheet.replace(/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm, '');
 			// Trim leading and trailing.
 			stylesheet = stylesheet.replace(/((^\s+|\s+$))/g,'');
 			// Remove extra line breaks.
