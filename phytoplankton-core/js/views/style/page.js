@@ -183,7 +183,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 							// Loads sass.js
 							require(['libs/sassjs/dist/sass.min'], function(Sass) {
                                 var allImports;
-                                var separate;
+                                var separate = [];
                                 if (config.mainPreprocessorStyleSheet) {
                                     $.ajax({
                                         url: config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet,
@@ -198,10 +198,9 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                             allImports = that.remove_comments(allImports);
 
                                             separateRawStylesheet = that.separate(rawStylesheet);
-                                            _.each(separateRawStylesheet, function(rawStylesheet){
-                                                rawStylesheet.cssCompiled = allImports + "/*" + rawStylesheet.docs + "*/" + rawStylesheet.cssCompiled;
 
-                                                console.log(rawStylesheet);
+                                            _.each(separateRawStylesheet, function(rawStylesheet){
+                                                rawStylesheet.cssCompiled = allImports + "\n\n" + "/*" + rawStylesheet.docs + "*/" + "\n\n" + rawStylesheet.cssCompiled;
 
                                                 Sass.writeFile(styleUrl, rawStylesheet.cssCompiled);
                                                 Sass.options({
@@ -211,28 +210,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                                 var cssCompiled = Sass.compile(rawStylesheet.cssCompiled, function(result) {
                                                     console.log(result);
                                                 });
-                                                separateRawStylesheet = that.separate(cssCompiled);
-                                                // console.log(separate);
-                                                // separate[1].code = that.remove_comments(rawStylesheet);
-                                                // Removes unnecessary first element of the array.
-                                                separateRawStylesheet.shift();
-                                                console.log(separateRawStylesheet);
+                                                newSeparateRawStylesheet = that.separate(cssCompiled);
+                                                newSeparateRawStylesheet.shift();
+                                                newSeparateRawStylesheet[0].code = rawStylesheet.code;
+                                                separate.push(newSeparateRawStylesheet[0]);
                                             });
-                                            // console.log(that.separate(allImports + rawStylesheet));
-                                            // allImports = that.separate(allImports + rawStylesheet)
-             
-                                            // Sass.writeFile(styleUrl, allImports[0].cssCompiled);
-                                            // Sass.options({
-                                            //     style: Sass.style.expanded
-                                            // });
-                                            // // Compiles Sass stylesheet into CSS.
-                                            // var cssCompiled = Sass.compile(allImports[0].cssCompiled, function(result) {
-                                            //     console.log(result);
-                                            // });
-                                            // separate = that.separate(cssCompiled);
-                                            // separate[1].code = that.remove_comments(rawStylesheet);
-                                            // // Removes unnecessary first element of the array.
-                                            // separate.shift();
                                         }
                                     });
                                 } else {
@@ -241,6 +223,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 								
 									var separate = that.separate(rawStylesheet);
 								}
+
                                 console.log(separate);
 
 								var page = {
