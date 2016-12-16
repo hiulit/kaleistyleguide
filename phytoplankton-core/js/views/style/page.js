@@ -613,8 +613,12 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                 matchesFileImportChild.push(match[0]);
                             }
                             _.each(matchesFileImportChild, function(match) {
-                	            // Removes "@import" from file itself.
-                            	data = data.replace(match + ";", "");
+                                // Code other than "@import" goes here.
+                                if (styleExt == "scss" || styleExt == "sass" || styleExt == "less") {
+                                    data = data.replace(match + ";", "");
+                                } else if (styleExt == "styl" || styleExt == "stylus") {
+                                    data = data.replace(match, "");
+                                }
                             });
 
                             var separate = that.separate(data);
@@ -622,11 +626,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                 css.code = that.remove_comments(css.code);
                                 finalCss.push(css.code + "\n\n");
                             });
-                            // Adds code other than "@import"
-            				// finalCss.unshift(matchFileImport);
                         }
                     });
-                    // that.find_imports(importContent, _basepath, styleExt);
                 }
             });
 
