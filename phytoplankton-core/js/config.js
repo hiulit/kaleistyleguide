@@ -1,21 +1,13 @@
 define({
 
 	// Your style guide folder.
-	styleguideFolder: "test",
+	styleguideFolder: "phytoplankton-styleguide",
 
     // Your main.styl (or the like) where you have all your "@import".
-    mainPreprocessorStyleSheet: "main.less",
+    mainPreprocessorStyleSheet: "phytoplankton-examples/preprocessors/main.styl",
 
 	// Set menu.
 	menu: [
-        {
-            title: "test",
-            url: [
-                // "_prova.scss"
-                // "prova.styl"
-                "prova.less"
-            ]
-        },
 		{
 			title: "Phytoplankton Style Guide",
 			url: [
@@ -33,7 +25,7 @@ define({
 			url: [
 				"phytoplankton-examples/preprocessors/less.less",
 				"phytoplankton-examples/preprocessors/scss.scss",
-				"phytoplankton-examples/preprocessors/stylus.styl"
+				"phytoplankton-examples/preprocessors/example.styl"
 			]
 		},
 		{
