@@ -146,15 +146,51 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 									page.css = that.compute_css(cssArray, i.cssCompiled);
 									page.blocks = page.blocks.concat(that.parse_commentblock(i.docs, i.code, i.cssCompiled, styleExt));
 								});
-							})
+							});
 							
 							that.render_page(page);
 						});
 					break;
 					case 'less':
 						require(['libs/less/less'], function(less) {
-							if (less.render) { // Less v2.0.0 and above (not working actually).
-								var separate = that.separate(rawStylesheet);
+                            if (less.render) { // Less v2.0.0 and above (not working actually).
+                                var allImports;
+                                var separate = [];
+
+                                if (config.mainPreprocessorStyleSheet) {
+                                    $.ajax({
+                                        url: config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet,
+                                        async: false,
+                                        cache: true,
+                                        success: function(data){
+                                            configPath = config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet;
+                                            configPath = configPath.substr(0, configPath.lastIndexOf('/'));
+                                            // Recursive function to find all @imports.
+                                            allImports = that.find_imports(data, configPath, styleExt);
+                                            allImports = allImports.join('');
+                                            allImports = that.remove_comments(allImports);
+                                            separateRawStylesheet = that.separate(rawStylesheet);
+
+                                            _.each(separateRawStylesheet, function(rawStylesheet){
+                                                rawStylesheet.cssCompiled = allImports + "\n\n" + "/*" + rawStylesheet.docs + "*/" + "\n\n" + rawStylesheet.cssCompiled;
+                                                less.render(rawStylesheet.cssCompiled, function (e, result) {
+                                                    if (!e) {
+                                                        newSeparateRawStylesheet = that.separate(result.css);
+                                                        newSeparateRawStylesheet.shift();
+                                                        newSeparateRawStylesheet[0].code = rawStylesheet.code;
+                                                        separate.push(newSeparateRawStylesheet[0]);
+                                                    } else {
+                                                        showError(e);
+                                                    }
+                                                });
+                                            });
+                                        }
+                                    });
+                                } else {
+                                    var separate = that.separate(rawStylesheet);
+                                }
+
+                                console.log(separate);
 
 								var page = {
 									blocks: [],
@@ -164,7 +200,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 								var cssArray = [];
 
 								_.each(separate, function(i){
-									less.render(stylesheet, function (e, result) {
+									less.render(i.cssCompiled, function (e, result) {
 										if (!e) {
 											var cssCompiled = that.remove_comments(result.css);
 											i.cssCompiled = cssCompiled;
@@ -490,7 +526,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
             
             _.each(matchesFileImport, function(match) {
                 // Code other than "@import" goes here.
-                if (styleExt == "scss" || styleExt == "sass") {
+                if (styleExt == "scss" || styleExt == "sass" || styleExt == "less") {
                     matchFileImport = matchFileImport.replace(match + ";", "");
                 } else if (styleExt == "styl" || styleExt == "stylus") {
                     matchFileImport = matchFileImport.replace(match, "");
@@ -543,6 +579,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                 	// Adds filename.
                     if (styleExt == "scss" || styleExt == "sass") {
                         filename = "_" + filename + '.' + styleExt;
+                    } else if (styleExt == "less" ) {
+                        filename = filename;
                     } else {
                         filename = filename + '.' + styleExt;
                     }

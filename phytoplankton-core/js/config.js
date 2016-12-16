@@ -4,7 +4,7 @@ define({
 	styleguideFolder: "test",
 
     // Your main.styl (or the like) where you have all your "@import".
-    mainPreprocessorStyleSheet: "main.styl",
+    mainPreprocessorStyleSheet: "main.less",
 
 	// Set menu.
 	menu: [
@@ -12,7 +12,8 @@ define({
             title: "test",
             url: [
                 // "_prova.scss"
-                "prova.styl"
+                // "prova.styl"
+                "prova.less"
             ]
         },
 		{
