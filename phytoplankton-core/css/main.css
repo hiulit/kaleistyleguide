@@ -872,7 +872,8 @@ tr:nth-child(2n) {
   background-color: #f8f8f8;
 }
 
-td, th {
+td,
+th {
   border: 1px solid #ccc;
   padding: 8px;
   padding: 0.5rem;
