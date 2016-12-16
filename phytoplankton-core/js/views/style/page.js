@@ -190,8 +190,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                     var separate = that.separate(rawStylesheet);
                                 }
 
-                                console.log(separate);
-
 								var page = {
 									blocks: [],
 									css: ''
@@ -267,8 +265,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 									var separate = that.separate(rawStylesheet);
 								}
 
-                                console.log(separate);
-
 								var page = {
 									blocks: [],
 									css: ''
@@ -303,7 +299,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 		render_page: function(page) {
 
-			console.log((new Date()).getTime() + ' bottom', page);
+			console.log((new Date()).getTime(), page);
 
 			// Scroll to top
 			var scroll = $(window).scrollTop();
