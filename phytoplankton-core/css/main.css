@@ -836,16 +836,29 @@ blockquote:after {
 }
 
 table {
-  width: 100%;
   display: table;
+  width: 100%;
 }
 @media screen and (max-width: 700px) {
   table {
     display: none;
   }
 }
-table.stacktable {
+table.stacktable.small-only {
   display: none;
+}
+@media screen and (max-width: 700px) {
+  table.stacktable.small-only {
+    display: table;
+  }
+}
+table.stacktable.large-only {
+  display: table;
+}
+@media screen and (max-width: 700px) {
+  table.stacktable.large-only {
+    display: none;
+  }
 }
 table.stacktable tbody tr .st-head-row-main {
   display: none;
@@ -853,11 +866,6 @@ table.stacktable tbody tr .st-head-row-main {
 table.stacktable tbody td {
   text-align: center;
   width: 50%;
-}
-@media screen and (max-width: 700px) {
-  table.stacktable {
-    display: table;
-  }
 }
 
 tr:nth-child(2n) {

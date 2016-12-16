@@ -59,13 +59,24 @@ blockquote {
 }
 
 table {
-	width: 100%;
 	display: table;
+	width: 100%;
 	@media screen and (max-width: 700px) {
 		display: none;
 	}
 	&.stacktable {
-		display: none;
+		&.small-only {
+			display: none;
+			@media screen and (max-width: 700px) {
+				display: table;
+			}
+		}
+		&.large-only {
+			display: table;
+			@media screen and (max-width: 700px) {
+				display: none;
+			}
+		}
 		tbody {
 			tr {
 				.st-head-row-main {
@@ -76,9 +87,6 @@ table {
 				text-align: center;
 				width: 50%;
 			}
-		}
-		@media screen and (max-width: 700px) {
-			display: table;
 		}
 	}
 }
