@@ -575,8 +575,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                 	// Adds filename.
                     if (styleExt == "scss" || styleExt == "sass") {
                         filename = "_" + filename + '.' + styleExt;
-                    } else if (styleExt == "less" ) {
-                        filename = filename;
                     } else {
                         filename = filename + '.' + styleExt;
                     }
