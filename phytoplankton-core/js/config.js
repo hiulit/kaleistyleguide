@@ -4,7 +4,8 @@ define({
 	styleguideFolder: "phytoplankton-styleguide",
 
     // Your main.styl (or the like) where you have all your "@import".
-    mainPreprocessorStyleSheet: "phytoplankton-examples/preprocessors/main.styl",
+    // No need for the extension file.
+    mainPreprocessorStyleSheet: "phytoplankton-examples/preprocessors/main",
 
 	// Set menu.
 	menu: [
@@ -25,7 +26,7 @@ define({
 			url: [
 				"phytoplankton-examples/preprocessors/less.less",
 				"phytoplankton-examples/preprocessors/scss.scss",
-				"phytoplankton-examples/preprocessors/example.styl"
+				"phytoplankton-examples/preprocessors/stylus.styl"
 			]
 		},
 		{

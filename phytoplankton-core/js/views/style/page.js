@@ -98,11 +98,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
                             if (config.mainPreprocessorStyleSheet) {
                                 $.ajax({
-                                    url: config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet,
+                                    url: config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet + "." + styleExt,
                                     async: false,
                                     cache: true,
                                     success: function(data){
-                                        configPath = config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet;
+                                        configPath = config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet + "." + styleExt;
                                         configPath = configPath.substr(0, configPath.lastIndexOf('/'));
                                         // Recursive function to find all @imports.
                                         allImports = that.find_imports(data, configPath, styleExt);
@@ -159,11 +159,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
                                 if (config.mainPreprocessorStyleSheet) {
                                     $.ajax({
-                                        url: config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet,
+                                        url: config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet + "." + styleExt,
                                         async: false,
                                         cache: true,
                                         success: function(data){
-                                            configPath = config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet;
+                                            configPath = config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet + "." + styleExt;
                                             configPath = configPath.substr(0, configPath.lastIndexOf('/'));
                                             // Recursive function to find all @imports.
                                             allImports = that.find_imports(data, configPath, styleExt);
@@ -229,11 +229,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                 var separate = [];
                                 if (config.mainPreprocessorStyleSheet) {
                                     $.ajax({
-                                        url: config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet,
+                                        url: config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet + "." + styleExt,
                                         async: false,
                                         cache: true,
                                         success: function(data){
-                                            configPath = config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet;
+                                            configPath = config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet + "." + styleExt;
                                             configPath = configPath.substr(0, configPath.lastIndexOf('/'));
                                             // Recursive function to find all @imports.
                                             allImports = that.find_imports(data, configPath, styleExt);
