@@ -118,6 +118,20 @@ Phytoplankton will automatically render the code as both HTML and the code block
 
 */
 /*
+# Using preprocessors
+
+One of the best functionalities of **Phytoplankton** is that it leverages the main 3 preprocessors:
+
+* [Sass](#/phytoplankton-examples/preprocessors/scss.scss)
+* Less
+* [Stylus](#/phytoplankton-examples/preprocessors/stylus.styl)
+
+**Without any external tool!**
+
+Just drop your style sheets in any of these formats and you'll be just fine. Take a look for yourself in the **Preprocessors** section or by clicking the links above 😉
+
+*/
+/*
 # Using external scripts
 
 Phytoplankton lets you use external scripts.

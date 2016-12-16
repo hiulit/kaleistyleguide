@@ -1,0 +1,26 @@
+/*
+# Sass example
+
+Here you have a little example to see [Sass](http://sass-lang.com/) working on the browser thanks to [sass.js](https://github.com/medialize/sass.js).
+
+```markup
+<div class="box">
+	<p class="fixie"></p>
+</div>
+```
+
+ */
+.box {
+  border: 1px solid #ccc;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  padding: 20px;
+}
+.box p {
+  font-family: Helvetica, sans-serif;
+  color: #b000b5;
+}
+
+/*# sourceMappingURL=scss.css.map */
