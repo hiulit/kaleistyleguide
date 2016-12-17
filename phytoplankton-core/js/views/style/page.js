@@ -403,7 +403,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 					clipboard.on('success', function(e) {
 					    console.info('Action:', e.action);
 					    console.info('Text:', e.text);
-					    console.info('Trigger:', e.trigger);
+					    // console.info('Trigger:', e.trigger);
 						copyTooltip.html('Copied!');
 						setTimeout(function() {
 							copyTooltip.html('Copy to Clipboard');
