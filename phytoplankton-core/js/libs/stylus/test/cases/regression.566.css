@@ -1,6 +1,0 @@
-body foo > bar {
-  margin-top: 0;
-}
-body foo + bar bar > baz < raz {
-  padding: 50px;
-}

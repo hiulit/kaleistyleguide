@@ -9,7 +9,7 @@ define([
 	'hbs_context',
 	'hbs_helpers',
 	'gonzales',
-	'libs/prism/prism',
+	'libs/prism/prism.min',
 	'libs/stacktable/stacktable',
 	'libs/gumshoe/dist/js/classList.min'
 ],
@@ -152,7 +152,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 						});
 					break;
 					case 'less':
-						require(['libs/less/less'], function(less) {
+						require(['libs/less/less.min'], function(less) {
                             if (less.render) { // Less v2.0.0 and above (not working actually).
                                 var allImports;
                                 var separate = [];

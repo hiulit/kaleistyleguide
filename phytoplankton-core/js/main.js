@@ -6,12 +6,12 @@ require.config({
 		jquery: 'libs/jquery/jquery-1.11.2.min',
 		underscore: 'libs/underscore/underscore-min',
 		backbone: 'libs/backbone/backbone-min',
-		handlebars: 'libs/handlebars/handlebars-v4.0.5',
+		handlebars: 'libs/handlebars/handlebars-v4.0.5.min',
 		gonzales: 'libs/gonzales/gonzales.min',
 		marked: 'libs/marked/marked.min',
 		fixie: 'libs/fixie/fixie.min',
 		// Require.js plugins
-		text: 'libs/require/text',
+		text: 'libs/require/text.min',
 		// HTML templates
 		templates: '../templates',
 		// Handlebars paths
