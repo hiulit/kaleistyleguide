@@ -150,7 +150,7 @@
 	&.is-active {
 		display: block;
 	}
-	&.zeroclipboard-is-hover {
+	&:hover {
 		.tooltip {
 			opacity: 1;
 		}

@@ -372,7 +372,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 				});
 			});
 
-			require(['libs/zeroclipboard/dist/ZeroClipboard.min'], function(ZeroClipboard) {
+			// require(['libs/zeroclipboard/dist/ZeroClipboard.min'], function(ZeroClipboard) {
+			require(['libs/clipboard/dist/clipboard.min'], function(Clipboard) {
 
 				var copyIcon = '<svg class="svg-icon" viewBox="0 0 20 20">' +
 									'<path fill="none" d="M18.378,1.062H3.855c-0.309,0-0.559,0.25-0.559,0.559c0,0.309,0.25,0.559,0.559,0.559h13.964v13.964' +
@@ -386,7 +387,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 					var copy = $( '<li/>', {
 						'class': 'copy-to-clipboard',
-						'id': 'copy-tab-' + (i +1),
+						'data-clipboard-target': '#tab-' + (i + 1),
+						'id': 'copy-tab-' + (i + 1),
 						// 'href' : '#',
 						'html': copyIcon,
 						// 'title': 'Copy to Clipboard'
@@ -396,28 +398,23 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 						'text': 'Copy to Clipboard',
 					}),
 					code = $(this).text(),
-					clip = new ZeroClipboard( copy, {
-						text: code
+					clipboard = new Clipboard('#copy-tab-' + (i + 1));
+
+					clipboard.on('success', function(e) {
+					    console.info('Action:', e.action);
+					    console.info('Text:', e.text);
+					    console.info('Trigger:', e.trigger);
+						copyTooltip.html('Copied!');
+						setTimeout(function() {
+							copyTooltip.html('Copy to Clipboard');
+						}, 1000);
+					    e.clearSelection();
 					});
 
-					clip.on( 'ready', function(event) {
-						clip.on( 'copy', function(event) {
-							event.clipboardData.setData('text/plain', code);
-						} );
-
-						clip.on( 'aftercopy', function(event) {
-							console.log('Copied text to clipboard:\n\n' + event.data['text/plain']);
-							copyTooltip.html('Copied!');
-							setTimeout(function() {
-								copyTooltip.html('Copy to Clipboard');
-							}, 1000);
-						} );
-					} );
-
-					clip.on( 'error', function(event) {
-						console.log( 'ZeroClipboard error of type "' + event.name + '": ' + event.message );
-						ZeroClipboard.destroy();
-					} );
+					clipboard.on('error', function(e) {
+					    console.error('Action:', e.action);
+					    console.error('Trigger:', e.trigger);
+					});
 
 					copy.append(copyTooltip);
 

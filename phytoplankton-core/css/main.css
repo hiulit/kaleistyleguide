@@ -1563,7 +1563,7 @@ ul[data-gumshoe] {
 .copy-to-clipboard.is-active {
   display: block;
 }
-.copy-to-clipboard.zeroclipboard-is-hover .tooltip {
+.copy-to-clipboard:hover .tooltip {
   opacity: 1;
 }
 
