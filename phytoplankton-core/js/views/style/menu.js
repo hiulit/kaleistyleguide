@@ -54,5 +54,6 @@ function($, _, str, Backbone, marked, dashboardPageTemplate, config) {
 			$('[href="' + window.location.hash + '"]').addClass('is-active');
 		}
 	});
+
 	return DashboardPage;
 });
