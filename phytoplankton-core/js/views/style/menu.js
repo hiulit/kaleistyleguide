@@ -48,8 +48,6 @@ function($, _, str, Backbone, marked, dashboardPageTemplate, config) {
 				menus.push(_.extend({}, currentMenu));
 			});
 
-            console.log(menus);
-
 			this.$el.html(_.template(dashboardPageTemplate)({menus:menus}));
 
 			// Adds .active class to the actual page's menu.
