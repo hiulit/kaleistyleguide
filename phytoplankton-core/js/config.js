@@ -12,29 +12,29 @@ define({
 		{
 			title: "Phytoplankton Style Guide",
 			url: [
-				"phytoplankton-examples/readme.css"
+				"css/phytoplankton-examples/readme.css"
 			]
 		},
 		{
 			title: "Documentation",
 			url: [
-				"phytoplankton-examples/docs/documentation.css"
+				"css/phytoplankton-examples/docs/documentation.css"
 			]
 		},
 		{
 			title: "Prepocessors",
 			url: [
-				"phytoplankton-examples/preprocessors/less.less",
-				"phytoplankton-examples/preprocessors/scss.scss",
-				"phytoplankton-examples/preprocessors/stylus.styl"
+				"less/phytoplankton-examples/preprocessors/less.less",
+				"scss/phytoplankton-examples/preprocessors/scss.scss",
+				"styl/phytoplankton-examples/preprocessors/stylus.styl"
 			]
 		},
 		{
 			title: "Plugins",
 			url: [
-				"phytoplankton-examples/plugins/fixie.css",
-				"phytoplankton-examples/plugins/handlebars.css",
-				"phytoplankton-examples/plugins/prism.css"
+				"css/phytoplankton-examples/plugins/fixie.css",
+				"css/phytoplankton-examples/plugins/handlebars.css",
+				"css/phytoplankton-examples/plugins/prism.css"
 			]
 		}
 	],
