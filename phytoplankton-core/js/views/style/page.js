@@ -891,8 +891,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 								block.content.push(comment);
 
 								// Pushes the uncompiled styles
-								if(styleExt !== 'css') {
-									if(styleExt == 'styl') {
+								if (styleExt !== 'css') {
+									if (styleExt == 'styl') {
 										block.content.push({
 											type: 'code',
 											lang: 'stylus',
@@ -927,12 +927,12 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 								block.content.push(comment);
 							}
 						// If it's "handlebars":
-						} else if(comment.lang === 'handlebars') {
+						} else if (comment.lang === 'handlebars') {
 							cssCompiled = that.remove_comments(cssCompiled);
 							var parsedHbs = that.parse_hbs(comment.text);
 							comment.text = parsedHbs[0];
 							comment.hbsTemplateUncompiled = parsedHbs[1];
-							if(cssCompiled !== '') { // If it has styles
+							if (cssCompiled !== '') { // If it has styles
 								block.content.push({
 									type: 'html',
 									lang: 'markup',
@@ -962,7 +962,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 							block.content.push(comment);
 
-							if(cssCompiled !== '') { // If it has styles
+							if (cssCompiled !== '') { // If it has styles
 								//Pushes the compiled styles
 								block.content.push({
 									type: 'code',
@@ -985,7 +985,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 					break;
 					case 'heading':
 						// Fixes the sourceMappingURL from Sass files
-						if(comment.text.indexOf("sourceMappingURL=") === -1) {
+						if (comment.text.indexOf("sourceMappingURL=") === -1) {
 							block.heading.push(comment.text);
 							block.headingID.push(comment.text.toLowerCase().replace(/\W+/g, '-'));
 							block.content.push(comment);
