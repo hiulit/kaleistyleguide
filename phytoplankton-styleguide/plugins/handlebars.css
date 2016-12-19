@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*
 # Handlebars.js
 
@@ -12,29 +11,29 @@
 
 Templates are placed in `phytoplankton-core/templates/hbs/`.
 
-You can configure it though. Just change the path in the `config.js`.
+You can configure it though. Just change the path in the `phytoplankton-core/scripts/config.js`.
 
 */
 /*
 # Context
 
-Context objects are placed in `phytoplankton-core/js/hbs/context.js`.
+Context objects are placed in `phytoplankton-core/scripts/hbs/context.js`.
 
-<pre data-src="phytoplankton-core/js/hbs/context.js"></pre>
+<pre data-src="phytoplankton-core/scripts/hbs/context.js"></pre>
 
-Path also configurable via `phytoplankton-core/js/main.js`.
+Path also configurable via `phytoplankton-core/scripts/main.js`.
 
 */
 /*
 # Helpers
 
-Helpers are placed in `phytoplankton-core/js/hbs/helpers.js`.
+Helpers are placed in `phytoplankton-core/scripts/hbs/helpers.js`.
 
-<pre data-src="phytoplankton-core/js/hbs/helpers.js"></pre>
+<pre data-src="phytoplankton-core/scripts/hbs/helpers.js"></pre>
 
 Guess what?
 
-*Tip: Change the path in `phytoplankton-core/js/main.js`* 😉
+*Tip: Change the path in `phytoplankton-core/scripts/main.js`* 😉
 
 */
 /*

@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*
 # Prism.js
 
@@ -163,11 +162,11 @@ p {
 
 Use the `data-src` attribute on an empty `<pre>` element, like so:
 
-	<pre data-src="phytoplankton-core/js/main.js"></pre>
+	<pre data-src="phytoplankton-core/scripts/main.js"></pre>
 
 This renders Phytoplankton's `phytoplankton-core/main.js`.
 
-<pre data-src="phytoplankton-core/js/main.js"></pre>
+<pre data-src="phytoplankton-core/scripts/main.js"></pre>
 
 It also can render HTML.
 

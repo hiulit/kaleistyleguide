@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*
 # Phytoplankton ❤️ Markdown
 
@@ -20,15 +19,15 @@ So go ahead and [master your Markdown](http://guides.github.com/overviews/master
 /*
 # Getting Started
 
-Phytoplankton uses `js/config.js` as a base to point at all the style sheets that you want to document.
+Phytoplankton uses `phytoplankton-core/scripts/config.js` as a base to point at all the style sheets that you want to document.
 
 Here you can set the menu based on your style sheets and some configurations.
 
 Phytoplankton will **automatically create a menu** out of your style sheets.
 
-This is how this particular `js/config.js` looks like:
+This is how this particular `config.js` looks like:
 
-<pre data-src="phytoplankton-core/js/config.js"></pre>
+<pre data-src="phytoplankton-core/scripts/config.js"></pre>
 
 */
 /*
