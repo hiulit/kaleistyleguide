@@ -829,7 +829,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 						preExt = $(comment.text). attr('data-src');
 						preExt = preExt.substr(preExt.lastIndexOf('.') +1);
 
-						if(preExt === 'js') {
+						if (preExt === 'js') {
 							comment.lang = 'JavaScript';
 						} else if(preExt === 'html') {
 							comment.lang = 'HTML';
@@ -837,7 +837,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 							comment.lang = '';
 						}
 
-						if(comment.pre === true) {
+						if (comment.pre === true) {
 							// Pushes the tabs
 							block.content.push({
 								type: 	'html',
@@ -855,17 +855,17 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 							block.content.push(comment);
 						// If it's "markup" (html):
 						// Push the code for an example with language header.
-						} else if(comment.lang === 'markup') {
+						} else if (comment.lang === 'markup') {
 							cssUncompiled = that.remove_comments(cssUncompiled);
 							cssCompiled = that.remove_comments(cssCompiled);
-							if(cssUncompiled) { // If has styles (CSS)
+							if (cssUncompiled) { // If has styles (CSS)
 								// Pushes the example
 								block.content.push({
 									type: 'html',
 									text: '<div class="code-render clearfix">' + comment.text + '</div>'
 								});
 								// Pushes the tabs
-								if(styleExt !== 'css') {
+								if (styleExt !== 'css') {
 									if(styleExt == 'styl') {
 										styleExt = 'stylus';
 									}
@@ -1006,7 +1006,6 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 			return return_val;
 		},
-
 	});
 
 	return StylePage;
