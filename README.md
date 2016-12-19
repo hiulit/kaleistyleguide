@@ -31,7 +31,6 @@ Just:
 * [Sass](http://sass-lang.com/) ([libsass v3.1.0](https://github.com/sass/libsass/releases/tag/3.1.0))
 * [Less](http://lesscss.org/) ([v2.3.0](https://github.com/less/less.js/releases/tag/v2.3.0))
 * [Stylus](http://stylus-lang.com/) ([v0.54.5](https://github.com/stylus/stylus/releases/tag/0.54.5))
-* [Stylus](http://stylus-lang.com/) [v0.54.5](https://github.com/stylus/stylus/releases/tag/0.54.5)
 
 So you don't have to ever use again a preprocessor tool 😉
 
@@ -47,19 +46,20 @@ which in turn uses [libsass](https://github.com/hcatlin/libsass).
 
 **Update 2**: Here it is [The LibSass Compatibility Plan](https://github.com/sass/libsass/wiki/The-LibSass-Compatibility-Plan).
 
-*It seems that finally, thanks to the effort of a lot of people,  libsass will reach parity with Ruby Sass*.
+*It seems that finally, thanks to the effort of a lot of people, libsass will reach parity with Ruby Sass*.
 
 ## Browser support
 
-| 				| IE9 		| IE10+ 	| Firefox 	| Chrome	|
-| :--			| :-: 		| :-: 		| :-: 		| :-: 		|
-| CSS	 		| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
-| Sass 			| &#x2717;	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
-| Less 			| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
-| Handlebars 	| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
-| Prism 		| &#x2713; 	| &#x2713; 	| &#x2713; 	| &#x2713; 	|
+|               | IE9       | IE10+     | Firefox   | Chrome    | Opera     |
+| :--           | :-:       | :-:       | :-:       | :-:       | :-:       |
+| CSS           | &#x2713;  | &#x2713;  | &#x2713;  | &#x2713;  | &#x2713;  |
+| Sass          | &#x2717;  | &#x2713;  | &#x2713;  | &#x2713;  | &#x2713;  |
+| Less          | &#x2713;  | &#x2713;  | &#x2713;  | &#x2713;  | &#x2713;  |
+| Stylus        | &#x2713;  | &#x2713;  | &#x2713;  | &#x2713;  | &#x2713;  |
+| Handlebars    | &#x2713;  | &#x2713;  | &#x2713;  | &#x2713;  | &#x2713;  |
+| Prism         | &#x2713;  | &#x2713;  | &#x2713;  | &#x2713;  | &#x2713;  |
 
-Not tested on Opera nor on Safari.
+Not tested on Safari.
 
 ## Changelog
 
@@ -77,7 +77,7 @@ Not tested on Opera nor on Safari.
 * ~~Fix tooltips overflow issue.~~
 * ~~Fix tabs scroll.~~
 * Improve tabs system.
-* Fix issue with Prism's File Highlight plugin async loading causing Gumshoe and ZeroClipboard (e.g. <pre data-src="") not to work properly.
+* Fix issue with Prism's File Highlight plugin async loading causing Gumshoe and (e.g. <pre data-src="") not to work properly.
 * RequireJS & Backbone optimization (separate modules, create components, etc.).
 * Add a view for showing colors, images (galleries, etc.).
 * Add loading state in pages.
@@ -109,8 +109,8 @@ Mad propz to all the great people behind the software listed below.
 
 * [Sassy-Gridlover](https://github.com/hiulit/Sassy-Gridlover) - Super easy to use Sass mixins to establish a typographic system with modular scale and vertical rhythm.
 * [Sass Vegan Burger](https://github.com/hiulit/sass-burger) - A Sass mixin for creating (100% vegan) hamburger icons.
-* [Stacktable](https://github.com/johnpolacek/stacktable.js/) - jQuery plugin for stacking tables on small screens.
-* [ZeroClipboard](https://github.com/zeroclipboard/zeroclipboard) - A library that provides an easy way to copy text to the clipboard.
+* [Stacktable](https://github.com/johnpolacek/stacktable.js) - jQuery plugin for stacking tables on small screens.
+* [clipboard.js](https://github.com/zenorocha/clipboard.js) - Modern copy to clipboard. No Flash. Just 3kb gzipped.
 * [Material Palette](http://www.materialpalette.com/teal/green) - Material design color palette generator.
 
 ## Author
@@ -140,3 +140,4 @@ In jurisdictions that recognize copyright laws, the author or authors of this so
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to http://unlicense.org/
+
