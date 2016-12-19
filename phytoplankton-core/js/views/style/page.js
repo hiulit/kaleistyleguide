@@ -309,7 +309,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 
 			// Adds .active to the current hash (e.g. .readme.scss)
 			if(window.location.hash !== '') {
-				$('[href="' + window.location.hash + '"]').addClass('active');
+				$('[href="' + window.location.hash + '"]').addClass('is-active');
 			}
 
 			// NEEDS TO BE EXPORTED TO menu.js - START

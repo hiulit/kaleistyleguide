@@ -1344,7 +1344,7 @@ img {
 .phytoplankton-menu__list__item__subheader:hover .svg-icon rect {
   fill: #fff;
 }
-.phytoplankton-menu__list__item__subheader.active, .phytoplankton-menu__list__item__subheader:active {
+.phytoplankton-menu__list__item__subheader.is-active, .phytoplankton-menu__list__item__subheader:active {
   background-color: #00796b;
   color: #fff;
   cursor: default;
@@ -1352,9 +1352,9 @@ img {
   position: relative;
   z-index: 1;
 }
-.phytoplankton-menu__list__item__subheader.active .svg-icon path,
-.phytoplankton-menu__list__item__subheader.active .svg-icon plygon,
-.phytoplankton-menu__list__item__subheader.active .svg-icon rect, .phytoplankton-menu__list__item__subheader:active .svg-icon path,
+.phytoplankton-menu__list__item__subheader.is-active .svg-icon path,
+.phytoplankton-menu__list__item__subheader.is-active .svg-icon plygon,
+.phytoplankton-menu__list__item__subheader.is-active .svg-icon rect, .phytoplankton-menu__list__item__subheader:active .svg-icon path,
 .phytoplankton-menu__list__item__subheader:active .svg-icon plygon,
 .phytoplankton-menu__list__item__subheader:active .svg-icon rect {
   fill: #fff;

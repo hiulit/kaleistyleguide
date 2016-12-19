@@ -12,7 +12,7 @@ function($, _, str, Backbone, marked, dashboardPageTemplate, config) {
 		el: '.js-phytoplankton-menu',
 		events: {
 			'click .js-phytoplankton-menu__list__item__subheader': function (ev) {
-				if($(ev.currentTarget).hasClass('is-active')) {
+				if ($(ev.currentTarget).hasClass('is-active')) {
 					ev.preventDefault();
 				} else {
 					this.$el.find('.is-active').removeClass('is-active');
@@ -27,29 +27,16 @@ function($, _, str, Backbone, marked, dashboardPageTemplate, config) {
 				$('.js-phytoplankton-page').removeClass('is-active');
 				$('.js-phytoplankton-page').removeClass('is-opaque');
 			}
-			// 'click .phytoplankton-menu__list__item ul li ul li a': function(ev) {
-			// 	ev.preventDefault();
-			// 	var pageHeadingHeight = $('.phytoplankton-page__header').outerHeight();
-			// 	var scrollAnchor = $(ev.currentTarget).attr('href');
-			// 	scrollAnchor = scrollAnchor.substr(scrollAnchor.lastIndexOf('#') + 1);
-			// 	var scrollPoint = $('.phytoplankton-page__item *[id="' + scrollAnchor + '"]').offset().top - (pageHeadingHeight + 48);
-			// 	$('html, body').animate({
-			// 		scrollTop: scrollPoint
-			// 	}, '200');
-			// }
 		},
-		render: function () {
-
+		render: function() {
 			var that = this;
-
 			that.$el.html('Loading styles');
 
 			var menus = [];
 			var currentMenu = {
-				sheets: [],
-				title: ''
+				title: '',
+                sheets: []
 			};
-			var sheetPath;
 
 			// Creates menu from config.js
 			_.each(config.menu, function(data) {
@@ -61,10 +48,12 @@ function($, _, str, Backbone, marked, dashboardPageTemplate, config) {
 				menus.push(_.extend({}, currentMenu));
 			});
 
+            console.log(menus);
+
 			this.$el.html(_.template(dashboardPageTemplate)({menus:menus}));
 
 			// Adds .active class to the actual page's menu.
-			$('[href="' + window.location.hash + '"]').addClass('active');
+			$('[href="' + window.location.hash + '"]').addClass('is-active');
 		}
 	});
 	return DashboardPage;
