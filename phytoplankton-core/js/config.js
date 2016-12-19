@@ -3,38 +3,38 @@ define({
 	// Your style guide folder.
 	styleguideFolder: "phytoplankton-styleguide",
 
-    // Your main.styl (or the like) where you have all your "@import".
+    // Your main style sheet where you have all your "@import".
     // No need for the extension file.
-    mainPreprocessorStyleSheet: "phytoplankton-examples/preprocessors/main",
+    mainPreprocessorStyleSheet: "preprocessors/main",
 
 	// Set menu.
 	menu: [
 		{
 			title: "Phytoplankton Style Guide",
 			url: [
-				"css/phytoplankton-examples/readme.css"
+				"readme.css"
 			]
 		},
 		{
 			title: "Documentation",
 			url: [
-				"css/phytoplankton-examples/docs/documentation.css"
+				"docs/documentation.css"
 			]
 		},
 		{
 			title: "Prepocessors",
 			url: [
-				"less/phytoplankton-examples/preprocessors/less.less",
-				"scss/phytoplankton-examples/preprocessors/scss.scss",
-				"styl/phytoplankton-examples/preprocessors/stylus.styl"
+				"preprocessors/less.less",
+				"preprocessors/scss.scss",
+				"preprocessors/stylus.styl"
 			]
 		},
 		{
 			title: "Plugins",
 			url: [
-				"css/phytoplankton-examples/plugins/fixie.css",
-				"css/phytoplankton-examples/plugins/handlebars.css",
-				"css/phytoplankton-examples/plugins/prism.css"
+				"plugins/fixie.css",
+				"plugins/handlebars.css",
+				"plugins/prism.css"
 			]
 		}
 	],
