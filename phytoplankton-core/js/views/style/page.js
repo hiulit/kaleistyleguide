@@ -105,6 +105,8 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
                                         configPath = config.styleguideFolder + "/" + styleExt + "/" + config.mainPreprocessorStyleSheet + "." + styleExt;
                                         configPath = configPath.substr(0, configPath.lastIndexOf('/'));
                                         // Recursive function to find all @imports.
+                                        console.log(data);
+                                        console.log(that.separate(data));
                                         allImports = that.find_imports(data, configPath, styleExt);
                                         allImports = allImports.join('');
                                         allImports = that.remove_comments(allImports);
@@ -665,6 +667,9 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 				multiEnd: /\*\//
 			};
 
+            var importsRegex = /(?:(?![\/*]])[^\/* ]|^ *)@import ['"](.*?)['"](?![^*]*?\*\/)/g;
+
+
 			// Check if a string is code or a comment (and which type of comment).
 			var checkType = function(str) {
 				// Treat multi start and end on same row as a single line comment.
@@ -679,7 +684,11 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 				} else if ((commentRegexs.single != null) && str.match(commentRegexs.single)) {
 					return 'single';
 				} else {
-					return 'code';
+					if (str.match(importsRegex)) {
+						return 'imports';
+					} else {
+						return 'code';
+					}
 				}
 			};
 
@@ -698,7 +707,7 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 			};
 			
 			while (lines.length) {
-				docs = code = cssCompiled = '';
+				docs = code = imports = cssCompiled = '';
 				// First check for any single line comments.
 				while (lines.length && checkType(lines[0]) === 'single') {
 					docs += formatDocs(lines.shift());
@@ -711,12 +720,18 @@ function($, _, Backbone, Handlebars, marked, stylePageTemplate, config, mockupOb
 						if (checkType(line) === 'multiend') break;
 					}
 				}
+
+				while (lines.length && (checkType(lines[0]) === 'imports')) {
+					imports += formatCode(lines.shift());
+				}
+
 				while (lines.length && (checkType(lines[0]) === 'code' || checkType(lines[0]) === 'multiend')) {
 					code += formatCode(lines.shift());
 				}
 				
 				blocks.push({
 					docs: docs,
+					imports: imports,
 					code: code,
 					cssCompiled: code
 				});
