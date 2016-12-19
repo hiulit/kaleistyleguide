@@ -77,7 +77,7 @@ Not tested on Safari.
 * ~~Fix tooltips overflow issue.~~
 * ~~Fix tabs scroll.~~
 * Improve tabs system.
-* Fix issue with Prism's File Highlight plugin async loading causing Gumshoe and (e.g. <pre data-src="") not to work properly.
+* Fix issue with Prism's File Highlight plugin async loading causing Gumshoe (e.g. <pre data-src="") not to work properly.
 * RequireJS & Backbone optimization (separate modules, create components, etc.).
 * Add a view for showing colors, images (galleries, etc.).
 * Add loading state in pages.
