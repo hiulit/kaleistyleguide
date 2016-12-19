@@ -142,7 +142,7 @@
 			}
 		}
 	}
-	&.active,
+	&.is-active,
 	&:active {
 		background-color: $dark-primary-color;
 		color: $text-color;

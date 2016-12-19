@@ -11,16 +11,16 @@ function($, _, str, Backbone, marked, dashboardPageTemplate, config) {
 	var DashboardPage = Backbone.View.extend({
 		el: '.js-phytoplankton-menu',
 		events: {
-			'click .phytoplankton-menu__list__item__subheader': function (ev) {
-				if($(ev.currentTarget).hasClass('active')) {
+			'click .js-phytoplankton-menu__list__item__subheader': function (ev) {
+				if($(ev.currentTarget).hasClass('is-active')) {
 					ev.preventDefault();
 				} else {
-					this.$el.find('.active').removeClass('active');
-					$(ev.currentTarget).addClass('active');
-					$(ev.currentTarget).parent().find('li:first-child').addClass('active');
+					this.$el.find('.is-active').removeClass('is-active');
+					$(ev.currentTarget).addClass('is-active');
+					$(ev.currentTarget).parent().find('li:first-child').addClass('is-active');
 				}
 			},
-			'click .phytoplankton-menu__list__item a': function() {
+			'click .js-phytoplankton-menu__list__item a': function() {
 				$('.js-phytoplankton-menu').removeClass('is-active');
 				$('.js-phytoplankton-menu-icon').removeClass('is-active');
 				$('.js-phytoplankton-header').removeClass('is-active');
