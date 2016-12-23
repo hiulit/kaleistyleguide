@@ -16,6 +16,7 @@ Phytoplankton uses [marked.js](https://github.com/chjj/marked) as the Markdown p
 So go ahead and [master your Markdown](http://guides.github.com/overviews/mastering-markdown/).
 
 */
+
 /*
 # Getting Started
 
@@ -30,6 +31,7 @@ This is how this particular `config.js` looks like:
 <pre data-src="phytoplankton-core/scripts/config.js"></pre>
 
 */
+
 /*
 # Comments
 
@@ -38,6 +40,7 @@ Comment your style sheets like you would normally do, starting with `/ *` and en
 Each comment will become a new section.
 
 */
+
 /*
 # Headings
 
@@ -48,6 +51,7 @@ These titles and subtitles will be converted into the left menu.
 The rest of the headings won't appear as sections of the menu.
 
 */
+
 /*
 # Code blocks
 
@@ -56,6 +60,7 @@ You can write your code indented with 1 tab (or 4 spaces) to show it as a code b
 	I'm a code block! Indented with 1 tab (or 4 spaces)
 
 */
+
 /*
 # Syntax highlighter
 
@@ -92,6 +97,7 @@ And you'll get this:
 Unlike code blocks, there's no need for indentation when using the syntax highlighter.
 
 */
+
 /*
 # Rendering HTML
 
@@ -116,6 +122,7 @@ Phytoplankton will automatically render the code as both HTML and the code block
 ```
 
 */
+
 /*
 # Using preprocessors
 
@@ -130,6 +137,7 @@ One of the best functionalities of **Phytoplankton** is that it leverages the ma
 Just drop your style sheets in any of these formats and you'll be just fine. Take a look for yourself in the **Preprocessors** section or by clicking the links above 😉
 
 */
+
 /*
 # Using external scripts
 
@@ -152,6 +160,7 @@ You can change the default path from where to load external scripts in `config.j
 ```
 
  */
+
 /*
 # Phytoplankton styles
 
@@ -177,5 +186,3 @@ These styles are appended at the end of `<section class="phytoplankton-page">` s
 ```
 
 */
-
-/*# sourceMappingURL=documentation.css.map */

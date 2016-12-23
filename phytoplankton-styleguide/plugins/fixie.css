@@ -6,7 +6,9 @@
 [Fixie.js](https://github.com/ryhan/fixie) is bundled with Phytoplankton.
 
 Featuring the awesome [VeganIpsum - All filler, no killer](http://bengreen.org.uk/veganipsum/).
+
 */
+
 /*
 # Example usage
 
@@ -33,7 +35,9 @@ It works for **headers**, **paragraphs**, **lists**, **images**, and just about 
 <p class="fixie"></p>
 <button class="js-click">Click</button>
 ```
+
 */
+
 h1 {
   color: red;
 }
@@ -65,7 +69,7 @@ a caos and get fired! 😉
 Besides, Phytoplankton uses a modified version of [Fixie.js](https://github.com/ryhan/fixie), because of the
 implementation of the [VeganIpsum - All filler, no killer](http://bengreen.org.uk/veganipsum/).
 So, if you ever want to use a newer version of [Fixie.js](https://github.com/ryhan/fixie)
-(although I highly doubt it , since it hasn't been updated for 2 years), look for...
+(although I highly doubt it , since it hasn't been updated for 3 years), look for...
 
 	// This is a "feature" that doesn't
 	// come with the default plugin.
@@ -73,5 +77,3 @@ So, if you ever want to use a newer version of [Fixie.js](https://github.com/ryh
 ... before touching anything.
 
 */
-
-/*# sourceMappingURL=fixie.css.map */

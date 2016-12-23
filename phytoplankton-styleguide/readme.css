@@ -8,6 +8,7 @@ This project aims at making sure your style sheets are fully documented whilst b
 To do this, it actually uses your style sheets so that, at anytime, you can review how your style guide looks.
 
 */
+
 /*
 # Main goals and benefits
 
@@ -19,6 +20,7 @@ To do this, it actually uses your style sheets so that, at anytime, you can revi
 * Open sourced so that all great ideas can be included.
 
 */
+
 /*
 # Installation
 
@@ -32,6 +34,7 @@ Just:
 3. And it should work! 😀
 
 */
+
 /*
 # Prepocessors support
 
@@ -54,6 +57,7 @@ which in turn uses [libsass](https://github.com/hcatlin/libsass).
 *It seems that finally, thanks to the effort of a lot of people, libsass will reach parity with Ruby Sass*.
 
 */
+
 /*
 # Browser support
 
@@ -69,6 +73,7 @@ which in turn uses [libsass](https://github.com/hcatlin/libsass).
 Not tested on Safari.
 
 */
+
 /*
 # Changelog
 
@@ -77,6 +82,7 @@ Not tested on Safari.
 * Not officially released.
 
 */
+
 /*
 # To do
 
@@ -95,12 +101,14 @@ Not tested on Safari.
 * Need **help** updating [sass.js](https://github.com/medialize/sass.js) to the latest version.
 
  */
+
 /*
 # Inspiration and alternatives
 
 Phytoplankton is heavily influenced by the projects found in [http://styleguides.io/](http://styleguides.io/) and [the Style Guide guide](http://vinspee.me/style-guide-guide/).
 
 */
+
 /*
 # Technologies
 
@@ -129,12 +137,14 @@ Mad propz to all the great people behind the software listed below.
 * [Material Palette](http://www.materialpalette.com/teal/green) - Material design color palette generator.
 
 */
+
 /*
 # Author
 
 * [Xavier Gomez](https://github.com/hiulit) ([@hiulit](https://twitter.com/hiulit)).
 
 */
+
 /*
 # Contributors
 
@@ -143,6 +153,7 @@ Mad propz to this guy:
 * [Oriol Torras](https://github.com/otorras) ([@uriusfurius](https://twitter.com/uriusfurius)) for helping with [sass.js](https://github.com/medialize/sass.js).
 
 */
+
 /*
 # Credits
 
@@ -151,6 +162,7 @@ Mad propz to this guy:
 * [Jacob Rask](https://github.com/jacobrask) - For creating the amazing [StyleDocco](https://github.com/jacobrask/styledocco). And also for open sourcing the project and letting me (and surely others) be able to implement some of his ideas, critical to Phytoplankton.
 
 */
+
 /*
 # Unlicense
 
@@ -165,5 +177,3 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For more information, please refer to http://unlicense.org/
 
 */
-
-/*# sourceMappingURL=readme.css.map */

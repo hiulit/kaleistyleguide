@@ -6,6 +6,7 @@
 [Handlebars.js](http://handlebarsjs.com/) is bundled with Phytoplankton.
 
 */
+
 /*
 # Templates
 
@@ -14,6 +15,7 @@ Templates are placed in `phytoplankton-core/templates/hbs/`.
 You can configure it though. Just change the path in the `phytoplankton-core/scripts/config.js`.
 
 */
+
 /*
 # Context
 
@@ -24,6 +26,7 @@ Context objects are placed in `phytoplankton-core/scripts/hbs/context.js`.
 Path also configurable via `phytoplankton-core/scripts/main.js`.
 
 */
+
 /*
 # Helpers
 
@@ -36,6 +39,7 @@ Guess what?
 *Tip: Change the path in `phytoplankton-core/scripts/main.js`* 😉
 
 */
+
 /*
 # Example usage
 
@@ -54,8 +58,7 @@ Phytoplankton will automatically render the code as both HTML and the code block
 ```
 
 */
+
 h1 {
   color: purple;
 }
-
-/*# sourceMappingURL=handlebars.css.map */
