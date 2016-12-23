@@ -29,10 +29,8 @@ Just:
 ## Prepocessors support
 
 * [Sass](http://sass-lang.com/) ([libsass v3.1.0](https://github.com/sass/libsass/releases/tag/3.1.0))
-* [Less](http://lesscss.org/) ([v2.3.0](https://github.com/less/less.js/releases/tag/v2.3.0))
+* [Less](http://lesscss.org/) ([v2.5.1](https://github.com/less/less.js/releases/tag/v2.5.1))
 * [Stylus](http://stylus-lang.com/) ([v0.54.5](https://github.com/stylus/stylus/releases/tag/0.54.5))
-
-So you don't have to ever use again a preprocessor tool 😉
 
 ### Notes
 
