@@ -3,7 +3,7 @@ define({
 	// Your style guide folder.
 	styleguideFolder: "phytoplankton-styleguide",
 
-    // Your main preprocessor (sass, less, stylus) style sheet where you have all your "@import".
+    // Your main preprocessor (Sass, Less or Stylus) style sheet where you have all your "@import".
     // No need for the extension file.
     mainPreprocessorStyleSheet: "preprocessors/main",
 
