@@ -3,11 +3,11 @@ define({
 	// Your style guide folder.
 	styleguideFolder: "phytoplankton-styleguide",
 
-    // Your main style sheet where you have all your "@import".
+    // Your main preprocessor (sass, less, stylus) style sheet where you have all your "@import".
     // No need for the extension file.
     mainPreprocessorStyleSheet: "preprocessors/main",
 
-	// Set menu.
+	// Menu configuration.
 	menu: [
 		{
 			title: "Phytoplankton Style Guide",
@@ -39,7 +39,7 @@ define({
 		}
 	],
 
-	// Set configuration for marked.js.
+	// Configuration for marked.js.
 	marked_options: {
 		sanitize: false,
 		gfm: true,
