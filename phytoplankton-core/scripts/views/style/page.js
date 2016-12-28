@@ -9,7 +9,7 @@ define([
 	'hbs_context',
 	'hbs_helpers',
 	'gonzales',
-	'libs/prism/prism',
+	'libs/prism/prism.min',
 	'libs/stacktable/stacktable',
 	'libs/gumshoe/dist/js/classList.min'
 ],
