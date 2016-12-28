@@ -64,7 +64,7 @@ You can write your code indented with 1 tab (or 4 spaces) to show it as a code b
 /*
 # Syntax highlighter
 
-*Phytoplankton uses [Prism](http://prismjs.com/) as the syntax highlighter. See more at [plugins/prism.scss](#/phytoplankton-examples/plugins/prism.scss)*.
+*Phytoplankton uses [Prism](http://prismjs.com/) as the syntax highlighter. See more at [plugins/prism.css](#/phytoplankton-examples/plugins/prism.css)*.
 
 Wrap your code with
 [fenced code blocks](https://help.github.com/articles/github-flavored-markdown#fenced-code-blocks) `` ``` `` +
@@ -99,6 +99,29 @@ Unlike code blocks, there's no need for indentation when using the syntax highli
 */
 
 /*
+# Toolbar
+
+When you use syntax highlighting, **Phytoplankton** creates a toolbar just above the code block.
+
+This toolbar shows the language of the code and a button to copy said code.
+
+```markup
+<ul class="phytoplankton-tabs">
+    <li class="phytoplankton-tabs__item is-active" data-tab="tab-x">scss</li>
+    <li class="copy-to-clipboard" data-clipboard-target="#tab-x" id="copy-tab-x">
+        <svg class="svg-icon" viewBox="0 0 20 20">
+            <path fill="none" d="M18.378,1.062H3.855c-0.309,0-0.559,0.25-0.559,0.559c0,0.309,0.25,0.559,0.559,0.559h13.964v13.964c0,0.309,0.25,0.559,0.559,0.559c0.31,0,0.56-0.25,0.56-0.559V1.621C18.938,1.312,18.688,1.062,18.378,1.062z M16.144,3.296H1.621c-0.309,0-0.559,0.25-0.559,0.559v14.523c0,0.31,0.25,0.56,0.559,0.56h14.523c0.309,0,0.559-0.25,0.559-0.56V3.855C16.702,3.546,16.452,3.296,16.144,3.296z M15.586,17.262c0,0.31-0.25,0.558-0.56,0.558H2.738c-0.309,0-0.559-0.248-0.559-0.558V4.972c0-0.309,0.25-0.559,0.559-0.559h12.289c0.31,0,0.56,0.25,0.56,0.559V17.262z"></path>
+        </svg>
+    <div class="tooltip">Copy to Clipboard</div>
+    </li>
+</ul>
+```
+
+*Inline code and code blocks without syntax highlight don't have toolbars.*
+
+*/
+
+/*
 # Rendering HTML
 
 Wrap your code with
@@ -129,7 +152,7 @@ Phytoplankton will automatically render the code as both HTML and the code block
 One of the best functionalities of **Phytoplankton** is that it leverages the main 3 preprocessors:
 
 * [Sass](#/phytoplankton-examples/preprocessors/scss.scss)
-* Less
+* [Less](#/phytoplankton-examples/preprocessors/less.less)
 * [Stylus](#/phytoplankton-examples/preprocessors/stylus.styl)
 
 **Without any external tool!**
