@@ -7,25 +7,26 @@
 
 It comes with:
 
-* Development version
+* Development & minified versions
 * Core
 * Theme
 	* Okaidia *(modified version)*
 * Languages
 	* All
 * Plugins
-	* Line Numbers
-	* Autolinker
-	* WebPlatform Docs
-	* File Highlight *(modified version)*
-	* Show Language
+	* [Line Numbers](http://prismjs.com/plugins/line-numbers/)
+	* [Autolinker](http://prismjs.com/plugins/autolinker/)
+	* [WebPlatform Docs](http://prismjs.com/plugins/wpd/)
+	* [File Highlight](http://prismjs.com/plugins/file-highlight/)
 
 But you can use any theme or add any plugin you want.
 
 Just go to the [Prism's download page](http://prismjs.com/download.html) and customize it
 to suit yourself.
 
-*See more info about adding or removing themes/plugins on the **Caution!** section at the bottom.*
+Then go to `phytoplankton-core/scripts/libs/prism` and override `prism.js` (if using the development version) or `prism.min.js` (if using the minified version).
+
+*See more info about adding or removing themes on the **Caution!** section at the bottom.*
 
 */
 
@@ -180,12 +181,6 @@ This is Phytoplankton's `index.html`.
 And if something goes wrong...
 
 <pre data-src="wtf.html"></pre>
-
-## Show Language
-
-As you should have been already realized, it displays the highlighted language in code blocks (inline code does not show the label).
-
-No need for more examples, right? Just sit back, relax and enjoy 😉
 
 */
 
